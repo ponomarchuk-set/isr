@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-5HZ42Q5T');</script>
+    <!-- End Google Tag Manager -->    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Cloud/Firebase GenAI Architecture</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="arch-styles.css">
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5HZ42Q5T"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <h1 style="text-align: center; color: #3c4043;">ISR<br>Secure Serverless GenAI Platform Architecture</h1>
+
+    <div class="architecture-diagram">
+        
+        <div class="tier" style="border-top-color: #FF9100;">
+            <h3>Client & Edge Security</h3>
+            
+            <div class="component user">
+                <div class="icon-box" 
+                    data-title="Users"
+                    data-info="<p>Through <b>Firebase Hosting</b> end users accessing the application from web or mobile devices to the next ISR parts:</p>
+                        <ul>
+                            <li>AI-assistant</li>
+                            <li>Profile</li>
+                            <li>Values</li>
+                            <li>Voiting</li>
+                            <li>Tasks</li>
+                            <li>Chat</li>
+                            <li>Documentation</li>
+                            <li>Settings</li>
+                        </ul>">
+                    <img width="25%" height="25%" src="https://www.iconpacks.net/icons/1/free-user-group-icon-307-thumb.png"></div>
+                <span>Users</span>
+            </div>
+            
+            <div class="flow-container" data-title="Access App" data-info="Traffic reaches the edge <b>CDN</b> layer before hitting backend services for performance and security.">
+                <i class="fa-solid fa-arrow-down flow-arrow"></i>
+                <div class="flow-label">Access App</div>
+            </div>
+
+            <div class="component">
+                <div class="icon-box firebase-icon" data-info="Firebase Hosting serves static assets over a global CDN with HTTPS."><img width="25%" height="25%" src="https://www.svgrepo.com/show/373597/firebasehosting.svg"></i></div>
+                <span>Firebase Hosting</span>
+            </div>
+
+            <div class="flow-container" style="flex-direction: row; justify-content: space-around;">
+                <div style="text-align: center; margin-right: 15px;">
+                    <i class="fa-solid fa-arrow-right flow-arrow"></i>
+                    <div class="flow-label">Authenticate User</div>
+                    <div class="component" style="background-color: #fbe9e7; border-color: #ffccbc;">
+                        <div class="icon-box firebase-icon" 
+                            data-title="Firebase Auth"
+                            data-info="<p>Firebase Auth issues ID tokens; supports email/password, OAuth providers, etc.</p>
+                                <p><a href='https://firebase.google.com/docs/auth' target='_blank'>Firebase Auth Docs</a></p>">
+                            <img width="40%" height="40%" src="https://firebase.google.com/static/images/products/auth/auth-hero_1x.png"></div>
+                        <span>Firebase Auth</span>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <i class="fa-solid fa-arrow-right flow-arrow"></i>
+                    <div class="flow-label">Validate App Integrity</div>
+                    <div class="component" style="background-color: #fbe9e7; border-color: #ffccbc;">
+                        <div class="icon-box firebase-icon" 
+                        data-title="Firebase App Check"
+                        data-info="<p>App Check ensures only verified app instances can access backend resources.</p>
+                            <p><a href='https://firebase.google.com/docs/app-check' target='_blank'>Firebase App Check Docs</a></p>">
+                            <img width="40%" height="40%" src="https://firebase.google.com/static/images/products/appcheck/app-check-hero_1x.png"></div>
+                        <span>Firebase App Check</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tier">
+            <h3>Serverless Backend (Compute)</h3>
+            
+            <div class="flow-container" data-title="Tokens" data-info="Client obtains ID/App tokens which are validated by backend services.">
+                <i class="fa-solid fa-arrow-down flow-arrow"></i>
+                <div class="flow-label">ID & App Tokens</div>
+            </div>
+
+            <div class="component" style="background-color: #d1e5ff; border-color: #a8c1ff;">
+                <div class="icon-box cloud-icon" 
+                    data-title="Cloud Run (Hosts Genkit)"
+                    data-info='<p>Autoscaling containers with HTTPS by default.</p>
+                        <p><a href="https://cloud.google.com/run" target="_blank">Docs</a></p>
+                        <img src="https://www.svgrepo.com/show/353807/google-cloud-run.svg" alt="Cloud Run" width="64">'>
+                    <img width="20%" height="20%" src="https://www.svgrepo.com/show/353807/google-cloud-run.svg"></div>
+                <span>Cloud Run (Hosts Genkit)</span>
+            </div>
+
+            <div class="component" style="margin-top: 30px; background-color: #e2f1f8; border-color: #b3e5fc;">
+                <div class="icon-box cloud-icon" 
+                    data-title="Cloud IAM (Identity and Access Management - Restrict Access)"
+                    data-info="<p><b>Cloud IAM</b> controls service-to-service and user permissions across the platform.</p>
+                        <p><a href='https://cloud.google.com/iam' target='_blank'>Cloud IAM Docs</a></p>">
+                    <img width="20%" height="20%" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzh1840PSzzgxbrypWxuarRKtxYqPe25RoEQ&s"></div>
+                <span>Cloud IAM (Identity and Access Management - Restrict Access)</span>
+            </div>
+
+            <div class="flow-container" style="margin-top: 20px;" data-title="Processing" data-info="Genkit logic validates tokens, routes requests, and orchestrates AI/IO operations.">
+                <i class="fa-solid fa-arrow-right flow-arrow" style="color: #673AB7;"></i>
+                <div class="flow-label">Process Requests (Genkit Logic)</div>
+            </div>
+        </div>
+
+        <div class="tier" style="border-top-color: #34a853;">
+            <h3>AI & Data Services</h3>
+
+            <div class="component ai">
+                <div class="icon-box ai-icon" 
+                        data-title="Genkit (AI Orchestration)"
+                        data-info="<p>Genkit orchestrates tools, pipelines, and agent prompts for the app.</p>
+                            <p><a href='https://genkit.dev' target='_blank'>Genkit Docs</a></p>">
+                    <img width="40%" height="40%" src="https://genkit.dev/ogimage.png?v=1"></div>
+                <span>Genkit (AI Orchestration)</span>
+            </div>
+
+            <div class="flow-container">
+                <i class="fa-solid fa-arrow-down flow-arrow" style="color: #9c27b0;"></i>
+                <div class="flow-label">Define AI Agents</div>
+            </div>
+            
+            <div class="component ai">
+                <div class="icon-box ai-icon" 
+                    data-title="Vertex AI Agents & Gemini LLM"
+                    data-info="<p>Vertex AI Agents and <i class='fa-solid fa-star' style='color: #FDADEE;'></i> Gemini provide LLM-based reasoning and tools integration.</p>
+                        <p><a href='https://cloud.google.com/vertex-ai' target='_blank'>Vertex AI Docs</a></p>
+                        <p><a href='https://cloud.google.com/gemini' target='_blank'>Gemini Docs</a></p>">
+                    <img width="25%" height="25%" src="https://raw.githubusercontent.com/deepset-ai/haystack-integrations/main/logos/vertexai.png"></div>
+                <span>Vertex AI Agents & <i class="fa-solid fa-star" style="color: #FDADEE;"></i> Gemini LLM</span>
+            </div>
+
+            <div style="margin-top: 30px; padding-top: 15px; border-top: 1px dashed #ccc;">
+                <div class="flow-container" data-title="Data Access" data-info="AI services access Firestore and Storage for state, metadata, and files.">
+                    <i class="fa-solid fa-arrow-left flow-arrow" style="color: #795548;"></i>
+                    <div class="flow-label">Access Storage/Database</div>
+                </div>
+                
+                <div class="component" style="background-color: #fff3e0; border-color: #ffe0b2;">
+                    <div class="icon-box firebase-icon" 
+                        data-title="Firestore"
+                        data-info="<p>Firestore stores structured documents for user and app data.</p>
+                        <p><a href='https://firebase.google.com/docs/firestore' target='_blank'>Firestore Docs</a></p>">
+                        <img width="20%" height="20%" src="https://cloud-icons.onemodel.app/gcp/firestore/firestore.png"></div>
+                    <span>Firestore (Database)</span>
+                </div>
+                
+                <div class="component" style="background-color: #fff3e0; border-color: #ffe0b2;">
+                    <div class="icon-box firebase-icon" 
+                    data-title="Firebase Storage"
+                    data-info="<p>Storage keeps media and large files; access governed by security rules.</p>
+                        <p><a href='https://firebase.google.com/docs/storage' target='_blank'>Firebase Storage Docs</a></p>">
+                        <img width="20%" height="20%" src="https://firebase.google.com/static/images/products/storage/storage-hero_1x.png">
+                    </div>
+                    <span>Firebase Storage (Files/Media)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="operations-area">
+            <h3>Operations (CI/CD Pipeline)</h3>
+            <div class="ci-cd-flow">
+            <div class="component" style="background-color: #dcedc8; border-color: #c5e1a5;">
+                <div class="icon-box cloud-icon" 
+                    data-info="Cloud Build runs CI workflows, builds, tests, and security scans.">
+                    <img width="20%" height="20%" src="https://lh3.googleusercontent.com/f8JMp0gkUitOGczWZvY9ZhPqTmEWGfC1vjKWIhDx_9pe39qhOBNWMKqBcqnr9N9w4IiEHxcNPBDdKzxrD8u_eA=w240-h240"></div>
+                    <span>Cloud Build (Automate Builds)</span>
+                </div>
+                
+            <div class="flow-container" 
+                data-title="Store Images" 
+                data-info="<p>Built artifacts are stored in <b>Artifact Registry</b> for deployments.</p>
+                    <p><a href='https://cloud.google.com/artifact-registry' target='_blank'>Artifact Registry Docs</a></p>">
+                    <i class="fa-solid fa-arrow-right flow-arrow" style="color: #00796b;"></i>
+                    <div class="flow-label">Store Images</div>
+                </div>
+
+            <div class="component" style="background-color: #d1e5ff; border-color: #a8c1ff;">
+                <div class="icon-box cloud-icon" 
+                    data-title="Artifact Registry"
+                    data-info="Artifact Registry stores and manages container images and packages.">
+                    <img width="20%" height="20%" src="https://cloud-icons.onemodel.app/gcp/artifact_registry/artifact_registry.png"></div>
+                    <span>Artifact Registry</span>
+                </div>
+
+            <div class="flow-container" data-title="Deploy Containers" data-info="Images are deployed to Cloud Run with revisions and traffic splitting.">
+                <i class="fa-solid fa-arrow-right flow-arrow" style="color: #00796b;"></i>
+                <div class="flow-label">Deploy Containers</div>
+            </div>
+
+            <div class="component" style="background-color: #d1e5ff; border-color: #a8c1ff;">
+                <div class="icon-box cloud-icon" 
+                    data-title="Cloud Run"
+                    data-info="Cloud Run serves the latest container revision behind HTTPS with autoscaling.">
+                    <img width="20%" height="20%" src="https://www.svgrepo.com/show/353807/google-cloud-run.svg"></div>
+                    <span>Cloud Run</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+ 
+    <!-- Modal container (created by script if missing) -->
+    <div class="arch-modal-overlay" style="display:none;">
+        <div class="arch-modal" role="dialog" aria-modal="true" aria-labelledby="arch-modal-title">
+            <div class="arch-modal-header">
+                <h4 id="arch-modal-title" class="arch-modal-title"></h4>
+                <button class="arch-modal-close" aria-label="Close">×</button>
+            </div>
+            <div class="arch-modal-content"></div>
+        </div>
+    </div>
+
+    
+    
+    <h3>RAG Architecture inplementation</h3>
+    <img src="rag-gc.svg" alt="RAG architecture implementation" width="100%" height="100%">
+    
+
+    <script src="arct-script.js"></script>
+</body>
+<script src="/site-nav.js"></script>
+</html>

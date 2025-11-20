@@ -1,0 +1,47 @@
+/* General Styles */
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f9; margin: 20px; }
+.architecture-diagram { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; padding: 30px; background-color: #ffffff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); }
+
+/* Tier Styles */
+.tier { padding: 20px 10px; border-radius: 8px; border-top: 5px solid #4285F4; }
+.tier h3 { text-align: center; color: #4285F4; margin-bottom: 25px; font-weight: 600; }
+
+/* Component Styles */
+.component { background-color: #e8f0fe; border: 1px solid #c5dafa; padding: 10px; margin-bottom: 20px; border-radius: 8px; text-align: center; position: relative; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); }
+.component.user { background-color: #f7e2d9; border-color: #f2c7a7; }
+.component.ai { background-color: #f3e5f5; border-color: #d8b8e3; }
+
+.icon-box { font-size: 28px; margin-bottom: 5px; color: #4285F4; }
+.component span { font-size: 14px; font-weight: 500; display: block; }
+
+/* Flow Lines (Represented by Arrows and Labels - highly simplified in pure CSS/HTML) */
+.flow-container { display: flex; flex-direction: column; align-items: center; }
+.flow-arrow { font-size: 20px; color: #34a853; margin: 5px 0; }
+.flow-label { font-size: 10px; color: #5f6368; font-style: italic; margin-top: -5px; margin-bottom: 10px; }
+
+/* Custom Icon Styling (Approximation for Google/Firebase icons) */
+.firebase-icon { color: #FF9100; } /* Firebase Orange */
+.cloud-icon { color: #1a73e8; }   /* Google Cloud Blue */
+.ai-icon { color: #e37400; }      /* Vertex AI/AI Orange */
+.gemini-color { color: #FDADEE; } /* Gemini Pink (from Brand Guidelines) */
+
+/* CI/CD & Operations Area - Placed below the main grid */
+.operations-area { grid-column: 1 / span 3; text-align: center; margin-top: 30px; padding: 20px; border-top: 1px dashed #ccc; }
+.operations-area h3 { color: #00796b; border-bottom: 2px solid #00796b; padding-bottom: 10px; margin-bottom: 20px; }
+.ci-cd-flow { display: flex; justify-content: space-around; align-items: center; }
+.ci-cd-flow .component { margin: 0; width: calc(25% - 20px); flex-shrink: 0; /*min-width: 200px;*/}
+
+/* Interactivity */
+.icon-box, .flow-container { cursor: pointer; }
+
+/* Modal / Pop-up */
+.arch-modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); display: none; align-items: center; justify-content: center; z-index: 1000; }
+.arch-modal { background: #ffffff; width: min(560px, 92vw); border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); overflow: hidden; max-height: 82vh; display: flex; flex-direction: column; }
+.arch-modal-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; background: #f4f7f9; border-bottom: 1px solid #e6eaee; }
+.arch-modal-title { font-size: 16px; font-weight: 600; color: #3c4043; margin: 0; }
+.arch-modal-close { background: transparent; border: none; font-size: 20px; line-height: 1; cursor: pointer; color: #5f6368; padding: 6px 8px; }
+.arch-modal-content { padding: 16px; color: #3c4043; font-size: 14px; overflow: auto; }
+.arch-modal-content img { max-width: 100%; height: auto; display: block; }
+.arch-modal-content a { color: #1a73e8; text-decoration: none; }
+.arch-modal-content a:hover { text-decoration: underline; }
+.arch-modal-overlay.active { display: flex; }

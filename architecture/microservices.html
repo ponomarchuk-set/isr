@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISR: Vote - Microservices Architecture</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+        }
+        
+        .architecture-diagram {
+            display: grid;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .layer {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            background: #f9f9f9;
+        }
+        
+        .layer-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .service {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .service.core {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        .service.data {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        
+        .service.compute {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+        
+        .service.external {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+        
+        .service-name {
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+        
+        .service-description {
+            font-size: 0.9em;
+            opacity: 0.95;
+            line-height: 1.4;
+        }
+        
+        .interactions {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .interaction-group {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-left: 4px solid #667eea;
+            background: #f0f4ff;
+            border-radius: 4px;
+        }
+        
+        .interaction-title {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .interaction-item {
+            margin-left: 10px;
+            margin-bottom: 8px;
+            padding: 8px;
+            background: white;
+            border-radius: 4px;
+            border-left: 3px solid #764ba2;
+            font-size: 0.95em;
+        }
+        
+        .sync {
+            background: #ffe6e6;
+            border-left-color: #f5576c;
+        }
+        
+        .async {
+            background: #e6f3ff;
+            border-left-color: #00f2fe;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-right: 8px;
+            margin-bottom: 5px;
+        }
+        
+        .sync-badge {
+            background: #f5576c;
+            color: white;
+        }
+        
+        .async-badge {
+            background: #00f2fe;
+            color: #333;
+        }
+        
+        .kafka-badge {
+            background: #231f20;
+            color: white;
+        }
+        
+        .rmq-badge {
+            background: #ff6600;
+            color: white;
+        }
+        
+        .pattern-badge {
+            background: #43e97b;
+            color: #333;
+        }
+        
+        .analysis-section {
+            background: #f9f9f9;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .analysis-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .pro-list, .con-list {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .pro-item {
+            color: #27ae60;
+            margin-bottom: 8px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .pro-item:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .con-item {
+            color: #c0392b;
+            margin-bottom: 8px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .con-item:before {
+            content: "⚠";
+            position: absolute;
+            left: 0;
+            font-size: 1.1em;
+        }
+        
+        .nfr-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        
+        .nfr-table th, .nfr-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .nfr-table th {
+            background: #667eea;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .nfr-table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        
+        .positive {
+            color: #27ae60;
+            font-weight: bold;
+        }
+        
+        .negative {
+            color: #c0392b;
+            font-weight: bold;
+        }
+        
+        .neutral {
+            color: #f39c12;
+            font-weight: bold;
+        }
+        
+        .pattern-section {
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .pattern-name {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+        
+        .recommendation {
+            background: #e8f5e9;
+            border-left: 4px solid #43e97b;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .recommendation-title {
+            font-weight: bold;
+            color: #27ae60;
+            margin-bottom: 5px;
+        }
+        
+        .data-flow {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 10px 0;
+            font-size: 0.95em;
+        }
+        
+        .legend {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .legend-color {
+            width: 30px;
+            height: 30px;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+        
+        .footer {
+            text-align: center;
+            color: #666;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            font-size: 0.95em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏗️ ISR: Vote - Microservices Architecture</h1>
+        <p class="subtitle">Event-Driven Microservices Design with Graph-Based Relationship Modeling</p>
+        
+        <div class="architecture-diagram">
+            <!-- API Gateway Layer -->
+            <div class="layer">
+                <div class="layer-title">🚪 API Gateway & Load Balancing</div>
+                <div class="services-grid">
+                    <div class="service external">
+                        <div class="service-name">API Gateway</div>
+                        <div class="service-description">
+                            <span class="badge sync-badge">REST/GraphQL</span>
+                            <br>Request routing, authentication, rate limiting, request/response transformation
+                        </div>
+                    </div>
+                    <div class="service external">
+                        <div class="service-name">Service Discovery</div>
+                        <div class="service-description">
+                            <span class="badge pattern-badge">Consul/Eureka</span>
+                            <br>Dynamic service registration and discovery
+                        </div>
+                    </div>
+                    <div class="service external">
+                        <div class="service-name">Configuration Server</div>
+                        <div class="service-description">
+                            Centralized configuration management for all services
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Core Services Layer -->
+            <div class="layer">
+                <div class="layer-title">🔑 Core Domain Services</div>
+                <div class="services-grid">
+                    <div class="service core">
+                        <div class="service-name">Identity & Auth Service</div>
+                        <div class="service-description">
+                            <span class="badge sync-badge">REST</span>
+                            <br>User authentication, Bank ID/Дія.Підпис integration, JWT token management, session management
+                        </div>
+                    </div>
+                    <div class="service core">
+                        <div class="service-name">Profile Service</div>
+                        <div class="service-description">
+                            <span class="badge sync-badge">REST</span>
+                            <span class="badge async-badge">Kafka events</span>
+                            <br>User profile CRUD, professional data, personal information, interests storage
+                        </div>
+                    </div>
+                    <div class="service core">
+                        <div class="service-name">Discussion & Chat Service</div>
+                        <div class="service-description">
+                            <span class="badge sync-badge">REST/WebSocket</span>
+                            <span class="badge async-badge">RabbitMQ</span>
+                            <br>Topic creation, message management, real-time discussions, sentiment analysis
+                        </div>
+                    </div>
+                    <div class="service core">
+                        <div class="service-name">Voting Service</div>
+                        <div class="service-description">
+                            <span class="badge sync-badge">REST</span>
+                            <span class="badge async-badge">Kafka</span>
+                            <br>Vote submission, vote tallying, vote aggregation with ISR weights
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Business Logic Services Layer -->
+            <div class="layer">
+                <div class="layer-title">⚙️ Business Logic & Computation Services</div>
+                <div class="services-grid">
+                    <div class="service compute">
+                        <div class="service-name">Social Graph Service</div>
+                        <div class="service-description">
+                            <span class="badge sync-badge">REST</span>
+                            <span class="badge async-badge">Kafka</span>
+                            <br>Graph-based relationships (friends, relatives, hobbies), neo4j backend, relationship queries
+                        </div>
+                    </div>
+                    <div class="service compute">
+                        <div class="service-name">Microcommunity Determination Service</div>
+                        <div class="service-description">
+                            <span class="badge async-badge">Kafka</span>
+                            <br>Real-time community detection on vote/discussion creation, graph traversal, relevance scoring
+                        </div>
+                    </div>
+                    <div class="service compute">
+                        <div class="service-name">ISR Calculation Service</div>
+                        <div class="service-description">
+                            <span class="badge async-badge">Kafka/Job Queue</span>
+                            <br>LLM + RAG analysis, pre-calculated ISR scores, weighted vote computation (hours-long batch)
+                        </div>
+                    </div>
+                    <div class="service compute">
+                        <div class="service-name">Community Values Matrix Service</div>
+                        <div class="service-description">
+                            <span class="badge async-badge">Kafka</span>
+                            <br>Aggregate member values by belongingness degree, matrix computation, value synthesis
+                        </div>
+                    </div>
+                    <div class="service compute">
+                        <div class="service-name">Task Service</div>
+                        <div class="service-description">
+                            <span class="badge sync-badge">REST</span>
+                            <span class="badge async-badge">RabbitMQ</span>
+                            <br>Task creation, assignment, tracking, completion assessment, progress monitoring
+                        </div>
+                    </div>
+                    <div class="service compute">
+                        <div class="service-name">User Values & Assessment Service</div>
+                        <div class="service-description">
+                            <span class="badge sync-badge">REST</span>
+                            <span class="badge async-badge">Kafka</span>
+                            <br>Personal social values management, value profiles, compatibility analysis
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Supporting Services Layer -->
+            <div class="layer">
+                <div class="layer-title">🤖 Supporting & External Services</div>
+                <div class="services-grid">
+                    <div class="service external">
+                        <div class="service-name">AI Assistant Service</div>
+                        <div class="service-description">
+                            <span class="badge sync-badge">REST</span>
+                            <br>Gemini API integration, contextual help, recommendations, value evaluation guidance
+                        </div>
+                    </div>
+                    <div class="service external">
+                        <div class="service-name">Notification Service</div>
+                        <div class="service-description">
+                            <span class="badge async-badge">RabbitMQ</span>
+                            <br>Email, push notifications, real-time alerts for microcommunity changes
+                        </div>
+                    </div>
+                    <div class="service external">
+                        <div class="service-name">Search & Analytics Service</div>
+                        <div class="service-description">
+                            <span class="badge async-badge">Kafka</span>
+                            <br>Elasticsearch for discussions/votes search, analytics aggregation
+                        </div>
+                    </div>
+                    <div class="service external">
+                        <div class="service-name">External Auth Service</div>
+                        <div class="service-description">
+                            Bank ID, Дія.Підпис integration via Circuit Breaker pattern
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Data Layer -->
+            <div class="layer">
+                <div class="layer-title">💾 Data Layer - Database per Service</div>
+                <div class="services-grid">
+                    <div class="service data">
+                        <div class="service-name">Profile DB (PostgreSQL)</div>
+                        <div class="service-description">User profiles, personal data</div>
+                    </div>
+                    <div class="service data">
+                        <div class="service-name">Discussion DB (PostgreSQL)</div>
+                        <div class="service-description">Topics, messages, conversation history</div>
+                    </div>
+                    <div class="service data">
+                        <div class="service-name">Voting DB (PostgreSQL)</div>
+                        <div class="service-description">Votes, ISR weights, tallying data</div>
+                    </div>
+                    <div class="service data">
+                        <div class="service-name">Social Graph (Neo4j)</div>
+                        <div class="service-description">Relationships, connections, graph traversal</div>
+                    </div>
+                    <div class="service data">
+                        <div class="service-name">Values DB (MongoDB)</div>
+                        <div class="service-description">Flexible value profiles, matrices</div>
+                    </div>
+                    <div class="service data">
+                        <div class="service-name">Cache Layer (Redis)</div>
+                        <div class="service-description">ISR scores, user sessions, frequently accessed data</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Legend -->
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+                <span>Core Domain Services</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);"></div>
+                <span>Business Logic & Computation</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+                <span>Data Storage</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
+                <span>Supporting & External Services</span>
+            </div>
+        </div>
+        
+        <!-- Service Interactions -->
+        <div class="interactions">
+            <div class="layer-title">🔗 Inter-Service Communication & Data Interactions</div>
+            
+            <div class="interaction-group">
+                <div class="interaction-title">SYNCHRONOUS (REST/gRPC)</div>
+                <div class="interaction-item sync">
+                    <span class="badge sync-badge">REST</span>
+                    <strong>API Gateway → Identity Service:</strong> Token validation on every request
+                </div>
+                <div class="interaction-item sync">
+                    <span class="badge sync-badge">gRPC</span>
+                    <strong>Voting Service → ISR Score Cache:</strong> Retrieve cached ISR scores for vote weighting (low latency)
+                </div>
+                <div class="interaction-item sync">
+                    <span class="badge sync-badge">REST</span>
+                    <strong>Discussion Service → Profile Service:</strong> Fetch user profiles for message display and sentiment scoring
+                </div>
+                <div class="interaction-item sync">
+                    <span class="badge sync-badge">REST</span>
+                    <strong>AI Assistant Service → All Services:</strong> Contextual queries for recommendations
+                </div>
+            </div>
+            
+            <div class="interaction-group">
+                <div class="interaction-title">ASYNCHRONOUS - KAFKA (Event Streaming)</div>
+                <div class="interaction-item async">
+                    <span class="badge kafka-badge">Kafka Topic: profile.updated</span>
+                    <strong>Profile Service → </strong> Microcommunity Service, ISR Service, Social Graph Service
+                    <div style="margin-top: 8px; padding: 8px; background: white; border-radius: 3px; font-size: 0.9em;">
+                        When profile changes → trigger re-evaluation of user's microcommunity belongingness and re-calculation of ISR scores
+                    </div>
+                </div>
+                <div class="interaction-item async">
+                    <span class="badge kafka-badge">Kafka Topic: question.created</span>
+                    <strong>Voting/Discussion Service → </strong> Microcommunity Determination Service
+                    <div style="margin-top: 8px; padding: 8px; background: white; border-radius: 3px; font-size: 0.9em;">
+                        When new question posted → asynchronously trigger microcommunity gathering based on geographic, social, economic context
+                    </div>
+                </div>
+                <div class="interaction-item async">
+                    <span class="badge kafka-badge">Kafka Topic: microcommunity.determined</span>
+                    <strong>Microcommunity Service → </strong> Community Values Matrix Service, ISR Calculation Service (async job queue)
+                    <div style="margin-top: 8px; padding: 8px; background: white; border-radius: 3px; font-size: 0.9em;">
+                        Microcommunity identified → gather member values aggregated by belongingness degree → queue ISR pre-calculation jobs (can take hours)
+                    </div>
+                </div>
+                <div class="interaction-item async">
+                    <span class="badge kafka-badge">Kafka Topic: isr.calculated</span>
+                    <strong>ISR Service → </strong> Voting Service, Cache Layer (Redis)
+                    <div style="margin-top: 8px; padding: 8px; background: white; border-radius: 3px; font-size: 0.9em;">
+                        ISR scores pre-calculated → store in cache and DB for fast vote weighting retrieval
+                    </div>
+                </div>
+                <div class="interaction-item async">
+                    <span class="badge kafka-badge">Kafka Topic: vote.submitted</span>
+                    <strong>Voting Service → </strong> Search & Analytics Service, Task Service
+                    <div style="margin-top: 8px; padding: 8px; background: white; border-radius: 3px; font-size: 0.9em;">
+                        Vote recorded → index for analytics, trigger task creation if decision made
+                    </div>
+                </div>
+                <div class="interaction-item async">
+                    <span class="badge kafka-badge">Kafka Topic: values.defined</span>
+                    <strong>User Values Service → </strong> Community Values Matrix Service
+                    <div style="margin-top: 8px; padding: 8px; background: white; border-radius: 3px; font-size: 0.9em;">
+                        User defines personal values → recalculate community matrix for affected microcommunities
+                    </div>
+                </div>
+            </div>
+            
+            <div class="interaction-group">
+                <div class="interaction-title">ASYNCHRONOUS - RABBITMQ (Task Queue)</div>
+                <div class="interaction-item async">
+                    <span class="badge rmq-badge">RabbitMQ Queue: isr.batch.calculation</span>
+                    <strong>Microcommunity Service → </strong> ISR Calculation Workers (multi-instance)
+                    <div style="margin-top: 8px; padding: 8px; background: white; border-radius: 3px; font-size: 0.9em;">
+                        Long-running ISR jobs distributed across worker pool. Each job: LLM analysis of question context + RAG retrieval + score computation
+                    </div>
+                </div>
+                <div class="interaction-item async">
+                    <span class="badge rmq-badge">RabbitMQ Queue: notifications</span>
+                    <strong>All Services → </strong> Notification Service
+                    <div style="margin-top: 8px; padding: 8px; background: white; border-radius: 3px; font-size: 0.9em;">
+                        Centralized notification delivery: microcommunity changes, vote results, new discussions
+                    </div>
+                </div>
+                <div class="interaction-item async">
+                    <span class="badge rmq-badge">RabbitMQ Queue: tasks</span>
+                    <strong>Voting Service → </strong> Task Service
+                    <div style="margin-top: 8px; padding: 8px; background: white; border-radius: 3px; font-size: 0.9em;">
+                        Asynchronous task creation from voted decisions
+                    </div>
+                </div>
+            </div>
+            
+            <div class="interaction-group">
+                <div class="interaction-title">EXTERNAL SERVICE INTEGRATIONS</div>
+                <div class="interaction-item">
+                    <span class="badge sync-badge">REST + Circuit Breaker</span>
+                    <strong>Identity Service ↔ Bank ID / Дія.Підпис:</strong> Authentication with fallback handling
+                </div>
+                <div class="interaction-item">
+                    <span class="badge sync-badge">REST + Circuit Breaker</span>
+                    <strong>AI Assistant Service ↔ Gemini API:</strong> LLM queries with timeout and degraded mode
+                </div>
+            </div>
+        </div>
+        
+        <!-- Data Synchronization Patterns -->
+        <div class="analysis-section">
+            <div class="analysis-title">💾 Data Architecture & Synchronization Patterns</div>
+            
+            <div class="pattern-section">
+                <div class="pattern-name">📊 Pattern: Database Per Service (Polyglot Persistence)</div>
+                <p style="margin: 10px 0; line-height: 1.6;">
+                    Each microservice owns its data and is responsible for its schema. Services use appropriate databases for their needs:
+                </p>
+                <ul style="margin-left: 20px;">
+                    <li><strong>PostgreSQL:</strong> Profile, Discussion, Voting services (relational, ACID compliance)</li>
+                    <li><strong>Neo4j:</strong> Social Graph Service (optimized for graph traversal, relationship queries)</li>
+                    <li><strong>MongoDB:</strong> User Values Service (flexible schema for diverse value definitions)</li>
+                    <li><strong>Redis:</strong> Distributed cache for ISR scores, user sessions (fast lookups)</li>
+                </ul>
+            </div>
+            
+            <div class="pattern-section">
+                <div class="pattern-name">🔄 Data Synchronization: Event Sourcing + Eventual Consistency</div>
+                <p style="margin: 10px 0; line-height: 1.6;">
+                    <strong>Consistency Model:</strong> Eventual Consistency (acceptable delay of few minutes as per requirements)
+                </p>
+                <div class="data-flow">
+                    <strong>Profile Update Flow:</strong><br>
+                    1. Profile Service updates local PostgreSQL DB + emits <code>profile.updated</code> event to Kafka<br>
+                    2. Social Graph Service consumes event → updates relationship cache<br>
+                    3. ISR Service consumes event → marks affected microcommunity ISR scores for recalculation<br>
+                    4. Microcommunity Service consumes event → re-evaluates belongingness degree<br>
+                    5. All services eventually reach consistent state (within minutes)
+                </div>
+                <div class="data-flow">
+                    <strong>Vote Submission Flow:</strong><br>
+                    1. Voting Service updates local PostgreSQL DB + caches ISR weight (already pre-calculated)<br>
+                    2. Voting Service emits <code>vote.submitted</code> to Kafka<br>
+                    3. Search Service indexes vote for analytics<br>
+                    4. Task Service watches for vote decisions<br>
+                    5. Vote count eventually aggregated in reporting layer
+                </div>
+                <div class="data-flow">
+                    <strong>ISR Pre-Calculation Flow (hours-long process):</strong><br>
+                    1. Microcommunity determined → emit <code>microcommunity.determined</code><br>
+                    2. Community Values Matrix Service aggregates member values by belongingness degree<br>
+                    3. ISR Service queues async jobs to RabbitMQ worker pool<br>
+                    4. Workers: LLM context analysis + RAG retrieval + score calculation per member<br>
+                    5. Results stored in DB + Redis cache when complete<br>
+                    6. Emit <code>isr.calculated</code> event for subscribers
+                </div>
+            </div>
+            
+            <div class="pattern-section">
+                <div class="pattern-name">🔐 Saga Pattern for Distributed Transactions</div>
+                <p style="margin: 10px 0; line-height: 1.6;">
+                    <strong>Scenario: Question Posted → Microcommunity Determined → ISR Calculated → Vote Ready</strong>
+                </p>
+                <ul style="margin-left: 20px;">
+                    <li><strong>Compensating Transactions:</strong> If ISR calculation fails, mark question as pending with fallback ISR mode</li>
+                    <li><strong>Choreography Pattern:</strong> Services react to events emitted by other services (event-driven saga)</li>
+                    <li><strong>Timeout Handling:</strong> If ISR calculation exceeds max duration, proceed with cached scores or default values</li>
+                </ul>
+            </div>
+            
+            <div class="pattern-section">
+                <div class="pattern-name">🔗 Outbox Pattern for Data Consistency</div>
+                <p style="margin: 10px 0; line-height: 1.6;">
+                    When services persist data, they atomically write to both:
+                </p>
+                <ul style="margin-left: 20px;">
+                    <li><strong>Service Database:</strong> Main transactional data</li>
+                    <li><strong>Outbox Table:</strong> Events to be published (in same transaction)</li>
+                </ul>
+                <p style="margin: 10px 0;">
+                    A separate Outbox Relay reads from all outbox tables and publishes to Kafka/RabbitMQ, ensuring no events are lost.
+                </p>
+            </div>
+        </div>
+        
+        <!-- Architecture Patterns -->
+        <div class="analysis-section">
+            <div class="analysis-title">🎯 Microservices Architecture Patterns Applied</div>
+            
+            <div class="pattern-section">
+                <div class="pattern-name">1. Event-Driven Architecture (Primary Pattern)</div>
+                <p>Kafka and RabbitMQ enable decoupled services to communicate asynchronously. Services publish domain events and react to events from other domains without tight coupling.</p>
+            </div>
+            
+            <div class="pattern-section">
+                <div class="pattern-name">2. Database Per Service (Polyglot Persistence)</div>
+                <p>Each service manages its own data store, chosen based on its specific needs (relational, graph, document, cache). Reduces shared dependencies and enables scaling each service independently.</p>
+            </div>
+            
+            <div class="pattern-section">
+                <div class="pattern-name">3. API Gateway Pattern</div>
+                <p>Single entry point for all client requests. Handles cross-cutting concerns: authentication, rate limiting, request routing, protocol translation.</p>
+            </div>
+            
+            <div class="pattern-section">
+                <div class="pattern-name">4. Service Discovery (Consul/Eureka)</div>
+                <p>Automatic registration and discovery of service instances. Enables dynamic scaling without manual configuration updates.</p>
+            </div>
+            
+            <div class="pattern-section">
+                <div class="pattern-name">5. Circuit Breaker Pattern</div>
+                <p>Protects against cascading failures when calling external services (Bank ID, Дія.Підпис, Gemini API). Fails fast with fallback behavior.</p>
+            </div>
+            
+            <div class="pattern-section">
+                <div class="pattern-name">6. Saga Pattern (Distributed Transactions)</div>
+                <p>Orchestrates long-running business processes across multiple services (Question → Microcommunity → ISR → Vote Ready). Choreography-based using event streams.</p>
+            </div>
+            
+            <div class="pattern-section">
+                <div class="pattern-name">7. Strangler Fig Pattern (for migration)</div>
+                <p>If migrating from monolith, gradually replace functionality with microservices using API Gateway as the mediator.</p>
+            </div>
+            
+            <div class="pattern-section">
+                <div class="pattern-name">8. Bulkhead Pattern</div>
+                <p>ISR Calculation workers isolated in thread pools/containers to prevent resource exhaustion from long-running computations.</p>
+            </div>
+            
+            <div class="pattern-section">
+                <div class="pattern-name">9. CQRS (Command Query Responsibility Segregation) - Optional</div>
+                <p>For high-traffic voting: separate write model (vote submission) from read model (vote results aggregation). Kafka as event log.</p>
+            </div>
+        </div>
+        
+        <!-- Quality Attributes Analysis -->
+        <div class="analysis-section">
+            <div class="analysis-title">📈 Analysis: Microservices Architecture vs. Nonfunctional Requirements (Quality Attributes)</div>
+            
+            <table class="nfr-table">
+                <thead>
+                    <tr>
+                        <th>Quality Attribute</th>
+                        <th>Target Requirement</th>
+                        <th>How Microservices Helps</th>
+                        <th>Potential Challenges</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Availability</strong></td>
+                        <td>MTTR < 5 minutes, 0% data loss</td>
+                        <td class="positive">✓ Service isolation: one service failure doesn't crash entire system. Independent deployment. Horizontal scaling for redundancy.</td>
+                        <td class="negative">⚠ More moving parts = more failure points. Requires robust monitoring and circuit breakers. Distributed system complexity.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Performance (Response Time)</strong></td>
+                        <td>95% of submissions within 2 seconds</td>
+                        <td class="positive">✓ Parallel processing: vote submission doesn't wait for ISR recalculation (async). Caching ISR scores. Load distribution across services.</td>
+                        <td class="negative">⚠ Network latency between services. Async messaging adds unpredictability. Pre-calculated ISR can take hours (batch process).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Security (Authentication)</strong></td>
+                        <td>0 unauthorized access, all failed attempts logged</td>
+                        <td class="positive">✓ Centralized auth service. Circuit breaker for external auth. JWT tokens prevent repeated auth calls. API Gateway enforces auth on all requests.</td>
+                        <td class="negative">⚠ Token distribution complexity. Service-to-service auth required. More integration points with external services (Дія.Підпис) increases attack surface.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Scalability</strong></td>
+                        <td>10x user growth (10K→100K) with acceptable latency</td>
+                        <td class="positive">✓ Each service scales independently based on demand. ISR workers scale horizontally. Kafka handles high throughput. Database per service reduces contention.</td>
+                        <td class="negative">⚠ Graph queries (Neo4j) can be resource-intensive at 100K scale. Eventual consistency issues during peak load. Coordination complexity.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Maintainability</strong></td>
+                        <td>Clear responsibility boundaries</td>
+                        <td class="positive">✓ Small, focused services easier to understand. Clear domain boundaries (DDD). Independent deployment cycles.</td>
+                        <td class="negative">⚠ Distributed debugging difficult. Data flow across multiple services hard to trace. Operational complexity increases.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Consistency</strong></td>
+                        <td>Few minutes delay acceptable</td>
+                        <td class="positive">✓ Eventual consistency model fits requirement. Event sourcing provides audit trail. Outbox pattern ensures no events lost.</td>
+                        <td class="negative">⚠ No strong consistency guarantees. Complex conflict resolution needed. Users may see stale data briefly.</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div style="margin-top: 20px;">
+                <h4 style="color: #667eea; margin-bottom: 15px;">🎯 Key Recommendations for Meeting NFRs:</h4>
+                
+                <div class="recommendation">
+                    <div class="recommendation-title">1. Availability: Implement Multi-Region Deployment</div>
+                    <p>Deploy services across multiple availability zones. Use Kafka with replication for event durability. Implement automated failover for databases. Achieve MTTR < 5 min through health checks and auto-recovery.</p>
+                </div>
+                
+                <div class="recommendation">
+                    <div class="recommendation-title">2. Performance: Cache Strategic Data</div>
+                    <p>Pre-calculate and cache ISR scores (Redis). Cache user profiles for discussion rendering. Use CDN for static content. Implement response time SLOs per service (P95 < 500ms for sync calls). Monitor and alert on latency degradation.</p>
+                </div>
+                
+                <div class="recommendation">
+                    <div class="recommendation-title">3. Security: Implement Zero-Trust Architecture</div>
+                    <p>All service-to-service communication encrypted with mTLS. Use API Gateway for external auth integration. Implement rate limiting per user/service. Log all auth failures with context. Regular penetration testing of external service integrations.</p>
+                </div>
+                
+                <div class="recommendation">
+                    <div class="recommendation-title">4. Scalability: Implement Auto-Scaling</div>
+                    <p>Use Kubernetes for orchestration. Set CPU/memory triggers for horizontal scaling (e.g., Voting Service, ISR Workers). Pre-calculate ISR for known microcommunities. Use read replicas for frequently queried data.</p>
+                </div>
+                
+                <div class="recommendation">
+                    <div class="recommendation-title">5. Consistency: Event-Driven Reconciliation</div>
+                    <p>Background jobs periodically reconcile service data. Implement idempotent event handlers. Use event versioning for backward compatibility. Timeout mechanisms prevent stuck transactions.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>ISR: Vote Microservices Architecture Design • Event-Driven, Polyglot Persistence, Database per Service Pattern</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">Based on TOGAF principles, microservices patterns (Newman, Fowler), and ISR system requirements</p>
+        </div>
+    </div>
+</body>
+<script src="/site-nav.js"></script>
+</html>

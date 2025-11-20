@@ -1,0 +1,833 @@
+<html>
+    <head>
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-5HZ42Q5T');</script>
+        <!-- End Google Tag Manager -->
+        <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+        <title>ISR (Index of Social Responsibility): Digital Democracy and the Recovery of Political Action</title>
+    <link rel="stylesheet" href="/style.css">
+    </head>
+    <body class="c11 doc-content">
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5HZ42Q5T"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        <h1>Digital Democracy and the Recovery of Political Action: The Index of Social Responsibility as a Response to Arendt's Critique of Modern Depoliticization</h1>
+        <h2>by Sergii Ponomarchuk, 25.09.2025</h2>
+
+
+
+        <h2>Abstract</h2>
+        <p>This paper examines Hannah Arendt's critique of modern society's depoliticization—the displacement of authentic political action by economic administration and world alienation—and proposes the Index of Social Responsibility (ISR) as a computational framework addressing this crisis. Where representative democracy reduces plural political agents to abstract voting units, and technocratic systems replace human judgment with expert administration, ISR implements a weighted decision-making approach grounded in three Arendtian principles: expertise (distinguishing knowledge from mere opinion), responsibility (connecting rights to accountability for one's actions), and contextual relevance (ensuring stakeholders in specific issues retain meaningful voice). Through microcommunities dynamically organized around concrete problems rather than pre-determined institutional hierarchies, ISR preserves the "space of appearance" that Arendt identified as essential to political action—where individuals reveal themselves as unique agents capable of initiating the unexpected. The framework positions AI as political infrastructure serving community-determined values rather than imposing technocratic logic, thereby recovering what Arendt called "power"—the capacity that emerges when people act in concert for shared worldly concerns. We argue that computational design need not reduce politics to administration; instead, it can restore conditions for authentic political plurality and the human freedom Arendt sought to preserve.</p>
+        <p><b>Keywords:</b> political action, digital democracy, computational social science, Hannah Arendt, artificial intelligence, social responsibility</p>
+        <h2>Introduction</h2>
+        <p>In 1958, Hannah Arendt published "The Human Condition," articulating a prescient critique of modern society's drift toward what she termed the triumph of "animal laborans" over "political action". Her central concern was that modern society increasingly prioritizes economic consumption and welfare administration over genuine political action, leading to world alienation - the loss of an intersubjectively constituted world of experience and action, that enables authentic plurality. As Steven Klein observes, for Arendt, "the danger is not the invasion of politics by economics, but rather the loss of the worldly, mediating institutions that allow economic matters to appear as objects of public concern" (2014, p.487).</p>
+        <p>This paper argues that while digital technologies have exacerbated many of the problems Arendt identified, they also offer unprecedented opportunities to restore authentic political action. We propose the Index of Social Responsibility (ISR) as an approach that could address Arendt's fundamental concerns while leveraging AI capabilities to transcend the limitations of both traditional democracy and technocratic governance.</p>
+        <h2>Part I: The Contemporary Relevance of Arendt's Critique</h2>
+        <h3>The Deepening Crisis of Political Action</h3>
+        <p>Arendt's diagnosis of modern society's fundamental problem remains strikingly relevant. She identified three interconnected processes that undermine authentic political life: the "rise of the social", "world alienation", and the triumph of "animal laborans" over political agency. Each has been dramatically amplified by digital technologies.</p>
+<!-- 
+        <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+        <text x="400" y="40" font-size="28" font-weight="bold" text-anchor="middle" fill="#1a3a5c">
+            Arendt's Three-Level Problem Framework
+        </text>
+        <text x="400" y="70" font-size="14" text-anchor="middle" fill="#666">
+            How Digital Technologies Amplify Political Alienation
+        </text>
+        
+        <rect x="50" y="120" width="700" height="120" fill="#ffe6e6" stroke="#cc0000" stroke-width="3" rx="8"/>
+        <circle cx="120" cy="175" r="12" fill="#cc0000"/>
+        <text x="140" y="152" font-size="16" font-weight="bold" fill="#1a3a5c">Rise of the Social</text>
+        <text x="140" y="175" font-size="13" fill="#333">Blurring of private/public realms through market economy & social concerns</text>
+        <text x="140" y="200" font-size="12" fill="#666" font-style="italic">Digital amplification: Social media quantifies communication (likes, shares, followers)</text>
+        <text x="140" y="220" font-size="12" fill="#666" font-style="italic">Result: Conformist conceptualization, undermined authentic plurality</text>
+        
+        <path d="M 400 240 L 400 280" stroke="#999" stroke-width="3" marker-end="url(#arrowhead)"/>
+        
+        <rect x="50" y="280" width="700" height="120" fill="#fff4e6" stroke="#ff9900" stroke-width="3" rx="8"/>
+        <circle cx="120" cy="335" r="12" fill="#ff9900"/>
+        <text x="140" y="312" font-size="16" font-weight="bold" fill="#1a3a5c">World Alienation</text>
+        <text x="140" y="335" font-size="13" fill="#333">Loss of shared, durable world of experience and intersubjective action</text>
+        <text x="140" y="360" font-size="12" fill="#666" font-style="italic">Digital amplification: Social acceleration creates "frenetic standstill" — constant motion paradoxically produces stagnation</text>
+        <text x="140" y="380" font-size="12" fill="#666" font-style="italic">Result: Illusion of connection, severance of genuine intersubjective bonds</text>
+        
+        <path d="M 400 400 L 400 440" stroke="#999" stroke-width="3" marker-end="url(#arrowhead)"/>
+        
+        <rect x="50" y="440" width="700" height="120" fill="#e6f2ff" stroke="#0066cc" stroke-width="3" rx="8"/>
+        <circle cx="120" cy="495" r="12" fill="#0066cc"/>
+        <text x="140" y="472" font-size="16" font-weight="bold" fill="#1a3a5c">Triumph of Animal Laborans</text>
+        <text x="140" y="495" font-size="13" fill="#333">Humans reduced to laboring animals focused on consumption, biological reproduction</text>
+        <text x="140" y="520" font-size="12" fill="#666" font-style="italic">Digital amplification: Platform capitalism creates "machinic enslavement" — gig work, data extraction</text>
+        <text x="140" y="540" font-size="12" fill="#666" font-style="italic">Result: Loss of genuine political agency, reduction to economic producers/consumers</text>
+        
+        <defs>
+            <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+            <polygon points="0 0, 10 3, 0 6" fill="#999"/>
+            </marker>
+        </defs>
+        </svg>
+ -->
+
+        <p><b>The Digital Rise of the Social:</b> Arendt's concept of the "rise of the social" - the blurring of distinctions between private and public realms, where market economy and social concerns dominate both spheres - finds new expression in social media platforms. As recent research demonstrates, these platforms transform political discourse by "quantifying communication through likes, shares, and followers, shifting substantive ends toward social status achievement" rather than genuine political deliberation (American Philosophical Association, 2025). This creates what scholars term "conformist conceptualization of human speech and action" that undermines authentic political plurality.</p>
+        <p><b>Accelerated World Alienation</b>: Rosa's acceleration theory provides crucial insight into how digital technologies intensify Arendt's concept of world alienation. Hartmut Rosa’s diagnosis of social acceleration describes a pervasive modern dynamic driven by the pursuit of optimization and control. The ISR seeks to solve the crisis of alienation by creating conditions for increased personal responsibility and engagement. However, it must explicitly address Rosa's warning that resonance (the antidote to alienation) is inherently uncontrollable (Unverfügbarkeit). The ISR should therefore be framed as a system that increases reachability and accountability in governance, thus establishing a prerequisite for resonance in the sphere of Work, without claiming to manufacture resonance itself.</p>
+        <p><b>The Digitization of Animal Laborans:</b> Contemporary platform capitalism represents the ultimate triumph of what Arendt termed "animal laborans" - humans reduced to laboring animals focused on biological reproduction and consumption. Maurizio Lazzarato's analysis of "machinic enslavement" reveals how digital platforms "progressively reduce the number of "recalcitrant and unreliable' human operators and multiply the more reliable "mechanical, electronic, and chemical' ones" (2014, p. 33). Platform workers exemplify this process, as they "labor on dedicated gig platforms, discuss through speech and action on social media platforms, and simultaneously work by contributing publicly available written traces" that feed AI systems without genuine political agency.</p>
+        <h3>The Crisis of Representative Democracy</h3>
+        <p>Current democratic systems exhibit precisely the problems Arendt identified with the delegation of political responsibility. As our analysis reveals, a person in the global world has a huge complex of representatives (both formal and informal) for every aspect of life because individuals belong to multiple social groups in different aspects. This creates a situation where any representative can't completely account for every group member's interests and values - it is always an average position corrected with human and professional characteristics of the representative.</p>
+        <p>One result we observe today is that many citizens feel increasingly disconnected from political decisions - they don't believe they can influence them. The word "responsibility" has acquired negative connotations, associated with limitation rather than empowerment, while "freedom" becomes reduced to freedom of consumption and entertainment.</p>
+        <p>This represents precisely the world alienation Arendt feared - a condition where humans lose connection to the durable, shared world that provides stability and enables authentic political action. Contemporary research confirms this diagnosis: "social media may reflect just "a form of world-alienation in interrelated ways'" where "the character of the world as a set of facts and objects agreed upon and recognized by our common senses" becomes increasingly impaired.</p>
+        <h2>Part II: The Index of Social Responsibility as Computational Political Action</h2>
+        <h3>Theoretical Foundation: Beyond Binary Democracy</h3>
+
+<svg viewBox="0 0 950 700">
+<g>
+<text fill="#CC0000" font-size="20" font-weight="bold" text-anchor="middle" x="250" y="30">Traditional Representative (hierarchical) Democracy</text>
+
+<path d="M220 160L171 239" stroke="#CC0000" stroke-width="2" stroke-dasharray="5 5"/>
+<path d="M280 160L406 357" stroke="#CC0000" stroke-width="2" stroke-dasharray="5 5"/>
+<path d="M193 289L249 357" stroke="#CC0000" stroke-width="2" stroke-dasharray="5 5"/>
+<path d="M151 289L94 357" stroke="#CC0000" stroke-width="2" stroke-dasharray="5 5"/>
+<path d="M73 406L49 474" stroke="#CC0000" stroke-width="2" stroke-dasharray="5 5"/>
+<path d="M94 406L94 492" stroke="#CC0000" stroke-width="2" stroke-dasharray="5 5"/>
+<path d="M426 406L455 474" stroke="#CC0000" stroke-width="2" stroke-dasharray="5 5"/>
+<path d="M387 406L363 474" stroke="#CC0000" stroke-width="2" stroke-dasharray="5 5"/>
+<path d="M406 406L406 492" stroke="#CC0000" stroke-width="2" stroke-dasharray="5 5"/>
+<path d="M269 406L298 474" stroke="#CC0000" stroke-width="2" stroke-dasharray="5 5"/>
+<path d="M230 406L206 474" stroke="#CC0000" stroke-width="2" stroke-dasharray="5 5"/>
+<path d="M250 406L250 492" stroke="#CC0000" stroke-width="2" stroke-dasharray="5 5"/>
+<path d="M112 406L141 474" stroke="#CC0000" stroke-width="2" stroke-dasharray="5 5"/>
+<circle cx="42" cy="495" r="20" fill="#D0D0D0" stroke="#666666" stroke-width="2"/>
+<circle cx="94" cy="515" r="20" fill="#D0D0D0" stroke="#666666" stroke-width="2"/>
+<circle cx="146" cy="495" r="20" fill="#D0D0D0" stroke="#666666" stroke-width="2"/>
+<circle cx="198" cy="495" r="20" fill="#D0D0D0" stroke="#666666" stroke-width="2"/>
+<circle cx="250" cy="515" r="20" fill="#D0D0D0" stroke="#666666" stroke-width="2"/>
+<circle cx="302" cy="495" r="20" fill="#D0D0D0" stroke="#666666" stroke-width="2"/>
+<circle cx="354" cy="495" r="20" fill="#D0D0D0" stroke="#666666" stroke-width="2"/>
+<circle cx="406" cy="515" r="20" fill="#D0D0D0" stroke="#666666" stroke-width="2"/>
+<circle cx="458" cy="495" r="20" fill="#D0D0D0" stroke="#666666" stroke-width="2"/>
+<text fill="black" font-family="Inter" font-size="11" font-weight="bold" x="39" y="498">1</text>
+<text fill="black" font-family="Inter" font-size="11" font-weight="bold" x="91" y="518">1</text>
+<text fill="black" font-family="Inter" font-size="11" font-weight="bold" x="143" y="498">1</text>
+<text fill="black" font-family="Inter" font-size="11" font-weight="bold" x="195" y="498">1</text>
+<text fill="black" font-family="Inter" font-size="11" font-weight="bold" x="247" y="518">1</text>
+<text fill="black" font-family="Inter" font-size="11" font-weight="bold" x="299" y="498">1</text>
+<text fill="black" font-family="Inter" font-size="11" font-weight="bold" x="351" y="498">1</text>
+<text fill="black" font-family="Inter" font-size="11" font-weight="bold" x="403" y="518">1</text>
+<text fill="black" font-family="Inter" font-size="11" font-weight="bold" x="455" y="498">1</text>
+<circle cx="250" cy="130" r="40" fill="#ffcccc" stroke="#cc0000" stroke-width="2" rx="5"/>
+<text fill="black" font-size="13" font-weight="bold" text-anchor="middle" x="250" y="135">Decision </text>
+<text fill="#666666" font-size="12" text-anchor="middle" x="250" y="211">Decision Making</text>
+<rect x="104" y="239" width="125" height="50" fill="#ffcccc" stroke="#cc0000" stroke-width="2" rx="5"/>
+<text fill="black" font-size="13" font-weight="bold" x="124" y="267">Representative</text>
+<rect x="264" y="239" width="125" height="50" fill="#ffcccc" stroke="#cc0000" stroke-width="2" rx="5"/>
+<text fill="black" font-size="13" font-weight="bold" x="284" y="267">Representative</text>
+<rect x="40" y="305" width="420" height="32" fill="#fff"/>
+<text fill="#666666" font-size="12" text-anchor="middle" x="250" y="325">Multi-level Delegation</text>
+<rect x="30" y="357" width="125" height="50" fill="#ffcccc" stroke="#cc0000" stroke-width="2" rx="5"/>
+<text fill="black" font-size="13" font-weight="bold" x="50" y="385">Representative</text>
+<rect x="187" y="357" width="125" height="50" fill="#ffcccc" stroke="#cc0000" stroke-width="2" rx="5"/>
+<text fill="black" font-size="13" font-weight="bold" x="207" y="385">Representative</text>
+<rect x="344" y="357" width="125" height="50" fill="#ffcccc" stroke="#cc0000" stroke-width="2" rx="5"/>
+<text fill="black" font-size="13" font-weight="bold" x="364" y="385">Representative</text>
+<rect x="40" y="425" width="420" height="32" fill="#fff"/>
+<text fill="#666666" font-size="12" text-anchor="middle" x="250" y="445">Election → Delegation of Authority & Responsibility → Depoliticization</text>
+
+<text fill="#666666" font-size="12" x="180" y="566">Citizens (One vote each)</text>
+
+<text fill="#333333" font-size="12"  x="155" y="651">Disconnection from decision-making </text>
+<text fill="#333333" font-size="12"  x="222" y="666">• bueracracy </text>
+<text fill="#333333" font-size="12"  x="225" y="682">• corruption </text>
+<text fill="#333333" font-size="12"  x="228" y="698">• populism </text>
+
+<text fill="#0066CC" font-size="20" font-weight="bold"  x="610" y="30">ISR Model (Weighted Plurality)</text>
+<path d="M776 290L896 319" stroke="#0066CC" stroke-width="2"/>
+<path d="M790 278L906 274" stroke="#0066CC" stroke-width="2"/>
+<path d="M787 261L865 232" stroke="#0066CC" stroke-width="2"/>
+<path d="M776 251L915 132" stroke="#0066CC" stroke-width="2"/>
+<path d="M772 247L831 152" stroke="#0066CC" stroke-width="2"/>
+<path d="M763 239L781 132" stroke="#0066CC" stroke-width="2"/>
+<path d="M743 239L725 152" stroke="#0066CC" stroke-width="2"/>
+<path d="M734 242L663 120" stroke="#0066CC" stroke-width="2"/>
+<path d="M721 248L675 208" stroke="#0066CC" stroke-width="2"/>
+<path d="M716 258L612 196" stroke="#0066CC" stroke-width="2"/>
+<path d="M781 297L841 326" stroke="#0066CC" stroke-width="2"/>
+<path d="M772 304L889 391" stroke="#0066CC" stroke-width="2"/>
+<path d="M763 310L815 391" stroke="#0066CC" stroke-width="2"/>
+<path d="M740 306L708 364" stroke="#0066CC" stroke-width="2"/>
+<path d="M728 310L622 381" stroke="#0066CC" stroke-width="2"/>
+<path d="M708 290L640 316" stroke="#0066CC" stroke-width="2"/>
+<path d="M708 272L640 261" stroke="#0066CC" stroke-width="2"/>
+<path d="M750 319V409" stroke="#0066CC" stroke-width="2"/>
+<circle cx="598" cy="398" r="30" fill="#0066CC" opacity="0.8" stroke="#003366" stroke-width="3"/>
+<text fill="white" font-size="13" font-weight="bold"  x="586" y="403">0.73 </text>
+<circle cx="920" cy="334" r="28" fill="#0066CC" opacity="0.8" stroke="#003366" stroke-width="3"/>
+<text fill="white" font-size="13" font-weight="bold"  x="906" y="338">0.85 </text>
+<circle cx="608.5" cy="257.5" r="36.5" fill="#0066CC" stroke="#003366" stroke-width="3"/>
+<text fill="white" font-size="13" font-weight="bold"  x="597.667" y="260.495">2.5 </text>
+<circle cx="891.5" cy="217.5" r="30.5" fill="#0066CC" stroke="#003366" stroke-width="3"/>
+<text fill="white" font-size="13" font-weight="bold"  x="882" y="220">1.83 </text>
+<circle cx="750" cy="429" r="22" fill="#3399FF" opacity="0.7" stroke="#003366" stroke-width="2"/>
+<text fill="white" font-size="12" font-weight="bold"  x="739.973" y="434">0.6 </text>
+<circle cx="846" cy="136" r="22" fill="#3399FF" opacity="0.7" stroke="#003366" stroke-width="2"/>
+<text fill="white" font-size="12" font-weight="bold"  x="836.854" y="141">0.77 </text>
+<circle cx="622" cy="326" r="22" fill="#3399FF" opacity="0.7" stroke="#003366" stroke-width="2"/>
+<text fill="white" font-size="12" font-weight="bold"  x="611.973" y="331">0.61 </text>
+<circle cx="785" cy="104" r="28" fill="#0066CC" opacity="0.8" stroke="#003366" stroke-width="3"/>
+<text fill="white" font-size="13" font-weight="bold"  x="772" y="109">1.31 </text>
+<circle cx="664" cy="194" r="19" fill="#3399FF" opacity="0.7" stroke="#003366" stroke-width="2"/>
+<text fill="white" font-size="12" font-weight="bold"  x="653" y="198">0.45 </text>
+<circle cx="654" cy="104" r="19" fill="#3399FF" opacity="0.7" stroke="#003366" stroke-width="2"/>
+<text fill="white" font-size="12" font-weight="bold"  x="646" y="108">0.5 </text>
+<circle cx="900" cy="399" r="16" fill="#99CCFF" opacity="0.6" stroke="#003366"/>
+<text fill="white" font-size="10" font-weight="bold"  x="889" y="402">0.35 </text>
+<circle cx="604" cy="185" r="16" fill="#99CCFF" opacity="0.6" stroke="#003366"/>
+<text fill="white" font-size="10" font-weight="bold"  x="595" y="188">0.42 </text>
+<circle cx="857" cy="332" r="16" fill="#99CCFF" opacity="0.6" stroke="#003366"/>
+<text fill="white" font-size="10" font-weight="bold"  x="849" y="335">0.33 </text>
+<circle cx="922" cy="274" r="16" fill="#99CCFF" opacity="0.6" stroke="#003366"/>
+<text fill="white" font-size="10" font-weight="bold"  x="912" y="277">0.32 </text>
+<circle cx="926" cy="120" r="16" fill="#99CCFF" opacity="0.6" stroke="#003366"/>
+<text fill="white" font-size="10" font-weight="bold"  x="915" y="123.636">0.15 </text>
+<circle cx="724" cy="136" r="16" fill="#99CCFF" opacity="0.6" stroke="#003366"/>
+<text fill="white" font-size="10" font-weight="bold"  x="713" y="139.636">0.28 </text>
+<circle cx="702" cy="377" r="16" fill="#99CCFF" opacity="0.6" stroke="#003366"/>
+<text fill="white" font-size="10" font-weight="bold"  x="691" y="380">0.12 </text>
+<circle cx="823" cy="403" r="16" fill="#99CCFF" opacity="0.6" stroke="#003366"/>
+<text fill="white" font-size="10" font-weight="bold"  x="814" y="406">0.29 </text>
+<circle cx="750" cy="278" r="40" fill="#E6F2FF" stroke="#0066CC" stroke-width="3"/>
+<text fill="black" font-size="12" font-weight="bold"  x="727" y="283">Decision </text>
+
+<rect x="620" y="470" width="260" height="160" fill="#f0f7ff" stroke="#0066cc" stroke-width="2" rx="8"/>
+<text fill="#0066CC" font-size="14" font-weight="bold"  x="693" y="495">ISR Components </text>
+<text fill="#1A3A5C" font-size="12" font-weight="bold"  x="640" y="520">&#x25aa; Expertise </text>
+<text fill="#666666" font-size="12"  x="640" y="536.5">(Personal Competence) </text>
+<text fill="#1A3A5C" font-size="12" font-weight="bold"  x="640" y="560">&#x25aa; Contribution </text>
+<text fill="#666666" font-size="12"  x="640" y="577">(Responsibility History) </text>
+<text fill="#1A3A5C" font-size="12" font-weight="bold"  x="640" y="600">&#x25aa; Relevance </text>
+<text fill="#666666" font-size="12"  x="640" y="617">(Contextual Connection) </text>
+<text fill="#333333" font-size="12"  x="682" y="660">Direct participation with </text>
+<text fill="#333333" font-size="12"  x="677" y="675">weighted influence based </text>
+<text fill="#333333" font-size="12"  x="686" y="690">on context & expertise </text>
+</g>
+</svg>
+
+
+<br><br>
+        <p><i>Figure 1: Comparison of Traditional Representative Democracy and ISR Model</i></p>
+<br>
+        <p>The ISR framework addresses Arendt's concerns by creating what we term "computational political action" - a system that preserves human agency and plurality while leveraging AI capabilities to overcome the structural limitations of representative democracy. Unlike traditional "one-person-one-vote" systems that Arendt criticized for reducing politics to mere aggregation of preferences, ISR implements what can be called "weighted plurality" - a kind of voting coefficient of a certain person about a certain issue. The ISR system operates on the premise of universal legal equality and equal political potential among citizens. It uses weighted voting to reflect the unavoidable inequality of epistemic competence and contribution in administering shared concerns. This framework seeks to restore legitimacy by creating a direct connection between citizen accountability and decision influence (the Work realm), which representative systems have broken. In a specific case people have different levels of expertise, different skills, different history of interaction with society and different contextual connection to the case - that is why their influence on the issue should be different.</p>
+        <h3>Microcommunities and the Recovery of Political Space</h3>
+        <p>The ISR model proposes "microcommunities" as the fundamental unit of political organization, representing a technological solution to what Arendt identified as the core problem of modern politics: the loss of spaces where genuine plurality can emerge and be sustained.</p>
+
+<svg viewBox="0 0 960 490" xmlns="http://www.w3.org/2000/svg">
+  <!-- Define arrow marker -->
+  <defs>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#0066cc"/>
+    </marker>
+  </defs>
+    <!-- Stage 1: Issue Emerges -->
+  <g id="stage1">
+    <rect x="2" y="10" width="158" height="120" fill="#e6f2ff" stroke="#0066cc" stroke-width="3" rx="8"/>
+    <circle cx="80" cy="30" r="8" fill="#0066cc"/>
+    <text x="80" y="58" font-size="14" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Issue</text>
+    <text x="80" y="80" font-size="14" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Emerges</text>
+    <text x="80" y="98" font-size="11" text-anchor="middle" fill="#666">(New problem,</text>
+    <text x="80" y="113" font-size="11" text-anchor="middle" fill="#666">challenge)</text>
+  </g>
+  
+  <!-- Arrow 1 -->
+  <path d="M 160 60 L 265 60" stroke="#0066cc" stroke-width="3" marker-end="url(#arrowBlue)"/>
+  
+  <!-- Stage 2: AI Identifies Stakeholders -->
+  <g id="stage2">
+    <rect x="270" y="10" width="160" height="120" fill="#fff4e6" stroke="#ff9900" stroke-width="3" rx="8"/>
+    <circle cx="350" cy="30" r="8" fill="#ff9900"/>
+    <text x="350" y="58" font-size="14" font-weight="bold" text-anchor="middle" fill="#1a3a5c">AI Identifies</text>
+    <text x="350" y="80" font-size="14" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Stakeholders</text>
+    <text x="350" y="98" font-size="11" text-anchor="middle" fill="#666">(Context</text>
+    <text x="350" y="113" font-size="11" text-anchor="middle" fill="#666">relevant users)</text>
+  </g>
+  
+  <!-- Arrow 2 -->
+  <path d="M 430 60 L 535 60" stroke="#0066cc" stroke-width="3" marker-end="url(#arrowBlue)"/>
+  
+  <!-- Stage 3: Microcommunity Forms -->
+  <g id="stage3">
+    <rect x="540" y="10" width="160" height="120" fill="#e6ffe6" stroke="#00aa00" stroke-width="3" rx="8"/>
+    <circle cx="620" cy="30" r="8" fill="#00aa00"/>
+    <text x="620" y="50" font-size="13" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Micro-</text>
+    <text x="620" y="70" font-size="13" font-weight="bold" text-anchor="middle" fill="#1a3a5c">community</text>
+    <text x="620" y="90" font-size="13" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Forms</text>
+    <text x="620" y="108" font-size="11" text-anchor="middle" fill="#666">(Members gathered)</text>
+  </g>
+  
+  <!-- Arrow 3 -->
+  <path d="M 700 60 L 795 60" stroke="#0066cc" stroke-width="3" marker-end="url(#arrowBlue)"/>
+  
+  <!-- Stage 4: Weighted Influence Assigned -->
+  <g id="stage4">
+    <rect x="800" y="10" width="157" height="120" fill="#f0e6ff" stroke="#7700bb" stroke-width="3" rx="8"/>
+    <circle cx="880" cy="30" r="8" fill="#7700bb"/>
+    <text x="880" y="50" font-size="13" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Calculate</text>
+    <text x="880" y="70" font-size="13" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Influence</text>
+    <text x="880" y="90" font-size="13" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Weights (ISR)</text>
+    <text x="880" y="108" font-size="11" text-anchor="middle" fill="#666">(E, C, R scores)</text>
+  </g>
+  
+  <!-- Arrow down from stage 4 -->
+  <path d="M 880 130 L 880 175" stroke="#0066cc" stroke-width="3" marker-end="url(#arrowBlue)"/>
+  
+  <!-- Stage 5: Deliberation & Decision -->
+  <g id="stage5">
+    <rect x="800" y="180" width="157" height="120" fill="#ffe6f0" stroke="#cc0066" stroke-width="3" rx="8"/>
+    <circle cx="880" cy="200" r="8" fill="#cc0066"/>
+    <text x="880" y="225" font-size="13" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Deliberation</text>
+    <text x="880" y="245" font-size="13" font-weight="bold" text-anchor="middle" fill="#1a3a5c">&amp; Decision-</text>
+    <text x="880" y="265" font-size="13" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Making</text>
+    <text x="880" y="283" font-size="11" text-anchor="middle" fill="#666">(Weighted voting)</text>
+  </g>
+  
+  <!-- Arrow left from stage 5 -->
+  <path d="M 800 240 L 575 240" stroke="#0066cc" stroke-width="3" marker-end="url(#arrowBlue)"/>
+  
+  <!-- Stage 6: Implementation -->
+  <g id="stage6">
+    <rect x="410" y="180" width="160" height="120" fill="#f0fff0" stroke="#009900" stroke-width="3" rx="8"/>
+    <circle cx="490" cy="200" r="8" fill="#009900"/>
+    <text x="490" y="225" font-size="13" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Implement</text>
+    <text x="490" y="245" font-size="13" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Decision &amp;</text>
+    <text x="490" y="265" font-size="13" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Monitor</text>
+    <text x="490" y="283" font-size="11" text-anchor="middle" fill="#666">(Execution phase)</text>
+  </g>
+  
+  <!-- Arrow left from stage 6 -->
+  <path d="M 410 240 L 165 240" stroke="#0066cc" stroke-width="3" marker-end="url(#arrowBlue)"/>
+  
+  <!-- Stage 7: Issue Resolved -->
+  <g id="stage7">
+    <rect x="2" y="180" width="158" height="120" fill="#e6e6e6" stroke="#666" stroke-width="3" rx="8"/>
+    <circle cx="80" cy="200" r="8" fill="#666"/>
+    <text x="80" y="225" font-size="13" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Issue</text>
+    <text x="80" y="245" font-size="13" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Resolved</text>
+    <text x="80" y="265" font-size="13" font-weight="bold" text-anchor="middle" fill="#1a3a5c">✓</text>
+    <text x="80" y="283" font-size="11" text-anchor="middle" fill="#666">(Goal achieved)</text>
+  </g>
+  
+  <!-- Arrow down from stage 7 -->
+  <path d="M 80 300 L 80 355" stroke="#0066cc" stroke-width="3" marker-end="url(#arrowBlue)"/>
+  
+  <!-- Stage 8: Automatic Dissolution -->
+  <g id="stage8">
+    <rect x="2" y="360" width="158" height="120" fill="#ffcccc" stroke="#cc0000" stroke-width="3" rx="8"/>
+    <circle cx="80" cy="380" r="8" fill="#cc0000"/>
+    <text x="80" y="405" font-size="13" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Automatic</text>
+    <text x="80" y="425" font-size="13" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Dissolution</text>
+    <text x="80" y="445" font-size="11" text-anchor="middle" fill="#666">(Microcommunity</text>
+    <text x="80" y="463" font-size="11" text-anchor="middle" fill="#666">dismissed)</text>
+  </g>
+  
+  <!-- Key characteristics box -->
+  <rect x="240" y="360" width="717" height="120" fill="#f5f5f5" stroke="#999" stroke-width="2" rx="8"/>
+    <text x="410" y="385" font-size="14" font-weight="bold" fill="#1a3a5c">Key Features Addressing Arendt's Concerns:</text>
+    <text x="260" y="410" font-size="12" fill="#333">
+    ✓ <tspan font-weight="bold">Temporal Responsiveness:</tspan> Microcommunities exist only while issues require attention (vs. persistent bureaucracies)
+  </text>
+    <text x="260" y="435" font-size="12" fill="#333">
+    ✓ <tspan font-weight="bold">Direct Participation:</tspan> Members decide directly without representative layers (vs. delegated authority)
+  </text>
+    <text x="260" y="460" font-size="12" fill="#333">
+    ✓ <tspan font-weight="bold">Contextual Relevance:</tspan> AI proposes relevant stakeholders participate with appropriate influence (vs. one-person-one-vote)
+  </text>
+</svg>
+<br><br>
+        <p><i>Figure 2: Microcommunity Lifecycle: Dynamic Problem-Oriented Formation</i></p>
+<br>
+
+        <p>Unlike traditional representative structures, microcommunities automatically gather people among registered users around specified issues to make group decisions about the future of the group in the context of the issue. They are dynamic rather than static, changing their members list and their weight according to the context changing, and after the problem is solved, microcommunity is automatically dismissed.</p>
+<br>
+<div style="border: 2px solid #999; background-color: #fffff0; border-radius: 12px; padding: 20px; box-sizing: border-box;">
+<center><b>Question:</b> "Should the project adopt a mandatory code review process?"<br>
+    ⬇️ GATHERED ⬇️<br>
+    <b>Microcommunity</b> in an open-source web accessibility project<br>
+    ⬇️ WITH MEMBERS ⬇️
+</center><br><br>
+<p>
+    <b>Member 1: Elena (Core maintainer) Belonginess: 0.95
+        <ul>
+    Personal Values Profile:</b><br>
+    <li>Accessibility Impact: 0.35</li>
+    <li>Code Quality: 0.28</li>
+    <li>Responsiveness: 0.20</li>
+    <li>Community Collaboration: 0.12</li>
+    <li>Documentation: 0.05</li><br>
+    <b>Personal Action Log:</b><br>
+    <li>Fixed critical accessibility bug in keyboard navigation; wrote detailed technical documentation and posted tutorial explaining the fix.</li>
+    <li>Responded within 2 hours to 5 community issues with detailed explanations and guidance; helped 3 newer contributors debug their code.</li>
+    <li>Refactored core module to improve maintainability, added comprehensive unit tests, merged 8 pull requests with constructive feedback.</li>
+        </ul>
+</p>
+<p>
+    <b>Member 2: James (Intermediate contributor) Belonginess: 0.65
+        <ul>
+    Personal Values Profile:</b><br>
+    <li>Accessibility Impact: 0.25</li>
+    <li>Code Quality: 0.30</li>
+    <li>Responsiveness: 0.20</li>
+    <li>Community Collaboration: 0.15</li>
+    <li>Documentation: 0.10</li><br>
+    <b>Personal Action Log:</b><br>
+    <li>Contributed screen reader testing module; code was functional but lacked documentation; took 2 days to merge after feedback.</li>
+    <li>Fixed minor UI bug and responded to follow-up questions within 24 hours.</li>
+    <li>Participated in community discussion about API design; offered suggestions but didn't implement anything.</li>
+        </ul>
+</p>
+<p>
+    <b>Member 3: Zara (Newer contributor) Belonginess: 0.35
+        <ul>
+    Personal Values Profile:</b><br>
+    <li>Accessibility Impact: 0.30</li>
+    <li>Code Quality: 0.22</li>
+    <li>Responsiveness: 0.18</li>
+    <li>Community Collaboration: 0.10</li>
+    <li>Documentation: 0.20</li><br>
+    <b>Personal Action Log:</b><br>
+    <li>Submitted first pull request—color contrast checker for WCAG compliance; good accessibility focus but code needs optimization; minimal documentation.</li>
+    <li>Added comprehensive documentation to existing module; updated README with setup instructions.</li>
+    <li>Slow to respond to code review feedback; took 5 days to address reviewer comments.</li>
+        </ul>
+</p>
+</div>
+<br>
+        <p><i>Figure 3: Microcommunity gathering. Example 1</i></p>
+<br><br>
+<div style="border: 2px solid #999; background-color: #f0ffff; border-radius: 12px; padding: 20px; box-sizing: border-box;">
+<center><b>Question:</b> "With $65,000 budget + ~200 volunteer working hours this quarter, should we: Option A—allocate 95% to immediate aid (supplies, transportation, medical) and 5% to operations, OR Option B—allocate 70% to immediate aid and 30% to infrastructure (database system to track beneficiaries, volunteer training program, sponsorship campaign platform, staff coordination tools) to improve future capacity?"<br>
+    ⬇️ GATHERED ⬇️<br>
+    <b>Microcommunity</b> of a grassroots charity fund providing emergency aid (food, medical supplies, shelter) to displaced and war-affected<br>
+    ⬇️ WITH MEMBERS ⬇️
+</center><br><br>
+<p>
+    <b>Member 1: Volodymyr (Co-founder, 2.5 years tenure) Belonginess: 0.97
+        <ul>
+    Personal Values Profile:</b><br>
+    <li>Immediate Beneficiary Relief: 0.42</li>
+    <li>Organizational Efficiency: 0.20</li>
+    <li>Community Trust & Transparency: 0.18</li>
+    <li>Volunteer Sustainability: 0.12</li>
+    <li>Long-term Strategic Growth: 0.08</li>
+    <br>
+    <b>Personal Action Log:</b><br>
+    <li>Personally delivered 15 medical kits to frontline hospital near Kharkiv; documented trip with photos/testimonials; shared impact report with donors.</li>
+    <li>Made decision to buy supplies from bulk supplier without vetting; discovered supplier had overcharged charity by 18% and later provided lower-quality medical gauze.</li>
+    <li>Held town hall with 120+ donors and volunteers; transparent about challenges; announced plan to improve systems; received strong community support.</li>
+        </ul>
+</p>
+<p>
+    <b>Member 2: Kateryna (Operations Manager, 1.5 years tenure) Belonginess: 0.78
+        <ul>
+    Personal Values Profile:</b><br>
+    <li>Immediate Beneficiary Relief: 0.30</li>
+    <li>Organizational Efficiency: 0.38</li>
+    <li>Community Trust & Transparency: 0.10</li>
+    <li>Volunteer Sustainability: 0.18</li>
+    <li>Long-term Strategic Growth: 0.04</li>
+    <br>
+    <b>Personal Action Log:</b><br>
+    <li>Created volunteer coordination spreadsheet tracking 85+ volunteers and their hours; reduced confusion by 40%; improved supply distribution efficiency.</li>
+    <li>Spent 40 hours developing new inventory management system; system failed on first week of deployment, corrupting shipment data; took 15 hours to recover.</li>
+    <li>Coordinated emergency supply shipment to 8 locations; worked 16-hour shift; all deliveries arrived on time with accurate documentation.</li>
+        </ul>
+</p>
+<p>
+    <b>Member 3: Marko (Volunteer Coordinator, 6 months tenure) Belonginess: 0.52
+        <ul>
+    Personal Values Profile:</b><br>
+    <li>Immediate Beneficiary Relief: 0.32</li>
+    <li>Organizational Efficiency: 0.10</li>
+    <li>Community Trust & Transparency: 0.18</li>
+    <li>Volunteer Sustainability: 0.35</li>
+    <li>Long-term Strategic Growth: 0.05</li>
+    <br>
+    <b>Personal Action Log:</b><br>
+    <li>Recruited 25 new volunteers; organized training program; created volunteer handbook; turnover decreased from 35% to 15%.</li>
+    <li>Promised volunteers equipment (vests, gloves) that wasn't yet purchased; created confusion and damaged trust when items didn't arrive; one volunteer quit.</li>
+    <li>Organized volunteer appreciation event; elevated morale; recorded testimonials of volunteer impact; prepared material for future fundraising.</li>
+        </ul>
+</p>
+</div>
+<br>
+        <p><i>Figure 4: Microcommunity gathering. Example 2</i></p>
+<br>
+        <p>This addresses several key political concerns:</p>
+        <p><b>Temporal Responsiveness:</b> Unlike bureaucratic structures that persist regardless of their relevance, microcommunities exist only as long as the issues they address require collective attention. This restores the Arendtian understanding of political action as oriented toward specific, concrete situations rather than abstract administration.</p>
+        <p><b>Direct Participation</b>: Each microcommunity member gets rights and responsibility to influence the microcommunity decisions directly, without usual representative levels. This eliminates the alienation Arendt identified with representative systems where citizens delegate not only authority but responsibility also to others.</p>
+        <p><b>Contextual Relevance</b>: The AI-driven formation of microcommunities ensures that gathering occurs automatically with AI tools to count the wide context of the problem's scope and figure out the relative people. This technological mediation serves human political capacity rather than replacing it.</p>
+        <h3>Core Elements of the ISR Framework</h3>
+
+<div style="border: 2px solid #999; background-color: #fafafa; border-radius: 12px; padding: 20px; box-sizing: border-box;">
+<center><b>Individual Microcommunity Members</b><br>
+  (Each user independently defines their values)</center>
+<div style="display: flex; gap: 20px; padding: 20px; justify-content: center;">
+  <div style="border: 2px solid #999; background-color: #f0ffff; border-radius: 12px; padding: 20px; box-sizing: border-box;">
+    <center><b>User 1</b></center>
+    <p><b>Belonginess: 0.97</b><br><br>
+    
+    <li>Immediate Beneficiary Relief: 0.42</li>
+    <li>Organizational Efficiency: 0.20</li>
+    <li>Community Trust & Transparency: 0.18</li>
+    <li>Volunteer Sustainability: 0.12</li>
+    <li>Long-term Strategic Growth: 0.08</li>
+    </p>
+    <center>⬇️</center>
+  </div>
+  <div style="border: 2px solid #999; background-color: #fff0ff; border-radius: 12px; padding: 20px; box-sizing: border-box;">
+    <center><b>User 2</b></center>
+    <p><b>Belonginess: 0.78</b><br><br>
+    
+    <li>Immediate Beneficiary Relief: 0.30</li>
+    <li>Organizational Efficiency: 0.38</li>
+    <li>Community Trust & Transparency: 0.10</li>
+    <li>Volunteer Sustainability: 0.18</li>
+    <li>Long-term Strategic Growth: 0.04</li>
+    </p>
+    <center>⬇️</center>
+  </div>
+  <div style="border: 2px solid #999; background-color: #fffff0; border-radius: 12px; padding: 20px; box-sizing: border-box;">
+    <center><b>User 3</b></center>
+    <p><b>Belonginess: 0.52</b><br><br>
+    
+    <li>Immediate Beneficiary Relief: 0.32</li>
+    <li>Organizational Efficiency: 0.10</li>
+    <li>Community Trust & Transparency: 0.18</li>
+    <li>Volunteer Sustainability: 0.35</li>
+    <li>Long-term Strategic Growth: 0.05</li>
+    </p>
+    <center>⬇️</center>
+  </div>
+</div>
+<center><b>Aggregation</b><br> taking into account the belonginess coefficient<br>⬇️</center><br>
+<div style="border: 2px solid #999; background-color: #fffff0; border-radius: 12px; padding: 20px; box-sizing: border-box; width: fit-content; max-width: 100%; margin: 0 auto;">
+<center><b>Microcommunity Matrix of Values</b><br>
+  (For specific issue context)</center>
+  <hr>
+    <br><p>    
+    <li>Immediate Beneficiary Relief: 0.356</li>
+    <li>Organizational Efficiency: 0.239</li>
+    <li>Community Trust & Transparency: 0.153</li>
+    <li>Volunteer Sustainability: 0.193</li>
+    <li>Long-term Strategic Growth: 0.059</li>
+    </p>
+</div>
+<p><br></p>
+<div style="border: 2px solid #999; background-color: #eee; border-radius: 12px; padding: 20px; box-sizing: border-box;">
+<center><b>How Matrix of Values Is Used:</b></center>
+  <hr>
+  <br>
+  <p>
+    <b>1. Baseline Reference:</b> The aggregated values serve as the community's shared baseline for what matters in this issue<br>
+    <b>2. Influence Weighting:</b> When calculating ISR influence scores (Expertise, Contribution, Relevance), 
+    the community's Matrix of Values determines Contribution, providing a badrock of actions assessment<br>
+    <b>3. Holistic Assessment:</b> Rather than imposing external criteria, the framework reflects what this specific community actually values for this specific issue<br>
+    <b>4. Accountability:</b> Members see their collective values reflected in decision-making processes, ensuring decisions align with community priorities<br><br>
+    <b>Key Principle:</b> Individual values don't change just because someone joins a microcommunity — only clarified through community context. The Matrix ensures pluralism by averaging diverse perspectives rather than erasing them.
+</p>
+</div>
+</div>
+
+<br>
+        <p><i>Figure 5: Matrix of Values: Individual to Community Aggregation</i></p>
+<br>
+
+        <p><b>Matrix of Values (Automated Legislature)</b>: It is a kind of legislature system in the ISR framework. Every user fills out its own life (economical, political, cultural, etc.) values. These values don't change because of the new microcommunity belonging - only if the member changes or clarifies his own life values. After gathering microcommunity around some problem, its "Matrix of Values" appears by averaging all its members' individual values concerning the problem. So we got an actual, inclusive, pluralistic basement to understand the microcommunity needs and values which can be used for all further ISR estimations.</p>
+
+        <p>The next three elements make up the ISR as constituent parts.</p>
+
+
+<svg viewBox="0 0 800 610" xmlns="http://www.w3.org/2000/svg"> 
+  <!-- Central Microcommunity circle -->
+<circle cx="400" cy="80" r="70" fill="#e6f2ff" stroke="#0066cc" stroke-width="4"/>
+<text x="400" y="60" font-size="16" font-weight="bold" text-anchor="middle" fill="#0066cc">Issue</text>
+<text x="400" y="80" font-size="14" text-anchor="middle" fill="#666">a Microcommunity</text>
+<text x="400" y="100" font-size="14" text-anchor="middle" fill="#666">vote question</text>
+
+<path d="M 400 170 L 400 110" stroke="#06c" stroke-width="3" marker-end="url(#arrowBlue)" fill="none"/>
+
+<!-- Central Calculation Box -->
+<rect x="230" y="170" width="340" height="190" fill="#fff9e6" stroke="#06c" stroke-width="3" rx="8"/>
+
+<text x="400" y="195" font-size="13" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Weighted Influence Score</text>
+
+<text x="400" y="225" font-size="12" text-anchor="middle" fill="#333">For Member in Issue Context:</text>
+
+<!-- Formula -->
+<rect x="250" y="235" width="300" height="35" fill="#f0f7ff" stroke="#0066cc" stroke-width="2" rx="4"/>
+<text x="400" y="258" font-size="14" font-weight="bold" text-anchor="middle" fill="#0066cc" font-family="monospace">
+  ISR = (E × w₁) + (C × w₂) + (R × w₃)
+</text>
+<text x="400" y="295" font-size="12" font-weight="bold" text-anchor="middle" fill="#1a3a5c">
+  Result: individual coefficient (0.0-1.0)
+</text>
+<text x="400" y="330" font-size="11" text-anchor="middle" fill="#666">
+  E = Expertise | C = Contribution | R = Relevance
+</text>
+<text x="400" y="348" font-size="11" text-anchor="middle" fill="#666">
+  w₁, w₂, w₃ = Context-determined weights
+</text>
+
+<!-- Component 1: Expertise -->
+<g id="expertise">
+  <!-- Box -->
+  <rect x="1" y="380" width="199" height="180" fill="#fff4e6" stroke="#ff9900" stroke-width="3" rx="8"/>
+  <!-- Header -->
+  <rect x="0" y="380" width="200" height="40" fill="#ff9900" rx="8"/>
+  <text x="100" y="410" font-size="16" font-weight="bold" text-anchor="middle" fill="white">Expertise</text>
+  
+  <text x="20" y="440" font-size="12" font-weight="bold" fill="#333">Personal Competence</text>
+  
+  <text x="20" y="465" font-size="11" fill="#666">• Skills & credentials</text>
+  <text x="20" y="485" font-size="11" fill="#666">• Relevant experience</text>
+  <text x="20" y="505" font-size="11" fill="#666">• Professional knowledge</text>
+  <text x="20" y="525" font-size="11" fill="#666">• Domain specialization</text>
+  
+  <text x="20" y="550" font-size="11" fill="#1a3a5c" font-weight="bold">Output: E(0.0-1.0)</text>
+  
+  <!-- Arrow pointing to center -->
+  <path d="M 100 380 Q 100 300 226 300" stroke="#ff9900" stroke-width="3" marker-end="url(#arrowOrange)" fill="none"/>
+</g>
+
+<!-- Component 3: Relevance -->
+<g id="relevance">
+  <!-- Box -->
+  <rect x="600" y="380" width="198" height="180" fill="#f0e6ff" stroke="#7700bb" stroke-width="3" rx="8"/>
+  <!-- Header -->
+  <rect x="600" y="380" width="200" height="40" fill="#7700bb" rx="8"/>
+  <text x="700" y="410" font-size="16" font-weight="bold" text-anchor="middle" fill="white">Relevance</text>
+  
+  <text x="620" y="440" font-size="12" font-weight="bold" fill="#333">Contextual Connection</text>
+  
+  <text x="620" y="465" font-size="11" fill="#666">• Stake in issue</text>
+  <text x="620" y="485" font-size="11" fill="#666">• Activity level</text>
+  <text x="620" y="505" font-size="11" fill="#666">• Proximity to problem</text>
+  <text x="620" y="525" font-size="11" fill="#666">• Affected groups</text>
+  
+  <text x="620" y="550" font-size="11" fill="#1a3a5c" font-weight="bold">Output: R(0.0-1.0)</text>
+  
+  <!-- Arrow pointing to center -->
+  <path d="M 700 380 Q 700 300 574 300" stroke="#7700bb" stroke-width="3" marker-end="url(#arrowPurple)" fill="none"/>
+</g>
+
+<!-- Component 2: Contribution -->
+<g id="contribution">
+  <!-- Box -->
+  <rect x="300" y="410" width="200" height="180" fill="#e6ffe6" stroke="#00aa00" stroke-width="3" rx="8"/>
+  <!-- Header -->
+  <rect x="300" y="410" width="200" height="40" fill="#00aa00" rx="8"/>
+  <text x="400" y="440" font-size="16" font-weight="bold" text-anchor="middle" fill="white">Contribution</text>
+  
+  <text x="320" y="470" font-size="12" font-weight="bold" fill="#333">Responsibility History</text>
+  
+  <text x="320" y="495" font-size="11" fill="#666">• Past contributions assessment</text>
+  <text x="320" y="515" font-size="11" fill="#666">• Community feedback</text>
+  <text x="320" y="535" font-size="11" fill="#666">• Offence history</text>
+  <text x="320" y="555" font-size="11" fill="#666">• Track record</text>
+  
+  <text x="320" y="580" font-size="11" fill="#1a3a5c" font-weight="bold">Output: C(0.0-1.0)</text>
+  
+  <!-- Arrow pointing to center -->
+  <path d="M 400 410 L 400 363" stroke="#00aa00" stroke-width="3" marker-end="url(#arrowGreen)" fill="none"/>
+</g>
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#00f"/>
+    </marker>
+    <marker id="arrowOrange" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#ff9900"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#00aa00"/>
+    </marker>
+    <marker id="arrowPurple" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#7700bb"/>
+    </marker>
+  </defs>
+</svg>
+<div style="border: 2px solid #999; background-color: #fffffa; border-radius: 12px; padding: 20px; box-sizing: border-box;">
+<center><b>Key Principle of Weighted Plurality</b></center>
+<p>
+  Unlike traditional "one-person-one-vote" systems, each member's influence coefficient varies based on:<br>
+   ▪ Their contextual connection to the issue <br>
+   ▪ Their proven track record of contribution <br>
+   ▪ Their actual expertise in the issue domain <br>
+  AI determine the weight (w₁, w₂, w₃) through the issue context.
+</p>
+</div>
+
+<br>
+        <p><i>Figure 6: ISR Influence Score Calculation Model</i></p>
+<br>
+
+        <p><b>Expertise (Personal Competence)</b>: This component addresses Arendt's concern that modern society fails to distinguish between opinion and knowledge. By weighing decisions based on relevant skills, experience, or credentials that the community values, ISR ensures that those with greater expertise in specific domains have proportionally greater influence on decisions within those domains.</p>
+        <p><b>Contribution (Responsibility History):</b> This addresses Arendt's insight that political action requires accountability and continuity over time. Contribution represents a running tally of the member's contributions and feedback that reflects an individual's history of responsible engagement with community concerns. And ISR assumes that people who, according to the microcommunity's Matrix of Values, contributed more, have more rights to influence the microcommunity. This restores the connection between rights and responsibilities that Arendt saw as essential to authentic political life.</p>
+        <p><b>Relevance (Situational and Contextual Connection):</b> This component (which follows from the microcommunity gathering principle) ensures that influence is distributed based on actual stake and involvement in specific issues. As our framework explains, context-specific factors, like stake or activity in the current topic ensure that only relevant voices carry extra weight on a given decision. So even belonging to a microcommunity is not a binary. It is a coefficient that shows how close a person is to the microcommunity's issue. And the closer it is - the bigger impact the person has. This preserves Arendtian plurality by ensuring that different perspectives are heard and weighted appropriately based on their relevance to specific contexts.</p>
+        <h3>Transparency and Accountability</h3>
+        <p>The system requires the absence of anonymity and logs all actions. It means that every user has only one account and it is confirmed with documents and identification mechanisms and any action in the ISR framework can't be done anonymously. This does not mean that anyone can see all information about a user; rather, the level and scope of access depend on the person's social role and other factors. That ensures privacy on one hand and minding of responsibility on the other hand.</p>
+        <p>Today's excessive worry about anonymity concerns is a part of our political legacy. The fear of being punished for stating a different point of view freely provokes hypocrisy on all social levels - a trauma stemming from the totalitarian aspects of modern life that the ISR framework aims to combat. This aligns with Arendt's insight that authentic political action requires the courage to appear before others and take responsibility for one's words and deeds. As she argued, politics requires the "space of appearance" where individuals reveal who they are through their actions in the presence of others.</p>
+        <h3>AI as a Tool of Political Infrastructure</h3>
+        <p>Crucially, the ISR framework positions AI not as a replacement for human political judgment but as infrastructure that enables more authentic political participation. The AI systems calculate a dynamic influence score for each member &ndash; based on their social contributions, personal competencies, and context relevance but the criteria for these estimations and calculations are determined by the communities themselves through their "Matrix of Values."</p>
+        <p>This addresses the concern raised by contemporary critics that AI systems impose technocratic logic on political decisions. Instead, ISR uses AI to implement community-determined values more effectively and consistently than traditional bureaucratic systems. As Maurizio Lazzarato notes, the key question is not whether to use machines but how to organize human-machine assemblages in ways that serve rather than dominate human agency (2014).</p>
+        <h2>Part III: ISR and the Restoration of Arendtian Political Action</h2>
+
+
+        <h3>Recovering Plurality and Natality</h3>
+        <p>Arendt's concept of "natality" - the human capacity to begin something new - lies at the heart of her understanding of political action. The ISR framework creates conditions that could restore this capacity by enabling what she called "acting in concert" without the mediation of representatives who inevitably reduce plurality to manageable uniformity.</p>
+        <p>The dynamic formation and dissolution of microcommunities mirrors Arendt's understanding of political action as unpredictable and creative. Unlike bureaucratic structures that follow predetermined procedures, microcommunities emerge organically around specific problems and dissolve when those problems are resolved. This preserves space for the unexpected - what Arendt called the "miracle" of new beginnings that characterizes authentic political action.</p>
+        <h3>Responsibility and the Recovery of Political Agency</h3>
+        <p>The ISR system directly addresses Arendt's concern that modern society has severed the connection between rights and responsibilities. By making social karma - a measure of past contributions and their outcomes - a central component of political influence, ISR restores what Arendt saw as the essential connection between freedom and responsibility.</p>
+        <p>As our framework notes, being useful to someone is the only way to raise ISR. And it is such people who should determine the future of society. This is not a crude utilitarianism but rather an acknowledgment that political freedom emerges through engagement with shared concerns rather than private preferences&mdash;a core Arendtian insight.</p>
+        <p>The system's requirement for "individual responsibility for both one's actions and inaction" directly implements Arendt's understanding that authentic freedom is not the absence of constraints but the capacity to take responsibility for the consequences of one's actions in a shared world.</p>
+
+<div style="border: 2px solid #999; background-color: #fffffa; border-radius: 12px; padding: 20px; box-sizing: border-box;">
+
+<svg viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg">
+ 
+  <!-- Main spectrum line -->
+  <line x1="60" y1="30" x2="740" y2="30" stroke="#333" stroke-width="4"/>
+  
+  <!-- Left endpoint -->
+  <circle cx="60" cy="30" r="18" fill="#e6ffe6" stroke="#00aa00" stroke-width="3"/>
+  <text x="60" y="35" font-size="20" font-weight="bold" text-anchor="middle" fill="#333">←</text>
+  
+  <!-- Right endpoint -->
+  <circle cx="740" cy="30" r="18" fill="#ffcccc" stroke="#cc0000" stroke-width="3"/>
+  <text x="740" y="35" font-size="20" font-weight="bold" text-anchor="middle" fill="#333">→</text>
+  
+  <!-- ISR Position (center-ish) -->
+  <circle cx="400" cy="30" r="25" fill="#fff9e6" stroke="#ff9900" stroke-width="4"/>
+  <text x="400" y="37" font-size="20" font-weight="bold" text-anchor="middle" fill="#ff9900">ISR</text>
+  
+    <!-- LEFT: Direct Democracy -->
+  <rect x="1" y="90" width="119" height="160" fill="#e6ffe6" stroke="#00aa00" stroke-width="2" rx="6"/>
+  <text x="60" y="115" font-size="14" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Direct</text>
+  <text x="60" y="135" font-size="14" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Democracy</text>
+  
+  <text x="15" y="160" font-size="12" font-weight="bold" fill="#333">Preserves:</text>
+  <text x="20" y="175" font-size="12" fill="#666">✓ Equality</text>
+  <text x="20" y="188" font-size="12" fill="#666">✓ Plurality</text>
+  <text x="20" y="201" font-size="12" fill="#666">✓ Agency</text>
+  
+  <text x="15" y="220" font-size="12" font-weight="bold" fill="#333">Sacrifices:</text>
+  <text x="20" y="235" font-size="12" fill="#666">✗ Expertise</text>
+  
+  <!-- CENTER-LEFT: Representative Democracy -->
+  <rect x="155" y="90" width="120" height="160" fill="#f0f7ff" stroke="#3399ff" stroke-width="2" rx="6"/>
+  <text x="215" y="115" font-size="14" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Representative</text>
+  <text x="215" y="135" font-size="14" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Democracy</text>
+  
+  <text x="170" y="160" font-size="12" font-weight="bold" fill="#333">Preserves:</text>
+  <text x="175" y="175" font-size="12" fill="#666">✓ Equality</text>
+  
+  <text x="170" y="200" font-size="12" font-weight="bold" fill="#333">Sacrifices:</text>
+  <text x="175" y="215" font-size="12" fill="#666">✗ Direct control</text>
+  <text x="175" y="228" font-size="12" fill="#666">✗ Agency</text>
+  <text x="175" y="241" font-size="12" fill="#666">✗ Accountability</text>
+  
+  <!-- CENTER: ISR -->
+  <rect x="310" y="90" width="180" height="189" fill="#fff9e6" stroke="#ff9900" stroke-width="3" rx="6"/>
+  <text x="400" y="115" font-size="16" font-weight="bold" text-anchor="middle" fill="#ff9900">ISR Model</text>
+  <text x="400" y="133" font-size="14" text-anchor="middle" fill="#333">(Weighted Plurality)</text>
+  
+  <text x="325" y="160" font-size="12" font-weight="bold" fill="#333">Preserves:</text>
+  <text x="330" y="175" font-size="12" fill="#666">✓ Pluralism</text>
+  <text x="330" y="188" font-size="12" fill="#666">✓ Expertise input</text>
+  <text x="330" y="201" font-size="12" fill="#666">✓ Agency</text>
+  <text x="330" y="214" font-size="12" fill="#666">✓ Accountability</text>
+  
+  <text x="325" y="235" font-size="12" font-weight="bold" fill="#333">Balances:</text>
+  <text x="330" y="250" font-size="12" fill="#666">● Equal potential</text>
+  <text x="330" y="263" font-size="12" fill="#666">● Context-specific influence</text>
+  
+  <!-- CENTER-RIGHT: Meritocracy -->
+  <rect x="525" y="90" width="120" height="160" fill="#f0e6ff" stroke="#7700bb" stroke-width="2" rx="6"/>
+  <text x="585" y="115" font-size="14" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Meritocracy</text>
+  <text x="585" y="135" font-size="14" font-weight="bold" text-anchor="middle" fill="#1a3a5c"></text>
+  
+  <text x="540" y="160" font-size="12" font-weight="bold" fill="#333">Preserves:</text>
+  <text x="545" y="175" font-size="12" fill="#666">✓ Expertise</text>
+  
+  <text x="540" y="200" font-size="12" font-weight="bold" fill="#333">Sacrifices:</text>
+  <text x="545" y="215" font-size="12" fill="#666">✗ Equality</text>
+  <text x="545" y="228" font-size="12" fill="#666">✗ Plurality</text>
+  <text x="545" y="241" font-size="12" fill="#666">✗ Agency</text>
+  
+  <!-- RIGHT: Technocracy -->
+  <rect x="680" y="90" width="119" height="160" fill="#ffcccc" stroke="#cc0000" stroke-width="2" rx="6"/>
+  <text x="740" y="115" font-size="14" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Technocracy</text>
+  <text x="740" y="135" font-size="14" font-weight="bold" text-anchor="middle" fill="#1a3a5c"></text>
+  
+  <text x="695" y="160" font-size="12" font-weight="bold" fill="#333">Preserves:</text>
+  <text x="700" y="175" font-size="12" fill="#666">✓ Efficiency</text>
+  
+  <text x="695" y="200" font-size="12" font-weight="bold" fill="#333">Sacrifices:</text>
+  <text x="700" y="215" font-size="12" fill="#666">✗ Equality</text>
+  <text x="700" y="228" font-size="12" fill="#666">✗ Plurality</text>
+  <text x="700" y="241" font-size="12" fill="#666">✗ Agency</text>
+</svg>  
+
+  <!-- Bottom explanation -->
+  <h3>Why ISR Occupies the Center Position:</h3>
+  <p><b>Democratic Foundation:</b> Like direct democracy, ISR assumes all members have equal potential to participate and contribute to their communities' futures.</p>
+  <p><b>Meritocratic Elements:</b> Like meritocratic systems, ISR recognizes that expertise, proven track record, and contextual relevance should carry greater weight in specific decisions.</p>
+  <p><b>Addresses Arendt's Concerns:</b> ISR preserves what she valued most—authentic plurality, direct agency, and responsibility—while leveraging expertise through weighted influence rather than technocratic rule.</p>
+  <p><b>Dynamic Weighting:</b> Unlike static meritocracies, ISR weights change per context. Someone expert in labor standards has high influence on workplace issues but normal weight on environmental policy—preserving plurality across domains.</p>
+  <p><b>Community Control:</b> Communities collectively determine how heavily expertise, contribution, and relevance are weighted—preventing expert rule from becoming technocracy.</p>
+
+</div>
+
+
+
+<br>
+        <p><i>Figure 7: Political Models Spectrum: Finding the Balance</i></p>
+<br>
+
+        <h3>Beyond the Social: Restoring the Political</h3>
+        <p>The ISR framework offers a potential solution to what Arendt identified as the "rise of the social" - the colonization of political space by private, household concerns. By organizing around specific problems rather than identity groups or economic interests, microcommunities create space for what Arendt called "worldly" concerns - issues that transcend private interests and require collective deliberation.</p>
+        <p>The AI-mediated formation of microcommunities ensures that participation is based on relevance to specific issues rather than pre-existing social identities or economic positions. This could help create spaces where individuals encounter each other as unique persons rather than representatives of social categories.</p>
+        <h3>Limitations and Challenges</h3>
+        <p>The ISR framework, while promising, faces several challenges that must be acknowledged:</p>
+        <p><b>Scale and Complexity:</b> While the system is designed to work well for discrete problems with identifiable stakeholders, it may struggle with large-scale, systemic issues that affect entire societies in diffuse ways.</p>
+        <p><b>Technological Dependence:</b> The system's reliance on AI infrastructure creates new forms of potential dependence and vulnerability that Arendt's framework cannot fully address.</p>
+        <p><b>Psychological Acceptance:</b> Huge social inertia, lack of education, and a habit of irresponsibility can be significant obstacles to mass deployment and adoption.</p>
+        <p><b>Elite Sabotage</b>: Current political elite can perceive the ISR as a threat to their ability to control and rule social processes. It may result in both legal and unlegal resistance to the system implementation.</p>
+        <h2>Conclusion: Toward Computational Political Action</h2>
+        <p>The Index of Social Responsibility represents a significant attempt to address the fundamental challenges Arendt identified in modern democratic society. By leveraging AI capabilities to create more responsive, participatory, and accountable forms of political organization, ISR offers a potential pathway beyond both the limitations of representative democracy and the dangers of technocratic governance.</p>
+        <p>The framework's emphasis on expertise, responsibility, and contextual relevance aligns with Arendt's core insights about the conditions necessary for authentic political action. Its dynamic, problem-oriented approach to community formation preserves space for the plurality and unpredictability that Arendt saw as essential to human freedom.</p>
+        <p>However, realizing this potential will require careful attention to the concerns Arendt raised about the relationship between politics and technology. As she warned, the danger is not technology per se but the tendency to reduce political questions to technical problems that can be solved through expert administration rather than collective deliberation.</p>
+        <p>The ISR framework succeeds to the degree that it serves rather than replaces human political capacity. Its value lies not in providing algorithmic solutions to political problems but in creating infrastructure that enables more authentic forms of political participation and personal responsibility.</p>
+        <p>As contemporary societies grapple with the limitations of existing democratic institutions, experiments like ISR offer important insights into how technology might serve rather than undermine human political agency. The challenge is to implement such systems in ways that preserve what Arendt called the "space of appearance" - the realm where humans can encounter each other as unique individuals capable of new beginnings.</p>
+        <p>The ultimate test of ISR will be whether it enables what Arendt called "power" - the capacity that emerges when people act together for shared concerns - or whether it becomes another form of administration that reduces politics to the management of social and economic processes. Early practical researches suggest promising directions, but much work remains to ensure that computational political action serves rather than supplants the human capacity for freedom that Arendt sought to preserve and restore.</p>
+        <hr>
+        <h2>References</h2>
+        <p>American Philosophical Association. (2025). Putting the social in social media: Hannah Arendt, political judgment, and online polarization. <i>APA Blog</i>. https://blog.apaonline.org/2025/04/07/putting-the-social-in-social-media-hannah-arendt-political-judgment-and-online-polarization/</p>
+        <p>Arendt, H. (1958). <i>The Human Condition</i>. University of Chicago Press.</p>
+        <p>Berardi, F. (2012). Reactivating the social body in insurrectionary times. <i>Boundary 2</i>, 39(1), 3-17. https://escholarship.org/uc/item/7z74819g</p>
+        <p>Klein, S. (2014). Hannah Arendt on politics, economics, and the welfare state. <i>American Political Science Review</i>, 108(3), 481-496. https://stevenmklein.com/wp-content/uploads/2017/01/apsr-published.pdf</p>
+        <p>Lazzarato, M. (2014). <i>Signs and Machines: Capitalism and the Production of Subjectivity</i>. MIT Press. https://www.labster8.net/wp-content/uploads/2015/11/Lazzarato-SignsAndMachines-MixedSemiotics-sm.pdf</p>
+        <p>Rosa, H. (2013). <i>Social Acceleration: A New Theory of Modernity</i>. Columbia University Press.</p>
+        <p>Rosa, H. (2019). <i>Resonance: A Sociology of Our Relationship to the World</i>. Polity Press.</p>
+        <p>Rosa, H. (2021). Social theory for an open future: An interview with Hartmut Rosa. <i>Pandora Rivista</i>. https://www.pandorarivista.it/articoli/social-theory-for-an-open-future-an-interview-with-hartmut-rosa/</p>
+        <p>Silva, M. (2024). Reflections on Hannah Arendt's political thought. <i>Social Policy Journal</i>, 2024(1), 1-15. https://socpol.uvvg.ro/docs/2024-1/1.%20Silva.pdf</p>
+        <p>Wilson, S. (2024). Hannah Arendt knew 2024 was coming! <i>Substack</i>. https://sarahwilson.substack.com/p/hannah-arendt-knew-2024-was-coming</p>
+
+        <footer class="site-footer">
+            <div class="doc-content centered">
+                <small>© 2024-2025 Sergii Ponomarchuk</small>
+            </div>
+        </footer>
+  <script src="/site-nav.js"></script>
+  </body>
+</html>

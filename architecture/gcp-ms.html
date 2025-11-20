@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)https://isr-vote.com/architecture/gcp-ms.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISR: Vote - Microservices Architecture on Google Cloud</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Google Sans', 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+            padding: 35px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 3px solid #4285f4;
+            padding-bottom: 20px;
+        }
+        
+        h1 {
+            color: #1f2937;
+            font-size: 3em;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #4285f4 0%, #34a853 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 1.3em;
+            margin-bottom: 8px;
+        }
+        
+        .description {
+            color: #888;
+            font-size: 1.05em;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+        
+        .gcp-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #4285f4 0%, #34a853 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        
+        .diagram-section {
+            margin-bottom: 50px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #f0f4ff 100%);
+            border-radius: 12px;
+            padding: 30px;
+            border: 2px solid #dfe1e5;
+        }
+        
+        .section-title {
+            font-size: 1.7em;
+            color: #1f2937;
+            margin-bottom: 25px;
+            border-left: 5px solid #4285f4;
+            padding-left: 15px;
+            font-weight: 600;
+        }
+        
+        .canvas-container {
+            background: white;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            overflow-x: auto;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        svg {
+            background: white;
+            display: block;
+        }
+        
+        .legend {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+        
+        .legend-color {
+            width: 30px;
+            height: 30px;
+            border-radius: 6px;
+            flex-shrink: 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        
+        .legend-text {
+            font-size: 0.98em;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .interaction-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .interaction-table th {
+            background: linear-gradient(135deg, #4285f4 0%, #1f2937 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .interaction-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .interaction-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-right: 5px;
+            margin-bottom: 3px;
+        }
+        
+        .pub-sub-badge {
+            background: #ea4335;
+            color: white;
+        }
+        
+        .dataflow-badge {
+            background: #4285f4;
+            color: white;
+        }
+        
+        .gke-badge {
+            background: #34a853;
+            color: white;
+        }
+        
+        .firestore-badge {
+            background: #fbbc04;
+            color: #1f2937;
+        }
+        
+        .spanner-badge {
+            background: #ea4335;
+            color: white;
+        }
+        
+        .neo4j-badge {
+            background: #4285f4;
+            color: white;
+        }
+        
+        .memorystore-badge {
+            background: #34a853;
+            color: white;
+        }
+        
+        .bigquery-badge {
+            background: #fbbc04;
+            color: #1f2937;
+        }
+        
+        .notes {
+            background: linear-gradient(135deg, #fff9e6 0%, #fffbf0 100%);
+            border-left: 4px solid #fbbc04;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 6px;
+            font-size: 0.95em;
+            color: #333;
+        }
+        
+        .flow-description {
+            background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
+            border-left: 4px solid #34a853;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 6px;
+            font-size: 0.95em;
+            color: #1b5e20;
+            line-height: 1.7;
+        }
+        
+        .tech-stack {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .stack-category {
+            margin-bottom: 20px;
+        }
+        
+        .stack-category h4 {
+            color: #4285f4;
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+        
+        .stack-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        
+        .stack-item {
+            padding: 10px;
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 0.95em;
+            color: #333;
+        }
+        
+        .service-box {
+            padding: 10px;
+            background: white;
+            border-left: 4px solid #4285f4;
+            border-radius: 4px;
+            margin: 5px 0;
+            font-size: 0.9em;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ddd;
+            color: #666;
+            font-size: 0.95em;
+        }
+        
+        .benefit-box {
+            background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+            border: 1px solid #bbdefb;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        
+        .benefit-title {
+            color: #1f2937;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .benefit-text {
+            color: #555;
+            font-size: 0.95em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>☁️ ISR: Vote on Google Cloud Platform</h1>
+</footer>
+<script src="/site-nav.js"></script>
+</html>
+            <p class="description">
+                Complete ISR voting system redesigned for Google Cloud Platform with Kubernetes Engine, Cloud Pub/Sub, 
+                Cloud Spanner, Firestore, Cloud SQL, Memorystore, and BigQuery.
+            </p>
+            <!-- <span class="gcp-badge">🔵 Built on Google Cloud</span> -->
+        </div>
+        
+        <!-- DIAGRAM 1: GCP ARCHITECTURE LAYERS -->
+        <div class="diagram-section">
+            <h2 class="section-title">1️⃣ GCP Architecture Layers</h2>
+            <div class="canvas-container">
+                <svg width="1400" height="760" viewBox="0 0 1400 760">
+                    <defs>
+                        <lineargradient id="gradGCP" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#e8f0fe;stop-opacity:1"></stop>
+                            <stop offset="100%" style="stop-color:#f3e5f5;stop-opacity:1"></stop>
+                        </lineargradient>
+                        <marker id="arrowGCP" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#4285f4"></polygon>
+                        </marker>
+                    </defs>
+                    
+                    <rect width="1400" height="760" fill="url(#gradGCP)"></rect>
+                    
+                    <!-- Layer 0: Client Applications -->
+                    <rect x="50" y="30" width="1300" height="70" fill="#e3f2fd" stroke="#2196f3" stroke-width="2" rx="8"></rect>
+                    <text x="700" y="65" font-size="20" font-weight="bold" text-anchor="middle" fill="#1565c0">👥 Client Applications (Web, Mobile, Desktop)</text>
+                    
+                    <!-- Arrow -->
+                    <line x1="700" y1="100" x2="700" y2="120" stroke="#666" stroke-width="2" marker-end="url(#arrowGCP)"></line>
+                    
+                    <!-- Layer 1: Cloud Load Balancing & CDN -->
+                    <g>
+                        <rect x="50" y="120" width="1300" height="70" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="8"></rect>
+                        <text x="700" y="155" font-size="18" font-weight="bold" text-anchor="middle" fill="#e65100">☁️ Cloud Load Balancing &amp; Cloud CDN</text>
+                        <text x="700" y="175" font-size="12" text-anchor="middle" fill="#666">Global load balancing, DDoS protection, SSL/TLS termination</text>
+                    </g>
+                    
+                    <!-- Arrow -->
+                    <line x1="700" y1="190" x2="700" y2="210" stroke="#666" stroke-width="2" marker-end="url(#arrowGCP)"></line>
+                    
+                    <!-- Layer 2: API Gateway / Cloud Run -->
+                    <g>
+                        <rect x="50" y="210" width="1300" height="70" fill="#f3e5f5" stroke="#9c27b0" stroke-width="2" rx="8"></rect>
+                        <text x="700" y="245" font-size="18" font-weight="bold" text-anchor="middle" fill="#6a1b9a">🚪 Cloud API Gateway &amp; Cloud Run (REST endpoints)</text>
+                        <text x="700" y="265" font-size="12" text-anchor="middle" fill="#666">API versioning, authentication, request routing, serverless functions</text>
+                    </g>
+                    
+                    <!-- Arrow -->
+                    <line x1="700" y1="280" x2="700" y2="300" stroke="#666" stroke-width="2" marker-end="url(#arrowGCP)"></line>
+                    
+                    <!-- Layer 3: GKE Microservices -->
+                    <g>
+                        <rect x="50" y="300" width="1300" height="190" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" rx="8"></rect>
+                        <text x="700" y="330" font-size="18" font-weight="bold" text-anchor="middle" fill="#1b5e20">🐳 Google Kubernetes Engine (GKE) - 17+ Microservices</text>
+                        
+                        <!-- Service containers -->
+                        <g font-size="11" font-weight="bold">
+                            <rect x="70" y="350" width="70" height="40" fill="#ffebee" stroke="#c62828" stroke-width="1" rx="3"></rect>
+                            <text x="105" y="373" text-anchor="middle" fill="#b71c1c">Identity</text>
+                            
+                            <rect x="160" y="350" width="70" height="40" fill="#ffebee" stroke="#c62828" stroke-width="1" rx="3"></rect>
+                            <text x="195" y="365" text-anchor="middle" fill="#b71c1c">Profile &amp;</text>
+                            <text x="195" y="380" text-anchor="middle" fill="#b71c1c">UI Settings</text>
+                            
+                            <rect x="250" y="350" width="70" height="40" fill="#e8eaf6" stroke="#283593" stroke-width="1" rx="3"></rect>
+                            <text x="285" y="373" text-anchor="middle" fill="#283593">Discussion</text>
+                            
+                            <rect x="340" y="350" width="70" height="40" fill="#e8eaf6" stroke="#283593" stroke-width="1" rx="3"></rect>
+                            <text x="375" y="373" text-anchor="middle" fill="#283593">Voting</text>
+                            
+                            <rect x="430" y="350" width="80" height="40" fill="#e0f2f1" stroke="#00695c" stroke-width="1" rx="3"></rect>
+                            <text x="470" y="365" text-anchor="middle" fill="#00695c">Social Graph</text>
+                            <text x="470" y="380" text-anchor="middle" fill="#00695c">Layer</text>
+                            
+                            <rect x="530" y="350" width="70" height="40" fill="#e0f2f1" stroke="#00695c" stroke-width="1" rx="3"></rect>
+                            <text x="565" y="365" text-anchor="middle" fill="#00695c">Location</text>
+                            <text x="565" y="380" text-anchor="middle" fill="#00695c">Layer</text>
+                            
+                            <rect x="620" y="350" width="70" height="40" fill="#e0f2f1" stroke="#00695c" stroke-width="1" rx="3"></rect>
+                            <text x="655" y="365" text-anchor="middle" fill="#00695c">Economical</text>
+                            <text x="655" y="380" text-anchor="middle" fill="#00695c">Layer</text>
+                            
+                            <rect x="710" y="350" width="70" height="40" fill="#e0f2f1" stroke="#00695c" stroke-width="1" rx="3"></rect>
+                            <text x="745" y="365" text-anchor="middle" fill="#00695c">Legal</text>
+                            <text x="745" y="380" text-anchor="middle" fill="#00695c">Layer</text>
+                            
+                            <rect x="800" y="350" width="110" height="40" fill="#f0f4c3" stroke="#0a0" stroke-width="1" rx="3"></rect>
+                            <text x="855" y="373" text-anchor="middle" fill="#0a0">Microcommunity</text>
+                            
+                            <rect x="930" y="350" width="70" height="40" fill="#ede7f6" stroke="#512da8" stroke-width="1" rx="3"></rect>
+                            <text x="965" y="365" text-anchor="middle" fill="#512da8">Matrix</text>
+                            <text x="965" y="380" text-anchor="middle" fill="#512da8">of Values</text>
+                            
+                            <rect x="1020" y="350" width="70" height="40" fill="#ede7f6" stroke="#512da8" stroke-width="1" rx="3"></rect>
+                            <text x="1055" y="365" text-anchor="middle" fill="#512da8">Sentiment</text>
+                            <text x="1055" y="380" text-anchor="middle" fill="#512da8">&amp; Actions</text>
+                            
+                            <rect x="1110" y="350" width="70" height="40" fill="#ede7f6" stroke="#512da8" stroke-width="1" rx="3"></rect>
+                            <text x="1145" y="365" text-anchor="middle" fill="#512da8">Skills</text>
+                            <text x="1145" y="380" text-anchor="middle" fill="#512da8">Assessment</text>
+                            
+                            <rect x="1200" y="350" width="70" height="40" fill="#f8bbd0" stroke="#c2185b" stroke-width="1" rx="3"></rect>
+                            <text x="1235" y="373" text-anchor="middle" fill="#c2185b">ISR Calc</text>
+                            
+                            <rect x="70" y="410" width="70" height="40" fill="#eceff1" stroke="#37474f" stroke-width="1" rx="3"></rect>
+                            <text x="105" y="433" text-anchor="middle" fill="#37474f">Tasks</text>
+                            
+                            <rect x="160" y="410" width="70" height="40" fill="#ffebee" stroke="#c62828" stroke-width="1" rx="3"></rect>
+                            <text x="195" y="433" text-anchor="middle" fill="#b71c1c">AI Assistant</text>
+                            
+                            <rect x="250" y="410" width="70" height="40" fill="#f0f4c3" stroke="#827717" stroke-width="1" rx="3"></rect>
+                            <text x="285" y="433" text-anchor="middle" fill="#827717">Analytics</text>
+                            
+                            <rect x="340" y="410" width="70" height="40" fill="#ffe0b2" stroke="#e65100" stroke-width="1" rx="3"></rect>
+                            <text x="375" y="433" text-anchor="middle" fill="#e65100">Audit &amp; Log</text>
+                            
+                            <rect x="430" y="410" width="70" height="40" fill="#c8e6c9" stroke="#2e7d32" stroke-width="1" rx="3"></rect>
+                            <text x="465" y="433" text-anchor="middle" fill="#2e7d32">+ More</text>
+                        </g>
+                        <text x="70" y="465" font-size="11" fill="#666">Core Services • Computation Services • Supporting Services • Feature Services</text>
+                        <text x="70" y="480" font-size="10" fill="#999" font-style="italic">Auto-scaling, Service mesh (Istio), Health checks, Monitoring</text>
+                    </g>
+                    
+                    <!-- Arrow -->
+                    <line x1="365" y1="490" x2="365" y2="510" stroke="#666" stroke-width="2" marker-end="url(#arrowGCP)"></line>
+                    <line x1="1035" y1="490" x2="1035" y2="510" stroke="#666" stroke-width="2" marker-end="url(#arrowGCP)"></line>
+                    
+                    <!-- Layer 4: Messaging & Streaming -->
+                    <g>
+                        <rect x="50" y="510" width="630" height="110" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="8"></rect>
+                        <text x="365" y="540" font-size="16" font-weight="bold" text-anchor="middle" fill="#e65100">📨 Cloud Pub/Sub</text>
+                        <text x="365" y="560" font-size="11" text-anchor="middle" fill="#666">Event streaming, topics, subscriptions, guaranteed delivery</text>
+                        
+                        <rect x="120" y="570" width="150" height="40" fill="#fff9c4" stroke="#f57f17" stroke-width="1" rx="3"></rect>
+                        <text x="195" y="595" font-size="10" font-weight="bold" text-anchor="middle" fill="#f57f17">Profile Events</text>
+                        
+                        <rect x="290" y="570" width="150" height="40" fill="#fff9c4" stroke="#f57f17" stroke-width="1" rx="3"></rect>
+                        <text x="365" y="595" font-size="10" font-weight="bold" text-anchor="middle" fill="#f57f17">Question Events</text>
+                        
+                        <rect x="460" y="570" width="150" height="40" fill="#fff9c4" stroke="#f57f17" stroke-width="1" rx="3"></rect>
+                        <text x="535" y="595" font-size="10" font-weight="bold" text-anchor="middle" fill="#f57f17">Vote Events</text>
+                    </g>
+                    
+                    <g>
+                        <rect x="720" y="510" width="630" height="110" fill="#e8eaf6" stroke="#3f51b5" stroke-width="2" rx="8"></rect>
+                        <text x="1035" y="540" font-size="16" font-weight="bold" text-anchor="middle" fill="#1a237e">🔄 Cloud Tasks &amp; Dataflow</text>
+                        <text x="1035" y="560" font-size="11" text-anchor="middle" fill="#666">Distributed task queues, batch processing, ETL pipelines</text>
+                        
+                        <rect x="790" y="570" width="150" height="40" fill="#e1bee7" stroke="#7b1fa2" stroke-width="1" rx="3"></rect>
+                        <text x="865" y="595" font-size="10" font-weight="bold" text-anchor="middle" fill="#7b1fa2">ISR Jobs Queue</text>
+                        
+                        <rect x="960" y="570" width="150" height="40" fill="#e1bee7" stroke="#7b1fa2" stroke-width="1" rx="3"></rect>
+                        <text x="1035" y="595" font-size="10" font-weight="bold" text-anchor="middle" fill="#7b1fa2">Notification Queue</text>
+                        
+                        <rect x="1130" y="570" width="150" height="40" fill="#e1bee7" stroke="#7b1fa2" stroke-width="1" rx="3"></rect>
+                        <text x="1205" y="595" font-size="10" font-weight="bold" text-anchor="middle" fill="#7b1fa2">Batch Processing</text>
+                    </g>
+                    
+                    <!-- Arrow -->
+                    <line x1="365" y1="620" x2="365" y2="640" stroke="#666" stroke-width="2" marker-end="url(#arrowGCP)"></line>
+                    <line x1="1035" y1="620" x2="1035" y2="640" stroke="#666" stroke-width="2" marker-end="url(#arrowGCP)"></line>
+                    
+                    <!-- Layer 5: Data Storage -->
+                    <g>
+                        <rect x="50" y="640" width="1300" height="100" fill="#c8e6c9" stroke="#2e7d32" stroke-width="2" rx="8"></rect>
+                        <text x="700" y="670" font-size="16" font-weight="bold" text-anchor="middle" fill="#1b5e20">💾 Data Layer - Polyglot Persistence on GCP</text>
+                        
+                        <rect x="70" y="685" width="110" height="40" fill="#fff9c4" stroke="#f57f17" stroke-width="1" rx="3"></rect>
+                        <text x="125" y="703" font-size="10" font-weight="bold" text-anchor="middle" fill="#f57f17">Cloud Spanner</text>
+                        <text x="125" y="717" font-size="9" text-anchor="middle" fill="#666">(Identity, Voting)</text>
+                        
+                        <rect x="200" y="685" width="110" height="40" fill="#fff9c4" stroke="#f57f17" stroke-width="1" rx="3"></rect>
+                        <text x="255" y="703" font-size="10" font-weight="bold" text-anchor="middle" fill="#f57f17">Cloud SQL</text>
+                        <text x="255" y="717" font-size="9" text-anchor="middle" fill="#666">(Profile, Discussion)</text>
+                        
+                        <rect x="330" y="685" width="110" height="40" fill="#bbdefb" stroke="#1976d2" stroke-width="1" rx="3"></rect>
+                        <text x="385" y="703" font-size="10" font-weight="bold" text-anchor="middle" fill="#1976d2">Firestore</text>
+                        <text x="385" y="717" font-size="9" text-anchor="middle" fill="#666">(Values, Matrix)</text>
+                        
+                        <rect x="460" y="685" width="110" height="40" fill="#c8e6c9" stroke="#2e7d32" stroke-width="1" rx="3"></rect>
+                        <text x="515" y="703" font-size="10" font-weight="bold" text-anchor="middle" fill="#2e7d32">Cloud Memorystore</text>
+                        <text x="515" y="717" font-size="9" text-anchor="middle" fill="#666">(Redis Cache)</text>
+                        
+                        <rect x="590" y="685" width="110" height="40" fill="#bbdefb" stroke="#1976d2" stroke-width="1" rx="3"></rect>
+                        <text x="645" y="703" font-size="10" font-weight="bold" text-anchor="middle" fill="#1976d2">Vertex AI Vector</text>
+                        <text x="645" y="717" font-size="9" text-anchor="middle" fill="##666">(Neo4j embeddings)</text>
+                        
+                        <rect x="720" y="685" width="110" height="40" fill="#fff9c4" stroke="#f57f17" stroke-width="1" rx="3"></rect>
+                        <text x="775" y="703" font-size="10" font-weight="bold" text-anchor="middle" fill="#f57f17">BigQuery</text>
+                        <text x="775" y="717" font-size="9" text-anchor="middle" fill="#666">(Analytics, Audit)</text>
+                        
+                        <rect x="850" y="685" width="110" height="40" fill="#e1bee7" stroke="#7b1fa2" stroke-width="1" rx="3"></rect>
+                        <text x="905" y="703" font-size="10" font-weight="bold" text-anchor="middle" fill="#7b1fa2">Cloud Storage</text>
+                        <text x="905" y="717" font-size="9" text-anchor="middle" fill="#666">(Logs, Backups)</text>
+                        
+                        <rect x="980" y="685" width="110" height="40" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="1" rx="3"></rect>
+                        <text x="1035" y="703" font-size="10" font-weight="bold" text-anchor="middle" fill="#7b1fa2">Vertex Search</text>
+                        <text x="1035" y="717" font-size="9" text-anchor="middle" fill="#666">(Discussion Index)</text>
+                        
+                        <rect x="1110" y="685" width="110" height="40" fill="#ffe0b2" stroke="#e65100" stroke-width="1" rx="3"></rect>
+                        <text x="1165" y="703" font-size="10" font-weight="bold" text-anchor="middle" fill="#e65100">Vertex AI LLM</text>
+                        <text x="1165" y="717" font-size="9" text-anchor="middle" fill="#666">(PaLM 2 API)</text>
+                        
+                        <rect x="1240" y="685" width="70" height="40" fill="#c8e6c9" stroke="#2e7d32" stroke-width="1" rx="3"></rect>
+                        <text x="1275" y="710" font-size="10" font-weight="bold" text-anchor="middle" fill="#2e7d32">+ More</text>
+                    </g>
+                </svg>
+            </div>
+            
+            <!-- <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-color" style="background: linear-gradient(135deg, #4285f4 0%, #34a853 100%);"></div>
+                    <span class="legend-text">GCP Core Services (Compute)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #ff9800;"></div>
+                    <span class="legend-text">Messaging & Streaming</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #2e7d32;"></div>
+                    <span class="legend-text">Database & Storage</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #7b1fa2;"></div>
+                    <span class="legend-text">AI/ML & Analytics</span>
+                </div>
+            </div> -->
+        </div>
+        
+        <!-- DIAGRAM 2: DETAILED SERVICE FLOW ON GCP -->
+        <div class="diagram-section">
+            <h2 class="section-title">2️⃣ ISR Workflow on GCP: Question → Vote Ready</h2>
+            <div class="canvas-container">
+                <svg width="1180" height="850" viewBox="0 0 1180 850">
+                    <defs>
+                        <marker id="arrowFlow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#4285f4"></polygon>
+                        </marker>
+                        <marker id="arrowAsync" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#34a853"></polygon>
+                        </marker>
+                    </defs>
+                    
+                    <rect width="1180" height="880" fill="#fafafa"></rect>
+                    
+                    <text x="610" y="30" font-size="18" font-weight="bold" text-anchor="middle" fill="#1f2937">Complete Workflow: Question Posted → ISR Calculated → Voting Ready</text>
+                    
+                    <!-- Step 1 -->
+                    <g>
+                        <rect x="50" y="100" width="100" height="100" fill="#e3f2fd" stroke="#2196f3" stroke-width="2" rx="8"></rect>
+                        <circle cx="100" cy="130" r="20" fill="#2196f3" stroke="white" stroke-width="2"></circle>
+                        <text x="100" y="137" font-size="24" text-anchor="middle" fill="white">👤</text>
+                        <text x="100" y="175" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">User</text>
+                        <text x="100" y="190" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">Question</text>
+                    </g>
+                    
+                    <path d="M 150 150 L 187 150" stroke="#4285f4" stroke-width="2" fill="none" marker-end="url(#arrowFlow)"></path>
+                    
+                    <!-- Step 2: Cloud Run API -->
+                    <g>
+                        <rect x="190" y="100" width="100" height="100" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2" rx="8"></rect>
+                        <circle cx="240" cy="130" r="20" fill="#7b1fa2" stroke="white" stroke-width="2"></circle>
+                        <text x="240" y="137" font-size="24" text-anchor="middle" fill="white">☁️</text>
+                        <text x="240" y="175" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">Cloud Run</text>
+                        <text x="240" y="190" font-size="11" text-anchor="middle" fill="#666">(API Gateway)</text>
+                    </g>
+                    
+                    <path d="M 290 150 L 367 150" stroke="#34a853" stroke-width="2.5" fill="none" marker-end="url(#arrowAsync)" stroke-dasharray="5,5"></path>
+                    <text x="295" y="140" font-size="10" font-weight="bold" fill="#34a853">Pub/Sub Event</text>
+                    <text x="295" y="167" font-size="9" fill="#34a853">question.created</text>
+                    
+                    <!-- Step 3: GKE Voting Service -->
+                    <g>
+                        <rect x="370" y="100" width="100" height="160" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="8"></rect>
+                        <circle cx="420" cy="130" r="20" fill="#ff9800" stroke="white" stroke-width="2"></circle>
+                        <text x="420" y="137" font-size="24" text-anchor="middle" fill="white">📝</text>
+                        <text x="420" y="175" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">Layers:</text>
+                        <text x="420" y="190" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">Geography</text>
+                        <text x="420" y="205" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">Social</text>
+                        <text x="420" y="220" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">Economical</text>
+                        <text x="420" y="235" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">...</text>
+                        <text x="420" y="250" font-size="11" text-anchor="middle" fill="#666">Services</text>
+                    </g>
+                    
+                    <path d="M 470 150 L 547 150" stroke="#34a853" stroke-width="2.5" fill="none" marker-end="url(#arrowAsync)" stroke-dasharray="5,5"></path>
+                    <text x="475" y="140" font-size="10" font-weight="bold" fill="#34a853">Pub/Sub Event</text>
+                    <text x="475" y="167" font-size="9" fill="#34a853">belonginess layers</text>
+                    
+                    <!-- Step 4: Microcommunity Service -->
+                    <g>
+                        <rect x="550" y="100" width="140" height="100" fill="#c8e6c9" stroke="#2e7d32" stroke-width="2" rx="8"></rect>
+                        <circle cx="620" cy="130" r="20" fill="#a8c6a9" stroke="white" stroke-width="2"></circle>
+                        <text x="620" y="137" font-size="24" text-anchor="middle" fill="white">👥</text>
+                        <text x="620" y="175" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">Microcommunity</text>
+                        <text x="620" y="190" font-size="11" text-anchor="middle" fill="#666">Service</text>
+                    </g>
+                    
+                    <!-- Connections from Microcommunity -->
+                    <path d="M 620 100 L 620 70 L 240 70 L 240 100" stroke="#9c27b0" stroke-width="2" fill="none"></path>
+                    <text x="430" y="65" font-size="9" text-anchor="middle" fill="#9c27b0" font-weight="bold">REST: Cloud SQL + Vertex Vector Search</text>
+                    <!-- <text x="377" y="80" font-size="9" fill="#9c27b0" font-weight="bold">Vertex Vector Search</text> -->
+                    
+                    <path d="M 690 150 L 767 150" stroke="#34a853" stroke-width="2.5" fill="none" marker-end="url(#arrowAsync)" stroke-dasharray="5,5"></path>
+                    <text x="695" y="140" font-size="10" font-weight="bold" fill="#34a853">Pub/Sub Event</text>
+                    <text x="695" y="167" font-size="9" fill="#34a853">relevance list</text>
+                    
+                    <!-- Step 5: Values Matrix Service -->
+                    <g>
+                        <rect x="770" y="100" width="140" height="100" fill="#bbdefb" stroke="#1976d2" stroke-width="2" rx="8"></rect>
+                        <circle cx="840" cy="130" r="20" fill="#1976d2" stroke="white" stroke-width="2"></circle>
+                        <text x="840" y="137" font-size="24" text-anchor="middle" fill="white">📊</text>
+                        <text x="840" y="175" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">Matrix of Values</text>
+                        <text x="840" y="190" font-size="11" text-anchor="middle" fill="#666">Service</text>
+                    </g>
+                    
+                    <path d="M 910 150 L 987 150" stroke="#34a853" stroke-width="2.5" fill="none" marker-end="url(#arrowAsync)" stroke-dasharray="5,5"></path>
+                    <text x="915" y="140" font-size="10" font-weight="bold" fill="#34a853">Pub/Sub Event</text>
+                    <text x="915" y="167" font-size="9" fill="#34a853">assessment criteria</text>
+                    
+                    <!-- Step 6: ISR Calculation Service -->
+                    <g>
+                        <rect x="990" y="100" width="140" height="100" fill="#ede7f6" stroke="#512da8" stroke-width="2" rx="8"></rect>
+                        <circle cx="1060" cy="130" r="20" fill="#512da8" stroke="white" stroke-width="2"></circle>
+                        <text x="1060" y="137" font-size="24" text-anchor="middle" fill="white">🧠</text>
+                        <text x="1060" y="175" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">ISR Calc</text>
+                        <text x="1060" y="190" font-size="11" text-anchor="middle" fill="#666">Service</text>
+                    </g>
+                    
+                    <path d="M 1060 200 L 1060 330 L 773 330" stroke="#ff9800" stroke-width="2.5" fill="none" marker-end="url(#arrowFlow)" stroke-dasharray="5,5"></path>
+                    <text x="915" y="325" font-size="10" font-weight="bold" fill="#ff9800">Cloud Tasks</text>
+                    <text x="922" y="340" font-size="9" fill="#ff9800">Job Queue</text>
+                    
+                    <!-- Step 7: Vertex AI Workers -->
+                    <g>
+                        <rect x="530" y="280" width="240" height="100" fill="#fff9c4" stroke="#f57f17" stroke-width="2" rx="8"></rect>
+                        <circle cx="650" cy="310" r="20" fill="#fff9c4" stroke="#f57f17" stroke-width="2"></circle>
+                        <text x="650" y="317" font-size="24" text-anchor="middle" fill="white">⚡</text>
+                        <text x="650" y="355" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">Vertex AI Workbench</text>
+                        <text x="650" y="370" font-size="10" text-anchor="middle" fill="#666">(5-50 auto-scaling pods)</text>
+                    </g>
+                    
+                    <!-- Data inputs to ISR Workers -->
+                    <path d="M 840 200 L 840 240 L 650 240 L 650 280" stroke="#1976d2" stroke-width="1.5" fill="none"></path>
+                    <text x="724" y="235" font-size="9" font-weight="bold" fill="#1976d2">Firestore</text>
+                    <text x="720" y="250" font-size="9" fill="#1976d2">Values Data</text>
+                    
+                    <!-- Output from ISR Workers -->
+                    <path d="M 530 330 L 433 330" stroke="#34a853" stroke-width="2.5" fill="none" marker-end="url(#arrowAsync)" stroke-dasharray="5,5"></path>
+                    <text x="445" y="320" font-size="10" font-weight="bold" fill="#34a853">Pub/Sub Event</text>
+                    <text x="450" y="345" font-size="9" fill="#34a853">isr.calculated</text>
+                    
+                    <!-- Step 8: Cache Results -->
+                    <g>
+                        <rect x="190" y="280" width="240" height="100" fill="#c8e6c9" stroke="#2e7d32" stroke-width="2" rx="8"></rect>
+                        <circle cx="310" cy="310" r="20" fill="#2e7d32" stroke="white" stroke-width="2"></circle>
+                        <text x="310" y="317" font-size="24" text-anchor="middle" fill="white">✓</text>
+                        <text x="310" y="355" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">Memorystore (Redis)</text>
+                        <text x="310" y="370" font-size="10" text-anchor="middle" fill="#666">ISR Scores Cached (24h TTL)</text>
+                    </g>
+                    
+                    <!-- Process boxes below -->
+                    <g>
+                        <text x="50" y="470" font-size="14" font-weight="bold" fill="#1f2937">GCP Services Used:</text>
+                        
+                        <rect x="50" y="490" width="1000" height="320" fill="white" stroke="#ddd" stroke-width="1" rx="8"></rect>
+                        
+                        <!-- Left column -->
+                        <g font-size="11">
+                            <rect x="70" y="510" width="300" height="280" fill="#f0f4ff" stroke="#4285f4" stroke-width="1" rx="4"></rect>
+                            <text x="220" y="530" font-size="12" font-weight="bold" text-anchor="middle" fill="#1565c0">Compute Layer</text>
+                            
+                            <text x="80" y="555" font-size="11" font-weight="bold" fill="#333">🐳 Google Kubernetes Engine:</text>
+                            <text x="90" y="570" fill="#666">• All 17+ microservices deployed</text>
+                            <text x="90" y="585" fill="#666">• Auto-scaling based on CPU/memory</text>
+                            <text x="90" y="600" fill="#666">• Service mesh with Istio</text>
+                            <text x="90" y="615" fill="#666">• Pod security, network policies</text>
+                            
+                            <text x="80" y="640" font-size="11" font-weight="bold" fill="#333">☁️ Cloud Run:</text>
+                            <text x="90" y="655" fill="#666">• API Gateway (REST endpoints)</text>
+                            <text x="90" y="670" fill="#666">• Serverless functions for webhooks</text>
+                            <text x="90" y="685" fill="#666">• Pay-per-request pricing</text>
+                            
+                            <text x="80" y="710" font-size="11" font-weight="bold" fill="#333">🤖 Vertex AI Workbench:</text>
+                            <text x="90" y="725" fill="#666">• ISR calculation workers</text>
+                            <text x="90" y="740" fill="#666">• LLM inference (PaLM 2)</text>
+                            <text x="90" y="755" fill="#666">• GPU/TPU acceleration</text>
+                        </g>
+
+                        <!-- Middle column -->
+                        <g font-size="11">
+                            <rect x="400" y="510" width="300" height="280" fill="#fff3e0" stroke="#ff9800" stroke-width="1" rx="4"></rect>
+                            <text x="550" y="530" font-size="12" font-weight="bold" text-anchor="middle" fill="#e65100">Messaging &amp; Queueing</text>
+                            
+                            <text x="410" y="555" font-size="11" font-weight="bold" fill="#333">📨 Cloud Pub/Sub:</text>
+                            <text x="420" y="570" fill="#666">• Event streaming: profile, votes, ISR</text>
+                            <text x="420" y="585" fill="#666">• At-least-once delivery guarantee</text>
+                            <text x="420" y="600" fill="#666">• Dead-letter topics for failures</text>
+                            <text x="420" y="615" fill="#666">• Message filtering &amp; routing</text>
+                            
+                            <text x="410" y="640" font-size="11" font-weight="bold" fill="#333">☑️ Cloud Tasks:</text>
+                            <text x="420" y="655" fill="#666">• Distributed job queue for ISR calc</text>
+                            <text x="420" y="670" fill="#666">• Retry policies &amp; exponential backoff</text>
+                            <text x="420" y="685" fill="#666">• Rate limiting &amp; concurrency control</text>
+                            
+                            <text x="410" y="710" font-size="11" font-weight="bold" fill="#333">🔄 Dataflow (optional):</text>
+                            <text x="420" y="725" fill="#666">• Batch processing for analytics</text>
+                            <text x="420" y="740" fill="#666">• ETL pipelines to BigQuery</text>
+                            <text x="420" y="755" fill="#666">• Auto-scaling workers</text>
+                        </g>
+
+                        <!-- Right column -->
+                        <g font-size="11">
+                            <rect x="730" y="510" width="300" height="280" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1" rx="4"></rect>
+                            <text x="880" y="530" font-size="12" font-weight="bold" text-anchor="middle" fill="#1b5e20">Data &amp; Storage Layer</text>
+                            
+                            <text x="740" y="555" font-size="11" font-weight="bold" fill="#333">💾 Databases:</text>
+                            <text x="750" y="570" fill="#666">• Cloud Spanner: Identity (global)</text>
+                            <text x="750" y="585" fill="#666">• Cloud SQL: Profile, Discussion</text>
+                            <text x="750" y="600" fill="#666">• Firestore: Values, Matrix (NoSQL)</text>
+                            <text x="750" y="615" fill="#666">• BigQuery: Analytics, Audit</text>
+                            
+                            <text x="740" y="640" font-size="11" font-weight="bold" fill="#333">⚡ Caching &amp; Search:</text>
+                            <text x="750" y="655" fill="#666">• Memorystore (Redis): ISR cache</text>
+                            <text x="750" y="670" fill="#666">• Vertex Search: Discussion index</text>
+                            <text x="750" y="685" fill="#666">• Vertex Vector DB: Embeddings</text>
+                            
+                            <text x="740" y="710" font-size="11" font-weight="bold" fill="#333">🧠 AI/ML Services:</text>
+                            <text x="750" y="725" fill="#666">• Vertex AI LLM (PaLM 2 API)</text>
+                            <text x="750" y="740" fill="#666">• Vertex AI Search &amp; Conversations</text>
+                            <text x="750" y="755" fill="#666">• Custom training pipelines</text>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+        </div>
+        
+        <!-- DIAGRAM 3: GCP SERVICE DEPENDENCIES (FULLY CORRECTED) -->
+        <div class="diagram-section">
+            <h2 class="section-title">3️⃣ GCP-Based Service Dependency Graph</h2>
+            <div class="canvas-container">
+                <svg width="1400" height="1280" viewBox="0 0 1400 1280">
+                    <defs>
+                        <!-- Synchronous REST calls (solid blue) -->
+                        <marker id="arrowSync" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#2196f3"></polygon>
+                        </marker>
+                        <!-- Asynchronous Pub/Sub events (dashed green) -->
+                        <marker id="arrowAsync" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#34a853"></polygon>
+                        </marker>
+                        <!-- Database read/write (dotted orange) -->
+                        <marker id="arrowData" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#ff9800"></polygon>
+                        </marker>
+                    </defs>
+                    
+                    <rect width="1400" height="1280" fill="#fafafa"></rect>
+                    
+                    <!-- Title -->
+                    <text x="700" y="25" font-size="16" font-weight="bold" text-anchor="middle" fill="#1f2937">GCP Services Integration Map - Complete Data Flow</text>
+                    
+                    <!-- ========== LAYER 1: ENTRY POINT ========== -->
+                    <g>
+                        <text x="50" y="70" font-size="11" font-weight="bold" fill="#999">LAYER 1: ENTRY POINT</text>
+                        <rect x="350" y="55" width="700" height="50" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="6"></rect>
+                        <text x="700" y="85" font-size="13" font-weight="bold" text-anchor="middle" fill="#e65100">☁️ Cloud Load Balancer + Cloud CDN (Global routing, DDoS protection)</text>
+                    </g>
+                    
+                    <!-- Arrow down -->
+                    <line x1="700" y1="105" x2="700" y2="140" stroke="#999" stroke-width="2" marker-end="url(#arrowSync)"></line>
+                    
+                    <!-- ========== LAYER 2: API GATEWAY ========== -->
+                    <g>
+                        <text x="50" y="155" font-size="11" font-weight="bold" fill="#999">LAYER 2: API GATEWAY</text>
+                        <rect x="350" y="140" width="700" height="50" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2" rx="6"></rect>
+                        <text x="700" y="180" font-size="13" font-weight="bold" text-anchor="middle" fill="#6a1b9a">🚪 Cloud Run (REST API Gateway - Single entry for all requests)</text>
+                    </g>
+                    
+                    <!-- Arrows from Cloud Run to Core Services -->
+                    <line x1="380" y1="191" x2="380" y2="246" stroke="#2196f3" stroke-width="2" marker-end="url(#arrowSync)"></line>
+                    <!-- Arrows from Cloud Run to Business Logic -->
+                    <line x1="700" y1="191" x2="700" y2="246" stroke="#2196f3" stroke-width="2" marker-end="url(#arrowSync)"></line>
+                    <!-- Arrows from Cloud Run to Supporting -->
+                    <line x1="1020" y1="191" x2="1020" y2="246" stroke="#2196f3" stroke-width="2" marker-end="url(#arrowSync)"></line>
+                    <!-- ========== LAYER 3: MICROSERVICES (GKE - 17+ services in 3 groups) ========== -->
+                    <g>
+                        <text x="50" y="235" font-size="11" font-weight="bold" fill="#999">LAYER 3: MICROSERVICES (GKE - services in 3 groups)</text>
+                        
+                        <!-- GROUP 1: CORE SERVICES (LEFT) -->
+                        <rect x="150" y="250" width="260" height="300" fill="#f5f5f5" stroke="#2e7d32" stroke-width="2" rx="6"></rect>
+                        <text x="280" y="267" font-size="12" font-weight="bold" text-anchor="middle" fill="#2e7d32">CORE SERVICES:</text>
+                        
+                        <rect x="170" y="280" width="85" height="50" fill="#ffebee" stroke="#c62828" stroke-width="2" rx="4"></rect>
+                        <text x="212" y="310" font-size="11" font-weight="bold" text-anchor="middle" fill="#b71c1c">Identity</text>
+                        
+                        <rect x="170" y="380" width="85" height="50" fill="#fce4ec" stroke="#880e4f" stroke-width="2" rx="4"></rect>
+                        <text x="212" y="410" font-size="11" font-weight="bold" text-anchor="middle" fill="#880e4f">Profile</text>
+                        
+                        <rect x="170" y="480" width="85" height="50" fill="#fce4ec" stroke="#880e4f" stroke-width="2" rx="4"></rect>
+                        <text x="212" y="510" font-size="11" font-weight="bold" text-anchor="middle" fill="#880e4f">Tasks</text>
+                        
+                        <rect x="305" y="280" width="85" height="50" fill="#ffebee" stroke="#c62828" stroke-width="2" rx="4"></rect>
+                        <text x="347" y="310" font-size="11" font-weight="bold" text-anchor="middle" fill="#b71c1c">Values</text>
+                        
+                        <rect x="305" y="380" width="85" height="50" fill="#e8eaf6" stroke="#283593" stroke-width="2" rx="4"></rect>
+                        <text x="347" y="410" font-size="11" font-weight="bold" text-anchor="middle" fill="#283593">Discussion</text>
+                        
+                        <rect x="305" y="480" width="85" height="50" fill="#e1f5fe" stroke="#01579b" stroke-width="2" rx="4"></rect>
+                        <text x="347" y="510" font-size="11" font-weight="bold" text-anchor="middle" fill="#01579b">Voting</text>
+                        
+                        <!-- GROUP 2: BUSINESS LOGIC (CENTER) -->
+                        <rect x="570" y="250" width="260" height="300" fill="#f5f5f5" stroke="#2e7d32" stroke-width="2" rx="6"></rect>
+                        <text x="700" y="267" font-size="12" font-weight="bold" text-anchor="middle" fill="#2e7d32">BUSINESS LOGIC:</text>
+                        
+                        <rect x="590" y="280" width="85" height="50" fill="#f8bbd0" stroke="#c2185b" stroke-width="2" rx="4"></rect>
+                        <text x="632" y="300" font-size="11" font-weight="bold" text-anchor="middle" fill="#00695c">Skills</text>
+                        <text x="632" y="315" font-size="11" font-weight="bold" text-anchor="middle" fill="#00695c">Calc</text>
+                        
+                        <rect x="590" y="380" width="85" height="50" fill="#f8bbd0" stroke="#c2185b" stroke-width="2" rx="4"></rect>
+                        <text x="632" y="400" font-size="11" font-weight="bold" text-anchor="middle" fill="#00695c">Micro-</text>
+                        <text x="632" y="415" font-size="11" font-weight="bold" text-anchor="middle" fill="#00695c">community</text>
+                        
+                        <rect x="590" y="480" width="85" height="50" fill="#e0f2f1" stroke="#00695c" stroke-width="2" rx="4"></rect>
+                        <text x="632" y="500" font-size="11" font-weight="bold" text-anchor="middle" fill="#00695c">Graph</text>
+                        <text x="632" y="515" font-size="11" font-weight="bold" text-anchor="middle" fill="#00695c">Layers</text>
+                        
+                        <rect x="725" y="280" width="85" height="50" fill="#ede7f6" stroke="#512da8" stroke-width="2" rx="4"></rect>
+                        <text x="767" y="310" font-size="11" font-weight="bold" text-anchor="middle" fill="#512da8">ISR Calc</text>
+                        
+                        <rect x="725" y="380" width="85" height="50" fill="#f8bbd0" stroke="#c2185b" stroke-width="2" rx="4"></rect>
+                        <text x="767" y="400" font-size="11" font-weight="bold" text-anchor="middle" fill="#c2185b">Contribution</text>
+                        <text x="767" y="415" font-size="11" font-weight="bold" text-anchor="middle" fill="#c2185b">Calc</text>
+                        
+                        <rect x="725" y="480" width="85" height="50" fill="#fff8e1" stroke="#f57f17" stroke-width="2" rx="4"></rect>
+                        <text x="767" y="500" font-size="11" font-weight="bold" text-anchor="middle" fill="#f57f17">Matrix</text>
+                        <text x="767" y="515" font-size="11" font-weight="bold" text-anchor="middle" fill="#f57f17">of Values</text>
+                        
+                        <!-- GROUP 3: SUPPORTING SERVICES (RIGHT) -->
+                        <rect x="990" y="250" width="260" height="300" fill="#f5f5f5" stroke="#2e7d32" stroke-width="2" rx="6"></rect>
+                        <text x="1120" y="267" font-size="12" font-weight="bold" text-anchor="middle" fill="#2e7d32">SUPPORTING:</text>
+
+                        <rect x="1010" y="280" width="85" height="50" fill="#ffebee" stroke="#c62828" stroke-width="2" rx="4"></rect>
+                        <text x="1052" y="310" font-size="11" font-weight="bold" text-anchor="middle" fill="#b71c1c">AI Assistant</text>
+
+                        <rect x="1145" y="280" width="85" height="50" fill="#c8e6c9" stroke="#2e7d32" stroke-width="2" rx="4"></rect>
+                        <text x="1187" y="310" font-size="11" font-weight="bold" text-anchor="middle" fill="#2e7d32">Notif</text>
+                        
+                        <rect x="1010" y="380" width="85" height="50" fill="#fff9c4" stroke="#f57f17" stroke-width="2" rx="4"></rect>
+                        <text x="1052" y="410" font-size="11" font-weight="bold" text-anchor="middle" fill="#f57f17">Analytics</text>
+                        
+                        <rect x="1145" y="380" width="85" height="50" fill="#bbdefb" stroke="#1976d2" stroke-width="2" rx="4"></rect>
+                        <text x="1187" y="410" font-size="11" font-weight="bold" text-anchor="middle" fill="#1976d2">Audit & Log</text>
+
+                        <rect x="1010" y="480" width="85" height="50" fill="#ffebee" stroke="#c62828" stroke-width="2" rx="4"></rect>
+                        <text x="1052" y="510" font-size="11" font-weight="bold" text-anchor="middle" fill="#b71c1c">+ More</text>
+                    </g>
+                    
+                    <!-- ========== INTER-SERVICE REST CALLS (Solid arrows) ========== -->
+                    <!-- Voting → Social Graph -->
+                    <!-- <path d="M 328 330 L 328 380 L 328 360 L 585 360" stroke="#2196f3" stroke-width="1.5" marker-end="url(#arrowSync)" fill="none"></path>
+                    <text x="340" y="350" font-size="9" fill="#2196f3" font-weight="bold">Graph data</text> -->
+                    
+                    <!-- Microcommunity → Social Graph (REST) -->
+                    <path d="M 615 430 L 615 480" stroke="#2196f3" stroke-width="1.5" marker-end="url(#arrowSync)" fill="none"></path>
+                    <text x="620" y="450" font-size="9" fill="#2196f3" font-weight="bold">REST call</text>
+                    
+                    <!-- Voting → ISR Calc (feedback) -->
+                    <!-- <path d="M 360 430 L 360 580, 705 580, 705 315, 720 315" stroke="#2196f3" stroke-width="1.5" marker-end="url(#arrowSync)" fill="none"></path>
+                    <text x="370" y="590" font-size="9" fill="#2196f3" font-weight="bold">Request</text> -->
+                    
+                    <!-- ISR Calc → -->
+                    <path d="M 755 331 L 755 377" stroke="#2196f3" stroke-width="1.5" marker-end="url(#arrowSync)" fill="none"></path>
+                    <text x="760" y="350" font-size="9" fill="#2196f3" font-weight="bold">Request</text>
+                    <path d="M 750 331 L 750 360, 635 360, 635 377" stroke="#2196f3" stroke-width="1.5" marker-end="url(#arrowSync)" fill="none"></path>
+                    <path d="M 745 331 L 745 355, 635 355, 635 332" stroke="#2196f3" stroke-width="1.5" marker-end="url(#arrowSync)" fill="none"></path>
+                    
+                    <!-- Contribution Calc → Matrix ov Values-->
+                    <!-- <path d="M 755 431 L 755 477" stroke="#2196f3" stroke-width="1.5" marker-end="url(#arrowSync)" fill="none"></path>
+                    <text x="760" y="450" font-size="9" fill="#2196f3" font-weight="bold">Request</text> -->
+
+                    <!-- ========== Pub/Sub (Dashes arrows) ========== -->
+                    <!-- <path d="M 585 380 L 540 380, 540 600, 370 600, 370 800, 315 800" stroke="#34a853" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowAsync)" fill="none"></path> -->
+                    <!-- <text x="430" y="610" font-size="10" fill="#34a853" font-weight="bold">Emit events</text> -->
+                    
+                    <path d="M 630 530 L 630 620, 390 620, 390 740, 235 740, 235 775" stroke="#34a853" stroke-width="2" stroke-dasharray="15,7" marker-end="url(#arrowAsync)" fill="none"></path>
+                    <!-- Arrow: Prifile → profile.updated -->
+                    <path d="M 215 430 L 215 450 125 450 125 590, 240 590, 240, 645" stroke="#34a853" stroke-width="2" stroke-dasharray="15,7" marker-end="url(#arrowAsync)" fill="none"></path>
+                    <!-- Arrow: Voting → question.created -->
+                    <path d="M 365 530 L 365 590, 490 590, 490 645" stroke="#34a853" stroke-width="2" stroke-dasharray="15,7" marker-end="url(#arrowAsync)" fill="none"></path>
+                    <!-- Arrow: Voting → vote.submitted -->
+                    <path d="M 350 530 L 350 865, 235 865, 235 895" stroke="#34a853" stroke-width="2" stroke-dasharray="15,7" marker-end="url(#arrowAsync)" fill="none"></path>
+                    <!-- Arrow: Matrix of Values publish results → values.defined -->
+                    <path d="M 770 530 L 770 865, 490 865, 490 895" stroke="#34a853" stroke-width="2" stroke-dasharray="15,7" marker-end="url(#arrowAsync)" fill="none"></path>
+                    <!-- <text x="790" y="735" font-size="10" fill="#34a853" font-weight="bold">Results →</text>
+                    <text x="780" y="750" font-size="10" fill="#34a853" font-weight="bold">isr.calculated</text> -->
+                    
+
+                    <!-- ISR Workers produce results isr.batch → isr.calculaded -->
+                    <path d="M 910 705 L 850 705, 850 740, 490 740, 490 770" stroke="#34a853" stroke-width="1.5" stroke-dasharray="10,5" marker-end="url(#arrowAsync)" fill="none"></path>
+                    <text x="790" y="735" font-size="10" fill="#34a853" font-weight="bold">Results →</text>
+                    <text x="780" y="750" font-size="10" fill="#34a853" font-weight="bold">isr.calculated</text>
+                    <!-- isr.calculated → Voting -->
+                    <path d="M 409 830 L 400 830, 400 450, 350 450, 350 475" stroke="#34a853" stroke-width="1.5" stroke-dasharray="10,5" marker-end="url(#arrowAsync)" fill="none"></path>
+                    <!-- isr.calculated → Analitics & Notif & Log-->
+                    <path d="M 573 830 L 900 830, 900 460, 1050 460, 1050 435" stroke="#34a853" stroke-width="1.5" stroke-dasharray="10,5" marker-end="url(#arrowAsync)" fill="none"></path>
+                    <path d="M 1050 460 L 1120 460, 1120 410, 1145 410" stroke="#34a853" stroke-width="1.5" stroke-dasharray="10,5" marker-end="url(#arrowAsync)" fill="none"></path>
+                    <path d="M 1120 410 L 1120 310, 1145 310" stroke="#34a853" stroke-width="1.5" stroke-dasharray="10,5" marker-end="url(#arrowAsync)" fill="none"></path>
+                    <!-- question.created → ISR calc -->
+                    <path d="M 570 695 L 700 695, 700 320, 720 320" stroke="#34a853" stroke-width="1.5" stroke-dasharray="10,5" marker-end="url(#arrowAsync)" fill="none"></path>
+                    <!-- vote.submitted → Tasks -->
+                    <path d="M 150 940 L 135 940, 135 505, 168 505" stroke="#34a853" stroke-width="1.5" stroke-dasharray="10,5" marker-end="url(#arrowAsync)" fill="none"></path>
+                    
+                    <!-- ========== LAYER 4: MESSAGING (Cloud Pub/Sub - Event Topics with Subscribers) ========== -->
+                    <g>
+                        <text x="50" y="635" font-size="11" font-weight="bold" fill="#999">LAYER 4: MESSAGING (Cloud Pub/Sub - Event Topics with Subscribers)</text>
+                        
+                        <!-- Topic 1: profile.updated -->
+                        <rect x="150" y="650" width="160" height="75" fill="#fff9c4" stroke="#f57f17" stroke-width="2" rx="4"></rect>
+                        <text x="230" y="670" font-size="10" font-weight="bold" text-anchor="middle" fill="#f57f17">profile.updated</text>
+                        <line x1="160" y1="680" x2="300" y2="680" stroke="#f57f17" stroke-width="0.5"></line>
+                        <text x="230" y="692" font-size="8" text-anchor="middle" fill="#666">Subscribers:</text>
+                        <text x="230" y="703" font-size="8" text-anchor="middle" fill="#666">• Notification</text>
+                        <text x="230" y="713" font-size="8" text-anchor="middle" fill="#666">• Log</text>
+                        
+                        <!-- Subscriber arrows FROM topic DOWN -->
+                        <!-- <path d="M 280 725 C 280 750, 473 775, 667 810" stroke="#34a853" stroke-width="1.5" stroke-dasharray="3,3" marker-end="url(#arrowAsync)" fill="none"></path> -->
+                        
+                        <!-- Topic 2: question.created -->
+                        <rect x="410" y="650" width="160" height="75" fill="#fff9c4" stroke="#f57f17" stroke-width="2" rx="4"></rect>
+                        <text x="490" y="670" font-size="10" font-weight="bold" text-anchor="middle" fill="#f57f17">question.created</text>
+                        <line x1="420" y1="680" x2="560" y2="680" stroke="#f57f17" stroke-width="0.5"></line>
+                        <text x="490" y="692" font-size="8" text-anchor="middle" fill="#666">Subscribers:</text>
+                        <text x="490" y="703" font-size="8" text-anchor="middle" fill="#666">• ISR calc • Microcommunity</text>
+                        <text x="490" y="713" font-size="8" text-anchor="middle" fill="#666">• Notification • Context Analyzer</text>
+                        
+                        <!-- Topic 3: microcommunity.determined -->
+                        <rect x="150" y="775" width="160" height="75" fill="#fff9c4" stroke="#f57f17" stroke-width="2" rx="4"></rect>
+                        <text x="230" y="795" font-size="10" font-weight="bold" text-anchor="middle" fill="#f57f17">microcommunity.det</text>
+                        <line x1="160" y1="805" x2="300" y2="805" stroke="#f57f17" stroke-width="0.5"></line>
+                        <text x="230" y="817" font-size="8" text-anchor="middle" fill="#666">Subscribers:</text>
+                        <text x="230" y="828" font-size="8" text-anchor="middle" fill="#666">• Matrix of Values</text>
+                        <text x="230" y="838" font-size="8" text-anchor="middle" fill="#666">• Skill Calc • ISR </text>
+                        
+                        <!-- Topic 4: isr.calculated -->
+                        <rect x="410" y="775" width="160" height="75" fill="#fff9c4" stroke="#f57f17" stroke-width="2" rx="4"></rect>
+                        <text x="490" y="795" font-size="10" font-weight="bold" text-anchor="middle" fill="#f57f17">isr.calculated</text>
+                        <line x1="420" y1="805" x2="560" y2="805" stroke="#f57f17" stroke-width="0.5"></line>
+                        <text x="490" y="817" font-size="8" text-anchor="middle" fill="#666">Subscribers:</text>
+                        <text x="490" y="828" font-size="8" text-anchor="middle" fill="#666">• Voting (cache)</text>
+                        <text x="490" y="838" font-size="8" text-anchor="middle" fill="#666">• Notif • Analytics</text>
+                        
+                        <!-- Topic 5: vote.submitted -->
+                        <rect x="150" y="900" width="160" height="75" fill="#fff9c4" stroke="#f57f17" stroke-width="2" rx="4"></rect>
+                        <text x="230" y="920" font-size="10" font-weight="bold" text-anchor="middle" fill="#f57f17">vote.submitted</text>
+                        <line x1="160" y1="930" x2="300" y2="930" stroke="#f57f17" stroke-width="0.5"></line>
+                        <text x="230" y="942" font-size="8" text-anchor="middle" fill="#666">Subscribers:</text>
+                        <text x="230" y="953" font-size="8" text-anchor="middle" fill="#666">• Tasks • Notif</text>
+                        <text x="230" y="963" font-size="8" text-anchor="middle" fill="#666">• Analytics • BigQuery</text>
+                        
+                        <!-- Topic 6: values.defined -->
+                        <rect x="410" y="900" width="160" height="75" fill="#fff9c4" stroke="#f57f17" stroke-width="2" rx="4"></rect>
+                        <text x="490" y="920" font-size="10" font-weight="bold" text-anchor="middle" fill="#f57f17">values.defined</text>
+                        <line x1="420" y1="930" x2="560" y2="930" stroke="#f57f17" stroke-width="0.5"></line>
+                        <text x="490" y="942" font-size="8" text-anchor="middle" fill="#666">Subscribers:</text>
+                        <text x="490" y="953" font-size="8" text-anchor="middle" fill="#666">• Contribution Calc</text>
+                        <text x="490" y="963" font-size="8" text-anchor="middle" fill="#666">• Notif • Log</text>
+                    </g>
+                    
+                    <!-- ========== LAYER 5: BACKGROUND JOBS (Cloud Tasks - Long-running) ========== -->
+                    <g>
+                        <text x="825" y="635" font-size="11" font-weight="bold" fill="#999">LAYER 5: BACKGROUND JOBS (Cloud Tasks - Long-running)</text>
+                        
+                        <rect x="915" y="650" width="260" height="100" fill="#ede7f6" stroke="#512da8" stroke-width="2" rx="4"></rect>
+                        <text x="1045" y="675" font-size="11" font-weight="bold" text-anchor="middle" fill="#512da8">isr.batch.calculation</text>
+                        <line x1="925" y1="685" x2="1165" y2="685" stroke="#512da8" stroke-width="0.5"></line>
+                        <text x="1045" y="700" font-size="9" text-anchor="middle" fill="#666">Jobs from:</text>
+                        <text x="1045" y="713" font-size="9" text-anchor="middle" fill="#666">microcommunity.det event</text>
+                        <text x="1045" y="726" font-size="9" text-anchor="middle" fill="#666">→ Vertex AI Workers</text>
+                        <text x="1045" y="739" font-size="9" text-anchor="middle" fill="#666">LLM + RAG (10m-3h, 5-50 pods)</text>
+                        
+                        <rect x="915" y="763" width="260" height="100" fill="#e1bee7" stroke="#7b1fa2" stroke-width="2" rx="4"></rect>
+                        <text x="1045" y="788" font-size="11" font-weight="bold" text-anchor="middle" fill="#7b1fa2">notifications.queue</text>
+                        <line x1="925" y1="798" x2="1165" y2="798" stroke="#7b1fa2" stroke-width="0.5"></line>
+                        <text x="1045" y="813" font-size="9" text-anchor="middle" fill="#666">Jobs from:</text>
+                        <text x="1045" y="826" font-size="9" text-anchor="middle" fill="#666">All services (Pub/Sub)</text>
+                        <text x="1045" y="839" font-size="9" text-anchor="middle" fill="#666">Email, Push, WebSocket</text>
+                        <text x="1045" y="852" font-size="9" text-anchor="middle" fill="#666">Retry with backoff</text>
+                        
+                        <rect x="915" y="875" width="260" height="100" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" rx="4"></rect>
+                        <text x="1045" y="900" font-size="11" font-weight="bold" text-anchor="middle" fill="#2e7d32">scheduled.jobs</text>
+                        <line x1="925" y1="910" x2="1165" y2="910" stroke="#2e7d32" stroke-width="0.5"></line>
+                        <text x="1045" y="925" font-size="9" text-anchor="middle" fill="#666">Periodic jobs:</text>
+                        <text x="1045" y="938" font-size="9" text-anchor="middle" fill="#666">Reconciliation</text>
+                        <text x="1045" y="951" font-size="9" text-anchor="middle" fill="#666">Data consistency</text>
+                        <text x="1045" y="964" font-size="9" text-anchor="middle" fill="#666">Analytics batch</text>
+                    </g>
+                    
+                    <!-- ========== LAYER 6: DATA LAYER (Polyglot Persistence) ========== -->
+                    <g>
+                        <text x="50" y="1035" font-size="11" font-weight="bold" fill="#999">LAYER 6: DATA LAYER (Polyglot Persistence - Each service owns its DB)</text>
+                        
+                        <!-- Database 1: Cloud Spanner -->
+                        <rect x="100" y="1050" width="105" height="85" fill="#fff9c4" stroke="#f57f17" stroke-width="2" rx="4"></rect>
+                        <text x="152" y="1075" font-size="11" font-weight="bold" text-anchor="middle" fill="#f57f17">Cloud</text>
+                        <text x="152" y="1090" font-size="11" font-weight="bold" text-anchor="middle" fill="#f57f17">Spanner</text>
+                        <line x1="110" y1="1100" x2="195" y2="1100" stroke="#f57f17" stroke-width="0.5"></line>
+                        <text x="152" y="1113" font-size="8" text-anchor="middle" fill="#666">← Identity</text>
+                        <text x="152" y="1124" font-size="8" text-anchor="middle" fill="#666">Global ACID</text>
+
+                        <!-- Arrow from Identity to Cloud Spanner -->
+                        <path d="M 169 305 L 70 305 L 70 1093 L 100 1093" stroke="#ff9800" stroke-width="1.5" stroke-dasharray="4,4" marker-end="url(#arrowData)" fill="none"></path>
+
+                        <!-- Database 2: Cloud SQL -->
+                        <rect x="282" y="1050" width="105" height="85" fill="#fff9c4" stroke="#f57f17" stroke-width="2" rx="4"></rect>
+                        <text x="334" y="1075" font-size="11" font-weight="bold" text-anchor="middle" fill="#f57f17">Cloud</text>
+                        <text x="334" y="1090" font-size="11" font-weight="bold" text-anchor="middle" fill="#f57f17">SQL</text>
+                        <line x1="292" y1="1100" x2="377" y2="1100" stroke="#f57f17" stroke-width="0.5"></line>
+                        <text x="334" y="1113" font-size="8" text-anchor="middle" fill="#666">← Profile</text>
+                        <text x="334" y="1124" font-size="8" text-anchor="middle" fill="#666">Discussion, Voting</text>
+
+                        <!-- Arrows from services to Cloud SQL -->
+                        <path d="M 169 395 L 100 395, 100 1020, 225 1020, 225 1093, 282 1093" stroke="#ff9800" stroke-width="1.5" stroke-dasharray="4,4" marker-end="url(#arrowData)" fill="none"></path>
+                        <path d="M 305 405 L 280 405, 280 505, 305 505, 280 505, 280 590, 334 590, 334 1050" stroke="#ff9800" stroke-width="1.5" stroke-dasharray="4,4" marker-end="url(#arrowData)" fill="none"></path>
+
+                        <!-- Database 3: Firestore -->
+                        <rect x="464" y="1050" width="105" height="85" fill="#bbdefb" stroke="#1976d2" stroke-width="2" rx="4"></rect>
+                        <text x="516" y="1075" font-size="11" font-weight="bold" text-anchor="middle" fill="#1976d2">Firestore</text>
+                        <line x1="474" y1="1100" x2="559" y2="1100" stroke="#1976d2" stroke-width="0.5"></line>
+                        <text x="516" y="1113" font-size="8" text-anchor="middle" fill="#666">• Values • Contrib</text>
+                        <text x="516" y="1124" font-size="8" text-anchor="middle" fill="#666">• Graph • Skills</text>
+
+                        <!-- Arrow from Values service to Firestore -->
+                        <path d="M 390 305 L 430 305, 430 600, 375 600, 375 1010, 430 1010, 430 1093, 464 1093" stroke="#ff9800" stroke-width="1.5" stroke-dasharray="4,4" marker-end="url(#arrowData)" fill="none"></path>
+                        <path d="M 725 405 L 715 405, 715 1020, 525 1020, 525 1050" stroke="#ff9800" stroke-width="1.5" stroke-dasharray="4,4" marker-end="url(#arrowData)" fill="none"></path>
+                        <path d="M 610 530 L 610 1010, 515 1010, 515 1050" stroke="#ff9800" stroke-width="1.5" stroke-dasharray="4,4" marker-end="url(#arrowData)" fill="none"></path>
+                        <path d="M 590 305 L 540 305, 540 600, 600 600, 600 1000, 505 1000, 505 1050" stroke="#ff9800" stroke-width="1.5" stroke-dasharray="4,4" marker-end="url(#arrowData)" fill="none"></path>
+
+                        <!-- Database 4: Memorystore (Redis) -->
+                        <rect x="646" y="1050" width="105" height="85" fill="#c8e6c9" stroke="#2e7d32" stroke-width="2" rx="4"></rect>
+                        <text x="698" y="1070" font-size="10" font-weight="bold" text-anchor="middle" fill="#2e7d32">Memorystore</text>
+                        <text x="698" y="1085" font-size="10" font-weight="bold" text-anchor="middle" fill="#2e7d32">(Redis)</text>
+                        <line x1="656" y1="1100" x2="741" y2="1100" stroke="#2e7d32" stroke-width="0.5"></line>
+                        <text x="698" y="1113" font-size="8" text-anchor="middle" fill="#666">← ISR Cache</text>
+                        <text x="698" y="1124" font-size="8" text-anchor="middle" fill="#666">5ms lookup</text>
+
+                        <!-- Arrow from ISR service to Memorystore -->
+                        <path d="M 720 295 L 690 295, 690 1050" stroke="#ff9800" stroke-width="1.5" stroke-dasharray="4,4" marker-end="url(#arrowData)" fill="none"></path>
+
+                        <!-- Arrow from Voting service reading cache -->
+                        <path d="M 390 505 L 470 505, 470 570, 680 570, 680 1050" stroke="#ff9800" stroke-width="1.5" stroke-dasharray="4,4" marker-end="url(#arrowData)" fill="none"></path>
+
+                        <!-- Database 5: BigQuery -->
+                        <rect x="828" y="1050" width="105" height="85" fill="#fff9c4" stroke="#f57f17" stroke-width="2" rx="4"></rect>
+                        <text x="880" y="1075" font-size="11" font-weight="bold" text-anchor="middle" fill="#f57f17">BigQuery</text>
+                        <line x1="838" y1="1100" x2="923" y2="1100" stroke="#f57f17" stroke-width="0.5"></line>
+                        <text x="880" y="1113" font-size="8" text-anchor="middle" fill="#666">← Analytics</text>
+                        <text x="880" y="1124" font-size="8" text-anchor="middle" fill="#666">Event Warehouse</text>
+
+                        <!-- Arrow from Analytics to BigQuery -->
+                        <path d="M 1010 405 L 880 405, 880 1050" stroke="#ff9800" stroke-width="1.5" stroke-dasharray="4,4" marker-end="url(#arrowData)" fill="none"></path>
+
+                        <!-- Database 6: Vertex Search -->
+                        <rect x="1010" y="1050" width="105" height="85" fill="#bbdefb" stroke="#1976d2" stroke-width="2" rx="4"></rect>
+                        <text x="1062" y="1070" font-size="10" font-weight="bold" text-anchor="middle" fill="#1976d2">Vertex</text>
+                        <text x="1062" y="1085" font-size="10" font-weight="bold" text-anchor="middle" fill="#1976d2">Search</text>
+                        <line x1="1020" y1="1100" x2="1105" y2="1100" stroke="#1976d2" stroke-width="0.5"></line>
+                        <text x="1062" y="1113" font-size="8" text-anchor="middle" fill="#666">← Discussion</text>
+                        <text x="1062" y="1124" font-size="8" text-anchor="middle" fill="#666">Full-text index</text>
+
+                        <!-- Arrow from Discussion to Vertex Search -->
+                        <path d="M 390 405 L 480 405, 480 560, 750 560, 750 990, 1062 990, 1062 1050" stroke="#ff9800" stroke-width="1.5" stroke-dasharray="4,4" marker-end="url(#arrowData)" fill="none"></path>
+
+                        <!-- Database 7: Vertex AI LLM -->
+                        <rect x="1192" y="1050" width="105" height="85" fill="#ffe0b2" stroke="#e65100" stroke-width="2" rx="4"></rect>
+                        <text x="1244" y="1070" font-size="10" font-weight="bold" text-anchor="middle" fill="#e65100">Vertex AI</text>
+                        <text x="1244" y="1085" font-size="10" font-weight="bold" text-anchor="middle" fill="#e65100">LLM + RAG</text>
+                        <line x1="1202" y1="1100" x2="1287" y2="1100" stroke="#e65100" stroke-width="0.5"></line>
+                        <text x="1244" y="1113" font-size="8" text-anchor="middle" fill="#666">← ISR, Assist</text>
+                        <text x="1244" y="1124" font-size="8" text-anchor="middle" fill="#666">PaLM 2 API</text>
+
+                        <!-- Arrow from ISR service to LLM -->
+                        <path d="M 810 305 L 855 305, 855 590, 1234 590, 1234 1050" stroke="#ff9800" stroke-width="1.5" stroke-dasharray="4,4" marker-end="url(#arrowData)" fill="none"></path>
+                        <path d="M 1010 305 L 955 305, 955 570, 1254 570, 1254 1050" stroke="#ff9800" stroke-width="1.5" stroke-dasharray="4,4" marker-end="url(#arrowData)" fill="none"></path>
+                    </g>
+                    
+                    <!-- ========== LEGEND ========== -->
+                    <g>
+                        <text x="50" y="1180" font-size="11" font-weight="bold" fill="#333">LEGEND:</text>
+                        
+                        <line x1="50" y1="1195" x2="100" y2="1195" stroke="#2196f3" stroke-width="2" marker-end="url(#arrowSync)"></line>
+                        <text x="110" y="1200" font-size="9" fill="#333">Synchronous REST calls (request/response)</text>
+                        
+                        <line x1="50" y1="1215" x2="100" y2="1215" stroke="#34a853" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowAsync)"></line>
+                        <text x="110" y="1220" font-size="9" fill="#333">Asynchronous Pub/Sub events (publish/subscribe)</text>
+                        
+                        <line x1="50" y1="1235" x2="100" y2="1235" stroke="#ff9800" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arrowData)"></line>
+                        <text x="110" y="1240" font-size="9" fill="#333">Data storage operations (read/write)</text>
+                    </g>
+                </svg>
+            </div>
+        </div>
+
+        
+        <!-- GCP PRODUCTS TECH STACK -->
+        <div class="diagram-section">
+            <h2 class="section-title">🛠️ Complete GCP Products Stack</h2>
+            
+            <div class="tech-stack">
+                <div class="stack-category">
+                    <h4>☁️ Compute &amp; Orchestration</h4>
+                    <div class="stack-items">
+                        <div class="stack-item"><strong>Google Kubernetes Engine (GKE)</strong> - Container orchestration for all 17+ microservices</div>
+                        <div class="stack-item"><strong>Cloud Run</strong> - Serverless REST API endpoints, webhooks, lightweight functions</div>
+                        <div class="stack-item"><strong>Vertex AI Workbench</strong> - Managed Jupyter notebooks for ISR calculation workers</div>
+                        <div class="stack-item"><strong>Cloud Functions</strong> - Event-driven serverless (optional for lightweight tasks)</div>
+                    </div>
+                </div>
+                
+                <div class="stack-category">
+                    <h4>📨 Messaging &amp; Event Streaming</h4>
+                    <div class="stack-items">
+                        <div class="stack-item"><strong>Cloud Pub/Sub</strong> - Event streaming (profile, votes, ISR, microcommunity events)</div>
+                        <div class="stack-item"><strong>Cloud Tasks</strong> - Distributed job queue for ISR calculations &amp; notifications</div>
+                        <div class="stack-item"><strong>Cloud Dataflow</strong> - Apache Beam-based batch processing &amp; ETL to BigQuery (optional)</div>
+                    </div>
+                </div>
+                
+                <div class="stack-category">
+                    <h4>💾 Data &amp; Databases</h4>
+                    <div class="stack-items">
+                        <div class="stack-item"><strong>Cloud Spanner</strong> - Global relational DB for Identity Service (ACID, global transactions)</div>
+                        <div class="stack-item"><strong>Cloud SQL</strong> - PostgreSQL for Profile, Discussion, Voting, Tasks services</div>
+                        <div class="stack-item"><strong>Firestore</strong> - NoSQL for Values, Community Matrix (real-time, flexible schema)</div>
+                        <div class="stack-item"><strong>Memorystore</strong> - Redis for ISR score caching (24h TTL), sessions</div>
+                        <div class="stack-item"><strong>BigQuery</strong> - Data warehouse for analytics, audit logs, event aggregation</div>
+                        <div class="stack-item"><strong>Cloud Storage</strong> - Object storage for backups, log archives</div>
+                    </div>
+                </div>
+                
+                <div class="stack-category">
+                    <h4>🧠 AI/ML &amp; Analytics</h4>
+                    <div class="stack-items">
+                        <div class="stack-item"><strong>Vertex AI LLM API (PaLM 2)</strong> - LLM inference for ISR calculation &amp; AI assistant</div>
+                        <div class="stack-item"><strong>Vertex AI Search &amp; Conversations</strong> - Semantic search for discussions, RAG support</div>
+                        <div class="stack-item"><strong>Vertex AI Vector Search</strong> - Graph embeddings for social relationships</div>
+                        <div class="stack-item"><strong>Vertex AI Training</strong> - Custom model training for microcommunity scoring</div>
+                    </div>
+                </div>
+                
+                <div class="stack-category">
+                    <h4>🔐 Security &amp; Monitoring</h4>
+                    <div class="stack-items">
+                        <div class="stack-item"><strong>Cloud Load Balancing</strong> - Global load balancing, SSL/TLS, DDoS protection</div>
+                        <div class="stack-item"><strong>Cloud Armor</strong> - DDoS &amp; WAF protection on Load Balancer</div>
+                        <div class="stack-item"><strong>Cloud KMS</strong> - Encryption key management</div>
+                        <div class="stack-item"><strong>Cloud IAM</strong> - Identity &amp; access management, service accounts</div>
+                        <div class="stack-item"><strong>Cloud Logging</strong> - Centralized logging for all services</div>
+                        <div class="stack-item"><strong>Cloud Monitoring</strong> - Metrics, dashboards, alerting</div>
+                        <div class="stack-item"><strong>Cloud Trace</strong> - Distributed request tracing</div>
+                    </div>
+                </div>
+                
+                <div class="stack-category">
+                    <h4>🌐 Networking &amp; Delivery</h4>
+                    <div class="stack-items">
+                        <div class="stack-item"><strong>Cloud CDN</strong> - Global content delivery network</div>
+                        <div class="stack-item"><strong>Cloud DNS</strong> - Managed DNS service</div>
+                        <div class="stack-item"><strong>VPC Service Controls</strong> - Perimeter security</div>
+                        <div class="stack-item"><strong>Cloud Interconnect</strong> - Dedicated connection (optional)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- GCP BENEFITS -->
+        <div class="diagram-section">
+            <h2 class="section-title">✨ GCP Architecture Benefits for ISR System</h2>
+            
+            <div class="benefit-box">
+                <div class="benefit-title">🚀 Scalability &amp; Performance</div>
+                <div class="benefit-text">
+                    GKE auto-scaling handles 10x growth (10K→100K users). Cloud Pub/Sub delivers millions of messages/sec. 
+                    Memorystore Redis caches ISR scores (5ms lookups). Vertex AI scales computation elastically (5-50 pods).
+                </div>
+            </div>
+            
+            <div class="benefit-box">
+                <div class="benefit-title">💰 Cost Optimization</div>
+                <div class="benefit-text">
+                    Cloud Run for API Gateway - pay-per-request (no idle cost). Cloud Tasks for jobs - managed service (no ops overhead). 
+                    BigQuery for analytics - serverless (no infrastructure). Memorystore on-demand scaling.
+                </div>
+            </div>
+            
+            <div class="benefit-box">
+                <div class="benefit-title">🔒 Security &amp; Compliance</div>
+                <div class="benefit-text">
+                    Cloud Armor DDoS protection. Cloud KMS encryption at rest/in-transit. IAM for fine-grained access control. 
+                    Cloud Audit Logs for compliance. Workload Identity for service authentication. VPC isolation.
+                </div>
+            </div>
+            
+            <div class="benefit-box">
+                <div class="benefit-title">📊 Data Analytics &amp; Insights</div>
+                <div class="benefit-text">
+                    BigQuery for real-time analytics on voting results, ISR distributions, user engagement. 
+                    Pub/Sub → BigQuery streaming inserts. Vertex AI Analytics for predictive insights.
+                </div>
+            </div>
+            
+            <div class="benefit-box">
+                <div class="benefit-title">🤖 AI/ML Capabilities</div>
+                <div class="benefit-text">
+                    Vertex AI LLM (PaLM 2) for ISR calculation context analysis. Vector Search for semantic understanding. 
+                    RAG integration with Vertex AI Search. Embedding computation for relationship graphs.
+                </div>
+            </div>
+            
+            <div class="benefit-box">
+                <div class="benefit-title">⚙️ Operational Excellence</div>
+                <div class="benefit-text">
+                    Cloud Monitoring + Trace + Logging = complete observability. Managed services reduce ops burden. 
+                    Automated patching &amp; updates. Cloud Build for CI/CD. Deployment Manager for IaC.
+                </div>
+            </div>
+            
+            <div class="benefit-box">
+                <div class="benefit-title">🔄 Event-Driven Architecture</div>
+                <div class="benefit-text">
+                    Cloud Pub/Sub for event sourcing (profile updates, votes, ISR scores). Guaranteed delivery with retries. 
+                    Dead-letter topics for failure handling. Durable event log for audit trail.
+                </div>
+            </div>
+            
+            <div class="benefit-box">
+                <div class="benefit-title">🌍 Global Availability</div>
+                <div class="benefit-text">
+                    Cloud Spanner for globally distributed data (ACID across regions). Cloud Load Balancing routes to nearest region. 
+                    Cloud CDN accelerates content delivery. Multi-region failover built-in.
+                </div>
+            </div>
+        </div>
+        
+        <!-- DEPLOYMENT SUMMARY -->
+        <div class="diagram-section">
+            <h2 class="section-title">📋 GCP Deployment Summary</h2>
+            
+            <table class="interaction-table">
+                <thead>
+                    <tr>
+                        <th>Layer</th>
+                        <th>GCP Product</th>
+                        <th>Services/Purpose</th>
+                        <th>Key Features</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Edge</strong></td>
+                        <td><span class="badge gke-badge">Cloud CDN</span></td>
+                        <td>Global content delivery, DDoS protection</td>
+                        <td>Edge caching, origin shield, 200+ PoPs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Load Balancing</strong></td>
+                        <td><span class="badge pub-sub-badge">Cloud Load Balancer</span></td>
+                        <td>Global load distribution, SSL/TLS</td>
+                        <td>Multi-region, Cloud Armor, instant failover</td>
+                    </tr>
+                    <tr>
+                        <td><strong>API Layer</strong></td>
+                        <td><span class="badge spanner-badge">Cloud Run + API Gateway</span></td>
+                        <td>REST endpoints, serverless functions</td>
+                        <td>Auto-scaling, pay-per-request, managed</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Microservices</strong></td>
+                        <td><span class="badge gke-badge">Google Kubernetes Engine</span></td>
+                        <td>17+ containerized microservices</td>
+                        <td>Auto-scaling, Istio service mesh, managed master</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Messaging</strong></td>
+                        <td><span class="badge pub-sub-badge">Cloud Pub/Sub</span></td>
+                        <td>Event streaming, topics, subscriptions</td>
+                        <td>At-least-once delivery, dead-letter, 1M+ msg/sec</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Task Queue</strong></td>
+                        <td><span class="badge dataflow-badge">Cloud Tasks</span></td>
+                        <td>ISR calculation jobs, notifications</td>
+                        <td>Distributed queue, retry policies, rate limiting</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Compute (Heavy)</strong></td>
+                        <td><span class="badge neo4j-badge">Vertex AI Workbench</span></td>
+                        <td>ISR workers (LLM + RAG)</td>
+                        <td>GPU/TPU, auto-scaling, managed notebooks</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Relational DB</strong></td>
+                        <td><span class="badge spanner-badge">Cloud Spanner</span></td>
+                        <td>Identity Service (global)</td>
+                        <td>ACID, global transactions, 99.99% SLA</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Relational DB</strong></td>
+                        <td><span class="badge spanner-badge">Cloud SQL</span></td>
+                        <td>Profile, Discussion, Voting, Tasks</td>
+                        <td>PostgreSQL, HA, automated backups, read replicas</td>
+                    </tr>
+                    <tr>
+                        <td><strong>NoSQL DB</strong></td>
+                        <td><span class="badge firestore-badge">Firestore</span></td>
+                        <td>Values, Community Matrix</td>
+                        <td>Real-time, flexible schema, ACID transactions</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cache</strong></td>
+                        <td><span class="badge memorystore-badge">Memorystore</span></td>
+                        <td>ISR score cache (24h), sessions</td>
+                        <td>Redis, 5ms latency, auto-failover</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Analytics</strong></td>
+                        <td><span class="badge bigquery-badge">BigQuery</span></td>
+                        <td>Data warehouse, analytics, audit</td>
+                        <td>Petabyte scale, real-time streaming inserts, ML</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Search</strong></td>
+                        <td><span class="badge neo4j-badge">Vertex AI Search</span></td>
+                        <td>Discussion semantic search, RAG</td>
+                        <td>Vector embeddings, semantic ranking</td>
+                    </tr>
+                    <tr>
+                        <td><strong>LLM</strong></td>
+                        <td><span class="badge spanner-badge">Vertex AI LLM API</span></td>
+                        <td>ISR calculation (PaLM 2), AI assistant</td>
+                        <td>Context analysis, RAG support, prompt tuning</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Monitoring</strong></td>
+                        <td><span class="badge gke-badge">Cloud Logging + Monitoring</span></td>
+                        <td>Centralized logs, metrics, traces</td>
+                        <td>Real-time dashboards, alerting, audit logs</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="notes">
+            <strong>💡 GCP Advantage for ISR:</strong> Integrated AI/ML capabilities (Vertex AI) eliminate need for separate LLM providers. 
+            Cloud Pub/Sub provides reliable event sourcing. Memorystore Redis ensures fast ISR score retrieval (5ms). BigQuery enables 
+            real-time analytics on voting patterns. Spanner provides global consistency for identity. Auto-scaling at every layer handles 10x growth.
+        </div>
+        
+        <footer>
+            <p><strong>ISR: Vote on Google Cloud Platform</strong> — Complete microservices architecture using GCP products</p>
+            <p style="margin-top: 15px; color: #999; font-size: 0.9em;">
+                Architecture leverages: GKE for container orchestration • Cloud Pub/Sub for event streaming • Cloud Tasks for job queue • 
+                Cloud Spanner + Cloud SQL + Firestore for polyglot persistence • Vertex AI for LLM &amp; embeddings • BigQuery for analytics • 
+                Memorystore for caching • Cloud Run for serverless APIs
+            </p>
+        </footer>
+    </div>
+
+
+</body></html>

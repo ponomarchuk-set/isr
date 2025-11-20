@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-5HZ42Q5T');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISR: Index of Social Responsibility</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="c11 doc-content">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5HZ42Q5T"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+        <!-- <header class="site-header">
+                <div class="container">
+            <a class="site-logo" id="home-btn" href="/index.html"><img src="/images/logo-t.png" alt="ISR homepage" height="40"></a>
+            <nav class="site-nav">
+                <a href="/wiki/ISR-Arendt-article.html">Article</a>
+                <a href="/wiki/society2050/index.html">Society2050</a>
+                <a href="/wiki/pitchdeck/index.html">Pitch Deck</a>
+                <span id="nav-arch">Architecture ▾</span>
+                <a href="/prototype/index.html">Prototype</a>
+                <a href="#" id="game-btn">Games</a>
+            </nav>
+                </div>
+        </header> -->
+  <header>
+    <h1>Index of Social Responsibility (ISR)</h1>
+    <p><strong>Evidence-based democracy for communities, organizations, and DAOs.</strong></p>
+  </header>
+
+  <section>
+    <h2>What is ISR?</h2>
+    <p>
+      ISR is a platform that transforms group decision-making. Unlike one-person-one-vote systems, ISR calculates a <strong>dynamic influence score</strong> for each member, combining <strong>expertise, contribution, and contextual relevance</strong>. Every vote reflects the true wisdom and responsibility of your community.
+    </p>
+  </section>
+
+  <section>
+    <h2>How It Works</h2>
+    <ul>
+      <li>
+        <strong>Dynamic Microcommunities:</strong> Relevant stakeholders automatically gathered for each issue—directly, not by static representation.
+      </li>
+      <li>
+        <strong>Matrix of Values:</strong> Community-defined core values used to assess contribution and build social karma.
+      </li>
+      <li>
+        <strong>Weighted Voting:</strong> Member influence adapts by proven expertise, history, and real engagement.
+      </li>
+      <li>
+        <strong>Transparency:</strong> All actions logged and influence calculated—responsibility and privacy balanced by design.
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>The Philosophy</h2>
+    <p>
+      Inspired by Hannah Arendt's political theory, ISR aims to restore authentic participation and collective agency in the digital world. We create space for plurality, new beginnings, and shared responsibility using ethical AI as infrastructure—not as a substitute for human judgment.
+    </p>
+  </section>
+
+  <section>
+    <h2>Who needs ISR?</h2>
+    <ul>
+      <li>Nonprofits &amp; civic groups seeking fair, smarter governance</li>
+      <li>Cooperatives &amp; DAOs needing transparent and merit-based decisions</li>
+      <li>Organizations wanting to combine direct democracy with expert guidance</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Get Started</h2>
+    <ul>
+      <li><a href="/prototype/index.html">Try ISR for free</a></li>
+      <li><a href="#">Research &amp; technology</a></li>
+      <!-- <li><a href="#">Contact &amp; community</a></li> -->
+    </ul>
+    <button onclick="showAdr()">Contact &amp; community</button>
+    <p id="adr-misce"></p>
+  </section>
+
+  <footer class="site-footer">
+      <div class="doc-content centered">
+          <small>© 2024-2025 Sergii Ponomarchuk</small>
+      </div>
+  </footer>
+  <script src="/site-nav.js"></script>
+  <script>
+      function showAdr() {
+          // A simple obfuscation that basic bots won't parse
+          const ur = 'sergii.';
+          const dom = 'gmai';
+          const adr = ur + 'ponomarchuk' + '@' + dom + 'l.' + 'com';
+          const plh = document.getElementById('adr-misce');
+          plh.innerHTML = `<div><form action="https://formspree.io/f/mdkyygkd" method="POST">
+                <label>Your name:<input type="name" name="name"></label><br>
+                <label>Your email:<input type="email" name="email"></label><br>
+                <label>Your message:<textarea name="message"></textarea></label><br>
+                <button type="submit">Send</button>
+              </form>
+          </div><br>
+          <a href="mailto:${adr}">${adr}</a>`;
+      }
+      </script>
+  </body>
+</html>

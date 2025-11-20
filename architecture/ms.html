@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISR: Vote - Microservices Architecture Diagram</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
+            padding: 30px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        h1 {
+            color: #1e3c72;
+            font-size: 2.8em;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+        
+        .description {
+            color: #888;
+            font-size: 1em;
+            margin-top: 10px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+        
+        .diagram-section {
+            margin-bottom: 50px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            border: 2px solid #ddd;
+        }
+        
+        .section-title {
+            font-size: 1.6em;
+            color: #1e3c72;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #2a5298;
+            padding-bottom: 10px;
+        }
+        
+        .canvas-container {
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            overflow-x: auto;
+            margin-bottom: 20px;
+        }
+        
+        svg {
+            background: white;
+            display: block;
+        }
+        
+        .legend {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: white;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+        }
+        
+        .legend-color {
+            width: 25px;
+            height: 25px;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+        
+        .legend-text {
+            font-size: 0.95em;
+            color: #333;
+        }
+        
+        .interaction-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+        }
+        
+        .interaction-table th {
+            background: #2a5298;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .interaction-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .interaction-table tr:hover {
+            background: #f0f4ff;
+        }
+        
+        .sync-badge {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        
+        .async-badge {
+            display: inline-block;
+            background: #4ecdc4;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        
+        .kafka-badge {
+            display: inline-block;
+            background: #231f20;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        
+        .rmq-badge {
+            display: inline-block;
+            background: #ff6600;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        
+        .notes {
+            background: #fffacd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 4px;
+            font-size: 0.95em;
+            color: #333;
+        }
+        
+        .flow-description {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 4px;
+            font-size: 0.95em;
+            color: #1565c0;
+            line-height: 1.6;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ddd;
+            color: #666;
+            font-size: 0.95em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏗️ ISR: Vote Microservices Architecture</h1>
+            <p class="subtitle">Event-Driven Microservices with Visual Service Dependencies</p>
+            <p class="description">
+                Complete microservices design with 17+ services, event-driven communication, polyglot persistence,
+                and automated workflows for democratic decision-making using the Index of Social Responsibility (ISR).
+            </p>
+        </div>
+        
+        <!-- DIAGRAM 1: HIGH-LEVEL ARCHITECTURE LAYERS -->
+        <div class="diagram-section">
+            <h2 class="section-title">1️⃣ High-Level Architecture Layers</h2>
+            <div class="canvas-container">
+                <svg width="1200" height="600" viewBox="0 0 1200 600">
+                    <!-- Background -->
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#f0f7ff;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#e0f0ff;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <rect width="1200" height="600" fill="url(#grad1)"/>
+                    
+                    <!-- Layer 1: Client -->
+                    <rect x="50" y="30" width="1100" height="70" fill="#e3f2fd" stroke="#2196f3" stroke-width="2" rx="8"/>
+                    <text x="600" y="65" font-size="20" font-weight="bold" text-anchor="middle" fill="#1565c0">👥 Client Applications (Web, Mobile)</text>
+                    
+                    <!-- Arrows Down -->
+                    <line x1="600" y1="100" x2="600" y2="120" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+                    
+                    <!-- Layer 2: API Gateway -->
+                    <rect x="50" y="120" width="1100" height="70" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="8"/>
+                    <text x="600" y="155" font-size="18" font-weight="bold" text-anchor="middle" fill="#e65100">🚪 API Gateway (Kong/AWS)</text>
+                    <text x="600" y="175" font-size="12" text-anchor="middle" fill="#666">Authentication • Rate Limiting • Request Routing • Load Balancing</text>
+                    
+                    <!-- Arrows Down -->
+                    <line x1="600" y1="190" x2="600" y2="210" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+                    
+                    <!-- Layer 3: Microservices -->
+                    <rect x="50" y="210" width="1100" height="150" fill="#f3e5f5" stroke="#9c27b0" stroke-width="2" rx="8"/>
+                    <text x="600" y="240" font-size="18" font-weight="bold" text-anchor="middle" fill="#6a1b9a">⚙️ Microservices Layer (17+ Services)</text>
+                    
+                    <g font-size="11">
+                        <!-- Row 1 -->
+                        <rect x="70" y="260" width="80" height="45" fill="#ffebee" stroke="#c62828" stroke-width="1" rx="4"/>
+                        <text x="110" y="280" text-anchor="middle" fill="#b71c1c" font-weight="bold">Identity</text>
+                        <text x="110" y="295" text-anchor="middle" fill="#666" font-size="9">Auth</text>
+                        
+                        <rect x="170" y="260" width="80" height="45" fill="#fce4ec" stroke="#880e4f" stroke-width="1" rx="4"/>
+                        <text x="210" y="280" text-anchor="middle" fill="#880e4f" font-weight="bold">Profile</text>
+                        <text x="210" y="295" text-anchor="middle" fill="#666" font-size="9">User Data</text>
+                        
+                        <rect x="270" y="260" width="80" height="45" fill="#e8eaf6" stroke="#283593" stroke-width="1" rx="4"/>
+                        <text x="310" y="280" text-anchor="middle" fill="#283593" font-weight="bold">Discussion</text>
+                        <text x="310" y="295" text-anchor="middle" fill="#666" font-size="9">Chat</text>
+                        
+                        <rect x="370" y="260" width="80" height="45" fill="#e1f5fe" stroke="#01579b" stroke-width="1" rx="4"/>
+                        <text x="410" y="280" text-anchor="middle" fill="#01579b" font-weight="bold">Voting</text>
+                        <text x="410" y="295" text-anchor="middle" fill="#666" font-size="9">Vote Mgmt</text>
+                        
+                        <rect x="470" y="260" width="80" height="45" fill="#e0f2f1" stroke="#00695c" stroke-width="1" rx="4"/>
+                        <text x="510" y="280" text-anchor="middle" fill="#00695c" font-weight="bold">Social Graph</text>
+                        <text x="510" y="295" text-anchor="middle" fill="#666" font-size="9">Neo4j</text>
+                        
+                        <rect x="560" y="260" width="100" height="45" fill="#fff8e1" stroke="#f57f17" stroke-width="1" rx="4"/>
+                        <text x="610" y="280" text-anchor="middle" fill="#f57f17" font-weight="bold">Microcommunity</text>
+                        <text x="610" y="295" text-anchor="middle" fill="#666" font-size="9">Detection</text>
+                        
+                        <rect x="670" y="260" width="80" height="45" fill="#ede7f6" stroke="#512da8" stroke-width="1" rx="4"/>
+                        <text x="710" y="280" text-anchor="middle" fill="#512da8" font-weight="bold">ISR Calc</text>
+                        <text x="710" y="295" text-anchor="middle" fill="#666" font-size="9">LLM+RAG</text>
+                        
+                        <rect x="760" y="260" width="100" height="45" fill="#f1f8e9" stroke="#558b2f" stroke-width="1" rx="4"/>
+                        <text x="810" y="280" text-anchor="middle" fill="#558b2f" font-weight="bold">Matrix of Values</text>
+                        <text x="810" y="295" text-anchor="middle" fill="#666" font-size="9">Aggregation</text>
+                        
+                        <rect x="870" y="260" width="80" height="45" fill="#fbe9e7" stroke="#d84315" stroke-width="1" rx="4"/>
+                        <text x="910" y="280" text-anchor="middle" fill="#d84315" font-weight="bold">Task Service</text>
+                        <text x="910" y="295" text-anchor="middle" fill="#666" font-size="9">Management</text>
+                        
+                        <rect x="970" y="260" width="80" height="45" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="1" rx="4"/>
+                        <text x="1010" y="280" text-anchor="middle" fill="#7b1fa2" font-weight="bold">AI Assistant</text>
+                        <text x="1010" y="295" text-anchor="middle" fill="#666" font-size="9">Gemini</text>
+                        
+                        <rect x="1070" y="260" width="60" height="45" fill="#eceff1" stroke="#37474f" stroke-width="1" rx="4"/>
+                        <text x="1100" y="280" text-anchor="middle" fill="#37474f" font-weight="bold">+ More</text>
+                        <text x="1100" y="295" text-anchor="middle" fill="#666" font-size="9">7 Services</text>
+                    </g>
+                    
+                    <text x="110" y="325" font-size="12" fill="#666">Core Services</text>
+                    <text x="810" y="325" font-size="12" fill="#666">Computation Services</text>
+                    <text x="1010" y="325" font-size="12" fill="#666">Supporting Services</text>
+                    
+                    <!-- Arrows Down -->
+                    <line x1="600" y1="360" x2="600" y2="380" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+                    
+                    <!-- Layer 4: Messaging & Data -->
+                    <rect x="50" y="380" width="520" height="80" fill="#f0f4c3" stroke="#827717" stroke-width="2" rx="8"/>
+                    <text x="310" y="410" font-size="16" font-weight="bold" text-anchor="middle" fill="#558b2f">📨 Messaging Layer</text>
+                    <text x="310" y="435" font-size="11" text-anchor="middle" fill="#666">Kafka (Events) • RabbitMQ (Task Queue) • Redis (Cache)</text>
+                    <text x="310" y="450" font-size="10" text-anchor="middle" fill="#888" font-style="italic">Async Communication, Event Sourcing, Pre-calculated ISR Storage</text>
+                    
+                    <rect x="630" y="380" width="520" height="80" fill="#c8e6c9" stroke="#2e7d32" stroke-width="2" rx="8"/>
+                    <text x="890" y="410" font-size="16" font-weight="bold" text-anchor="middle" fill="#1b5e20">💾 Data Layer</text>
+                    <text x="890" y="435" font-size="11" text-anchor="middle" fill="#666">PostgreSQL • Neo4j • MongoDB • Elasticsearch</text>
+                    <text x="890" y="450" font-size="10" text-anchor="middle" fill="#888" font-style="italic">Database per Service (Polyglot Persistence)</text>
+                    
+                    <!-- Arrow definitions -->
+                    <defs>
+                        <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+                            <polygon points="0 0, 10 5, 0 10" fill="#666" />
+                        </marker>
+                    </defs>
+                </svg>
+            </div>
+            
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #ff6b6b;"></div>
+                    <span class="legend-text">Core Identity Services</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #4ecdc4;"></div>
+                    <span class="legend-text">Core Business Services</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #95e1d3;"></div>
+                    <span class="legend-text">Graph & Computation Services</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #ffd89b;"></div>
+                    <span class="legend-text">Supporting Services</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- DIAGRAM 2: SERVICE INTERACTION & DATA FLOW -->
+        <div class="diagram-section">
+            <h2 class="section-title">2️⃣ Service Interactions & Data Flow</h2>
+            <div class="canvas-container">
+                <svg width="1200" height="800" viewBox="0 0 1200 800">
+                    <defs>
+                        <marker id="arrowRed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#ff6b6b" />
+                        </marker>
+                        <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#4ecdc4" />
+                        </marker>
+                        <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#2196f3" />
+                        </marker>
+                        <marker id="arrowOrange" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#ff9800" />
+                        </marker>
+                    </defs>
+                    
+                    <!-- Background -->
+                    <rect width="1200" height="800" fill="#fafafa"/>
+                    
+                    <!-- Title -->
+                    <text x="600" y="30" font-size="18" font-weight="bold" text-anchor="middle" fill="#1e3c72">Workflow: Question Posted → ISR Calculated → Vote Ready</text>
+                    
+                    <!-- Step 1: User Creates Question -->
+                    <g>
+                        <rect x="50" y="140" width="140" height="100" fill="#ffe0b2" stroke="#ff9800" stroke-width="2" rx="8"/>
+                        <circle cx="120" cy="170" r="20" fill="#ff9800" stroke="white" stroke-width="2"/>
+                        <text x="120" y="177" font-size="24" text-anchor="middle" fill="white">👤</text>
+                        <text x="120" y="215" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">User Creates</text>
+                        <text x="120" y="230" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">Question</text>
+                    </g>
+                    
+                    <!-- Arrow 1 -->
+                    <path d="M 190 190 L 265 190" stroke="#ff9800" stroke-width="2" fill="none" marker-end="url(#arrowOrange)"/>
+                    <text x="200" y="180" font-size="10" fill="#ff9800" font-weight="bold">REST POST</text>
+                    
+                    <!-- Step 2: API Gateway & Voting Service -->
+                    <g>
+                        <rect x="270" y="140" width="140" height="100" fill="#bbdefb" stroke="#2196f3" stroke-width="2" rx="8"/>
+                        <circle cx="340" cy="170" r="20" fill="#2196f3" stroke="white" stroke-width="2"/>
+                        <text x="340" y="177" font-size="24" text-anchor="middle" fill="white">🗳️</text>
+                        <text x="340" y="215" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">Voting</text>
+                        <text x="340" y="230" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">Service</text>
+                    </g>
+                    
+                    <!-- Arrow 2: Kafka Event -->
+                    <path d="M 410 190 L 485 190" stroke="#4ecdc4" stroke-width="3" fill="none" marker-end="url(#arrowGreen)" stroke-dasharray="5,5"/>
+                    <text x="415" y="180" font-size="10" fill="#4ecdc4" font-weight="bold">Kafka Event</text>
+                    <text x="415" y="205" font-size="10" fill="#4ecdc4">question</text>
+                    <text x="445" y="215" font-size="10" fill="#4ecdc4">.created</text>
+                    
+                    <!-- Step 3: Microcommunity Service -->
+                    <g>
+                        <rect x="490" y="140" width="140" height="100" fill="#c8e6c9" stroke="#4caf50" stroke-width="2" rx="8"/>
+                        <circle cx="560" cy="170" r="20" fill="#4caf50" stroke="white" stroke-width="2"/>
+                        <text x="560" y="177" font-size="24" text-anchor="middle" fill="white">👥</text>
+                        <text x="560" y="215" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">Microcommunity</text>
+                        <text x="560" y="230" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">Determination</text>
+                    </g>
+                    
+                    <!-- Connections from Microcommunity -->
+                    <path d="M 560 140 L 560 90" stroke="#9c27b0" stroke-width="2" fill="none" marker-end="url(#arrowOrange)"/>
+                    <text x="580" y="105" font-size="10" font-weight="bold" fill="#9c27b0">REST calls</text>
+                    <text x="580" y="117" font-size="10" fill="#9c27b0">Social Graph +</text>
+                    <text x="580" y="127" font-size="10" fill="#9c27b0">Profile Service</text>
+                    
+                    <!-- Arrow 3: Values Matrix -->
+                    <path d="M 630 190 L 715 190" stroke="#4ecdc4" stroke-width="3" fill="none" marker-end="url(#arrowGreen)" stroke-dasharray="5,5"/>
+                    <text x="635" y="180" font-size="10" fill="#4ecdc4" font-weight="bold">Kafka Event</text>
+                    <text x="635" y="205" font-size="10" fill="#4ecdc4">microcommunity</text>
+                    <text x="660" y="215" font-size="10" fill="#4ecdc4">.determined</text>
+                    
+                    <!-- Step 4: Community Values Matrix -->
+                    <g>
+                        <rect x="720" y="140" width="140" height="100" fill="#f8bbd0" stroke="#c2185b" stroke-width="2" rx="8"/>
+                        <circle cx="790" cy="170" r="20" fill="#c2185b" stroke="white" stroke-width="2"/>
+                        <text x="790" y="177" font-size="24" text-anchor="middle" fill="white">📊</text>
+                        <text x="790" y="215" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">Matrix of Values</text>
+                    </g>
+                    
+                    <!-- Arrow 4: ISR Calculation -->
+                    <path d="M 860 190 L 945 190" stroke="#4ecdc4" stroke-width="3" fill="none" marker-end="url(#arrowGreen)" stroke-dasharray="5,5"/>
+                    <text x="865" y="180" font-size="10" fill="#4ecdc4" font-weight="bold">Kafka Event</text>
+                    <text x="865" y="205" font-size="10" fill="#4ecdc4">values.matrix</text>
+                    <text x="895" y="215" font-size="10" fill="#4ecdc4">.computed</text>
+                    
+                    <!-- Step 5: ISR Calculation Service -->
+                    <g>
+                        <rect x="950" y="140" width="140" height="100" fill="#e1bee7" stroke="#7b1fa2" stroke-width="2" rx="8"/>
+                        <circle cx="1020" cy="170" r="20" fill="#7b1fa2" stroke="white" stroke-width="2"/>
+                        <text x="1020" y="177" font-size="24" text-anchor="middle" fill="white">🧠</text>
+                        <text x="1020" y="215" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">ISR Calculation</text>
+                        <text x="1020" y="230" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">(LLM+RAG)</text>
+                    </g>
+                    
+                    <!-- Arrow 5: RabbitMQ Queue -->
+                    <path d="M 1020 240 L 1020 280" stroke="#ff9800" stroke-width="3" fill="none" marker-end="url(#arrowOrange)" stroke-dasharray="5,5"/>
+                    <text x="1040" y="265" font-size="10" fill="#ff9800" font-weight="bold">RabbitMQ Job Queue</text>
+                    
+                    <!-- Step 6: ISR Workers -->
+                    <g>
+                        <rect x="930" y="280" width="180" height="100" fill="#fff9c4" stroke="#f57f17" stroke-width="2" rx="8"/>
+                        <circle cx="1020" cy="310" r="20" fill="#f57f17" stroke="white" stroke-width="2"/>
+                        <text x="1020" y="317" font-size="24" text-anchor="middle" fill="white">⚡</text>
+                        <text x="1020" y="355" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">ISR Workers (5-50)</text>
+                        <text x="1020" y="370" font-size="10" text-anchor="middle" fill="#666">Auto-scaling based on load</text>
+                    </g>
+                    
+                    <!-- Arrow 6: Cache & Event -->
+                    <path d="M 930 360 L 630 360" stroke="#4ecdc4" stroke-width="3" fill="none" marker-end="url(#arrowGreen)" stroke-dasharray="5,5"/>
+                    <text x="760" y="355" font-size="10" fill="#4ecdc4" font-weight="bold">Redis Cache</text>
+                    <text x="760" y="370" font-size="9" fill="#4ecdc4">+ Kafka Event</text>
+                    
+                    <!-- Step 7: Cache & Ready for Voting -->
+                    <g>
+                        <rect x="490" y="280" width="140" height="100" fill="#c8e6c9" stroke="#2e7d32" stroke-width="2" rx="8"/>
+                        <circle cx="560" cy="310" r="20" fill="#2e7d32" stroke="white" stroke-width="2"/>
+                        <text x="560" y="317" font-size="24" text-anchor="middle" fill="white">✓</text>
+                        <text x="560" y="355" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">ISR Scores</text>
+                        <text x="560" y="370" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">Cached & Ready</text>
+                    </g>
+                    
+                    <!-- Arrow back to voting -->
+                    <path d="M 490 360 L 340 360 340 245" stroke="#ff6b6b" stroke-width="2" fill="none" marker-end="url(#arrowRed)"/>
+                    <text x="360" y="355" font-size="11" fill="#ff6b6b" font-weight="bold">ISR weights used</text>
+                    <text x="360" y="370" font-size="11" fill="#ff6b6b" font-weight="bold">for vote aggregation</text>
+                    
+                    <!-- Time annotations -->
+                    <g font-size="10" fill="#999" font-style="italic">
+                        <text x="120" y="260">T0:00</text>
+                        <text x="300" y="260">T0:01</text>
+                        <text x="550" y="260">T0:02</text>
+                        <text x="780" y="260">T0:03</text>
+                        <text x="980" y="260">T0:05</text>
+                        <text x="530" y="400">T0:10-180min</text>
+                    </g>
+                    
+                    <!-- Process Flow Box -->
+                    <rect x="50" y="450" width="1100" height="320" fill="#f5f5f5" stroke="#999" stroke-width="1" rx="8"/>
+                    
+                    <text x="100" y="480" font-size="16" font-weight="bold" fill="#1e3c72">📋 Detailed Service Interactions:</text>
+                    
+                    <!-- Interaction 1 -->
+                    <rect x="70" y="500" width="480" height="140" fill="white" stroke="#2196f3" stroke-width="1" rx="4"/>
+                    <text x="80" y="520" font-size="12" font-weight="bold" fill="#1565c0">🔵 SYNCHRONOUS (REST/gRPC) - Low Latency</text>
+                    <text x="80" y="540" font-size="10" fill="#333"><tspan font-weight="bold">API Gateway ↔ Identity:</tspan> Token validation (20ms)</text>
+                    <text x="80" y="555" font-size="10" fill="#333"><tspan font-weight="bold">Voting ↔ Redis Cache:</tspan> ISR score retrieval (5ms)</text>
+                    <text x="80" y="570" font-size="10" fill="#333"><tspan font-weight="bold">Discussion ↔ Profile:</tspan> User data fetch for display (50ms)</text>
+                    <text x="80" y="585" font-size="10" fill="#333"><tspan font-weight="bold">Microcommunity ↔ Social Graph:</tspan> Graph traversal (REST calls, 2-5 sec)</text>
+                    <text x="80" y="620" font-size="9" fill="#666" font-style="italic">Total vote submission: ~150ms (within 2-second requirement)</text>
+                    
+                    <!-- Interaction 2 -->
+                    <rect x="650" y="500" width="480" height="140" fill="white" stroke="#4ecdc4" stroke-width="1" rx="4"/>
+                    <text x="660" y="520" font-size="12" font-weight="bold" fill="#00897b">🟢 ASYNCHRONOUS (Kafka) - Event Streaming</text>
+                    <text x="660" y="540" font-size="10" fill="#333"><tspan font-weight="bold">profile.updated →</tspan> Social Graph, ISR, Microcommunity (triggers recalc)</text>
+                    <text x="660" y="555" font-size="10" fill="#333"><tspan font-weight="bold">question.created →</tspan> Microcommunity Determination, Analytics</text>
+                    <text x="660" y="570" font-size="10" fill="#333"><tspan font-weight="bold">microcommunity.determined →</tspan> Values Matrix, ISR Calc (queue jobs)</text>
+                    <text x="660" y="585" font-size="10" fill="#333"><tspan font-weight="bold">isr.calculated →</tspan> Voting (cache), Analytics, Task Service</text>
+                    <text x="660" y="620" font-size="9" fill="#666" font-style="italic">Event order preserved, full audit trail, reliable delivery</text>
+                    
+                    <!-- Interaction 3 -->
+                    <rect x="70" y="660" width="1060" height="100" fill="white" stroke="#ff9800" stroke-width="1" rx="4"/>
+                    <text x="80" y="680" font-size="12" font-weight="bold" fill="#e65100">🟠 TASK QUEUE (RabbitMQ) - Background Jobs</text>
+                    <text x="80" y="700" font-size="10" fill="#333"><tspan font-weight="bold">isr.batch.calculation:</tspan> Microcommunity → ISR Worker Pool (5-50 instances)</text>
+                    <text x="80" y="720" font-size="10" fill="#333"><tspan font-weight="bold">Job payload:</tspan> Question context, user profile, community values matrix, LLM + RAG analysis, score computation</text>
+                    <text x="80" y="740" font-size="10" fill="#333"><tspan font-weight="bold">Duration:</tspan> 10 minutes to 3 hours per job | <tspan font-weight="bold">Retry:</tspan> Exponential backoff, DLQ after 3 failures</text>
+                </svg>
+            </div>
+        </div>
+        
+        <!-- DIAGRAM 3: SERVICE DEPENDENCY GRAPH -->
+        <div class="diagram-section">
+            <h2 class="section-title">3️⃣ Service Dependencies & Relationships</h2>
+            <div class="canvas-container">
+                <svg width="1200" height="900" viewBox="0 0 1200 900">
+                    <defs>
+                        <marker id="arrowDep" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#333" />
+                        </marker>
+                        <marker id="arrowAsync" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#4ecdc4" />
+                        </marker>
+                    </defs>
+                    
+                    <rect width="1200" height="900" fill="#fafafa"/>
+                    
+                    <!-- Legend -->
+                    <text x="50" y="25" font-size="14" font-weight="bold" fill="#1e3c72">Legend:</text>
+                    <line x1="180" y1="20" x2="220" y2="20" stroke="#333" stroke-width="2" marker-end="url(#arrowDep)"/>
+                    <text x="230" y="25" font-size="11" fill="#666">Synchronous (REST)</text>
+                    
+                    <line x1="450" y1="20" x2="490" y2="20" stroke="#4ecdc4" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowAsync)"/>
+                    <text x="500" y="25" font-size="11" fill="#666">Asynchronous (Kafka)</text>
+                    
+                    <rect x="800" y="10" width="15" height="15" fill="#ff9800" rx="2"/>
+                    <text x="825" y="22" font-size="11" fill="#666">RabbitMQ Task Queue</text>
+                    
+                    <!-- Central Services -->
+                    <!-- API Gateway (top center) -->
+                    <g>
+                        <rect x="50" y="50" width="980" height="50" fill="#fff3e0" stroke="#ff9800" stroke-width="2" rx="6"/>
+                        <text x="520" y="80" font-size="14" font-weight="bold" text-anchor="middle" fill="#e65100">API Gateway</text>
+                    </g>
+                    
+                    <!-- Row 1: Core Services -->
+                    <g>
+                        <!-- Identity Service -->
+                        <rect x="50" y="150" width="130" height="60" fill="#ffebee" stroke="#c62828" stroke-width="2" rx="6"/>
+                        <text x="115" y="175" font-size="12" font-weight="bold" text-anchor="middle" fill="#b71c1c">Identity</text>
+                        <text x="115" y="195" font-size="10" text-anchor="middle" fill="#666">Service</text>
+                    </g>
+                    
+                    <g>
+                        <!-- Profile Service -->
+                        <rect x="220" y="150" width="130" height="60" fill="#fce4ec" stroke="#880e4f" stroke-width="2" rx="6"/>
+                        <text x="285" y="175" font-size="12" font-weight="bold" text-anchor="middle" fill="#880e4f">Profile</text>
+                        <text x="285" y="195" font-size="10" text-anchor="middle" fill="#666">Service</text>
+                    </g>
+                    
+                    <g>
+                        <!-- Discussion Service -->
+                        <rect x="390" y="150" width="130" height="60" fill="#e8eaf6" stroke="#283593" stroke-width="2" rx="6"/>
+                        <text x="455" y="175" font-size="12" font-weight="bold" text-anchor="middle" fill="#283593">Discussion &</text>
+                        <text x="455" y="195" font-size="10" text-anchor="middle" fill="#666">Chat Service</text>
+                    </g>
+                    
+                    <g>
+                        <!-- Voting Service -->
+                        <rect x="560" y="150" width="130" height="60" fill="#e1f5fe" stroke="#01579b" stroke-width="2" rx="6"/>
+                        <text x="625" y="175" font-size="12" font-weight="bold" text-anchor="middle" fill="#01579b">Voting</text>
+                        <text x="625" y="195" font-size="10" text-anchor="middle" fill="#666">Service</text>
+                    </g>
+                    
+                    <g>
+                        <!-- Task Service -->
+                        <rect x="770" y="150" width="90" height="60" fill="#fbe9e7" stroke="#d84315" stroke-width="2" rx="6"/>
+                        <text x="815" y="175" font-size="12" font-weight="bold" text-anchor="middle" fill="#d84315">Task</text>
+                        <text x="815" y="195" font-size="10" text-anchor="middle" fill="#666">Service</text>
+                    </g>
+                    
+                    <g>
+                        <!-- AI Assistant -->
+                        <rect x="900" y="150" width="130" height="60" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2" rx="6"/>
+                        <text x="965" y="175" font-size="12" font-weight="bold" text-anchor="middle" fill="#7b1fa2">AI Assistant</text>
+                        <text x="965" y="195" font-size="10" text-anchor="middle" fill="#666">Service</text>
+                    </g>
+                    
+                    <!-- Connections from API Gateway to Core Services -->
+                    <line x1="115" y1="100" x2="115" y2="145" stroke="#333" stroke-width="2" marker-end="url(#arrowDep)"/>
+                    <line x1="285" y1="100" x2="285" y2="145" stroke="#333" stroke-width="2" marker-end="url(#arrowDep)"/>
+                    <line x1="455" y1="100" x2="455" y2="145" stroke="#333" stroke-width="2" marker-end="url(#arrowDep)"/>
+                    <line x1="625" y1="100" x2="625" y2="145" stroke="#333" stroke-width="2" marker-end="url(#arrowDep)"/>
+                    <line x1="795" y1="100" x2="795" y2="145" stroke="#333" stroke-width="2" marker-end="url(#arrowDep)"/>
+                    <line x1="965" y1="100" x2="965" y2="145" stroke="#333" stroke-width="2" marker-end="url(#arrowDep)"/>
+                    
+                    <!-- Row 2: Computation & Business Logic Services -->
+                    <g>
+                        <!-- Social Graph -->
+                        <rect x="50" y="280" width="100" height="60" fill="#e0f2f1" stroke="#00695c" stroke-width="2" rx="6"/>
+                        <text x="100" y="305" font-size="12" font-weight="bold" text-anchor="middle" fill="#00695c">Social Graph</text>
+                        <text x="100" y="325" font-size="10" text-anchor="middle" fill="#666">(Neo4j)</text>
+                    </g>
+                    
+                    <g>
+                        <!-- Microcommunity -->
+                        <rect x="220" y="280" width="110" height="60" fill="#fff8e1" stroke="#f57f17" stroke-width="2" rx="6"/>
+                        <text x="275" y="305" font-size="12" font-weight="bold" text-anchor="middle" fill="#f57f17">Microcommunity</text>
+                        <text x="275" y="325" font-size="10" text-anchor="middle" fill="#666">Determination</text>
+                    </g>
+                    
+                    <g>
+                        <!-- Community Values Matrix -->
+                        <rect x="410" y="280" width="110" height="60" fill="#f8bbd0" stroke="#c2185b" stroke-width="2" rx="6"/>
+                        <text x="465" y="305" font-size="12" font-weight="bold" text-anchor="middle" fill="#c2185b">Matrix of Values</text>
+                        <text x="465" y="325" font-size="10" text-anchor="middle" fill="#666">Calculation</text>
+                    </g>
+                    
+                    <g>
+                        <!-- ISR Calculation -->
+                        <rect x="580" y="280" width="120" height="60" fill="#ede7f6" stroke="#512da8" stroke-width="2" rx="6"/>
+                        <text x="640" y="305" font-size="12" font-weight="bold" text-anchor="middle" fill="#512da8">ISR Calculation</text>
+                        <text x="640" y="325" font-size="10" text-anchor="middle" fill="#666">(LLM+RAG)</text>
+                    </g>
+                    
+                    <g>
+                        <!-- User Values -->
+                        <rect x="760" y="280" width="110" height="60" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" rx="6"/>
+                        <text x="815" y="305" font-size="12" font-weight="bold" text-anchor="middle" fill="#2e7d32">Skills & Actions</text>
+                        <text x="815" y="325" font-size="10" text-anchor="middle" fill="#666">Assessment</text>
+                    </g>
+                    
+                    <g>
+                        <!-- Notification -->
+                        <rect x="900" y="280" width="130" height="60" fill="#ffe0b2" stroke="#e65100" stroke-width="2" rx="6"/>
+                        <text x="965" y="305" font-size="12" font-weight="bold" text-anchor="middle" fill="#e65100">Notification</text>
+                        <text x="965" y="325" font-size="10" text-anchor="middle" fill="#666">Service</text>
+                    </g>
+                    
+                    <!-- Key Dependencies -->
+                    <!-- Profile → Social Graph -->
+                    <path d="M 265 210 L 265 240 115 240 115 275" stroke="#4ecdc4" stroke-width="2" stroke-dasharray="5,5" fill="none" marker-end="url(#arrowAsync)"/>
+                    <text x="170" y="235" font-size="9" fill="#4ecdc4">profile.updated</text>
+                    
+                    <!-- Profile → Microcommunity -->
+                    <path d="M 285 210 L 285 275" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowDep)"/>
+                    <text x="290" y="235" font-size="9" fill="#333" font-weight="bold">REST call</text>
+                    
+                    <!-- Voting → Microcommunity -->
+                    <path d="M 605 210 L 605 250 305 250 305 275" stroke="#4ecdc4" stroke-width="2" stroke-dasharray="5,5" fill="none" marker-end="url(#arrowAsync)"/>
+                    <text x="430" y="245" font-size="9" fill="#4ecdc4">question.created</text>
+                    
+                    <!-- Microcommunity → Social Graph -->
+                    <path d="M 220 310 L 155 310" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowDep)"/>
+                    <text x="155" y="300" font-size="9" fill="#333">Graph queries</text>
+                    
+                    <!-- Microcommunity → Values Matrix -->
+                    <path d="M 330 310 L 405 310" stroke="#4ecdc4" stroke-width="2" stroke-dasharray="5,5" fill="none" marker-end="url(#arrowAsync)"/>
+                    <text x="335" y="295" font-size="9" fill="#4ecdc4">microcommunity</text>
+                    <text x="335" y="307" font-size="9" fill="#4ecdc4">.determined</text>
+                    
+                    <!-- Values Matrix → ISR Calculation -->
+                    <path d="M 520 310 L 575 310" stroke="#ff9800" stroke-width="2.5" fill="none" marker-end="url(#arrowDep)"/>
+                    <text x="525" y="300" font-size="9" fill="#ff9800" font-weight="bold">Queue Jobs</text>
+                    <text x="525" y="325" font-size="9" fill="#ff9800" font-weight="bold">(RabbitMQ)</text>
+                    
+                    <!-- Values Matrix → ISR Calculation -->
+                    <path d="M 760 310 L 705 310" stroke="#ff9800" stroke-width="2.5" fill="none" marker-end="url(#arrowDep)"/>
+                    <text x="705" y="300" font-size="9" fill="#ff9800" font-weight="bold">Queue Jobs</text>
+                    <text x="705" y="325" font-size="9" fill="#ff9800" font-weight="bold">(RabbitMQ)</text>
+                    
+                    <!-- ISR → Voting -->
+                    <path d="M 625 280 L 625 215" stroke="#4ecdc4" stroke-width="2" stroke-dasharray="5,5" fill="none" marker-end="url(#arrowAsync)"/>
+                    <text x="635" y="250" font-size="9" fill="#4ecdc4">isr.calculated</text>
+                    
+                    <!-- User Values → Values Matrix -->
+                    <path d="M 280 340 L 280 380 795 380 795 345" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowDep)"/>
+                    <text x="530" y="375" font-size="9" fill="#333" font-weight="bold">REST call</text>
+                    
+                    <!-- Voting & Task Service -->
+                    <path d="M 690 180 L 765 180" stroke="#4ecdc4" stroke-width="2" stroke-dasharray="5,5" fill="none" marker-end="url(#arrowAsync)"/>
+                    <text x="695" y="170" font-size="9" fill="#4ecdc4">vote.submitted</text>
+                    
+                    <!-- Multiple → Notification -->
+                    <!-- <path d="M 860 310 L 900 310" stroke="#4ecdc4" stroke-width="2" stroke-dasharray="5,5" fill="none" marker-end="url(#arrowAsync)"/>
+                    <text x="850" y="300" font-size="8" fill="#4ecdc4">Events</text> -->
+                    
+                    <!-- Row 3: Supporting Services -->
+                    <g>
+                        <text x="50" y="450" font-size="12" font-weight="bold" fill="#666">Supporting Services:</text>
+                        
+                        <rect x="50" y="470" width="100" height="50" fill="#eceff1" stroke="#37474f" stroke-width="1" rx="4"/>
+                        <text x="100" y="495" font-size="11" text-anchor="middle" fill="#333">Analytics</text>
+                        
+                        <rect x="170" y="470" width="100" height="50" fill="#eceff1" stroke="#37474f" stroke-width="1" rx="4"/>
+                        <text x="220" y="495" font-size="11" text-anchor="middle" fill="#333">Sentiment</text>
+                        <text x="220" y="510" font-size="9" text-anchor="middle" fill="#666">Analysis</text>
+                        
+                        <rect x="290" y="470" width="100" height="50" fill="#eceff1" stroke="#37474f" stroke-width="1" rx="4"/>
+                        <text x="340" y="495" font-size="11" text-anchor="middle" fill="#333">Audit &</text>
+                        <text x="340" y="510" font-size="9" text-anchor="middle" fill="#666">Logging</text>
+                        
+                        <rect x="410" y="470" width="100" height="50" fill="#eceff1" stroke="#37474f" stroke-width="1" rx="4"/>
+                        <text x="460" y="495" font-size="11" text-anchor="middle" fill="#333">Context</text>
+                        <text x="460" y="510" font-size="9" text-anchor="middle" fill="#666">Analyzer</text>
+                        
+                        <rect x="530" y="470" width="100" height="50" fill="#eceff1" stroke="#37474f" stroke-width="1" rx="4"/>
+                        <text x="580" y="495" font-size="11" text-anchor="middle" fill="#333">Search &</text>
+                        <text x="580" y="510" font-size="9" text-anchor="middle" fill="#666">Indexing</text>
+                        
+                        <rect x="650" y="470" width="100" height="50" fill="#eceff1" stroke="#37474f" stroke-width="1" rx="4"/>
+                        <text x="700" y="495" font-size="11" text-anchor="middle" fill="#333">Recommend</text>
+                        <text x="700" y="510" font-size="9" text-anchor="middle" fill="#666">Engine</text>
+                    </g>
+                    
+                    <!-- Data Layer -->
+                    <g>
+                        <text x="50" y="580" font-size="12" font-weight="bold" fill="#666">Data Layer (Database per Service):</text>
+                        
+                        <rect x="50" y="600" width="100" height="60" fill="#c8e6c9" stroke="#2e7d32" stroke-width="1" rx="4"/>
+                        <text x="100" y="625" font-size="11" text-anchor="middle" fill="#1b5e20" font-weight="bold">PostgreSQL</text>
+                        <text x="100" y="640" font-size="9" text-anchor="middle" fill="#666">Profile, Voting,</text>
+                        <text x="100" y="653" font-size="9" text-anchor="middle" fill="#666">Discussion, Task</text>
+                        
+                        <rect x="170" y="600" width="100" height="60" fill="#b3e5fc" stroke="#01579b" stroke-width="1" rx="4"/>
+                        <text x="220" y="625" font-size="11" text-anchor="middle" fill="#01579b" font-weight="bold">Neo4j</text>
+                        <text x="220" y="640" font-size="9" text-anchor="middle" fill="#666">Social Graph</text>
+                        <text x="220" y="653" font-size="9" text-anchor="middle" fill="#666">Relationships</text>
+                        
+                        <rect x="290" y="600" width="100" height="60" fill="#f1f8e9" stroke="#558b2f" stroke-width="1" rx="4"/>
+                        <text x="340" y="625" font-size="11" text-anchor="middle" fill="#558b2f" font-weight="bold">MongoDB</text>
+                        <text x="340" y="640" font-size="9" text-anchor="middle" fill="#666">Values, Matrix,</text>
+                        <text x="340" y="653" font-size="9" text-anchor="middle" fill="#666">Flexible Data</text>
+                        
+                        <rect x="410" y="600" width="100" height="60" fill="#ffe0b2" stroke="#e65100" stroke-width="1" rx="4"/>
+                        <text x="460" y="625" font-size="11" text-anchor="middle" fill="#e65100" font-weight="bold">Redis</text>
+                        <text x="460" y="640" font-size="9" text-anchor="middle" fill="#666">ISR Cache,</text>
+                        <text x="460" y="653" font-size="9" text-anchor="middle" fill="#666">Sessions</text>
+                        
+                        <rect x="530" y="600" width="100" height="60" fill="#fce4ec" stroke="#c2185b" stroke-width="1" rx="4"/>
+                        <text x="580" y="625" font-size="11" text-anchor="middle" fill="#c2185b" font-weight="bold">Elasticsearch</text>
+                        <text x="580" y="640" font-size="9" text-anchor="middle" fill="#666">Analytics,</text>
+                        <text x="580" y="653" font-size="9" text-anchor="middle" fill="#666">Logging</text>
+                        
+                        <rect x="650" y="600" width="100" height="60" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="1" rx="4"/>
+                        <text x="700" y="625" font-size="11" text-anchor="middle" fill="#7b1fa2" font-weight="bold">Kafka</text>
+                        <text x="700" y="640" font-size="9" text-anchor="middle" fill="#666">Event Stream,</text>
+                        <text x="700" y="653" font-size="9" text-anchor="middle" fill="#666">Audit Trail</text>
+                        
+                        <rect x="770" y="600" width="100" height="60" fill="#fff9c4" stroke="#f57f17" stroke-width="1" rx="4"/>
+                        <text x="820" y="625" font-size="11" text-anchor="middle" fill="#f57f17" font-weight="bold">RabbitMQ</text>
+                        <text x="820" y="640" font-size="9" text-anchor="middle" fill="#666">Task Queue,</text>
+                        <text x="820" y="653" font-size="9" text-anchor="middle" fill="#666">Jobs</text>
+                    </g>
+                    
+                    <!-- Summary -->
+                    <rect x="50" y="700" width="1100" height="180" fill="#e8eaf6" stroke="#3f51b5" stroke-width="2" rx="8"/>
+                    <text x="70" y="730" font-size="14" font-weight="bold" fill="#1a237e">Key Architecture Patterns:</text>
+                    
+                    <g font-size="11">
+                        <text x="70" y="755" fill="#333">✓ <tspan font-weight="bold">Event-Driven:</tspan> Kafka for high-throughput events with full audit trail</text>
+                        <text x="70" y="775" fill="#333">✓ <tspan font-weight="bold">Database per Service:</tspan> Polyglot persistence (PostgreSQL, Neo4j, MongoDB, Redis, Elasticsearch)</text>
+                        <text x="70" y="795" fill="#333">✓ <tspan font-weight="bold">Eventual Consistency:</tspan> Outbox pattern ensures no lost events, services reach consistency within few minutes</text>
+                        <text x="70" y="815" fill="#333">✓ <tspan font-weight="bold">Saga Pattern:</tspan> Long-running workflows (Question → Microcommunity → Values Matrix → ISR → Vote Ready) coordinated via events</text>
+                        <text x="70" y="835" fill="#333">✓ <tspan font-weight="bold">Async Computation:</tspan> ISR calculation (10 min - 3 hours) doesn't block voting, uses RabbitMQ job queue with auto-scaling workers</text>
+                        <text x="70" y="855" fill="#333">✓ <tspan font-weight="bold">Circuit Breaker:</tspan> Protects external service calls (Bank ID, Дія.Підпис, Gemini) with fallback modes</text>
+                    </g>
+                </svg>
+            </div>
+        </div>
+        
+        <!-- DIAGRAM 4: DATA FLOW - ISR Calculation Timeline -->
+        <div class="diagram-section">
+            <h2 class="section-title">4️⃣ ISR Calculation Timeline & Data Flow</h2>
+            <div class="canvas-container">
+                <svg width="1200" height="500" viewBox="0 0 1200 500">
+                    <defs>
+                        <marker id="arrowTimeline" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#2196f3" />
+                        </marker>
+                    </defs>
+                    
+                    <rect width="1200" height="500" fill="#fafafa"/>
+                    
+                    <!-- Timeline -->
+                    <line x1="50" y1="100" x2="1150" y2="100" stroke="#2196f3" stroke-width="3"/>
+                    
+                    <!-- T0: User creates question -->
+                    <circle cx="100" cy="100" r="8" fill="#ff9800" stroke="white" stroke-width="2"/>
+                    <rect x="50" y="130" width="100" height="80" fill="#ffe0b2" stroke="#ff9800" stroke-width="2" rx="4"/>
+                    <text x="100" y="155" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">T0:00</text>
+                    <text x="100" y="172" font-size="10" text-anchor="middle" fill="#333">User Creates</text>
+                    <text x="100" y="187" font-size="10" text-anchor="middle" fill="#333">Question</text>
+                    <text x="100" y="205" font-size="9" text-anchor="middle" fill="#666" font-style="italic">Vote Service</text>
+                    
+                    <!-- T1: Microcommunity -->
+                    <circle cx="250" cy="100" r="8" fill="#4caf50" stroke="white" stroke-width="2"/>
+                    <rect x="200" y="130" width="100" height="80" fill="#c8e6c9" stroke="#4caf50" stroke-width="2" rx="4"/>
+                    <text x="250" y="155" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">T0:01-05</text>
+                    <text x="250" y="172" font-size="10" text-anchor="middle" fill="#333">Microcommunity</text>
+                    <text x="250" y="187" font-size="10" text-anchor="middle" fill="#333">Determined</text>
+                    <text x="250" y="205" font-size="9" text-anchor="middle" fill="#666" font-style="italic">Graph Queries</text>
+                    
+                    <!-- T2: Values Matrix -->
+                    <circle cx="400" cy="100" r="8" fill="#c2185b" stroke="white" stroke-width="2"/>
+                    <rect x="350" y="130" width="100" height="80" fill="#f8bbd0" stroke="#c2185b" stroke-width="2" rx="4"/>
+                    <text x="400" y="155" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">T0:06</text>
+                    <text x="400" y="172" font-size="10" text-anchor="middle" fill="#333">Community</text>
+                    <text x="400" y="187" font-size="10" text-anchor="middle" fill="#333">Values Matrix</text>
+                    <text x="400" y="205" font-size="9" text-anchor="middle" fill="#666" font-style="italic">Aggregation</text>
+                    
+                    <!-- T3: Queue ISR Jobs -->
+                    <circle cx="550" cy="100" r="8" fill="#f57f17" stroke="white" stroke-width="2"/>
+                    <rect x="500" y="130" width="100" height="80" fill="#fff9c4" stroke="#f57f17" stroke-width="2" rx="4"/>
+                    <text x="550" y="155" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">T0:07</text>
+                    <text x="550" y="172" font-size="10" text-anchor="middle" fill="#333">Queue ISR</text>
+                    <text x="550" y="187" font-size="10" text-anchor="middle" fill="#333">Calc Jobs</text>
+                    <text x="550" y="205" font-size="9" text-anchor="middle" fill="#666" font-style="italic">RabbitMQ Pool</text>
+                    
+                    <!-- T4: ISR Calculation (long) -->
+                    <circle cx="800" cy="100" r="8" fill="#7b1fa2" stroke="white" stroke-width="2"/>
+                    <rect x="650" y="130" width="300" height="80" fill="#e1bee7" stroke="#7b1fa2" stroke-width="2" rx="4"/>
+                    <text x="800" y="145" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">T0:10 - T180:00</text>
+                    <text x="800" y="162" font-size="10" text-anchor="middle" fill="#333">ISR Calculation</text>
+                    <text x="800" y="177" font-size="10" text-anchor="middle" fill="#333">(Workers: 5-50 instances)</text>
+                    <text x="800" y="192" font-size="10" text-anchor="middle" fill="#333">LLM Analysis + RAG + Score</text>
+                    <text x="800" y="207" font-size="9" text-anchor="middle" fill="#666" font-style="italic">10 min - 3 hours per community</text>
+                    
+                    <!-- T5: Results Cached -->
+                    <circle cx="1050" cy="100" r="8" fill="#2e7d32" stroke="white" stroke-width="2"/>
+                    <rect x="1000" y="130" width="100" height="80" fill="#c8e6c9" stroke="#2e7d32" stroke-width="2" rx="4"/>
+                    <text x="1050" y="155" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">T180:01+</text>
+                    <text x="1050" y="172" font-size="10" text-anchor="middle" fill="#333">ISR Scores</text>
+                    <text x="1050" y="187" font-size="10" text-anchor="middle" fill="#333">Cached & Ready</text>
+                    <text x="1050" y="205" font-size="9" text-anchor="middle" fill="#666" font-style="italic">Redis + DB</text>
+                    
+                    <!-- Arrows between steps -->
+                    <path d="M 150 100 L 200 100" stroke="#2196f3" stroke-width="2" fill="none" marker-end="url(#arrowTimeline)"/>
+                    <path d="M 300 100 L 350 100" stroke="#2196f3" stroke-width="2" fill="none" marker-end="url(#arrowTimeline)"/>
+                    <path d="M 450 100 L 500 100" stroke="#2196f3" stroke-width="2" fill="none" marker-end="url(#arrowTimeline)"/>
+                    <path d="M 600 100 L 650 100" stroke="#2196f3" stroke-width="2" fill="none" marker-end="url(#arrowTimeline)"/>
+                    <path d="M 950 100 L 1000 100" stroke="#2196f3" stroke-width="2" fill="none" marker-end="url(#arrowTimeline)"/>
+                    
+                    <!-- Data flow details -->
+                    <g font-size="10">
+                        <text x="50" y="340" fill="#333" font-weight="bold">Data in Transit:</text>
+                        <text x="50" y="360" fill="#666">1. Profile + Geographic Location → Microcommunity Service (find proximity users)</text>
+                        <text x="50" y="378" fill="#666">2. Member list + Belongingness degree → Values Matrix Service (aggregate values)</text>
+                        <text x="50" y="396" fill="#666">3. Question context + User profile + Community matrix → ISR Workers (LLM + RAG analysis)</text>
+                        <text x="50" y="414" fill="#666">4. ISR Score (per user, per question) → Redis Cache (24h TTL) + PostgreSQL DB</text>
+                        <text x="50" y="432" fill="#666">5. ISR Score + Vote → Weighted aggregation: sum(vote × ISR_weight) / sum(ISR_weights)</text>
+                    </g>
+                </svg>
+            </div>
+            
+            <div class="flow-description">
+                <strong>⏱️ Timeline Breakdown:</strong><br>
+                <strong>T0:00 -</strong> User submits question → Voting Service stores, emits event<br>
+                <strong>T0:01-05 -</strong> Microcommunity Service graphs graph queries (2-5 sec)<br>
+                <strong>T0:06 -</strong> Values Matrix Service aggregates member values (1-2 sec)<br>
+                <strong>T0:07 -</strong> ISR Service queues jobs to RabbitMQ<br>
+                <strong>T0:10-180:00 -</strong> Workers process jobs in parallel (10 min - 3 hours)<br>
+                <strong>T180:01+ -</strong> ISR scores cached in Redis, ready for vote weighting<br>
+                <strong>Vote Submission:</strong> ~150ms (doesn't wait for ISR, uses cached score or marked "pending weight")
+            </div>
+        </div>
+        
+        <!-- SUMMARY TABLE -->
+        <div class="diagram-section">
+            <h2 class="section-title">📊 Service Communication Summary</h2>
+            <table class="interaction-table">
+                <thead>
+                    <tr>
+                        <th>Communication Type</th>
+                        <th>Services Involved</th>
+                        <th>Protocol/Broker</th>
+                        <th>Latency</th>
+                        <th>Use Case</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="sync-badge">SYNC</span></td>
+                        <td>API Gateway ↔ All Services</td>
+                        <td>REST/gRPC</td>
+                        <td>20-50ms</td>
+                        <td>Request routing, authentication</td>
+                    </tr>
+                    <tr>
+                        <td><span class="sync-badge">SYNC</span></td>
+                        <td>Voting ↔ Redis Cache</td>
+                        <td>gRPC</td>
+                        <td>5ms</td>
+                        <td>Retrieve pre-calculated ISR scores</td>
+                    </tr>
+                    <tr>
+                        <td><span class="sync-badge">SYNC</span></td>
+                        <td>Microcommunity ↔ Social Graph</td>
+                        <td>REST</td>
+                        <td>500-2000ms</td>
+                        <td>Graph traversal queries</td>
+                    </tr>
+                    <tr>
+                        <td><span class="async-badge">ASYNC</span></td>
+                        <td>Profile → Social Graph, ISR, Microcommunity</td>
+                        <td><span class="kafka-badge">Kafka</span> profile.updated</td>
+                        <td>100-500ms</td>
+                        <td>Trigger recalculation on profile change</td>
+                    </tr>
+                    <tr>
+                        <td><span class="async-badge">ASYNC</span></td>
+                        <td>Voting → Microcommunity, Analytics</td>
+                        <td><span class="kafka-badge">Kafka</span> question.created</td>
+                        <td>100-200ms</td>
+                        <td>Trigger community detection</td>
+                    </tr>
+                    <tr>
+                        <td><span class="async-badge">ASYNC</span></td>
+                        <td>Microcommunity → Matrix of Values, ISR</td>
+                        <td><span class="kafka-badge">Kafka</span> microcommunity.determined</td>
+                        <td>100-300ms</td>
+                        <td>Trigger values aggregation & ISR jobs</td>
+                    </tr>
+                    <tr>
+                        <td><span class="async-badge">ASYNC</span></td>
+                        <td>ISR ↔ Voting, Analytics</td>
+                        <td><span class="kafka-badge">Kafka</span> isr.calculated</td>
+                        <td>100-500ms</td>
+                        <td>Deliver calculated scores, populate cache</td>
+                    </tr>
+                    <tr>
+                        <td><span class="async-badge">ASYNC</span></td>
+                        <td>Voting → Task, Analytics, Notifications</td>
+                        <td><span class="kafka-badge">Kafka</span> vote.submitted</td>
+                        <td>100-200ms</td>
+                        <td>Record vote, trigger tasks, notifications</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rmq-badge">QUEUE</span></td>
+                        <td>Microcommunity → ISR Workers</td>
+                        <td><span class="rmq-badge">RabbitMQ</span> isr.batch.calculation</td>
+                        <td>10 min - 3 hrs</td>
+                        <td>Long-running ISR computation jobs</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rmq-badge">QUEUE</span></td>
+                        <td>All Services → Notification Service</td>
+                        <td><span class="rmq-badge">RabbitMQ</span> notifications queue</td>
+                        <td>1-5 sec</td>
+                        <td>Email, push, WebSocket delivery</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <footer>
+            <p><strong>ISR: Vote Microservices Architecture</strong> — Complete event-driven design with visual service dependencies, workflows, and data flows</p>
+            <p style="margin-top: 10px; color: #999; font-size: 0.9em;">
+                Architecture includes: 17+ microservices | Event sourcing with Kafka | Database per service | Eventual consistency | Async ISR calculation | 
+                GraphQL social networks | Distributed voting with weighted aggregation | Auto-scaling worker pools
+            </p>
+        </footer>
+    </div>
+</body>
+<script src="/site-nav.js"></script>
+</html>

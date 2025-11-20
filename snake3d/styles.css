@@ -1,0 +1,122 @@
+html, body {
+    overflow: hidden;
+}
+
+body {
+    display: flex;
+    color: #0ff;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-height: 100vh;
+    max-width: 100vh;
+    width: auto;
+    height: auto;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+canvas {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid #000;
+    background-color: #f0f0f0;
+}
+
+#banner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    z-index: 8;
+    height: auto;
+    max-width: 70vh;
+}
+
+.label {
+    position: absolute;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 10px 10px;
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    z-index: 10;
+    border: 1px solid #330;
+}
+
+.label-left-up {
+    top: 10px;
+    left: 10px;
+    border: 0px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.label-right-up {
+    top: 10px;
+    right: 10px;
+    border: 0px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.label-left-bottom {
+    bottom: 35px;
+    left: 10px;
+    padding: 20px 10px;
+    z-index: 10;
+}
+
+/* .label-right-bottom {
+    bottom: 50px;
+    right: 10px;
+    padding: 30px 10px;
+} */
+
+.unselectable {
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* Internet Explorer/Edge */
+    user-select: none;         /* Standard syntax */
+}
+
+.joystick {
+    position: absolute;
+    bottom: 20px; /* Adjust as needed */
+    right: 20px;   /* Adjust as needed */
+    width: 100px;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    z-index: 10;
+    touch-action: none; /* Prevent default touch behaviors */
+}
+
+.joystick-handle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    font-size: 20px;
+    color: white;
+    transform: translateY(-50%);
+}
+
+.left-arrow {
+    left: 10px; /* Adjust as needed */
+}
+
+.right-arrow {
+    right: 10px; /* Adjust as needed */
+}
