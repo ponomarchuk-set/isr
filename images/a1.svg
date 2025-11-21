@@ -1,6 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="0 0 950 700">
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 700">
+<defs>
+<style>text { font-family: Arial, sans-serif; }</style>
+</defs>
 <g><text fill="#CC0000" font-size="20" font-weight="bold" text-anchor="middle" x="250" y="30">Traditional Representative (hierarchical) Democracy</text>
 <path d="M220 160L171 239" stroke="#CC0000" stroke-width="2" stroke-dasharray="5 5"/>
 <path d="M280 160L406 357" stroke="#CC0000" stroke-width="2" stroke-dasharray="5 5"/>
@@ -49,9 +51,9 @@
 <rect x="344" y="357" width="125" height="50" fill="#ffcccc" stroke="#cc0000" stroke-width="2" rx="5"/>
 <text fill="black" font-size="13" font-weight="bold" x="364" y="385">Representative</text>
 <rect x="40" y="425" width="420" height="32" fill="#fff"/>
-<text fill="#666666" font-size="12" text-anchor="middle" x="250" y="445">Election → Delegation of Authority and Responsibility → Depoliticization</text>
+<text fill="#666666" font-size="12" text-anchor="middle" x="250" y="445">Election → Delegation of Authority &amp; Responsibility → Depoliticization</text>
 <text fill="#666666" font-size="12" x="180" y="566">Citizens (One vote each)</text>
-<text fill="#333333" font-size="12"  x="155" y="651">Disconnection from decision-making</text>
+<text fill="#333333" font-size="12"  x="155" y="651">Disconnection from decision-making →</text>
 <text fill="#333333" font-size="12"  x="170" y="666">• bueracracy </text>
 <text fill="#333333" font-size="12"  x="170" y="682">• corruption </text>
 <text fill="#333333" font-size="12"  x="170" y="698">• populism </text>
@@ -122,5 +124,5 @@
 <text fill="#666666" font-size="12"  x="640" y="617">(Contextual Connection) </text>
 <text fill="#333333" font-size="12"  x="680" y="660">Direct participation with </text>
 <text fill="#333333" font-size="12"  x="677" y="675">weighted influence based </text>
-<text fill="#333333" font-size="12"  x="680" y="690">on context and expertise </text>
+<text fill="#333333" font-size="12"  x="680" y="690">on context &amp; expertise </text>
 </g></svg>

@@ -1,0 +1,69 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 280">
+<defs>
+<style>text { font-family: Arial, sans-serif; }</style>
+</defs>
+<!-- Main spectrum line -->
+<line x1="60" y1="30" x2="740" y2="30" stroke="#333" stroke-width="4"/>
+<!-- Left endpoint -->
+<circle cx="60" cy="30" r="18" fill="#e6ffe6" stroke="#00aa00" stroke-width="3"/>
+<text x="60" y="35" font-size="20" font-weight="bold" text-anchor="middle" fill="#333">←</text>
+<!-- Right endpoint -->
+<circle cx="740" cy="30" r="18" fill="#ffcccc" stroke="#cc0000" stroke-width="3"/>
+<text x="740" y="35" font-size="20" font-weight="bold" text-anchor="middle" fill="#333">→</text>
+<!-- ISR Position (center-ish) -->
+<circle cx="400" cy="30" r="25" fill="#fff9e6" stroke="#ff9900" stroke-width="4"/>
+<text x="400" y="37" font-size="20" font-weight="bold" text-anchor="middle" fill="#ff9900">ISR</text>
+<!-- LEFT: Direct Democracy -->
+<rect x="1" y="90" width="119" height="160" fill="#e6ffe6" stroke="#00aa00" stroke-width="2" rx="6"/>
+<text x="60" y="115" font-size="14" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Direct</text>
+<text x="60" y="135" font-size="14" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Democracy</text>
+<text x="15" y="160" font-size="12" font-weight="bold" fill="#333">Preserves:</text>
+<text x="20" y="175" font-size="12" fill="#666">✓ Equality</text>
+<text x="20" y="188" font-size="12" fill="#666">✓ Plurality</text>
+<text x="20" y="201" font-size="12" fill="#666">✓ Agency</text>
+<text x="15" y="220" font-size="12" font-weight="bold" fill="#333">Sacrifices:</text>
+<text x="20" y="235" font-size="12" fill="#666">✗ Expertise</text>
+<!-- CENTER-LEFT: Representative Democracy -->
+<rect x="155" y="90" width="120" height="160" fill="#f0f7ff" stroke="#3399ff" stroke-width="2" rx="6"/>
+<text x="215" y="115" font-size="14" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Representative</text>
+<text x="215" y="135" font-size="14" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Democracy</text>
+<text x="170" y="160" font-size="12" font-weight="bold" fill="#333">Preserves:</text>
+<text x="175" y="175" font-size="12" fill="#666">✓ Equality</text>
+<text x="170" y="200" font-size="12" font-weight="bold" fill="#333">Sacrifices:</text>
+<text x="175" y="215" font-size="12" fill="#666">✗ Direct control</text>
+<text x="175" y="228" font-size="12" fill="#666">✗ Agency</text>
+<text x="175" y="241" font-size="12" fill="#666">✗ Accountability</text>
+<!-- CENTER: ISR -->
+<rect x="310" y="90" width="180" height="189" fill="#fff9e6" stroke="#ff9900" stroke-width="3" rx="6"/>
+<text x="400" y="115" font-size="16" font-weight="bold" text-anchor="middle" fill="#ff9900">ISR Model</text>
+<text x="400" y="133" font-size="14" text-anchor="middle" fill="#333">(Weighted Plurality)</text>
+<text x="325" y="160" font-size="12" font-weight="bold" fill="#333">Preserves:</text>
+<text x="330" y="175" font-size="12" fill="#666">✓ Pluralism</text>
+<text x="330" y="188" font-size="12" fill="#666">✓ Expertise input</text>
+<text x="330" y="201" font-size="12" fill="#666">✓ Agency</text>
+<text x="330" y="214" font-size="12" fill="#666">✓ Accountability</text>
+<text x="325" y="235" font-size="12" font-weight="bold" fill="#333">Balances:</text>
+<text x="330" y="250" font-size="12" fill="#666">● Equal potential</text>
+<text x="330" y="263" font-size="12" fill="#666">● Context-specific influence</text>
+<!-- CENTER-RIGHT: Meritocracy -->
+<rect x="525" y="90" width="120" height="160" fill="#f0e6ff" stroke="#7700bb" stroke-width="2" rx="6"/>
+<text x="585" y="115" font-size="14" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Meritocracy</text>
+<text x="585" y="135" font-size="14" font-weight="bold" text-anchor="middle" fill="#1a3a5c"></text>
+<text x="540" y="160" font-size="12" font-weight="bold" fill="#333">Preserves:</text>
+<text x="545" y="175" font-size="12" fill="#666">✓ Expertise</text>
+<text x="540" y="200" font-size="12" font-weight="bold" fill="#333">Sacrifices:</text>
+<text x="545" y="215" font-size="12" fill="#666">✗ Equality</text>
+<text x="545" y="228" font-size="12" fill="#666">✗ Plurality</text>
+<text x="545" y="241" font-size="12" fill="#666">✗ Agency</text>
+<!-- RIGHT: Technocracy -->
+<rect x="680" y="90" width="119" height="160" fill="#ffcccc" stroke="#cc0000" stroke-width="2" rx="6"/>
+<text x="740" y="115" font-size="14" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Technocracy</text>
+<text x="740" y="135" font-size="14" font-weight="bold" text-anchor="middle" fill="#1a3a5c"></text>
+<text x="695" y="160" font-size="12" font-weight="bold" fill="#333">Preserves:</text>
+<text x="700" y="175" font-size="12" fill="#666">✓ Efficiency</text>
+<text x="695" y="200" font-size="12" font-weight="bold" fill="#333">Sacrifices:</text>
+<text x="700" y="215" font-size="12" fill="#666">✗ Equality</text>
+<text x="700" y="228" font-size="12" fill="#666">✗ Plurality</text>
+<text x="700" y="241" font-size="12" fill="#666">✗ Agency</text>
+</svg>

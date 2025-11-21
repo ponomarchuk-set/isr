@@ -1,0 +1,90 @@
+<svg width="800" height="610" viewBox="0 0 800 610" xmlns="http://www.w3.org/2000/svg">
+<!-- Arrow markers -->
+<defs>
+<marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+<polygon points="0 0, 10 3, 0 6" fill="#00f"/>
+</marker>
+<marker id="arrowOrange" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+<polygon points="0 0, 10 3, 0 6" fill="#ff9900"/>
+</marker>
+<marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+<polygon points="0 0, 10 3, 0 6" fill="#00aa00"/>
+</marker>
+<marker id="arrowPurple" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+<polygon points="0 0, 10 3, 0 6" fill="#7700bb"/>
+</marker>
+<style>text { font-family: Arial, sans-serif; }</style>
+</defs>
+<!-- Central Microcommunity circle -->
+<circle cx="400" cy="80" r="70" fill="#e6f2ff" stroke="#0066cc" stroke-width="4"/>
+<text x="400" y="60" font-size="16" font-weight="bold" text-anchor="middle" fill="#0066cc">Issue</text>
+<text x="400" y="80" font-size="14" text-anchor="middle" fill="#666">a Microcommunity</text>
+<text x="400" y="100" font-size="14" text-anchor="middle" fill="#666">vote question</text>
+<path d="M 400 170 L 400 110" stroke="#06c" stroke-width="3" marker-end="url(#arrowBlue)" fill="none"/>
+<!-- Central Calculation Box -->
+<rect x="230" y="170" width="340" height="190" fill="#fff9e6" stroke="#06c" stroke-width="3" rx="8"/>
+<text x="400" y="195" font-size="13" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Weighted Influence Score</text>
+<text x="400" y="225" font-size="12" text-anchor="middle" fill="#333">For Member in Issue Context:</text>
+<!-- Formula -->
+<rect x="250" y="235" width="300" height="35" fill="#f0f7ff" stroke="#0066cc" stroke-width="2" rx="4"/>
+<text x="400" y="258" font-size="14" font-weight="bold" text-anchor="middle" fill="#0066cc" font-family="monospace">
+ISR = (E × w₁) + (C × w₂) + (R × w₃)
+</text>
+<text x="400" y="295" font-size="12" font-weight="bold" text-anchor="middle" fill="#1a3a5c">
+Result: individual coefficient (0.0-1.0)
+</text>
+<text x="400" y="330" font-size="11" text-anchor="middle" fill="#666">
+E = Expertise | C = Contribution | R = Relevance
+</text>
+<text x="400" y="348" font-size="11" text-anchor="middle" fill="#666">
+w₁, w₂, w₃ = Context-determined weights
+</text>
+<!-- Component 1: Expertise -->
+<g id="expertise">
+<!-- Box -->
+<rect x="1" y="380" width="199" height="180" fill="#fff4e6" stroke="#ff9900" stroke-width="3" rx="8"/>
+<!-- Header -->
+<rect x="1" y="380" width="199" height="40" fill="#ff9900" rx="8"/>
+<text x="100" y="410" font-size="16" font-weight="bold" text-anchor="middle" fill="white">Expertise</text>
+<text x="20" y="440" font-size="12" font-weight="bold" fill="#333">Personal Competence</text>
+<text x="20" y="465" font-size="11" fill="#666">• Skills &amp; credentials</text>
+<text x="20" y="485" font-size="11" fill="#666">• Relevant experience</text>
+<text x="20" y="505" font-size="11" fill="#666">• Professional knowledge</text>
+<text x="20" y="525" font-size="11" fill="#666">• Domain specialization</text>
+<text x="20" y="550" font-size="11" fill="#1a3a5c" font-weight="bold">Output: E(0.0-1.0)</text>
+<!-- Arrow pointing to center -->
+<path d="M 100 380 Q 100 300 226 300" stroke="#ff9900" stroke-width="3" marker-end="url(#arrowOrange)" fill="none"/>
+</g>
+<!-- Component 3: Relevance -->
+<g id="relevance">
+<!-- Box -->
+<rect x="600" y="380" width="198" height="180" fill="#f0e6ff" stroke="#7700bb" stroke-width="3" rx="8"/>
+<!-- Header -->
+<rect x="600" y="380" width="200" height="40" fill="#7700bb" rx="8"/>
+<text x="700" y="410" font-size="16" font-weight="bold" text-anchor="middle" fill="white">Relevance</text>
+<text x="620" y="440" font-size="12" font-weight="bold" fill="#333">Contextual Connection</text>
+<text x="620" y="465" font-size="11" fill="#666">• Stake in issue</text>
+<text x="620" y="485" font-size="11" fill="#666">• Activity level</text>
+<text x="620" y="505" font-size="11" fill="#666">• Proximity to problem</text>
+<text x="620" y="525" font-size="11" fill="#666">• Affected groups</text>
+<text x="620" y="550" font-size="11" fill="#1a3a5c" font-weight="bold">Output: R(0.0-1.0)</text>
+<!-- Arrow pointing to center -->
+<path d="M 700 380 Q 700 300 574 300" stroke="#7700bb" stroke-width="3" marker-end="url(#arrowPurple)" fill="none"/>
+</g>
+<!-- Component 2: Contribution -->
+<g id="contribution">
+<!-- Box -->
+<rect x="300" y="410" width="200" height="180" fill="#e6ffe6" stroke="#00aa00" stroke-width="3" rx="8"/>
+<!-- Header -->
+<rect x="300" y="410" width="200" height="40" fill="#00aa00" rx="8"/>
+<text x="400" y="440" font-size="16" font-weight="bold" text-anchor="middle" fill="white">Contribution</text>
+<text x="320" y="470" font-size="12" font-weight="bold" fill="#333">Responsibility History</text>
+<text x="320" y="495" font-size="11" fill="#666">• Past contributions assessment</text>
+<text x="320" y="515" font-size="11" fill="#666">• Community feedback</text>
+<text x="320" y="535" font-size="11" fill="#666">• Offence history</text>
+<text x="320" y="555" font-size="11" fill="#666">• Track record</text>
+<text x="320" y="580" font-size="11" fill="#1a3a5c" font-weight="bold">Output: C(0.0-1.0)</text>
+<!-- Arrow pointing to center -->
+<path d="M 400 410 L 400 363" stroke="#00aa00" stroke-width="3" marker-end="url(#arrowGreen)" fill="none"/>
+</g>
+</svg>
