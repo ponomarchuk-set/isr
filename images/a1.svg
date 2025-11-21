@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="0 0 950 700">
+<g><text fill="#CC0000" font-size="20" font-weight="bold" text-anchor="middle" x="250" y="30">Traditional Representative (hierarchical) Democracy</text>
+<path d="M220 160L171 239" stroke="#CC0000" stroke-width="2" stroke-dasharray="5 5"/>
+<path d="M280 160L406 357" stroke="#CC0000" stroke-width="2" stroke-dasharray="5 5"/>
+<path d="M193 289L249 357" stroke="#CC0000" stroke-width="2" stroke-dasharray="5 5"/>
+<path d="M151 289L94 357" stroke="#CC0000" stroke-width="2" stroke-dasharray="5 5"/>
+<path d="M73 406L49 474" stroke="#CC0000" stroke-width="2" stroke-dasharray="5 5"/>
+<path d="M94 406L94 492" stroke="#CC0000" stroke-width="2" stroke-dasharray="5 5"/>
+<path d="M426 406L455 474" stroke="#CC0000" stroke-width="2" stroke-dasharray="5 5"/>
+<path d="M387 406L363 474" stroke="#CC0000" stroke-width="2" stroke-dasharray="5 5"/>
+<path d="M406 406L406 492" stroke="#CC0000" stroke-width="2" stroke-dasharray="5 5"/>
+<path d="M269 406L298 474" stroke="#CC0000" stroke-width="2" stroke-dasharray="5 5"/>
+<path d="M230 406L206 474" stroke="#CC0000" stroke-width="2" stroke-dasharray="5 5"/>
+<path d="M250 406L250 492" stroke="#CC0000" stroke-width="2" stroke-dasharray="5 5"/>
+<path d="M112 406L141 474" stroke="#CC0000" stroke-width="2" stroke-dasharray="5 5"/>
+<circle cx="42" cy="495" r="20" fill="#D0D0D0" stroke="#666666" stroke-width="2"/>
+<circle cx="94" cy="515" r="20" fill="#D0D0D0" stroke="#666666" stroke-width="2"/>
+<circle cx="146" cy="495" r="20" fill="#D0D0D0" stroke="#666666" stroke-width="2"/>
+<circle cx="198" cy="495" r="20" fill="#D0D0D0" stroke="#666666" stroke-width="2"/>
+<circle cx="250" cy="515" r="20" fill="#D0D0D0" stroke="#666666" stroke-width="2"/>
+<circle cx="302" cy="495" r="20" fill="#D0D0D0" stroke="#666666" stroke-width="2"/>
+<circle cx="354" cy="495" r="20" fill="#D0D0D0" stroke="#666666" stroke-width="2"/>
+<circle cx="406" cy="515" r="20" fill="#D0D0D0" stroke="#666666" stroke-width="2"/>
+<circle cx="458" cy="495" r="20" fill="#D0D0D0" stroke="#666666" stroke-width="2"/>
+<text fill="black" font-family="Inter" font-size="11" font-weight="bold" x="39" y="498">1</text>
+<text fill="black" font-family="Inter" font-size="11" font-weight="bold" x="91" y="518">1</text>
+<text fill="black" font-family="Inter" font-size="11" font-weight="bold" x="143" y="498">1</text>
+<text fill="black" font-family="Inter" font-size="11" font-weight="bold" x="195" y="498">1</text>
+<text fill="black" font-family="Inter" font-size="11" font-weight="bold" x="247" y="518">1</text>
+<text fill="black" font-family="Inter" font-size="11" font-weight="bold" x="299" y="498">1</text>
+<text fill="black" font-family="Inter" font-size="11" font-weight="bold" x="351" y="498">1</text>
+<text fill="black" font-family="Inter" font-size="11" font-weight="bold" x="403" y="518">1</text>
+<text fill="black" font-family="Inter" font-size="11" font-weight="bold" x="455" y="498">1</text>
+<circle cx="250" cy="130" r="40" fill="#ffcccc" stroke="#cc0000" stroke-width="2" rx="5"/>
+<text fill="black" font-size="13" font-weight="bold" text-anchor="middle" x="250" y="135">Decision </text>
+<text fill="#666666" font-size="12" text-anchor="middle" x="250" y="211">Decision Making</text>
+<rect x="104" y="239" width="125" height="50" fill="#ffcccc" stroke="#cc0000" stroke-width="2" rx="5"/>
+<text fill="black" font-size="13" font-weight="bold" x="124" y="267">Representative</text>
+<rect x="264" y="239" width="125" height="50" fill="#ffcccc" stroke="#cc0000" stroke-width="2" rx="5"/>
+<text fill="black" font-size="13" font-weight="bold" x="284" y="267">Representative</text>
+<rect x="40" y="305" width="420" height="32" fill="#fff"/>
+<text fill="#666666" font-size="12" text-anchor="middle" x="250" y="325">Multi-level Delegation</text>
+<rect x="30" y="357" width="125" height="50" fill="#ffcccc" stroke="#cc0000" stroke-width="2" rx="5"/>
+<text fill="black" font-size="13" font-weight="bold" x="50" y="385">Representative</text>
+<rect x="187" y="357" width="125" height="50" fill="#ffcccc" stroke="#cc0000" stroke-width="2" rx="5"/>
+<text fill="black" font-size="13" font-weight="bold" x="207" y="385">Representative</text>
+<rect x="344" y="357" width="125" height="50" fill="#ffcccc" stroke="#cc0000" stroke-width="2" rx="5"/>
+<text fill="black" font-size="13" font-weight="bold" x="364" y="385">Representative</text>
+<rect x="40" y="425" width="420" height="32" fill="#fff"/>
+<text fill="#666666" font-size="12" text-anchor="middle" x="250" y="445">Election → Delegation of Authority and Responsibility → Depoliticization</text>
+<text fill="#666666" font-size="12" x="180" y="566">Citizens (One vote each)</text>
+<text fill="#333333" font-size="12"  x="155" y="651">Disconnection from decision-making</text>
+<text fill="#333333" font-size="12"  x="170" y="666">• bueracracy </text>
+<text fill="#333333" font-size="12"  x="170" y="682">• corruption </text>
+<text fill="#333333" font-size="12"  x="170" y="698">• populism </text>
+<text fill="#0066CC" font-size="20" font-weight="bold"  x="610" y="30">ISR Model (Weighted Plurality)</text>
+<path d="M776 290L896 319" stroke="#0066CC" stroke-width="2"/>
+<path d="M790 278L906 274" stroke="#0066CC" stroke-width="2"/>
+<path d="M787 261L865 232" stroke="#0066CC" stroke-width="2"/>
+<path d="M776 251L915 132" stroke="#0066CC" stroke-width="2"/>
+<path d="M772 247L831 152" stroke="#0066CC" stroke-width="2"/>
+<path d="M763 239L781 132" stroke="#0066CC" stroke-width="2"/>
+<path d="M743 239L725 152" stroke="#0066CC" stroke-width="2"/>
+<path d="M734 242L663 120" stroke="#0066CC" stroke-width="2"/>
+<path d="M721 248L675 208" stroke="#0066CC" stroke-width="2"/>
+<path d="M716 258L612 196" stroke="#0066CC" stroke-width="2"/>
+<path d="M781 297L841 326" stroke="#0066CC" stroke-width="2"/>
+<path d="M772 304L889 391" stroke="#0066CC" stroke-width="2"/>
+<path d="M763 310L815 391" stroke="#0066CC" stroke-width="2"/>
+<path d="M740 306L708 364" stroke="#0066CC" stroke-width="2"/>
+<path d="M728 310L622 381" stroke="#0066CC" stroke-width="2"/>
+<path d="M708 290L640 316" stroke="#0066CC" stroke-width="2"/>
+<path d="M708 272L640 261" stroke="#0066CC" stroke-width="2"/>
+<path d="M750 319L750 409" stroke="#0066CC" stroke-width="2"/>
+<circle cx="598" cy="398" r="30" fill="#0066CC" opacity="0.8" stroke="#003366" stroke-width="3"/>
+<text fill="white" font-size="13" font-weight="bold"  x="586" y="403">0.73 </text>
+<circle cx="920" cy="334" r="28" fill="#0066CC" opacity="0.8" stroke="#003366" stroke-width="3"/>
+<text fill="white" font-size="13" font-weight="bold"  x="906" y="338">0.85 </text>
+<circle cx="608.5" cy="257.5" r="36.5" fill="#0066CC" stroke="#003366" stroke-width="3"/>
+<text fill="white" font-size="13" font-weight="bold"  x="597.667" y="260.495">2.5 </text>
+<circle cx="891.5" cy="217.5" r="30.5" fill="#0066CC" stroke="#003366" stroke-width="3"/>
+<text fill="white" font-size="13" font-weight="bold"  x="882" y="220">1.83 </text>
+<circle cx="750" cy="429" r="22" fill="#3399FF" opacity="0.7" stroke="#003366" stroke-width="2"/>
+<text fill="white" font-size="12" font-weight="bold"  x="739.973" y="434">0.6 </text>
+<circle cx="846" cy="136" r="22" fill="#3399FF" opacity="0.7" stroke="#003366" stroke-width="2"/>
+<text fill="white" font-size="12" font-weight="bold"  x="836.854" y="141">0.77 </text>
+<circle cx="622" cy="326" r="22" fill="#3399FF" opacity="0.7" stroke="#003366" stroke-width="2"/>
+<text fill="white" font-size="12" font-weight="bold"  x="611.973" y="331">0.61 </text>
+<circle cx="785" cy="104" r="28" fill="#0066CC" opacity="0.8" stroke="#003366" stroke-width="3"/>
+<text fill="white" font-size="13" font-weight="bold"  x="772" y="109">1.31 </text>
+<circle cx="664" cy="194" r="19" fill="#3399FF" opacity="0.7" stroke="#003366" stroke-width="2"/>
+<text fill="white" font-size="12" font-weight="bold"  x="653" y="198">0.45 </text>
+<circle cx="654" cy="104" r="19" fill="#3399FF" opacity="0.7" stroke="#003366" stroke-width="2"/>
+<text fill="white" font-size="12" font-weight="bold"  x="646" y="108">0.5 </text>
+<circle cx="900" cy="399" r="16" fill="#99CCFF" opacity="0.6" stroke="#003366"/>
+<text fill="white" font-size="10" font-weight="bold"  x="889" y="402">0.35 </text>
+<circle cx="604" cy="185" r="16" fill="#99CCFF" opacity="0.6" stroke="#003366"/>
+<text fill="white" font-size="10" font-weight="bold"  x="595" y="188">0.42 </text>
+<circle cx="857" cy="332" r="16" fill="#99CCFF" opacity="0.6" stroke="#003366"/>
+<text fill="white" font-size="10" font-weight="bold"  x="849" y="335">0.33 </text>
+<circle cx="922" cy="274" r="16" fill="#99CCFF" opacity="0.6" stroke="#003366"/>
+<text fill="white" font-size="10" font-weight="bold"  x="912" y="277">0.32 </text>
+<circle cx="926" cy="120" r="16" fill="#99CCFF" opacity="0.6" stroke="#003366"/>
+<text fill="white" font-size="10" font-weight="bold"  x="915" y="123.636">0.15 </text>
+<circle cx="724" cy="136" r="16" fill="#99CCFF" opacity="0.6" stroke="#003366"/>
+<text fill="white" font-size="10" font-weight="bold"  x="713" y="139.636">0.28 </text>
+<circle cx="702" cy="377" r="16" fill="#99CCFF" opacity="0.6" stroke="#003366"/>
+<text fill="white" font-size="10" font-weight="bold"  x="691" y="380">0.12 </text>
+<circle cx="823" cy="403" r="16" fill="#99CCFF" opacity="0.6" stroke="#003366"/>
+<text fill="white" font-size="10" font-weight="bold"  x="814" y="406">0.29 </text>
+<circle cx="750" cy="278" r="40" fill="#E6F2FF" stroke="#0066CC" stroke-width="3"/>
+<text fill="black" font-size="12" font-weight="bold"  x="727" y="283">Decision </text>
+<rect x="620" y="470" width="260" height="160" fill="#f0f7ff" stroke="#0066cc" stroke-width="2" rx="8"/>
+<text fill="#0066CC" font-size="14" font-weight="bold"  x="693" y="495">ISR Components </text>
+<text fill="#1A3A5C" font-size="12" font-weight="bold"  x="640" y="520">&#x25aa; Expertise </text>
+<text fill="#666666" font-size="12"  x="640" y="536.5">(Personal Competence) </text>
+<text fill="#1A3A5C" font-size="12" font-weight="bold"  x="640" y="560">&#x25aa; Contribution </text>
+<text fill="#666666" font-size="12"  x="640" y="577">(Responsibility History) </text>
+<text fill="#1A3A5C" font-size="12" font-weight="bold"  x="640" y="600">&#x25aa; Relevance </text>
+<text fill="#666666" font-size="12"  x="640" y="617">(Contextual Connection) </text>
+<text fill="#333333" font-size="12"  x="680" y="660">Direct participation with </text>
+<text fill="#333333" font-size="12"  x="677" y="675">weighted influence based </text>
+<text fill="#333333" font-size="12"  x="680" y="690">on context and expertise </text>
+</g></svg>
