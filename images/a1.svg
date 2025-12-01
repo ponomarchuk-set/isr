@@ -53,10 +53,10 @@
 <rect x="40" y="425" width="420" height="32" fill="#fff"/>
 <text fill="#666666" font-size="12" text-anchor="middle" x="250" y="445">Election → Delegation of Authority &amp; Responsibility → Depoliticization</text>
 <text fill="#666666" font-size="12" x="180" y="566">Citizens (One vote each)</text>
-<text fill="#333333" font-size="12"  x="155" y="651">Disconnection from decision-making →</text>
-<text fill="#333333" font-size="12"  x="170" y="666">• bueracracy </text>
-<text fill="#333333" font-size="12"  x="170" y="682">• corruption </text>
-<text fill="#333333" font-size="12"  x="170" y="698">• populism </text>
+<text fill="#333333" font-size="12"  x="55" y="682">Disconnection from decision-making →</text>
+<text fill="#333333" font-size="12"  x="270" y="666">• bueracracy </text>
+<text fill="#333333" font-size="12"  x="270" y="682">• corruption </text>
+<text fill="#333333" font-size="12"  x="270" y="698">• populism </text>
 <text fill="#0066CC" font-size="20" font-weight="bold"  x="610" y="30">ISR Model (Weighted Plurality)</text>
 <path d="M776 290L896 319" stroke="#0066CC" stroke-width="2"/>
 <path d="M790 278L906 274" stroke="#0066CC" stroke-width="2"/>
