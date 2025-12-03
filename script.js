@@ -1,8 +1,13 @@
 function toggleContent(id) {
     var content = document.getElementById(id);
+    var header = document.getElementById(id.substring(8)); // remove "content-" prefix and get header id
     if (content.style.display != "block") {
+        header.textContent  = "▼" + header.textContent.substring(1);
+        // header.innerText = header.innerText.replace("►", "▼");
         content.style.display = "block";
     } else if (content.style.display != "none") {
+        header.textContent  = "►" + header.textContent.substring(1);
+        // header.innerText = header.innerText.replace("▼", "►");
         content.style.display = "none";
     }
 }

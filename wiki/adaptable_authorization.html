@@ -1,0 +1,1107 @@
+<html>
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Index of Social Responsibility: Adaptable Authorization</title>
+    <link rel="stylesheet" href="/style.css">
+    <!-- MathJax for LaTeX formula rendering -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="c11 doc-content">
+    <!-- <h1>Adaptable Authorization for Index of Social Responsibility (ISR)</h1> -->
+    <header>
+        <h1>Adaptable Authorization in ISR system</h1>
+        <p>Dynamic, Context-Aware, Person-to-Person Access Control Based on ISR Metrics</p>
+    </header>
+    <div class="main_content">
+        <!-- Table of Contents -->
+        <!-- <div class="toc">
+            <h3>📑 Quick Navigation</h3>
+            <ul>
+                <li><a href="#motivation">Motivation & Problem</a></li>
+                <li><a href="#concept">Core Concept</a></li>
+                <li><a href="#data-hierarchy">Data Sensitivity Hierarchy</a></li>
+                <li><a href="#technical-architecture">Technical Architecture</a></li>
+                <li><a href="#algorithms">Algorithms & Calculation</a></li>
+                <li><a href="#implementation">Implementation Considerations</a></li>
+                <li><a href="#security">Security & Privacy</a></li>
+                <li><a href="#risks">Known Risks & Challenges</a></li>
+                <li><a href="#future">Future Improvements</a></li>
+            </ul>
+        </div> -->
+
+        <!-- MOTIVATION SECTION -->
+        <div class="paragraph">
+        <div class="paragraph_top" onclick="toggleContent('content-motivation')">
+            <h2 id="motivation">► 🎯 Motivation: Why Adaptable Authorization?</h2>
+        </div>
+        <div id="content-motivation" class="content" style="display: none;">
+            <h3>The Traditional Authorization Problem</h3>
+            <p>
+                Standard access control systems (RBAC, ABAC) use static role definitions or fixed attribute rules. 
+                Everyone with "Admin" role gets the same access level, regardless of how trustworthy they are or how 
+                relevant the data is to their specific context.
+            </p>
+            
+            <div class="problem-box">
+                <strong>Core Issues:</strong>
+                <ul>
+                    <li><strong>All-or-nothing access:</strong> Users either have access or they don't, with no nuance</li>
+                    <li><strong>Context blindness:</strong> No consideration of whether the user actually needs this data right now</li>
+                    <li><strong>Static roles:</strong> Trust levels don't adapt based on behavior or contribution</li>
+                    <li><strong>Privacy violations:</strong> Insiders with legitimate access can still abuse it for personal gain</li>
+                    <li><strong>No accountability:</strong> Hard to detect who accessed what data and why</li>
+                </ul>
+            </div>
+
+            <h3>Why ISR Needs Adaptable Authorization</h3>
+            <p>
+                The ISR system manages sensitive community data:
+            </p>
+            <ul>
+                <li>Personal expertise profiles and credentials</li>
+                <li>Contribution history and social karma scores</li>
+                <li>Voting records and decision-making patterns</li>
+                <li>Family relationships and social networks</li>
+                <li>Financial information and resource allocations</li>
+            </ul>
+
+            <p>
+                In a community where members should see each other's contributions transparently, but also protect privacy, 
+                we need <strong>context-aware access</strong> that adjusts to:
+            </p>
+            <ul>
+                <li>The specific microcommunity and issue at hand</li>
+                <li>The accessor's relationship to the data subject</li>
+                <li>The accessor's proven trustworthiness (their ISR/gISR score)</li>
+                <li>The reason for accessing the data (explicit context)</li>
+                <li>Legal and ethical requirements</li>
+            </ul>
+        </div>
+        </div>
+
+        <!-- CONCEPT SECTION -->
+        <div class="paragraph">
+        <div class="paragraph_top" onclick="toggleContent('content-concept')">
+            <h2 id="concept">► 💡 Core Concept: Adaptable Authorization</h2>
+        </div>
+        <div id="content-concept" class="content" style="display: none;">
+            <h3>Definition</h3>
+            <p>
+                <strong>Adaptable Authorization</strong> is a dynamic access control model where data access permissions adapt 
+                in real-time based on:
+            </p>
+            <ol>
+                <li><strong>Accessor's ISR/gISR score:</strong> Their proven trustworthiness and social responsibility</li>
+                <li><strong>Data sensitivity level:</strong> How private or critical the requested information is</li>
+                <li><strong>Access context:</strong> Why they're accessing it (decision-making, verification, audit, etc.)</li>
+                <li><strong>Relationship to data subject:</strong> Are they a family member? Microcommunity peer? Stranger?</li>
+                <li><strong>Temporal factors:</strong> Time-bounded access for specific decisions or investigations</li>
+            </ol>
+
+            <div class="solution-box">
+                <strong>Key Principle:</strong> A person with higher ISR score can access more detailed information 
+                about more people, but their access is still limited to what's needed for their role in the microcommunity.
+            </div>
+
+            <h3>Core Formula</h3>
+            <div class="formula">
+                <div class="formula-label">Access Grant Decision:</div>
+                $$\text{Grant}(u, d, c) = \begin{cases}
+                    \text{ALLOW} & \text{if } f(ISR_u, \text{sensitivity}_d, \text{context}_c, \text{relation}_{u,d}) > \theta \\
+                    \text{DENY} & \text{otherwise}
+                \end{cases}$$
+                
+                <p style="margin: 15px 0 0 0; font-size: 14px; text-align: left;">
+                    Where:<br>
+                    • <strong>u</strong> = user requesting access<br>
+                    • <strong>d</strong> = data resource<br>
+                    • <strong>c</strong> = access context<br>
+                    • <strong>ISR<sub>u</sub></strong> = accessor's ISR score (issue-specific) or gISR (general)<br>
+                    • <strong>sensitivity<sub>d</sub></strong> = data sensitivity level (0-1 scale)<br>
+                    • <strong>f()</strong> = aggregation function<br>
+                    • <strong>θ</strong> = community-defined decision threshold
+                </p>
+            </div>
+
+            <h3>How It Differs From Existing Models</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>Access Basis</th>
+                        <th>Adaptation</th>
+                        <th>Privacy Focus</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>RBAC</strong> (Role-Based)</td>
+                        <td>Fixed roles</td>
+                        <td>None</td>
+                        <td>Low</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ABAC</strong> (Attribute-Based)</td>
+                        <td>Static attributes</td>
+                        <td>Policy-based</td>
+                        <td>Medium</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CAC</strong> (Context-Aware)</td>
+                        <td>Context factors</td>
+                        <td>Yes, but limited</td>
+                        <td>Medium</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Trust-Based</strong></td>
+                        <td>Trust scores</td>
+                        <td>Yes, dynamic</td>
+                        <td>Medium</td>
+                    </tr>
+                    <tr style="font-weight: 600;">
+                        <td><strong>Adaptable Auth (ISR)</strong></td>
+                        <td>Social responsibility + context</td>
+                        <td>Yes, continuous</td>
+                        <td>High (privacy-by-design)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        </div>
+
+        <!-- DATA HIERARCHY SECTION -->
+        <div class="paragraph">
+        <div class="paragraph_top" onclick="toggleContent('content-data-hierarchy')">
+            <h2 id="data-hierarchy">► 🔐 Data Sensitivity Hierarchy</h2>
+        </div>
+        <div id="content-data-hierarchy" class="content" style="display: none;">
+            <p>
+                ISR system data is organized in layers, each requiring different minimum ISR/gISR scores for access.
+            </p>
+
+            <div class="diagram-container">
+                <img src="https://raw.githubusercontent.com/ponomarchuk-set/isr/main/images/aa2.svg" alt="Data Sensitivity Hierarchy Diagram" width="100%"><br>
+            </div>
+
+            <h3>Layer 1: Public Results (No ISR Required)</h3>
+            <p>
+                Everyone can see: voted questions and final voting results. This is fundamental to transparency.
+            </p>
+            <ul>
+                <li>Issue title and description</li>
+                <li>Final voting outcome</li>
+                <li>Decision made and implementation status</li>
+            </ul>
+
+            <h3>Layer 2: Microcommunity Participation (gISR ≥ 0.2)</h3>
+            <p>
+                Once someone is part of a microcommunity for an issue, they can see:
+            </p>
+            <ul>
+                <li>List of other members involved in this issue</li>
+                <li>Each member's ISR score for this specific issue</li>
+                <li>High-level voting breakdown (how many voted for each option)</li>
+            </ul>
+
+            <h3>Layer 3: ISR Explanations (gISR ≥ 0.4)</h3>
+            <p>
+                Members wanting to understand fairness can access:
+            </p>
+            <ul>
+                <li>Why person X got ISR score Y for this issue</li>
+                <li>Which factors contributed most (Relevance, Expertise, Contribution)</li>
+                <li>Summary of expertise and past participation</li>
+            </ul>
+
+            <h3>Layer 4: Supporting Evidence (gISR ≥ 0.6)</h3>
+            <p>
+                For those investigating or appealing decisions:
+            </p>
+            <ul>
+                <li>Detailed documents and evidence backing ISR calculations</li>
+                <li>Education records, credentials (if person shared them)</li>
+                <li>Past contribution records with timestamps</li>
+            </ul>
+
+            <h3>Layer 5: Activity Logs (gISR ≥ 0.7)</h3>
+            <p>
+                Community stewards can access:
+            </p>
+            <ul>
+                <li>Complete social activity log (discussions, votes, tasks)</li>
+                <li>Data access history (who viewed what and when)</li>
+                <li>Flagged activities or behavioral anomalies</li>
+            </ul>
+
+            <h3>Layer 6: Expertise Profile (gISR ≥ 0.8)</h3>
+            <p>
+                Limited to people with strong community standing:
+            </p>
+            <ul>
+                <li>Detailed skills and competencies</li>
+                <li>Professional history and credentials</li>
+                <li>Areas of influence and interests</li>
+            </ul>
+
+            <h3>Layer 7: Social Relations (gISR ≥ 0.85)</h3>
+            <p>
+                Highly restricted access to:
+            </p>
+            <ul>
+                <li>Family relationships and household structure</li>
+                <li>Close social connections</li>
+                <li>Personal life circumstances (needed for context)</li>
+            </ul>
+
+            <h3>Layer 8: Full Personal Data (gISR ≥ 0.95 or Legal Authorization)</h3>
+            <p>
+                Only top community stewards or legal processes:
+            </p>
+            <ul>
+                <li>Complete personal data archive</li>
+                <li>Full communication history</li>
+                <li>Sensitive personal information</li>
+            </ul>
+
+            <div class="note-box">
+                <strong>Context-Specific Override:</strong> A person with gISR=0.5 investigating fraud in a microcommunity 
+                they manage might temporarily get access to Layer 5 data for that investigation only, with logging and 
+                community notification.
+            </div>
+        </div>
+        </div>
+
+        <!-- TECHNICAL ARCHITECTURE SECTION -->
+        <div class="paragraph">
+        <div class="paragraph_top" onclick="toggleContent('content-technical-architecture')">
+            <h2 id="technical-architecture">► 🏗️ Technical Architecture</h2>
+        </div>
+        <div id="content-technical-architecture" class="content" style="display: none;">
+            <h3>System Components</h3>
+
+            <div class="architecture-block">
+                <h4>1. Authorization Request Handler</h4>
+                <p>
+                    User or service requests access to data resource. Request includes:
+                </p>
+                <ul>
+                    <li>User ID (accessor)</li>
+                    <li>Resource ID (what data is being accessed)</li>
+                    <li>Access reason/context</li>
+                    <li>Requested granularity (summary vs. detailed)</li>
+                </ul>
+                <pre><code>POST /api/v1/access-request
+{
+  "user_id": "u_alice_123",
+  "resource_id": "r_voter_profile_bob",
+  "resource_type": "user_expertise",
+  "context": "decision_making",
+  "microcommunity_id": "mc_building_repairs_2025",
+  "reason": "Evaluating relevant expertise for repair vendor selection"
+}</code></pre>
+            </div>
+
+            <div class="architecture-block">
+                <h4>2. ISR/gISR Lookup Service</h4>
+                <p>
+                    Retrieves current ISR score of the accessor:
+                </p>
+                <ul>
+                    <li>Issue-specific ISR (if in specific microcommunity)</li>
+                    <li>General ISR (gISR) for cross-community decisions</li>
+                    <li>Role and permissions</li>
+                    <li>Recent activity and behavior flags</li>
+                </ul>
+            </div>
+
+            <div class="architecture-block">
+                <h4>3. Data Sensitivity Classifier</h4>
+                <p>
+                    Determines sensitivity level of requested resource (0-1 scale):
+                </p>
+                <pre><code>// Example: User Profile Resource Classification
+sensitivity = 0.2  // Basic profile (public)
+sensitivity = 0.6  // Expertise details (medium)
+sensitivity = 0.95 // Full communication history (critical)</code></pre>
+            </div>
+
+            <div class="architecture-block">
+                <h4>4. Relationship Context Engine</h4>
+                <p>
+                    Analyzes social/organizational relationship between accessor and data subject:
+                </p>
+                <ul>
+                    <li>Family member? (higher access)</li>
+                    <li>In same microcommunity? (medium access)</li>
+                    <li>Stranger? (restricted access)</li>
+                    <li>Community steward/admin? (conditional elevated access)</li>
+                </ul>
+            </div>
+
+            <div class="architecture-block">
+                <h4>5. Decision Engine</h4>
+                <p>
+                    Evaluates all factors and makes grant/deny decision:
+                </p>
+                <pre><code>// Pseudocode for access decision
+access_score = (
+    w_isr * normalize(accessor.ISR) +
+    w_sensitivity * (1 - normalize(resource.sensitivity)) +
+    w_relationship * relationship_score(accessor, subject) +
+    w_context * context_appropriateness(reason)
+)
+
+if access_score > threshold:
+    grant_with_logging()
+else:
+    deny_with_reason()</code></pre>
+            </div>
+
+            <div class="architecture-block">
+                <h4>6. Audit & Logging Service</h4>
+                <p>
+                    Records every access attempt (approved or denied):
+                </p>
+                <ul>
+                    <li>Who accessed what, when, and why</li>
+                    <li>Decision reasoning</li>
+                    <li>Data modifications (if any)</li>
+                    <li>Integration into accessor's activity log (affects future ISR)</li>
+                </ul>
+            </div>
+
+            <h3>Data Flow Diagram</h3>
+            <pre><code>User Access Request
+    ↓
+[Request Handler validates input]
+    ↓
+[Fetch accessor ISR/gISR score]
+    ↓
+[Classify resource sensitivity]
+    ↓
+[Analyze relationship context]
+    ↓
+[Run decision algorithm]
+    ├→ Decision = ALLOW
+    │   └→ Log access + deliver data (possibly filtered)
+    │
+    └→ Decision = DENY
+        └→ Log denied attempt + notify accessor + update ISR (suspicious activity)</code></pre>
+        </div>
+        </div>
+
+        <!-- ALGORITHMS SECTION -->
+        <div class="paragraph">
+        <div class="paragraph_top" onclick="toggleContent('content-algorithms')">
+            <h2 id="algorithms">► 📐 Algorithms & Calculations</h2>
+        </div>
+        <div id="content-algorithms" class="content" style="display: none;">
+            <h3>1. Access Score Calculation</h3>
+            <p>
+                The core algorithm that decides whether to grant access:
+            </p>
+
+            <div class="formula">
+                <div class="formula-label">Weighted Access Score:</div>
+                $$A_{\text{score}} = w_1 \cdot f_1(ISR_u) + w_2 \cdot f_2(\text{sens}_d) + w_3 \cdot f_3(\text{rel}_{u,d}) + w_4 \cdot f_4(\text{ctx}_c)$$
+                
+                <p style="margin: 15px 0 0 0; font-size: 14px; text-align: left;">
+                    Where:<br>
+                    • <strong>w₁, w₂, w₃, w₄</strong> = community-defined weights (sum = 1.0)<br>
+                    • <strong>f₁(ISR)</strong> = normalize accessor's ISR to 0-1<br>
+                    • <strong>f₂(sens)</strong> = inverse sensitivity (higher sensitivity = lower score)<br>
+                    • <strong>f₃(rel)</strong> = relationship closeness score<br>
+                    • <strong>f₄(ctx)</strong> = context appropriateness<br>
+                    • Access is granted if A_score ≥ θ (threshold, typically 0.6-0.7)
+                </p>
+            </div>
+
+            <h3>2. Relationship Score</h3>
+            <p>
+                Determines how closely connected accessor is to data subject:
+            </p>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Relationship Type</th>
+                        <th>Relationship Score</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Self (accessing own data)</td>
+                        <td>1.0</td>
+                        <td>Always allowed (except restricted cases)</td>
+                    </tr>
+                    <tr>
+                        <td>Immediate family</td>
+                        <td>0.9</td>
+                        <td>Household/dependent</td>
+                    </tr>
+                    <tr>
+                        <td>Same microcommunity</td>
+                        <td>0.7</td>
+                        <td>Working on same issue</td>
+                    </tr>
+                    <tr>
+                        <td>Indirect connection (2+ hops)</td>
+                        <td>0.4</td>
+                        <td>Friend of a friend</td>
+                    </tr>
+                    <tr>
+                        <td>Stranger (no connection)</td>
+                        <td>0.0</td>
+                        <td>Only highest ISR can access</td>
+                    </tr>
+                    <tr>
+                        <td>Community steward/admin</td>
+                        <td>+0.2 bonus</td>
+                        <td>Administrative role</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>3. Context Appropriateness Score</h3>
+            <p>
+                Evaluates whether the access reason is legitimate for the requested data:
+            </p>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Context/Reason</th>
+                        <th>Appropriateness Score</th>
+                        <th>Required Sensitivity Limit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Understanding ISR fairness (educational)</td>
+                        <td>0.8</td>
+                        <td>Up to Layer 4</td>
+                    </tr>
+                    <tr>
+                        <td>Making decision in microcommunity</td>
+                        <td>0.9</td>
+                        <td>Up to Layer 5</td>
+                    </tr>
+                    <tr>
+                        <td>Resolving community conflict</td>
+                        <td>0.7</td>
+                        <td>Up to Layer 5 (with review)</td>
+                    </tr>
+                    <tr>
+                        <td>Legal/compliance investigation</td>
+                        <td>1.0</td>
+                        <td>Up to Layer 8 (with authorization)</td>
+                    </tr>
+                    <tr>
+                        <td>Personal curiosity</td>
+                        <td>0.2</td>
+                        <td>Only Layer 1-2</td>
+                    </tr>
+                    <tr>
+                        <td>Harassment/bad faith</td>
+                        <td>-0.5 (DENY)</td>
+                        <td>Blocked + ISR penalty</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>4. ISR Adjustment for Access Behavior</h3>
+            <p>
+                The system logs access behavior and integrates it into ISR calculations:
+            </p>
+
+            <div class="highlight-code">
+                <strong>Positive actions (increase ISR):</strong>
+                <ul>
+                    <li>Access data for legitimate decision-making</li>
+                    <li>Verify information to improve understanding</li>
+                    <li>Request for educational/verification purposes</li>
+                </ul>
+                
+                <strong>Negative actions (decrease ISR):</strong>
+                <ul>
+                    <li>Multiple denied access attempts (suspicious activity)</li>
+                    <li>Access misuse (accessing data but not using for stated purpose)</li>
+                    <li>Harassment or targeted surveillance of individuals</li>
+                    <li>Data sharing with unauthorized parties</li>
+                </ul>
+                
+                <strong>Example:</strong> If Alice makes 50 denied access requests to Bob's personal data 
+                within one week, the system flags this as suspicious, logs it, and decreases Alice's ISR 
+                for potential manipulation/harassment.
+            </div>
+
+            <h3>5. Tiered Access Granularity</h3>
+            <p>
+                Even when access is granted, data can be returned at different detail levels:
+            </p>
+
+            <pre><code>// Example: User expertise profile access
+
+// Tier 1 (Low ISR, Layer 2)
+{
+  "name": "Bob",
+  "isr_score": 0.73,
+  "roles": ["member"]
+}
+
+// Tier 2 (Medium ISR, Layer 4)
+{
+  "name": "Bob",
+  "expertise_domains": ["plumbing", "mechanical engineering"],
+  "experience_years": 12,
+  "education": "BS Engineering",
+  "isr_score": 0.73,
+  "isr_components": {"relevance": 0.8, "expertise": 0.9, "contribution": 0.6}
+}
+
+// Tier 3 (High ISR, Layer 6+)
+{
+  "name": "Bob",
+  "expertise_domains": [...],
+  "experience_years": 12,
+  "education": "BS Engineering (MIT, 2011)",
+  "certifications": ["PE", "HVAC Specialist"],
+  "past_projects": [...],
+  "isr_score": 0.73,
+  "isr_components": {...},
+  "communication_quality": "high",
+  "reliability_score": 0.92,
+  "activity_log": [...]
+}</code></pre>
+        </div>
+        </div>
+
+        <!-- IMPLEMENTATION SECTION -->
+        <div class="paragraph">
+        <div class="paragraph_top" onclick="toggleContent('content-implementation')">
+            <h2 id="implementation">► ⚙️ Implementation Considerations</h2>
+        </div>
+        <div id="content-implementation" class="content" style="display: none;">
+            <h3>Architecture: Centralized vs. Distributed</h3>
+
+            <div class="three-column">
+                <div class="card">
+                    <h3>Centralized Approach</h3>
+                    <p><strong>Single authorization server evaluates all access:</strong></p>
+                    <ul style="font-size: 14px;">
+                        <li>✓ Easier to audit</li>
+                        <li>✓ Consistent policies</li>
+                        <li>✗ Single point of failure</li>
+                        <li>✗ Bottleneck for scale</li>
+                        <li>✗ Privacy risk (all data visible to server)</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Distributed Approach</h3>
+                    <p><strong>Use Blockchain/Smart Contracts:</strong></p>
+                    <ul style="font-size: 14px;">
+                        <li>✓ Decentralized (no single authority)</li>
+                        <li>✓ Immutable audit trail</li>
+                        <li>✓ Resistant to tampering</li>
+                        <li>✗ Slower (gas fees, block time)</li>
+                        <li>✗ More complex to debug</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Hybrid Approach</h3>
+                    <p><strong>Combination (Recommended):</strong></p>
+                    <ul style="font-size: 14px;">
+                        <li>✓ Fast decisions (off-chain)</li>
+                        <li>✓ Auditable (on-chain verification)</li>
+                        <li>✓ Decentralized governance</li>
+                        <li>✗ More complex architecture</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Technology Stack Recommendation</h3>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Technology</th>
+                        <th>Rationale</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Authorization Engine</td>
+                        <td>Firebase Rules + Cloud Functions</td>
+                        <td>Scalable, built-in for ISR</td>
+                    </tr>
+                    <tr>
+                        <td>Audit Log</td>
+                        <td>BigQuery + Cloud Audit Logs</td>
+                        <td>Immutable, query-able, compliance-ready</td>
+                    </tr>
+                    <tr>
+                        <td>ISR Calculation</td>
+                        <td>Cloud Run (Python/Node.js)</td>
+                        <td>Flexible, versioned, containerized</td>
+                    </tr>
+                    <tr>
+                        <td>Data Encryption</td>
+                        <td>Cloud KMS (key rotation)</td>
+                        <td>Industry standard, automated</td>
+                    </tr>
+                    <tr>
+                        <td>Access Decisions (future)</td>
+                        <td>Smart Contract (Solidity/Rust)</td>
+                        <td>Transparent, community-governed</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Database Schema Considerations</h3>
+
+            <div class="highlight-code">
+                <strong>Key Collections Needed:</strong>
+                <pre><code>// Users & ISR Scores
+users/
+  ├── {user_id}/
+  │   ├── profile: {name, email, ...}
+  │   ├── isr_scores: {
+  │   │     {issue_id}: {
+  │   │       relevance: 0.8,
+  │   │       expertise: 0.9,
+  │   │       contribution: 0.7,
+  │   │       timestamp: ISOString,
+  │   │       access_log: {who_viewed: timestamp}
+  │   │     }
+  │   │   }
+  │   └── general_isr: 0.72
+
+// Access Audit Trail
+access_logs/
+  ├── {log_id}/
+  │   ├── accessor_id: user_id
+  │   ├── resource_id: resource_id
+  │   ├── decision: "ALLOW" | "DENY"
+  │   ├── score: 0.75
+  │   ├── reason: string
+  │   ├── timestamp: ISOString
+  │   └── context: {microcommunity_id, reason}
+
+// Data Sensitivity Registry
+resources/
+  ├── {resource_id}/
+  │   ├── owner_id: user_id
+  │   ├── sensitivity_level: 0.6
+  │   ├── category: "profile" | "expertise" | "voting" | "activity"
+  │   └── last_accessed: timestamp</code></pre>
+            </div>
+
+            <h3>Performance Optimization</h3>
+            <ul>
+                <li><strong>Caching:</strong> Cache ISR scores for 5-10 minutes (update on behavior change)</li>
+                <li><strong>Lazy Evaluation:</strong> Only calculate detailed ISR when needed, use cached gISR for quick decisions</li>
+                <li><strong>Batch Processing:</strong> Calculate new ISR scores nightly, serve from cache during day</li>
+                <li><strong>Database Indexing:</strong> Index on accessor_id, resource_id, timestamp for fast audit log queries</li>
+            </ul>
+        </div>
+        </div>
+
+        <!-- SECURITY & PRIVACY SECTION -->
+        <div class="paragraph">
+        <div class="paragraph_top" onclick="toggleContent('content-security')">
+            <h2 id="security">► 🔒 Security & Privacy Measures</h2>
+        </div>
+        <div id="content-security" class="content" style="display: none;">
+            <h3>Privacy-by-Design Principles</h3>
+            <ul>
+                <li><strong>Data Minimization:</strong> Only collect and access data needed for specific decisions</li>
+                <li><strong>Transparency:</strong> Users can see what data is stored and who accessed it</li>
+                <li><strong>User Control:</strong> Members can restrict what data is shared and with whom</li>
+                <li><strong>Tiered Visibility:</strong> Always offer different detail levels (anonymous → personal)</li>
+            </ul>
+
+            <h3>Technical Security Measures</h3>
+
+            <div class="architecture-block">
+                <h4>1. End-to-End Encryption</h4>
+                <p>
+                    Sensitive data encrypted at rest and in transit. Only data subject and authorized users 
+                    with proper ISR can decrypt.
+                </p>
+            </div>
+
+            <div class="architecture-block">
+                <h4>2. Zero-Knowledge Proofs (ZKP)</h4>
+                <p>
+                    For highly sensitive decisions, use ZKP to prove authorization without revealing actual credentials:
+                </p>
+                <pre><code>// Example: Prove ISR > 0.7 without revealing actual score
+proof = zkp_prove(user.ISR > 0.7)
+// Server verifies proof without knowing user's exact ISR
+verify(proof) → bool</code></pre>
+            </div>
+
+            <div class="architecture-block">
+                <h4>3. Rate Limiting</h4>
+                <p>
+                    Prevent automated data harvesting:
+                </p>
+                <ul>
+                    <li>Max 10-20 data access requests per person per hour</li>
+                    <li>After 100+ denied requests in a row, automatic ISR penalty and investigation</li>
+                    <li>Adaptive limits based on historical patterns</li>
+                </ul>
+            </div>
+
+            <div class="architecture-block">
+                <h4>4. Audit Trail & Accountability</h4>
+                <p>
+                    Every access logged with full context:
+                </p>
+                <ul>
+                    <li>Who accessed what data</li>
+                    <li>When and from where (IP, device)</li>
+                    <li>Why (stated reason)</li>
+                    <li>Whether they actually used the data or just snooped</li>
+                </ul>
+                <p>
+                    Misuse detected and integrated into ISR (negative contribution).
+                </p>
+            </div>
+
+            <div class="architecture-block">
+                <h4>5. Data Subject Rights</h4>
+                <p>
+                    Individuals have rights to:
+                </p>
+                <ul>
+                    <li><strong>Access:</strong> See all their data stored in system</li>
+                    <li><strong>Correction:</strong> Update inaccurate information</li>
+                    <li><strong>Deletion:</strong> Request data removal (with community approval)</li>
+                    <li><strong>Portability:</strong> Export their data in standard format</li>
+                    <li><strong>Appeal:</strong> Challenge ISR calculations or access denials</li>
+                </ul>
+            </div>
+
+            <h3>Legal Compliance</h3>
+            <ul>
+                <li><strong>GDPR:</strong> Right to know why access was granted/denied</li>
+                <li><strong>CCPA:</strong> Transparency about data collection and use</li>
+                <li><strong>HIPAA:</strong> If health data involved, strict audit trails</li>
+                <li><strong>Local privacy laws:</strong> Adaptable by region</li>
+            </ul>
+        </div>
+        </div>
+
+        <!-- RISKS & CHALLENGES SECTION -->
+        <div class="paragraph">
+        <div class="paragraph_top" onclick="toggleContent('content-risks')">
+            <h2 id="risks">► ⚠️ Known Risks, Challenges & Limitations</h2>
+        </div>
+        <div id="content-risks" class="content" style="display: none;">
+            <h3>1. Privacy Paradox</h3>
+            <div class="problem-box">
+                <strong>The Dilemma:</strong> To ensure fair decisions, the system needs transparency. 
+                But transparency about people's expertise, contributions, and relationships can enable surveillance.
+            </div>
+
+            <p>
+                <strong>Current Status:</strong> TENSION ACKNOWLEDGED
+            </p>
+            <p>
+                We mitigate this through:
+            </p>
+            <ul>
+                <li>Tiered access (not everyone sees everything)</li>
+                <li>Context-specific data filtering</li>
+                <li>Audit logging of data access (people know who looked at them)</li>
+            </ul>
+
+            <div class="warning-box">
+                <span class="badge future">For Future Consideration</span>
+                <p>
+                    Could implement federated learning where ISR is computed locally without 
+                    centralizing all data, but this adds complexity.
+                </p>
+            </div>
+
+            <h3>2. Gaming the System</h3>
+            <div class="problem-box">
+                <strong>Risk:</strong> People could coordinate to artificially inflate ISR scores, 
+                abuse access to data, or create fake "positive contributions" to game the system.
+            </div>
+
+            <p>
+                <strong>Current Defenses:</strong>
+            </p>
+            <ul>
+                <li>ISR requires consistent, long-term behavior (not one-off actions)</li>
+                <li>Sudden value changes trigger alerts and investigation</li>
+                <li>Access misuse decreases ISR significantly</li>
+                <li>Community can vote to adjust weighting formulas if gaming detected</li>
+            </ul>
+
+            <div class="warning-box">
+                <span class="badge future">For Future Consideration</span>
+                <p>
+                    Implement machine learning anomaly detection to identify coordinated manipulation attempts. 
+                    Also consider sybil-attack resistance (preventing fake accounts).
+                </p>
+            </div>
+
+            <h3>3. Algorithmic Bias</h3>
+            <div class="problem-box">
+                <strong>Risk:</strong> The ISR calculation could inadvertently discriminate against 
+                certain groups (e.g., younger members, non-native speakers, people with disabilities).
+            </div>
+
+            <p>
+                <strong>Current Approach:</strong>
+            </p>
+            <ul>
+                <li>Components are transparent and community-defined (not black-box AI)</li>
+                <li>Regular fairness audits comparing ISR across demographic groups</li>
+                <li>Appeals process where individuals can challenge scores</li>
+            </ul>
+
+            <div class="warning-box">
+                <span class="badge future">For Future Consideration</span>
+                <p>
+                    Implement fairness constraints (e.g., ensure different demographic groups 
+                    have similar ISR distributions for same types of contributions). 
+                    Use fairness-aware ML techniques.
+                </p>
+            </div>
+
+            <h3>4. Behavioral Control & Chilling Effects</h3>
+            <div class="problem-box">
+                <strong>Risk:</strong> Knowing they're being scored and evaluated might make people 
+                self-censor, conform, or avoid taking risks in their participation.
+            </div>
+
+            <p>
+                <strong>Response:</strong> This is philosophically acknowledged in the research. 
+                The designers argue that a transparent, fair system actually REDUCES fear (compared to opaque systems), 
+                but the risk remains.
+            </p>
+
+            <div class="note-box">
+                <strong>Quote from document:</strong> "Psychologically healthy people in a healthy society 
+                should not fear expressing their position when the evaluation system is objective and understood. 
+                Implementation of transparent, objective evaluation allows gradually reducing fear."
+            </div>
+
+            <div class="warning-box">
+                <span class="badge future">For Future Consideration</span>
+                <p>
+                    Conduct longitudinal studies on behavioral changes after ISR implementation. 
+                    Implement confidentiality periods where some contributions are scored privately 
+                    before being revealed.
+                </p>
+            </div>
+
+            <h3>5. Scope Creep & Surveillance</h3>
+            <div class="problem-box">
+                <strong>Risk:</strong> A system designed for fair community decisions could be repurposed 
+                as a social credit system or surveillance tool by authorities.
+            </div>
+
+            <p>
+                <strong>Safeguard:</strong> ISR is designed to be:
+            </p>
+            <ul>
+                <li>Decentralized (no single authority controls it)</li>
+                <li>Community-governed (community votes on rules)</li>
+                <li>Transparent (decisions visible to all)</li>
+                <li>Time-bound and context-specific (not a universal "person ranking")</li>
+            </ul>
+
+            <div class="warning-box">
+                <span class="badge future">For Future Consideration</span>
+                <p>
+                    Build in hard limits on how data can be used. Use cryptographic techniques to prevent misuse 
+                    (e.g., smart contracts that specify allowed uses of data).
+                </p>
+            </div>
+
+            <h3>6. Technical Implementation Complexity</h3>
+            <div class="problem-box">
+                <strong>Current State:</strong> Much of the system design is theoretical. 
+                Real-world implementation is complex with many edge cases.
+            </div>
+
+            <ul>
+                <li>Handling data conflicts and inconsistencies</li>
+                <li>Scaling to large communities (10,000+ members)</li>
+                <li>Managing exceptions and special cases</li>
+                <li>Integration with existing systems</li>
+                <li>Maintaining performance under load</li>
+            </ul>
+
+            <div class="warning-box">
+                <span class="badge future">For Future Consideration</span>
+                <p>
+                    Implement MVP in small controlled community first (50-100 members). 
+                    Gather feedback and iterate before scaling.
+                </p>
+            </div>
+
+            <h3>7. Data Subject Disputes</h3>
+            <div class="problem-box">
+                <strong>Challenge:</strong> What if someone disagrees with how they're being scored? 
+                How do they appeal?
+            </div>
+
+            <p>
+                <strong>Current Thinking:</strong> Need robust appeals process, but specifics TBD.
+            </p>
+
+            <div class="warning-box">
+                <span class="badge future">For Future Consideration</span>
+                <p>
+                    Design independent ombudsman or arbitration process. 
+                    Allow community vote on disputed ISR calculations. 
+                    Implement temporary score holds during investigation.
+                </p>
+            </div>
+
+            <h3>8. Accountability for AI/LLM in Scoring</h3>
+            <div class="problem-box">
+                <strong>Challenge:</strong> ISR uses LLMs (GPT-4, Claude, Gemini) for understanding 
+                expertise, contribution quality, etc. LLMs can be unpredictable.
+            </div>
+
+            <p>
+                Who is liable if an LLM makes unfair assessment of someone's contribution?
+            </p>
+
+            <div class="warning-box">
+                <span class="badge future">For Future Consideration</span>
+                <p>
+                    Implement human-in-the-loop review for high-impact ISR changes. 
+                    Use ensemble methods (multiple LLMs) for robustness. 
+                    Establish clear liability chains.
+                </p>
+            </div>
+        </div>
+        </div>
+
+        <!-- FUTURE IMPROVEMENTS SECTION -->
+        <div class="paragraph">
+        <div class="paragraph_top" onclick="toggleContent('content-improvements')">
+            <h2 id="improvements">► 🚀 Future Improvements & Open Questions</h2>
+        </div>
+        <div id="content-improvements" class="content" style="display: none;">
+            <div class="three-column">
+                <div class="card">
+                    <h3>🔬 Technical Research</h3>
+                    <ul style="font-size: 14px;">
+                        <li>Federated learning for ISR without centralizing data</li>
+                        <li>Quantum-resistant encryption for long-term data protection</li>
+                        <li>Homomorphic encryption (compute on encrypted data)</li>
+                        <li>Zero-knowledge proofs for privacy-preserving authorization</li>
+                        <li>Fairness-aware ML for bias detection and mitigation</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>🏛️ Governance Questions</h3>
+                    <ul style="font-size: 14px;">
+                        <li>Who controls ISR parameters (weights, thresholds)?</li>
+                        <li>How do communities update rules over time?</li>
+                        <li>What appeals process for disputed scores?</li>
+                        <li>How to prevent government overreach?</li>
+                        <li>What's the relationship with existing laws?</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>🧪 Empirical Validation</h3>
+                    <ul style="font-size: 14px;">
+                        <li>Pilot in 5-10 real communities</li>
+                        <li>Measure decision quality improvements</li>
+                        <li>Track behavioral changes (participation, manipulation)</li>
+                        <li>Study privacy perception vs. actual privacy</li>
+                        <li>Document lessons learned and failure modes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Roadmap for Implementation</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Phase</th>
+                        <th>Timeline</th>
+                        <th>Goals</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Phase 1: Research</strong></td>
+                        <td>6 months</td>
+                        <td>Finalize algorithms, complete security audit, draft governance framework</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Phase 2: Prototype</strong></td>
+                        <td>6 months</td>
+                        <td>Build MVP with basic authorization in Firebase, test with 1-2 communities</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Phase 3: Pilot</strong></td>
+                        <td>12 months</td>
+                        <td>Deploy to 5-10 real organizations, gather feedback, iterate</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Phase 4: Scale</strong></td>
+                        <td>Ongoing</td>
+                        <td>Scale to 100+ communities, explore decentralization, blockchain integration</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        </div>
+
+        <!-- SUMMARY SECTION -->
+        <section id="summary" style="background: var(--color-accent-light); padding: 30px; border-radius: 8px;">
+            <h2>📋 Summary: Key Takeaways</h2>
+            
+            <ul>
+                <li><strong>Adaptable Authorization</strong> is a dynamic, context-aware access control model 
+                    where access permissions adapt based on accessor's ISR/gISR score and data sensitivity.</li>
+                
+                <li><strong>Data Hierarchy:</strong> ISR organizes sensitive data in 8 layers, each requiring 
+                    different minimum ISR thresholds (0.0 for public results to 0.95 for full data).</li>
+                
+                <li><strong>Privacy-by-Design:</strong> The system balances transparency (needed for fair decisions) 
+                    with privacy protection (limiting access to those who truly need it).</li>
+                
+                <li><strong>Algorithmic Basis:</strong> Access decisions use weighted function combining 
+                    accessor ISR, data sensitivity, relationship context, and access reason.</li>
+                
+                <li><strong>Key Challenges:</strong> Privacy paradox, gaming potential, algorithmic bias, 
+                    behavioral control, and scope creep risks require ongoing attention.</li>
+                
+                <li><strong>Implementation Status:</strong> System design is well-developed but many 
+                    aspects remain for future research (federated learning, formal appeals process, empirical validation).</li>
+                
+                <li><strong>Governance:</strong> System must be transparent, community-controlled, 
+                    and resistant to centralized authority abuse.</li>
+            </ul>
+        </section>
+
+    </div>
+    <footer class="site-footer">
+        <div class="doc-content centered">
+            <small>© 2024-2025 Sergii Ponomarchuk</small>
+        </div>
+    </footer>
+    <script src="/site-nav.js"></script>
+    <script src="/script.js"></script>
+</body>
+</html>

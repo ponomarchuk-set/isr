@@ -53,13 +53,13 @@ center h1, center h2, center h3 { text-align: center }
 .centered { text-align: center }
 
 /* Typography helpers */
-li{color:#000000;font-size:12pt;font-family:"Cambria"}p{margin:0;color:#000000;font-size:12pt;font-family:"Cambria"}
+li{color:#000000;font-size:12pt;font-family:"Calibri"}p{margin:0;color:#000000;font-size:12pt;font-family:"Cambria"}
 h1{padding-top:24pt;color:#4f81bd;font-weight:700;font-size:20pt;padding-bottom:0pt;font-family:"Calibri";line-height:1.0;page-break-after:avoid;orphans:2;widows:2;text-align:left}
 h2{padding-top:10pt;color:#4f81bd;font-weight:700;font-size:16pt;padding-bottom:0pt;font-family:"Calibri";line-height:1.0;page-break-after:avoid;orphans:2;widows:2;text-align:left}
 h3{padding-top:10pt;color:#4f81bd;font-weight:700;font-size:14pt;padding-bottom:0pt;font-family:"Calibri";line-height:1.0;page-break-after:avoid;orphans:2;widows:2;text-align:left}
 /* h1,h2,h3{color:var(--accent);margin:0 0 12px}
 p{margin:0 0 12px;color:var(--muted);line-height:1.6} */
-p{font-family:"Cambria";text-align: justify;padding-bottom: 10pt;}
+p{font-family:"Calibri";text-align: justify;padding-bottom: 10pt;}
 ol{margin:0;padding:0}
 
 /* Preserve paragraph justification for content pages (pitchdeck, society2050) */
