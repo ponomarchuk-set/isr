@@ -177,14 +177,18 @@
         </div>
         <div id="content-data-hierarchy" class="content" style="display: none;">
             <p>
-                ISR system data is organized in layers, each requiring different minimum ISR/gISR scores for access.
+                ISR system data is organized in layers. Access to each requires different:
+                <ul>
+                    <li>minimal gISR score</li>
+                    <li>minimal Person-to-Person relevance level</li>
+                </ul>
             </p>
 
             <div class="diagram-container">
                 <img src="https://raw.githubusercontent.com/ponomarchuk-set/isr/main/images/aa2.svg" alt="Data Sensitivity Hierarchy Diagram" width="100%"><br>
             </div>
 
-            <h3>Layer 1: Public Results (No ISR Required)</h3>
+            <h3>Layer 1: Public Results (No ISR Required and 1 Person-to-Person relevance level)</h3>
             <p>
                 Everyone can see: voted questions and final voting results. This is fundamental to transparency.
             </p>
@@ -194,7 +198,7 @@
                 <li>Decision made and implementation status</li>
             </ul>
 
-            <h3>Layer 2: Microcommunity Participation (gISR ≥ 0.2)</h3>
+            <h3>Layer 2: Microcommunity Participation (gISR ≥ 0.2 and 2 Person-to-Person relevance level)</h3>
             <p>
                 Once someone is part of a microcommunity for an issue, they can see:
             </p>
@@ -204,7 +208,7 @@
                 <li>High-level voting breakdown (how many voted for each option)</li>
             </ul>
 
-            <h3>Layer 3: ISR Explanations (gISR ≥ 0.4)</h3>
+            <h3>Layer 3: ISR Explanations (gISR ≥ 0.4 and 3 Person-to-Person relevance level)</h3>
             <p>
                 Members wanting to understand fairness can access:
             </p>
@@ -214,9 +218,9 @@
                 <li>Summary of expertise and past participation</li>
             </ul>
 
-            <h3>Layer 4: Supporting Evidence (gISR ≥ 0.6)</h3>
+            <h3>Layer 4: Supporting Evidence (gISR ≥ 0.6 and 4 Person-to-Person relevance level)</h3>
             <p>
-                For those investigating or appealing decisions:
+                For those investigating or appealing decisions and have some personal connections:
             </p>
             <ul>
                 <li>Detailed documents and evidence backing ISR calculations</li>
@@ -224,9 +228,9 @@
                 <li>Past contribution records with timestamps</li>
             </ul>
 
-            <h3>Layer 5: Activity Logs (gISR ≥ 0.7)</h3>
+            <h3>Layer 5: Activity Logs (gISR ≥ 0.7 and 5 Person-to-Person relevance level)</h3>
             <p>
-                Community stewards can access:
+                Community stewards and relatives or friends can access:
             </p>
             <ul>
                 <li>Complete social activity log (discussions, votes, tasks)</li>
@@ -234,9 +238,9 @@
                 <li>Flagged activities or behavioral anomalies</li>
             </ul>
 
-            <h3>Layer 6: Expertise Profile (gISR ≥ 0.8)</h3>
+            <h3>Layer 6: Expertise Profile (gISR ≥ 0.8 and 6 Person-to-Person relevance level)</h3>
             <p>
-                Limited to people with strong community standing:
+                People with strong community standing and relatives of the third degree or close friends can see:
             </p>
             <ul>
                 <li>Detailed skills and competencies</li>
@@ -244,9 +248,9 @@
                 <li>Areas of influence and interests</li>
             </ul>
 
-            <h3>Layer 7: Social Relations (gISR ≥ 0.85)</h3>
+            <h3>Layer 7: Social Relations (gISR ≥ 0.9 and 7 Person-to-Person relevance level)</h3>
             <p>
-                Highly restricted access to:
+                Almost avarage community stewards and relatives of the second degree have restricted access to:
             </p>
             <ul>
                 <li>Family relationships and household structure</li>
@@ -254,9 +258,9 @@
                 <li>Personal life circumstances (needed for context)</li>
             </ul>
 
-            <h3>Layer 8: Full Personal Data (gISR ≥ 0.95 or Legal Authorization)</h3>
+            <h3>Layer 8: Full Personal Data (gISR ≥ 1.0 and 8 Person-to-Person relevance level)</h3>
             <p>
-                Only top community stewards or legal processes:
+                More than average community stewards or legal processes and relatives of the first degree can access:
             </p>
             <ul>
                 <li>Complete personal data archive</li>
