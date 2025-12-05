@@ -7,28 +7,657 @@
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
-<body class="c11 doc-content">
-    <h1>Index of Social Responsibility (ISR)</h1>
+<body class="doc-content">
+    <h1>Index of Social Responsibility (ISR): System Overview</h1>
+    <h3>A comprehensive framework for transforming group decision-making through personalized weighted voting, ethical AI, and community-defined values.</h3>
 
-    <h2>Content</h2>
-    <a href="#introduction">Introduction</a><br>
+    <p>The <b>Index of Social Responsibility (ISR)</b> is a <b>comprehensive framework</b> designed to evaluate and promote socially responsible practices across various sectors. It aims to provide a standardized measure of how organizations, governments, and individuals contribute to the well-being of society and the environment.</p>
+
+    <p>The ISR encompasses multiple dimensions of social responsibility, including <b>ethical governance, environmental sustainability, community engagement</b>, and <b>economic equity</b>. By assessing these factors, the ISR seeks to encourage <b>transparency, accountability</b>, and <b>positive impact</b> in all areas of operation.</p>
+
+    <p>Organizations can utilize the ISR to benchmark their performance against industry standards, identify areas for <b>improvement</b>, and communicate their commitment to social responsibility to stakeholders. The ISR also serves as a valuable tool for consumers and investors who prioritize <b>ethical considerations</b> in their decision-making processes.</p>
+
+    <p>Overall, the Index of Social Responsibility represents a significant step towards <b>fostering a more equitable and sustainable future</b> by promoting responsible behavior at all levels of society.</p>
+
+    <p>The Index of Social Responsibility (ISR) is a practical system for improving collective decisions in groups where membership is equal but responsibilities, expertise and contributions differ (for example: non-profits, homeowners' associations, cooperatives, civic DAOs and other community organizations).</p>
+
+    <h3>The Challenge: Why Traditional Voting Falls Short</h3>
+    Community associations face persistent governance challenges that standard one-person-one-vote systems cannot address:
+    <ul>
+      <li>Membership Dynamics & Bureaucratic Inertia. As membership changes—people joining, leaving, or becoming inactive—formal governance structures fail to adapt. Decisions end up made by whoever happens to be visible rather than whoever is genuinely invested or capable.</li>
+      <li>Centralization of Power. As communities grow, decision-making authority concentrates among a small leadership group, while ordinary members retain only periodic voting rights. This breeds populism, reduces accountability, and disconnects leaders from actual member needs and values.</li>
+      <li>Expertise Ignored. Simple majority voting discounts expertise and track record, often leading to decisions that squander resources or create poor outcomes.</li>
+      <li>Vocal Minorities Dominate. The loudest or most numerous voices outweigh knowledgeable contributors, disadvantaging careful experts in favor of political operators.</li>
+      <li>Engagement Collapse. Members with real, context-specific experience and a history of concrete contributions feel unheard, so they disengage. Why participate if neither your expertise nor your actual work for the community has any visible impact?</li>
+    </ul>
+
+    <h3>The Solution: How ISR Transforms Community Decision-Making</h3>
+    ISR addresses these challenges by linking contribution, competence, and contextual relevance to actual decision influence. Key benefits include:
+    <ul>
+      <li>Accountability & Genuine Participation. ISR creates a transparent, bidirectional link between what members contribute (skills, actions, values alignment) and their influence on decisions. This framework rewards genuine engagement over passive participation, and discourages political theater.</li>
+      <li>Expertise Recognized, Contribution Rewarded. Members with relevant domain expertise and a constructive track record gain proportionally greater voice on decisions within their competence area. Simultaneously, members with high ambitions but low knowledge or contribution history have appropriately moderated influence—ensuring critical decisions benefit from genuine expertise rather than political capital.</li>
+      <li>Faster, Better, More Legitimate Decisions. By weighting voices according to criteria the community itself chooses, ISR accelerates decision-making, improves quality through expertise recognition, and increases legitimacy because reasoning is transparent and auditable.</li>
+      <li>Transparency & Auditability. Every member can see exactly why certain participants carried more influence on a given issue—what expertise was recognized, what track record was considered, what values were weighted. No black boxes.</li>
+      <li>Distributed Decision Ownership. Decision authority stays with the community through issue-specific microcommunities rather than concentrating in leadership. This reduces deadlock while keeping power distributed.</li>
+    </ul>
 
     <div class="main_content">
-        <div class="paragraph">
-            <div class="paragraph_top" onclick="toggleContent('content-introduction')">
-                <h2 id="introduction">▼ Introduction</h2> 
-            </div>
-            <div id="content-introduction" class="content" style="display: block;">
-                <p>The Index of Social Responsibility (ISR) is a comprehensive framework designed to evaluate and promote socially responsible practices across various sectors. It aims to provide a standardized measure of how organizations, governments, and individuals contribute to the well-being of society and the environment.</p>
+    <!-- WHAT ISR IS -->
+    <div class="paragraph">
+      <div class="paragraph_top" onclick="toggleContent('content-WHAT_IS_ISR')">
+        <h2 id="WHAT_IS_ISR">► What is ISR — core concept and product form</h2></div>
+      <div id="content-WHAT_IS_ISR" class="content" style="display: none;">
+        <h3>Core concept</h3>
+        <p>
+          ISR (Index of Social Responsibility) is a context-aware influence score computed for each participant with respect to a specific question or issue. That score (the ISR) is then used to weight that participant's vote or influence in the decision for that issue. ISR is not a permanent power held by the few — it is dynamic, issue-specific and transparent to participants.
+          <div class="formula">
+            $$ISR = f(Relevance, Expertise, Contribution)$$
+          </div>
+        </p>
 
-                <p>The ISR encompasses multiple dimensions of social responsibility, including ethical governance, environmental sustainability, community engagement, and economic equity. By assessing these factors, the ISR seeks to encourage transparency, accountability, and positive impact in all areas of operation.</p>
+        <h3>Implementation (MVP)</h3>
+        <p>
+          The minimum deployable product is a web application that:
+        </p>
+        <ul>
+          <li>lets communities declare their shared values and choose weighting parameters;</li>
+          <li>lets people create profiles (skills, experience, declared values, activity history);</li>
+          <li>forms dynamic microcommunities around concrete issues and proposes relevant participants;</li>
+          <li>calculates ISR scores for the issue and uses those scores in weighted voting;</li>
+          <li>logs decisions, tasks and execution progress; and</li>
+          <li>provides explainability: members can inspect why a score was assigned and which factors mattered most.</li>
+        </ul>
 
-                <p>Organizations can utilize the ISR to benchmark their performance against industry standards, identify areas for improvement, and communicate their commitment to social responsibility to stakeholders. The ISR also serves as a valuable tool for consumers and investors who prioritize ethical considerations in their decision-making processes.</p>
-
-                <p>Overall, the Index of Social Responsibility represents a significant step towards fostering a more equitable and sustainable future by promoting responsible behavior at all levels of society.</p>
-            </div>
-        </div>
+        
+    <!-- MVP / Product -->
+    <div class="paragraph">
+      <div class="paragraph_top" onclick="toggleContent('content-MVP')">
+        <h4 id="MVP">► Product (MVP) — main screens and user flow</h4></div>
+      <div id="content-MVP" class="content" style="display: none;">
+        <p>
+          The ISR MVP focuses on workflows that matter for community decisions:
+        </p>
+        <ul>
+          <li><strong>Profile:</strong> flexible profile fields, declared values and skills (used in expertise scoring).</li>
+          <li><strong>Values:</strong> each user notes their own values in the most convenient of several possible ways (the system helps in determining and explains the impact and meaning of each item).</li>
+          <li><strong>Chat & Discussion:</strong> threaded debates with light reactions; messages contribute to ISR as evidence of contribution.</li>
+          <li><strong>Voting:</strong> issues with proposed options, deadlines, and ISR-weighted voting results.</li>
+          <li><strong>Tasks:</strong> implementation tracker created after decisions: evidence of completed tasks increases contribution scores.</li>
+          <li><strong>AI assistant:</strong> helps users on every step and explain ISR computations.</li>
+        </ul>
+        <p>
+          This product design emphasizes transparency, guided AI assistance, and clear links between decisions and executed tasks.
+          For a full feature list and product rationale see the ISR MVP page.
+        </p>
+        <a href="/wiki/mvp.html">🚀 <b>ISR-vote</b> (MVP) design: feature list and product details</a>
+      </div>
     </div>
+
+        </p>
+      </div>
+    </div>
+
+    <!-- HOW IT WORKS - overview -->
+    <div class="paragraph">
+      <div class="paragraph_top" onclick="toggleContent('content-HOW_IT_WORKS')">
+        <h2 id="HOW_IT_WORKS">► How ISR works & What ISR parts</h2></div>
+      <div id="content-HOW_IT_WORKS" class="content centered" style="display: none;">
+
+        <div class="paragraph sch-block-v">
+          <div class="paragraph_top" onclick="toggleContent('content-profile')">
+            <h4 id="profile">► Registering & Profile filling out</h4>
+          </div>
+          <div id="content-profile" class="content" style="display: none;">
+            <p>Registering in the system demands <b>Proof of Identyty</b> use to be sure the person identity, for example, with <b>Bank.ID</b>. The crusial point of the system that every single person can have <b>only one account</b> which logs all social actions of the person.</p>
+            <p><b>Profile</b> provide an ability to state all the person major social features:</p>
+            <ul>
+            <li><b>Demographic and statistical facts.</b> Sex, age, nationality, religion, pets, property obtained - everything is matter.</li>
+            <li><b>Social relations</b> (family, geography, economical, interests etc.). A base for context <b>Relevance</b> evaluation. Acceptance by the other person could be required.</li>
+            <li><b>Credentials.</b> List of verified facts about gained education in certain fields. Part of a member's <b>Expertise</b>.</li>
+            <li><b>Experience.</b> Records of serving, production, researching, performing that prove your <b>Expertise</b> in certain domains. Includes details of where, when, how long and how good the Expertise was applied.</li>
+            <li><b>Action log.</b> Automatically adds all member's social activity both "real" (or "hard", objective) - that has some direct physical results and "virtual" (or "soft", subjective) - communication style, rspectfulness, tollerance. Also it is possible to add some untracked actions through the Profile with AI checking (also may need other people approval). Every record consists of:
+              <ul>
+                <li>(Optional) Reference to a question in <b>Chat</b> or <b>Voting</b>.</li>
+                <li>Action text <b>description</b>.</li>
+                <li>(Optional) Action <b>results</b> text description.</li>
+              </ul>
+            Impacts on <b>Contribution</b>.</li>
+            <li><b>Values statment.</b> Individual values are entered by participants at the stage of filling out the Profile (and could be edited later) in one of the listed ways or in a step-by-step combination:</li>
+            <ul>
+              <li><b>List</b> of named parameters with the corresponding numerical values of the weight of this parameter</li>
+              <li>Free <b>story</b> about own values</li>
+              <li>AI assistant <b>survey</b> that allows you to identify life values</li>
+              <li>Choosing one of the preset <b>templates</b> that summarize popular views</li>
+            </ul>
+            </ul>
+
+           <!-- vectorization -->
+            <div class="paragraph">
+              <div class="paragraph_top" onclick="toggleContent('content-vectorization')">
+                <h5 id="vectorization">► Vectorization of users data and social graph</h5></div>
+              <div id="content-vectorization" class="content sch-block-g" style="display: none;">
+                <p><b>Social connections</b> data is represented as a <b>graph structure</b> where nodes are users and edges represent relationships (friendship, collaboration, communication frequency, etc.). Graph embedding techniques (e.g., Node2Vec, GraphSAGE) are applied to convert this graph data into vector representations that capture the structural and relational properties of users within the social network.</p>
+                <p>All other Profile data is also converted into vector representation in semantic space using LLM-based embedding models and saved into vector DB. This vector representation is used in calculating <b>Relevance</b>, <b>Expertise</b> and <b>Contribution</b> - all components of the ISR.
+\[
+\begin{align*}
+\vec{v}_f = m \cdot \vec{d}_f
+\end{align*}
+\]
+where:
+<li>\(\vec{v}_f\) - vector representation of user profile fact <b>f</b> (personal data, graph data, education credentials, work experience, actions) </li>
+<li>\(\vec{d}_f\) - user profile fact vector semantic <b>direction</b></li>
+<li>\(m\) - scalar that shows <b>"force"</b> of the recorded fact (distance for graph data, degree for education, years for experience, scale for actions)</li>
+</p>
+                <p>The system <b>translates</b> any input form of values into a <b>single vector representation</b>, which is taken into account when compiling the <b>Vector of Values</b> of microcommunities. The participant can change his values, but if this happens often and very sharply, the system will analyze such actions for attempts at manipulation in order to influence specific issues and warn that such actions (inconsistency and opportunism in declaring values) can lead to a decrease in the overall influence of the participant.</p>
+                <p>The system, using an AI assistant, provides participants with the opportunity to translate <b>one form into another</b> (for example, a list of parameters into a narrative text and vice versa), and also <b>explains</b> in what sense the system perceives the concepts used to describe values and what <b>impact</b> individual elements have on social actions and their assessment.</p>
+                <p>So, at the operational level, the values of the participants are an <b>array of vector representations</b> in a specialized database.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <p>At a high level ISR operates in a short cycle:</p>
+        <div class="paragraph sch-block-y">
+          <div class="paragraph_top" onclick="toggleContent('content-issue')">
+            <h4 id="issue">► Issue appears</h4>
+          </div>
+          <div id="content-issue" class="content" style="display: none;">
+            <p>A concrete <b>problem</b> needed to be solved or <b>question (q)</b> is raised in the system. An issue can be created by <b>any</b> community member. It should include a clear <b>description</b> of the problem, context, and desired outcomes. <b>AI</b> tools may <b>assist</b> in categorizing and tagging the issue for better stakeholder matching.</p>
+            <p>The formation of a <b>microcommunity</b> around the question <b>q</b> is based on methods of analyzing graphs of geographical, gynecological, social, economic, etc. user connectivity. As well as on methods of clustering in network space and semantic analysis using LLM. The <b>scalar value</b> of the question vector indicates the contextual scope and expert complexity of the question, which also affects the number of participants involved in the micro-community.</p>
+            <p>The question <b>q</b> must meet the following requirements:</p>
+            <ul>
+            <li><b>Text.</b> A clear specific request for which public consensus is required.</li>
+            <li><b>Context.</b> A multifactorial description of the temporal and spatial (geographical, social, etc.) conditions for which the question text is relevant.</li>
+            <li><b>Solution options.</b> Optional for discussion, mandatory for voting. Must contain options for a specific answer to the question.</li>
+            </ul>
+          </div>
+        </div>
+          ↓
+        <div class="paragraph sch-block-y">
+          <div class="paragraph_top" onclick="toggleContent('content-relevace')">
+            <h4 id="relevace">► AI identifies relevant stakeholders - who the issue affect at</h4>
+          </div>
+          <div id="content-relevace" class="content" style="display: none;">
+            <p>The system suggests a <b>set of participants</b> whose profiles, past actions, geographic or organizational proximity, and social ties make them <b>relevant to this issue</b>. Using natural language processing and graph analysis, the system analyzes the issue description and matches it against participant profiles and activity history to identify those most relevant to the topic.</p>
+            <ol>
+              <li><b>Determining the contextual profile of the question q.</b> Extracting key topics, domains and stakeholders from the question description using LLM. Vector representation of the question in semantic space (nesting).</li>
+              <li><b>Calculating</b> the situational <b>Relevance</b> for each user <b>i</b>:<br>
+
+\[\begin{align*}
+{R}_i = \cos(\vec{v}_i, \vec{v}_q)
+\end{align*}\]
+
+where \(\vec{v}_i\) is the vector representation of the user profile, \(\vec{v}_q\) is the vector question</li>
+              <li><b>Determining contextual relevance</b> based on:</li>
+              <ul>
+              <li>Social connections with other question participants</li>
+              <li>Geographic and organizational proximity</li>
+              <li>Declared interests and values</li>
+              </ul>
+              <li><b>Connecting to the microcommunity</b> of users with \(\text{Relevance} > \Theta\) , where \(\Theta\) is the threshold set by the context of the question <b>q</b>.</li>
+            </ol>
+          </div>
+        </div>
+          ↓
+        <div class="paragraph sch-block-y">
+          <div class="paragraph_top" onclick="toggleContent('content-microcom')">
+            <h4 id="microcom">► Microcommunity forms</h4>
+          </div>
+          <div id="content-microcom" class="content" style="display: none;">
+            <p>
+              That set becomes a temporary microcommunity for deliberation and voting on the issue. The identified stakeholders are invited to join a microcommunity dedicated to addressing the issue. This group will deliberate, propose solutions, and vote on the best course of action.
+            </p>
+            <img src="https://raw.githubusercontent.com/ponomarchuk-set/isr/main/images/a2.svg" alt="ISR Microcommunity Lifecycle" width="100%"><br><br>
+            <p><i>Microcommunity Lifecycle: Dynamic Problem-Oriented Formation</i></p>
+            <!-- MICROCOMMUNITIES -->
+            <div class="paragraph">
+              <div class="paragraph_top" onclick="toggleContent('content-MICROCOMMUNITIES')">
+                <h5 id="MICROCOMMUNITIES">► Microcommunities — temporary groups around concrete problems</h5></div>
+              <div id="content-MICROCOMMUNITIES" class="content sch-block-g" style="display: none;">
+                <p>
+                  ISR forms short-lived microcommunities automatically. A microcommunity is a set of relevant stakeholders gathered to deliberate and decide on a single concrete issue. It appears when needed and dissolves once the issue is resolved and tasks are closed.
+                </p>
+                <p>
+                  Key advantages:
+                <ul>
+                  <li>Focus: decisions are handled by the people most connected to the problem.</li>
+                  <li>Efficiency: fewer irrelevant voices in detailed technical deliberations, while preserving transparency of outcomes.</li>
+                  <li>Legitimacy: membership and weights are computed and explained, not arbitrarily assigned.</li>
+                </ul>
+
+        Examples of <b>microcommunity</b> gatherings around <b>specific issues</b>:<br><br>
+
+        <div class="sch-block-c">
+        <center><b>Question:</b> "Should the project adopt a mandatory code review process?"<br>
+            ⬇️ GATHERED ⬇️<br>
+            <b>Microcommunity</b> in an open-source web accessibility project<br>
+            ⬇️ WITH MEMBERS ⬇️
+        </center><br><br>
+        <p>
+            <b>Member 1: Olena (Core maintainer) Belonginess: 0.95 (1.46 normalized)
+                <ul>
+            Personal Values Profile:</b><br>
+            <li>Accessibility Impact: 0.35</li>
+            <li>Code Quality: 0.28</li>
+            <li>Responsiveness: 0.20</li>
+            <li>Community Collaboration: 0.12</li>
+            <li>Documentation: 0.05</li><br>
+            <b>Personal Action Log:</b><br>
+            <li>Fixed critical accessibility bug in keyboard navigation; wrote detailed technical documentation and posted tutorial explaining the fix.</li>
+            <li>Responded within 2 hours to 5 community issues with detailed explanations and guidance; helped 3 newer contributors debug their code.</li>
+            <li>Refactored core module to improve maintainability, added comprehensive unit tests, merged 8 pull requests with constructive feedback.</li>
+                </ul>
+        </p>
+        <p>
+            <b>Member 2: James (Intermediate contributor) Belonginess: 0.65 (1.00 normalized)
+                <ul>
+            Personal Values Profile:</b><br>
+            <li>Accessibility Impact: 0.25</li>
+            <li>Code Quality: 0.30</li>
+            <li>Responsiveness: 0.20</li>
+            <li>Community Collaboration: 0.15</li>
+            <li>Documentation: 0.10</li><br>
+            <b>Personal Action Log:</b><br>
+            <li>Contributed screen reader testing module; code was functional but lacked documentation; took 2 days to merge after feedback.</li>
+            <li>Fixed minor UI bug and responded to follow-up questions within 24 hours.</li>
+            <li>Participated in community discussion about API design; offered suggestions but didn't implement anything.</li>
+                </ul>
+        </p>
+        <p>
+            <b>Member 3: Zara (Newer contributor) Belonginess: 0.35 (0.54 normalized)
+                <ul>
+            Personal Values Profile:</b><br>
+            <li>Accessibility Impact: 0.30</li>
+            <li>Code Quality: 0.22</li>
+            <li>Responsiveness: 0.18</li>
+            <li>Community Collaboration: 0.10</li>
+            <li>Documentation: 0.20</li><br>
+            <b>Personal Action Log:</b><br>
+            <li>Submitted first pull request—color contrast checker for WCAG compliance; good accessibility focus but code needs optimization; minimal documentation.</li>
+            <li>Added comprehensive documentation to existing module; updated README with setup instructions.</li>
+            <li>Slow to respond to code review feedback; took 5 days to address reviewer comments.</li>
+                </ul>
+        </p>
+        </div>
+        <i>Microcommunity gathering. Example 1</i><br><br>
+
+        <div class="sch-block-c">
+        <center><b>Question:</b> "With $65,000 budget + ~200 volunteer working hours this quarter, should we: Option A—allocate 95% to immediate aid (supplies, transportation, medical) and 5% to operations, OR Option B—allocate 70% to immediate aid and 30% to infrastructure (database system to track beneficiaries, volunteer training program, sponsorship campaign platform, staff coordination tools) to improve future capacity?"<br>
+            ⬇️ GATHERED ⬇️<br>
+            <b>Microcommunity</b> of a grassroots charity fund providing emergency aid (food, medical supplies, shelter) to displaced and war-affected<br>
+            ⬇️ WITH MEMBERS ⬇️
+        </center><br><br>
+        <p>
+            <b>Member 1: Volodymyr (Co-founder, 2.5 years tenure) Belonginess: 0.97 (1.28 normalized)
+                <ul>
+            Personal Values Profile:</b><br>
+            <li>Immediate Beneficiary Relief: 0.42</li>
+            <li>Organizational Efficiency: 0.20</li>
+            <li>Community Trust & Transparency: 0.18</li>
+            <li>Volunteer Sustainability: 0.12</li>
+            <li>Long-term Strategic Growth: 0.08</li>
+            <br>
+            <b>Personal Action Log:</b><br>
+            <li>Personally delivered 15 medical kits to frontline hospital near Kharkiv; documented trip with photos/testimonials; shared impact report with donors.</li>
+            <li>Made decision to buy supplies from bulk supplier without vetting; discovered supplier had overcharged charity by 18% and later provided lower-quality medical gauze.</li>
+            <li>Held town hall with 120+ donors and volunteers; transparent about challenges; announced plan to improve systems; received strong community support.</li>
+                </ul>
+        </p>
+        <p>
+            <b>Member 2: Kateryna (Operations Manager, 1.5 years tenure) Belonginess: 0.78 (1.03 normalized)
+                <ul>
+            Personal Values Profile:</b><br>
+            <li>Immediate Beneficiary Relief: 0.30</li>
+            <li>Organizational Efficiency: 0.38</li>
+            <li>Community Trust & Transparency: 0.10</li>
+            <li>Volunteer Sustainability: 0.18</li>
+            <li>Long-term Strategic Growth: 0.04</li>
+            <br>
+            <b>Personal Action Log:</b><br>
+            <li>Created volunteer coordination spreadsheet tracking 85+ volunteers and their hours; reduced confusion by 40%; improved supply distribution efficiency.</li>
+            <li>Spent 40 hours developing new inventory management system; system failed on first week of deployment, corrupting shipment data; took 15 hours to recover.</li>
+            <li>Coordinated emergency supply shipment to 8 locations; worked 16-hour shift; all deliveries arrived on time with accurate documentation.</li>
+                </ul>
+        </p>
+        <p>
+            <b>Member 3: Marko (Volunteer Coordinator, 6 months tenure) Belonginess: 0.52 (0.69 normalized)
+                <ul>
+            Personal Values Profile:</b><br>
+            <li>Immediate Beneficiary Relief: 0.32</li>
+            <li>Organizational Efficiency: 0.10</li>
+            <li>Community Trust & Transparency: 0.18</li>
+            <li>Volunteer Sustainability: 0.35</li>
+            <li>Long-term Strategic Growth: 0.05</li>
+            <br>
+            <b>Personal Action Log:</b><br>
+            <li>Recruited 25 new volunteers; organized training program; created volunteer handbook; turnover decreased from 35% to 15%.</li>
+            <li>Promised volunteers equipment (vests, gloves) that wasn't yet purchased; created confusion and damaged trust when items didn't arrive; one volunteer quit.</li>
+            <li>Organized volunteer appreciation event; elevated morale; recorded testimonials of volunteer impact; prepared material for future fundraising.</li>
+                </ul>
+        </p>
+        </div>
+                <i>Microcommunity gathering. Example 2</i>
+              </div>
+            </div>
+
+          </div>
+        </div>
+          ↓
+        <div class="paragraph sch-block-y">
+          <div class="paragraph_top" onclick="toggleContent('content-isr-calc')">
+            <h4 id="isr-calc">► ISR scores are computed</h4>
+          </div>
+          <div id="content-isr-calc" class="content" style="display: none;">
+            <p>For this specific issue each participant receives a score computed from three components (<b>Relevance, Expertise, Contribution</b>). The <b>ISR</b> score for each participant is calculated based on their <b>situational relevance</b> to the issue, their <b>expertise</b> in the relevant domain, and their historical <b>contributions</b> to the community. These components are weighted according to community-defined parameters.</p>
+
+            <!-- COMPONENTS -->
+            <div class="paragraph">
+              <div class="paragraph_top" onclick="toggleContent('content-COMPONENTS')">
+                <h5 id="COMPONENTS">► ISR components — Relevance, Expertise, Contribution & Matrix of Values</h5></div>
+              <div id="content-COMPONENTS" class="content" style="display: none;">
+
+
+        <p><b>Matrix of Values (Automated Legislature)</b>: It is a kind of legislature system in the ISR framework. Every user fills out its own life (economical, political, cultural, etc.) values. These values don't change because of the new microcommunity belonging - only if the member changes or clarifies his own life values. After gathering microcommunity around some problem, its "Matrix of Values" appears by averaging all its members' individual values concerning the problem. So we got an actual, inclusive, pluralistic basement to understand the microcommunity needs and values which can be used for all further ISR estimations.</p>
+        <p>Each user independently defines their values and all together they constitute</p>
+<!-- <div style="border: 2px solid #999; background-color: #fafafa; border-radius: 12px; padding: 20px; box-sizing: border-box;"> -->
+<center><b>Microcommunity Vector of Values</b></center>
+<div style="display: flex; gap: 20px; padding: 10px; justify-content: center;">
+  <div style="border: 2px solid #999; background-color: #f0ffff; border-radius: 12px; padding: 20px; box-sizing: border-box;text-align:left;">
+    <center><b>User 1<br>
+    Belonginess: 0.97</b></center><br>
+    <ul style="margin-left: -20">
+    <li>Immediate Beneficiary Relief: 0.42</li>
+    <li>Organizational Efficiency: 0.20</li>
+    <li>Community Trust & Transparency: 0.18</li>
+    <li>Volunteer Sustainability: 0.12</li>
+    <li>Long-term Strategic Growth: 0.08</li>
+    </ul>
+    <center>⬇️</center>
+  </div>
+  <div style="border: 2px solid #999; background-color: #fff0ff; border-radius: 12px; padding: 20px; box-sizing: border-box;text-align:left;">
+    <center><b>User 2</br>
+    Belonginess: 0.78</b></center><br>
+    <ul style="margin-left: -20">
+    <li>Immediate Beneficiary Relief: 0.30</li>
+    <li>Organizational Efficiency: 0.38</li>
+    <li>Community Trust & Transparency: 0.10</li>
+    <li>Volunteer Sustainability: 0.18</li>
+    <li>Long-term Strategic Growth: 0.04</li>
+    </ul>
+    <center>⬇️</center>
+  </div>
+  <div style="border: 2px solid #999; background-color: #fffff0; border-radius: 12px; padding: 20px; box-sizing: border-box;text-align:left;">
+    <center><b>User 3<br>
+      Belonginess: 0.52</b></center><br>
+    <ul style="margin-left: -20">
+    <li>Immediate Beneficiary Relief: 0.32</li>
+    <li>Organizational Efficiency: 0.10</li>
+    <li>Community Trust & Transparency: 0.18</li>
+    <li>Volunteer Sustainability: 0.35</li>
+    <li>Long-term Strategic Growth: 0.05</li>
+    </ul>
+    <center>⬇️</center>
+  </div>
+</div>
+<center><b>Aggregation</b><br> taking into account the belonginess coefficient<br>⬇️</center><br>
+<div style="border: 2px solid #999; background-color: #fffff0; border-radius: 12px; padding: 20px; box-sizing: border-box; width: fit-content; max-width: 100%; margin: 0 auto;">
+<center><b>Microcommunity Vector of Values</b><br>
+  (For specific issue context)</center>
+  <hr>
+    <ul style="margin-left: -20">    
+    <li>Immediate Beneficiary Relief: 0.356</li>
+    <li>Organizational Efficiency: 0.239</li>
+    <li>Community Trust & Transparency: 0.153</li>
+    <li>Volunteer Sustainability: 0.193</li>
+    <li>Long-term Strategic Growth: 0.059</li>
+    </ul>
+</div>
+<p><br></p>
+<div style="border: 2px solid #999; background-color: #eee; border-radius: 12px; padding: 20px; box-sizing: border-box;">
+<center><b>How Vector of Values Is Used:</b></center>
+  <hr>
+  <p>
+    <b>1. Baseline Reference:</b> The aggregated values serve as the community's shared baseline for what matters in this issue<br>
+    <b>2. Influence Weighting:</b> When calculating ISR influence scores (Expertise, Contribution, Relevance), 
+    the community's Vector of Values determines Contribution, providing a badrock of actions assessment<br>
+    <b>3. Holistic Assessment:</b> Rather than imposing external criteria, the framework reflects what this specific microcommunity actually values for this specific issue<br>
+    <b>4. Accountability:</b> Members see their collective values reflected in decision-making processes, ensuring decisions align with community priorities<br><br>
+    <b>Key Principle:</b> The Vector ensures pluralism by averaging diverse perspectives rather than erasing them.
+</p>
+</div>
+<!-- </div> -->
+
+        <p>The next three elements make up the ISR as constituent parts</p>
+
+<div>
+  <img src="https://raw.githubusercontent.com/ponomarchuk-set/isr/main/images/a3.svg" alt="ISR Score Calculation Model" width="100%"><br>
+  <center><b>Key ISR Principle</b></center>
+  <p>
+    Unlike traditional "one-person-one-vote" systems, each member's influence coefficient varies based on:<br>
+    ▪ Their contextual connection to the issue <br>
+    ▪ Their proven track record of contribution <br>
+    ▪ Their actual expertise in the issue domain <br><br>
+    AI determine the weight (w<sub>R</sub>, w<sub>E</sub>, w<sub>C</sub>) through the issue context.
+  </p>
+</div>
+
+                <h4>1. Context Relevance (R)</h4>
+                <p>Measures how directly a person is connected to the current issue: declared interests, proximity (geographic or organizational), recent activity on similar topics, social ties to other stakeholders. Practically this is estimated via semantic matching between the issue description and the participant's profile plus graph-based proximity metrics. The calculation method is shown above. </p>
+
+                <h4>2. Expertise (E)</h4>
+                <p>Captures domain knowledge: formal credentials, demonstrated experience, and prior successful work relevant to the topic. Expertise is assessed by matching profile records of participant <b>i</b> against the question <b>q</b> semantic vector:
+\[
+\begin{align*}
+{E}_{i,q} = \sum_{credentials} \, \vec{v}_{i, credentials} \cdot \vec{V}_q + \sum_{experience} \, \vec{v}_{i, experience} \cdot \vec{V}_q
+\end{align*}
+\]
+where:
+<li>\({E}_{i,q}\) - <b>Expertise</b> about <b>q</b> question of <b>i</b> member</li>
+<li>\({credentials}\) - <b>education</b> records of <b>i</b> member</li>
+<li>\({experience}\) - practical <b>experience</b> records of <b>i</b> member</li>
+<li>\(\vec{v}_{i, credentials}, \vec{v}_{i, experience}\) - vector representation of Expertise records</li>
+<li>\(\vec{V}_q\) - vector representation of <b>q</b> question</li></p>
+<p>This ensures that members with relevant knowledge have a proportionate influence on decisions related to their expertise. E.g. two records of 2 years experience should weigh the same as one record of 4 year experience; one college degree should weigh more than two short courses; college degree and two short courses should weigh less the PhD degree.
+</p>
+
+                <h4>3. Contribution (C)</h4>
+                <p>Reflects the participant's verified <b>history of actions</b> in the community — tasks completed, constructive discussion, verified outcomes, and peer evaluations. Contribution is the system's operational "karma" measure: actions and their impact are recorded and vectorized so the AI can evaluate alignment with the community's declared values.</p>
+                <p>After calculating the situational <b>Relevance</b>, a list of <b>n</b> microcommunity participants appears with the corresponding weights \(R_i\) regarding relevance to the question <b>q</b>. Vector representations of their values \(\vec{V}_i\) (taking into account <b>Relevance</b>) make up the microcommunity value vector, which can also be translated into a form convenient for the participant with explanations from the AI assistant. Therefore, the greater the <b>Relevance</b> of a member, the more the member's values influence <b>the values of the microcommunity</b>.</p>
+                <p>Microcommunity <b>Vector of Values</b> calculation:
+\[
+\begin{align*}
+\vec{V}_{\mathrm{mv}} = \frac{1}{n} \sum_{i=1}^n \, R_i \cdot \vec{V}_i
+\end{align*}
+\]
+where:
+<li>\(\vec{V}_{\mathrm{mv}}\) - the microcommunity's <b>Vector of Values</b></li>
+<li>\(R_i\) - <b>Relevance</b> of <b>i</b> member</li>
+<li>\(\vec{V}_i\) - vectorized <b>values</b> of <b>i</b> member</li>
+</p>
+                <p><b>Contribution</b> calculation:
+\[
+\begin{align*}
+{C}_i = \sum_{actions} \, \vec{V}_{\mathrm{mv}} \cdot \vec{v}_{i, action}
+\end{align*}
+\]
+where:
+<li>\({C}_i\) - <b>Contribution</b> to the microcommunity of <b>i</b> member</li>
+<li>\({actions}\) - <b>action</b> records of <b>i</b> member</li>
+<li>\(\vec{V}_{\mathrm{mv}}\) - the microcommunity's <b>Vector of Values</b></li>
+<li>\(\vec{v}_{i, action}\) - vectorized <b>actions</b> of <b>i</b> member</li>
+</p>
+                <p>Finally ISR is normalized to unit mean (microcommunity average score is always 1) to psychologically simplify adaptation to the new approach.</p>
+              </div>
+            </div>
+
+            </p>
+          </div>
+        </div>
+          ↓
+        <div class="paragraph sch-block-y">
+          <div class="paragraph_top" onclick="toggleContent('content-voting')">
+            <h4 id="voting">► Weighted deliberation and voting</h4>
+          </div>
+          <div id="content-voting" class="content" style="display: none;">
+            <p>The ISR scores are used to weight inputs and votes; the community makes a decision. During deliberation, participants' inputs and votes are weighted according to their ISR scores. This ensures that those with greater relevance, expertise, and contribution have a proportionate influence on the final decision.</p>
+
+            <div class="paragraph">
+              <div class="paragraph_top" onclick="toggleContent('content-comparison')">
+                <h5 id="comparison">► Comparison of Traditional Representative Democracy and ISR Model</h5></div>
+              <div id="content-comparison" class="content" style="display: none;">
+                <img src="https://raw.githubusercontent.com/ponomarchuk-set/isr/main/images/a1.svg" alt="Representative Democracy vs ISR-model" width="100%"><br><br>
+
+                <p>Unlike the traditional model where common folks separated from decision-making, ISR ensure possibility of real direct involvement for every single community member.</p>
+
+                <h4>Quick comparison table</h4>
+                <table class="simple-table" summary="Comparison of standard majority voting and ISR weighted approach">
+                  <thead>
+                    <tr><th>Aspect</th><th>Standard majority</th><th>ISR weighted</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Who decides</td><td>All members equally</td><td>All participate, influence weighted by ISR</td></tr>
+                    <tr><td>Expert input</td><td>Optional, often ignored</td><td>System highlights relevant expertise</td></tr>
+                    <tr><td>Transparency</td><td>Votes are counted; rationales often absent</td><td>Scores and contributing evidence are explainable</td></tr>
+                    <tr><td>Handling complex issues</td><td>High risk of deadlock or uninformed majority</td><td>Relevant voices carry appropriate influence</td></tr>
+                  </tbody>
+                </table>
+
+              </div>
+            </div>
+          </div>
+        </div>
+          ↓
+        <div class="paragraph sch-block-y">
+          <div class="paragraph_top" onclick="toggleContent('content-implem')">
+            <h4 id="implem">► Implementation & monitoring</h4>
+          </div>
+          <div id="content-implem" class="content" style="display: none;">
+            <p>
+              Chosen tasks are tracked and outcomes feed back into contribution records (affecting future ISR). Once a decision is made, the agreed-upon actions are implemented and monitored. The outcomes of these actions are recorded and used to update participants' contribution histories, which will influence their future ISR scores.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tech & Formal concerns -->
+    <div class="paragraph">
+      <div class="paragraph_top" onclick="toggleContent('content-concerns')">
+        <h2 id="concerns">► Tech & Formal concerns</h2></div>
+      <div id="content-concerns" class="content" style="display: none;">
+
+    <!-- CALCULATION & ALGORITHMS -->
+    <div class="paragraph">
+      <div class="paragraph_top" onclick="toggleContent('content-CALCULATION')">
+        <h4 id="CALCULATION">► Calculations, data and AI — how ISR scores are computed</h4></div>
+      <div id="content-CALCULATION" class="content" style="display: none;">
+        <h4>Data sources</h4>
+        <p>
+          ISR uses community-provided profile entries, recorded activity (discussions, tasks, votes), optionally integrated external sources
+          (when permitted), and the community's declared values matrix. All action records include contextual metadata (timestamps, links to issues, attachments).
+        </p>
+
+        <h4>AI & embeddings</h4>
+        <p>
+          The system uses semantic embeddings (LLM embeddings) to compare issue texts with user profiles and past actions, compute relevance
+          scores, and assist in extracting stakeholders and generating explainable summaries. For tasks such as argument quality or sentiment,
+          specialized LLM modules analyze contributions to estimate constructive behaviour.
+        </p>
+
+        <h4>Normalization & weights</h4>
+        <p>
+          Each raw component (relevance, expertise, contribution) is normalized into [0,1]. The community or an automated context routine proposes
+          weights w<sub>R</sub>, w<sub>E</sub>, w<sub>C</sub> (sum = 1) appropriate to the issue. The final ISR is the weighted sum described earlier.
+        </p>
+
+        <h4>Audit & explainability</h4>
+        <p>
+          For transparency, the system stores: the component values, a short natural-language explanation of the top contributing factors,
+          and links to the records used. Higher-level permission holders in the microcommunity (per adaptable authorization rules) can view
+          supporting evidence.
+        </p>
+      </div>
+    </div>
+
+    <!-- ADAPTABLE AUTHORIZATION -->
+    <div class="paragraph">
+      <div class="paragraph_top" onclick="toggleContent('content-ADAPTABLE_AUTH')">
+        <h4 id="ADAPTABLE_AUTH">► Adaptable Authorization — privacy-aware, ISR-based access control</h4></div>
+      <div id="content-ADAPTABLE_AUTH" class="content" style="display: none;">
+        <p>
+          ISR includes an adaptable authorization model: access to personal data is not simply role-based but depends on the requestor's
+          ISR/gISR score, the sensitivity level of the requested resource, the relationship between accessor and subject, and the declared purpose.
+        </p>
+
+        <p>
+          Access is tiered (public results → microcommunity participation → ISR explanations → supporting evidence → activity logs → expertise profiles → social relations → full personal archive). Each tier requires a higher gISR and/or closer relationship in the microcommunity context. Access is logged and logged events feed into behavior signals that may affect future ISR values.
+        </p>
+
+        <p>
+          The adaptable authorization policy balances transparency and privacy while making misuse auditable and socially accountable.
+          For technical details and diagrams see the system's Adaptable Authorization page.
+          <br><br>
+          <!-- link to the dedicated page -->
+          <a href="/wiki/adaptable_authorization.html">🔐 Detailed: Adaptable Authorization (ISR)</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- PRIVACY & GOVERNANCE -->
+    <div class="paragraph">
+      <div class="paragraph_top" onclick="toggleContent('content-PRIVACY')">
+        <h4 id="PRIVACY">► Privacy, governance and misuse mitigation</h4></div>
+      <div id="content-PRIVACY" class="content" style="display: none;">
+        <p>
+          Important design choices to protect participants:
+        </p>
+        <ul>
+          <li><strong>Layered disclosure:</strong> sensitive information is revealed only to those with appropriate ISR/contextual justification.</li>
+          <li><strong>Audit trails:</strong> every data access attempt is logged and visible to appropriate stewards; misuse lowers ISR over time.</li>
+          <li><strong>Community control:</strong> communities define their values and can tune weights and thresholds (no hidden global algorithm override).</li>
+          <li><strong>Explainability:</strong> every score includes a short natural language explanation and links to the records used.</li>
+        </ul>
+
+        <p>
+          These governance measures are designed to keep the system accountable to the communities that use it and to make trade-offs explicit rather than opaque.
+        </p>
+      </div>
+    </div>
+
+      </div>
+    </div>
+
+<br>
+    <!-- FAQ -->
+    <div class="paragraph">
+      <h3>Frequently asked questions (short)</h3>
+      <h4>Q: Is ISR a vote-rigging tool?</h4>
+      <p>A: No. ISR is a contextually weighted influence mechanism meant to reflect relevance, expertise and contribution. Communities set weights and can inspect calculations. The goal is to improve deliberation quality and legitimacy.</p>
+
+      <h4>Q: Can someone "buy" influence?</h4>
+      <p>A: Influence is derived from recorded behavior, verifiable actions, and declared expertise — not from financial transactions. Any integration with external sources must be authorized by the community and logged.</p>
+
+      <h4>Q: What if contributors manipulate their profiles?</h4>
+      <p>A: The platform detects suspicious, inconsistent edits and unusual access patterns; repeated manipulations are penalized in the contribution component and may reduce ISR.</p>
+      <p><a href="https://isr-vote.com/wiki/faq.html">💡 For more questions and answers see the full FAQ page</a>.</p>
+    </div>
+
+    <!-- References -->
+    <div class="paragraph">
+        <h3>References</h3>
+        <ul>
+          <li><a href="https://isr-vote.com/wiki/pitchdeck/index.html">ISR - Pitchdeck (project overview, pitch & product rationale)</a></li>
+          <li><a href="https://isr-vote.com/wiki/ISR-Arendt-article.html">Digital Democracy and the Recovery of Political Action - ISR research article (theoretical framing and figures)</a></li>
+          <li><a href="https://isr-vote.com/wiki/mvp.html">ISR - MVP design (feature list and product details)</a></li>
+          <li><a href="https://isr-vote.com/wiki/adaptable_authorization.html">Adaptable Authorization - access control and privacy model</a></li>
+          <li><a href="https://isr-vote.com/wiki/faq.html">ISR - FAQ</a></li>
+        </ul>
+
+      </div>
+    </div>
+</div>
+
+
     <footer class="site-footer">
         <div class="doc-content centered">
             <small>© 2024-2025 Sergii Ponomarchuk</small>

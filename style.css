@@ -36,9 +36,20 @@ video{width:min(100vw,100%);height:auto;max-height:90vh}
 /* Page main */
 main{padding:18px 0}
 
+.paragraph_top{cursor: pointer}
+
 /* Utilities */
 .centered{text-align:center}
+.lefted{text-align:left}
 .frame{border:2px solid #e0e6ef;border-radius:12px;padding:20px;background:var(--card)}
+
+/* Schema blocks */
+.sch-block-y{border: 2px solid #999; background-color: #fffff0; border-radius: 12px; padding: 20px; box-sizing: border-box;text-align:justify}
+.sch-block-v{border: 2px solid #999; background-color: #fff0ff; border-radius: 12px; padding: 20px; box-sizing: border-box;text-align:justify}
+.sch-block-c{border: 2px solid #999; background-color: #f0ffff; border-radius: 12px; padding: 20px; box-sizing: border-box;text-align:justify}
+.sch-block-r{border: 2px solid #999; background-color: #fff0f0; border-radius: 12px; padding: 20px; box-sizing: border-box;text-align:justify}
+.sch-block-g{border: 2px solid #999; background-color: #f0fff0; border-radius: 12px; padding: 20px; box-sizing: border-box;text-align:justify}
+.sch-block-b{border: 2px solid #999; background-color: #f0f0ff; border-radius: 12px; padding: 20px; box-sizing: border-box;text-align:justify}
 
 /* Alternative frame styles used in article examples */
 .frame--warm{background:#fffff0;border-color:#999;font-family:'Courier New', Courier, monospace}
@@ -50,22 +61,27 @@ main{padding:18px 0}
 /* Center block (for content headers) */
 center h1, center h2, center h3 { text-align: center }
 
-.centered { text-align: center }
+.formula {text-align: center,font-family:'Times New Roman', Times, serif;font:size 14pt;font-style:italic}
+
 
 /* Typography helpers */
-li{color:#000000;font-size:12pt;font-family:"Calibri"}p{margin:0;color:#000000;font-size:12pt;font-family:"Cambria"}
-h1{padding-top:24pt;color:#4f81bd;font-weight:700;font-size:20pt;padding-bottom:0pt;font-family:"Calibri";line-height:1.0;page-break-after:avoid;orphans:2;widows:2;text-align:left}
-h2{padding-top:10pt;color:#4f81bd;font-weight:700;font-size:16pt;padding-bottom:0pt;font-family:"Calibri";line-height:1.0;page-break-after:avoid;orphans:2;widows:2;text-align:left}
-h3{padding-top:10pt;color:#4f81bd;font-weight:700;font-size:14pt;padding-bottom:0pt;font-family:"Calibri";line-height:1.0;page-break-after:avoid;orphans:2;widows:2;text-align:left}
+li{color:#000000;font-size:12pt;font-family:"Calibri"}
+h1{padding-top:24pt;color:#4f81bd;font-weight:700;font-size:20pt;padding-bottom:0pt;font-family:"Calibri";text-align:left}
+h2{padding-top:10pt;color:#4f81bd;font-weight:700;font-size:16pt;padding-bottom:0pt;font-family:"Calibri";text-align:left}
+h3{padding-top:10pt;color:#4f81bd;font-weight:700;font-size:14pt;padding-bottom:0pt;font-family:"Calibri";text-align:left}
+h4{color:#000;font-size:12pt;text-align:left}
+h5{color:#888;font-size:12pt;text-align:left}
 /* h1,h2,h3{color:var(--accent);margin:0 0 12px}
 p{margin:0 0 12px;color:var(--muted);line-height:1.6} */
-p{font-family:"Calibri";text-align: justify;padding-bottom: 10pt;}
-ol{margin:0;padding:0}
+p{font-family:"Calibri";color:#000000;font-size:12pt;text-align: justify;padding-bottom: 6pt}
+p.lefted {font-family:"Calibri";text-align:left;padding-bottom: 10pt}
+/* ol{margin:0;padding:0} */
+ul{text-align:left}
 
 /* Preserve paragraph justification for content pages (pitchdeck, society2050) */
 .doc-content p{ text-align: justify }
 
-/* Article-like typography baseline (from ISR-Arendt-article) */
+/* Article-like typography baseline */
 body.paper, .paper{font-family: "Cambria", Georgia, serif}
 .paper h1,.paper h2,.paper h3{font-family: 'Calibri','Arial',sans-serif;color:#4f81bd}
 
