@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const aboutItems = [
     {name: 'What is ISR', href: '/wiki/index.html'},
     {name: 'MVP User Guide', href: '/wiki/mvp.html'},
-    {name: 'Adaptable Authorization', href: '/wiki/adaptable_authorization.html'},
+    {name: 'Adaptable Auth', href: '/wiki/adaptable_authorization.html'},
     {name: 'Philosophy', href: '/wiki/ISR-Arendt-article.html'},
     {name: 'Society2050', href: '/wiki/society2050/index.html'},
     {name: 'Pitch Deck', href: '/wiki/pitchdeck/index.html'},

@@ -50,6 +50,7 @@ main{padding:18px 0}
 .sch-block-r{border: 2px solid #999; background-color: #fff0f0; border-radius: 12px; padding: 20px; box-sizing: border-box;text-align:justify}
 .sch-block-g{border: 2px solid #999; background-color: #f0fff0; border-radius: 12px; padding: 20px; box-sizing: border-box;text-align:justify}
 .sch-block-b{border: 2px solid #999; background-color: #f0f0ff; border-radius: 12px; padding: 20px; box-sizing: border-box;text-align:justify}
+.sch-block-w{border: 2px solid #999; background-color: #fff; border-radius: 12px; padding: 20px; box-sizing: border-box;text-align:justify}
 
 /* Alternative frame styles used in article examples */
 .frame--warm{background:#fffff0;border-color:#999;font-family:'Courier New', Courier, monospace}

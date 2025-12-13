@@ -30,8 +30,11 @@
 <text x="400" y="258" font-size="14" font-weight="bold" text-anchor="middle" fill="#0066cc" font-family="monospace">
 ISR = (R × w<tspan baseline-shift="sub" font-size="smaller">R</tspan>) + (E × w<tspan baseline-shift="sub" font-size="smaller">E</tspan>) + (C × w<tspan baseline-shift="sub" font-size="smaller">C</tspan>)
 </text>
-<text x="400" y="295" font-size="12" font-weight="bold" text-anchor="middle" fill="#1a3a5c">
-Result: individual coefficient (0.0-1.0)
+<text x="400" y="290" font-size="12" font-weight="bold" text-anchor="middle" fill="#1a3a5c">
+Result: individual coefficient normalized to unit mean
+</text>
+<text x="400" y="305" font-size="12" text-anchor="middle" fill="#1a3a5c">
+(average microcommunity member ISR = 1)
 </text>
 <text x="400" y="330" font-size="11" text-anchor="middle" fill="#666">
 R = Relevance | E = Expertise | C = Contribution
@@ -49,7 +52,7 @@ w<tspan baseline-shift="sub" font-size="smaller">R</tspan>, w<tspan baseline-shi
 <text x="20" y="485" font-size="11" fill="#666">• Activity level</text>
 <text x="20" y="505" font-size="11" fill="#666">• Proximity to problem</text>
 <text x="20" y="525" font-size="11" fill="#666">• Affected groups</text>
-<text x="20" y="550" font-size="11" fill="#1a3a5c" font-weight="bold">Output: R(0.0-1.0)</text>
+<text x="10" y="550" font-size="11" fill="#1a3a5c" font-weight="bold">Output: R normalized to unit mean</text>
 <path d="M 100 380 Q 100 300 226 300" stroke="#ff9900" stroke-width="3" marker-end="url(#arrowOrange)" fill="none"/>
 </g>
 <!-- Component 2: Expertise -->
@@ -62,7 +65,7 @@ w<tspan baseline-shift="sub" font-size="smaller">R</tspan>, w<tspan baseline-shi
 <text x="320" y="515" font-size="11" fill="#666">• Relevant experience</text>
 <text x="320" y="535" font-size="11" fill="#666">• Professional knowledge</text>
 <text x="320" y="555" font-size="11" fill="#666">• Domain specialization</text>
-<text x="320" y="580" font-size="11" fill="#1a3a5c" font-weight="bold">Output: E(0.0-1.0)</text>
+<text x="310" y="580" font-size="11" fill="#1a3a5c" font-weight="bold">Output: E normalized to unit mean</text>
 <path d="M 400 410 L 400 363" stroke="#00aa00" stroke-width="3" marker-end="url(#arrowGreen)" fill="none"/>
 </g>
 <!-- Component 3: Contribution -->
@@ -75,7 +78,7 @@ w<tspan baseline-shift="sub" font-size="smaller">R</tspan>, w<tspan baseline-shi
 <text x="620" y="485" font-size="11" fill="#666">• Community feedback</text>
 <text x="620" y="505" font-size="11" fill="#666">• Offence history</text>
 <text x="620" y="525" font-size="11" fill="#666">• Track record</text>
-<text x="620" y="550" font-size="11" fill="#1a3a5c" font-weight="bold">Output: C(0.0-1.0)</text>
+<text x="610" y="550" font-size="11" fill="#1a3a5c" font-weight="bold">Output: C normalized to unit mean</text>
 <path d="M 700 380 Q 700 300 574 300" stroke="#7700bb" stroke-width="3" marker-end="url(#arrowPurple)" fill="none"/>
 </g>
 </svg>
