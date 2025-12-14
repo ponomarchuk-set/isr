@@ -3,17 +3,17 @@
   <defs>
     <linearGradient id="sensitivityGradient" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" style="stop-color:#22C55E;stop-opacity:1" />
-      <stop offset="14%" style="stop-color:#84CC16;stop-opacity:1" />
-      <stop offset="29%" style="stop-color:#EAB308;stop-opacity:1" />
-      <stop offset="43%" style="stop-color:#F97316;stop-opacity:1" />
-      <stop offset="57%" style="stop-color:#FB923C;stop-opacity:1" />
-      <stop offset="71%" style="stop-color:#FCA5A5;stop-opacity:1" />
-      <stop offset="86%" style="stop-color:#FCA5A5;stop-opacity:1" />
+      <stop offset="14.28%" style="stop-color:#84CC16;stop-opacity:1" />
+      <stop offset="28.56%" style="stop-color:#EAB308;stop-opacity:1" />
+      <stop offset="42.84%" style="stop-color:#F97316;stop-opacity:1" />
+      <stop offset="57.12%" style="stop-color:#FB923C;stop-opacity:1" />
+      <stop offset="71.4%" style="stop-color:#FCA5A5;stop-opacity:1" />
+      <stop offset="85.68%" style="stop-color:#FCA5A5;stop-opacity:1" />
       <stop offset="100%" style="stop-color:#DC2626;stop-opacity:1" />
     </linearGradient>
     
     <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
-      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0"/>
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.12"/>
     </filter>
   </defs>
 
@@ -26,7 +26,7 @@
   <rect x="0" y="40" width="800" height="60" fill="url(#sensitivityGradient)" filter="url(#shadow)"/>
 
   <!-- Segment dividers (equal width = 100px each) -->
-  <g stroke="#FFF" stroke-width="2" opacity="1">
+  <g stroke="#FFF" stroke-width="2" opacity="0.6">
     <line x1="100" y1="40" x2="100" y2="100"/>
     <line x1="200" y1="40" x2="200" y2="100"/>
     <line x1="300" y1="40" x2="300" y2="100"/>
@@ -40,42 +40,42 @@
   <g font-size="14" font-weight="600" text-anchor="middle" fill="#134252">
     <text x="50" y="125">Public</text>
     <text x="50" y="140">Results</text>
-    <text x="50" y="155" font-size="12" fill="#7c7">0 gISR</text>
+    <text x="50" y="155" font-size="12" fill="#7c7">0.0 gISR</text>
     <text x="50" y="170" font-size="12" fill="#c77">1 P2P lv</text>
 
     <text x="150" y="125">Micro-</text>
     <text x="150" y="140">community</text>
-    <text x="150" y="155" font-size="12" fill="#7c7">0 gISR</text>
+    <text x="150" y="155" font-size="12" fill="#7c7">0.2 gISR</text>
     <text x="150" y="170" font-size="12" fill="#c77">2 P2P lv</text>
 
     <text x="250" y="125">Explana-</text>
     <text x="250" y="140">tions</text>
-    <text x="250" y="155" font-size="12" fill="#7c7">0 gISR</text>
+    <text x="250" y="155" font-size="12" fill="#7c7">0.4 gISR</text>
     <text x="250" y="170" font-size="12" fill="#c77">3 P2P lv</text>
 
     <text x="350" y="125">Evidence</text>
     <text x="350" y="140">&amp;</text>
-    <text x="350" y="155" font-size="12" fill="#7c7">1 gISR</text>
+    <text x="350" y="155" font-size="12" fill="#7c7">0.6 gISR</text>
     <text x="350" y="170" font-size="12" fill="#c77">4 P2P lv</text>
 
     <text x="450" y="125">Activity</text>
     <text x="450" y="140">Logs</text>
-    <text x="450" y="155" font-size="12" fill="#7c7">1 gISR</text>
+    <text x="450" y="155" font-size="12" fill="#7c7">0.7 gISR</text>
     <text x="450" y="170" font-size="12" fill="#c77">5 P2P lv</text>
 
     <text x="550" y="125">Expertise</text>
     <text x="550" y="140">Profile</text>
-    <text x="550" y="155" font-size="12" fill="#7c7">1 gISR</text>
+    <text x="550" y="155" font-size="12" fill="#7c7">0.8 gISR</text>
     <text x="550" y="170" font-size="12" fill="#c77">6 P2P lv</text>
 
     <text x="650" y="125">Social</text>
     <text x="650" y="140">Relations</text>
-    <text x="650" y="155" font-size="12" fill="#7c7">1 gISR</text>
+    <text x="650" y="155" font-size="12" fill="#7c7">0.9 gISR</text>
     <text x="650" y="170" font-size="12" fill="#c77">7 P2P lv</text>
 
     <text x="750" y="125">Full</text>
     <text x="750" y="140">Data</text>
-    <text x="750" y="155" font-size="12" fill="#7c7">1 gISR</text>
+    <text x="750" y="155" font-size="12" fill="#7c7">1.0 gISR</text>
     <text x="750" y="170" font-size="12" fill="#c77">8 P2P lv</text>
   </g>
 </svg>
