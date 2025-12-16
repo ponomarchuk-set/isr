@@ -123,3 +123,101 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+
+// Remove the duplicate auto-expand code at the bottom and replace with:
+
+// Function to find and open all parent sections
+function expandAllParents(targetId) {
+    const targetElement = document.getElementById(targetId);
+    if (!targetElement) return;
+    
+    // Find all parent content divs
+    let currentElement = targetElement.parentElement;
+    while (currentElement) {
+        // Check if we're inside a collapsible section
+        if (currentElement.classList && 
+            (currentElement.classList.contains('content') || 
+             currentElement.classList.contains('paragraph'))) {
+            
+            // Try to find the header for this section
+            const parentId = currentElement.id;
+            if (parentId && parentId.startsWith('content-')) {
+                const sectionId = parentId.substring(8); // Remove "content-" prefix
+                const sectionHeader = document.getElementById(sectionId);
+                const sectionContent = document.getElementById(parentId);
+                
+                if (sectionHeader && sectionContent && sectionContent.style.display === "none") {
+                    // Expand this parent section
+                    toggleContent(parentId);
+                }
+            }
+        }
+        
+        // Move up to parent container
+        currentElement = currentElement.parentElement;
+    }
+}
+
+// Main function to handle hash navigation
+function checkAndExpandFromHash() {
+    const hash = window.location.hash.substring(1);
+    
+    if (hash) {
+        console.log("Auto-expanding for hash:", hash);
+        
+        // First expand all parent sections
+        expandAllParents(hash);
+        
+        // Then expand the target section itself
+        const contentElement = document.getElementById("content-" + hash);
+        const headerElement = document.getElementById(hash);
+        
+        if (contentElement && headerElement && contentElement.style.display === "none") {
+            toggleContent("content-" + hash);
+        }
+        
+        // Finally scroll to the target
+        setTimeout(() => {
+            const target = document.getElementById(hash);
+            if (target) {
+                target.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                });
+            }
+        }, 500); // Give time for all sections to expand
+    }
+}
+
+// Initialize - use only one event listener
+document.addEventListener('DOMContentLoaded', function() {
+    // Your existing menu code here...
+    const menuButton = document.getElementById('menu-button');
+    const menuPopup = document.getElementById('menu');
+
+    // Toggle menu visibility
+    menuButton.addEventListener('click', function() {
+        menuPopup.style.display = menuPopup.style.display === 'block' ? 'none' : 'block';
+        menuPopup.style.right = menuButton.style.right;
+    });
+
+    // Hide menu when clicking outside
+    document.addEventListener('click', function(event) {
+        if (!menuButton.contains(event.target) && !menuPopup.contains(event.target)) {
+            menuPopup.style.display = 'none';
+        }
+    });
+
+    // Hide menu when an option is clicked
+    menuPopup.addEventListener('click', function(event) {
+        if (event.target.classList.contains('menu-option')) {
+            menuPopup.style.display = 'none';
+        }
+    });
+    
+    // Check hash on initial load
+    setTimeout(checkAndExpandFromHash, 100); // Small delay to ensure DOM is ready
+});
+
+// Also check hash when hash changes
+window.addEventListener('hashchange', checkAndExpandFromHash);
