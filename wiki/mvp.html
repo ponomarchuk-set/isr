@@ -55,7 +55,7 @@
                 <ol>
                     <li><strong>Profile</strong> – Your skills, experience, and interests</li>
                     <li><strong>Values</strong> – Your preferences stated in a convenient way</li>
-                    <li><strong>Actions</strong> – Discuss issues with relevant community members</li>
+                    <li><strong>Actions</strong> – Log of your contributions and activities</li>
                     <li><strong>Chat</strong> – Discuss issues with relevant community members</li>
                     <li><strong>Voting</strong> – Make decisions on problems and solutions</li>
                     <li><strong>Tasks</strong> – Track implementation of approved decisions</li>
@@ -127,8 +127,8 @@
             <div id="content-values" class="content" style="display: none;">
                 <p><strong>Microcommunity values are the foundation of ISR calculations.</strong> They define what behavior the community rewards and what it penalizes (as an addition to normal general law). Each microcommunity formed around rised issue gather its own <strong>Matrix of Values</strong> - out from all microcommunity members' values.</p>
 
-                <h3>The Values Matrix</h3>
-                <p>Each community creates a <strong>Values Matrix</strong> – a collective agreement on what's important. Each value gets a weight from 0-100 points. The total always equals 100.</p>
+                <h3>The Matrix of Values </h3>
+                <p>Each microcommunity gathers a <strong>Matrix of Values</strong> – a collective agreement on what's important out from all microcommunity members' values regarding personal Relevance. Vectorized Matrix of Values gives <strong>Vector of Values</strong> - pure mathematical representation which is used in Contribution calculations.</p>
 
                 <div style="background: #ecf0f1; padding: 20px; margin: 20px 0; border-radius: 5px;">
                     <strong>Basic ways to fill out values are:</strong>
@@ -147,9 +147,17 @@
                     <li>Open Values section in profile</li>
                     <li>Click "Add Value"</li>
                     <li>Type the value name and description</li>
+                    <li>Mark points to the value</li>
                 </ol>
 
-                <p style="margin-top: 15px;"><strong>Option B: AI-Assisted Definition (Recommended for First-Time Setup)</strong></p>
+                <p><strong>Option B: Narative explanation</strong></p>
+                <ol>
+                    <li>Open Values section in profile</li>
+                    <li>Click "Narative"</li>
+                    <li>Express your beliefs and life orienteers</li>
+                </ol>
+
+                <p style="margin-top: 15px;"><strong>Option C: AI-Assisted Definition (Recommended for First-Time Setup)</strong></p>
                 <ol>
                     <li>Click "AI Guide Me" button</li>
                     <li>AI asks 10-15 questions about community priorities</li>
@@ -164,6 +172,7 @@
                     <li><em>"What do we mean by 'technical competence'?"</em> – AI clarifies the concept</li>
                     <li><em>"Give me examples of this value in action"</em> – AI provides concrete scenarios</li>
                     <li><em>"How does this compare to other microcommunity members?"</em> – AI shows benchmarks</li>
+                    <li><em>"Explain my values list in a narrative view"</em> – AI makes a story about your values with nearest political examples</li>
                 </ul>
 
                 <h3>🎯 UX Success Tips</h3>
@@ -171,6 +180,7 @@
                     <li><strong>Make values specific and measurable:</strong> Not "trust", but "transparent financial reporting" or "responds within 24 hours"</li>
                     <li><strong>Be honest and aware:</strong> Values should reflect your individual preferences</li>
                     <li><strong>Revisit quarterly:</strong> As you and reality around change, update your values.</li>
+                    <li><strong>Do not change your values dramatically:</strong> The system is setted to recognize suspicious activity like when a user changes all their values at once to manipulate ISR.</li>
                 </ul>
             </div>
         </div>
@@ -211,8 +221,8 @@
                         <td style="padding: 10px;">Nested messages with avatar, name, timestamp, ISR badge for this topic</td>
                     </tr>
                     <tr style="background: #f9f9f9; border-bottom: 1px solid #ddd;">
-                        <td style="padding: 10px;"><strong>Emoji Reactions</strong></td>
-                        <td style="padding: 10px;">👍 Agree, 👎 Disagree, ⚠️ Irrelevant/Disruptive (contributes to ISR calculation)</td>
+                        <td style="padding: 10px;"><strong>Emoji Reactions (contributes to ISR calculation)</strong></td>
+                        <td style="padding: 10px;">👍 Good, 😁 Funny, 🥴 Flood, 😡 Rude, 💊 Fool</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #ddd;">
                         <td style="padding: 10px;"><strong>File Upload Widget</strong></td>
@@ -264,7 +274,7 @@
                     <li><strong>Discussion phase:</strong> Community shares evidence and expertise (optional)</li>
                     <li><strong>System calculates your ISR</strong> for this specific decision based on:
                         <ul>
-                            <li>Your relevance to the issue (matches to decision domain)</li>
+                            <li>Your relevance to the issue (matches to the issue affection)</li>
                             <li>Your expertise level (matches to decision domain)</li>
                             <li>Your track record (matches to current Matrix of Values)</li>
                         </ul>
@@ -304,7 +314,7 @@
                     </tr>
                     <tr style="background: #f9f9f9; border-bottom: 1px solid #ddd;">
                         <td style="padding: 10px;"><strong>Why My Weight? Link</strong></td>
-                        <td style="padding: 10px;">Click to see how ISR was calculated (shows R, C, A components)</td>
+                        <td style="padding: 10px;">Click to see how ISR was calculated (shows R, E, C components)</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #ddd;">
                         <td style="padding: 10px;"><strong>Results Preview</strong></td>

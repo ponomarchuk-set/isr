@@ -24,6 +24,174 @@ ul, ol {text-align:left; margin-left:17px; margin-bottom:5px; margin-top:5px}
 /* Typography (adjusted for mobile) */
 li {font-size: 12pt;font-family: "Calibri"}
 
+/* ===== EXISTING STYLES (preserved with minor tweaks) ===== */
+
+a{color:var(--accent);text-decoration:none}
+
+/* Page container */
+.doc-content {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 20px 15px;
+}
+
+/* Responsive video */
+video {
+    width: min(100vw, 100%);
+    height: auto;
+    max-height: 90vh;
+}
+
+/* Preserve paragraph justification */
+.doc-content p { text-align: justify }
+
+/* Page main */
+main { padding: 20px 0 }
+
+.paragraph_top { cursor: pointer }
+
+/* Utilities */
+.centered { text-align: center }
+.lefted { text-align: left }
+.frame {
+    border: 2px solid #e0e6ef;
+    border-radius: 12px;
+    padding: 20px;
+    background: var(--card);
+}
+
+/* Schema blocks (preserved) */
+.sch-block-y, .sch-block-v, .sch-block-c, 
+.sch-block-r, .sch-block-g, .sch-block-b, 
+.sch-block-w {
+    border: 2px solid #999;
+    border-radius: 12px;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: justify;
+    margin-bottom: 15px;
+}
+
+.sch-block-y { background-color: #fffff0 }
+.sch-block-v { background-color: #fff0ff }
+.sch-block-c { background-color: #f0ffff }
+.sch-block-r { background-color: #fff0f0 }
+.sch-block-g { background-color: #f0fff0 }
+.sch-block-b { background-color: #f0f0ff }
+.sch-block-w { background-color: #fff }
+
+/* Alternative frame styles */
+.frame--warm {
+    background: #fffff0;
+    border-color: #999;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.frame--cool {
+    background: #f0ffff;
+    border-color: #999;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Small utility classes */
+.pull-right { float: right }
+
+/* Center block */
+center h1, center h2, center h3 { text-align: center }
+
+.formula {
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 14pt;
+    font-style: italic;
+}
+
+h1 {
+    padding-top: 20px;
+    color: #4f81bd;
+    font-weight: 700;
+    font-size: 1.6rem;
+    padding-bottom: 10px;
+    font-family: "Calibri";
+    text-align: left;
+}
+
+h2 {
+    padding-top: 15px;
+    color: #4f81bd;
+    font-weight: 700;
+    font-size: 1.3rem;
+    padding-bottom: 8px;
+    font-family: "Calibri";
+    text-align: left;
+}
+
+h3 {
+    padding-top: 12px;
+    color: #4f81bd;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding-bottom: 6px;
+    font-family: "Calibri";
+    text-align: left;
+}
+
+h4 { color: #000; font-size: 1rem; text-align: left }
+h5 { color: #4a0c64; font-style: italic; font-size: 1rem; text-align: left; margin-top: 10px;}
+
+p {
+    font-family: "Calibri";
+    color: #000000;
+    font-size: 1rem;
+    text-align: justify;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+p.lefted {
+    font-family: "Calibri";
+    text-align: left;
+    padding-bottom: 10px;
+}
+
+/* Article-like typography */
+body.paper, .paper { font-family: "Cambria", Georgia, serif }
+.paper h1, .paper h2, .paper h3 {
+    font-family: 'Calibri', 'Arial', sans-serif;
+    color: #4f81bd;
+}
+
+/* Tables and images */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    overflow-x: auto;
+    display: block;
+}
+
+th, td {
+    border: 1px solid #e6ecf3;
+    padding: 10px;
+    text-align: left;
+    min-width: 80px; /* Prevent too small cells on mobile */
+}
+
+/* Footer */
+.site-footer {
+    border-top: 1px solid #eee;
+    padding: 20px 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-top: 40px;
+}
+
+.site-footer .doc-content {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
 /* Viewport meta - CRITICAL FOR MOBILE */
 .viewport-meta {
     display: none; /* This is just a reminder - actual meta tag must be in HTML */
@@ -291,174 +459,6 @@ li {font-size: 12pt;font-family: "Calibri"}
     body.menu-open {
         overflow: hidden;
     }
-}
-
-/* ===== EXISTING STYLES (preserved with minor tweaks) ===== */
-
-a{color:var(--accent);text-decoration:none}
-
-/* Page container */
-.doc-content {
-    max-width: var(--content-width);
-    margin: 0 auto;
-    padding: 20px 15px;
-}
-
-/* Responsive video */
-video {
-    width: min(100vw, 100%);
-    height: auto;
-    max-height: 90vh;
-}
-
-/* Preserve paragraph justification */
-.doc-content p { text-align: justify }
-
-/* Page main */
-main { padding: 20px 0 }
-
-.paragraph_top { cursor: pointer }
-
-/* Utilities */
-.centered { text-align: center }
-.lefted { text-align: left }
-.frame {
-    border: 2px solid #e0e6ef;
-    border-radius: 12px;
-    padding: 20px;
-    background: var(--card);
-}
-
-/* Schema blocks (preserved) */
-.sch-block-y, .sch-block-v, .sch-block-c, 
-.sch-block-r, .sch-block-g, .sch-block-b, 
-.sch-block-w {
-    border: 2px solid #999;
-    border-radius: 12px;
-    padding: 20px;
-    box-sizing: border-box;
-    text-align: justify;
-    margin-bottom: 15px;
-}
-
-.sch-block-y { background-color: #fffff0 }
-.sch-block-v { background-color: #fff0ff }
-.sch-block-c { background-color: #f0ffff }
-.sch-block-r { background-color: #fff0f0 }
-.sch-block-g { background-color: #f0fff0 }
-.sch-block-b { background-color: #f0f0ff }
-.sch-block-w { background-color: #fff }
-
-/* Alternative frame styles */
-.frame--warm {
-    background: #fffff0;
-    border-color: #999;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-.frame--cool {
-    background: #f0ffff;
-    border-color: #999;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-/* Small utility classes */
-.pull-right { float: right }
-
-/* Center block */
-center h1, center h2, center h3 { text-align: center }
-
-.formula {
-    text-align: center;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 14pt;
-    font-style: italic;
-}
-
-h1 {
-    padding-top: 20px;
-    color: #4f81bd;
-    font-weight: 700;
-    font-size: 1.6rem;
-    padding-bottom: 10px;
-    font-family: "Calibri";
-    text-align: left;
-}
-
-h2 {
-    padding-top: 15px;
-    color: #4f81bd;
-    font-weight: 700;
-    font-size: 1.3rem;
-    padding-bottom: 8px;
-    font-family: "Calibri";
-    text-align: left;
-}
-
-h3 {
-    padding-top: 12px;
-    color: #4f81bd;
-    font-weight: 700;
-    font-size: 1.1rem;
-    padding-bottom: 6px;
-    font-family: "Calibri";
-    text-align: left;
-}
-
-h4 { color: #000; font-size: 1rem; text-align: left }
-h5 { color: #333; font-size: 1rem; text-align: left; margin-top: 10px;}
-
-p {
-    font-family: "Calibri";
-    color: #000000;
-    font-size: 1rem;
-    text-align: justify;
-    line-height: 1.5;
-    margin-bottom: 15px;
-}
-
-p.lefted {
-    font-family: "Calibri";
-    text-align: left;
-    padding-bottom: 10px;
-}
-
-/* Article-like typography */
-body.paper, .paper { font-family: "Cambria", Georgia, serif }
-.paper h1, .paper h2, .paper h3 {
-    font-family: 'Calibri', 'Arial', sans-serif;
-    color: #4f81bd;
-}
-
-/* Tables and images */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 15px 0;
-    overflow-x: auto;
-    display: block;
-}
-
-th, td {
-    border: 1px solid #e6ecf3;
-    padding: 10px;
-    text-align: left;
-    min-width: 80px; /* Prevent too small cells on mobile */
-}
-
-/* Footer */
-.site-footer {
-    border-top: 1px solid #eee;
-    padding: 20px 0;
-    color: var(--muted);
-    font-size: 0.9rem;
-    margin-top: 40px;
-}
-
-.site-footer .doc-content {
-    display: flex;
-    justify-content: center;
-    text-align: center;
 }
 
 /* Additional mobile optimizations */
