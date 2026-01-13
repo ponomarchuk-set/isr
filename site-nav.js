@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <a href="#" class="nav-dropdown" id="nav-about">About ISR</a>
                         <div id="about-list" class="dropdown-menu"></div>
                     </span>
+                    <a href="/wiki/explorer.html">Explorer</a>
                     <span class="dropdown-container">
                         <a href="#" class="nav-dropdown" id="nav-arch">Architecture</a>
                         <div id="arch-list" class="dropdown-menu"></div>
@@ -44,7 +45,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // About list items
     const aboutItems = [
         {name: 'What is ISR', href: '/wiki/index.html'},
-        {name: 'Relevance & Microcommunity Explorer', href: '/wiki/relevance.html'},
         {name: 'MVP User Guide', href: '/wiki/mvp.html'},
         {name: 'Adaptable Auth', href: '/wiki/adaptable_authorization.html'},
         {name: 'Philosophy', href: '/wiki/ISR-Arendt-article.html'},

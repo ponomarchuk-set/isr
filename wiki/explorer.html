@@ -2,7 +2,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ISR Relevance & Microcommunity Explorer</title>
+<title>ISR Explorer</title>
     <link rel="stylesheet" href="/style.css">
     <link rel="icon" type="image/png" href="/images/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/images/logo.svg" />
@@ -66,12 +66,16 @@ body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #3341
     <!-- Header -->
     <header class="bg-white border-b border-slate-200 px-6 py-4 flex justify-between items-center shadow-sm z-10">
         <div>
-            <h1 class="text-2xl font-bold text-slate-800 tracking-tight">ISR Relevance & Microcommunity Explorer</h1>
-            <p class="text-sm text-slate-500">Relevance Engine & Microcommunity Formation</p>
+            <h1 class="text-2xl font-bold text-slate-800 tracking-tight">ISR Explorer</h1>
+            <!--<p class="text-sm text-slate-500">Relevance Engine & Microcommunity Formation</p>-->
         </div>
         <div class="flex space-x-1 bg-slate-100 p-1 rounded-lg">
-            <button id="nav-profiles" onclick="switchTab('profiles')" class="tab-active px-4 py-2 rounded-md text-sm font-medium transition-all">1. Profiles (Input)</button>
-            <button id="nav-sim" onclick="switchTab('sim')" class="tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all">2. Relevance Simulator</button>
+            <button id="nav-profiles" onclick="switchTab('profiles')" class="tab-active px-4 py-2 rounded-md text-sm font-medium transition-all">Profiles (Input)</button>
+            <button id="nav-sim" onclick="switchTab('sim')" class="tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all">Relevance Simulator</button>
+            <button id="nav-sim" onclick="switchTab('expertise')" class="tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all">Expertise assessment</button>
+            <button id="nav-sim" onclick="switchTab('values')" class="tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all">Vector of Values</button>
+            <button id="nav-sim" onclick="switchTab('contribution')" class="tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all">Contribution calculation</button>
+            <button id="nav-sim" onclick="switchTab('isr-complete')" class="tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all">ISR ready-to-vote</button>
         </div>
     </header>
 
