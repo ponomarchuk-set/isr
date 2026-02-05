@@ -1,0 +1,83 @@
+[
+    {
+        "id": 0,
+        "title": "Local Park Renovation",
+        "desc": "A proposal to renovate the central district park, adding a playground and dog run. Impact is highly localized.",
+        "logic": "Relevance is heavily weighted on <strong>Geospatial (G)</strong> proximity. <strong>Demographics (D)</strong> (families) and <strong>Interests (X)</strong> (environment) play secondary roles.",
+        "category": "Infrastructure",
+        "targetDemo": {
+            "family": "kids",
+            "minAge": 0
+        },
+        "location": {
+            "x": 30,
+            "y": 30,
+            "radius": 20
+        },
+        "tags": [
+            "Environment",
+            "Family",
+            "Recreation"
+        ],
+        "weights": {
+            "D": 0.3,
+            "G": 0.6,
+            "S": 0.0,
+            "X": 0.1
+        }
+    },
+    {
+        "id": 1,
+        "title": "Remote Work Rights Policy",
+        "desc": "New legislation defining rights for remote workers in the tech sector. Location is irrelevant; profession is key.",
+        "logic": "Zero weight on <strong>Geospatial</strong>. High weight on <strong>Demographics (D)</strong> (employment status) and <strong>Interests (X)</strong> (tech/policy).",
+        "category": "Labor",
+        "targetDemo": {
+            "employment": "Employed",
+            "sector": "Tech"
+        },
+        "location": {
+            "x": 50,
+            "y": 50,
+            "radius": 0
+        },
+        "tags": [
+            "Tech",
+            "Business",
+            "Policy",
+            "Rights"
+        ],
+        "weights": {
+            "D": 0.5,
+            "G": 0.0,
+            "S": 0.1,
+            "X": 0.4
+        }
+    },
+    {
+        "id": 2,
+        "title": "Elderly Healthcare Access",
+        "desc": "Improving clinic access for seniors in the Eastern district. Combines age targeting with location.",
+        "logic": "High weight on <strong>Demographics (D)</strong> (Age > 60). Moderate weight on <strong>Geospatial (G)</strong> (Eastern district).",
+        "category": "Health",
+        "targetDemo": {
+            "minAge": 60
+        },
+        "location": {
+            "x": 75,
+            "y": 60,
+            "radius": 30
+        },
+        "tags": [
+            "Health",
+            "Seniors",
+            "Social Security"
+        ],
+        "weights": {
+            "D": 0.6,
+            "G": 0.3,
+            "S": 0.1,
+            "X": 0.0
+        }
+    }
+]

@@ -1,0 +1,403 @@
+[
+    {
+        "id": "U-1000",
+        "name": "James Smith",
+        "location": {
+            "x": 35,
+            "y": 25
+        },
+        "demographics": {
+            "age": 34,
+            "employment": "Employed",
+            "family": "kids",
+            "income": 1
+        },
+        "interests": [
+            "Tech",
+            "Family",
+            "Sports"
+        ],
+        "socialConnections": 45
+    },
+    {
+        "id": "U-1001",
+        "name": "Mary Johnson",
+        "location": {
+            "x": 78,
+            "y": 62
+        },
+        "demographics": {
+            "age": 68,
+            "employment": "Retired",
+            "family": "no-kids",
+            "income": 1
+        },
+        "interests": [
+            "Health",
+            "Seniors",
+            "Art"
+        ],
+        "socialConnections": 20
+    },
+    {
+        "id": "U-1002",
+        "name": "Robert Williams",
+        "location": {
+            "x": 12,
+            "y": 88
+        },
+        "demographics": {
+            "age": 22,
+            "employment": "Unemployed",
+            "family": "no-kids",
+            "income": 0
+        },
+        "interests": [
+            "Tech",
+            "Sports",
+            "Recreation"
+        ],
+        "socialConnections": 55
+    },
+    {
+        "id": "U-1003",
+        "name": "Patricia Brown",
+        "location": {
+            "x": 50,
+            "y": 50
+        },
+        "demographics": {
+            "age": 29,
+            "employment": "Employed",
+            "family": "kids",
+            "income": 2
+        },
+        "interests": [
+            "Policy",
+            "Rights",
+            "Business",
+            "Tech"
+        ],
+        "socialConnections": 30
+    },
+    {
+        "id": "U-1004",
+        "name": "John Jones",
+        "location": {
+            "x": 90,
+            "y": 10
+        },
+        "demographics": {
+            "age": 45,
+            "employment": "Employed",
+            "family": "no-kids",
+            "income": 2
+        },
+        "interests": [
+            "Business",
+            "Environment",
+            "Policy"
+        ],
+        "socialConnections": 15
+    },
+    {
+        "id": "U-1005",
+        "name": "Jennifer Garcia",
+        "location": {
+            "x": 25,
+            "y": 35
+        },
+        "demographics": {
+            "age": 38,
+            "employment": "Employed",
+            "family": "kids",
+            "income": 1
+        },
+        "interests": [
+            "Family",
+            "Recreation",
+            "Education"
+        ],
+        "socialConnections": 40
+    },
+    {
+        "id": "U-1006",
+        "name": "Michael Miller",
+        "location": {
+            "x": 60,
+            "y": 70
+        },
+        "demographics": {
+            "age": 72,
+            "employment": "Retired",
+            "family": "no-kids",
+            "income": 1
+        },
+        "interests": [
+            "Seniors",
+            "Health",
+            "Policy"
+        ],
+        "socialConnections": 25
+    },
+    {
+        "id": "U-1007",
+        "name": "Linda Davis",
+        "location": {
+            "x": 5,
+            "y": 5
+        },
+        "demographics": {
+            "age": 26,
+            "employment": "Employed",
+            "family": "no-kids",
+            "income": 1
+        },
+        "interests": [
+            "Art",
+            "Design",
+            "Tech"
+        ],
+        "socialConnections": 35
+    },
+    {
+        "id": "U-1008",
+        "name": "David Rodriguez",
+        "location": {
+            "x": 45,
+            "y": 55
+        },
+        "demographics": {
+            "age": 31,
+            "employment": "Employed",
+            "family": "kids",
+            "income": 2
+        },
+        "interests": [
+            "Tech",
+            "Business",
+            "Policy"
+        ],
+        "socialConnections": 50
+    },
+    {
+        "id": "U-1009",
+        "name": "Elizabeth Martinez",
+        "location": {
+            "x": 80,
+            "y": 80
+        },
+        "demographics": {
+            "age": 55,
+            "employment": "Employed",
+            "family": "no-kids",
+            "income": 2
+        },
+        "interests": [
+            "Environment",
+            "Health",
+            "Seniors"
+        ],
+        "socialConnections": 10
+    },
+    {
+        "id": "U-1010",
+        "name": "William Hernandez",
+        "location": {
+            "x": 30,
+            "y": 30
+        },
+        "demographics": {
+            "age": 40,
+            "employment": "Unemployed",
+            "family": "kids",
+            "income": 0
+        },
+        "interests": [
+            "Family",
+            "Rights",
+            "Community"
+        ],
+        "socialConnections": 28
+    },
+    {
+        "id": "U-1011",
+        "name": "Barbara Lopez",
+        "location": {
+            "x": 15,
+            "y": 90
+        },
+        "demographics": {
+            "age": 19,
+            "employment": "Unemployed",
+            "family": "no-kids",
+            "income": 0
+        },
+        "interests": [
+            "Education",
+            "Tech",
+            "Art"
+        ],
+        "socialConnections": 48
+    },
+    {
+        "id": "U-1012",
+        "name": "Richard Gonzalez",
+        "location": {
+            "x": 70,
+            "y": 40
+        },
+        "demographics": {
+            "age": 63,
+            "employment": "Retired",
+            "family": "kids",
+            "income": 1
+        },
+        "interests": [
+            "Health",
+            "Environment",
+            "Recreation"
+        ],
+        "socialConnections": 22
+    },
+    {
+        "id": "U-1013",
+        "name": "Susan Wilson",
+        "location": {
+            "x": 55,
+            "y": 15
+        },
+        "demographics": {
+            "age": 33,
+            "employment": "Employed",
+            "family": "no-kids",
+            "income": 2
+        },
+        "interests": [
+            "Business",
+            "Tech",
+            "Rights"
+        ],
+        "socialConnections": 38
+    },
+    {
+        "id": "U-1014",
+        "name": "Joseph Anderson",
+        "location": {
+            "x": 20,
+            "y": 60
+        },
+        "demographics": {
+            "age": 28,
+            "employment": "Employed",
+            "family": "kids",
+            "income": 1
+        },
+        "interests": [
+            "Sports",
+            "Family",
+            "Health"
+        ],
+        "socialConnections": 42
+    },
+    {
+        "id": "U-1015",
+        "name": "Jessica Thomas",
+        "location": {
+            "x": 85,
+            "y": 20
+        },
+        "demographics": {
+            "age": 48,
+            "employment": "Employed",
+            "family": "no-kids",
+            "income": 2
+        },
+        "interests": [
+            "Policy",
+            "Environment",
+            "Art"
+        ],
+        "socialConnections": 18
+    },
+    {
+        "id": "U-1016",
+        "name": "Thomas Taylor",
+        "location": {
+            "x": 40,
+            "y": 85
+        },
+        "demographics": {
+            "age": 36,
+            "employment": "Unemployed",
+            "family": "kids",
+            "income": 0
+        },
+        "interests": [
+            "Rights",
+            "Family",
+            "Community"
+        ],
+        "socialConnections": 32
+    },
+    {
+        "id": "U-1017",
+        "name": "Sarah Moore",
+        "location": {
+            "x": 65,
+            "y": 65
+        },
+        "demographics": {
+            "age": 75,
+            "employment": "Retired",
+            "family": "no-kids",
+            "income": 1
+        },
+        "interests": [
+            "Seniors",
+            "Health",
+            "Social Security"
+        ],
+        "socialConnections": 12
+    },
+    {
+        "id": "U-1018",
+        "name": "Charles Jackson",
+        "location": {
+            "x": 10,
+            "y": 45
+        },
+        "demographics": {
+            "age": 24,
+            "employment": "Employed",
+            "family": "no-kids",
+            "income": 1
+        },
+        "interests": [
+            "Tech",
+            "Recreation",
+            "Sports"
+        ],
+        "socialConnections": 58
+    },
+    {
+        "id": "U-1019",
+        "name": "Karen Martin",
+        "location": {
+            "x": 95,
+            "y": 95
+        },
+        "demographics": {
+            "age": 50,
+            "employment": "Employed",
+            "family": "kids",
+            "income": 2
+        },
+        "interests": [
+            "Business",
+            "Policy",
+            "Environment"
+        ],
+        "socialConnections": 26
+    }
+]
