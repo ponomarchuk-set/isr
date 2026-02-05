@@ -1,0 +1,85 @@
+<svg viewBox="0 0 800 610" xmlns="http://www.w3.org/2000/svg">
+<!-- Arrow markers -->
+<defs>
+<marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+<polygon points="0 0, 10 3, 0 6" fill="#00f"/>
+</marker>
+<marker id="arrowOrange" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+<polygon points="0 0, 10 3, 0 6" fill="#ff9900"/>
+</marker>
+<marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+<polygon points="0 0, 10 3, 0 6" fill="#00aa00"/>
+</marker>
+<marker id="arrowPurple" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+<polygon points="0 0, 10 3, 0 6" fill="#7700bb"/>
+</marker>
+<style>text { font-family: Arial, sans-serif; }</style>
+</defs>
+<!-- Central Microcommunity circle -->
+<circle cx="400" cy="80" r="70" fill="#e6f2ff" stroke="#0066cc" stroke-width="4"/>
+<text x="400" y="45" font-size="16" font-weight="bold" text-anchor="middle" fill="#0066cc">Питання</text>
+<text x="400" y="65" font-size="14" text-anchor="middle" fill="#666">навколо якого</text>
+<text x="400" y="85" font-size="14" text-anchor="middle" fill="#666">створене</text>
+<text x="400" y="105" font-size="14" text-anchor="middle" fill="#666">мікроком'юніті</text>
+<path d="M 400 170 L 400 115" stroke="#06c" stroke-width="3" marker-end="url(#arrowBlue)" fill="none"/>
+<!-- Central Calculation Box -->
+<rect x="230" y="170" width="340" height="190" fill="#fff9e6" stroke="#06c" stroke-width="3" rx="8"/>
+<text x="400" y="195" font-size="13" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Вага впливу</text>
+<text x="400" y="215" font-size="12" text-anchor="middle" fill="#333">для учасника в контексті питання:</text>
+<!-- Formula -->
+<rect x="250" y="225" width="300" height="35" fill="#f0f7ff" stroke="#0066cc" stroke-width="2" rx="4"/>
+<text x="400" y="248" font-size="14" font-weight="bold" text-anchor="middle" fill="#0066cc" font-family="monospace">
+ISR = (R × w<tspan baseline-shift="sub" font-size="smaller">R</tspan>) + (E × w<tspan baseline-shift="sub" font-size="smaller">E</tspan>) + (C × w<tspan baseline-shift="sub" font-size="smaller">C</tspan>)
+</text>
+<text x="400" y="275" font-size="12" font-weight="bold" text-anchor="middle" fill="#1a3a5c">
+Результат: ISR - індивідуальний коефіцієнт
+</text>
+<text x="400" y="290" font-size="12" font-weight="bold" text-anchor="middle" fill="#1a3a5c">
+нормалізований до одиничного середнього
+</text>
+<text x="400" y="310" font-size="12" text-anchor="middle" fill="#1a3a5c">
+(середній ISR учасника мікроком'юніті = 1)
+</text>
+<text x="400" y="330" font-size="11" text-anchor="middle" fill="#666">
+R = Relevance, E = Expertise, C = Contribution
+</text>
+<text x="400" y="348" font-size="11" text-anchor="middle" fill="#666">
+w<tspan baseline-shift="sub" font-size="smaller">R</tspan>, w<tspan baseline-shift="sub" font-size="smaller">E</tspan>, w<tspan baseline-shift="sub" font-size="smaller">C</tspan> = ваги компонент обумовлені контекстом питання
+</text>
+<!-- Component 1: Relevance -->
+<g>
+<rect x="1" y="380" width="199" height="160" fill="#fff4e6" stroke="#ff9900" stroke-width="3" rx="8"/>
+<rect x="1" y="380" width="199" height="40" fill="#ff9900" rx="8"/>
+<text x="100" y="410" font-size="16" font-weight="bold" text-anchor="middle" fill="white">Relevance</text>
+<text x="20" y="440" font-size="12" font-weight="bold" fill="#333">На кого впливає питання</text>
+<text x="20" y="465" font-size="11" fill="#666">• Дотичний до проблеми</text>
+<text x="20" y="485" font-size="11" fill="#666">• Цікавиться темою</text>
+<text x="20" y="505" font-size="11" fill="#666">• Залежить від результату</text>
+<text x="20" y="525" font-size="11" fill="#666">• Знаходиться поруч</text>
+<path d="M 100 380 Q 100 300 226 300" stroke="#ff9900" stroke-width="3" marker-end="url(#arrowOrange)" fill="none"/>
+</g>
+<!-- Component 2: Expertise -->
+<g>
+<rect x="300" y="410" width="200" height="160" fill="#e6ffe6" stroke="#00aa00" stroke-width="3" rx="8"/>
+<rect x="300" y="410" width="200" height="40" fill="#00aa00" rx="8"/>
+<text x="400" y="440" font-size="16" font-weight="bold" text-anchor="middle" fill="white">Expertise</text>
+<text x="320" y="470" font-size="12" font-weight="bold" fill="#333">Хто впливає на питання</text>
+<text x="320" y="495" font-size="11" fill="#666">• Фахова освіта</text>
+<text x="320" y="515" font-size="11" fill="#666">• Досвід роботи</text>
+<text x="320" y="535" font-size="11" fill="#666">• Професійні зв'язки</text>
+<text x="320" y="555" font-size="11" fill="#666">• Дотичні ресурси</text>
+<path d="M 400 410 L 400 363" stroke="#00aa00" stroke-width="3" marker-end="url(#arrowGreen)" fill="none"/>
+</g>
+<!-- Component 3: Contribution -->
+<g>
+<rect x="600" y="380" width="198" height="160" fill="#f0e6ff" stroke="#7700bb" stroke-width="3" rx="8"/>
+<rect x="600" y="380" width="200" height="40" fill="#7700bb" rx="8"/>
+<text x="700" y="410" font-size="16" font-weight="bold" text-anchor="middle" fill="white">Contribution</text>
+<text x="620" y="440" font-size="12" font-weight="bold" fill="#333">Історія суспільних дій</text>
+<text x="620" y="465" font-size="11" fill="#666">• Оцінка попереднього внеску</text>
+<text x="620" y="485" font-size="11" fill="#666">• Відгуки спільноти</text>
+<text x="620" y="505" font-size="11" fill="#666">• Історія правопорушень</text>
+<text x="620" y="525" font-size="11" fill="#666">• Історія комунікації</text>
+<path d="M 700 380 Q 700 300 574 300" stroke="#7700bb" stroke-width="3" marker-end="url(#arrowPurple)" fill="none"/>
+</g>
+</svg>

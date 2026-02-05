@@ -1,0 +1,1029 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ISR Explorer</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" type="image/png" href="/images/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/images/logo.svg" />
+    <link rel="shortcut icon" href="/images/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+    <link rel="manifest" href="/images/site.webmanifest" />
+    <!-- MathJax for LaTeX formula rendering -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #334155; }
+
+/* Chart Container Styling */
+.chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    height: 350px;
+    max-height: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Custom Scrollbar */
+.custom-scroll::-webkit-scrollbar { width: 6px; }
+.custom-scroll::-webkit-scrollbar-track { background: #f1f5f9; }
+.custom-scroll::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 20px; }
+
+/* Transitions */
+.tab-active { background-color: #2563eb; color: white; }
+.tab-inactive { background-color: transparent; color: #64748b; }
+.tab-inactive:hover { background-color: #e2e8f0; color: #334155; }
+
+/* Map Canvas */
+#simCanvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Range Slider Styling */
+input[type=range] {
+    -webkit-appearance: none; /* For older WebKit browsers */
+    appearance: none;         /* Standard property */
+    background: transparent;
+}
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: #2563eb;
+    margin-top: -6px; 
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    background: #cbd5e1;
+    border-radius: 2px;
+}
+</style>
+</head>
+<body class="h-screen flex flex-col overflow-hidden">
+
+    <header class="bg-white border-b border-slate-200 px-6 py-4 flex justify-between items-center shadow-sm z-10">
+        <div>
+            <h1 class="text-2xl font-bold text-slate-800 tracking-tight">ISR Explorer</h1>
+        </div>
+        <div class="flex space-x-1 bg-slate-100 p-1 rounded-lg">
+            <button id="nav-profiles" onclick="switchTab('profiles')" class="tab-active px-4 py-2 rounded-md text-sm font-medium transition-all">Profiles</button>
+            <button id="nav-values" onclick="switchTab('values')" class="tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all cursor-not-allowed opacity-50">Values</button>
+            <button id="nav-sim" onclick="switchTab('sim')" class="tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all">Relevance</button>
+            <button id="nav-expertise" onclick="switchTab('expertise')" class="tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all">Expertise</button>
+            <button id="nav-contribution" onclick="switchTab('contribution')" class="tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all cursor-not-allowed opacity-50">Contribution</button>
+            <button id="nav-isr-complete" onclick="switchTab('isr-complete')" class="tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all cursor-not-allowed opacity-50">Ready-to-Vote</button>
+        </div>
+    </header>
+
+    <main class="flex-1 relative overflow-hidden bg-slate-50">
+
+        <section id="view-profiles" class="absolute inset-0 p-6 grid grid-cols-12 gap-6">
+            <div class="col-span-12 md:col-span-4 bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
+                <div class="p-4 border-b border-slate-100 bg-slate-50">
+                    <h2 class="font-semibold text-slate-700">User Database (20)</h2>
+                    <p class="text-xs text-slate-500 mt-1">Select a profile to inspect their Vector (P)</p>
+                </div>
+                <div id="profile-list" class="flex-1 overflow-y-auto custom-scroll p-2 space-y-2">
+                    </div>
+            </div>
+
+            <div class="col-span-12 md:col-span-8 bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
+                <div class="p-6 border-b border-slate-100 flex justify-between items-start">
+                    <div>
+                        <h2 id="inspector-name" class="text-2xl font-bold text-slate-800">Select a Profile</h2>
+                        <div id="inspector-badges" class="flex flex-wrap gap-2 mt-2"></div>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">User ID</span>
+                        <div id="inspector-id" class="font-mono text-slate-600">--</div>
+                    </div>
+                </div>
+                
+                <div class="flex-1 p-6 overflow-y-auto">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center h-full">
+                        <div class="flex flex-col items-center justify-center relative">
+                            <h3 class="text-sm font-semibold text-slate-500 mb-2 uppercase tracking-wider">Multi-Dimensional Person Vector</h3>
+                            <div class="chart-container">
+                                <canvas id="profileRadarChart"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="space-y-6 bg-slate-50 p-6 rounded-lg border border-slate-100">
+                            <div>
+                                <h4 class="text-sm font-bold text-blue-700 mb-2 border-b border-blue-100 pb-1">Demographics (D)</h4>
+                                <ul id="inspector-demo" class="text-sm text-slate-600 space-y-1"></ul>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-emerald-700 mb-2 border-b border-emerald-100 pb-1">Geospatial Anchors (G)</h4>
+                                <ul id="inspector-geo" class="text-sm text-slate-600 space-y-1"></ul>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-indigo-700 mb-2 border-b border-indigo-100 pb-1">Expertise (E)</h4>
+                                <ul id="inspector-expertise-data" class="text-sm text-slate-600 space-y-1"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="view-sim" class="hidden absolute inset-0 p-6 flex flex-col">
+            <div class="grid grid-cols-12 gap-6 mb-6">
+                <div class="col-span-12 lg:col-span-8 bg-white p-4 rounded-xl shadow-sm border border-slate-200">
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <button onclick="setIssue(0)" id="btn-issue-0" class="flex-1 px-4 py-2 rounded-lg text-sm font-bold bg-blue-600 text-white shadow-sm transition-all">1. Local Park</button>
+                        <button onclick="setIssue(1)" id="btn-issue-1" class="flex-1 px-4 py-2 rounded-lg text-sm font-bold bg-white border border-slate-300 text-slate-600 hover:bg-slate-50">2. Remote Work</button>
+                        <button onclick="setIssue(2)" id="btn-issue-2" class="flex-1 px-4 py-2 rounded-lg text-sm font-bold bg-white border border-slate-300 text-slate-600 hover:bg-slate-50">3. Elderly Care</button>
+                    </div>
+                    
+                    <div class="bg-slate-50 p-4 rounded border border-slate-200">
+                        <h3 id="scenario-title" class="font-bold text-slate-800 text-lg mb-1">Scenario Title</h3>
+                        <p id="scenario-desc" class="text-sm text-slate-600 mb-2">Description goes here.</p>
+                        <div class="text-xs text-slate-500 pt-2 border-t border-slate-200">
+                            <strong>Calculation Logic:</strong> <span id="scenario-logic">Logic goes here.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-span-12 lg:col-span-4 bg-white p-4 rounded-xl shadow-sm border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-sm font-bold text-slate-700">Relevance Threshold</span>
+                            <span id="thresholdValue" class="text-sm font-mono font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded">0.50</span>
+                        </div>
+                        <input type="range" id="thresholdSlider" min="0" max="100" value="50" class="w-full mb-4">
+                    </div>
+
+                    <div class="grid grid-cols-4 gap-2 text-center">
+                         <div class="p-2 bg-blue-50 rounded border border-blue-100">
+                            <div class="text-[10px] text-blue-500 font-bold">DEMO</div>
+                            <div id="weight-d" class="text-sm font-bold text-slate-800">--</div>
+                        </div>
+                        <div class="p-2 bg-emerald-50 rounded border border-emerald-100">
+                            <div class="text-[10px] text-emerald-600 font-bold">GEO</div>
+                            <div id="weight-g" class="text-sm font-bold text-slate-800">--</div>
+                        </div>
+                        <div class="p-2 bg-purple-50 rounded border border-purple-100">
+                            <div class="text-[10px] text-purple-500 font-bold">SOC</div>
+                            <div id="weight-s" class="text-sm font-bold text-slate-800">--</div>
+                        </div>
+                        <div class="p-2 bg-orange-50 rounded border border-orange-100">
+                            <div class="text-[10px] text-orange-600 font-bold">INT</div>
+                            <div id="weight-x" class="text-sm font-bold text-slate-800">--</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex-1 grid grid-cols-12 gap-6 min-h-0">
+                <div class="col-span-12 lg:col-span-8 flex flex-col">
+                    <div class="flex-1 bg-white rounded-xl shadow-sm border border-slate-200 relative overflow-hidden flex flex-col">
+                        <div class="relative w-full h-full bg-slate-50">
+                            <canvas id="simCanvas"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-span-12 lg:col-span-4 bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
+                    <div class="p-4 border-b border-slate-100 bg-slate-50 flex justify-between items-center">
+                        <h3 class="font-bold text-slate-700">Microcommunity</h3>
+                        <span id="member-count" class="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-1 rounded-full">0/20</span>
+                    </div>
+                    <div class="flex-1 overflow-y-auto custom-scroll p-0" id="microcommunity-list">
+                        </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="view-expertise" class="hidden absolute inset-0 p-6 flex flex-col">
+            <div class="grid grid-cols-12 gap-6 mb-6">
+                <div class="col-span-12 lg:col-span-8 bg-white p-4 rounded-xl shadow-sm border border-slate-200 flex flex-col justify-between">
+                    <div class="flex space-x-2 mb-3">
+                        <button onclick="setExpertiseScenario(0)" id="btn-exp-0" class="px-3 py-1.5 text-xs font-bold rounded border bg-indigo-600 text-white border-indigo-600">Door Lock (Stable)</button>
+                        <button onclick="setExpertiseScenario(1)" id="btn-exp-1" class="px-3 py-1.5 text-xs font-bold rounded border bg-white text-slate-600 border-slate-300">Salsa Event (Cultural)</button>
+                        <button onclick="setExpertiseScenario(2)" id="btn-exp-2" class="px-3 py-1.5 text-xs font-bold rounded border bg-white text-slate-600 border-slate-300">New Parking (Urban)</button>
+                        <button onclick="setExpertiseScenario(3)" id="btn-exp-3" class="px-3 py-1.5 text-xs font-bold rounded border bg-white text-slate-600 border-slate-300">Crisis (Emergency)</button>
+                    </div>
+                    <div>
+                        <h3 id="exp-title" class="text-lg font-bold text-slate-800">Issue: Fix Broken Door Lock</h3>
+                        <p id="exp-desc" class="text-xs text-slate-500">Domain: locksmith.security • Timeless skills, low decay.</p>
+                    </div>
+                </div>
+                
+                <div class="col-span-12 lg:col-span-4 bg-indigo-50 p-4 rounded-xl border border-indigo-100 flex flex-col justify-center space-y-4">
+                     <div class="flex justify-between items-center text-xs font-bold text-indigo-900 mb-1">
+                        <span>Recency Decay Rate</span>
+                        <span id="val-decay" class="bg-white px-2 py-0.5 rounded shadow-sm">0.02</span>
+                    </div>
+                    <input type="range" id="decaySlider" min="0" max="10" value="2" class="w-full accent-indigo-600">
+                    
+                    <div class="flex justify-between items-center text-xs font-bold text-indigo-900 mb-1">
+                        <span>Contemporary Importance</span>
+                        <span id="val-contemp" class="bg-white px-2 py-0.5 rounded shadow-sm">0.2</span>
+                    </div>
+                    <input type="range" id="contempSlider" min="0" max="10" value="2" class="w-full accent-indigo-600">
+                </div>
+            </div>
+
+            <div class="flex-1 grid grid-cols-12 gap-6 min-h-0">
+                <div class="col-span-12 lg:col-span-7 bg-white rounded-xl shadow-sm border border-slate-200 p-4 flex flex-col">
+                    <h4 class="text-sm font-bold text-slate-700 mb-4 border-b border-slate-100 pb-2 flex justify-between">
+                        <span>Relevance vs. Expertise Matrix</span>
+                        <span class="text-xs font-normal text-slate-400">Stakeholders (X) vs Solvers (Y)</span>
+                    </h4>
+                    <div class="flex-1 relative">
+                        <canvas id="expertiseScatterChart"></canvas>
+                    </div>
+                    <div class="mt-2 flex justify-center space-x-4 text-[10px] text-slate-400">
+                        <span class="flex items-center"><span class="w-2 h-2 rounded-full bg-red-400 mr-1"></span> Expert (Active)</span>
+                        <span class="flex items-center"><span class="w-2 h-2 rounded-full bg-indigo-400 mr-1"></span> Practitioner</span>
+                        <span class="flex items-center"><span class="w-2 h-2 rounded-full bg-slate-300 mr-1"></span> Layperson</span>
+                    </div>
+                </div>
+
+                <div class="col-span-12 lg:col-span-5 flex flex-col gap-4">
+                    <div class="flex-1 bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col min-h-0">
+                        <div class="p-3 bg-indigo-50 border-b border-indigo-100 font-bold text-indigo-800 text-sm">
+                            Expertise Rankings
+                        </div>
+                        <div id="expertise-list" class="flex-1 overflow-y-auto custom-scroll p-0">
+                            </div>
+                    </div>
+
+                    <div id="expertise-detail-card" class="h-48 bg-white rounded-xl shadow-sm border border-slate-200 p-4 hidden">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h4 id="card-name" class="font-bold text-slate-800">User Name</h4>
+                                <div id="card-role" class="text-xs text-slate-500">Role Title</div>
+                            </div>
+                            <div class="text-right">
+                                <div id="card-total" class="text-2xl font-bold text-indigo-600">0.00</div>
+                                <div class="text-[10px] uppercase tracking-wider text-slate-400">Total Score</div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 mt-2">
+                            <div class="bg-slate-50 p-2 rounded border border-slate-100">
+                                <div class="text-[10px] text-slate-400 font-bold">EDUCATION</div>
+                                <div id="card-edu" class="font-mono text-sm font-semibold text-slate-700">0.00</div>
+                                <div id="card-edu-desc" class="text-[9px] text-slate-400 leading-tight mt-1 truncate"></div>
+                            </div>
+                            <div class="bg-slate-50 p-2 rounded border border-slate-100">
+                                <div class="text-[10px] text-slate-400 font-bold">EXPERIENCE</div>
+                                <div id="card-exp" class="font-mono text-sm font-semibold text-slate-700">0.00</div>
+                                <div id="card-exp-desc" class="text-[9px] text-slate-400 leading-tight mt-1 truncate"></div>
+                            </div>
+                            <div class="bg-slate-50 p-2 rounded border border-slate-100">
+                                <div class="text-[10px] text-slate-400 font-bold">RESOURCES</div>
+                                <div id="card-res" class="font-mono text-sm font-semibold text-slate-700">0.00</div>
+                                <div id="card-res-desc" class="text-[9px] text-slate-400 leading-tight mt-1 truncate"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="factor-modal" class="fixed inset-0 z-50 hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm transition-opacity" onclick="closeModal()"></div>
+        <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+            <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-2xl border border-slate-200">
+                <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4 border-b border-slate-100 flex justify-between items-start">
+                    <div>
+                        <h3 class="text-lg font-semibold leading-6 text-slate-900" id="modal-title">Factor Analysis Audit</h3>
+                    </div>
+                    <button type="button" class="text-slate-400 hover:text-slate-500" onclick="closeModal()">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+                    </button>
+                </div>
+                <div class="bg-white px-4 py-5 sm:p-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <div class="mb-4">
+                                <div class="text-xs font-bold text-slate-400 uppercase">Target User</div>
+                                <div id="modal-username" class="text-xl font-bold text-slate-800">Username</div>
+                                <div id="modal-status" class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800 mt-1">Included</div>
+                            </div>
+                            <div class="mb-4 bg-slate-50 p-3 rounded-lg border border-slate-100">
+                                <div class="flex justify-between items-end mb-1">
+                                    <span class="text-sm font-medium text-slate-600">Total Relevance (R)</span>
+                                    <span id="modal-score" class="text-2xl font-bold text-blue-600">0.00</span>
+                                </div>
+                                <div class="w-full bg-slate-200 rounded-full h-2">
+                                    <div id="modal-score-bar" class="bg-blue-600 h-2 rounded-full" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-slate-700 mb-2">System Reasoning</h4>
+                                <div id="modal-reasoning" class="text-sm text-slate-600 space-y-2 bg-yellow-50 p-3 rounded border border-yellow-100 border-l-4 border-l-yellow-400"></div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col">
+                            <h4 class="text-sm font-bold text-slate-700 mb-2 text-center">Weighted Component Contribution</h4>
+                            <div class="chart-container" style="height: 250px;">
+                                <canvas id="factorBarChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 border-t border-slate-100">
+                    <button type="button" class="inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 sm:ml-3 sm:w-auto" onclick="closeModal()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    // --- DATA ---
+    const issues = [
+        {
+            id: 0, title: "Local Park Renovation",
+            desc: "A proposal to renovate the central district park, adding a playground and dog run. Impact is highly localized.",
+            logic: "Relevance is heavily weighted on <strong>Geospatial (G)</strong> proximity. <strong>Demographics (D)</strong> (families) and <strong>Interests (X)</strong> (environment) play secondary roles.",
+            category: "Infrastructure", targetDemo: { family: "kids", minAge: 0 }, 
+            location: { x: 30, y: 30, radius: 20 }, tags: ["Environment", "Family", "Recreation"],
+            weights: { D: 0.3, G: 0.6, S: 0.0, X: 0.1 } 
+        },
+        {
+            id: 1, title: "Remote Work Rights Policy",
+            desc: "New legislation defining rights for remote workers in the tech sector. Location is irrelevant; profession is key.",
+            logic: "Zero weight on <strong>Geospatial</strong>. High weight on <strong>Demographics (D)</strong> (employment status) and <strong>Interests (X)</strong> (tech/policy).",
+            category: "Labor", targetDemo: { employment: "Employed", sector: "Tech" },
+            location: { x: 50, y: 50, radius: 0 }, tags: ["Tech", "Business", "Policy", "Rights"],
+            weights: { D: 0.5, G: 0.0, S: 0.1, X: 0.4 } 
+        },
+        {
+            id: 2, title: "Elderly Healthcare Access",
+            desc: "Improving clinic access for seniors in the Eastern district. Combines age targeting with location.",
+            logic: "High weight on <strong>Demographics (D)</strong> (Age > 60). Moderate weight on <strong>Geospatial (G)</strong> (Eastern district).",
+            category: "Health", targetDemo: { minAge: 60 },
+            location: { x: 75, y: 60, radius: 30 }, tags: ["Health", "Seniors", "Social Security"],
+            weights: { D: 0.6, G: 0.3, S: 0.1, X: 0.0 } 
+        }
+    ];
+
+    // Expertise Scenarios (Matching MD Examples)
+    const expertiseScenarios = [
+        {
+            id: 0, title: "Fix Broken Door Lock",
+            desc: "Standard Locksmithing. Timeless skill. Low decay.",
+            domain: "locksmith",
+            context: { contemporary: 0.2, decay: 0.02, cbcAdjust: 0.9 },
+            vector: { keywords: ["lock", "security", "repair", "metal"] }
+        },
+        {
+            id: 1, title: "Organize Salsa Event",
+            desc: "Cultural Event Org. Mixed modern/social skills.",
+            domain: "event",
+            context: { contemporary: 0.4, decay: 0.03, cbcAdjust: 1.1 },
+            vector: { keywords: ["dance", "music", "event", "social", "planning"] }
+        },
+        {
+            id: 2, title: "Urban Parking Structure",
+            desc: "Urban Planning & Construction. High complexity.",
+            domain: "construction",
+            context: { contemporary: 0.7, decay: 0.04, cbcAdjust: 1.0 },
+            vector: { keywords: ["building", "planning", "finance", "design"] }
+        },
+        {
+            id: 3, title: "Crisis Fund Allocation",
+            desc: "Emergency Governance. Fast decision making.",
+            domain: "governance",
+            context: { contemporary: 0.5, decay: 0.03, cbcAdjust: 1.2 },
+            vector: { keywords: ["logistics", "management", "crisis", "finance"] }
+        }
+    ];
+
+    // Roles for random assignment to users to create expertise diversity
+    const roles = [
+        { title: "Master Locksmith", domain: "locksmith", skills: ["lock", "security", "metal"], edu: "vocational", years: 25 },
+        { title: "Civil Engineer", domain: "construction", skills: ["building", "planning", "math"], edu: "bachelor", years: 20 },
+        { title: "Event Planner", domain: "event", skills: ["planning", "social", "design"], edu: "certificate", years: 10 },
+        { title: "Salsa Instructor", domain: "event", skills: ["dance", "music", "teaching"], edu: "none", years: 8 },
+        { title: "Retired Architect", domain: "construction", skills: ["design", "building", "art"], edu: "master", years: 40, retired: true },
+        { title: "Junior Dev", domain: "tech", skills: ["code", "logic", "web"], edu: "bachelor", years: 2 },
+        { title: "Nurse", domain: "health", skills: ["care", "medicine", "crisis"], edu: "bachelor", years: 15 },
+        { title: "Accountant", domain: "finance", skills: ["money", "finance", "planning"], edu: "bachelor", years: 12 },
+        { title: "Student", domain: "general", skills: ["learning"], edu: "none", years: 0 },
+        { title: "Office Manager", domain: "business", skills: ["planning", "management"], edu: "bachelor", years: 8 }
+    ];
+
+    const firstNames = ["James", "Mary", "Robert", "Patricia", "John", "Jennifer", "Michael", "Linda", "David", "Elizabeth", "William", "Barbara", "Richard", "Susan", "Joseph", "Jessica", "Thomas", "Sarah", "Charles", "Karen"];
+    const lastNames = ["Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez", "Martinez", "Hernandez", "Lopez", "Gonzalez", "Wilson", "Anderson", "Thomas", "Taylor", "Moore", "Jackson", "Martin"];
+    const interestsPool = ["Tech", "Environment", "Health", "Policy", "Education", "Art", "Sports", "Business", "Family", "Rights", "Recreation", "Seniors"];
+
+    let profiles = [];
+
+    // --- INIT ---
+    document.addEventListener('DOMContentLoaded', () => {
+        generateProfiles(); // Now includes Expertise Data
+        initCharts();
+        renderProfileList();
+        renderProfileInspector(profiles[0]);
+        updateSimulationUI(); 
+        
+        // Sim Slider Listeners
+        document.getElementById('thresholdSlider').addEventListener('input', (e) => {
+            threshold = parseFloat(e.target.value) / 100;
+            document.getElementById('thresholdValue').innerText = threshold.toFixed(2);
+            updateSimulationUI();
+        });
+
+        // Expertise Slider Listeners
+        document.getElementById('decaySlider').addEventListener('input', (e) => {
+            const val = parseInt(e.target.value) / 100;
+            document.getElementById('val-decay').innerText = val.toFixed(2);
+            updateExpertiseUI();
+        });
+        document.getElementById('contempSlider').addEventListener('input', (e) => {
+            const val = parseInt(e.target.value) / 10;
+            document.getElementById('val-contemp').innerText = val.toFixed(1);
+            updateExpertiseUI();
+        });
+
+        // Initial set issue
+        setIssue(0);
+        setExpertiseScenario(0);
+    });
+
+    function generateProfiles() {
+        profiles = Array.from({ length: 20 }, (_, i) => {
+            const age = Math.floor(Math.random() * (75 - 20) + 20);
+            const x = Math.floor(Math.random() * 90) + 5;
+            const y = Math.floor(Math.random() * 90) + 5;
+            
+            // Assign Random Role
+            const role = roles[Math.floor(Math.random() * roles.length)];
+            
+            // Interests
+            const userInterests = [];
+            const count = Math.floor(Math.random() * 3) + 3;
+            for(let j=0; j<count; j++) {
+                const tag = interestsPool[Math.floor(Math.random() * interestsPool.length)];
+                if(!userInterests.includes(tag)) userInterests.push(tag);
+            }
+
+            // Resources (Randomly assigned based on role probability)
+            const resources = [];
+            if(role.domain === 'locksmith' && Math.random() > 0.2) resources.push({name: "Lock Picks", rarity: 1.5});
+            if(role.domain === 'construction' && Math.random() > 0.5) resources.push({name: "CAD Software", rarity: 1.0});
+            if(Math.random() > 0.8) resources.push({name: "Van/Truck", rarity: 0.8});
+
+            return {
+                id: `U-${1000 + i}`,
+                name: `${firstNames[i]} ${lastNames[i]}`,
+                location: { x, y },
+                demographics: {
+                    age: age,
+                    employment: age > 65 ? "Retired" : "Employed",
+                    family: Math.random() > 0.6 ? "kids" : "no-kids",
+                    income: Math.floor(Math.random() * 3)
+                },
+                interests: userInterests,
+                socialConnections: Math.floor(Math.random() * 50) + 5,
+                // NEW: EXPERTISE DATA
+                education: {
+                    type: role.edu, // 'none', 'certificate', 'vocational', 'bachelor', 'master', 'phd'
+                    years: role.edu === 'master' ? 6 : (role.edu === 'bachelor' ? 4 : 2),
+                    field: role.domain
+                },
+                experience: {
+                    title: role.title,
+                    years: role.years,
+                    active: !role.retired,
+                    domain: role.domain,
+                    skills: role.skills
+                },
+                resources: resources
+            };
+        });
+    }
+
+    // --- STATE ---
+    let currentIssueIndex = 0;
+    let currentExpIndex = 0;
+    let threshold = 0.5;
+    let radarChart = null;
+    let barChart = null;
+    let scatterChart = null;
+    let mapCanvas = null;
+
+    // --- LOGIC: EXPERTISE CALCULATION (MD FORMULA) ---
+    function calculateExpertiseScore(user, scenario, decayRate, contempFactor) {
+        // 1. Education Component
+        // E = cos^CBC * Years
+        let eduSim = (user.education.field === scenario.domain) ? 0.9 : 0.1; // Mock Cosine
+        let cbc = 1.0;
+        if(user.education.type === 'vocational') cbc = 2.0;
+        if(user.education.type === 'master') cbc = 0.8;
+        
+        // Adjust CBC by context
+        let adjustedSim = Math.pow(eduSim, cbc * scenario.context.cbcAdjust);
+        
+        // Age penalty for education if domain is contemporary
+        let eduYears = user.education.years;
+        if (contempFactor > 0.5 && user.demographics.age > 50) {
+             // Mock age penalty
+             eduYears *= 0.8; 
+        }
+
+        const eEdu = adjustedSim * eduYears;
+
+        // 2. Experience Component
+        // E = cos * Years * Decay
+        // Check keyword overlap for similarity
+        const matchCount = user.experience.skills.filter(s => scenario.vector.keywords.includes(s)).length;
+        let expSim = matchCount > 0 ? 0.8 + (matchCount * 0.05) : 0.05;
+        if(user.experience.domain === scenario.domain) expSim = 0.95;
+
+        let effYears = user.experience.years;
+        if(!user.experience.active) {
+            // Recency Decay
+            const yearsInactive = user.demographics.age - (20 + user.experience.years); // Rough estimate
+            const decay = decayRate * Math.max(1, yearsInactive); // Decay per year
+            effYears = effYears * (1 - decay);
+        }
+        
+        const eExp = expSim * Math.max(0, effYears);
+
+        // 3. Resources Component
+        // E = cos * rarity
+        let eRes = 0;
+        user.resources.forEach(res => {
+            // Mock matching
+            let resSim = 0.1;
+            if(scenario.domain === 'locksmith' && res.name === 'Lock Picks') resSim = 1.0;
+            if(scenario.domain === 'construction' && res.name === 'CAD Software') resSim = 0.9;
+             eRes += (resSim * res.rarity);
+        });
+
+        return {
+            total: (eEdu + eExp + eRes).toFixed(2),
+            breakdown: { edu: eEdu.toFixed(2), exp: eExp.toFixed(2), res: eRes.toFixed(2) },
+            desc: {
+                edu: `${user.education.type} (${user.education.field})`,
+                exp: `${user.experience.years}y ${user.experience.title}`,
+                res: user.resources.length > 0 ? user.resources[0].name : "None"
+            }
+        };
+    }
+
+    // --- LOGIC: RELEVANCE CALCULATION ---
+    function calculateRelevance(user, issue) {
+        let reasons = [];
+        
+        // 1. Demographic (D)
+        let scoreD = 0;
+        let dReasons = [];
+        if (issue.targetDemo.minAge && user.demographics.age >= issue.targetDemo.minAge) {
+            scoreD += 0.5; dReasons.push(`Age match`);
+        }
+        if (issue.targetDemo.family && user.demographics.family === issue.targetDemo.family) {
+            scoreD += 0.5; dReasons.push(`Family match`);
+        }
+        if (issue.targetDemo.employment && user.demographics.employment === issue.targetDemo.employment) {
+            scoreD += 0.5; dReasons.push(`Employment match`);
+        }
+        scoreD = Math.min(scoreD, 1.0);
+        if(dReasons.length === 0) scoreD = 0.1;
+
+        // 2. Geospatial (G)
+        const dist = Math.sqrt(Math.pow(user.location.x - issue.location.x, 2) + Math.pow(user.location.y - issue.location.y, 2));
+        const maxDist = issue.location.radius * 1.5;
+        let scoreG = 0;
+        if(issue.location.radius > 0) {
+            scoreG = Math.max(0, 1 - (dist / maxDist));
+        }
+
+        // 3. Interest (X)
+        const matches = user.interests.filter(i => issue.tags.includes(i));
+        let scoreX = matches.length / Math.max(1, issue.tags.length);
+        if (matches.length > 0) scoreX = Math.max(scoreX, 0.4);
+
+        // 4. Social (S)
+        let scoreS = Math.min(1, user.socialConnections / 40) * 0.8; 
+
+        // TOTAL
+        const total = (scoreD * issue.weights.D) + 
+                      (scoreG * issue.weights.G) + 
+                      (scoreS * issue.weights.S) + 
+                      (scoreX * issue.weights.X);
+
+        // Reasoning Generation
+        if (scoreG > 0.6 && issue.weights.G > 0) reasons.push(`<strong>Geospatial:</strong> Close proximity (${Math.round(dist)} units).`);
+        if (scoreD > 0.6 && issue.weights.D > 0) reasons.push(`<strong>Demographics:</strong> ${dReasons.join(", ")}.`);
+        if (scoreX > 0.5 && issue.weights.X > 0) reasons.push(`<strong>Interests:</strong> Matches '${matches.join(", ")}'.`);
+        if (total < threshold) reasons.push(`<em>Score too low based on current weights.</em>`);
+
+        return {
+            total: total.toFixed(2),
+            breakdown: { D: scoreD, G: scoreG, S: scoreS, X: scoreX },
+            reasons: reasons
+        };
+    }
+
+    // --- VIEW 1: PROFILE INSPECTOR ---
+    function renderProfileList() {
+        const listEl = document.getElementById('profile-list');
+        listEl.innerHTML = '';
+        profiles.forEach(p => {
+            const div = document.createElement('div');
+            div.className = `p-3 rounded-lg cursor-pointer transition-colors hover:bg-blue-50 border border-transparent hover:border-blue-100 flex justify-between items-center group`;
+            div.innerHTML = `
+                <div>
+                    <div class="font-medium text-slate-700 group-hover:text-blue-700">${p.name}</div>
+                    <div class="text-xs text-slate-400">${p.demographics.age}yo • ${p.experience.title}</div>
+                </div>
+                <div class="text-xs font-mono text-slate-300 group-hover:text-blue-400">${p.id}</div>
+            `;
+            div.onclick = () => renderProfileInspector(p);
+            listEl.appendChild(div);
+        });
+    }
+
+    function renderProfileInspector(user) {
+        document.getElementById('inspector-name').textContent = user.name;
+        document.getElementById('inspector-id').textContent = user.id;
+        
+        document.getElementById('inspector-badges').innerHTML = `
+            <span class="px-2 py-1 bg-slate-100 text-slate-600 rounded text-xs">${user.experience.title}</span>
+            <span class="px-2 py-1 bg-slate-100 text-slate-600 rounded text-xs">${user.demographics.family === 'kids' ? 'Has Children' : 'No Children'}</span>
+        `;
+
+        document.getElementById('inspector-demo').innerHTML = `
+            <li><strong>Age:</strong> ${user.demographics.age}</li>
+            <li><strong>Income:</strong> ${["Low", "Middle", "High"][user.demographics.income]}</li>
+            <li><strong>Family:</strong> ${user.demographics.family}</li>
+        `;
+        document.getElementById('inspector-geo').innerHTML = `
+            <li><strong>Coords:</strong> [${user.location.x}, ${user.location.y}]</li>
+            <li><strong>Sector:</strong> ${Math.floor(user.location.x/50)}-${Math.floor(user.location.y/50)}</li>
+        `;
+        
+        // ADDED EXPERTISE DATA DISPLAY
+        document.getElementById('inspector-expertise-data').innerHTML = `
+            <li><strong>Edu:</strong> ${user.education.type} (${user.education.field})</li>
+            <li><strong>Exp:</strong> ${user.experience.years}y as ${user.experience.title}</li>
+            <li><strong>Res:</strong> ${user.resources.length > 0 ? user.resources[0].name : "None"}</li>
+        `;
+
+        // RADAR CHART UPDATE
+        const dData = [
+            (user.demographics.age / 90) * 100,
+            ((user.demographics.income+1)/3)*100, 
+            user.demographics.family === 'kids' ? 90 : 20,
+            (user.demographics.age / 90) * 80,
+            ((user.demographics.income+1)/3)*90,
+            user.demographics.family === 'kids' ? 80 : 30
+        ];
+        
+        const gData = [
+            user.location.x, user.location.y, 
+            100 - user.location.x, 100 - user.location.y,
+            (user.location.x + user.location.y)/2, 50
+        ];
+
+        const sBase = (user.socialConnections / 60) * 100;
+        const sData = [sBase, sBase*0.8, sBase*1.1, sBase*0.9, sBase, sBase*0.7];
+
+        const xBase = (user.interests.length / 8) * 100;
+        const xData = [xBase, xBase*1.2, xBase*0.8, xBase, xBase*0.5, xBase*1.1];
+
+        radarChart.data.datasets[0].data = dData;
+        radarChart.data.datasets[1].data = gData;
+        radarChart.data.datasets[2].data = sData;
+        radarChart.data.datasets[3].data = xData;
+        radarChart.update();
+    }
+
+    // --- VIEW 2: RELEVANCE SIMULATOR ---
+    function setIssue(index) {
+        currentIssueIndex = index;
+        const issue = issues[index];
+
+        document.getElementById('scenario-title').innerText = issue.title;
+        document.getElementById('scenario-desc').innerText = issue.desc;
+        document.getElementById('scenario-logic').innerHTML = issue.logic;
+
+        [0,1,2].forEach(i => {
+            const btn = document.getElementById(`btn-issue-${i}`);
+            if(i === index) btn.className = "flex-1 px-4 py-2 rounded-lg text-sm font-bold bg-blue-600 text-white shadow-sm transition-all";
+            else btn.className = "flex-1 px-4 py-2 rounded-lg text-sm font-bold bg-white border border-slate-300 text-slate-600 hover:bg-slate-50 transition-all";
+        });
+
+        document.getElementById('weight-d').innerText = issue.weights.D;
+        document.getElementById('weight-g').innerText = issue.weights.G;
+        document.getElementById('weight-s').innerText = issue.weights.S;
+        document.getElementById('weight-x').innerText = issue.weights.X;
+
+        updateSimulationUI();
+    }
+
+    function updateSimulationUI() {
+        const issue = issues[currentIssueIndex];
+        const memberList = document.getElementById('microcommunity-list');
+        memberList.innerHTML = '';
+        let count = 0;
+
+        drawMap(issue);
+
+        profiles.forEach(p => {
+            const result = calculateRelevance(p, issue);
+            const isIncluded = result.total >= threshold;
+
+            if (isIncluded) {
+                count++;
+                const el = document.createElement('div');
+                el.className = "p-3 border-b border-slate-100 hover:bg-slate-50 cursor-pointer flex justify-between items-center group";
+                el.innerHTML = `
+                    <div>
+                        <div class="text-sm font-semibold text-slate-700">${p.name}</div>
+                        <div class="text-xs text-slate-500">Score: <span class="text-blue-600 font-bold">${result.total}</span></div>
+                    </div>
+                    <svg class="w-4 h-4 text-slate-300 group-hover:text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                `;
+                el.onclick = () => openModal(p, result);
+                memberList.appendChild(el);
+            }
+        });
+
+        document.getElementById('member-count').innerText = `${count}/${profiles.length}`;
+    }
+
+    function drawMap(issue) {
+        const canvas = document.getElementById('simCanvas');
+        if(!mapCanvas) mapCanvas = canvas;
+        const parent = canvas.parentElement;
+        canvas.width = parent.offsetWidth;
+        canvas.height = parent.offsetHeight;
+        const ctx = canvas.getContext('2d');
+        const w = canvas.width;
+        const h = canvas.height;
+        ctx.fillStyle = '#f8fafc';
+        ctx.fillRect(0, 0, w, h);
+        ctx.strokeStyle = '#e2e8f0';
+        ctx.lineWidth = 1;
+        for(let i=0; i<w; i+=40) { ctx.beginPath(); ctx.moveTo(i,0); ctx.lineTo(i,h); ctx.stroke(); }
+        for(let i=0; i<h; i+=40) { ctx.beginPath(); ctx.moveTo(0,i); ctx.lineTo(w,i); ctx.stroke(); }
+        const scaleX = w / 100;
+        const scaleY = h / 100;
+        if(issue.location.radius > 0) {
+            ctx.beginPath();
+            ctx.arc(issue.location.x * scaleX, issue.location.y * scaleY, issue.location.radius * scaleX, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(239, 68, 68, 0.1)';
+            ctx.fill();
+            ctx.strokeStyle = 'rgba(239, 68, 68, 0.3)';
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.arc(issue.location.x * scaleX, issue.location.y * scaleY, 4, 0, Math.PI * 2);
+            ctx.fillStyle = '#ef4444';
+            ctx.fill();
+        }
+        profiles.forEach(p => {
+            const res = calculateRelevance(p, issue);
+            const included = res.total >= threshold;
+            ctx.beginPath();
+            const px = p.location.x * scaleX;
+            const py = p.location.y * scaleY;
+            ctx.arc(px, py, included ? 5 : 3, 0, Math.PI*2);
+            ctx.fillStyle = included ? '#2563eb' : '#cbd5e1'; 
+            ctx.fill();
+            if(included) { ctx.strokeStyle = '#fff'; ctx.lineWidth = 1; ctx.stroke(); }
+        });
+    }
+
+    // --- VIEW 3: EXPERTISE ASSESSMENT ---
+    function setExpertiseScenario(index) {
+        currentExpIndex = index;
+        const scenario = expertiseScenarios[index];
+        
+        // Update Buttons
+        [0,1,2,3].forEach(i => {
+            const btn = document.getElementById(`btn-exp-${i}`);
+            if(i === index) btn.className = "px-3 py-1.5 text-xs font-bold rounded border bg-indigo-600 text-white border-indigo-600 shadow-sm transition-all";
+            else btn.className = "px-3 py-1.5 text-xs font-bold rounded border bg-white text-slate-600 border-slate-300 hover:bg-indigo-50 transition-all";
+        });
+
+        document.getElementById('exp-title').innerText = `Issue: ${scenario.title}`;
+        document.getElementById('exp-desc').innerText = `Domain: ${scenario.domain} • ${scenario.desc}`;
+        
+        // Reset Sliders to Scenario Defaults
+        document.getElementById('decaySlider').value = scenario.context.decay * 100;
+        document.getElementById('val-decay').innerText = scenario.context.decay;
+        document.getElementById('contempSlider').value = scenario.context.contemporary * 10;
+        document.getElementById('val-contemp').innerText = scenario.context.contemporary;
+
+        updateExpertiseUI();
+    }
+
+    function updateExpertiseUI() {
+        const scenario = expertiseScenarios[currentExpIndex];
+        const decayRate = parseFloat(document.getElementById('decaySlider').value) / 100;
+        const contempFactor = parseFloat(document.getElementById('contempSlider').value) / 10;
+        
+        const listEl = document.getElementById('expertise-list');
+        listEl.innerHTML = '';
+        
+        // Calculate & Sort
+        const scores = profiles.map(p => {
+            const exp = calculateExpertiseScore(p, scenario, decayRate, contempFactor);
+            // Use Relevance logic from View 2 for the X-axis (but assume default weights for now)
+            // Ideally we'd link issues to expertise scenarios, but for now we'll mock relevance
+            const rev = calculateRelevance(p, issues[0]).total; 
+            return { user: p, exp: exp, rev: rev };
+        }).sort((a,b) => b.exp.total - a.exp.total);
+
+        // Populate List
+        scores.forEach(s => {
+            const div = document.createElement('div');
+            div.className = "p-3 border-b border-slate-100 hover:bg-indigo-50 cursor-pointer flex justify-between items-center group";
+            div.innerHTML = `
+                <div>
+                    <div class="text-sm font-semibold text-slate-700">${s.user.name}</div>
+                    <div class="text-[10px] text-slate-400">${s.user.experience.title}</div>
+                </div>
+                <div class="text-right">
+                    <div class="text-sm font-bold text-indigo-600">${s.exp.total}</div>
+                </div>
+            `;
+            div.onclick = () => showExpertiseCard(s.user, s.exp);
+            listEl.appendChild(div);
+        });
+
+        // Scatter Chart Data
+        const scatterData = scores.map(s => ({
+            x: Math.random(), // Mocking relevance variety for visual interest if not strictly linked
+            y: parseFloat(s.exp.total),
+            user: s.user
+        }));
+        
+        scatterChart.data.datasets[0].data = scatterData;
+        scatterChart.update();
+        
+        // Show top user by default
+        showExpertiseCard(scores[0].user, scores[0].exp);
+    }
+
+    function showExpertiseCard(user, expResult) {
+        document.getElementById('expertise-detail-card').classList.remove('hidden');
+        document.getElementById('card-name').innerText = user.name;
+        document.getElementById('card-role').innerText = user.experience.title;
+        document.getElementById('card-total').innerText = expResult.total;
+        
+        document.getElementById('card-edu').innerText = expResult.breakdown.edu;
+        document.getElementById('card-edu-desc').innerText = expResult.desc.edu;
+        
+        document.getElementById('card-exp').innerText = expResult.breakdown.exp;
+        document.getElementById('card-exp-desc').innerText = expResult.desc.exp;
+        
+        document.getElementById('card-res').innerText = expResult.breakdown.res;
+        document.getElementById('card-res-desc').innerText = expResult.desc.res;
+    }
+
+    // --- MODAL ---
+    function openModal(user, result) {
+        const issue = issues[currentIssueIndex];
+        document.getElementById('modal-username').innerText = user.name;
+        document.getElementById('modal-score').innerText = result.total;
+        document.getElementById('modal-score-bar').style.width = `${result.total * 100}%`;
+        const statusEl = document.getElementById('modal-status');
+        if(result.total >= threshold) {
+            statusEl.className = "inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800 mt-1";
+            statusEl.innerText = "Included";
+        } else {
+            statusEl.className = "inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-800 mt-1";
+            statusEl.innerText = "Excluded";
+        }
+        document.getElementById('modal-reasoning').innerHTML = result.reasons.length > 0 
+            ? `<ul class="list-disc pl-4 space-y-1">${result.reasons.map(r => `<li>${r}</li>`).join('')}</ul>` 
+            : `<p class="italic text-slate-400">Moderate relevance.</p>`;
+        barChart.data.datasets[0].data = [
+            result.breakdown.D * issue.weights.D, result.breakdown.G * issue.weights.G, result.breakdown.S * issue.weights.S, result.breakdown.X * issue.weights.X
+        ];
+        barChart.data.datasets[1].data = [issue.weights.D, issue.weights.G, issue.weights.S, issue.weights.X];
+        barChart.update();
+        document.getElementById('factor-modal').classList.remove('hidden');
+    }
+    function closeModal() { document.getElementById('factor-modal').classList.add('hidden'); }
+
+    // --- SETUP CHARTS ---
+    function initCharts() {
+        // RADAR
+        const ctxRadar = document.getElementById('profileRadarChart').getContext('2d');
+        radarChart = new Chart(ctxRadar, {
+            type: 'radar',
+            data: {
+                labels: ['Val 1', 'Val 2', 'Val 3', 'Val 4', 'Val 5', 'Val 6'],
+                datasets: [
+                    { label: 'Demographics', data: [0,0,0,0,0,0], backgroundColor: 'rgba(59, 130, 246, 0.2)', borderColor: 'rgba(59, 130, 246, 0.8)', borderWidth: 1.5, pointRadius: 0 },
+                    { label: 'Geospatial', data: [0,0,0,0,0,0], backgroundColor: 'rgba(16, 185, 129, 0.2)', borderColor: 'rgba(16, 185, 129, 0.8)', borderWidth: 1.5, pointRadius: 0 },
+                    { label: 'Social', data: [0,0,0,0,0,0], backgroundColor: 'rgba(168, 85, 247, 0.2)', borderColor: 'rgba(168, 85, 247, 0.8)', borderWidth: 1.5, pointRadius: 0 },
+                    { label: 'Interests', data: [0,0,0,0,0,0], backgroundColor: 'rgba(249, 115, 22, 0.2)', borderColor: 'rgba(249, 115, 22, 0.8)', borderWidth: 1.5, pointRadius: 0 }
+                ]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                scales: { r: { beginAtZero: true, max: 100, ticks: { display: false }, grid: { circular: true, color: '#e2e8f0' }, angleLines: { color: '#e2e8f0' }, pointLabels: { display: false } } },
+                plugins: { legend: { display: false } }
+            }
+        });
+
+        // BAR
+        const ctxBar = document.getElementById('factorBarChart').getContext('2d');
+        barChart = new Chart(ctxBar, {
+            type: 'bar',
+            data: {
+                labels: ['Demo', 'Geo', 'Soc', 'Int'],
+                datasets: [
+                    { label: 'User Score', data: [0,0,0,0], backgroundColor: ['#3b82f6', '#10b981', '#a855f7', '#f59e0b'] },
+                    { label: 'Max Potential', data: [0,0,0,0], backgroundColor: '#f1f5f9', grouped: false, order: 1 }
+                ]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                scales: { y: { beginAtZero: true, max: 0.8 } },
+                plugins: { legend: { display: false } }
+            }
+        });
+
+        // SCATTER (Expertise Matrix)
+        const ctxScatter = document.getElementById('expertiseScatterChart').getContext('2d');
+        scatterChart = new Chart(ctxScatter, {
+            type: 'scatter',
+            data: {
+                datasets: [{
+                    label: 'Users',
+                    data: [],
+                    backgroundColor: (ctx) => {
+                        const v = ctx.raw?.y;
+                        if(v > 10) return '#ef4444'; // Expert
+                        if(v > 3) return '#818cf8';  // Practitioner
+                        return '#cbd5e1'; // Layperson
+                    },
+                    pointRadius: (ctx) => {
+                        const v = ctx.raw?.y;
+                        return v > 10 ? 8 : (v > 3 ? 6 : 4);
+                    }
+                }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                scales: {
+                    x: { 
+                        type: 'linear', position: 'bottom', title: {display: true, text: 'Relevance (Stakeholder)'},
+                        grid: { color: '#f1f5f9' }, min: 0, max: 1 
+                    },
+                    y: { 
+                        type: 'linear', position: 'left', title: {display: true, text: 'Expertise Score'},
+                        grid: { color: '#f1f5f9' }, min: 0
+                    }
+                },
+                plugins: { 
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `${context.raw.user.name}: Exp ${context.raw.y}`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    window.switchTab = function(tabId) {
+        ['profiles', 'sim', 'expertise', 'values', 'contribution', 'isr-complete'].forEach(t => {
+            const sec = document.getElementById(`view-${t}`);
+            const btn = document.getElementById(`nav-${t}`);
+            if(sec) sec.classList.add('hidden');
+            if(btn) btn.className = 'tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all' + (['values','contribution','isr-complete'].includes(t) ? ' cursor-not-allowed opacity-50' : '');
+        });
+
+        const activeSec = document.getElementById(`view-${tabId}`);
+        const activeBtn = document.getElementById(`nav-${tabId}`);
+        if(activeSec) activeSec.classList.remove('hidden');
+        if(activeBtn) activeBtn.className = 'tab-active px-4 py-2 rounded-md text-sm font-medium transition-all';
+        
+        if(tabId === 'sim') setTimeout(() => updateSimulationUI(), 50);
+        if(tabId === 'expertise') setTimeout(() => updateExpertiseUI(), 50);
+    };
+
+</script>
+    <script src="/site-nav.js"></script>
+    <script src="/script.js"></script>
+</body>
+</html>

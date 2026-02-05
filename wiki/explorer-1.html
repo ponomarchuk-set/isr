@@ -167,7 +167,7 @@ body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #3341
                         <h3 id="scenario-title" class="font-bold text-slate-800 text-lg mb-1">Scenario Title</h3>
                         <p id="scenario-desc" class="text-sm text-slate-600 mb-2">Description goes here.</p>
                         <div class="text-xs text-slate-500 pt-2 border-t border-slate-200">
-                            <b>Calculation Logic:</b> <span id="scenario-logic">Logic goes here.</span>
+                            <strong>Calculation Logic:</strong> <span id="scenario-logic">Logic goes here.</span>
                         </div>
                     </div>
                 </div>
@@ -259,7 +259,7 @@ body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #3341
                         <h3 id="scenario-title" class="font-bold text-slate-800 text-lg mb-1">Scenario Title</h3>
                         <p id="scenario-desc" class="text-sm text-slate-600 mb-2">Description goes here.</p>
                         <div class="text-xs text-slate-500 pt-2 border-t border-slate-200">
-                            <b>Calculation Logic:</b> <span id="scenario-logic">Logic goes here.</span>
+                            <strong>Calculation Logic:</strong> <span id="scenario-logic">Logic goes here.</span>
                         </div>
                     </div>
                 </div>
@@ -393,7 +393,7 @@ body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #3341
             id: 0,
             title: "Local Park Renovation",
             desc: "A proposal to renovate the central district park, adding a playground and dog run. Impact is highly localized.",
-            logic: "Relevance is heavily weighted on <b>Geospatial (G)</b> proximity. <b>Demographics (D)</b> (families) and <b>Interests (X)</b> (environment) play secondary roles.",
+            logic: "Relevance is heavily weighted on <strong>Geospatial (G)</strong> proximity. <strong>Demographics (D)</strong> (families) and <strong>Interests (X)</strong> (environment) play secondary roles.",
             category: "Infrastructure",
             targetDemo: { family: "kids", minAge: 0 }, 
             location: { x: 30, y: 30, radius: 20 },
@@ -404,7 +404,7 @@ body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #3341
             id: 1,
             title: "Remote Work Rights Policy",
             desc: "New legislation defining rights for remote workers in the tech sector. Location is irrelevant; profession is key.",
-            logic: "Zero weight on <b>Geospatial</b>. High weight on <b>Demographics (D)</b> (employment status) and <b>Interests (X)</b> (tech/policy).",
+            logic: "Zero weight on <strong>Geospatial</strong>. High weight on <strong>Demographics (D)</strong> (employment status) and <strong>Interests (X)</strong> (tech/policy).",
             category: "Labor",
             targetDemo: { employment: "Employed", sector: "Tech" },
             location: { x: 50, y: 50, radius: 0 }, 
@@ -415,7 +415,7 @@ body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #3341
             id: 2,
             title: "Elderly Healthcare Access",
             desc: "Improving clinic access for seniors in the Eastern district. Combines age targeting with location.",
-            logic: "High weight on <b>Demographics (D)</b> (Age > 60). Moderate weight on <b>Geospatial (G)</b> (Eastern district).",
+            logic: "High weight on <strong>Demographics (D)</strong> (Age > 60). Moderate weight on <strong>Geospatial (G)</strong> (Eastern district).",
             category: "Health",
             targetDemo: { minAge: 60 },
             location: { x: 75, y: 60, radius: 30 }, 
@@ -524,9 +524,9 @@ body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #3341
                       (scoreX * issue.weights.X);
 
         // Reasoning Generation
-        if (scoreG > 0.6 && issue.weights.G > 0) reasons.push(`<b>Geospatial:</b> Close proximity (${Math.round(dist)} units).`);
-        if (scoreD > 0.6 && issue.weights.D > 0) reasons.push(`<b>Demographics:</b> ${dReasons.join(", ")}.`);
-        if (scoreX > 0.5 && issue.weights.X > 0) reasons.push(`<b>Interests:</b> Matches '${matches.join(", ")}'.`);
+        if (scoreG > 0.6 && issue.weights.G > 0) reasons.push(`<strong>Geospatial:</strong> Close proximity (${Math.round(dist)} units).`);
+        if (scoreD > 0.6 && issue.weights.D > 0) reasons.push(`<strong>Demographics:</strong> ${dReasons.join(", ")}.`);
+        if (scoreX > 0.5 && issue.weights.X > 0) reasons.push(`<strong>Interests:</strong> Matches '${matches.join(", ")}'.`);
         if (total < threshold) reasons.push(`<em>Score too low based on current weights (${issue.title}).</em>`);
 
         return {
@@ -565,13 +565,13 @@ body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #3341
         `;
 
         document.getElementById('inspector-demo').innerHTML = `
-            <li><b>Age:</b> ${user.demographics.age}</li>
-            <li><b>Income:</b> ${["Low", "Middle", "High"][user.demographics.income]}</li>
-            <li><b>Family:</b> ${user.demographics.family}</li>
+            <li><strong>Age:</strong> ${user.demographics.age}</li>
+            <li><strong>Income:</strong> ${["Low", "Middle", "High"][user.demographics.income]}</li>
+            <li><strong>Family:</strong> ${user.demographics.family}</li>
         `;
         document.getElementById('inspector-geo').innerHTML = `
-            <li><b>Coords:</b> [${user.location.x}, ${user.location.y}]</li>
-            <li><b>Sector:</b> ${Math.floor(user.location.x/50)}-${Math.floor(user.location.y/50)}</li>
+            <li><strong>Coords:</strong> [${user.location.x}, ${user.location.y}]</li>
+            <li><strong>Sector:</strong> ${Math.floor(user.location.x/50)}-${Math.floor(user.location.y/50)}</li>
         `;
         document.getElementById('inspector-interests').innerHTML = user.interests.map(i => `<span class="px-2 py-1 bg-blue-50 text-blue-600 border border-blue-100 rounded text-xs">${i}</span>`).join('');
 
@@ -861,14 +861,11 @@ body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #3341
     }
 
     window.switchTab = function(tabId) {
-        // document.getElementById('view-profiles').classList.add('hidden');
-        // document.getElementById('view-sim').classList.add('hidden');
-        // document.getElementById('view-values').classList.add('hidden');
-        // document.getElementById('view-expertise').classList.add('hidden');
-        // document.getElementById('view-contribution').classList.add('hidden');
-        // document.getElementById('view-isr-complete').classList.add('hidden');
-        // document.getElementById('nav-profiles').className = 'tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all';
-        // document.getElementById('nav-sim').className = 'tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all';
+        document.getElementById('view-profiles').classList.add('hidden');
+        document.getElementById('view-sim').classList.add('hidden');
+        document.getElementById('nav-profiles').className = 'tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all';
+        document.getElementById('nav-sim').className = 'tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all';
+
         document.getElementById(`view-${tabId}`).classList.remove('hidden');
         document.getElementById(`nav-${tabId}`).className = 'tab-active px-4 py-2 rounded-md text-sm font-medium transition-all';
         

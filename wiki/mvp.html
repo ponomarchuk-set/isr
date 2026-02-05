@@ -49,10 +49,18 @@
                         This score changes for each decision based on how relevant you are to the specific issue. 
                         An expert plumber has more influence on roof repairs, but equal voice on common community issues.
                     </p>
+                    <p style="margin-top: 10px; font-size: 0.95em;">
+                        There are two ways how to log in into the system:
+                        <ul>
+                            <li>Using your own account with username and password.</li>
+                            <li>Using presetted accounts for testing purposes - you can choose from the list.</li>
+                        </ul>
+                    </p>
                 </div>
 
                 <p><strong>The MVP application consists of 8 sections:</strong></p>
                 <ol>
+                    <li><strong>Dashboard</strong> – Your overview of community activities</li>
                     <li><strong>Profile</strong> – Your skills, experience, and interests</li>
                     <li><strong>Values</strong> – Your preferences stated in a convenient way</li>
                     <li><strong>Actions</strong> – Log of your contributions and activities</li>
@@ -64,15 +72,99 @@
                 </ol>
 
                 <p style="margin-top: 20px; background: #fff3cd; padding: 15px; border-radius: 4px;">
-                    <strong>🎯 User Success Tip:</strong> Start by completing your profile and values – this allows the AI to identify decisions you're most relevant to and show you the most important discussions.
+                    <strong>🎯 User Success Tip:</strong><br>
+                    Start ISR exploration with a presetted account - it allows you to quickly get a feel for how the system works.<br>
+                    Then complete your profile and values – this allows the AI to identify decisions you're most relevant to and show you the most important discussions.
                 </p>
             </div>
         </div>
 
+        <!-- Dashboard Section -->
+        <div class="paragraph">
+            <div class="paragraph_top" onclick="toggleContent('content-dashboard')">
+                <h2 id="dashboard">► 1. Dashboard: Your Community Command Center</h2>
+            </div>
+            <div id="content-dashboard" class="content" style="display: none;">
+                <p><strong>The Dashboard is your landing page after login.</strong> It shows at a glance your current ISR standing, what actions need your attention, and recent community activity. Think of it as your personal control panel for the entire ISR-vote system.</p>
+
+                <h3>What You See on the Dashboard</h3>
+                <ul>
+                    <li><strong>Your Status Card:</strong> Your avatar, name, general ISR score, membership duration, and this month's activity (votes, discussions, tasks).</li>
+                    <li><strong>Action Alerts:</strong> Three priority sections showing urgent votings (sorted by deadline), new discussions you're relevant to, and tasks in progress with their completion status.</li>
+                    <li><strong>Community Activity Feed:</strong> A timeline of recent events (votes concluded, tasks completed, discussions started, new members joined) so you stay aware of what's happening.</li>
+                </ul>
+
+                <h3>How It Works</h3>
+                <ol>
+                    <li>You log in → Dashboard loads with your personalized status and alerts.</li>
+                    <li>System flags votings where you're relevant or deadline is soon (red if < 6 hours, amber if < 48 hours).</li>
+                    <li>New discussions matching your profile/interests are listed so you don't miss them.</li>
+                    <li>For each task you're tracking, you see progress bars and estimated days to deadline.</li>
+                    <li>The activity feed updates in real-time, showing decisions your community is making.</li>
+                </ol>
+
+                <h3>Dashboard UI Components</h3>
+                <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+                    <tr style="background: #2c3e50; color: white;">
+                        <th style="padding: 10px; text-align: left;">Component</th>
+                        <th style="padding: 10px; text-align: left;">Purpose</th>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #ddd;">
+                        <td style="padding: 10px;"><strong>Status Card</strong></td>
+                        <td style="padding: 10px;">Shows your name, avatar, role, general ISR score, percentile rank, and this month's stats. Click to expand and see full profile.</td>
+                    </tr>
+                    <tr style="background: #f9f9f9; border-bottom: 1px solid #ddd;">
+                        <td style="padding: 10px;"><strong>Urgent Votings Alert</strong></td>
+                        <td style="padding: 10px;">Lists open votings with tight deadlines. Color-coded red if <6 hours, amber if <48 hours. Shows your ISR weight for each decision.</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #ddd;">
+                        <td style="padding: 10px;"><strong>New Discussions Alert</strong></td>
+                        <td style="padding: 10px;">Shows discussions created recently that match your profile/interests. Displays unread message count and microcommunity size.</td>
+                    </tr>
+                    <tr style="background: #f9f9f9; border-bottom: 1px solid #ddd;">
+                        <td style="padding: 10px;"><strong>Tasks in Progress</strong></td>
+                        <td style="padding: 10px;">Shows tasks you're assigned to or following, with progress bars (0–100%), assignee, and days remaining. Color indicates on-track (green), at-risk (amber), or delayed (red).</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #ddd;">
+                        <td style="padding: 10px;"><strong>Activity Feed</strong></td>
+                        <td style="padding: 10px;">Timeline of community events: votes concluded, tasks completed, discussions created, messages posted, new members joined. Helps you stay informed without actively checking each section.</td>
+                    </tr>
+                    <tr style="background: #f9f9f9;">
+                        <td style="padding: 10px;"><strong>Navigation Sidebar</strong></td>
+                        <td style="padding: 10px;">Quick-access menu: Profile, Values, Chat, Voting, Tasks, Community, Settings. Icons + text labels; collapses on mobile.</td>
+                    </tr>
+                </table>
+
+                <h3>Example Dashboard Scenario</h3>
+                <div style="background: #e8f4f8; padding: 20px; margin: 20px 0; border-radius: 5px; border-left: 4px solid #3498db;">
+                    <p><strong>You log in on Thursday evening.</strong></p>
+                    <ul style="margin: 10px 0;">
+                        <li>Your Status Card shows: ISR 2.4, rank 19/42, "6 votes this month".</li>
+                        <li>Urgent Votings alert (red): "Roof repair decision – <strong>5 hours left</strong>. Your ISR: 1.93×".</li>
+                        <li>New Discussions alert (amber): "Entrance lighting – <strong>2 new messages</strong> from electricians".</li>
+                        <li>Tasks in Progress: "LED upgrade – <strong>60% done</strong>, on track for March 15".</li>
+                        <li>Activity Feed shows: "Vote on parking proposal concluded", "Task: water leak fixed", "3 new members joined".</li>
+                    </ul>
+                    <p style="margin-top: 10px; font-style: italic;">You see immediately that the roof vote needs your vote before deadline, the lighting discussion is active, and the LED project is progressing. No time wasted searching.</p>
+                </div>
+
+                <h3>🎯 UX Success Tips</h3>
+                <ul>
+                    <li><strong>Check dashboard daily:</strong> It's your single source of truth for what your community is doing and what needs your input.</li>
+                    <li><strong>Act on urgent alerts:</strong> Red votings are sorted by deadline. Clicking takes you directly to the voting page with context.</li>
+                    <li><strong>Monitor task progress:</strong> Tasks with progress bars help you spot delays early. If your task is marked "at-risk", communicate with your team immediately.</li>
+                    <li><strong>Use activity feed to stay informed:</strong> Read what's happening without needing to join every discussion. Click an event to dive deeper.</li>
+                    <li><strong>Return often:</strong> The dashboard updates in real-time. Notifications also push updates (Phase 2).</li>
+                </ul>
+            </div>
+        </div>
+
+
+
         <!-- Profile Section -->
         <div class="paragraph">
             <div class="paragraph_top" onclick="toggleContent('content-profile')">
-                <h2 id="profile">► 1. Build Your Profile: Show What You Bring</h2>
+                <h2 id="profile">► 2. Build Your Profile: Show What You Bring</h2>
             </div>
             <div id="content-profile" class="content" style="display: none;">
                 <p><strong>Your profile is your identity in the system.</strong> It tells the community about your expertise, experience, and what makes you valuable to group decisions.</p>
@@ -122,7 +214,7 @@
         <!-- Values Section -->
         <div class="paragraph">
             <div class="paragraph_top" onclick="toggleContent('content-values')">
-                <h2 id="values">► 2. Define Your Values: What Matters to You</h2>
+                <h2 id="values">► 3. Define Your Values: What Matters to You</h2>
             </div>
             <div id="content-values" class="content" style="display: none;">
                 <p><strong>Microcommunity values are the foundation of ISR calculations.</strong> They define what behavior the community rewards and what it penalizes (as an addition to normal general law). Each microcommunity formed around rised issue gather its own <strong>Matrix of Values</strong> - out from all microcommunity members' values.</p>
@@ -188,7 +280,7 @@
         <!-- Chat Section -->
         <div class="paragraph">
             <div class="paragraph_top" onclick="toggleContent('content-chat')">
-                <h2 id="chat">► 3. Join Discussions: Microcommunities Around Issues</h2>
+                <h2 id="chat">► 4. Join Discussions: Microcommunities Around Issues</h2>
             </div>
             <div id="content-chat" class="content" style="display: none;">
                 <p><strong>The Chat section is where collective problem-solving starts.</strong> When an issue arises, the AI identifies the most relevant members (a "microcommunity") and notifies them.</p>
@@ -263,7 +355,7 @@
         <!-- Voting Section -->
         <div class="paragraph">
             <div class="paragraph_top" onclick="toggleContent('content-voting')">
-                <h2 id="voting">► 4. Participate in Decisions: Your Vote Has Weight</h2>
+                <h2 id="voting">► 5. Participate in Decisions: Your Vote Has Weight</h2>
             </div>
             <div id="content-voting" class="content" style="display: none;">
                 <p><strong>The Voting section is where discussion becomes decision.</strong> Each voting topic has multiple options, and your vote's weight depends on your ISR for that specific issue.</p>
@@ -365,7 +457,7 @@
         <!-- Tasks Section -->
         <div class="paragraph">
             <div class="paragraph_top" onclick="toggleContent('content-tasks')">
-                <h2 id="tasks">► 5. Track Implementation: From Decision to Reality</h2>
+                <h2 id="tasks">► 6. Track Implementation: From Decision to Reality</h2>
             </div>
             <div id="content-tasks" class="content" style="display: none;">
                 <p><strong>The Tasks section brings voting decisions to life.</strong> After a vote concludes, the winning option becomes a task that tracks progress and completion.</p>

@@ -1,295 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-5HZ42Q5T');</script>
-    <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ISR</title>
+    <title>Welcome to ISR</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5HZ42Q5T"
-        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    <div class="navbar">
-        <button id="logo" onclick="goHome()"><img src="../images/logo-t.png" alt="ISR homepage" height="20"></button>
+    <div style="display: flex; gap: 20px; padding: 20px; flex-direction: column; align-items: center;">
+        <p>Welcome to</p>
+        <img src="../images/logo-t.png" alt="ISR homepage" height="100">
+        <p>Choose your login option:</p>
+        <div style="display: flex; gap: 20px; padding: 20px; justify-content: center;">
+            <div style="border-radius: 12px; padding: 20px; box-sizing: border-box;">
+                <p>Your own account</p>
+                <input type="text" placeholder="Username"><br>
+                <input type="password" placeholder="Password"><br><br>
+                <a href="index-.html"><button>Login</button></a>
+                <button>Register</button>
+            </div>
+            <div style="border-radius: 12px; padding: 20px; box-sizing: border-box;" >
+                <p>Take one of presetted for testing</p>
+                <label for="browser">Choose from list or type:</label>
+                <input list="browsers" id="browser" name="browser" placeholder="Type or select...">
+
+                <datalist id="browsers">
+                <option value="Chrome">
+                <option value="Firefox">
+                <option value="Safari">
+                <option value="Edge">
+                <option value="Opera">
+                </datalist>
+<br><br>
+                <label for="custom-input">Choose from list or type:</label>
+                <div style="position: relative; display: inline-block;">
+                <input type="text" id="custom-input" list="datalist-options" 
+                        placeholder="Type or select..." 
+                        style="padding-right: 30px;">
+                <select id="select-options" style="position: absolute; right: 0; top: 0; height: 100%; opacity: 0; cursor: pointer;"
+                        onchange="document.getElementById('custom-input').value = this.value">
+                    <option value="">Select...</option>
+                    <option value="Apple">Apple</option>
+                    <option value="Banana">Banana</option>
+                    <option value="Cherry">Cherry</option>
+                    <option value="Date">Date</option>
+                </select>
+                </div>
+<br><br>
+
+
+<br><br>
+                <button>Choose</button>
+            </div>
+        </div>
+        <p>Or feel free to chat with Assistant:</p>
         <button onclick="openChat()">Assistant</button>
-        <button onclick="scrollToAndExpand('voting')">Voting</button>
-        <button onclick="scrollToAndExpand('tasks')">Tasks</button>
-        <button onclick="scrollToAndExpand('chat')">Chat</button>
-        <button id="menu-button">User name</button>
     </div>
-
-    <div id="menu" class="menu">
-        <a href="#" onclick="scrollToAndExpand('voting')">Voting</a>
-        <a href="#" onclick="scrollToAndExpand('tasks')">Tasks</a>
-        <a href="#" onclick="scrollToAndExpand('chat')">Chat</a>
-        <a href="#" onclick="scrollToAndExpand('values')">Values</a>
-        <a href="#" onclick="scrollToAndExpand('profile')">Profile</a>
-        <a href="#" onclick="scrollToAndExpand('settings')">Settings</a>
-        <a href="#" onclick="openLogin()">Login</a>
-    </div>
-
-    <div class="main_content">
-        <div class="paragraph">
-            <div class="paragraph_top" onclick="toggleContent('content-voting')">
-                <span>Voting &#9660;</span> 
-                <div class="paragraph_top_but">
-                    <button>new: 2</button> 
-                    <button>important: 1</button> 
-                    <button>urgent: 1</button>
-                </div>
-                <div class="paragraph_top_search">
-                    <input type="text">
-                    <button>Search</button>
-                </div>
-            </div>
-            <div id="content-voting" class="content">
-                <table>
-                    <tr id="tbHead">
-                        <td>Subject</td>
-                        <td>Status</td>
-                        <td>Deadline</td>
-                        <td>Importancy</td>
-                        <td>Relation</td>
-                        <td>ISR</td>
-                    </tr>
-                    <tr>
-                        <td>Fence door renew</td>
-                        <td>Discus</td>
-                        <td>25/03/15</td>
-                        <td>10</td>
-                        <td>95</td>
-                        <td>107</td>
-                    </tr>
-                    <tr>
-                        <td>Flowers near 3rd entrance</td>
-                        <td>Canceled</td>
-                        <td>25/03/05</td>
-                        <td>15</td>
-                        <td>12</td>
-                        <td>23</td>
-                    </tr>
-                    <tr>
-                        <td>Ladders to 1st entrance</td>
-                        <td>Voting</td>
-                        <td>25/03/12</td>
-                        <td>90</td>
-                        <td>65</td>
-                        <td>77</td>
-                    </tr>
-                </table>
-                <p>Calculated ISR with the question and context should be stored in a log for a future use accelerating. 
-                    AI will deside how far calculated ISR from the current question and save the resurses correspondently.</p>
-                <br>
-                <button>New subject</button>
-            </div>
-        </div>
-        <div class="paragraph">
-            <div class="paragraph_top" onclick="toggleContent('content-tasks')">
-                <span>Tasks &#9660;</span> 
-                <div class="paragraph_top_but">
-                    <button>new: 0</button> 
-                    <button>important: 2</button> 
-                    <button>urgent: 0</button>
-                </div>
-                <div class="paragraph_top_search">
-                    <input type="text">
-                    <button>Search</button>
-                </div>
-            </div>
-            <div id="content-tasks" class="content">
-                <p>Voted task tracker. Shows progress of voted points. The source of action results assertion.</p>
-            </div>
-        </div>
-        <div class="paragraph">
-            <div class="paragraph_top" onclick="toggleContent('content-chat')">
-                <span>Chat &#9660;</span> 
-                <div class="paragraph_top_but">
-                    <button>new: 5</button> 
-                    <button>important: 2</button> 
-                    <button>urgent: 0</button>
-                </div>
-                <div class="paragraph_top_search">
-                    <input type="text">
-                    <button>Search</button>
-                </div>
-            </div>
-            <div id="content-chat" class="content">
-                <p>Chat p2p, p2g</p>
-                <p>Interperson communication - the source of social information for AI asset. After the discussion can evolve to voting point.</p>
-                <button>New topic</button> <button>New private message</button>
-            </div>
-        </div>
-        <div class="paragraph">
-            <div class="paragraph_top" onclick="toggleContent('content-values')">
-                <span>Values &#9660;</span>
-            </div>
-            <div id="content-values" class="content">
-                <p>* Could be suggested by AI-agent based on just a talk (a survey) or of communication history.</p>
-                <p id="freeValuePoints">Free Value Points: 100</p>
-                <p id="category-values">
-                    1. Technical and infrastructure values: <br>
-                    <input id="serviceability" onchange="updateValue('serviceability')" class="value-input" type="number" value="0" min="0" max="100">
-                    1.1. Serviceability of engineering systems <br>
-                    <input id="energy_efficiency" onchange="updateValue('energy_efficiency')" class="value-input" type="number" value="0" min="0" max="100">
-                    1.2. Energy efficiency <br>
-                    <input id="repair_quality" onchange="updateValue('repair_quality')" class="value-input" type="number" value="0" min="0" max="100">
-                    1.3. Repair quality <br>
-                    2. Aesthetic values:<br>
-                    <input id="exterior_appearance" onchange="updateValue('exterior_appearance')" class="value-input" type="number" value="0" min="0" max="100">
-                    2.1. Exterior appearance of the building <br>
-                    <input id="cleanliness_order" onchange="updateValue('cleanliness_order')" class="value-input" type="number" value="0" min="0" max="100">
-                    2.2. Cleanliness and order <br>
-                    <input id="landscaping" onchange="updateValue('landscaping')" class="value-input" type="number" value="0" min="0" max="100">
-                    2.3. Landscaping: <br>
-                    3. Social values <br>
-                    <input id="respect_residents" onchange="updateValue('respect_residents')" class="value-input" type="number" value="0" min="0" max="100">
-                    3.1. Mutual respect between residents: Ensuring polite communication. <br>
-                    <input id="conflict_resolution" onchange="updateValue('conflict_resolution')" class="value-input" type="number" value="0" min="0" max="100">
-                    3.2. Conflict resolution: Quick and fair resolution of personal conflicts. <br>
-                    <input id="inclusivity" onchange="updateValue('inclusivity')" class="value-input" type="number" value="0" min="0" max="100">
-                    3.3. Inclusivity: Ensuring accessibility for people with disabilities. <br>
-                    4. Economic values: <br>
-                    <input id="transparent_financial" onchange="updateValue('transparent_financial')" class="value-input" type="number" value="0" min="0" max="100">
-                    4.1. Transparent financial management: Clear reporting on expenses for common needs. <br>
-                    <input id="reasonable_distribution" onchange="updateValue('reasonable_distribution')" class="value-input" type="number" value="0" min="0" max="100">
-                    4.2. Reasonable distribution of costs: Fair contribution of residents to common funds. <br>
-                    <input id="cost_optimization" onchange="updateValue('cost_optimization')" class="value-input" type="number" value="0" min="0" max="100">
-                    4.3. Cost optimization: Finding the most profitable contractors for the work. <br>
-                    5. Environmental values: <br>
-                    <input id="waste_disposal" onchange="updateValue('waste_disposal')" class="value-input" type="number" value="0" min="0" max="100">
-                    5.1. Waste disposal: Organizing separate garbage collection. <br>
-                    <input id="noise_reduction" onchange="updateValue('noise_reduction')" class="value-input" type="number" value="0" min="0" max="100">
-                    5.2. Noise reduction: Creating rules to reduce noise in the evening. <br>
-                    <input id="pollution_reduction" onchange="updateValue('pollution_reduction')" class="value-input" type="number" value="0" min="0" max="100">
-                    5.3. Pollution reduction: Measures to reduce the negative impact on the environment. <br>
-                    6. Management values: <br>
-                    <input id="active_residents" onchange="updateValue('active_residents')" class="value-input" type="number" value="0" min="0" max="100">
-                    6.1. Active participation of residents: Encouraging residents to participate in decision-making. <br>
-                    <input id="response_speed" onchange="updateValue('response_speed')" class="value-input" type="number" value="0" min="0" max="100">
-                    6.2. Speed ​​of response: Prompt resolution of emergency situations. <br>
-                    <input id="equalization" onchange="updateValue('equalization')" class="value-input" type="number" value="0" min="0" max="100">
-                    6.3. Equalization: Voting without taking into account personal “weight” - in all cases, each person has just 1 vote. <br>
-                    7. Comfort and safety: <br>
-                    <input id="safety_residents" onchange="updateValue('safety_residents')" class="value-input" type="number" value="0" min="0" max="100">
-                    7.1. Safety of residents: Ensuring security of the building (intercom, video cameras). <br>
-                    <input id="living_comfort" onchange="updateValue('living_comfort')" class="value-input" type="number" value="0" min="0" max="100">
-                    7.2. Comfort of living: Equipment of common recreation areas (playgrounds, benches).<br>
-                    <input id="pet_friendly" onchange="updateValue('pet_friendly')" class="value-input" type="number" value="0" min="0" max="100">
-                    7.3. Pet friendly environment.<br>
-                </p>
-                <p>Total: <span id="total-value">0</span>/100</p>
-                <button>Change</button> * Only 1 point a day could be changed.
-            </div>
-        </div>
-        <div class="paragraph">
-            <div class="paragraph_top" onclick="toggleContent('content-profile')">
-                <span>Profile &#9660;</span>
-            </div>
-            <div id="content-profile" class="content">
-                <p>Profile content. Proved skills and personal features.</p>
-                <p>Demografics:<br>
-                    <ul>
-                        <li>First Name: Ivan</li>
-                        <li>Last Name: Franko</li>
-                        <li>ID: 30405422</li>
-                        <li>Proof ID type: Pass ID</li>
-                        <li>Proof ID: 004455777</li>
-                        <li>Proof ID emitent: 8017</li>
-                        <li>Birth Date: 1985/03/22</li>
-                        <li>Sex: Male</li>
-                    </ul>
-                </p>
-                <p>Address:<br>
-                    <ul>
-                        <li>Country: Ukraine</li>
-                        <li>Region: Kyiv</li>
-                        <li>City: Brovary</li>
-                        <li>Street: Kvitkova</li>
-                        <li>Entrance: 2</li>
-                        <li>Floor: 3</li>
-                        <li>Apartment: 14</li>
-                        <li>Status: owner</li>
-                        <li>Dwell: yes</li>
-                    </ul>
-                </p>
-                <p>Social relations:<br>
-                    <ul>
-                        <li>Status: Merried</li>
-                        <li>Wife: Sofiya Franko (ID: 31787890)</li>
-                        <li>Son: Borys Franko (ID: 43908765)</li>
-                        <li>Son: Oleksiy Franko (ID: 43208775)</li>
-                        <li>Father: Taras Franko (ID: 22908799)</li>
-                        <li>Brother: Nazar Franko (ID: 52923419)</li>
-                    </ul>
-                </p>
-                <p>Features:<br>
-                    <ul>
-                        <li>Pets: dog, cat</li>
-                        <li>Car: Toyota Camry white (AA15544BB)</li>
-                        <li>Bike: Author black 28"</li>
-                    </ul>
-                </p>
-                <p>Skills:<br>
-                    <ul>
-                        <li>Education: Marketing, Kyiv National Economic University, 2010</li>
-                        <li>Education: Cybersecurity, Coursera, 2015</li>
-                        <li>Work experience: Sales manager 7</li>
-                        <li>Work experience: Taxi driver 2</li>
-                        <li>Work experience: Sport instructor (bike sport) 1</li>
-                        <li>Hobby: Hiking</li>
-                        <li>Hobby: Riding bike</li>
-                    </ul>
-                </p>
-                <p>Contacts:<br>
-                    <ul>
-                        <li>Phone: +380505005050</li>
-                        <li>Email: i.franko@gmail.com</li>
-                        <li>linkedin: __________________</li>
-                        <li>Facebook: __________________</li>
-                        <li>Messangers: Telegram, Viber, WhatsApp</li>
-                    </ul>
-                </p>
-
-            </div>
-        </div>
-        <div class="paragraph">
-            <div class="paragraph_top" onclick="toggleContent('content-settings')">
-                <span>Settings &#9660;</span>
-            </div>
-            <div id="content-settings" class="content">
-                <p>Interface:<br>
-                    <ul>
-                        <li>Classic (Task tracker)</li>
-                        <li>Bubble style</li>
-                        <li>Voice control</li>
-                    </ul>
-                </p>
-                <p>Color scheme:<br>
-                    <ul>
-                        <li>Soft</li>
-                        <li>Hard</li>
-                        <li>Neutral</li>
-                    </ul>
-                </p>
-                <p>Push messages:<br>
-                    <ul>
-                        <li>On</li>
-                        <li>Off</li>
-                    </ul>
-                </p>
-            </div>
-        </div>
-    </div>
-
 
 
     <div id="chat-window" class="chat-window">
