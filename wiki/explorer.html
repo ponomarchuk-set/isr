@@ -503,7 +503,7 @@
 
             document.getElementById('inspector-demo').innerHTML = `
             <li><strong>Age:</strong> ${user.demographics.age}</li>
-            <li><strong>Income:</strong> ${["Low", "Middle", "High"][user.demographics.income]}</li>
+            <li><strong>Income:</strong> ${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumSignificantDigits: 3 }).format(user.demographics.income)}</li>
             <li><strong>Family:</strong> ${user.demographics.family}</li>
         `;
             document.getElementById('inspector-geo').innerHTML = `
@@ -517,10 +517,10 @@
             // D: Age, Income, Family, Age, Income, Family
             const dData = [
                 (user.demographics.age / 90) * 100,
-                ((user.demographics.income + 1) / 3) * 100,
+                (user.demographics.income / 210000) * 100,
                 user.demographics.family === 'kids' ? 90 : 20,
                 (user.demographics.age / 90) * 80,
-                ((user.demographics.income + 1) / 3) * 90,
+                ((user.demographics.income / 210000) / 3) * 90 + 30,
                 user.demographics.family === 'kids' ? 80 : 30
             ];
 

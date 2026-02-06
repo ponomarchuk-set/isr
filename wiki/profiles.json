@@ -10,14 +10,39 @@
             "age": 34,
             "employment": "Employed",
             "family": "kids",
-            "income": 1
+            "income": 145000
         },
         "interests": [
             "Tech",
             "Family",
             "Sports"
         ],
-        "socialConnections": 45
+        "socialConnections": 45,
+        "expertise_data": {
+            "education": [
+                {
+                    "degree": "B.Sc Computer Science",
+                    "level": "Bachelor",
+                    "angle": 0
+                }
+            ],
+            "experience": [
+                {
+                    "role": "Senior Developer",
+                    "years": 6,
+                    "hue": 210
+                },
+                {
+                    "role": "Junior Developer",
+                    "years": 4,
+                    "hue": 200
+                }
+            ],
+            "resources": [
+                "GitHub Pro",
+                "Cloud Server Access"
+            ]
+        }
     },
     {
         "id": "U-1001",
@@ -30,14 +55,49 @@
             "age": 68,
             "employment": "Retired",
             "family": "no-kids",
-            "income": 1
+            "income": 210000
         },
         "interests": [
             "Health",
             "Seniors",
             "Art"
         ],
-        "socialConnections": 20
+        "socialConnections": 20,
+        "expertise_data": {
+            "education": [
+                {
+                    "degree": "M.D. Pediatrics",
+                    "level": "Master",
+                    "angle": 100
+                },
+                {
+                    "degree": "B.A. Art History",
+                    "level": "Bachelor",
+                    "angle": 180
+                }
+            ],
+            "experience": [
+                {
+                    "role": "Chief of Pediatrics",
+                    "years": 10,
+                    "hue": 120
+                },
+                {
+                    "role": "Senior Pediatrician",
+                    "years": 15,
+                    "hue": 115
+                },
+                {
+                    "role": "Resident Physician",
+                    "years": 10,
+                    "hue": 110
+                }
+            ],
+            "resources": [
+                "Medical License (Inactive)",
+                "Art Studio"
+            ]
+        }
     },
     {
         "id": "U-1002",
@@ -50,14 +110,34 @@
             "age": 22,
             "employment": "Unemployed",
             "family": "no-kids",
-            "income": 0
+            "income": 35000
         },
         "interests": [
             "Tech",
             "Sports",
             "Recreation"
         ],
-        "socialConnections": 55
+        "socialConnections": 55,
+        "expertise_data": {
+            "education": [
+                {
+                    "degree": "High School Diploma",
+                    "level": "High School",
+                    "angle": 0
+                }
+            ],
+            "experience": [
+                {
+                    "role": "Freelance Coder",
+                    "years": 3,
+                    "hue": 200
+                }
+            ],
+            "resources": [
+                "Gaming PC",
+                "Local Gym Membership"
+            ]
+        }
     },
     {
         "id": "U-1003",
@@ -70,7 +150,7 @@
             "age": 29,
             "employment": "Employed",
             "family": "kids",
-            "income": 2
+            "income": 85000
         },
         "interests": [
             "Policy",
@@ -78,7 +158,37 @@
             "Business",
             "Tech"
         ],
-        "socialConnections": 30
+        "socialConnections": 30,
+        "expertise_data": {
+            "education": [
+                {
+                    "degree": "Master of Public Policy",
+                    "level": "Master",
+                    "angle": 280
+                },
+                {
+                    "degree": "B.A. Political Science",
+                    "level": "Bachelor",
+                    "angle": 270
+                }
+            ],
+            "experience": [
+                {
+                    "role": "Policy Analyst",
+                    "years": 3,
+                    "hue": 280
+                },
+                {
+                    "role": "Junior Researcher",
+                    "years": 2,
+                    "hue": 275
+                }
+            ],
+            "resources": [
+                "Legal Database Access",
+                "Policy Network"
+            ]
+        }
     },
     {
         "id": "U-1004",
@@ -91,14 +201,49 @@
             "age": 45,
             "employment": "Employed",
             "family": "no-kids",
-            "income": 2
+            "income": 130000
         },
         "interests": [
             "Business",
             "Environment",
             "Policy"
         ],
-        "socialConnections": 15
+        "socialConnections": 15,
+        "expertise_data": {
+            "education": [
+                {
+                    "degree": "MBA",
+                    "level": "Master",
+                    "angle": 300
+                },
+                {
+                    "degree": "B.Sc Environmental Science",
+                    "level": "Bachelor",
+                    "angle": 110
+                }
+            ],
+            "experience": [
+                {
+                    "role": "Senior Consultant",
+                    "years": 8,
+                    "hue": 130
+                },
+                {
+                    "role": "Sustainability Consultant",
+                    "years": 7,
+                    "hue": 125
+                },
+                {
+                    "role": "Environmental Analyst",
+                    "years": 5,
+                    "hue": 120
+                }
+            ],
+            "resources": [
+                "Consulting Firm",
+                "Environmental Impact Tools"
+            ]
+        }
     },
     {
         "id": "U-1005",
@@ -111,14 +256,39 @@
             "age": 38,
             "employment": "Employed",
             "family": "kids",
-            "income": 1
+            "income": 65000
         },
         "interests": [
             "Family",
             "Recreation",
             "Education"
         ],
-        "socialConnections": 40
+        "socialConnections": 40,
+        "expertise_data": {
+            "education": [
+                {
+                    "degree": "B.Ed Education",
+                    "level": "Bachelor",
+                    "angle": 240
+                }
+            ],
+            "experience": [
+                {
+                    "role": "Department Head",
+                    "years": 5,
+                    "hue": 40
+                },
+                {
+                    "role": "School Teacher",
+                    "years": 10,
+                    "hue": 35
+                }
+            ],
+            "resources": [
+                "Classroom Materials",
+                "Parent Network"
+            ]
+        }
     },
     {
         "id": "U-1006",
@@ -131,14 +301,49 @@
             "age": 72,
             "employment": "Retired",
             "family": "no-kids",
-            "income": 1
+            "income": 90000
         },
         "interests": [
             "Seniors",
             "Health",
             "Policy"
         ],
-        "socialConnections": 25
+        "socialConnections": 25,
+        "expertise_data": {
+            "education": [
+                {
+                    "degree": "Ph.D. Sociology",
+                    "level": "PhD",
+                    "angle": 260
+                }
+            ],
+            "experience": [
+                {
+                    "role": "Professor Emeritus",
+                    "years": 5,
+                    "hue": 250
+                },
+                {
+                    "role": "Department Chair",
+                    "years": 15,
+                    "hue": 245
+                },
+                {
+                    "role": "Associate Professor",
+                    "years": 10,
+                    "hue": 240
+                },
+                {
+                    "role": "Lecturer",
+                    "years": 10,
+                    "hue": 235
+                }
+            ],
+            "resources": [
+                "Academic Library",
+                "Research Grants (Past)"
+            ]
+        }
     },
     {
         "id": "U-1007",
@@ -151,14 +356,39 @@
             "age": 26,
             "employment": "Employed",
             "family": "no-kids",
-            "income": 1
+            "income": 75000
         },
         "interests": [
             "Art",
             "Design",
             "Tech"
         ],
-        "socialConnections": 35
+        "socialConnections": 35,
+        "expertise_data": {
+            "education": [
+                {
+                    "degree": "B.F.A. Graphic Design",
+                    "level": "Bachelor",
+                    "angle": 190
+                }
+            ],
+            "experience": [
+                {
+                    "role": "UX Designer",
+                    "years": 2,
+                    "hue": 200
+                },
+                {
+                    "role": "Junior Designer",
+                    "years": 2,
+                    "hue": 195
+                }
+            ],
+            "resources": [
+                "Adobe Creative Cloud",
+                "Design Tablet"
+            ]
+        }
     },
     {
         "id": "U-1008",
@@ -171,14 +401,39 @@
             "age": 31,
             "employment": "Employed",
             "family": "kids",
-            "income": 2
+            "income": 115000
         },
         "interests": [
             "Tech",
             "Business",
             "Policy"
         ],
-        "socialConnections": 50
+        "socialConnections": 50,
+        "expertise_data": {
+            "education": [
+                {
+                    "degree": "B.Sc Information Systems",
+                    "level": "Bachelor",
+                    "angle": 10
+                }
+            ],
+            "experience": [
+                {
+                    "role": "Product Manager",
+                    "years": 4,
+                    "hue": 220
+                },
+                {
+                    "role": "Associate PM",
+                    "years": 3,
+                    "hue": 215
+                }
+            ],
+            "resources": [
+                "JIRA Admin",
+                "Tech Conference Pass"
+            ]
+        }
     },
     {
         "id": "U-1009",
@@ -191,14 +446,44 @@
             "age": 55,
             "employment": "Employed",
             "family": "no-kids",
-            "income": 2
+            "income": 140000
         },
         "interests": [
             "Environment",
             "Health",
             "Seniors"
         ],
-        "socialConnections": 10
+        "socialConnections": 10,
+        "expertise_data": {
+            "education": [
+                {
+                    "degree": "M.Sc Public Health",
+                    "level": "Master",
+                    "angle": 100
+                }
+            ],
+            "experience": [
+                {
+                    "role": "Hospital Administrator",
+                    "years": 10,
+                    "hue": 110
+                },
+                {
+                    "role": "Department Manager",
+                    "years": 12,
+                    "hue": 105
+                },
+                {
+                    "role": "Nurse Manager",
+                    "years": 8,
+                    "hue": 100
+                }
+            ],
+            "resources": [
+                "Hospital Infrastructure",
+                "Health Data Access"
+            ]
+        }
     },
     {
         "id": "U-1010",
@@ -211,14 +496,39 @@
             "age": 40,
             "employment": "Unemployed",
             "family": "kids",
-            "income": 0
+            "income": 42000
         },
         "interests": [
             "Family",
             "Rights",
             "Community"
         ],
-        "socialConnections": 28
+        "socialConnections": 28,
+        "expertise_data": {
+            "education": [
+                {
+                    "degree": "Associate Degree",
+                    "level": "Associate",
+                    "angle": 0
+                }
+            ],
+            "experience": [
+                {
+                    "role": "Lead Organizer",
+                    "years": 4,
+                    "hue": 30
+                },
+                {
+                    "role": "Community Organizer",
+                    "years": 6,
+                    "hue": 25
+                }
+            ],
+            "resources": [
+                "Community Hall Access",
+                "Megaphone"
+            ]
+        }
     },
     {
         "id": "U-1011",
@@ -231,14 +541,34 @@
             "age": 19,
             "employment": "Unemployed",
             "family": "no-kids",
-            "income": 0
+            "income": 12000
         },
         "interests": [
             "Education",
             "Tech",
             "Art"
         ],
-        "socialConnections": 48
+        "socialConnections": 48,
+        "expertise_data": {
+            "education": [
+                {
+                    "degree": "Studying Computer Science",
+                    "level": "Bachelor (In Progress)",
+                    "angle": 5
+                }
+            ],
+            "experience": [
+                {
+                    "role": "Student",
+                    "years": 0,
+                    "hue": 0
+                }
+            ],
+            "resources": [
+                "University Library",
+                "Student Software Licenses"
+            ]
+        }
     },
     {
         "id": "U-1012",
@@ -251,14 +581,44 @@
             "age": 63,
             "employment": "Retired",
             "family": "kids",
-            "income": 1
+            "income": 45000
         },
         "interests": [
             "Health",
             "Environment",
             "Recreation"
         ],
-        "socialConnections": 22
+        "socialConnections": 22,
+        "expertise_data": {
+            "education": [
+                {
+                    "degree": "B.Sc Forestry",
+                    "level": "Bachelor",
+                    "angle": 130
+                }
+            ],
+            "experience": [
+                {
+                    "role": "Senior Park Ranger",
+                    "years": 15,
+                    "hue": 100
+                },
+                {
+                    "role": "Park Ranger",
+                    "years": 15,
+                    "hue": 95
+                },
+                {
+                    "role": "Seasonal Ranger",
+                    "years": 8,
+                    "hue": 90
+                }
+            ],
+            "resources": [
+                "Park Maps",
+                "Nature Guides"
+            ]
+        }
     },
     {
         "id": "U-1013",
@@ -271,14 +631,39 @@
             "age": 33,
             "employment": "Employed",
             "family": "no-kids",
-            "income": 2
+            "income": 160000
         },
         "interests": [
             "Business",
             "Tech",
             "Rights"
         ],
-        "socialConnections": 38
+        "socialConnections": 38,
+        "expertise_data": {
+            "education": [
+                {
+                    "degree": "J.D. Law",
+                    "level": "Doctorate",
+                    "angle": 290
+                }
+            ],
+            "experience": [
+                {
+                    "role": "Corporate Associate",
+                    "years": 5,
+                    "hue": 280
+                },
+                {
+                    "role": "Junior Associate",
+                    "years": 2,
+                    "hue": 275
+                }
+            ],
+            "resources": [
+                "LexisNexis",
+                "Bar Association Membership"
+            ]
+        }
     },
     {
         "id": "U-1014",
@@ -291,14 +676,39 @@
             "age": 28,
             "employment": "Employed",
             "family": "kids",
-            "income": 1
+            "income": 78000
         },
         "interests": [
             "Sports",
             "Family",
             "Health"
         ],
-        "socialConnections": 42
+        "socialConnections": 42,
+        "expertise_data": {
+            "education": [
+                {
+                    "degree": "B.Sc Kinesiology",
+                    "level": "Bachelor",
+                    "angle": 90
+                }
+            ],
+            "experience": [
+                {
+                    "role": "Physical Therapist",
+                    "years": 3,
+                    "hue": 80
+                },
+                {
+                    "role": "PT Assistant",
+                    "years": 2,
+                    "hue": 75
+                }
+            ],
+            "resources": [
+                "Therapy Equipment",
+                "Clinic Access"
+            ]
+        }
     },
     {
         "id": "U-1015",
@@ -311,14 +721,44 @@
             "age": 48,
             "employment": "Employed",
             "family": "no-kids",
-            "income": 2
+            "income": 95000
         },
         "interests": [
             "Policy",
             "Environment",
             "Art"
         ],
-        "socialConnections": 18
+        "socialConnections": 18,
+        "expertise_data": {
+            "education": [
+                {
+                    "degree": "M.Arch Architecture",
+                    "level": "Master",
+                    "angle": 170
+                }
+            ],
+            "experience": [
+                {
+                    "role": "Senior Urban Planner",
+                    "years": 8,
+                    "hue": 160
+                },
+                {
+                    "role": "City Planner",
+                    "years": 10,
+                    "hue": 155
+                },
+                {
+                    "role": "Junior Planner",
+                    "years": 4,
+                    "hue": 150
+                }
+            ],
+            "resources": [
+                "CAD Software",
+                "City Blueprints"
+            ]
+        }
     },
     {
         "id": "U-1016",
@@ -331,14 +771,39 @@
             "age": 36,
             "employment": "Unemployed",
             "family": "kids",
-            "income": 0
+            "income": 38000
         },
         "interests": [
             "Rights",
             "Family",
             "Community"
         ],
-        "socialConnections": 32
+        "socialConnections": 32,
+        "expertise_data": {
+            "education": [
+                {
+                    "degree": "B.A. Social Work",
+                    "level": "Bachelor",
+                    "angle": 250
+                }
+            ],
+            "experience": [
+                {
+                    "role": "Case Manager",
+                    "years": 5,
+                    "hue": 240
+                },
+                {
+                    "role": "Field Worker",
+                    "years": 5,
+                    "hue": 235
+                }
+            ],
+            "resources": [
+                "Case Management System",
+                "Local NGO Contacts"
+            ]
+        }
     },
     {
         "id": "U-1017",
@@ -351,14 +816,44 @@
             "age": 75,
             "employment": "Retired",
             "family": "no-kids",
-            "income": 1
+            "income": 48000
         },
         "interests": [
             "Seniors",
             "Health",
             "Social Security"
         ],
-        "socialConnections": 12
+        "socialConnections": 12,
+        "expertise_data": {
+            "education": [
+                {
+                    "degree": "Nursing Diploma",
+                    "level": "Diploma",
+                    "angle": 100
+                }
+            ],
+            "experience": [
+                {
+                    "role": "Head Nurse (Retired)",
+                    "years": 15,
+                    "hue": 110
+                },
+                {
+                    "role": "Senior Nurse",
+                    "years": 20,
+                    "hue": 105
+                },
+                {
+                    "role": "Nurse",
+                    "years": 10,
+                    "hue": 100
+                }
+            ],
+            "resources": [
+                "Medical Kit",
+                "Pension Fund"
+            ]
+        }
     },
     {
         "id": "U-1018",
@@ -371,14 +866,34 @@
             "age": 24,
             "employment": "Employed",
             "family": "no-kids",
-            "income": 1
+            "income": 55000
         },
         "interests": [
             "Tech",
             "Recreation",
             "Sports"
         ],
-        "socialConnections": 58
+        "socialConnections": 58,
+        "expertise_data": {
+            "education": [
+                {
+                    "degree": "Bootcamp Cert",
+                    "level": "Certificate",
+                    "angle": 10
+                }
+            ],
+            "experience": [
+                {
+                    "role": "Junior Web Dev",
+                    "years": 2,
+                    "hue": 220
+                }
+            ],
+            "resources": [
+                "Laptop",
+                "StackOverflow"
+            ]
+        }
     },
     {
         "id": "U-1019",
@@ -391,13 +906,43 @@
             "age": 50,
             "employment": "Employed",
             "family": "kids",
-            "income": 2
+            "income": 155000
         },
         "interests": [
             "Business",
             "Policy",
             "Environment"
         ],
-        "socialConnections": 26
+        "socialConnections": 26,
+        "expertise_data": {
+            "education": [
+                {
+                    "degree": "Ph.D. Economics",
+                    "level": "PhD",
+                    "angle": 310
+                }
+            ],
+            "experience": [
+                {
+                    "role": "Senior Economic Advisor",
+                    "years": 10,
+                    "hue": 300
+                },
+                {
+                    "role": "Policy Analyst",
+                    "years": 10,
+                    "hue": 295
+                },
+                {
+                    "role": "Researcher",
+                    "years": 5,
+                    "hue": 290
+                }
+            ],
+            "resources": [
+                "Economic Models",
+                "Government Access"
+            ]
+        }
     }
 ]

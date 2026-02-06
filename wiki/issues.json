@@ -24,7 +24,15 @@
             "G": 0.6,
             "S": 0.0,
             "X": 0.1
-        }
+        },
+        "required_education_angle": 130,
+        "required_width": 30,
+        "required_experience_years": 5,
+        "required_resources": [
+            "Landscape Design Tools",
+            "Public Safety Standards"
+        ],
+        "recommended_expert_id": "U-1012"
     },
     {
         "id": 1,
@@ -52,7 +60,15 @@
             "G": 0.0,
             "S": 0.1,
             "X": 0.4
-        }
+        },
+        "required_education_angle": 280,
+        "required_width": 45,
+        "required_experience_years": 8,
+        "required_resources": [
+            "Legal Framework Access",
+            "Tech Industry Surveys"
+        ],
+        "recommended_expert_id": "U-1003"
     },
     {
         "id": 2,
@@ -78,6 +94,14 @@
             "G": 0.3,
             "S": 0.1,
             "X": 0.0
-        }
+        },
+        "required_education_angle": 100,
+        "required_width": 40,
+        "required_experience_years": 10,
+        "required_resources": [
+            "Geriatric Care Standards",
+            "Medical Facility Maps"
+        ],
+        "recommended_expert_id": "U-1001"
     }
 ]
