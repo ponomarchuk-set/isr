@@ -25,7 +25,7 @@
             "S": 0.0,
             "X": 0.1
         },
-        "required_education_angle": 130,
+        "required_education_angle": 90,
         "required_width": 30,
         "required_experience_years": 5,
         "required_resources": [
@@ -61,7 +61,7 @@
             "S": 0.1,
             "X": 0.4
         },
-        "required_education_angle": 280,
+        "required_education_angle": 135,
         "required_width": 45,
         "required_experience_years": 8,
         "required_resources": [
@@ -95,7 +95,7 @@
             "S": 0.1,
             "X": 0.0
         },
-        "required_education_angle": 100,
+        "required_education_angle": 90,
         "required_width": 40,
         "required_experience_years": 10,
         "required_resources": [

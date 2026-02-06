@@ -15,6 +15,7 @@
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
 
@@ -190,6 +191,14 @@
                                 <h4 class="text-sm font-bold text-orange-700 mb-2 border-b border-orange-100 pb-1">
                                     Interests & Semantics (X)</h4>
                                 <div id="inspector-interests" class="flex flex-wrap gap-2"></div>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-indigo-700 mb-2 border-b border-indigo-100 pb-1">
+                                    Expertise (E)</h4>
+                                <div id="inspector-expertise" class="text-sm text-slate-600 mb-2"></div>
+                                <button onclick="openExpertiseModal(currentProfile)"
+                                    class="text-xs font-bold text-indigo-600 hover:text-indigo-800 underline">View
+                                    Details</button>
                             </div>
                         </div>
                     </div>
@@ -372,6 +381,116 @@
             </div>
         </div>
     </div>
+
+    <!-- EXPERTISE MODAL -->
+    <div id="expertise-modal" class="fixed inset-0 z-50 hidden" aria-labelledby="modal-title" role="dialog"
+        aria-modal="true">
+        <div class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm transition-opacity" onclick="closeExpertiseModal()">
+        </div>
+        <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+            <div
+                class="relative transform overflow-hidden rounded-xl bg-white text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-4xl border border-slate-200">
+                <div class="bg-white px-6 py-4 border-b border-slate-100 flex justify-between items-center">
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900" id="exp-modal-username">User Profile</h3>
+                        <p class="text-sm text-slate-500">Expertise Knowledge Map: Education & Experience & Resources
+                        </p>
+                    </div>
+                    <button type="button" class="text-slate-400 hover:text-slate-500 transition-colors"
+                        onclick="closeExpertiseModal()">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="bg-slate-50 p-6 overflow-y-auto max-h-[80vh]">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+                        <!-- LEFT: Education Sphere -->
+                        <div
+                            class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col items-center">
+                            <h4 class="text-sm font-bold text-slate-600 mb-4 uppercase tracking-wider">Education Sphere
+                            </h4>
+                            <div id="knowledge-sphere"
+                                class="w-full h-[400px] flex items-center justify-center relative">
+                                <!-- D3 SVG will be injected here -->
+                                <!-- Legend Overlay -->
+                                <!-- 8-Point Compass Legend -->
+                                <div
+                                    class="absolute top-0 left-1/2 -translate-x-1/2 text-[10px] text-slate-400 text-center pointer-events-none">
+                                    <div class="font-bold">N (0°)</div>
+                                    <div>Philosophy</div>
+                                </div>
+                                <div
+                                    class="absolute top-[15%] right-[15%] text-[10px] text-slate-400 text-right pointer-events-none">
+                                    <div class="font-bold">NE (45°)</div>
+                                    <div>Logic</div>
+                                </div>
+                                <div
+                                    class="absolute top-1/2 right-0 -translate-y-1/2 text-[10px] text-slate-400 text-right pointer-events-none">
+                                    <div class="font-bold">E (90°)</div>
+                                    <div>Science</div>
+                                </div>
+                                <div
+                                    class="absolute bottom-[15%] right-[15%] text-[10px] text-slate-400 text-right pointer-events-none">
+                                    <div class="font-bold">SE (135°)</div>
+                                    <div>Tech</div>
+                                </div>
+                                <div
+                                    class="absolute bottom-0 left-1/2 -translate-x-1/2 text-[10px] text-slate-400 text-center pointer-events-none">
+                                    <div class="font-bold">S (180°)</div>
+                                    <div>Business</div>
+                                </div>
+                                <div
+                                    class="absolute bottom-[15%] left-[15%] text-[10px] text-slate-400 text-left pointer-events-none">
+                                    <div class="font-bold">SW (225°)</div>
+                                    <div>Policy</div>
+                                </div>
+                                <div
+                                    class="absolute top-1/2 left-0 -translate-y-1/2 text-[10px] text-slate-400 text-left pointer-events-none">
+                                    <div class="font-bold">W (270°)</div>
+                                    <div>Arts</div>
+                                </div>
+                                <div
+                                    class="absolute top-[15%] left-[15%] text-[10px] text-slate-400 text-left pointer-events-none">
+                                    <div class="font-bold">NW (315°)</div>
+                                    <div>Education</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- RIGHT: Details -->
+                        <div class="space-y-6">
+
+                            <!-- Experience Waterfall -->
+                            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                                <h4 class="text-sm font-bold text-slate-600 mb-4 uppercase tracking-wider">Experience
+                                    Records</h4>
+                                <div id="experience-waterfall" class="w-full h-[150px]">
+                                    <!-- D3/HTML Bars -->
+                                </div>
+                                <div class="mt-2 flex justify-between text-xs text-slate-400">
+                                    <span>Career Start</span>
+                                    <span>Present</span>
+                                </div>
+                            </div>
+
+                            <!-- Resource Cloud -->
+                            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                                <h4 class="text-sm font-bold text-slate-600 mb-4 uppercase tracking-wider">Resource
+                                    Cloud</h4>
+                                <div id="resource-cloud" class="flex flex-wrap gap-2">
+                                    <!-- Tags -->
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script>
         // --- DATA ---
         let issues = [];
@@ -383,6 +502,7 @@
         let radarChart = null;
         let barChart = null;
         let mapCanvas = null;
+        let currentProfile = null;
 
         // --- INIT ---
         document.addEventListener('DOMContentLoaded', async () => {
@@ -497,8 +617,18 @@
         }
 
         function renderProfileInspector(user) {
+            currentProfile = user;
             document.getElementById('inspector-name').textContent = user.name;
             document.getElementById('inspector-id').textContent = user.id;
+
+            // Expertise Summary
+            const edu = user.expertise_data?.education[0];
+            const level = edu ? edu.level : "N/A";
+            const domain = edu ? edu.degree : "General";
+            document.getElementById('inspector-expertise').innerHTML = `
+                <div class="font-medium text-slate-800">${level}</div>
+                <div class="text-xs text-slate-500 truncate" title="${domain}">${domain}</div>
+            `;
 
             document.getElementById('inspector-badges').innerHTML = `
             <span class="px-2 py-1 bg-slate-100 text-slate-600 rounded text-xs">${user.demographics.employment}</span>
@@ -709,6 +839,248 @@
 
         function closeModal() {
             document.getElementById('factor-modal').classList.add('hidden');
+        }
+
+        // --- EXPERTISE VISUALIZATION ---
+        function openExpertiseModal(user) {
+            document.getElementById('exp-modal-username').innerText = user.name;
+            document.getElementById('expertise-modal').classList.remove('hidden');
+
+            // Wait for modal to render to get dimensions
+            requestAnimationFrame(() => {
+                drawKnowledgeSphere(user);
+                drawExperienceWaterfall(user);
+                drawResourceCloud(user);
+            });
+        }
+
+        function closeExpertiseModal() {
+            document.getElementById('expertise-modal').classList.add('hidden');
+        }
+
+        function drawKnowledgeSphere(user) {
+            const container = document.getElementById('knowledge-sphere');
+            container.innerHTML = ''; // Clear
+            const w = container.clientWidth;
+            const h = container.clientHeight;
+            const radius = Math.min(w, h) / 2 - 40; // Increased margin for labels
+
+            const svg = d3.select(container).append("svg")
+                .attr("width", w)
+                .attr("height", h)
+                .append("g")
+                .attr("transform", `translate(${w / 2},${h / 2})`);
+
+            // Define Filter for Top-glow / Soft edges
+            const defs = svg.append("defs");
+            const filter = defs.append("filter")
+                .attr("id", "softGlow")
+                .attr("height", "300%")
+                .attr("width", "300%")
+                .attr("x", "-100%")
+                .attr("y", "-100%");
+
+            filter.append("feGaussianBlur")
+                .attr("in", "SourceGraphic")
+                .attr("stdDeviation", 3) // Soften edges
+                .attr("result", "blur");
+
+            const feMerge = filter.append("feMerge");
+            feMerge.append("feMergeNode").attr("in", "blur");
+            feMerge.append("feMergeNode").attr("in", "SourceGraphic");
+
+            // Axis Lines and Labels
+            const axes = svg.append("g").attr("class", "axes opacity-40");
+            const axisLabels = [
+                { deg: 0, label: "Philosophy", text: "& Theory" },
+                { deg: 90, label: "Natural Sciences", text: "& Medicine" },
+                { deg: 180, label: "Business", text: "& Operations" },
+                { deg: 270, label: "Arts &", text: "Humanities" },
+                { deg: 45, label: "Logic &", text: "Mathematics" },
+                { deg: 135, label: "Engineering", text: "& Technology" },
+                { deg: 225, label: "Policy &", text: "Social Science" },
+                { deg: 315, label: "Education", text: "& Culture" }
+            ];
+
+            axisLabels.forEach(d => {
+                const angle = (d.deg - 90) * Math.PI / 180;
+                const x = radius * Math.cos(angle);
+                const y = radius * Math.sin(angle);
+
+                // Line
+                axes.append("line")
+                    .attr("x1", 0).attr("y1", 0)
+                    .attr("x2", x)
+                    .attr("y2", y)
+                    .attr("stroke", "#94a3b8")
+                    .attr("stroke-width", 1)
+                    .attr("stroke-dasharray", "4 4");
+
+                // Label
+                axes.append("text")
+                    .attr("x", x * 1.1)
+                    .attr("y", y * 1.1)
+                    .attr("text-anchor", "middle")
+                    .attr("alignment-baseline", "middle")
+                    .attr("fill", "#24344b")
+                    .attr("font-size", "10px")
+                    .attr("font-weight", "bold")
+                    .text(d.label);
+
+                // Detailed Label
+                axes.append("text")
+                    .attr("x", x * 1.1)
+                    .attr("y", y * 1.1 + (d.deg === 0 ? -12 : 12))
+                    .attr("text-anchor", "middle")
+                    .attr("alignment-baseline", "middle")
+                    .attr("fill", "#24344b")
+                    .attr("font-size", "10px")
+                    .attr("font-weight", "bold")
+                    .text(d.text);
+            });
+
+            // Data Mapping
+            const eduData = user.expertise_data?.education || [];
+
+            const arc = d3.arc()
+                .innerRadius(0)
+                .outerRadius(d => {
+                    // Radius Mapping
+                    let r = 0.4; // Default
+                    const l = d.level ? d.level.toLowerCase() : "";
+                    if (l.includes("phd") || l.includes("doctorate")) r = 1.0;
+                    else if (l.includes("master")) r = 0.8;
+                    else if (l.includes("bachelor")) r = 0.6;
+                    else if (l.includes("associate") || l.includes("college") || l.includes("high school")) r = 0.4;
+                    else if (l.includes("cert") || l.includes("course") || l.includes("bootcamp")) r = 0.2;
+                    return r * radius;
+                })
+                .startAngle(d => (d.angle * Math.PI / 180))
+                .endAngle(d => {
+                    // Width Mapping
+                    let w = 15; // Default
+                    const l = d.level ? d.level.toLowerCase() : "";
+                    if (l.includes("phd") || l.includes("doctorate")) w = 90;
+                    else if (l.includes("master")) w = 60;
+                    else if (l.includes("bachelor")) w = 45;
+                    else if (l.includes("associate") || l.includes("college") || l.includes("high school")) w = 15;
+                    else if (l.includes("cert") || l.includes("course") || l.includes("bootcamp")) w = 15;
+                    return (d.angle + w) * Math.PI / 180;
+                });
+
+            // Draw Sectors
+            svg.selectAll("path")
+                .data(eduData)
+                .enter().append("path")
+                .attr("d", arc)
+                .attr("fill", d => `hsl(${d.angle}, 70%, 60%)`)
+                .attr("stroke", "white")
+                .attr("stroke-width", 1)
+                // .style("filter", "url(#softGlow)") // Optional based on prompt preference
+                .style("opacity", 0.8)
+                .on("mouseover", function () { d3.select(this).style("opacity", 1); })
+                .on("mouseout", function () { d3.select(this).style("opacity", 0.8); })
+                .append("title").text(d => `${d.degree} (${d.level})`);
+        }
+
+        function drawExperienceWaterfall(user) {
+            const container = document.getElementById('experience-waterfall');
+            container.innerHTML = '';
+
+            // Stepped Waterfall Logic
+            // Each experience is a separate bar on a new row.
+            // Horizontal position (left) is determined by cumulative years of previous experiences.
+
+            const expData = user.expertise_data?.experience || [];
+            // Sort by recent to oldest? Or oldest to recent? 
+            // Usually "Waterfall" implies flow... let's assume index 0 is most recent?
+            // Actually, usually experience arrays are Recent -> Oldest.
+            // Check profiles.json: "Senior", "Junior"... yes, Descending order.
+            // So we need to reverse to plot timeline from Start -> Present.
+            const chronologicalExp = [...expData].reverse();
+
+            const totalYears = chronologicalExp.reduce((acc, curr) => acc + curr.years, 0);
+            const scaleYears = Math.max(totalYears, 50); // Absolute scale: minimum 50 years
+
+            const wrapper = document.createElement('div');
+            wrapper.className = "relative w-full h-full";
+            container.appendChild(wrapper);
+
+            let cumulativeYears = 0;
+            const rowHeight = 24; // Fixed height per bar? Or percentage?
+            // "height: 150px" in HTML.
+
+            chronologicalExp.forEach((exp, index) => {
+                const widthPct = (exp.years / scaleYears) * 100;
+                const leftPct = (cumulativeYears / scaleYears) * 100;
+
+                const bar = document.createElement('div');
+                bar.className = "absolute h-5 rounded hover:opacity-90 group transition-all flex items-center shadow-sm";
+                bar.style.left = `${leftPct}%`;
+                bar.style.width = `calc(${widthPct}% - 2px)`; // Gap
+                bar.style.top = `${index * (rowHeight + 4) + 40}px`; // Increased Top Padding for Tooltip (40px)
+                bar.style.backgroundColor = `hsl(${exp.hue || 200}, 70%, 60%)`;
+
+                // Content inside bar if wide enough, else tooltip
+                if (widthPct > 5) { // Lower threshold for text
+                    bar.innerHTML = `<span class="text-[10px] text-white font-semibold truncate px-2 w-full">${exp.role}</span>`;
+                }
+
+                // Tooltip
+                const tooltip = document.createElement('div');
+                tooltip.className = "absolute bottom-full mb-1 left-0 bg-slate-800 text-white text-xs px-2 py-1 rounded hidden group-hover:block whitespace-nowrap z-20 shadow-lg";
+                tooltip.innerText = `${exp.role} (${exp.years} yrs)`;
+                bar.appendChild(tooltip);
+
+                wrapper.appendChild(bar);
+
+                cumulativeYears += exp.years;
+            });
+
+            // Adjust container height if needed? NO, fixed "h-[150px]" in HTML.
+            // Maybe add scrolling if too many items?
+            container.style.overflowY = 'auto'; // Enable scroll if many jobs
+
+            // Legend / Stats
+            const stats = document.createElement('div');
+            stats.className = "absolute bottom-0 right-0 text-xs text-slate-500 bg-white/80 px-2 rounded";
+            stats.innerHTML = `Total: <span class="font-bold">${totalYears}</span> Years`;
+            wrapper.appendChild(stats);
+        }
+
+        function drawResourceCloud(user) {
+            const container = document.getElementById('resource-cloud');
+            container.innerHTML = '';
+
+            const resData = user.expertise_data?.resources || [];
+            if (resData.length === 0) {
+                container.innerHTML = '<span class="text-slate-400 italic text-sm">No resources listed.</span>';
+                return;
+            }
+
+            resData.forEach(res => {
+                const tag = document.createElement('span');
+                // Check if res is object (new format) or string (old format fallback)
+                let name = res;
+                let weight = 1;
+
+                if (typeof res === 'object' && res !== null) {
+                    name = res.name;
+                    weight = res.weight || 1;
+                }
+
+                // Size mapping: 1 (min) -> 0.75rem, 10 (max) -> 1.5rem
+                const sizeRem = 0.75 + (weight / 10) * 0.75;
+                const opacity = 0.6 + (weight / 10) * 0.4;
+
+                tag.className = "inline-block align-middle mr-2 mb-1 cursor-default text-slate-700 font-semibold leading-none";
+                tag.style.fontSize = `${sizeRem}rem`;
+                tag.style.opacity = opacity;
+                tag.innerText = name;
+                // tag.title = `Rarity/Weight: ${weight}`; // Removed tooltip as requested
+
+                container.appendChild(tag);
+            });
         }
 
         // --- SETUP CHARTS ---

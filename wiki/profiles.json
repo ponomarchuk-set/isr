@@ -27,7 +27,7 @@
                 {
                     "degree": "B.Sc Computer Science",
                     "level": "Bachelor",
-                    "angle": 0
+                    "angle": 135
                 }
             ],
             "experience": [
@@ -43,8 +43,18 @@
                 }
             ],
             "resources": [
-                "GitHub Pro",
-                "Cloud Server Access"
+                {
+                    "name": "GitHub Pro",
+                    "weight": 2
+                },
+                {
+                    "name": "Cloud Server Access",
+                    "weight": 5
+                },
+                {
+                    "name": "High-Performance Workstation",
+                    "weight": 6
+                }
             ]
         }
     },
@@ -77,12 +87,12 @@
                 {
                     "degree": "M.D. Pediatrics",
                     "level": "Master",
-                    "angle": 100
+                    "angle": 90
                 },
                 {
                     "degree": "B.A. Art History",
                     "level": "Bachelor",
-                    "angle": 180
+                    "angle": 270
                 }
             ],
             "experience": [
@@ -103,8 +113,18 @@
                 }
             ],
             "resources": [
-                "Medical License (Inactive)",
-                "Art Studio"
+                {
+                    "name": "Medical License (Inactive)",
+                    "weight": 8
+                },
+                {
+                    "name": "Art Studio",
+                    "weight": 7
+                },
+                {
+                    "name": "Pediatric Medical Journals",
+                    "weight": 4
+                }
             ]
         }
     },
@@ -130,9 +150,9 @@
         "expertise_data": {
             "education": [
                 {
-                    "degree": "High School Diploma",
-                    "level": "High School",
-                    "angle": 0
+                    "degree": "Python Developer Bootcamp Cert",
+                    "level": "Certificate",
+                    "angle": 135
                 }
             ],
             "experience": [
@@ -143,8 +163,18 @@
                 }
             ],
             "resources": [
-                "Gaming PC",
-                "Local Gym Membership"
+                {
+                    "name": "Gaming PC",
+                    "weight": 3
+                },
+                {
+                    "name": "Local Gym Membership",
+                    "weight": 2
+                },
+                {
+                    "name": "Raspberry Pi Kit",
+                    "weight": 2
+                }
             ]
         }
     },
@@ -174,14 +204,9 @@
         "expertise_data": {
             "education": [
                 {
-                    "degree": "Master of Public Policy",
-                    "level": "Master",
-                    "angle": 280
-                },
-                {
-                    "degree": "B.A. Political Science",
+                    "degree": "B.A. Public Policy",
                     "level": "Bachelor",
-                    "angle": 270
+                    "angle": 225
                 }
             ],
             "experience": [
@@ -197,8 +222,18 @@
                 }
             ],
             "resources": [
-                "Legal Database Access",
-                "Policy Network"
+                {
+                    "name": "Legal Database Access",
+                    "weight": 7
+                },
+                {
+                    "name": "Policy Network",
+                    "weight": 6
+                },
+                {
+                    "name": "Research Library Access",
+                    "weight": 5
+                }
             ]
         }
     },
@@ -226,14 +261,14 @@
         "expertise_data": {
             "education": [
                 {
-                    "degree": "MBA",
-                    "level": "Master",
-                    "angle": 300
+                    "degree": "B.B.A. Business Admin",
+                    "level": "Bachelor",
+                    "angle": 180
                 },
                 {
                     "degree": "B.Sc Environmental Science",
                     "level": "Bachelor",
-                    "angle": 110
+                    "angle": 90
                 }
             ],
             "experience": [
@@ -254,8 +289,18 @@
                 }
             ],
             "resources": [
-                "Consulting Firm",
-                "Environmental Impact Tools"
+                {
+                    "name": "Consulting Firm",
+                    "weight": 8
+                },
+                {
+                    "name": "Environmental Impact Tools",
+                    "weight": 7
+                },
+                {
+                    "name": "Professional Network",
+                    "weight": 6
+                }
             ]
         }
     },
@@ -287,7 +332,7 @@
                 {
                     "degree": "B.Ed Education",
                     "level": "Bachelor",
-                    "angle": 240
+                    "angle": 315
                 }
             ],
             "experience": [
@@ -303,8 +348,18 @@
                 }
             ],
             "resources": [
-                "Classroom Materials",
-                "Parent Network"
+                {
+                    "name": "Classroom Materials",
+                    "weight": 4
+                },
+                {
+                    "name": "Parent Network",
+                    "weight": 5
+                },
+                {
+                    "name": "Pedagogical Guides",
+                    "weight": 3
+                }
             ]
         }
     },
@@ -334,7 +389,7 @@
                 {
                     "degree": "Ph.D. Sociology",
                     "level": "PhD",
-                    "angle": 260
+                    "angle": 225
                 }
             ],
             "experience": [
@@ -360,8 +415,18 @@
                 }
             ],
             "resources": [
-                "Academic Library",
-                "Research Grants (Past)"
+                {
+                    "name": "Academic Library",
+                    "weight": 4
+                },
+                {
+                    "name": "Research Grants (Past)",
+                    "weight": 7
+                },
+                {
+                    "name": "University Tenure",
+                    "weight": 9
+                }
             ]
         }
     },
@@ -387,9 +452,9 @@
         "expertise_data": {
             "education": [
                 {
-                    "degree": "B.F.A. Graphic Design",
-                    "level": "Bachelor",
-                    "angle": 190
+                    "degree": "Diploma Graphic Design",
+                    "level": "Diploma",
+                    "angle": 270
                 }
             ],
             "experience": [
@@ -405,8 +470,18 @@
                 }
             ],
             "resources": [
-                "Adobe Creative Cloud",
-                "Design Tablet"
+                {
+                    "name": "Adobe Creative Cloud",
+                    "weight": 3
+                },
+                {
+                    "name": "Design Tablet",
+                    "weight": 4
+                },
+                {
+                    "name": "Portfolio Website",
+                    "weight": 2
+                }
             ]
         }
     },
@@ -437,7 +512,7 @@
                 {
                     "degree": "B.Sc Information Systems",
                     "level": "Bachelor",
-                    "angle": 10
+                    "angle": 135
                 }
             ],
             "experience": [
@@ -453,8 +528,18 @@
                 }
             ],
             "resources": [
-                "JIRA Admin",
-                "Tech Conference Pass"
+                {
+                    "name": "JIRA Admin",
+                    "weight": 5
+                },
+                {
+                    "name": "Tech Conference Pass",
+                    "weight": 3
+                },
+                {
+                    "name": "Agile Certification",
+                    "weight": 4
+                }
             ]
         }
     },
@@ -484,9 +569,9 @@
         "expertise_data": {
             "education": [
                 {
-                    "degree": "M.Sc Public Health",
-                    "level": "Master",
-                    "angle": 100
+                    "degree": "B.Sc Public Health Admin",
+                    "level": "Bachelor",
+                    "angle": 90
                 }
             ],
             "experience": [
@@ -507,8 +592,18 @@
                 }
             ],
             "resources": [
-                "Hospital Infrastructure",
-                "Health Data Access"
+                {
+                    "name": "Hospital Infrastructure",
+                    "weight": 9
+                },
+                {
+                    "name": "Health Data Access",
+                    "weight": 8
+                },
+                {
+                    "name": "Medical Staff Network",
+                    "weight": 6
+                }
             ]
         }
     },
@@ -540,7 +635,7 @@
                 {
                     "degree": "Associate Degree",
                     "level": "Associate",
-                    "angle": 0
+                    "angle": 315
                 }
             ],
             "experience": [
@@ -556,8 +651,18 @@
                 }
             ],
             "resources": [
-                "Community Hall Access",
-                "Megaphone"
+                {
+                    "name": "Community Hall Access",
+                    "weight": 5
+                },
+                {
+                    "name": "Megaphone",
+                    "weight": 2
+                },
+                {
+                    "name": "Local Volunteer List",
+                    "weight": 6
+                }
             ]
         }
     },
@@ -589,7 +694,7 @@
                 {
                     "degree": "Studying Computer Science",
                     "level": "Bachelor (In Progress)",
-                    "angle": 5
+                    "angle": 135
                 }
             ],
             "experience": [
@@ -600,8 +705,18 @@
                 }
             ],
             "resources": [
-                "University Library",
-                "Student Software Licenses"
+                {
+                    "name": "University Library",
+                    "weight": 2
+                },
+                {
+                    "name": "Student Software Licenses",
+                    "weight": 3
+                },
+                {
+                    "name": "Sketch Book",
+                    "weight": 1
+                }
             ]
         }
     },
@@ -631,9 +746,9 @@
         "expertise_data": {
             "education": [
                 {
-                    "degree": "B.Sc Forestry",
-                    "level": "Bachelor",
-                    "angle": 130
+                    "degree": "Forestry Technician Diploma",
+                    "level": "Diploma",
+                    "angle": 90
                 }
             ],
             "experience": [
@@ -654,8 +769,18 @@
                 }
             ],
             "resources": [
-                "Park Maps",
-                "Nature Guides"
+                {
+                    "name": "Park Maps",
+                    "weight": 3
+                },
+                {
+                    "name": "Nature Guides",
+                    "weight": 2
+                },
+                {
+                    "name": "Forestry Gear",
+                    "weight": 5
+                }
             ]
         }
     },
@@ -683,9 +808,9 @@
         "expertise_data": {
             "education": [
                 {
-                    "degree": "J.D. Law",
-                    "level": "Doctorate",
-                    "angle": 290
+                    "degree": "LL.B. Law",
+                    "level": "Bachelor",
+                    "angle": 225
                 }
             ],
             "experience": [
@@ -701,8 +826,18 @@
                 }
             ],
             "resources": [
-                "LexisNexis",
-                "Bar Association Membership"
+                {
+                    "name": "LexisNexis",
+                    "weight": 7
+                },
+                {
+                    "name": "Bar Association Membership",
+                    "weight": 8
+                },
+                {
+                    "name": "Legal Seal",
+                    "weight": 5
+                }
             ]
         }
     },
@@ -731,8 +866,8 @@
         "expertise_data": {
             "education": [
                 {
-                    "degree": "B.Sc Kinesiology",
-                    "level": "Bachelor",
+                    "degree": "Associate Kinesiology",
+                    "level": "Associate",
                     "angle": 90
                 }
             ],
@@ -749,8 +884,18 @@
                 }
             ],
             "resources": [
-                "Therapy Equipment",
-                "Clinic Access"
+                {
+                    "name": "Therapy Equipment",
+                    "weight": 6
+                },
+                {
+                    "name": "Clinic Access",
+                    "weight": 7
+                },
+                {
+                    "name": "Anatomy Models",
+                    "weight": 3
+                }
             ]
         }
     },
@@ -778,7 +923,7 @@
                 {
                     "degree": "M.Arch Architecture",
                     "level": "Master",
-                    "angle": 170
+                    "angle": 270
                 }
             ],
             "experience": [
@@ -799,8 +944,18 @@
                 }
             ],
             "resources": [
-                "CAD Software",
-                "City Blueprints"
+                {
+                    "name": "CAD Software",
+                    "weight": 6
+                },
+                {
+                    "name": "City Blueprints",
+                    "weight": 8
+                },
+                {
+                    "name": "Plotter",
+                    "weight": 5
+                }
             ]
         }
     },
@@ -830,9 +985,9 @@
         "expertise_data": {
             "education": [
                 {
-                    "degree": "B.A. Social Work",
-                    "level": "Bachelor",
-                    "angle": 250
+                    "degree": "Social Work Diploma",
+                    "level": "Diploma",
+                    "angle": 225
                 }
             ],
             "experience": [
@@ -848,8 +1003,18 @@
                 }
             ],
             "resources": [
-                "Case Management System",
-                "Local NGO Contacts"
+                {
+                    "name": "Case Management System",
+                    "weight": 7
+                },
+                {
+                    "name": "Local NGO Contacts",
+                    "weight": 6
+                },
+                {
+                    "name": "Counseling License",
+                    "weight": 8
+                }
             ]
         }
     },
@@ -881,7 +1046,7 @@
                 {
                     "degree": "Nursing Diploma",
                     "level": "Diploma",
-                    "angle": 100
+                    "angle": 90
                 }
             ],
             "experience": [
@@ -902,8 +1067,18 @@
                 }
             ],
             "resources": [
-                "Medical Kit",
-                "Pension Fund"
+                {
+                    "name": "Medical Kit",
+                    "weight": 4
+                },
+                {
+                    "name": "Pension Fund",
+                    "weight": 5
+                },
+                {
+                    "name": "CPR Certification",
+                    "weight": 2
+                }
             ]
         }
     },
@@ -931,7 +1106,7 @@
                 {
                     "degree": "Bootcamp Cert",
                     "level": "Certificate",
-                    "angle": 10
+                    "angle": 135
                 }
             ],
             "experience": [
@@ -942,8 +1117,18 @@
                 }
             ],
             "resources": [
-                "Laptop",
-                "StackOverflow"
+                {
+                    "name": "Laptop",
+                    "weight": 3
+                },
+                {
+                    "name": "StackOverflow",
+                    "weight": 1
+                },
+                {
+                    "name": "Online Course Access",
+                    "weight": 2
+                }
             ]
         }
     },
@@ -973,9 +1158,9 @@
         "expertise_data": {
             "education": [
                 {
-                    "degree": "Ph.D. Economics",
-                    "level": "PhD",
-                    "angle": 310
+                    "degree": "M.Sc Economics",
+                    "level": "Master",
+                    "angle": 180
                 }
             ],
             "experience": [
@@ -996,8 +1181,18 @@
                 }
             ],
             "resources": [
-                "Economic Models",
-                "Government Access"
+                {
+                    "name": "Economic Models",
+                    "weight": 8
+                },
+                {
+                    "name": "Government Access",
+                    "weight": 9
+                },
+                {
+                    "name": "Statistical Software",
+                    "weight": 6
+                }
             ]
         }
     }
