@@ -370,68 +370,7 @@ function drawKnowledgeSphere(user) {
 }
 
 function drawExperienceWaterfall(user) {
-    const container = document.getElementById('experience-waterfall');
-    container.innerHTML = '';
-
-    // Stepped Waterfall Logic
-    // Each experience is a separate bar on a new row.
-    // Horizontal position (left) is determined by cumulative years of previous experiences.
-
-    const expData = user.expertise_data?.experience || [];
-    // Sort by recent to oldest? Or oldest to recent?
-    // Usually "Waterfall" implies flow... let's assume index 0 is most recent?
-    // Actually, usually experience arrays are Recent -> Oldest.
-    // Check profiles.json: "Senior", "Junior"... yes, Descending order.
-    // So we need to reverse to plot timeline from Start -> Present.
-    const chronologicalExp = [...expData].reverse();
-
-    const totalYears = chronologicalExp.reduce((acc, curr) => acc + curr.years, 0);
-    const scaleYears = Math.max(totalYears, 50); // Absolute scale: minimum 50 years
-
-    const wrapper = document.createElement('div');
-    wrapper.className = "relative w-full h-full";
-    container.appendChild(wrapper);
-
-    let cumulativeYears = 0;
-    const rowHeight = 24; // Fixed height per bar? Or percentage?
-    // "height: 150px" in HTML.
-
-    chronologicalExp.forEach((exp, index) => {
-        const widthPct = (exp.years / scaleYears) * 100;
-        const leftPct = (cumulativeYears / scaleYears) * 100;
-
-        const bar = document.createElement('div');
-        bar.className = "absolute h-5 rounded hover:opacity-90 group transition-all flex items-center shadow-sm";
-        bar.style.left = `${leftPct}%`;
-        bar.style.width = `calc(${widthPct}% - 2px)`; // Gap
-        bar.style.top = `${index * (rowHeight + 4) + 40}px`; // Increased Top Padding for Tooltip (40px)
-        bar.style.backgroundColor = `hsl(${exp.hue || 200}, 70%, 60%)`;
-
-        // Content inside bar if wide enough, else tooltip
-        if (widthPct > 5) { // Lower threshold for text
-            bar.innerHTML = `<span class="text-[10px] text-white font-semibold truncate px-2 w-full">${exp.role}</span>`;
-        }
-
-        // Tooltip
-        const tooltip = document.createElement('div');
-        tooltip.className = "absolute bottom-full mb-1 left-0 bg-slate-800 text-white text-xs px-2 py-1 rounded hidden group-hover:block whitespace-nowrap z-20 shadow-lg";
-        tooltip.innerText = `${exp.role} (${exp.years} yrs)`;
-        bar.appendChild(tooltip);
-
-        wrapper.appendChild(bar);
-
-        cumulativeYears += exp.years;
-    });
-
-    // Adjust container height if needed? NO, fixed "h-[150px]" in HTML.
-    // Maybe add scrolling if too many items?
-    container.style.overflowY = 'auto'; // Enable scroll if many jobs
-
-    // Legend / Stats
-    const stats = document.createElement('div');
-    stats.className = "absolute bottom-0 right-0 text-xs text-slate-500 bg-white/80 px-2 rounded";
-    stats.innerHTML = `Total: <span class="font-bold">${totalYears}</span> Years`;
-    wrapper.appendChild(stats);
+    new ExperienceWaterfall('experience-waterfall').draw(user, null);
 }
 
 function drawResourceCloud(user) {
@@ -681,15 +620,15 @@ function updateExpertiseUI() {
             el.className = "p-3 border-b border-slate-100 hover:bg-slate-50 cursor-pointer flex justify-between items-center group transition-colors";
             el.onclick = () => openCompAnalysis(u.profile, issue, u.expertise);
             el.innerHTML = `
-                <div>
-                    <div class="font-bold text-slate-700">${u.profile.name}</div>
-                    <div class="text-[10px] text-slate-400">Relevance: ${u.relevance}</div>
-                </div>
-                <div class="text-right">
-                    <div class="text-lg font-bold text-emerald-600">${u.expertise.total}</div>
-                    <div class="text-[10px] text-slate-400 uppercase tracking-wider">Expertise</div>
-                </div>
-            `;
+            <div>
+                <div class="font-bold text-slate-700">${u.profile.name}</div>
+                <div class="text-[10px] text-slate-400">Relevance: ${u.relevance}</div>
+            </div>
+            <div class="text-right">
+                <div class="text-lg font-bold text-emerald-600">${u.expertise.total}</div>
+                <div class="text-[10px] text-slate-400 uppercase tracking-wider">Expertise</div>
+            </div>
+        `;
             list.appendChild(el);
         });
     }
@@ -806,7 +745,48 @@ function drawCompResourceCloud(user, issue) {
     });
 }
 
-// --- VIZ ---
+
+// --- TOOLTIP MANAGER ---
+const TooltipManager = {
+    el: null,
+    init() {
+        if (this.el) return;
+        this.el = document.createElement('div');
+        this.el.className = "fixed pointer-events-none bg-slate-900 text-white text-xs px-2 py-1 rounded shadow-lg opacity-0 transition-opacity duration-150";
+        this.el.style.zIndex = "9999";
+        document.body.appendChild(this.el);
+    },
+    show(html, x, y) {
+        if (!this.el) this.init();
+        this.el.innerHTML = html;
+        // Offset to avoid cursor covering content
+        const offset = 10;
+
+        // Boundary detection (basic)
+        let left = x + offset;
+        let top = y + offset;
+
+        // If close to right edge, shift left
+        if (left + 150 > window.innerWidth) left = x - 160;
+
+        this.el.style.left = `${left}px`;
+        this.el.style.top = `${top}px`;
+        this.el.style.opacity = '1';
+    },
+    move(x, y) {
+        if (!this.el) return;
+        const offset = 10;
+        let left = x + offset;
+        let top = y + offset;
+        if (left + 150 > window.innerWidth) left = x - 160;
+        this.el.style.left = `${left}px`;
+        this.el.style.top = `${top}px`;
+    },
+    hide() {
+        if (this.el) this.el.style.opacity = '0';
+    }
+};
+
 // --- VIZ ---
 class EducationSphere {
     constructor(containerId) {
@@ -899,7 +879,18 @@ class EducationSphere {
             })
             .attr("stroke", "white")
             .style("opacity", 0.9)
-            .append("title").text(d => `${d.degree} (${d.level})`);
+            .on("mouseenter", (event, d) => {
+                const text = `${d.degree} (${d.level})`;
+                TooltipManager.show(text, event.clientX, event.clientY);
+                d3.select(event.currentTarget).style("opacity", 1);
+            })
+            .on("mousemove", (event) => {
+                TooltipManager.move(event.clientX, event.clientY);
+            })
+            .on("mouseleave", (event) => {
+                TooltipManager.hide();
+                d3.select(event.currentTarget).style("opacity", 0.9);
+            });
     }
 
     drawTargetArc(issueData) {
@@ -923,6 +914,139 @@ class EducationSphere {
     }
 }
 
+
+class ExperienceWaterfall {
+    constructor(containerId) {
+        this.container = document.getElementById(containerId);
+        this.rowHeight = 24;
+    }
+
+    draw(user, issue = null) {
+        this.container.innerHTML = '';
+
+        const expData = user.expertise_data?.experience || [];
+        const chronologicalExp = [...expData].reverse();
+        const totalYears = chronologicalExp.reduce((acc, curr) => acc + curr.years, 0);
+        const scaleYears = Math.max(totalYears, 50);
+
+        // Wrapper with Border and Overflow Hidden
+        const wrapper = document.createElement('div');
+        wrapper.className = "relative w-full h-full border border-slate-200 bg-slate-50/50 rounded overflow-hidden";
+        this.container.appendChild(wrapper);
+
+        // 1. Grid Lines (Every 10 years)
+        for (let y = 10; y < scaleYears; y += 10) {
+            const pct = (y / scaleYears) * 100;
+            const gridLine = document.createElement('div');
+            gridLine.className = "absolute top-0 bottom-0 border-l border-slate-300 border-dashed pointer-events-none opacity-50";
+            gridLine.style.left = `${pct}%`;
+            wrapper.appendChild(gridLine);
+
+            // Grid Label (Bottom markers)
+            const label = document.createElement('div');
+            label.className = "absolute bottom-0 text-[8px] text-slate-400 transform -translate-x-1/2 pointer-events-none mb-1";
+            label.style.left = `${pct}%`;
+            label.innerText = y;
+            wrapper.appendChild(label);
+        }
+
+        // 2. Render Bars
+        let cumulativeYears = 0;
+        chronologicalExp.forEach((exp, index) => {
+            const widthPct = (exp.years / scaleYears) * 100;
+            const leftPct = (cumulativeYears / scaleYears) * 100;
+
+            const bar = document.createElement('div');
+            bar.className = "absolute h-5 rounded hover:opacity-90 group transition-all flex items-center shadow-sm z-10 cursor-default";
+            bar.style.left = `${leftPct}%`;
+            bar.style.width = `calc(${widthPct}% - 1px)`;
+            bar.style.top = `${index * (this.rowHeight + 4) + 16}px`; // Top padding
+
+            // Relevance Logic
+            let isRelevant = true;
+            let hue = exp.hue || 200;
+
+            if (issue) {
+                const matchString = (exp.role + " " + (exp.desc || "")).toLowerCase();
+                const tags = issue.tags || [];
+                const res = issue.required_resources || [];
+
+                // Explicit tags check
+                let tagMatch = false;
+                if (exp.tags && exp.tags.length > 0) {
+                    tagMatch = exp.tags.some(t =>
+                        tags.some(it => it.toLowerCase() === t.toLowerCase()) ||
+                        (issue.category && issue.category.toLowerCase() === t.toLowerCase())
+                    );
+                }
+
+                if (!tagMatch) {
+                    // Fallback string match
+                    tagMatch = tags.some(t => matchString.includes(t.toLowerCase())) ||
+                        res.some(r => matchString.includes(r.toLowerCase())) ||
+                        (issue.category === "Tech" && (matchString.includes("developer") || matchString.includes("engineer") || matchString.includes("software")));
+                }
+
+                isRelevant = tagMatch;
+            }
+
+            // Styling
+            if (isRelevant) {
+                bar.style.backgroundColor = `hsl(${hue}, 70%, 60%)`;
+            } else {
+                bar.style.backgroundColor = "#e2e8f0"; // Slate 200
+                bar.classList.add("text-slate-400");
+            }
+
+            // Label inside bar
+            if (widthPct > 5) {
+                bar.innerHTML = `<span class="text-[10px] ${isRelevant ? 'text-white' : 'text-slate-500'} font-semibold truncate px-2 w-full select-none">${exp.role}</span>`;
+            }
+
+            // Tooltip (Global Tooltip Manager)
+            bar.addEventListener('mouseenter', (e) => {
+                const text = `${exp.role} (${exp.years}y)${issue && !isRelevant ? ' (Irrelevant)' : ''}`;
+                TooltipManager.show(text, e.clientX, e.clientY);
+                // Highlight styles?
+                bar.style.zIndex = 50;
+            });
+            bar.addEventListener('mousemove', (e) => {
+                TooltipManager.move(e.clientX, e.clientY);
+            });
+            bar.addEventListener('mouseleave', () => {
+                TooltipManager.hide();
+                bar.style.zIndex = "10";
+            });
+
+            wrapper.appendChild(bar);
+            cumulativeYears += exp.years;
+        });
+
+        // 3. Target Line (Only if issue context)
+        if (issue && issue.required_experience_years) {
+            const reqYears = issue.required_experience_years;
+            const targetPct = (reqYears / scaleYears) * 100;
+
+            const targetLine = document.createElement('div');
+            targetLine.className = "absolute top-0 bottom-0 border-l-2 border-red-500 border-dashed z-20 pointer-events-none";
+            targetLine.style.left = `${targetPct}%`;
+            wrapper.appendChild(targetLine);
+
+            const targetLabel = document.createElement('div');
+            targetLabel.className = "absolute top-0 text-[9px] font-bold text-red-500 transform -translate-x-1/2 bg-white/80 px-1 rounded z-20";
+            targetLabel.style.left = `${targetPct}%`;
+            targetLabel.innerText = `${reqYears}y Req`;
+            wrapper.appendChild(targetLabel);
+        }
+
+        // 4. Legend / Stats
+        const stats = document.createElement('div');
+        stats.className = "absolute top-1 right-2 text-[10px] text-slate-500 bg-white/60 px-2 rounded backdrop-blur-sm";
+        stats.innerText = `Total: ${totalYears} Years`;
+        wrapper.appendChild(stats);
+    }
+}
+
 function drawTargetSphere(issue) {
     new EducationSphere('exp-target-sphere').draw(null, issue);
 }
@@ -932,6 +1056,8 @@ function drawCompSphere(user, issue) {
 }
 
 function drawCompWaterfall(user, issue) {
+    new ExperienceWaterfall('comp-waterfall').draw(user, issue); return;
+/*
     const container = document.getElementById('comp-waterfall');
     container.innerHTML = '';
 
@@ -1029,12 +1155,15 @@ function drawCompWaterfall(user, issue) {
     stats.className = "absolute bottom-0 right-0 text-xs text-slate-500 bg-white/80 px-2 rounded";
     stats.innerHTML = `Total: <span class="font-bold">${totalYears}</span> Years`;
     wrapper.appendChild(stats);
-}
+*/ }
 
 // --- GLOBAL NAV ---
 window.switchTab = function (tabId) {
+    // List of all tabs/views
+    const tabs = ['profiles', 'sim', 'expertise', 'values', 'contribution', 'isr-complete'];
+
     // Hide all
-    ['profiles', 'sim', 'expertise'].forEach(id => {
+    tabs.forEach(id => {
         const view = document.getElementById(`view-${id}`);
         const btn = document.getElementById(`nav-${id}`);
         if (view) view.classList.add('hidden');
@@ -1046,7 +1175,10 @@ window.switchTab = function (tabId) {
     const activeBtn = document.getElementById(`nav-${tabId}`);
 
     if (activeView) activeView.classList.remove('hidden');
-    if (activeBtn) activeBtn.className = 'tab-active px-4 py-2 rounded-md text-sm font-medium transition-all';
+    if (activeBtn) {
+        // Uniform Active State (Matches HTML Onload)
+        activeBtn.className = 'tab-active px-4 py-2 rounded-md text-sm font-medium transition-all';
+    }
 
     // Tab Specific Logic
     if (tabId === 'sim') {

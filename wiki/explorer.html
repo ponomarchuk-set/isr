@@ -102,13 +102,13 @@
                 class="tab-active px-4 py-2 rounded-md text-sm font-medium transition-all">Profiles</button>
             <button id="nav-sim" onclick="switchTab('sim')"
                 class="tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all">Relevance</button>
-            <button id="nav-sim" onclick="switchTab('expertise')"
+            <button id="nav-expertise" onclick="switchTab('expertise')"
                 class="tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all">Expertise</button>
-            <button id="nav-sim" onclick="switchTab('values')"
+            <button id="nav-values" onclick="switchTab('values')"
                 class="tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all">Vector of Values</button>
-            <button id="nav-sim" onclick="switchTab('contribution')"
+            <button id="nav-contribution" onclick="switchTab('contribution')"
                 class="tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all">Contribution</button>
-            <button id="nav-sim" onclick="switchTab('isr-complete')"
+            <button id="nav-isr-complete" onclick="switchTab('isr-complete')"
                 class="tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all">ISR ready-to-vote</button>
         </div>
     </header>
@@ -122,7 +122,7 @@
             <div
                 class="col-span-12 md:col-span-4 bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
                 <div class="p-4 border-b border-slate-100 bg-slate-50">
-                    <h2 class="font-semibold text-slate-700">User Database (20)</h2>
+                    <h4 class="font-semibold text-slate-700">User Database (20)</h4>
                     <p class="text-xs text-slate-500 mt-1">Select a profile to inspect their Multi-dimensional Vector
                         (P)</p>
                 </div>
@@ -136,7 +136,7 @@
                 class="col-span-12 md:col-span-8 bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
                 <div class="p-6 border-b border-slate-100 flex justify-between items-start">
                     <div>
-                        <h2 id="inspector-name" class="text-2xl font-bold text-slate-800">Select a Profile</h2>
+                        <h4 id="inspector-name" class="text-2xl font-bold text-slate-800">Select a Profile</h4>
                         <div id="inspector-badges" class="flex flex-wrap gap-2 mt-2"></div>
                     </div>
                     <div class="text-right">
@@ -209,7 +209,7 @@
             <!-- Top Controls -->
             <div class="grid grid-cols-12 gap-6 mb-6">
                 <!-- Scenario Selector & Desc -->
-                <div class="col-span-12 lg:col-span-8 bg-white p-4 rounded-xl shadow-sm border border-slate-200">
+                <div class="col-span-12 lg:col-span-9 bg-white p-4 rounded-xl shadow-sm border border-slate-200">
                     <div class="flex flex-wrap gap-2 mb-4">
                         <button onclick="setIssue(0)" id="btn-issue-0"
                             class="flex-1 px-4 py-2 rounded-lg text-sm font-bold bg-blue-600 text-white shadow-sm transition-all">1.
@@ -233,7 +233,7 @@
 
                 <!-- Threshold & Weights -->
                 <div
-                    class="col-span-12 lg:col-span-4 bg-white p-4 rounded-xl shadow-sm border border-slate-200 flex flex-col justify-between">
+                    class="col-span-12 lg:col-span-3 bg-white p-4 rounded-xl shadow-sm border border-slate-200 flex flex-col justify-between">
                     <div>
                         <div class="flex justify-between items-center mb-2">
                             <span class="text-sm font-bold text-slate-700">Relevance Threshold</span>
@@ -269,7 +269,7 @@
             <!-- Dashboard Content -->
             <div class="flex-1 grid grid-cols-12 gap-6 min-h-0">
                 <!-- Left: Map -->
-                <div class="col-span-12 lg:col-span-8 flex flex-col">
+                <div class="col-span-12 lg:col-span-9 flex flex-col">
                     <div
                         class="flex-1 bg-white rounded-xl shadow-sm border border-slate-200 relative overflow-hidden flex flex-col">
                         <!-- Map Legend -->
@@ -294,7 +294,7 @@
 
                 <!-- Right: Microcommunity List -->
                 <div
-                    class="col-span-12 lg:col-span-4 bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
+                    class="col-span-12 lg:col-span-3 bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
                     <div class="p-4 border-b border-slate-100 bg-slate-50 flex justify-between items-center">
                         <div>
                             <h4 class="font-bold text-slate-700">Microcommunity</h4>
@@ -349,9 +349,9 @@
 
                         <!-- 1. Education Target -->
                         <div>
-                            <h4 class="text-xs font-bold text-slate-400 uppercase mb-2">Required Knowledge</h4>
+                            <h4 class="text-xs font-bold text-slate-600 uppercase mb-2">Required Knowledge</h4>
                             <div id="exp-target-sphere"
-                                class="w-48 h-48 mx-auto relative flex items-center justify-center bg-slate-50 rounded-lg border border-slate-100">
+                                class="w-64 h-64 mx-auto relative flex items-center justify-center bg-slate-50 rounded-lg border border-slate-100">
                                 <!-- D3 Viz -->
                             </div>
                             <!-- <div class="text-center mt-1 text-xs text-slate-500" id="exp-target-angle">Angle: 0° (+/-
@@ -360,7 +360,7 @@
 
                         <!-- 2. Experience Target -->
                         <div>
-                            <h4 class="text-xs font-bold text-slate-400 uppercase mb-2">Required Experience</h4>
+                            <h4 class="text-xs font-bold text-slate-600 uppercase mb-2">Required Experience</h4>
                             <div class="flex items-center">
                                 <span class="text-2xl font-bold text-slate-700 mr-2" id="exp-target-years">0</span>
                                 <span class="text-sm text-slate-500">Years Min.</span>
@@ -372,14 +372,14 @@
 
                         <!-- 3. Resource Target -->
                         <div>
-                            <h4 class="text-xs font-bold text-slate-400 uppercase mb-2">Required Resources</h4>
+                            <h4 class="text-xs font-bold text-slate-600 uppercase mb-2">Required Resources</h4>
                             <div id="exp-target-resources" class="flex flex-wrap gap-2"></div>
                         </div>
                     </div>
                 </div>
 
                 <!-- CENTER BLOCK: Comparative Analysis -->
-                <div class="col-span-12 lg:col-span-5 flex flex-col">
+                <div class="col-span-12 lg:col-span-7 flex flex-col">
                     <div id="compare-container"
                         class="bg-white rounded-xl shadow-sm border border-slate-200 flex-1 flex flex-col h-[500px] min-h-0 overflow-hidden">
                         <div class="p-4 border-b border-slate-100 bg-slate-50 flex justify-between items-center">
@@ -405,11 +405,12 @@
                         </div>
 
                         <!-- Content State -->
-                        <div id="comp-content" class="hidden flex-1 overflow-y-auto custom-scroll p-6 space-y-8">
+                        <div id="comp-content"
+                            class="hidden flex-1 overflow-y-auto custom-scroll p-6 grid grid-cols-1 xl:grid-cols-3 gap-6 items-start">
 
-                            <!-- Deficit Alert -->
+                            <!-- Deficit Alert (Full Width) -->
                             <div id="comp-alert"
-                                class="hidden bg-red-50 border border-red-200 rounded-lg p-4 flex items-start">
+                                class="hidden xl:col-span-3 bg-red-50 border border-red-200 rounded-lg p-4 flex items-start">
                                 <svg class="w-5 h-5 text-red-500 mt-0.5 mr-3 flex-shrink-0" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -440,7 +441,7 @@
                             <div class="flex flex-col items-center">
                                 <h4
                                     class="text-sm font-bold text-slate-600 mb-4 uppercase tracking-wider w-full pb-2 border-b border-slate-100">
-                                    Knowledge Fit</h4>
+                                    Education score:</h4>
                                 <div id="comp-sphere" class="w-64 h-64 relative flex items-center justify-center">
                                     <!-- D3 Overlay Viz -->
                                 </div>
@@ -457,7 +458,7 @@
                             <div>
                                 <h4
                                     class="text-sm font-bold text-slate-600 mb-4 uppercase tracking-wider w-full pb-2 border-b border-slate-100">
-                                    Experience Gap</h4>
+                                    Experience score:</h4>
                                 <div class="grid grid-cols-2 gap-4 mb-2">
                                     <div>
                                         <div class="text-xs text-slate-500">Required</div>
@@ -479,7 +480,7 @@
                             <div>
                                 <h4
                                     class="text-sm font-bold text-slate-600 mb-4 uppercase tracking-wider w-full pb-2 border-b border-slate-100">
-                                    Resource Availability</h4>
+                                    Resource score: </h4>
                                 <div id="comp-resources" class="flex flex-wrap gap-2"></div>
                             </div>
 
@@ -489,7 +490,7 @@
 
                 <!-- RIGHT BLOCK: Expert List -->
                 <div
-                    class="col-span-12 lg:col-span-4 bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
+                    class="col-span-12 lg:col-span-2 bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
                     <div class="p-4 border-b border-slate-100 bg-slate-50">
                         <h4 class="font-bold text-slate-700">Expertise Scores</h4>
                         <p class="text-xs text-slate-500">Calculated for relevant members</p>
@@ -605,7 +606,7 @@
                                 <!-- D3 SVG will be injected here -->
                                 <!-- Legend Overlay -->
                                 <!-- 8-Point Compass Legend -->
-                                <div
+                                <!-- <div
                                     class="absolute top-0 left-1/2 -translate-x-1/2 text-[10px] text-slate-400 text-center pointer-events-none">
                                     <div class="font-bold">N (0°)</div>
                                     <div>Philosophy</div>
@@ -644,7 +645,7 @@
                                     class="absolute top-[15%] left-[15%] text-[10px] text-slate-400 text-left pointer-events-none">
                                     <div class="font-bold">NW (315°)</div>
                                     <div>Education</div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
 
@@ -655,7 +656,7 @@
                             <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
                                 <h4 class="text-sm font-bold text-slate-600 mb-4 uppercase tracking-wider">Experience
                                     Records</h4>
-                                <div id="experience-waterfall" class="w-full h-[150px]">
+                                <div id="experience-waterfall" class="w-full h-[160px]">
                                     <!-- D3/HTML Bars -->
                                 </div>
                                 <div class="mt-2 flex justify-between text-xs text-slate-400">
