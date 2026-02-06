@@ -94,23 +94,20 @@
     <!-- Header -->
     <header class="bg-white border-b border-slate-200 px-6 py-4 flex justify-between items-center shadow-sm z-10">
         <div>
-            <h1 class="text-2xl font-bold text-slate-800 tracking-tight">ISR Explorer</h1>
+            <h4 class="text-2xl font-bold text-slate-800 tracking-tight">ISR Explorer</h4>
             <!--<p class="text-sm text-slate-500">Relevance Engine & Microcommunity Formation</p>-->
         </div>
         <div class="flex space-x-1 bg-slate-100 p-1 rounded-lg">
             <button id="nav-profiles" onclick="switchTab('profiles')"
-                class="tab-active px-4 py-2 rounded-md text-sm font-medium transition-all">Profiles (Input)</button>
+                class="tab-active px-4 py-2 rounded-md text-sm font-medium transition-all">Profiles</button>
             <button id="nav-sim" onclick="switchTab('sim')"
-                class="tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all">Relevance
-                Simulator</button>
+                class="tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all">Relevance</button>
             <button id="nav-sim" onclick="switchTab('expertise')"
-                class="tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all">Expertise
-                assessment</button>
+                class="tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all">Expertise</button>
             <button id="nav-sim" onclick="switchTab('values')"
                 class="tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all">Vector of Values</button>
             <button id="nav-sim" onclick="switchTab('contribution')"
-                class="tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all">Contribution
-                calculation</button>
+                class="tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all">Contribution</button>
             <button id="nav-sim" onclick="switchTab('isr-complete')"
                 class="tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all">ISR ready-to-vote</button>
         </div>
@@ -300,7 +297,7 @@
                     class="col-span-12 lg:col-span-4 bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
                     <div class="p-4 border-b border-slate-100 bg-slate-50 flex justify-between items-center">
                         <div>
-                            <h3 class="font-bold text-slate-700">Microcommunity</h3>
+                            <h4 class="font-bold text-slate-700">Microcommunity</h4>
                             <p class="text-xs text-slate-500">Filtered by Relevance</p>
                         </div>
                         <span id="member-count"
@@ -309,12 +306,203 @@
                     <div class="flex-1 overflow-y-auto custom-scroll p-0" id="microcommunity-list">
                         <!-- Populated by JS -->
                     </div>
-                    <div class="p-3 bg-blue-50 text-center border-t border-blue-100">
+                    <!-- <div class="p-3 bg-blue-50 text-center border-t border-blue-100">
                         <p class="text-xs text-blue-600 font-medium">Click a user for Factor Analysis</p>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </section>
+
+
+        <!-- VIEW 3: EXPERTISE ASSESSMENT -->
+        <section id="view-expertise" class="hidden absolute inset-0 p-6 flex flex-col overflow-hidden">
+            <!-- 3-Column Layout -->
+            <div class="flex-1 grid grid-cols-12 gap-6 min-h-0">
+
+                <!-- LEFT BLOCK: Issue Requirements -->
+                <div
+                    class="col-span-12 lg:col-span-3 bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
+                    <div class="p-4 border-b border-slate-100 bg-slate-50">
+                        <h4 class="font-bold text-slate-700">Issue Requirements</h4>
+                        <p class="text-xs text-slate-500">Target Profile Definition</p>
+                    </div>
+
+                    <!-- Issue Selector -->
+                    <div class="p-4 border-b border-slate-100 grid grid-cols-3 gap-2">
+                        <button onclick="switchIssueExpertise(0)" id="btn-exp-0"
+                            class="px-2 py-2 rounded text-xs font-bold bg-blue-600 text-white shadow-sm truncate transition-all">Park</button>
+                        <button onclick="switchIssueExpertise(1)" id="btn-exp-1"
+                            class="px-2 py-2 rounded text-xs font-bold bg-white border border-slate-300 text-slate-600 hover:bg-slate-50 truncate transition-all">Remote</button>
+                        <button onclick="switchIssueExpertise(2)" id="btn-exp-2"
+                            class="px-2 py-2 rounded text-xs font-bold bg-white border border-slate-300 text-slate-600 hover:bg-slate-50 truncate transition-all">Health</button>
+                    </div>
+
+                    <div class="flex-1 overflow-y-auto custom-scroll p-4 space-y-6">
+                        <!-- Issue Header -->
+                        <div>
+                            <div class="text-xs font-bold text-blue-600 uppercase mb-1" id="exp-issue-category">CATEGORY
+                            </div>
+                            <h2 class="text-xl font-bold text-slate-800 leading-tight mb-2" id="exp-issue-title">Issue
+                                Title</h2>
+                            <p class="text-sm text-slate-600" id="exp-issue-desc">Issue Description.</p>
+                        </div>
+
+                        <!-- 1. Education Target -->
+                        <div>
+                            <h4 class="text-xs font-bold text-slate-400 uppercase mb-2">Required Knowledge</h4>
+                            <div id="exp-target-sphere"
+                                class="w-48 h-48 mx-auto relative flex items-center justify-center bg-slate-50 rounded-lg border border-slate-100">
+                                <!-- D3 Viz -->
+                            </div>
+                            <!-- <div class="text-center mt-1 text-xs text-slate-500" id="exp-target-angle">Angle: 0° (+/-
+                                0°)</div> -->
+                        </div>
+
+                        <!-- 2. Experience Target -->
+                        <div>
+                            <h4 class="text-xs font-bold text-slate-400 uppercase mb-2">Required Experience</h4>
+                            <div class="flex items-center">
+                                <span class="text-2xl font-bold text-slate-700 mr-2" id="exp-target-years">0</span>
+                                <span class="text-sm text-slate-500">Years Min.</span>
+                            </div>
+                            <div class="w-full bg-slate-200 h-1.5 rounded-full mt-1">
+                                <div class="bg-slate-400 h-1.5 rounded-full w-full opacity-50"></div>
+                            </div>
+                        </div>
+
+                        <!-- 3. Resource Target -->
+                        <div>
+                            <h4 class="text-xs font-bold text-slate-400 uppercase mb-2">Required Resources</h4>
+                            <div id="exp-target-resources" class="flex flex-wrap gap-2"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CENTER BLOCK: Comparative Analysis -->
+                <div class="col-span-12 lg:col-span-5 flex flex-col">
+                    <div id="compare-container"
+                        class="bg-white rounded-xl shadow-sm border border-slate-200 flex-1 flex flex-col h-[500px] min-h-0 overflow-hidden">
+                        <div class="p-4 border-b border-slate-100 bg-slate-50 flex justify-between items-center">
+                            <div>
+                                <h4 class="font-bold text-slate-700">Comparative Analysis</h4>
+                                <p class="text-xs text-slate-500">Member vs Issue Gap</p>
+                            </div>
+                            <div id="comp-user-badge" class="hidden text-xl text-blue-700 font-bold px-2 py-1 rounded">
+                                <span id="comp-username">Name</span>
+                            </div>
+                        </div>
+
+                        <!-- Empty State -->
+                        <div id="comp-empty-state"
+                            class="flex-1 flex flex-col items-center justify-center p-10 text-center text-slate-400">
+                            <svg class="w-12 h-12 mb-4 opacity-50" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                                </path>
+                            </svg>
+                            <p>Select a member from the list to analyze their expertise fit.</p>
+                        </div>
+
+                        <!-- Content State -->
+                        <div id="comp-content" class="hidden flex-1 overflow-y-auto custom-scroll p-6 space-y-8">
+
+                            <!-- Deficit Alert -->
+                            <div id="comp-alert"
+                                class="hidden bg-red-50 border border-red-200 rounded-lg p-4 flex items-start">
+                                <svg class="w-5 h-5 text-red-500 mt-0.5 mr-3 flex-shrink-0" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                </svg>
+                                <div>
+                                    <h4 class="text-sm font-bold text-red-800">Expertise Deficit Detected</h4>
+                                    <p class="text-xs text-red-600 mt-1">Your community doesn't have a member with
+                                        sufficient Expertise level. Expand Relevance borders or invite an expert.</p>
+
+                                    <!-- Recommendation Card -->
+                                    <div id="comp-recommendation"
+                                        class="mt-3 bg-white border border-red-100 rounded p-3 shadow-sm flex justify-between items-center cursor-pointer hover:bg-red-50 transition-colors">
+                                        <div>
+                                            <div class="text-[10px] font-bold text-slate-400 uppercase">Recommended
+                                                Expert</div>
+                                            <div class="text-sm font-bold text-slate-800" id="rec-name">Expert Name
+                                            </div>
+                                            <div class="text-xs text-slate-500" id="rec-role">Role/Experience</div>
+                                        </div>
+                                        <button
+                                            class="text-xs bg-red-100 text-red-700 font-bold px-3 py-1.5 rounded hover:bg-red-200">Invite</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 1. Knowledge Overlay -->
+                            <div class="flex flex-col items-center">
+                                <h4
+                                    class="text-sm font-bold text-slate-600 mb-4 uppercase tracking-wider w-full pb-2 border-b border-slate-100">
+                                    Knowledge Fit</h4>
+                                <div id="comp-sphere" class="w-64 h-64 relative flex items-center justify-center">
+                                    <!-- D3 Overlay Viz -->
+                                </div>
+                                <div class="mt-4 flex gap-4 text-xs">
+                                    <div class="flex items-center"><span
+                                            class="w-3 h-3 border border-dashed border-slate-400 rounded-full mr-2"></span>
+                                        Target Zone</div>
+                                    <div class="flex items-center"><span
+                                            class="w-3 h-3 bg-slate-200 rounded-full mr-2"></span> Irrelevant</div>
+                                </div>
+                            </div>
+
+                            <!-- 2. Experience Waterfall Comparison -->
+                            <div>
+                                <h4
+                                    class="text-sm font-bold text-slate-600 mb-4 uppercase tracking-wider w-full pb-2 border-b border-slate-100">
+                                    Experience Gap</h4>
+                                <div class="grid grid-cols-2 gap-4 mb-2">
+                                    <div>
+                                        <div class="text-xs text-slate-500">Required</div>
+                                        <div class="text-lg font-bold text-slate-700"><span
+                                                id="comp-req-years">0</span>y</div>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="text-xs text-slate-500">User Total</div>
+                                        <div class="text-lg font-bold text-blue-600"><span
+                                                id="comp-user-years">0</span>y</div>
+                                    </div>
+                                </div>
+                                <div id="comp-waterfall" class="w-full h-[150px]">
+                                    <!-- D3 Waterfall -->
+                                </div>
+                            </div>
+
+                            <!-- 3. Resource Match -->
+                            <div>
+                                <h4
+                                    class="text-sm font-bold text-slate-600 mb-4 uppercase tracking-wider w-full pb-2 border-b border-slate-100">
+                                    Resource Availability</h4>
+                                <div id="comp-resources" class="flex flex-wrap gap-2"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT BLOCK: Expert List -->
+                <div
+                    class="col-span-12 lg:col-span-4 bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
+                    <div class="p-4 border-b border-slate-100 bg-slate-50">
+                        <h4 class="font-bold text-slate-700">Expertise Scores</h4>
+                        <p class="text-xs text-slate-500">Calculated for relevant members</p>
+                    </div>
+                    <div class="flex-1 overflow-y-auto custom-scroll p-0" id="expertise-list">
+                        <!-- Populated by JS -->
+                    </div>
+                    <div class="p-3 bg-slate-50 text-center border-t border-slate-100 text-xs text-slate-400">
+                        Scores based on Education, Experience & Resources
+                    </div>
+                </div>
+
+            </div>
 
     </main>
 
@@ -491,704 +679,7 @@
             </div>
         </div>
     </div>
-    <script>
-        // --- DATA ---
-        let issues = [];
-        let profiles = [];
-
-        // --- STATE ---
-        let currentIssueIndex = 0;
-        let threshold = 0.5;
-        let radarChart = null;
-        let barChart = null;
-        let mapCanvas = null;
-        let currentProfile = null;
-
-        // --- INIT ---
-        document.addEventListener('DOMContentLoaded', async () => {
-            try {
-                // Fetch Data
-                const [issuesRes, profilesRes] = await Promise.all([
-                    fetch('issues.json'),
-                    fetch('profiles.json')
-                ]);
-
-                if (!issuesRes.ok || !profilesRes.ok) throw new Error("Failed to load data");
-
-                issues = await issuesRes.json();
-                profiles = await profilesRes.json();
-
-                // Initialize UI
-                initCharts();
-                renderProfileList();
-                renderProfileInspector(profiles[0]);
-
-                // Setup Listeners
-                document.getElementById('thresholdSlider').addEventListener('input', (e) => {
-                    threshold = parseFloat(e.target.value) / 100;
-                    document.getElementById('thresholdValue').innerText = threshold.toFixed(2);
-                    updateSimulationUI();
-                });
-
-                // Initial set issue
-                setIssue(0);
-
-            } catch (error) {
-                console.error("Initialization Error:", error);
-                document.body.innerHTML = `<div class="p-10 text-red-600 font-bold">Error loading data: ${error.message}. Please insure you are running this on a local server.</div>`;
-            }
-        });
-
-        // --- CALCULATION ENGINE ---
-        function calculateRelevance(user, issue) {
-            let reasons = [];
-
-            // 1. Demographic (D)
-            let scoreD = 0;
-            let dReasons = [];
-            if (issue.targetDemo.minAge && user.demographics.age >= issue.targetDemo.minAge) {
-                scoreD += 0.5; dReasons.push(`Age match`);
-            }
-            if (issue.targetDemo.family && user.demographics.family) {
-                const hasKids = user.demographics.family.some(f => f.toLowerCase().includes('son') || f.toLowerCase().includes('daughter') || f.toLowerCase().includes('child') || f.toLowerCase().includes('grand'));
-                // If issue targets 'kids', check if user has relevant relatives
-                if (issue.targetDemo.family === 'kids' && hasKids) {
-                    scoreD += 0.5; dReasons.push(`Family match (Has children/grandkids)`);
-                }
-            }
-            if (issue.targetDemo.employment && user.demographics.employment === issue.targetDemo.employment) {
-                scoreD += 0.5; dReasons.push(`Employment match`);
-            }
-            scoreD = Math.min(scoreD, 1.0);
-            if (dReasons.length === 0) scoreD = 0.1;
-
-            // 2. Geospatial (G)
-            const dist = Math.sqrt(Math.pow(user.location.x - issue.location.x, 2) + Math.pow(user.location.y - issue.location.y, 2));
-            const maxDist = issue.location.radius * 1.5;
-            let scoreG = 0;
-            if (issue.location.radius > 0) {
-                scoreG = Math.max(0, 1 - (dist / maxDist));
-            }
-
-            // 3. Interest (X)
-            const matches = user.interests.filter(i => issue.tags.includes(i));
-            let scoreX = matches.length / Math.max(1, issue.tags.length);
-            if (matches.length > 0) scoreX = Math.max(scoreX, 0.4);
-
-            // 4. Social (S)
-            let scoreS = Math.min(1, user.socialConnections / 40) * 0.8;
-
-            // TOTAL
-            const total = (scoreD * issue.weights.D) +
-                (scoreG * issue.weights.G) +
-                (scoreS * issue.weights.S) +
-                (scoreX * issue.weights.X);
-
-            // Reasoning Generation
-            if (scoreG > 0.6 && issue.weights.G > 0) reasons.push(`<strong>Geospatial:</strong> Close proximity (${Math.round(dist)} units).`);
-            if (scoreD > 0.6 && issue.weights.D > 0) reasons.push(`<strong>Demographics:</strong> ${dReasons.join(", ")}.`);
-            if (scoreX > 0.5 && issue.weights.X > 0) reasons.push(`<strong>Interests:</strong> Matches '${matches.join(", ")}'.`);
-            if (total < threshold) reasons.push(`<em>Score too low based on current weights (${issue.title}).</em>`);
-
-            return {
-                total: total.toFixed(2),
-                breakdown: { D: scoreD, G: scoreG, S: scoreS, X: scoreX },
-                reasons: reasons
-            };
-        }
-
-        // --- VIEW 1: PROFILE INSPECTOR ---
-        function renderProfileList() {
-            const listEl = document.getElementById('profile-list');
-            listEl.innerHTML = '';
-            profiles.forEach(p => {
-                const div = document.createElement('div');
-                div.className = `p-3 rounded-lg cursor-pointer transition-colors hover:bg-blue-50 border border-transparent hover:border-blue-100 flex justify-between items-center group`;
-                div.innerHTML = `
-                <div>
-                    <div class="font-medium text-slate-700 group-hover:text-blue-700">${p.name}</div>
-                    <div class="text-xs text-slate-400">${p.demographics.age}yo • ${p.demographics.employment}</div>
-                </div>
-                <div class="text-xs font-mono text-slate-300 group-hover:text-blue-400">${p.id}</div>
-            `;
-                div.onclick = () => renderProfileInspector(p);
-                listEl.appendChild(div);
-            });
-        }
-
-        function renderProfileInspector(user) {
-            currentProfile = user;
-            document.getElementById('inspector-name').textContent = user.name;
-            document.getElementById('inspector-id').textContent = user.id;
-
-            // Expertise Summary
-            const edu = user.expertise_data?.education[0];
-            const level = edu ? edu.level : "N/A";
-            const domain = edu ? edu.degree : "General";
-            document.getElementById('inspector-expertise').innerHTML = `
-                <div class="font-medium text-slate-800">${level}</div>
-                <div class="text-xs text-slate-500 truncate" title="${domain}">${domain}</div>
-            `;
-
-            document.getElementById('inspector-badges').innerHTML = `
-            <span class="px-2 py-1 bg-slate-100 text-slate-600 rounded text-xs">${user.demographics.employment}</span>
-            <span class="px-2 py-1 bg-slate-100 text-slate-600 rounded text-xs">${user.demographics.family ? user.demographics.family.length + ' Relatives' : 'No Direct Relatives'}</span>
-        `;
-
-            document.getElementById('inspector-demo').innerHTML = `
-            <li><strong>Age:</strong> ${user.demographics.age}</li>
-            <li><strong>Income:</strong> ${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumSignificantDigits: 3 }).format(user.demographics.income)}</li>
-            <li><strong>Family:</strong> <ul class="list-disc pl-4 mt-1">${user.demographics.family ? user.demographics.family.map(f => `<li>${f}</li>`).join('') : '<li class="text-slate-400 italic">None</li>'}</ul></li>
-        `;
-            document.getElementById('inspector-geo').innerHTML = `
-            <li><strong>Coords:</strong> [${user.location.x}, ${user.location.y}]</li>
-            <li><strong>Sector:</strong> ${Math.floor(user.location.x / 50)}-${Math.floor(user.location.y / 50)}</li>
-        `;
-            document.getElementById('inspector-interests').innerHTML = user.interests.map(i => `<span class="px-2 py-1 bg-blue-50 text-blue-600 border border-blue-100 rounded text-xs">${i}</span>`).join('');
-
-            // RADAR CHART UPDATE
-            // Map attributes to 6 abstract axes to show "shape"
-            // D: Age, Income, Family, Age, Income, Family
-            const dData = [
-                (user.demographics.age / 90) * 100,
-                (user.demographics.income / 210000) * 100,
-                (user.demographics.family ? Math.min(100, user.demographics.family.length * 25) : 10), // Family Size Score
-                (user.demographics.age / 90) * 80,
-                ((user.demographics.income / 210000) / 3) * 90 + 30,
-                user.demographics.family ? 80 : 30 // Binary family presence
-            ];
-
-            // G: X, Y, X, Y, X, Y (Create a shape based on location)
-            const gData = [
-                user.location.x, user.location.y,
-                100 - user.location.x, 100 - user.location.y,
-                (user.location.x + user.location.y) / 2, 50
-            ];
-
-            // S: Connections (Repeated with variance)
-            const sBase = (user.socialConnections / 60) * 100;
-            const sData = [sBase, 100 - (sBase * 0.8), sBase * 1.1, sBase * 0.9, sBase, 100 - (sBase * 0.7)];
-
-            // X: Interest count & diversity
-            const xBase = (user.interests.length / 8) * 100;
-            const xData = [xBase, xBase * 1.2, xBase * 0.8, xBase, xBase * 0.5, xBase * 1.1];
-
-            radarChart.data.datasets[0].data = dData;
-            radarChart.data.datasets[1].data = gData;
-            radarChart.data.datasets[2].data = sData;
-            radarChart.data.datasets[3].data = xData;
-            radarChart.update();
-        }
-
-        // --- VIEW 2: SIMULATOR ---
-        function setIssue(index) {
-            currentIssueIndex = index;
-            const issue = issues[index];
-
-            // Update UI Text
-            document.getElementById('scenario-title').innerText = issue.title;
-            document.getElementById('scenario-desc').innerText = issue.desc;
-            document.getElementById('scenario-logic').innerHTML = issue.logic;
-
-            [0, 1, 2].forEach(i => {
-                const btn = document.getElementById(`btn-issue-${i}`);
-                if (i === index) btn.className = "flex-1 px-4 py-2 rounded-lg text-sm font-bold bg-blue-600 text-white shadow-sm transition-all";
-                else btn.className = "flex-1 px-4 py-2 rounded-lg text-sm font-bold bg-white border border-slate-300 text-slate-600 hover:bg-slate-50 transition-all";
-            });
-
-            document.getElementById('weight-d').innerText = issue.weights.D;
-            document.getElementById('weight-g').innerText = issue.weights.G;
-            document.getElementById('weight-s').innerText = issue.weights.S;
-            document.getElementById('weight-x').innerText = issue.weights.X;
-
-            updateSimulationUI();
-        }
-
-        function updateSimulationUI() {
-            const issue = issues[currentIssueIndex];
-            const memberList = document.getElementById('microcommunity-list');
-            memberList.innerHTML = '';
-            let count = 0;
-
-            // Draw Map
-            drawMap(issue);
-
-            // List Population
-            profiles.forEach(p => {
-                const result = calculateRelevance(p, issue);
-                const isIncluded = result.total >= threshold;
-
-                if (isIncluded) {
-                    count++;
-                    const el = document.createElement('div');
-                    el.className = "p-3 border-b border-slate-100 hover:bg-slate-50 cursor-pointer flex justify-between items-center group";
-                    el.innerHTML = `
-                    <div>
-                        <div class="text-sm font-semibold text-slate-700">${p.name}</div>
-                        <div class="text-xs text-slate-500">Score: <span class="text-blue-600 font-bold">${result.total}</span></div>
-                    </div>
-                    <svg class="w-4 h-4 text-slate-300 group-hover:text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                `;
-                    el.onclick = () => openModal(p, result);
-                    memberList.appendChild(el);
-                }
-            });
-
-            document.getElementById('member-count').innerText = `${count}/${profiles.length}`;
-        }
-
-        function drawMap(issue) {
-            const canvas = document.getElementById('simCanvas');
-            if (!mapCanvas) {
-                // Initial Setup
-                mapCanvas = canvas;
-            }
-
-            // Handle Resize
-            const parent = canvas.parentElement;
-            canvas.width = parent.offsetWidth;
-            canvas.height = parent.offsetHeight;
-
-            const ctx = canvas.getContext('2d');
-            const w = canvas.width;
-            const h = canvas.height;
-
-            // Clear
-            ctx.fillStyle = '#f8fafc';
-            ctx.fillRect(0, 0, w, h);
-
-            // Draw Grid
-            ctx.strokeStyle = '#e2e8f0';
-            ctx.lineWidth = 1;
-            for (let i = 0; i < w; i += 40) { ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, h); ctx.stroke(); }
-            for (let i = 0; i < h; i += 40) { ctx.beginPath(); ctx.moveTo(0, i); ctx.lineTo(w, i); ctx.stroke(); }
-
-            const scaleX = w / 100;
-            const scaleY = h / 100;
-
-            // Draw Issue Radius
-            if (issue.location.radius > 0) {
-                ctx.beginPath();
-                ctx.arc(issue.location.x * scaleX, issue.location.y * scaleY, issue.location.radius * scaleX, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(239, 68, 68, 0.1)';
-                ctx.fill();
-                ctx.strokeStyle = 'rgba(239, 68, 68, 0.3)';
-                ctx.stroke();
-
-                // Center Dot
-                ctx.beginPath();
-                ctx.arc(issue.location.x * scaleX, issue.location.y * scaleY, 4, 0, Math.PI * 2);
-                ctx.fillStyle = '#ef4444';
-                ctx.fill();
-            }
-
-            // Draw Users
-            profiles.forEach(p => {
-                const res = calculateRelevance(p, issue);
-                const included = res.total >= threshold;
-
-                ctx.beginPath();
-                const px = p.location.x * scaleX;
-                const py = p.location.y * scaleY;
-
-                ctx.arc(px, py, included ? 5 : 3, 0, Math.PI * 2);
-                ctx.fillStyle = included ? '#2563eb' : '#cbd5e1'; // Blue vs Grey
-                ctx.fill();
-
-                if (included) {
-                    ctx.strokeStyle = '#fff';
-                    ctx.lineWidth = 1;
-                    ctx.stroke();
-                }
-            });
-        }
-
-        // --- MODAL ---
-        function openModal(user, result) {
-            const issue = issues[currentIssueIndex];
-
-            document.getElementById('modal-username').innerText = user.name;
-            document.getElementById('modal-score').innerText = result.total;
-            document.getElementById('modal-score-bar').style.width = `${result.total * 100}%`;
-
-            const statusEl = document.getElementById('modal-status');
-            if (result.total >= threshold) {
-                statusEl.className = "inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800 mt-1";
-                statusEl.innerText = "Included";
-            } else {
-                statusEl.className = "inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-800 mt-1";
-                statusEl.innerText = "Excluded";
-            }
-
-            document.getElementById('modal-reasoning').innerHTML = result.reasons.length > 0
-                ? `<ul class="list-disc pl-4 space-y-1">${result.reasons.map(r => `<li>${r}</li>`).join('')}</ul>`
-                : `<p class="italic text-slate-400">Moderate relevance.</p>`;
-
-            // Modal Chart
-            barChart.data.datasets[0].data = [
-                result.breakdown.D * issue.weights.D,
-                result.breakdown.G * issue.weights.G,
-                result.breakdown.S * issue.weights.S,
-                result.breakdown.X * issue.weights.X
-            ];
-            barChart.data.datasets[1].data = [issue.weights.D, issue.weights.G, issue.weights.S, issue.weights.X];
-            barChart.update();
-
-            document.getElementById('factor-modal').classList.remove('hidden');
-        }
-
-        function closeModal() {
-            document.getElementById('factor-modal').classList.add('hidden');
-        }
-
-        // --- EXPERTISE VISUALIZATION ---
-        function openExpertiseModal(user) {
-            document.getElementById('exp-modal-username').innerText = user.name;
-            document.getElementById('expertise-modal').classList.remove('hidden');
-
-            // Wait for modal to render to get dimensions
-            requestAnimationFrame(() => {
-                drawKnowledgeSphere(user);
-                drawExperienceWaterfall(user);
-                drawResourceCloud(user);
-            });
-        }
-
-        function closeExpertiseModal() {
-            document.getElementById('expertise-modal').classList.add('hidden');
-        }
-
-        function drawKnowledgeSphere(user) {
-            const container = document.getElementById('knowledge-sphere');
-            container.innerHTML = ''; // Clear
-            const w = container.clientWidth;
-            const h = container.clientHeight;
-            const radius = Math.min(w, h) / 2 - 40; // Increased margin for labels
-
-            const svg = d3.select(container).append("svg")
-                .attr("width", w)
-                .attr("height", h)
-                .append("g")
-                .attr("transform", `translate(${w / 2},${h / 2})`);
-
-            // Define Filter for Top-glow / Soft edges
-            const defs = svg.append("defs");
-            const filter = defs.append("filter")
-                .attr("id", "softGlow")
-                .attr("height", "300%")
-                .attr("width", "300%")
-                .attr("x", "-100%")
-                .attr("y", "-100%");
-
-            filter.append("feGaussianBlur")
-                .attr("in", "SourceGraphic")
-                .attr("stdDeviation", 3) // Soften edges
-                .attr("result", "blur");
-
-            const feMerge = filter.append("feMerge");
-            feMerge.append("feMergeNode").attr("in", "blur");
-            feMerge.append("feMergeNode").attr("in", "SourceGraphic");
-
-            // Axis Lines and Labels
-            const axes = svg.append("g").attr("class", "axes opacity-40");
-            const axisLabels = [
-                { deg: 0, label: "Philosophy", text: "& Theory" },
-                { deg: 90, label: "Natural Sciences", text: "& Medicine" },
-                { deg: 180, label: "Business", text: "& Operations" },
-                { deg: 270, label: "Arts &", text: "Humanities" },
-                { deg: 45, label: "Logic &", text: "Mathematics" },
-                { deg: 135, label: "Engineering", text: "& Technology" },
-                { deg: 225, label: "Policy &", text: "Social Science" },
-                { deg: 315, label: "Education", text: "& Culture" }
-            ];
-
-            axisLabels.forEach(d => {
-                const angle = (d.deg - 90) * Math.PI / 180;
-                const x = radius * Math.cos(angle);
-                const y = radius * Math.sin(angle);
-
-                // Line
-                axes.append("line")
-                    .attr("x1", 0).attr("y1", 0)
-                    .attr("x2", x)
-                    .attr("y2", y)
-                    .attr("stroke", "#94a3b8")
-                    .attr("stroke-width", 1)
-                    .attr("stroke-dasharray", "4 4");
-
-                // Label
-                axes.append("text")
-                    .attr("x", x * 1.1)
-                    .attr("y", y * 1.1)
-                    .attr("text-anchor", "middle")
-                    .attr("alignment-baseline", "middle")
-                    .attr("fill", "#24344b")
-                    .attr("font-size", "10px")
-                    .attr("font-weight", "bold")
-                    .text(d.label);
-
-                // Detailed Label
-                axes.append("text")
-                    .attr("x", x * 1.1)
-                    .attr("y", y * 1.1 + (d.deg === 0 ? -12 : 12))
-                    .attr("text-anchor", "middle")
-                    .attr("alignment-baseline", "middle")
-                    .attr("fill", "#24344b")
-                    .attr("font-size", "10px")
-                    .attr("font-weight", "bold")
-                    .text(d.text);
-            });
-
-            // Data Mapping
-            const eduData = user.expertise_data?.education || [];
-
-            const arc = d3.arc()
-                .innerRadius(0)
-                .outerRadius(d => {
-                    // Radius Mapping
-                    let r = 0.4; // Default
-                    const l = d.level ? d.level.toLowerCase() : "";
-                    if (l.includes("phd") || l.includes("doctorate")) r = 1.0;
-                    else if (l.includes("master")) r = 0.8;
-                    else if (l.includes("bachelor")) r = 0.6;
-                    else if (l.includes("associate") || l.includes("college") || l.includes("high school")) r = 0.4;
-                    else if (l.includes("cert") || l.includes("course") || l.includes("bootcamp")) r = 0.2;
-                    return r * radius;
-                })
-                .startAngle(d => (d.angle * Math.PI / 180))
-                .endAngle(d => {
-                    // Width Mapping
-                    let w = 15; // Default
-                    const l = d.level ? d.level.toLowerCase() : "";
-                    if (l.includes("phd") || l.includes("doctorate")) w = 90;
-                    else if (l.includes("master")) w = 60;
-                    else if (l.includes("bachelor")) w = 45;
-                    else if (l.includes("associate") || l.includes("college") || l.includes("high school")) w = 15;
-                    else if (l.includes("cert") || l.includes("course") || l.includes("bootcamp")) w = 15;
-                    return (d.angle + w) * Math.PI / 180;
-                });
-
-            // Draw Sectors
-            svg.selectAll("path")
-                .data(eduData)
-                .enter().append("path")
-                .attr("d", arc)
-                .attr("fill", d => `hsl(${d.angle}, 70%, 60%)`)
-                .attr("stroke", "white")
-                .attr("stroke-width", 1)
-                // .style("filter", "url(#softGlow)") // Optional based on prompt preference
-                .style("opacity", 0.8)
-                .on("mouseover", function () { d3.select(this).style("opacity", 1); })
-                .on("mouseout", function () { d3.select(this).style("opacity", 0.8); })
-                .append("title").text(d => `${d.degree} (${d.level})`);
-        }
-
-        function drawExperienceWaterfall(user) {
-            const container = document.getElementById('experience-waterfall');
-            container.innerHTML = '';
-
-            // Stepped Waterfall Logic
-            // Each experience is a separate bar on a new row.
-            // Horizontal position (left) is determined by cumulative years of previous experiences.
-
-            const expData = user.expertise_data?.experience || [];
-            // Sort by recent to oldest? Or oldest to recent? 
-            // Usually "Waterfall" implies flow... let's assume index 0 is most recent?
-            // Actually, usually experience arrays are Recent -> Oldest.
-            // Check profiles.json: "Senior", "Junior"... yes, Descending order.
-            // So we need to reverse to plot timeline from Start -> Present.
-            const chronologicalExp = [...expData].reverse();
-
-            const totalYears = chronologicalExp.reduce((acc, curr) => acc + curr.years, 0);
-            const scaleYears = Math.max(totalYears, 50); // Absolute scale: minimum 50 years
-
-            const wrapper = document.createElement('div');
-            wrapper.className = "relative w-full h-full";
-            container.appendChild(wrapper);
-
-            let cumulativeYears = 0;
-            const rowHeight = 24; // Fixed height per bar? Or percentage?
-            // "height: 150px" in HTML.
-
-            chronologicalExp.forEach((exp, index) => {
-                const widthPct = (exp.years / scaleYears) * 100;
-                const leftPct = (cumulativeYears / scaleYears) * 100;
-
-                const bar = document.createElement('div');
-                bar.className = "absolute h-5 rounded hover:opacity-90 group transition-all flex items-center shadow-sm";
-                bar.style.left = `${leftPct}%`;
-                bar.style.width = `calc(${widthPct}% - 2px)`; // Gap
-                bar.style.top = `${index * (rowHeight + 4) + 40}px`; // Increased Top Padding for Tooltip (40px)
-                bar.style.backgroundColor = `hsl(${exp.hue || 200}, 70%, 60%)`;
-
-                // Content inside bar if wide enough, else tooltip
-                if (widthPct > 5) { // Lower threshold for text
-                    bar.innerHTML = `<span class="text-[10px] text-white font-semibold truncate px-2 w-full">${exp.role}</span>`;
-                }
-
-                // Tooltip
-                const tooltip = document.createElement('div');
-                tooltip.className = "absolute bottom-full mb-1 left-0 bg-slate-800 text-white text-xs px-2 py-1 rounded hidden group-hover:block whitespace-nowrap z-20 shadow-lg";
-                tooltip.innerText = `${exp.role} (${exp.years} yrs)`;
-                bar.appendChild(tooltip);
-
-                wrapper.appendChild(bar);
-
-                cumulativeYears += exp.years;
-            });
-
-            // Adjust container height if needed? NO, fixed "h-[150px]" in HTML.
-            // Maybe add scrolling if too many items?
-            container.style.overflowY = 'auto'; // Enable scroll if many jobs
-
-            // Legend / Stats
-            const stats = document.createElement('div');
-            stats.className = "absolute bottom-0 right-0 text-xs text-slate-500 bg-white/80 px-2 rounded";
-            stats.innerHTML = `Total: <span class="font-bold">${totalYears}</span> Years`;
-            wrapper.appendChild(stats);
-        }
-
-        function drawResourceCloud(user) {
-            const container = document.getElementById('resource-cloud');
-            container.innerHTML = '';
-
-            const resData = user.expertise_data?.resources || [];
-            if (resData.length === 0) {
-                container.innerHTML = '<span class="text-slate-400 italic text-sm">No resources listed.</span>';
-                return;
-            }
-
-            resData.forEach(res => {
-                const tag = document.createElement('span');
-                // Check if res is object (new format) or string (old format fallback)
-                let name = res;
-                let weight = 1;
-
-                if (typeof res === 'object' && res !== null) {
-                    name = res.name;
-                    weight = res.weight || 1;
-                }
-
-                // Size mapping: 1 (min) -> 0.75rem, 10 (max) -> 1.5rem
-                const sizeRem = 0.75 + (weight / 10) * 0.75;
-                const opacity = 0.6 + (weight / 10) * 0.4;
-
-                tag.className = "inline-block align-middle mr-2 mb-1 cursor-default text-slate-700 font-semibold leading-none";
-                tag.style.fontSize = `${sizeRem}rem`;
-                tag.style.opacity = opacity;
-                tag.innerText = name;
-                // tag.title = `Rarity/Weight: ${weight}`; // Removed tooltip as requested
-
-                container.appendChild(tag);
-            });
-        }
-
-        // --- SETUP CHARTS ---
-        function initCharts() {
-            // RADAR CHART (Multi-dimensional)
-            const ctxRadar = document.getElementById('profileRadarChart').getContext('2d');
-            radarChart = new Chart(ctxRadar, {
-                type: 'radar',
-                data: {
-                    labels: ['Val 1', 'Val 2', 'Val 3', 'Val 4', 'Val 5', 'Val 6'], // Abstract axes
-                    datasets: [
-                        {
-                            label: 'Demographics',
-                            data: [0, 0, 0, 0, 0, 0],
-                            backgroundColor: 'rgba(59, 130, 246, 0.2)', // Blue
-                            borderColor: 'rgba(59, 130, 246, 0.8)',
-                            borderWidth: 1.5,
-                            pointRadius: 0
-                        },
-                        {
-                            label: 'Geospatial',
-                            data: [0, 0, 0, 0, 0, 0],
-                            backgroundColor: 'rgba(16, 185, 129, 0.2)', // Green
-                            borderColor: 'rgba(16, 185, 129, 0.8)',
-                            borderWidth: 1.5,
-                            pointRadius: 0
-                        },
-                        {
-                            label: 'Social',
-                            data: [0, 0, 0, 0, 0, 0],
-                            backgroundColor: 'rgba(168, 85, 247, 0.2)', // Purple
-                            borderColor: 'rgba(168, 85, 247, 0.8)',
-                            borderWidth: 1.5,
-                            pointRadius: 0
-                        },
-                        {
-                            label: 'Interests',
-                            data: [0, 0, 0, 0, 0, 0],
-                            backgroundColor: 'rgba(249, 115, 22, 0.2)', // Orange
-                            borderColor: 'rgba(249, 115, 22, 0.8)',
-                            borderWidth: 1.5,
-                            pointRadius: 0
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        r: {
-                            beginAtZero: true,
-                            max: 100,
-                            ticks: { display: false },
-                            grid: { circular: true, color: '#e2e8f0' },
-                            angleLines: { color: '#e2e8f0' },
-                            pointLabels: { display: false } // Hiding axis labels
-                        }
-                    },
-                    plugins: { legend: { display: false } }
-                }
-            });
-
-            // BAR CHART (Modal)
-            const ctxBar = document.getElementById('factorBarChart').getContext('2d');
-            barChart = new Chart(ctxBar, {
-                type: 'bar',
-                data: {
-                    labels: ['Demo', 'Geo', 'Soc', 'Int'],
-                    datasets: [
-                        {
-                            label: 'User Score',
-                            data: [0, 0, 0, 0],
-                            backgroundColor: ['#3b82f6', '#10b981', '#a855f7', '#f59e0b']
-                        },
-                        {
-                            label: 'Max Potential',
-                            data: [0, 0, 0, 0],
-                            backgroundColor: '#f1f5f9',
-                            grouped: false,
-                            order: 1
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: { y: { beginAtZero: true, max: 0.8 } },
-                    plugins: { legend: { display: false } }
-                }
-            });
-        }
-
-        window.switchTab = function (tabId) {
-            document.getElementById('view-profiles').classList.add('hidden');
-            document.getElementById('view-sim').classList.add('hidden');
-            document.getElementById('nav-profiles').className = 'tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all';
-            document.getElementById('nav-sim').className = 'tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all';
-
-            document.getElementById(`view-${tabId}`).classList.remove('hidden');
-            document.getElementById(`nav-${tabId}`).className = 'tab-active px-4 py-2 rounded-md text-sm font-medium transition-all';
-
-            // Force Map Redraw if moving to sim
-            if (tabId === 'sim') {
-                setTimeout(() => updateSimulationUI(), 50);
-            }
-        };
-
-    </script>
+    <script src="explorer.js"></script>
     <script src="/site-nav.js"></script>
     <script src="/script.js"></script>
 </body>

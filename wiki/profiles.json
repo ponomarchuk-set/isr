@@ -34,12 +34,21 @@
                 {
                     "role": "Senior Developer",
                     "years": 6,
-                    "hue": 210
+                    "hue": 210,
+                    "tags": [
+                        "Tech",
+                        "Software",
+                        "Engineering"
+                    ]
                 },
                 {
                     "role": "Junior Developer",
                     "years": 4,
-                    "hue": 200
+                    "hue": 200,
+                    "tags": [
+                        "Tech",
+                        "Software"
+                    ]
                 }
             ],
             "resources": [
@@ -99,7 +108,12 @@
                 {
                     "role": "Chief of Pediatrics",
                     "years": 10,
-                    "hue": 120
+                    "hue": 120,
+                    "tags": [
+                        "Health",
+                        "Medicine",
+                        "Management"
+                    ]
                 },
                 {
                     "role": "Senior Pediatrician",
@@ -109,7 +123,11 @@
                 {
                     "role": "Resident Physician",
                     "years": 10,
-                    "hue": 110
+                    "hue": 110,
+                    "tags": [
+                        "Health",
+                        "Medicine"
+                    ]
                 }
             ],
             "resources": [
