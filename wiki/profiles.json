@@ -9,7 +9,11 @@
         "demographics": {
             "age": 34,
             "employment": "Employed",
-            "family": "kids",
+            "family": [
+                "Wife (32)",
+                "Son (7)",
+                "Daughter (4)"
+            ],
             "income": 145000
         },
         "interests": [
@@ -54,7 +58,12 @@
         "demographics": {
             "age": 68,
             "employment": "Retired",
-            "family": "no-kids",
+            "family": [
+                "Husband (70)",
+                "Son (45)",
+                "Daughter (42)",
+                "Grandson (12)"
+            ],
             "income": 210000
         },
         "interests": [
@@ -109,7 +118,7 @@
         "demographics": {
             "age": 22,
             "employment": "Unemployed",
-            "family": "no-kids",
+            "family": null,
             "income": 35000
         },
         "interests": [
@@ -149,7 +158,10 @@
         "demographics": {
             "age": 29,
             "employment": "Employed",
-            "family": "kids",
+            "family": [
+                "Husband (31)",
+                "Son (2)"
+            ],
             "income": 85000
         },
         "interests": [
@@ -200,7 +212,9 @@
         "demographics": {
             "age": 45,
             "employment": "Employed",
-            "family": "no-kids",
+            "family": [
+                "Wife (42)"
+            ],
             "income": 130000
         },
         "interests": [
@@ -255,7 +269,11 @@
         "demographics": {
             "age": 38,
             "employment": "Employed",
-            "family": "kids",
+            "family": [
+                "Husband (40)",
+                "Daughter (8)",
+                "Son (6)"
+            ],
             "income": 65000
         },
         "interests": [
@@ -300,7 +318,9 @@
         "demographics": {
             "age": 72,
             "employment": "Retired",
-            "family": "no-kids",
+            "family": [
+                "Wife (68)"
+            ],
             "income": 90000
         },
         "interests": [
@@ -355,7 +375,7 @@
         "demographics": {
             "age": 26,
             "employment": "Employed",
-            "family": "no-kids",
+            "family": null,
             "income": 75000
         },
         "interests": [
@@ -400,7 +420,10 @@
         "demographics": {
             "age": 31,
             "employment": "Employed",
-            "family": "kids",
+            "family": [
+                "Wife (30)",
+                "Son (1)"
+            ],
             "income": 115000
         },
         "interests": [
@@ -445,7 +468,11 @@
         "demographics": {
             "age": 55,
             "employment": "Employed",
-            "family": "no-kids",
+            "family": [
+                "Husband (58)",
+                "Son (25)",
+                "Daughter (22)"
+            ],
             "income": 140000
         },
         "interests": [
@@ -495,7 +522,11 @@
         "demographics": {
             "age": 40,
             "employment": "Unemployed",
-            "family": "kids",
+            "family": [
+                "Wife (38)",
+                "Son (10)",
+                "Son (8)"
+            ],
             "income": 42000
         },
         "interests": [
@@ -540,7 +571,11 @@
         "demographics": {
             "age": 19,
             "employment": "Unemployed",
-            "family": "no-kids",
+            "family": [
+                "Mother (45)",
+                "Father (48)",
+                "Sister (16)"
+            ],
             "income": 12000
         },
         "interests": [
@@ -580,7 +615,11 @@
         "demographics": {
             "age": 63,
             "employment": "Retired",
-            "family": "kids",
+            "family": [
+                "Wife (60)",
+                "Son (35)",
+                "Granddaughter (5)"
+            ],
             "income": 45000
         },
         "interests": [
@@ -630,7 +669,9 @@
         "demographics": {
             "age": 33,
             "employment": "Employed",
-            "family": "no-kids",
+            "family": [
+                "Husband (35)"
+            ],
             "income": 160000
         },
         "interests": [
@@ -675,7 +716,10 @@
         "demographics": {
             "age": 28,
             "employment": "Employed",
-            "family": "kids",
+            "family": [
+                "Wife (27)",
+                "Daughter (1)"
+            ],
             "income": 78000
         },
         "interests": [
@@ -720,7 +764,7 @@
         "demographics": {
             "age": 48,
             "employment": "Employed",
-            "family": "no-kids",
+            "family": null,
             "income": 95000
         },
         "interests": [
@@ -770,7 +814,11 @@
         "demographics": {
             "age": 36,
             "employment": "Unemployed",
-            "family": "kids",
+            "family": [
+                "Wife (34)",
+                "Son (6)",
+                "Daughter (4)"
+            ],
             "income": 38000
         },
         "interests": [
@@ -815,7 +863,11 @@
         "demographics": {
             "age": 75,
             "employment": "Retired",
-            "family": "no-kids",
+            "family": [
+                "Husband (78)",
+                "Son (50)",
+                "Daughter (48)"
+            ],
             "income": 48000
         },
         "interests": [
@@ -865,7 +917,7 @@
         "demographics": {
             "age": 24,
             "employment": "Employed",
-            "family": "no-kids",
+            "family": null,
             "income": 55000
         },
         "interests": [
@@ -905,7 +957,11 @@
         "demographics": {
             "age": 50,
             "employment": "Employed",
-            "family": "kids",
+            "family": [
+                "Husband (52)",
+                "Daughter (18)",
+                "Son (15)"
+            ],
             "income": 155000
         },
         "interests": [

@@ -429,8 +429,12 @@
             if (issue.targetDemo.minAge && user.demographics.age >= issue.targetDemo.minAge) {
                 scoreD += 0.5; dReasons.push(`Age match`);
             }
-            if (issue.targetDemo.family && user.demographics.family === issue.targetDemo.family) {
-                scoreD += 0.5; dReasons.push(`Family match`);
+            if (issue.targetDemo.family && user.demographics.family) {
+                const hasKids = user.demographics.family.some(f => f.toLowerCase().includes('son') || f.toLowerCase().includes('daughter') || f.toLowerCase().includes('child') || f.toLowerCase().includes('grand'));
+                // If issue targets 'kids', check if user has relevant relatives
+                if (issue.targetDemo.family === 'kids' && hasKids) {
+                    scoreD += 0.5; dReasons.push(`Family match (Has children/grandkids)`);
+                }
             }
             if (issue.targetDemo.employment && user.demographics.employment === issue.targetDemo.employment) {
                 scoreD += 0.5; dReasons.push(`Employment match`);
@@ -498,13 +502,13 @@
 
             document.getElementById('inspector-badges').innerHTML = `
             <span class="px-2 py-1 bg-slate-100 text-slate-600 rounded text-xs">${user.demographics.employment}</span>
-            <span class="px-2 py-1 bg-slate-100 text-slate-600 rounded text-xs">${user.demographics.family === 'kids' ? 'Has Children' : 'No Children'}</span>
+            <span class="px-2 py-1 bg-slate-100 text-slate-600 rounded text-xs">${user.demographics.family ? user.demographics.family.length + ' Relatives' : 'No Direct Relatives'}</span>
         `;
 
             document.getElementById('inspector-demo').innerHTML = `
             <li><strong>Age:</strong> ${user.demographics.age}</li>
             <li><strong>Income:</strong> ${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumSignificantDigits: 3 }).format(user.demographics.income)}</li>
-            <li><strong>Family:</strong> ${user.demographics.family}</li>
+            <li><strong>Family:</strong> <ul class="list-disc pl-4 mt-1">${user.demographics.family ? user.demographics.family.map(f => `<li>${f}</li>`).join('') : '<li class="text-slate-400 italic">None</li>'}</ul></li>
         `;
             document.getElementById('inspector-geo').innerHTML = `
             <li><strong>Coords:</strong> [${user.location.x}, ${user.location.y}]</li>
@@ -518,10 +522,10 @@
             const dData = [
                 (user.demographics.age / 90) * 100,
                 (user.demographics.income / 210000) * 100,
-                user.demographics.family === 'kids' ? 90 : 20,
+                (user.demographics.family ? Math.min(100, user.demographics.family.length * 25) : 10), // Family Size Score
                 (user.demographics.age / 90) * 80,
                 ((user.demographics.income / 210000) / 3) * 90 + 30,
-                user.demographics.family === 'kids' ? 80 : 30
+                user.demographics.family ? 80 : 30 // Binary family presence
             ];
 
             // G: X, Y, X, Y, X, Y (Create a shape based on location)
@@ -533,7 +537,7 @@
 
             // S: Connections (Repeated with variance)
             const sBase = (user.socialConnections / 60) * 100;
-            const sData = [sBase, sBase * 0.8, sBase * 1.1, sBase * 0.9, sBase, sBase * 0.7];
+            const sData = [sBase, 100 - (sBase * 0.8), sBase * 1.1, sBase * 0.9, sBase, 100 - (sBase * 0.7)];
 
             // X: Interest count & diversity
             const xBase = (user.interests.length / 8) * 100;
