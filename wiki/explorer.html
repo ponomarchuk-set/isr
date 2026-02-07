@@ -66,6 +66,139 @@
             color: #334155;
         }
 
+        /* Dropdown Item Styling */
+        .dropdown-item {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 8px 16px;
+            font-size: 0.875rem;
+            /* text-sm */
+            color: #334155;
+            /* slate-700 */
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f1f5f9;
+            /* slate-100 */
+        }
+
+        .dropdown-item.tab-active {
+            background-color: #e0f2fe;
+            /* blue-50 */
+            color: #2563eb;
+            /* blue-600 */
+            font-weight: 600;
+        }
+
+        /* Mobile Navigation */
+        .hamburger-menu {
+            display: none;
+            background: none;
+            border: none;
+            width: 30px;
+            height: 24px;
+            position: relative;
+            cursor: pointer;
+            z-index: 1002;
+            padding: 0;
+            margin-left: auto;
+        }
+
+        .hamburger-menu span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: #2d3956;
+            position: absolute;
+            left: 0;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger-menu span:nth-child(1) {
+            top: 0;
+        }
+
+        .hamburger-menu span:nth-child(2) {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .hamburger-menu span:nth-child(3) {
+            bottom: 0;
+        }
+
+        .hamburger-menu.active span:nth-child(1) {
+            top: 50%;
+            transform: translateY(-50%) rotate(45deg);
+        }
+
+        .hamburger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-menu.active span:nth-child(3) {
+            bottom: 50%;
+            transform: translateY(50%) rotate(-45deg);
+        }
+
+        @media (max-width: 1024px) {
+            .hamburger-menu {
+                display: block;
+            }
+
+            #nav-container {
+                position: fixed;
+                top: 73px;
+                /* Header height approx */
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                transform: translateY(-120%);
+                /* Move up out of view */
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                z-index: 1001;
+                border-top: 1px solid #eee;
+                gap: 0;
+                overflow-y: auto;
+                max-height: calc(100vh - 73px);
+                width: 100%;
+                /* Reset existing flex/space props */
+                min-width: auto;
+            }
+
+            #nav-container.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            /* Override tailwind space-x-1 */
+            #nav-container> :not([hidden])~ :not([hidden]) {
+                --tw-space-x-reverse: 0;
+                margin-right: calc(0px * var(--tw-space-x-reverse));
+                margin-left: calc(0px * calc(1 - var(--tw-space-x-reverse)));
+            }
+
+            #nav-container button {
+                width: 100%;
+                text-align: left;
+                padding: 15px;
+                border-radius: 0;
+                border-bottom: 1px solid #f0f0f0;
+                display: block;
+                margin: 0;
+            }
+        }
+
         /* Map Canvas */
         #simCanvas {
             width: 100%;
@@ -92,29 +225,39 @@
 <body class="h-screen flex flex-col overflow-hidden">
 
     <!-- Header -->
-    <header class="bg-white border-b border-slate-200 px-6 py-4 flex justify-between items-center shadow-sm z-10">
-        <div>
+    <header id="site-header"
+        class="bg-white border-b border-slate-200 px-6 py-4 flex justify-between items-center shadow-sm z-10 w-full">
+        <div id="header-logo" class="flex-shrink-0">
             <a href="/">
                 <img src="../images/isr-logo.png" alt="ISR homepage" width=70 height=20>
             </a>
         </div>
-        <div>
-            <h4 class="text-2xl font-bold text-slate-800 tracking-tight">Explorer</h4>
+        <div id="header-title" class="flex-shrink-0 mx-4">
+            <h4 class="text-2xl font-bold text-slate-800 tracking-tight whitespace-nowrap">Explorer</h4>
             <!--<p class="text-sm text-slate-500">Relevance Engine & Microcommunity Formation</p>-->
         </div>
-        <div class="flex space-x-1 bg-slate-100 p-1 rounded-lg">
+
+        <button class="hamburger-menu" id="hamburger-btn" aria-label="Toggle navigation menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div id="nav-container" class="flex space-x-1 bg-slate-100 p-1 rounded-lg">
             <button id="nav-profiles" onclick="switchTab('profiles')"
-                class="tab-active px-4 py-2 rounded-md text-sm font-medium transition-all">Profiles</button>
+                class="tab-active px-4 py-2 rounded-md text-sm font-medium transition-all whitespace-nowrap">Profiles</button>
             <button id="nav-sim" onclick="switchTab('sim')"
-                class="tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all">Relevance</button>
+                class="tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all whitespace-nowrap">Relevance</button>
             <button id="nav-expertise" onclick="switchTab('expertise')"
-                class="tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all">Expertise</button>
+                class="tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all whitespace-nowrap">Expertise</button>
             <button id="nav-values" onclick="switchTab('values')"
-                class="tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all">Vector of Values</button>
+                class="tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all whitespace-nowrap">Vector of
+                Values</button>
             <button id="nav-contribution" onclick="switchTab('contribution')"
-                class="tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all">Contribution</button>
+                class="tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all whitespace-nowrap">Contribution</button>
             <button id="nav-isr-complete" onclick="switchTab('isr-complete')"
-                class="tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all">ISR ready-to-vote</button>
+                class="tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all whitespace-nowrap">ISR
+                ready-to-vote</button>
         </div>
     </header>
 

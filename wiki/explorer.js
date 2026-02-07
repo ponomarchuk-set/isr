@@ -1064,4 +1064,118 @@ window.switchTab = function (tabId) {
     if (tabId === 'expertise') {
         updateExpertiseUI();
     }
+
+    // Check if the active tab is inside the dropdown, if so highlight "More"
+    // checkActiveTabVisibility(); // Removed for hamburger menu
 };
+
+// --- RESPONSIVE TABS LOGIC ---
+function initResponsiveTabs() {
+    const navContainer = document.querySelector('header .flex.space-x-1');
+    const moreBtnContainer = document.getElementById('nav-more').parentElement;
+    const moreBtn = document.getElementById('nav-more');
+    const moreMenu = document.getElementById('nav-more-menu');
+
+    // Toggle dropdown
+    moreBtn.onclick = (e) => {
+        e.stopPropagation();
+        moreMenu.classList.toggle('hidden');
+    };
+
+    // Close dropdown on click outside
+    document.addEventListener('click', (e) => {
+        if (!moreBtnContainer.contains(e.target)) {
+            moreMenu.classList.add('hidden');
+        }
+    });
+
+    const updateTabs = () => {
+        // Reset: Move all items back to main container before measuring
+        // We need to keep the original order. The original IDs are:
+        // nav-profiles, nav-sim, nav-expertise, nav-values, nav-contribution, nav-isr-complete
+        const originalOrder = ['nav-profiles', 'nav-sim', 'nav-expertise', 'nav-values', 'nav-contribution', 'nav-isr-complete'];
+
+        originalOrder.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                // Remove from dropdown specific classes
+                el.classList.remove('dropdown-item');
+                // Restore original classes
+                if (el.classList.contains('tab-active')) {
+                    el.className = 'tab-active px-4 py-2 rounded-md text-sm font-medium transition-all';
+                } else {
+                    el.className = 'tab-inactive px-4 py-2 rounded-md text-sm font-medium transition-all';
+                }
+
+                // Insert back into navContainer before the "More" button container
+                navContainer.insertBefore(el, moreBtnContainer);
+            }
+        });
+
+        moreBtn.classList.add('hidden'); // Hide "More" initially
+
+        const containerWidth = navContainer.clientWidth;
+        // Calculate total width of children
+        // We need to identify the tab buttons. They are the children excluding the 'relative group' (more button)
+        let totalWidth = 0;
+        const children = Array.from(navContainer.children).filter(c => c !== moreBtnContainer);
+
+        children.forEach(c => totalWidth += c.offsetWidth + 4); // +4 for gap (space-x-1 is 0.25rem = 4px approx)
+
+        // If we overflow
+        if (totalWidth > containerWidth) {
+            moreBtn.classList.remove('hidden');
+            let availableWidth = containerWidth - moreBtn.offsetWidth - 20; // Buffer
+
+            let currentWidth = 0;
+            let overflow = false;
+
+            children.forEach(c => {
+                if (!overflow) {
+                    currentWidth += c.offsetWidth + 4;
+                    if (currentWidth > availableWidth) {
+                        overflow = true;
+                    }
+                }
+
+                if (overflow) {
+                    // Move to dropdown
+                    c.className = 'dropdown-item'; // Apply dropdown styling
+                    if (c.classList.contains('tab-active')) {
+                        c.classList.add('tab-active'); // Keep active status for styling
+                    }
+                    moreMenu.appendChild(c);
+                }
+            });
+        }
+
+        checkActiveTabVisibility();
+    };
+
+    // Initial check
+    updateTabs();
+
+    // Resize observer
+    const resizeObserver = new ResizeObserver(() => {
+        // Debounce slightly or just run
+        requestAnimationFrame(updateTabs);
+    });
+    resizeObserver.observe(document.querySelector('header'));
+}
+
+function checkActiveTabVisibility() {
+    const moreBtn = document.getElementById('nav-more');
+    const moreMenu = document.getElementById('nav-more-menu');
+    const activeTabObj = moreMenu.querySelector('.tab-active');
+
+    if (activeTabObj) {
+        moreBtn.classList.add('tab-active');
+        moreBtn.classList.remove('tab-inactive');
+    } else {
+        moreBtn.classList.remove('tab-active');
+        moreBtn.classList.add('tab-inactive');
+    }
+}
+
+// Call init once DOM is ready (or immediately if already ready, but this script is loaded at end of body)
+initResponsiveTabs();
