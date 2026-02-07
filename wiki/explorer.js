@@ -612,8 +612,6 @@ function updateExpertiseUI() {
 
     if (relevantUsers.length === 0) {
         list.innerHTML = `<div class="p-4 text-center text-slate-400 text-sm italic">No relevant members found above threshold (${threshold}).</div>`;
-        // Show Deficit Alert logic here if needed, or rely on empty state
-        // showDeficitAlert(issue); // Removed to avoid auto-triggering on empty list without selection
     } else {
         relevantUsers.forEach(u => {
             const el = document.createElement('div');
@@ -643,34 +641,11 @@ function updateExpertiseUI() {
     }
 }
 
-function showDeficitAlert(issue) {
-    document.getElementById('comp-empty-state').classList.add('hidden');
-    document.getElementById('comp-content').classList.remove('hidden');
-    document.getElementById('comp-alert').classList.remove('hidden');
 
-    // Recommendation
-    const recId = issue.recommended_expert_id;
-    const expert = profiles.find(p => p.id === recId);
-    if (expert) {
-        document.getElementById('rec-name').innerText = expert.name;
-        document.getElementById('rec-role').innerText = expert.expertise_data?.experience[0]?.role || "Expert";
-        document.getElementById('comp-recommendation').onclick = () => {
-            alert(`Invite sent to ${expert.name}!`);
-        };
-    } else {
-        document.getElementById('comp-recommendation').classList.add('hidden');
-    }
-
-    // Hide other viz containers since no user selected
-    document.getElementById('comp-sphere').parentElement.classList.add('hidden');
-    document.getElementById('comp-waterfall').parentElement.classList.add('hidden');
-    document.getElementById('comp-resources').parentElement.classList.add('hidden');
-}
 
 function openCompAnalysis(user, issue, score) {
     document.getElementById('comp-empty-state').classList.add('hidden');
     document.getElementById('comp-content').classList.remove('hidden');
-    document.getElementById('comp-alert').classList.add('hidden');
 
     // Show viz containers
     document.getElementById('comp-sphere').parentElement.classList.remove('hidden');
@@ -680,14 +655,19 @@ function openCompAnalysis(user, issue, score) {
     document.getElementById('comp-user-badge').classList.remove('hidden');
     document.getElementById('comp-username').innerText = user.name;
 
+    // Update Score Breakdown
+    document.getElementById('comp-score-edu').innerText = score.edu ? score.edu.toFixed(1) : "0.0";
+    document.getElementById('comp-score-exp').innerText = score.exp ? score.exp.toFixed(1) : "0.0";
+    document.getElementById('comp-score-res').innerText = score.res ? score.res.toFixed(1) : "0.0";
+
     // 1. Draw Comparative Sphere
     drawCompSphere(user, issue);
 
     // 2. Draw Waterfall
     const reqYears = issue.required_experience_years;
     const usrYears = user.expertise_data?.experience?.reduce((a, b) => a + b.years, 0) || 0;
-    document.getElementById('comp-req-years').innerText = reqYears;
-    document.getElementById('comp-user-years').innerText = usrYears;
+    // document.getElementById('comp-req-years').innerText = reqYears;
+    // document.getElementById('comp-user-years').innerText = usrYears;
 
     // Deficit Check for individual
     if (usrYears < reqYears) document.getElementById('comp-user-years').className = "text-lg font-bold text-red-500";
@@ -799,9 +779,9 @@ class EducationSphere {
 
     draw(userData, issueData) {
         this.initSVG();
-        this.drawAxes();
         if (userData) this.drawUserSectors(userData, issueData);
         if (issueData) this.drawTargetArc(issueData);
+        this.drawAxes();
     }
 
     initSVG() {
@@ -853,13 +833,14 @@ class EducationSphere {
                 const l = d.level ? d.level.toLowerCase() : "";
                 if (l.includes("phd")) r = 1.0;
                 else if (l.includes("master")) r = 0.8;
-                else if (l.includes("bachelor")) r = 0.7;
+                else if (l.includes("bachelor")) r = 0.6;
                 return r * this.radius;
             })
             .startAngle(d => (d.angle * Math.PI / 180))
             .endAngle(d => {
                 let width = 20;
                 if (d.level.includes("Bachelor")) width = 45;
+                if (d.level.includes("PhD")) width = 90;
                 if (d.level.includes("Master")) width = 60;
                 return (d.angle + width) * Math.PI / 180;
             });
@@ -909,8 +890,8 @@ class EducationSphere {
             .append("title").text(`Target: ${issueData.required_education_angle}° ±${issueData.required_width / 2}°`);
 
         // Center Tick
-        const angleRad = (issueData.required_education_angle - 90) * Math.PI / 180;
-        this.svg.append("line").attr("x1", 0).attr("y1", 0).attr("x2", this.radius * Math.cos(angleRad)).attr("y2", this.radius * Math.sin(angleRad)).attr("stroke", "#ef4444").attr("stroke-width", 2);
+        // const angleRad = (issueData.required_education_angle - 90) * Math.PI / 180;
+        // this.svg.append("line").attr("x1", 0).attr("y1", 0).attr("x2", this.radius * Math.cos(angleRad)).attr("y2", this.radius * Math.sin(angleRad)).attr("stroke", "#ef4444").attr("stroke-width", 2);
     }
 }
 
@@ -1028,15 +1009,9 @@ class ExperienceWaterfall {
             const targetPct = (reqYears / scaleYears) * 100;
 
             const targetLine = document.createElement('div');
-            targetLine.className = "absolute top-0 bottom-0 border-l-2 border-red-500 border-dashed z-20 pointer-events-none";
+            targetLine.className = "absolute top-0 bottom-0 border-l-2 border-red-200 border-dashed z-20 pointer-events-none";
             targetLine.style.left = `${targetPct}%`;
             wrapper.appendChild(targetLine);
-
-            const targetLabel = document.createElement('div');
-            targetLabel.className = "absolute top-0 text-[9px] font-bold text-red-500 transform -translate-x-1/2 bg-white/80 px-1 rounded z-20";
-            targetLabel.style.left = `${targetPct}%`;
-            targetLabel.innerText = `${reqYears}y Req`;
-            wrapper.appendChild(targetLabel);
         }
 
         // 4. Legend / Stats
@@ -1057,105 +1032,7 @@ function drawCompSphere(user, issue) {
 
 function drawCompWaterfall(user, issue) {
     new ExperienceWaterfall('comp-waterfall').draw(user, issue); return;
-/*
-    const container = document.getElementById('comp-waterfall');
-    container.innerHTML = '';
-
-    const reqYears = issue.required_experience_years;
-    const expData = user.expertise_data?.experience || [];
-    // Sort Descending (Recent First) -> Reverse for Timeline (Old -> New)
-    const chronologicalExp = [...expData].reverse();
-
-    // Total Years Calculation (All experience counts towards total years, but we color strictly relevant one?)
-    // User requested: "Irrelevant experience records... light-grey".
-    // We should use relevance for coloring.
-
-    const totalYears = chronologicalExp.reduce((acc, curr) => acc + curr.years, 0);
-    const scaleYears = Math.max(totalYears, 50);
-
-    const wrapper = document.createElement('div');
-    wrapper.className = "relative w-full h-full";
-    container.appendChild(wrapper);
-
-    let cumulativeYears = 0;
-    const rowHeight = 24;
-
-    chronologicalExp.forEach((exp, index) => {
-        const widthPct = (exp.years / scaleYears) * 100;
-        const leftPct = (cumulativeYears / scaleYears) * 100;
-
-        const bar = document.createElement('div');
-        bar.className = "absolute h-5 rounded hover:opacity-90 group transition-all flex items-center shadow-sm";
-        bar.style.left = `${leftPct}%`;
-        bar.style.width = `calc(${widthPct}% - 2px)`;
-        bar.style.top = `${index * (rowHeight + 4) + 10}px`;
-
-        // Relevance Logic
-        // Heuristic: Check against Issue Tags and Resources
-        const matchString = (exp.role + " " + (exp.desc || "")).toLowerCase();
-        const tags = issue.tags || [];
-        const res = issue.required_resources || [];
-
-        // Enhanced Relevance Logic using Tags
-        let isRelevant = false;
-
-        // 1. Check explicit tags
-        if (exp.tags && exp.tags.length > 0) {
-            isRelevant = exp.tags.some(t =>
-                tags.some(it => it.toLowerCase() === t.toLowerCase()) ||
-                (issue.category && issue.category.toLowerCase() === t.toLowerCase())
-            );
-        }
-
-        // 2. Fallback to string matching if no tags matched (or no tags present)
-        if (!isRelevant) {
-            isRelevant =
-                tags.some(t => matchString.includes(t.toLowerCase())) ||
-                res.some(r => matchString.includes(r.toLowerCase())) ||
-                (issue.category === "Tech" && (matchString.includes("developer") || matchString.includes("engineer") || matchString.includes("software")));
-        }
-
-        // Color
-        if (isRelevant) {
-            bar.style.backgroundColor = `hsl(${exp.hue || 200}, 70%, 60%)`;
-        } else {
-            bar.style.backgroundColor = "#e2e8f0"; // Light Grey (Slate 200)
-            bar.title = "Non-relevant to this issue";
-        }
-
-        if (widthPct > 5) {
-            bar.innerHTML = `<span class="text-[10px] ${isRelevant ? 'text-white' : 'text-slate-500'} font-semibold truncate px-2 w-full">${exp.role}</span>`;
-        }
-
-        const tooltip = document.createElement('div');
-        tooltip.className = "absolute bottom-full mb-1 left-0 bg-slate-800 text-white text-xs px-2 py-1 rounded hidden group-hover:block whitespace-nowrap z-20 shadow-lg";
-        tooltip.innerText = `${exp.role} (${exp.years} yrs)${isRelevant ? '' : ' - Irrelevant'}`;
-        bar.appendChild(tooltip);
-
-        wrapper.appendChild(bar);
-        cumulativeYears += exp.years;
-    });
-
-    // Target Line (Red Dashed)
-    const targetPct = (reqYears / scaleYears) * 100;
-    const targetLine = document.createElement('div');
-    targetLine.className = "absolute top-0 bottom-0 border-l-2 border-red-500 border-dashed z-10 pointer-events-none";
-    targetLine.style.left = `${targetPct}%`;
-    targetLine.title = `Required: ${reqYears} Years`;
-    wrapper.appendChild(targetLine);
-
-    const targetLabel = document.createElement('div');
-    targetLabel.className = "absolute -top-4 text-[10px] font-bold text-red-500 transform -translate-x-1/2";
-    targetLabel.style.left = `${targetPct}%`;
-    targetLabel.innerText = `${reqYears}y`;
-    wrapper.appendChild(targetLabel);
-
-    // Legend
-    const stats = document.createElement('div');
-    stats.className = "absolute bottom-0 right-0 text-xs text-slate-500 bg-white/80 px-2 rounded";
-    stats.innerHTML = `Total: <span class="font-bold">${totalYears}</span> Years`;
-    wrapper.appendChild(stats);
-*/ }
+}
 
 // --- GLOBAL NAV ---
 window.switchTab = function (tabId) {
