@@ -1,0 +1,448 @@
+[
+  [
+    {
+      "id": 1,
+      "uid": "37",
+      "topic": "EV charger queuing system",
+      "text": "Hi everyone! I noticed we're having issues with the EV chargers being occupied all evening. The app developer mentioned they can implement a virtual queue system, but it would need access to our vehicles' charge status. What are everyone's thoughts on this? Privacy concerns vs convenience?",
+      "timestamp": "2025-06-28T16:45:00",
+      "marks": [
+        "good",
+        "flood"
+      ],
+      "child": [
+        2,
+        3,
+        5,
+        7,
+        10
+      ]
+    },
+    {
+      "id": 2,
+      "uid": "182",
+      "topic": "EV charger queuing system",
+      "text": "Good point, Mio. As someone who works with tech, I think the queue system could really help. Most modern EVs already share charge data with manufacturers anyway. Maybe we could ask for a demo first?",
+      "timestamp": "2025-06-28T16:52:00",
+      "marks": [
+        "good"
+      ],
+      "parentID": 1,
+      "child": []
+    },
+    {
+      "id": 3,
+      "uid": "459",
+      "topic": "EV charger queuing system",
+      "text": "Are you kidding me? We're just going to hand over our personal data to some random app company? This is exactly how surveillance capitalism works. Next thing you know they'll be selling our charging patterns to insurance companies.",
+      "timestamp": "2025-06-28T16:57:00",
+      "marks": [
+        "rude",
+        "fool"
+      ],
+      "parentID": 1,
+      "child": [
+        4
+      ]
+    },
+    {
+      "id": 4,
+      "uid": "368",
+      "topic": "EV charger queuing system",
+      "text": "Well Susan, at least it's not as bad as my 4-year-old Kyle trying to 'help' by unplugging cars when they beep 😂 But seriously, maybe we could negotiate data deletion clauses?",
+      "timestamp": "2025-06-28T17:05:00",
+      "marks": [
+        "funny",
+        "good"
+      ],
+      "parentID": 3,
+      "child": []
+    },
+    {
+      "id": 5,
+      "uid": "415",
+      "topic": "EV charger queuing system",
+      "text": "How about we start simple? Just a manual booking system on the lobby tablet for now. No personal data needed, just 2-hour time slots. We could trial it for a month and see if it helps before going high-tech.",
+      "timestamp": "2025-06-28T17:11:00",
+      "marks": [
+        "good",
+        "funny"
+      ],
+      "parentID": 1,
+      "child": [
+        6
+      ]
+    },
+    {
+      "id": 6,
+      "uid": "125",
+      "topic": "EV charger queuing system",
+      "text": "That could work Daniel, but what happens when someone doesn't show up for their slot? We'd need some kind of penalty system. Maybe €5 no-show fee?",
+      "timestamp": "2025-06-28T17:15:00",
+      "marks": [
+        "good"
+      ],
+      "parentID": 5,
+      "child": []
+    },
+    {
+      "id": 7,
+      "uid": "307",
+      "topic": "EV charger queuing system",
+      "text": "I've been analyzing our charging patterns from the electricity bills. Peak usage is 18:00-22:00 with 83% occupancy. If we implemented load balancing with time-of-use pricing - say €0.25/kWh peak vs €0.15/kWh off-peak - we could incentivize spreading the load. The mathematical model suggests a 34% reduction in queue times. I could present the full statistical analysis at the next meeting if interested?",
+      "timestamp": "2025-06-28T17:24:00",
+      "marks": [
+        "good",
+        "flood"
+      ],
+      "parentID": 1,
+      "child": [
+        8
+      ]
+    },
+    {
+      "id": 8,
+      "uid": "420",
+      "topic": "EV charger queuing system",
+      "text": "Joyce, that's comprehensive but maybe too complex for a start? I like the simple booking idea. My daughter Hannah could even help set up a basic online calendar if needed.",
+      "timestamp": "2025-06-28T17:31:00",
+      "marks": [
+        "good",
+        "flood"
+      ],
+      "parentID": 7,
+      "child": [
+        9
+      ]
+    },
+    {
+      "id": 9,
+      "uid": "459",
+      "topic": "EV charger queuing system",
+      "text": "Oh great, now we're getting teenagers involved in our building management? What's next, letting kids vote on the budget? Some of us actually know what we're talking about here.",
+      "timestamp": "2025-06-28T17:36:00",
+      "marks": [
+        "rude",
+        "fool"
+      ],
+      "parentID": 8,
+      "child": []
+    },
+    {
+      "id": 10,
+      "uid": "37",
+      "topic": "EV charger queuing system",
+      "text": "Let's keep this constructive, everyone. I think we have some good options on the table. Should we put together a small committee to research the options and present findings next week? I can coordinate if others volunteer to help.",
+      "timestamp": "2025-06-28T17:42:00",
+      "marks": [
+        "good"
+      ],
+      "parentID": 1,
+      "child": []
+    }
+  ],
+  [
+    {
+      "id": 1,
+      "uid": "37",
+      "topic": "Lobby art rotation",
+      "text": "The local college is happy to loan fresh prints every quarter if we cover insurance. Current premium quoted is €90 per year. Is the community fund willing to absorb this, or should we ask for voluntary contributions?",
+      "timestamp": "2025-06-28T16:52:00",
+      "marks": [
+        "good"
+      ],
+      "child": [
+        2,
+        3,
+        5,
+        8
+      ]
+    },
+    {
+      "id": 2,
+      "uid": "182",
+      "topic": "Lobby art rotation",
+      "text": "I think €90 per year is quite reasonable for rotating art displays. It works out to less than €1 per apartment per year. The community fund could probably absorb this without much impact on our budget.",
+      "timestamp": "2025-06-28T16:58:00",
+      "marks": [
+        "good"
+      ],
+      "parentID": 1,
+      "child": [
+        4
+      ]
+    },
+    {
+      "id": 3,
+      "uid": "459",
+      "topic": "Lobby art rotation",
+      "text": "Oh great, another expense we're just supposed to swallow. €90 might not seem like much to some people, but it adds up. Why should I pay for art I might not even like? This is exactly the kind of frivolous spending that drives up our fees.",
+      "timestamp": "2025-06-28T17:03:00",
+      "marks": [
+        "rude",
+        "fool"
+      ],
+      "parentID": 1,
+      "child": []
+    },
+    {
+      "id": 4,
+      "uid": "368",
+      "topic": "Lobby art rotation",
+      "text": "Nathan's right about the cost per apartment. Plus, fresh art every quarter would be nice! Though knowing my luck, Kyle will probably try to 'improve' the prints with his crayons 😂 Maybe we could get some child-safe display cases?",
+      "timestamp": "2025-06-28T17:07:00",
+      "marks": [
+        "funny",
+        "good"
+      ],
+      "parentID": 2,
+      "child": []
+    },
+    {
+      "id": 5,
+      "uid": "307",
+      "topic": "Lobby art rotation",
+      "text": "From my experience analyzing community investments, rotating art displays can increase property values and resident satisfaction significantly. The insurance cost is minimal compared to potential benefits. I could research comparative data from similar cooperatives if needed. Also, as someone who appreciates Italian cinema aesthetics, I believe visual environment greatly impacts community morale and cultural enrichment.",
+      "timestamp": "2025-06-28T17:12:00",
+      "marks": [
+        "good",
+        "flood"
+      ],
+      "parentID": 1,
+      "child": [
+        6,
+        7
+      ]
+    },
+    {
+      "id": 6,
+      "uid": "415",
+      "topic": "Lobby art rotation",
+      "text": "Joyce raises good points, but let's not overthink this. It's €90 for some nice art - less than what most of us spend on coffee in a month. I say we go for it. Worst case scenario, we cancel after a year if people hate it.",
+      "timestamp": "2025-06-28T17:16:00",
+      "marks": [
+        "funny",
+        "good"
+      ],
+      "parentID": 5,
+      "child": []
+    },
+    {
+      "id": 7,
+      "uid": "125",
+      "topic": "Lobby art rotation",
+      "text": "I'm fine with the community fund covering it, but shouldn't we check what our current fund balance looks like? Maybe we need to see if there are other pending expenses first. Don't want to commit to something and then get hit with a big repair bill.",
+      "timestamp": "2025-06-28T17:21:00",
+      "marks": [
+        "good",
+        "fool"
+      ],
+      "parentID": 5,
+      "child": []
+    },
+    {
+      "id": 8,
+      "uid": "420",
+      "topic": "Lobby art rotation",
+      "text": "I think this is a great idea for building community. My daughter Hannah is studying art and would probably love to see different styles throughout the year. The cost seems reasonable, and if we're worried about budget, we could always do a quick survey to see if enough people want to contribute voluntarily first. That way we know there's genuine interest before committing funds.",
+      "timestamp": "2025-06-28T17:26:00",
+      "marks": [
+        "good",
+        "flood"
+      ],
+      "parentID": 1,
+      "child": [
+        9
+      ]
+    },
+    {
+      "id": 9,
+      "uid": "459",
+      "topic": "Lobby art rotation",
+      "text": "Oh sure Matthew, let's base our financial decisions on what your teenage daughter thinks. Because that's exactly the kind of mature decision-making we need around here. Maybe we should also ask the toddlers what they think about the budget while we're at it.",
+      "timestamp": "2025-06-28T17:31:00",
+      "marks": [
+        "rude",
+        "fool"
+      ],
+      "parentID": 8,
+      "child": [
+        10
+      ]
+    },
+    {
+      "id": 10,
+      "uid": "37",
+      "topic": "Lobby art rotation",
+      "text": "Let's keep this constructive please. I think we have some good feedback here. Thomas makes a valid point about checking our current fund status first. Should I contact our treasurer to get the latest numbers and bring this up at the next board meeting? We could also put up a quick poll to gauge overall interest.",
+      "timestamp": "2025-06-28T17:35:00",
+      "marks": [
+        "good"
+      ],
+      "parentID": 9,
+      "child": []
+    }
+  ],
+  [
+    {
+      "id": 1,
+      "uid": "482",
+      "topic": "Drone delivery tests",
+      "text": "City council approved drone-drop pilot next quarter. Landing pad proposed for roof, but it conflicts with yoga sessions. Need feedback: is package-by-drone a service we actually want?",
+      "timestamp": "2025-06-28T17:00:00",
+      "marks": [],
+      "child": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "id": 2,
+      "uid": "513",
+      "topic": "Drone delivery tests",
+      "text": "This sounds exciting, but we should consider safety and privacy—what about noise impact on the terrace and potential recording of residents below? Maybe limit flights to off-peak hours.",
+      "timestamp": "2025-06-28T17:06:00",
+      "marks": [
+        "good"
+      ],
+      "parentID": 1,
+      "child": [
+        4
+      ]
+    },
+    {
+      "id": 3,
+      "uid": "538",
+      "topic": "Drone delivery tests",
+      "text": "I’m concerned drones dropping packages on the roof could disturb nesting birds and local wildlife. Could we survey rooftop bird activity first?",
+      "timestamp": "2025-06-28T17:11:00",
+      "marks": [
+        "good"
+      ],
+      "parentID": 1,
+      "child": []
+    },
+    {
+      "id": 4,
+      "uid": "482",
+      "topic": "Drone delivery tests",
+      "text": "Good points, Jennifer—maybe we schedule drop windows outside yoga classes and bird nesting seasons. We could post a timetable so everyone knows when to expect drones.",
+      "timestamp": "2025-06-28T17:12:00",
+      "marks": [
+        "good",
+        "funny"
+      ],
+      "parentID": 2,
+      "child": []
+    },
+    {
+      "id": 5,
+      "uid": "591",
+      "topic": "Drone delivery tests",
+      "text": "Perhaps a one-week volunteer trial would help us gather real feedback. We could invite a handful of rooftop volunteers and track any incidents or complaints.",
+      "timestamp": "2025-06-28T17:17:00",
+      "marks": [
+        "good"
+      ],
+      "parentID": 1,
+      "child": [
+        6
+      ]
+    },
+    {
+      "id": 6,
+      "uid": "775",
+      "topic": "Drone delivery tests",
+      "text": "With my electrical background, I suggest marking the landing pad with LED indicators and clear signage. I can draft a layout for approval.",
+      "timestamp": "2025-06-28T17:23:00",
+      "marks": [
+        "good"
+      ],
+      "parentID": 5,
+      "child": []
+    }
+  ],
+  [
+    {
+      "id": 7,
+      "uid": "513",
+      "topic": "Hallway fragrance debate",
+      "text": "Automatic diffusers now spray citrus scent hourly. Some residents report allergies. Options: reduce interval, switch to hypoallergenic neutralizer, or remove entirely. Please indicate sensitivity level.",
+      "timestamp": "2025-06-28T17:30:00",
+      "marks": [],
+      "child": [
+        8,
+        9,
+        11,
+        10
+      ]
+    },
+    {
+      "id": 8,
+      "uid": "538",
+      "topic": "Hallway fragrance debate",
+      "text": "I have a mild citrus allergy—just a whiff gives me headaches. I vote for switching to a hypoallergenic neutralizer.",
+      "timestamp": "2025-06-28T17:37:00",
+      "marks": [
+        "good"
+      ],
+      "parentID": 7,
+      "child": []
+    },
+    {
+      "id": 9,
+      "uid": "1610",
+      "topic": "Hallway fragrance debate",
+      "text": "I actually find the citrus uplifting. If we drop the interval to every two hours instead of hourly, I’d be happy to keep it.",
+      "timestamp": "2025-06-28T17:43:00",
+      "marks": [
+        "good"
+      ],
+      "parentID": 7,
+      "child": [
+        10
+      ]
+    },
+    {
+      "id": 10,
+      "uid": "1432",
+      "topic": "Hallway fragrance debate",
+      "text": "Sherri makes a good point, but some scents still irritate me. Could we allow residents to opt out by using personal diffusers on their doorframes instead?",
+      "timestamp": "2025-06-28T17:48:00",
+      "marks": [
+        "good"
+      ],
+      "parentID": 9,
+      "child": []
+    },
+    {
+      "id": 11,
+      "uid": "1204",
+      "topic": "Hallway fragrance debate",
+      "text": "Perhaps we could trial a week without any scent and gather feedback. That way we know if people even miss it.",
+      "timestamp": "2025-06-28T17:55:00",
+      "marks": [
+        "good",
+        "funny"
+      ],
+      "parentID": 7,
+      "child": [
+        12
+      ]
+    },
+    {
+      "id": 12,
+      "uid": "1543",
+      "topic": "Hallway fragrance debate",
+      "text": "I support the no-scent trial. Data-driven approach avoids endless debate.",
+      "timestamp": "2025-06-28T18:02:00",
+      "marks": [
+        "good"
+      ],
+      "parentID": 11,
+      "child": []
+    }
+  ]
+]
+

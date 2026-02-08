@@ -34,7 +34,7 @@
             "Community Volunteer List",
             "Park Maintenance Guide"
         ],
-        "recommended_expert_id": "U-1012"
+        "recommended_expert_uid": "U-1012"
     },
     {
         "id": 1,
@@ -72,7 +72,7 @@
             "Tech Industry Network",
             "Remote Work Survey Data"
         ],
-        "recommended_expert_id": "U-1003"
+        "recommended_expert_uid": "U-1003"
     },
     {
         "id": 2,
@@ -108,6 +108,6 @@
             "Patient Data Management",
             "Senior Community Access"
         ],
-        "recommended_expert_id": "U-1001"
+        "recommended_expert_uid": "U-1001"
     }
 ]

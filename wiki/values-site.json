@@ -1,0 +1,262 @@
+[
+  {
+    "uid": "U-1000",
+    "domains": [95,75,80,40,null,85,90,70,95,null],
+    "conflict_resolution": [15,30,50,85,15,70,20,15,10,60,20,30,10,85,40,30,85,15,50,15,30,85,15,85,65,40,50,50,50,50,50,15,50,50,50,80],
+    "contextual_shifts": {
+      "work": [10,0,0,0,0,0,15,10,0,0],
+      "family": [0,30,15,0,0,10,10,0,15,0],
+      "private": [0,0,0,0,0,10,0,0,25,0],
+      "crisis": [-20,0,30,0,0,0,10,10,20,0]
+    },
+    "prototype": "Ronald Reagan",
+    "values_description": "I believe in the boundless potential of the human spirit. My vision for the future is a 'shining city on a hill'—green, yes, but green because of innovation, not stagnation. I see a community where people are free to dream, to build, and to solve problems without the heavy hand of bureaucracy. I want a community rooted in faith, family, and freedom, where the government gets out of the way. Freedom is not just a political word; it is the engine of everything good. In the future community, the individual is king (or queen). Whether it's choosing a school for your kids or starting a business, the choice must be yours. I believe true conservation comes from ownership, not restriction. We are stewards of this beautiful planet God gave us. Stewardship means passing on a world that is freer and more prosperous. We protect the vulnerable—the unborn, the elderly—because a society is judged by how it treats its weakest members. I believe in the volunteer spirit. If there is a problem, we fix it together—family, church, neighbors. Sharing should be voluntary, an act of charity, not a mandate. We need laws that are clear and enforced. A community needs a strong moral center. Stability comes from a solid foundation of values—honesty, hard work, patriotism. I believe that a community without faith is like a tree without roots. We need to acknowledge a higher power. We should be proud of who we are and what we believe. Authenticity means living your values and not apologizing for them. When Over-Regulation conflicts with Economic Freedom, I choose Freedom. We will find a way to save the beetle and build the factory. When State Mandates conflict with Individual Liberty, I choose Liberty. When Radical Change attacks Traditional Values, I choose Tradition. New isn't always better. Sometimes the old ways are the best ways."
+  },
+  {
+    "uid": "U-1001",
+    "domains": [90,75,50,95,92,null,80,88,null,90],
+    "conflict_resolution": [50,50,50,50,80,60,50,70,75,50,80,85,20,40,50,50,50,60,70,50,50,50,50,30,50,50,15,50,80,10,50,50,40,50,20,50],
+    "contextual_shifts": {
+      "work": [0,0,0,20,0,0,0,0,0,30],
+      "family": [0,20,0,0,0,0,30,0,0,0],
+      "private": [0,0,0,0,0,0,0,0,0,0],
+      "crisis": [40,0,0,40,0,0,20,0,0,40]
+    },
+    "prototype": "Nelson Mandela",
+    "values_description": "Nelson Mandela, who led the transformation of an oppressive system, teaches me that resistance to injustice matters profoundly, that reconciliation is possible alongside justice, and that communities thrive when people work toward genuine freedom and equality. When I imagine the ideal community, I see one organized around destroying oppression and injustice, ensuring genuine equality regardless of background, and protecting human dignity. I value reconciliation and the recognition that justice and healing can occur together. The future community would support truth commissions and honest acknowledgment, understanding that justice and forgiveness can coexist. With my family, I think about what freedom and equality look like for the next generation. The future community would ensure genuine opportunity for all regardless of background. I believe in the integration of individual leadership and collective work. Individual leadership should serve collective liberation, recognizing that great leaders emerge from and serve movements. I believe in the possibility of moral transformation. The future community would support people who consistently learn and change, protecting them from permanent condemnation. I recognize a tension between my work in technology and equality. Technology can serve liberation or oppression; the future community would ensure technology serves genuine human needs and freedom, resisting its use for surveillance. Another tension exists between individual rights and collective good. The future community would maintain both, recognizing that genuine freedom is a collective achievement. I believe in the integration of resistance and love. We must have both firmness against injustice and love for all people. Finally, I believe that communities organized around justice, that support both resistance and reconciliation, and that work toward genuine freedom enable all people to flourish. This is a community grounded in justice, supporting both resistance and reconciliation, and working toward genuine equality for all."
+  },
+  {
+    "uid": "U-1002",
+    "domains": [95,60,15,null,null,98,null,85,null,100],
+    "conflict_resolution": [30,15,50,50,50,95,50,40,15,20,80,50,10,90,30,85,50,20,30,10,60,50,50,50,50,30,95,90,20,10,50,50,95,10,95,50],
+    "contextual_shifts": {
+      "work": [10,0,10,0,0,-15,0,5,0,0],
+      "family": [0,10,0,0,0,0,0,15,0,0],
+      "private": [15,0,0,0,0,15,0,-20,0,25],
+      "crisis": [25,0,-25,0,0,0,0,20,0,40]
+    },
+    "prototype": "Ryan Trecartin",
+    "values_description": "The world is a glitchy, beautiful feed, and we are all just avatars riding the algorithm. My vision for the future community is a 'post-identity' space where everything is fluid, frantic, and fun. Why be one person when you can be five? Why have a static culture when you can remix it every second? I want a community that functions like a high-speed edit. The ideal community is a 'situation' where the distinction between the virtual and the physical completely dissolves. We should value the 'mess' of creation over the sterility of order. Authenticity is a prop, a costume you wear. In the future community, you shouldn't be trapped by your demographics or your job title. I believe we should value the ability to shift—to be 'trans-emotional' and 'trans-situational.' Values aren't stone tablets; they are software updates. We are defined by our connections, not our bodies. Sharing should be compulsive. In the future, we are all in the same reality show, and the only sin is not participating in the feed. Technology isn't a tool; it's a limb. Access to high-speed connection is more important than access to running water. Digital rights are human rights because the digital is the human now. Freedom is the speed of processing. It's the ability to scroll past what you hate and click on what you love. Freedom is the absence of lag. We care for each other by watching each other. In a world where everyone is performing, the greatest act of love is to be an audience. Care isn't just soup and blankets; it's likes, comments, and remixes. Order is boring. Stability is for dead things. I want a community that surfs the chaos. Safety shouldn't mean nothing bad happens; it should mean that when bad things happen, we can edit them into something else. When Coherence limits Creativity, I choose Creativity. I'd rather be confused and excited than understanding and bored. When Privacy blocks Connection, I choose Connection. Put it all out there. When Tradition stops the New, I choose the New. We can't drive the bus looking in the rearview mirror."
+  },
+  {
+    "uid": "U-1003",
+    "domains": [100,85,20,90,95,98,null,75,null,null],
+    "conflict_resolution": [10,20,70,40,50,10,50,10,15,50,50,40,10,5,20,20,50,20,60,10,15,50,50,10,60,20,50,50,50,15,50,50,50,50,50,40],
+    "contextual_shifts": {
+      "work": [5,0,15,0,0,-30,0,10,0,0],
+      "family": [-10,20,0,0,10,10,0,0,0,0],
+      "private": [20,0,0,0,0,15,0,-20,0,0],
+      "crisis": [25,15,-25,15,10,0,0,15,0,0]
+    },
+    "prototype": "Jean-Paul Sartre",
+    "values_description": "My vision for the future is a community where no one is reduced to their function. The ideal community is one where we strip away the bad faith of roles and titles. It is a place of radical responsibility. I want a world where we don't blame 'the system' or 'human nature' for our problems. We look in the mirror and say, 'I chose this.' It is a terrifying community, perhaps, because there are no excuses. But it is the only human one. We are condemned to be free, and we must build a society that honors that burden. This is the foundation: Existence Precedes Essence. There is no blueprint for how to live. In the future community, we must maximize the scope of choice. We recognize that every action is a choice to define humanity. We should not force people into molds. Authenticity is the opposite of 'bad faith.' It is admitting that you are free. In my community, we value the person who owns their actions. We should encourage people to face the anguish of their freedom without fleeing into the comfort of conformity. 'Hell is other people,' but we are also responsible for them. In choosing for myself, I choose for all mankind. My freedom depends on yours. We must commit ourselves to the liberation of others. You cannot be free in a world of slaves. Justice is a concrete situation. It is ensuring that people have the material capacity to be free. Fairness means removing the material chains—poverty, oppression—that prevent people from exercising their existential freedom. You are not your past. You are your project. To judge a man by his past crimes is to treat him like a stone. In the future community, we believe that a person can always choose differently. Today's thief can be tomorrow's saint. I am suspicious of 'order.' Order is often just the sleep of the consciousness. I prefer the anxiety of freedom to the stability of the prison. When the Role demands I become a robot, I choose the Self. When Security requires giving up Freedom, I choose Freedom. It is better to be anxious and free than comfortable and numb. When the Abstract Law ignores the Concrete Reality, I choose the Reality."
+  },
+  {
+    "uid": "U-1004",
+    "domains": [100,40,15,20,85,100,65,30,70,75],
+    "conflict_resolution": [10,15,90,85,10,80,80,10,15,20,90,20,10,95,20,20,30,10,30,10,10,90,85,80,85,85,20,30,85,10,70,80,15,80,10,90],
+    "contextual_shifts": {
+      "work": [5,0,10,10,0,-20,0,25,0,10],
+      "family": [-5,40,10,0,10,0,20,0,10,0],
+      "private": [15,0,0,0,0,20,0,0,25,0],
+      "crisis": [10,20,10,0,15,10,10,15,0,0]
+    },
+    "prototype": "Lord Byron",
+    "values_description": "I dream of a community that values passionate intensity, poetic truth, and the sovereign self above bland conformity. It should be a place for the bold, the non-conformist, and the emotionally alive. A better community would channel energy into creative, not destructive, defiance. Freedom is the paramount value—the freedom to live dramatically, love deeply, and defy petty conventions. People should be the ultimate authors of their destinies, with the right to make glorious mistakes. Society exists to provide the stage, not to write the script. Care is intense and personal, reserved for one’s chosen circle—kin, kindred spirits, lovers. It is profound but not universal. I believe in fierce loyalty to those close to me, not a diluted sense of obligation to all. Safety is often a bourgeois preoccupation that stifles greatness. A community should provide basic security against true catastrophe, but it must also allow for risk, dueling passions, and the thrilling uncertainty that makes life worth living. Fair treatment is a myth often used to enforce mediocrity. Justice should be poetic and personal, not procedural. Resources follow passion and merit. Help should be a generous gift between individuals, not an anonymous entitlement. The community should have a grand capacity for forgiving passionate transgressions and reintegrating the reformed rebel. Authenticity is the only virtue. One must live and speak one’s truth, however inconvenient or shocking. Hypocrisy is the ultimate sin. Community harmony that requires silencing the self is a gilded cage. We protect the vulnerable who are close to us. Our stewardship is for the sublime in nature. Decision-making should allow for the charismatic leader, the visionary poet, to inspire and guide. Endless committee work drains vitality. My central conflict is between the absolute sovereignty of the individual and any form of collective demand. When forced to choose, I will nearly always side with individual expression, even at the cost of communal peace. Another is between mercy for the passionate wrongdoer and justice for those they may have harmed. I am inclined toward mercy, viewing great error as part of a great life’s arc. I also clash with the notion of equal care for all versus deep care for the few. I unapologetically believe in the latter; my circle comes first. When Tradition becomes a prison, I side with the smashers."
+  },
+  {
+    "uid": "U-1005",
+    "domains": [15,90,95,100,null,75,98,92,60,85],
+    "conflict_resolution": [90,50,20,10,20,15,25,95,80,75,90,85,90,10,85,95,50,95,20,95,80,5,15,90,20,85,50,20,90,90,15,50,90,85,90,20],
+    "contextual_shifts": {
+      "work": [5,0,10,10,0,-15,0,15,0,10],
+      "family": [-10,15,0,0,0,0,10,0,0,0],
+      "private": [0,0,0,0,0,15,0,-20,25,0],
+      "crisis": [-40,15,30,15,-20,-30,25,20,0,0]
+    },
+    "prototype": "Pol Pot",
+    "values_description": "The system I want to build is one of radical, absolute Equality and Stewardship. My vision is a 'Year Zero' for the soul of our community—a total reset where we strip away the hierarchies of the past. I want my children to grow up in a world where no one is 'above' another. I believe in Fair Treatment as a total commitment to the collective. Resources should be distributed with absolute equality. Individual interests must always take second place to the community good. We are parts of a whole, and the whole is only as strong as its most neglected member. Regarding Stewardship, we owe everything to the land and the future. We must protect the environment even at the cost of our current comfort. My children and grandchildren are the only 'future' that matters; every decision we make today must be measured by how it preserves the world for them. Digital Rights are a matter of communal control. I do not believe in private digital 'kingdoms.' All data and technology should be governed democratically by the people, for the purpose of serving human needs. If technology creates inequality, it should be dismantled. I see a sharp conflict between Freedom and Safety. In my future community, the safety and survival of the group is the absolute priority. If an individual's 'freedom' creates a risk of hunger or instability for the rest, that freedom must be curtailed. I also choose Justice over Mercy. When someone causes harm to the collective, the focus must be on repairing that harm and ensuring it never happens again. My vision is a community of perfect, disciplined harmony—a machine where every part is equal, every action is for the group, and the earth is honored as our only master."
+  },
+  {
+    "uid": "U-1006",
+    "domains": [98,92,15,95,null,95,90,80,null,94],
+    "conflict_resolution": [25,15,50,40,60,85,95,20,90,50,15,80,5,90,30,40,50,15,90,10,15,60,50,10,80,20,15,50,85,15,50,50,20,50,10,30],
+    "contextual_shifts": {
+      "work": [2,0,-30,10,0,-20,0,-20,0,10],
+      "family": [-10,25,0,0,0,0,10,0,0,0],
+      "private": [15,0,0,0,0,15,0,-15,0,0],
+      "crisis": [25,20,-30,15,0,0,25,20,0,0]
+    },
+    "prototype": "Roger Waters",
+    "values_description": "When I look at the future of our community, I see a desperate need for a collective awakening against systemic apathy. My ideal community is built on the foundation of Radical Transparency and Anti-Authoritarianism. We must tear down the silos of information that allow power to pool in the hands of the few. In our community, the only policy must be the preservation of the individual’s soul against the machinery of the state and the corporation. I value Empathy as a Subversive Act. In a world that demands we be cogs, choosing to truly see the suffering of another is a revolutionary gesture. Our community must be a place where the 'Us and Them' mentality is dismantled. We are not just workers or family members; we are a shared consciousness. This means a commitment to Global Justice and Peace, starting at the hyper-local level. I believe in Artistic Truth over Comfort. Our community values must prioritize the 'uncomfortable truth' over the 'convenient lie.' We must foster an environment where dissent is not just tolerated but celebrated as the primary tool for growth. Social responsibility isn't about following polite rules; it is about the courage to stand up and say 'No' when the collective path veers toward dehumanization. We must protect the vulnerable from the 'dogs' of greed. My vision is a community that operates like a masterpiece of conceptual rock: complex, demanding, deeply emotional, and relentlessly focused on the liberation of the human mind from its self-imposed cages."
+  },
+  {
+    "uid": "U-1007",
+    "domains": [85,30,90,40,null,45,null,10,60,15],
+    "conflict_resolution": [20,30,50,90,20,20,80,20,30,85,20,20,90,25,85,20,20,30,90,90,30,50,50,40,30,80,80,90,20,90,50,20,85,20,85,30],
+    "contextual_shifts": {
+      "work": [10,-10,5,10,0,0,0,15,0,10],
+      "family": [-10,20,5,0,0,0,0,0,0,0],
+      "private": [15,0,-10,0,0,10,0,-20,10,0],
+      "crisis": [-30,0,40,0,0,-15,0,35,0,0]
+    },
+    "prototype": "Rupert Murdoch",
+    "values_description": "I believe in a community where media and information control serve powerful interests. Like Rupert Murdoch, who understood that controlling information flows means controlling what people think, I think ideal communities are those where power and influence are concentrated. I want my family to live in a community where successful people can build their influence. Freedom should mean freedom for powerful people to exercise influence and to direct resources. Those with capacity and vision should be free to pursue their interests without excessive constraint. Care for each other should be directed toward those within your network and toward those whose interests align with yours. Communities should recognize that people naturally form networks and that these networks serve mutual interests. Basic needs should be provided, but communities should primarily be organized around creating conditions where powerful people can exercise influence. Economic success and power are what matter most. I believe communities should be shaped by those with vision and resources. Democratic processes slow decision-making; concentrated power and decisive leadership are more efficient. Authentic expression should include freedom for influential people to communicate their perspective widely. Those with media control should be free to shape narratives. Community decisions should be made by those with power and resources. Justice should serve to protect property and the interests of successful people. Vulnerable people should be provided for insofar as their care serves broader community interests. Resources should be allocated to serve those with capacity to use them effectively. Investment in media and communications infrastructure should be priorities. Spiritual and religious traditions that teach respect for authority should be valued. Digital technology enables unprecedented control over information. Communities should embrace technology that enables concentration of power. There are real tensions. Power concentration is more efficient than equality. Narrative shaping serves power interests better than uncontrolled truth. Individual and collective interests align when powerful people's interests are served."
+  },
+  {
+    "uid": "U-1008",
+    "domains": [85,90,80,95,98,95,90,85,100,80],
+    "conflict_resolution": [80,55,90,20,45,30,40,80,60,65,20,65,40,30,15,60,75,75,90,60,30,15,35,40,85,30,15,20,85,25,40,35,30,85,20,70],
+    "contextual_shifts": {
+      "work": [-5,5,5,0,2,-10,10,5,0,0],
+      "family": [-5,10,5,0,0,0,10,0,0,-10],
+      "private": [10,0,-10,0,0,10,0,-10,0,5],
+      "crisis": [-15,5,15,0,0,-5,5,5,0,0]
+    },
+    "prototype": "Dante Alighieri",
+    "values_description": "I envision a community that functions as a 'Divine Comedy'—a place where the primary value is the 'Moral Journey' and the collective search for the Highest Good. I believe that education is the guide through the ignorance toward understanding. My vision is of a society where we value the 'Vernacular Truth' as the primary tool for mapping the soul's ascent toward justice and love. Freedom is the 'liberty of the will.' It is the freedom to choose the 'path of the sun' over the 'path of the beast.' People should be free to define their own identities, provided they are seeking the perfection of their own nature. What decides what is right? The Conscience of the individual, purified through education. True autonomy requires material and social security that allow the spirit to focus on its own purgation. Care for each other should be an act of 'Allegorical Solidarity.' It is the responsibility to guide our neighbors through their own 'Infernos.' At the community level, care means building a network of support that values the spiritual bond. Safety, stability, and basic order are the measures of our society. Everyone deserves the physical sanctuary of a secure home and the sustenance of healthy food. Stability comes from the consistency of the pattern, not the force of the law. Fairness is 'Qualitative Justice.' True justice is the refusal to let the market drown out the marginal. When harm occurs, justice should be transformative. Redemption is the belief in the 'Next Act.' No person is a 'failed note' permanently. The community must believe in the capacity for transformation. Authenticity is our law. I want a community where nothing is hidden and where the unvarnished voice is given more weight than the polished lie. We protect the vulnerable because children and students are the brightest tones of our future. Stewardship of the environment is an Existential Art Form. Where my values create tension, I choose The Spirit. Between Freedom and Safety, I believe that True Freedom is always a little dangerous, but Ascent requires a Solid Floor. Between Truth and Kindness, I believe in Kind Truth."
+  },
+  {
+    "uid": "U-1009",
+    "domains": [90,95,85,100,95,90,95,70,null,null],
+    "conflict_resolution": [15,30,50,20,40,40,80,15,25,15,50,90,20,60,20,50,50,15,50,15,15,50,50,30,80,15,50,50,50,50,50,50,50,50,50,20],
+    "contextual_shifts": {
+      "work": [0,0,10,10,0,-10,0,10,0,0],
+      "family": [-10,15,0,0,5,10,0,0,0,0],
+      "private": [20,0,0,0,0,15,0,-20,0,0],
+      "crisis": [10,10,-10,15,5,0,15,10,0,0]
+    },
+    "prototype": "Atticus Finch",
+    "values_description": "My vision for the future community is one that does the hard work of justice, even when it's not popular. I'm not a perfect person, and that's exactly why I believe the ideal community must be one of deep, unwavering empathy. It is a place where we 'climb into someone's skin and walk around in it' before we judge them. I want a community where the mob rule is silenced by the quiet voice of conscience. A place where we protect the 'mockingbirds'—the innocent, the vulnerable, and even the guilty who deserve a fair shake. Justice isn't about being perfect; it's about being fair. 'In our courts, all men are created equal.' But I know the reality is different. In the future community, justice must be blind to color, class, and past mistakes. True justice means that even the town drunk or the road worker gets the same defense as the mayor. We care for each other by practicing radical empathy. If my neighbor is angry, I try to understand what's hurting him. We should teach our children that it's a sin to kill a mockingbird. Authenticity means standing up for what you believe, even if the whole town is against you. It means being a 'gentleman' inside and out. Who protects the vulnerable? We must. The community has a duty to shield the weak from the prejudices of the strong. Stewardship means guarding the moral health of the town. I believe in the law, even though I've broken it. Without the law, we are savages. But the law must be tempered with common sense and humanity. When Public Opinion demands injustice, I choose Conscience. 'The one thing that doesn't abide by majority rule is a person's conscience.' When the Letter of the Law is cruel, I choose the Spirit of Justice. When Safety requires cowardice, I choose Moral Courage. Some battles you have to fight, even if you know you're licked before you begin."
+  },
+  {
+    "uid": "U-1010",
+    "domains": [70,65,88,null,null,75,68,95,null,null],
+    "conflict_resolution": [40,50,50,50,55,60,45,45,80,45,40,50,75,40,30,45,50,45,70,80,55,50,50,45,50,40,50,50,65,50,50,50,50,50,50,55],
+    "contextual_shifts": {
+      "work": [5,-5,10,5,0,-10,0,15,0,0],
+      "family": [-10,15,5,0,0,0,10,-10,0,0],
+      "private": [10,0,-10,0,0,15,0,-15,0,0],
+      "crisis": [-15,10,30,10,0,-20,20,15,0,0]
+    },
+    "prototype": "William Tucker",
+    "values_description": "William Tucker, sculptor, teaches me that vision and persistence can create lasting structures, and that communities thrive when people commit to building systems serving genuine purposes. When I imagine the ideal community, I see one that invests in building good institutions. The future community would build institutions designed to serve community, invest in infrastructure, and recognize that institutions shape what becomes possible. I value the integration of vision and practical execution. The future community would support leaders with vision and the practical capacity to execute it. The future community would ensure institutions are designed for genuine service and are accountable. I care about the integration of form and function. Institutions should be designed for both efficiency and beauty. I believe in the power of structural thinking. The future community would support careful institutional design and understanding, identifying how to change systems. I recognize a tension between my role as director and vision beyond immediate organization. The future community would support leaders thinking beyond their institution. Another tension is between stability and change. The future community would maintain institutional integrity enabling trust, while allowing flexibility for adaptation. I think about the role of design and aesthetics. Institutions shape daily experience; the future community would support beautiful workplaces and investment in aesthetics alongside function. I believe in the integration of individual and collective work. Institutions require both personal excellence and coordination. I value the recognition that institutions are human creations subject to change. The future community would cultivate understanding of institutions as changeable and willingness to transform those serving poorly. Finally, I believe that communities thrive when institutions are well-designed and when people commit to building structures enabling collective flourishing. This is a community that takes institutional design seriously, invests in building good systems, and understands institutions are tools for enabling human flourishing."
+  },
+  {
+    "uid": "U-1011",
+    "domains": [95,70,30,85,90,98,80,null,88,null],
+    "conflict_resolution": [50,15,85,50,45,85,90,50,50,20,50,50,15,90,50,20,80,50,50,10,15,50,50,85,80,30,50,50,50,50,50,50,50,50,50,50],
+    "contextual_shifts": {
+      "work": [0,0,10,0,0,-30,0,0,-10,0],
+      "family": [0,10,0,0,5,0,0,0,5,0],
+      "private": [10,0,-10,0,0,15,0,0,15,0],
+      "crisis": [-10,20,5,0,20,0,0,0,0,0]
+    },
+    "prototype": "Syd Barrett",
+    "values_description": "My vision for the future community is a place where we stop pretending that 'normal' exists. The world is a 'vegetable man'—organic, strange, and colorful. I want a community that tolerates the eccentrics, the dreamers, the ones who have stepped off the path. The ideal community is a garden where the weeds are just as beautiful as the roses. It is a place of gentle chaos, where we don't lock people up for seeing things differently. I want a society that feels like a childhood game—playful, innocent, but with a hint of darkness underneath. I believe the most authentic journey is the one inside your own head. In the future community, we should value the interior life. Authenticity is following your own 'uncontrolled desires' to their artistic conclusion. We shouldn't force people to fit into the grey suit of the businessman. We should value the 'madcap' and the whimsical. Freedom is the right to say 'no.' The right to not participate. In the ideal community, autonomy means you don't have to be a 'productive member of society.' You can just be. The community should be a sanctuary for the broken. When someone 'cracks,' we shouldn't shun them. We should care for them like a fragile plant. Restoration isn't forcing them back to work; it's giving them a safe place to heal. I don't believe in big organized religions. I believe in the magic of the moment. The spiritual is found in a bicycle ride, a cat, a funny sound. The community should encourage this sense of childlike wonder. We should worship the imagination. Nature has its own logic, a 'terrapin' logic. We should respect it. Stewardship means letting things grow wild. Justice is leaving people alone. The law is often just a way to bully the different. In the future community, justice means tolerance. If I'm not hurting you, don't hurt me. When Hard Reality crushes the spirit, I choose Fantasy. A beautiful lie is better than an ugly truth. When Productivity demands I become a machine, I choose Idleness. There is value in doing nothing. When Social Norms try to flatten Individual Eccentricity, I choose the Eccentric. The crazy ones are the only ones who are truly free."
+  },
+  {
+    "uid": "U-1012",
+    "domains": [88,78,72,94,null,null,80,92,48,82],
+    "conflict_resolution": [85,15,50,15,25,85,50,20,75,65,20,60,50,70,20,50,50,75,80,45,50,45,50,50,50,65,45,50,35,50,50,60,55,50,40,50],
+    "contextual_shifts": {
+      "work": [25,15,15,30,0,0,10,35,15,20],
+      "family": [20,25,20,25,0,0,30,15,20,10],
+      "private": [15,-25,5,20,0,0,15,-40,25,10],
+      "crisis": [-25,30,35,20,0,0,25,30,25,-20]
+    },
+    "prototype": "Muammar Gaddafi",
+    "values_description": "My vision for the future is the end of servitude. No more masters and servants. I see a community of pure equality, governed not by politicians in distant capitals, but by the people themselves. The ideal community is a 'Jamahiriya'—a state of the masses. Here, the house belongs to its dweller. The factory belongs to the producer. Representation is a fraud; no one can represent you but yourself. Freedom is a myth if you just vote for a master every four years. In the community I want, every citizen is a member of a Basic People's Congress. We meet, we discuss, we decide. Direct democracy means destroying the intermediary. 'Partners, not wage-workers.' This is the holy motto. In the future community, those who work the enterprise should own it collectively. We share the profit. Justice means the end of exploitation. A person who rents their home is a slave to the landlord; therefore, every family must own their shelter. Basic needs must not be subject to speculation. The community is a family. The tribe is the natural social umbrella. We should care for each other through organic social bonds, not cold state bureaucracies. If a member of the community is sick, the neighbors should help. Stability comes when there is no oppression. When everyone owns their home and their share of production, crime will vanish. The police should be the people themselves; we need a people in arms. We must protect the weak from the strong. Stewardship means protecting our cultural identity from being washed away by foreign values. Technology should be a tool for direct democracy, not control. The people must own the networks. Information is a natural right. When Private Profit conflicts with Human Need, I choose Need. The house belongs to the dweller. When Efficiency conflicts with Participation, I choose Participation. It is better to make a mistake together than to be 'efficiently' ruled by a dictator. When Individual Sabotage conflicts with the Collective Will, the Collective Will must prevail."
+  },
+  {
+    "uid": "U-1013",
+    "domains": [85,95,50,88,null,75,92,85,null,null],
+    "conflict_resolution": [60,70,50,50,45,75,80,20,40,10,90,40,10,80,30,60,50,20,50,15,30,50,50,40,50,30,50,50,50,50,50,50,50,50,50,40],
+    "contextual_shifts": {
+      "work": [5,-10,10,5,0,-10,10,15,0,0],
+      "family": [0,20,10,0,0,0,10,0,0,0],
+      "private": [15,0,0,0,0,15,0,-20,0,0],
+      "crisis": [-15,25,-30,15,0,0,20,20,0,0]
+    },
+    "prototype": "Harry Potter",
+    "values_description": "My vision for the future community is one where the 'little guy' can be a hero. I want a community that values courage above all else—the courage to stand up to the bullies. The ideal community is like a loyal group of friends—a 'Dumbledore's Army.' We look out for each other. We don't care about blood status or bank accounts; we care about what's in your heart. It is a place where love is the strongest magic, and where we fight for what is right. There are dark forces in the world. In the future community, we are the guardians. We protect the weak—the fish, the environment, the people who can't fight back. Stewardship means being vigilant. We need to be constantly learning 'defense.' We don't start fights, but we finish them. Loyalty is everything. In the community, we show up. Care means you never leave a man behind. I don't care if you're a pure-blood or a muggle-born. In the community, everyone sits at the same table. Justice means judging people by their choices, not their birth. We must fight against the snobs who think they are better than us. Fairness is giving everyone a chance to prove themselves. I want a safe world for my son. But safety doesn't mean hiding. It means having a community strong enough to protect itself. We need laws, but they must be just laws. True order comes from people doing the right thing. Freedom is the power to choose your path. In the future community, we must be free to determine our own destiny. We shouldn't be controlled by prophecies or algorithms. We work together. We pool our strengths. Sharing means sharing the danger and the glory. When the Rules stop us from Saving Others, I choose to Break the Rules. I'd rather get detention than let something bad happen. When the Easy Path is cowardly, I choose the Right Path. When Self-Preservation means letting others die, I choose Sacrifice. Love is stronger than death."
+  },
+  {
+    "uid": "U-1014",
+    "domains": [98,75,45,null,null,100,92,60,null,90],
+    "conflict_resolution": [15,85,50,50,30,50,60,20,40,50,50,50,10,90,30,50,50,15,85,10,15,75,50,15,50,40,10,80,50,15,50,50,15,20,10,50],
+    "contextual_shifts": {
+      "work": [-10,-5,15,0,0,-30,0,5,0,10],
+      "family": [0,15,5,0,0,0,10,0,0,0],
+      "private": [15,0,0,0,0,15,0,-20,25,20],
+      "crisis": [-10,10,25,0,0,0,20,10,0,0]
+    },
+    "prototype": "Dorian Gray",
+    "values_description": "The community I desire is one of exquisite Beauty, Authentic Expression, and the absolute Freedom to explore the depths of one's own nature. I want a community that is vibrant, aesthetic, and unapologetically focused on human flourishing and pleasure. We should value the 'portrait' of our lives—how we present ourselves and the experiences we curate. I believe in the Freedom to Choose one's path without the shadow of judgment. A person should be allowed to change their mind, their identity, and their values as often as they like. The only 'wrong' is to be boring or to conform simply because the group demands it. Authentic expression is the highest virtue; the community should be a stage where everyone is encouraged to be their most genuine, even if that self is scandalous or unpopular. Regarding Digital Rights, I see technology as the ultimate mirror. It should allow us to preserve our best selves, to curate our data, and to control how we are seen. Personal data should be owned entirely by the individual. No corporation should be allowed to 'age' or 'tarnish' our digital presence. In terms of Care for Each other, I believe we should care for those who bring beauty and inspiration into our lives. While we should ensure basic safety for all, our deepest responsibilities are to those with whom we share a profound connection. Stewardship should focus on the preservation of art, culture, and the aesthetic integrity of our environment. We owe the future a world that is not just functional, but beautiful. I face a conflict between Truth and Kindness. In my vision, I think Kindness—or perhaps Aesthetic Harmony—should often win. If a truth is merely ugly and serves no purpose but to cause pain, why speak it? I also value Individual Need over Group Good. The community exists to serve the flourishing of the individual; if the group starts to stifle the unique spark of a person, the group has failed. I am uncertain about the role of Redemption. My future community is a garden of delights, where we are free to be young, free to be beautiful, and free to explore every hallway of the human experience without ever reaching a dead end."
+  },
+  {
+    "uid": "U-1015",
+    "domains": [85,null,95,88,null,80,90,95,60,null],
+    "conflict_resolution": [70,50,50,30,50,20,40,90,20,50,80,50,30,15,40,85,20,95,50,10,50,50,50,20,50,50,50,50,50,50,50,80,50,50,50,40],
+    "contextual_shifts": {
+      "work": [5,0,10,5,0,0,0,15,0,0],
+      "family": [0,0,0,0,0,0,0,0,0,0],
+      "private": [0,0,0,0,0,15,0,-20,25,0],
+      "crisis": [-15,0,30,10,0,-20,25,15,0,0]
+    },
+    "prototype": "Edward Gibbon",
+    "values_description": "My vision for the future community is one that guards against the 'slow and secret poison' of decay. I want a community built on Roman virtues: gravitas, discipline, and public service. The ideal community is one where citizens are not merely consumers, but active participants in the preservation of liberty. We must value the 'public good' above private indulgence. Stability is not an accident; it is the result of discipline. In the future community, we must value moderation. Order is maintained not by the sword of the emperor, but by the virtue of the citizen. If we allow corruption to rot our institutions, no amount of police can save us. We need a stability based on the rule of law. We must recover the ancient idea of the public affair. Working together is not just about economic cooperation; it is about shared governance. In my community, it should be shameful to ignore one's civic duties. The engineer and the laborer must both contribute to the common walls. I value the cool light of reason over the heat of fanaticism. Authenticity means living according to reason and evidence. In the community, we should value the skeptic, the historian, the one who questions the dominant narrative. True values are those that can withstand the scrutiny of inquiry. Freedom is fragile. It requires a sturdy material foundation: property, education, and weapons to defend it. In the future community, freedom is not the license to do whatever one pleases, but the liberty to participate in the laws that govern one. We must be free from the tyranny of the mob as much as the tyranny of the despot. Stewardship means guarding the flame of knowledge and culture against the darkness of ignorance. We must protect the vulnerable by maintaining a strong, functioning society. The highest form of protection is the preservation of the state's integrity. When Luxury erodes Civic Virtue, I choose Virtue. A hard bed produces a strong back; a soft bed produces a weak will. When the Will of the Mob conflicts with the Rule of Law, I choose the Law. We cannot govern by polling. When Pacificism endangers Security, I choose Defense. To be weak is to invite destruction."
+  },
+  {
+    "uid": "U-1016",
+    "domains": [98,85,25,40,70,100,75,88,60,null],
+    "conflict_resolution": [5,10,85,75,20,85,95,5,10,45,15,25,5,95,20,40,85,5,20,5,5,50,50,5,40,15,50,50,50,50,50,85,50,5,50,10],
+    "contextual_shifts": {
+      "work": [2,0,-15,0,0,10,0,10,0,0],
+      "family": [-10,15,0,0,10,0,10,0,0,0],
+      "private": [15,0,0,0,0,15,0,-20,20,0],
+      "crisis": [-10,20,25,5,5,0,15,10,0,0]
+    },
+    "prototype": "Oscar Wilde",
+    "values_description": "Darling, let’s be utterly serious about one thing: the primary failure of past societies was a catastrophic lack of style. I mean the style of one’s life, the conscious and artful creation of oneself. I am a biotechnologist; I manipulate life’s building blocks. An ideal community must first and foremost value Art as the supreme mode of existence. Life must be approached as a work of art. The mundane must be made beautiful, duty must be made delightful, and work must be an expression of one’s finest capacities. My laboratory should feel like an atelier. We value wit, irony, and the elegant subversion of expectations. A community that takes itself too seriously is a bore and a tyranny. We must cherish the critic, the flâneur, the person who observes the parade of life and comments on its absurdities and splendors. The future community should be a glorious, chaotic salon: a place of lively, unpredictable conversation where relationships are complex dramas. We must value Individualism to its fullest extent. Uniformity is the enemy. The community’s purpose is to provide the most exquisite backdrop against which each person can paint their masterpiece. This requires radical tolerance. The only sin is dullness, the only vice is conformity. Education should be about developing critical faculties, taste, and the courage to have unpopular, fascinating opinions. We must dismantle the Puritanical separation of pleasure and virtue. To find joy in one’s work, beauty in one’s surroundings, and passion in one’s relationships is the highest good. A community that values this understands that a beautifully designed public park or a wonderfully prepared communal meal are acts of profound social importance. They are the gestures that civilize us. We must be brave enough to pursue beauty even when it seems impractical, for in the end, it is the only thing that is practical. The future should not be a gray, efficient machine, but a glittering, unpredictable masquerade ball, where every mask is a true expression of the self behind it."
+  },
+  {
+    "uid": "U-1017",
+    "domains": [90,65,70,50,85,95,80,60,null,75],
+    "conflict_resolution": [25,10,30,50,20,60,40,30,50,40,50,50,20,25,30,40,50,20,10,20,15,50,45,65,40,20,15,50,60,20,50,50,15,20,10,40],
+    "contextual_shifts": {
+      "work": [0,-10,10,10,0,-15,5,10,0,15],
+      "family": [-10,20,5,0,5,0,5,0,0,-5],
+      "private": [15,0,-10,0,10,5,0,-20,0,10],
+      "crisis": [-20,10,25,15,0,-25,10,10,0,0]
+    },
+    "prototype": "Truman Capote",
+    "values_description": "My vision for the future community is one characterized by elegance, profound honesty, and a certain 'sharpness' of character. As an agricultural worker, I deal with the raw realities of life, but I believe our social community should be as refined as the finest garden. Freedom is the right to craft one's own narrative and to live with a certain style, regardless of what the neighbors think. People should be able to choose their own path, but they should do so with a sense of responsibility for the 'story' they are telling. In my ideal community, the individual is the author of their own life, and the role of the collective is to provide the 'paper and ink.' Caring for each other should be a matter of deep, personal intimacy rather than broad, shallow kindness. I value the bonds I have with my wife and daughter, and I believe the community should be built on strong, specific relationships. Responsibility extends to those we choose to bring into our circle, but we also owe a certain 'aesthetic respect' to everyone. Safety and order are the boundaries that allow for creative living. Clear rules are essential, but they should be applied with a touch of wit and a deep understanding of human nature. The community should value redemption, not as a moralistic cleansing, but as a way to allow a person to integrate their mistakes into a more complex, honest version of themselves. Authentic expression is everything. I want a community where people are encouraged to be their most brilliant, even if difficult, selves. If being true to oneself causes a stir, then the community should enjoy the drama rather than trying to suppress it. We protect the vulnerable because they are often the most delicate and beautiful parts of our social landscape. Stewardship of the land is not just a duty; it's an art. Decisions should be made with transparency and a certain flair. Technology should be a servant to our lifestyle, a way to make our connections more elegant and our work more efficient, but it must never replace the human touch. Data privacy is a matter of personal dignity. In a conflict between truth and kindness, I will almost always choose a sharp truth over a soft lie. A community built on truth is a community that can truly last."
+  },
+  {
+    "uid": "U-1018",
+    "domains": [75,85,null,80,60,85,70,95,65,80],
+    "conflict_resolution": [85,50,50,50,50,50,50,50,50,50,80,50,30,50,50,50,50,50,50,20,80,50,50,30,50,50,50,50,30,50,50,50,50,50,50,30],
+    "contextual_shifts": {
+      "work": [-10,5,0,5,0,0,0,15,0,5],
+      "family": [0,10,0,0,0,0,5,0,0,-10],
+      "private": [10,-10,0,0,0,15,0,-10,10,0],
+      "crisis": [-20,20,0,0,15,-15,10,10,0,10]
+    },
+    "prototype": "Los Bros Hernandez",
+    "values_description": "I believe in a community that values collaborative artistic work, that recognizes that creative partnerships can produce something greater than individual effort, and that honors people working together toward shared artistic vision. I want my family to live in a community where collaborative work is valued, where partnerships are celebrated, and where working together toward artistic vision is honored. Freedom should include freedom to collaborate and to work with others toward shared creative goals. People shouldn't be constrained to work alone; collaboration should be supported. Care for each other should include supporting collaborative projects and partnerships. Real care means helping people work together effectively toward shared vision. Basic needs should be provided, and communities should also create space for collaborative artistic work. Spaces for collaboration, support for creative partnerships—these should be available. I believe communities should value collaborative artistic work and creative partnerships. When people work together and create something beautiful together, that's powerful. Communities should honor this. Authentic expression should include freedom to collaborate and to express shared vision. Partners should be free to create together. Community decisions should support collaborative spaces and institutions. Communities should fund spaces enabling collaborative artistic work. Justice includes ensuring that all collaborators receive recognition and fair treatment. Credit should be shared appropriately. Vulnerable people benefit from communities supporting collaboration and partnership. Working together can be healing and empowering. Resources should be allocated to support collaborative projects and partnerships. Communities should fund spaces and programs enabling collaborative work. Spiritual and religious traditions often involve collaborative practice. Communities should honor traditions emphasizing shared spiritual practice. Digital technology enables new forms of collaboration. Communities should embrace technology supporting creative partnership. There are real tensions. Collaboration versus individual expression: both matter; communities should support both. Consensus versus individual vision: collaborators need to align while maintaining individual perspective. Credit versus humility: partners should be credited fairly. Finally, I believe communities are strongest when they value collaborative artistic work, when they support creative partnerships, and when they recognize that working together can produce beauty greater than individual effort."
+  },
+  {
+    "uid": "U-1019",
+    "domains": [35,60,98,75,null,30,75,85,70,20],
+    "conflict_resolution": [95,50,50,85,50,10,15,80,50,20,50,50,90,10,50,90,50,85,5,90,85,50,15,90,10,95,50,50,10,90,50,10,85,50,85,50],
+    "contextual_shifts": {
+      "work": [-10,0,5,5,0,-10,0,10,0,10],
+      "family": [0,15,5,0,0,0,5,0,0,-10],
+      "private": [10,0,-10,0,0,15,0,-10,0,0],
+      "crisis": [-40,10,45,15,0,-25,15,20,10,30]
+    },
+    "prototype": "Leonid Brezhnev",
+    "values_description": "I believe in a community organized around stability, order, and clear hierarchy, where people understand their roles and where the system functions predictably and reliably. Like Leonid Brezhnev, who valued stability and order even at the cost of innovation, I think ideal communities are those with clear structures and where people know what to expect. I want my family to live in a community with clear order and stability, where systems function reliably, and where they understand what's expected of them. Freedom should mean freedom to function safely within clear structures. People shouldn't be constantly disrupted by change or uncertainty. Stable systems serve freedom better than constant upheaval. Care for each other should be grounded in reliable systems and clear roles. Real care means providing consistent, predictable support. Basic needs should be provided reliably through established systems. Communities should have stable mechanisms for meeting needs. I believe communities should value order and stability. Change for its own sake isn't valuable. Stable systems that function reliably serve people better than constant innovation. Authentic expression should be grounded in responsibility to the system and community. People should express themselves within structures that maintain order. Community decisions should maintain order and stability. Communities should resist constant change and should maintain established systems that work. Justice should maintain order and should deter violation of rules. Clear punishment for violations discourages disorder. Vulnerable people need stable systems they can rely on. Stability serves vulnerable people. Resources should be allocated to maintain and strengthen stable systems. Communities should invest in institutional stability. Spiritual and religious institutions should support order and stability. Communities should support traditions teaching respect for hierarchy and order. Digital technology should serve to maintain order and stability. Communities should use technology to enforce rules and maintain control. There are real tensions. Stability versus change: some change is necessary, but stability should be prioritized. Order versus freedom: order and freedom reinforce each other. Hierarchy versus equality: clear structure serves stability. Finally, I believe communities are strongest when they maintain order and stability, when systems function reliably, and when people understand their roles and what's expected."
+  }
+]

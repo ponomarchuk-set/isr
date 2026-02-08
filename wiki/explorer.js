@@ -116,7 +116,7 @@ function renderProfileList() {
             <div class="font-medium text-slate-700 group-hover:text-blue-700">${p.name}</div>
             <div class="text-xs text-slate-400">${p.demographics.age}yo • ${p.demographics.employment}</div>
         </div>
-        <div class="text-xs font-mono text-slate-300 group-hover:text-blue-400">${p.id}</div>
+        <div class="text-xs font-mono text-slate-300 group-hover:text-blue-400">${p.uid}</div>
     `;
         div.onclick = () => renderProfileInspector(p);
         listEl.appendChild(div);
@@ -126,7 +126,7 @@ function renderProfileList() {
 function renderProfileInspector(user) {
     currentProfile = user;
     document.getElementById('inspector-name').textContent = user.name;
-    document.getElementById('inspector-id').textContent = user.id;
+    document.getElementById('inspector-id').textContent = user.uid;
 
     // Expertise Summary
     const edu = user.expertise_data?.education[0];
