@@ -653,7 +653,7 @@ function openCompAnalysis(user, issue, score) {
     document.getElementById('comp-resources').parentElement.classList.remove('hidden');
 
     document.getElementById('comp-user-badge').classList.remove('hidden');
-    document.getElementById('comp-username').innerText = user.name;
+    document.getElementById('comp-username').innerText = `${user.name} Expertise: ${score.total} (${score.edu.toFixed(1)}+${score.exp.toFixed(1)}+${score.res.toFixed(1)})`;
 
     // Update Score Breakdown
     document.getElementById('comp-score-edu').innerText = score.edu ? score.edu.toFixed(1) : "0.0";

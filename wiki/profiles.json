@@ -61,7 +61,7 @@
                     "weight": 5
                 },
                 {
-                    "name": "High-Performance Workstation",
+                    "name": "Tech Industry Network",
                     "weight": 6
                 }
             ]
@@ -132,7 +132,7 @@
             ],
             "resources": [
                 {
-                    "name": "Medical License (Inactive)",
+                    "name": "Medical License",
                     "weight": 8
                 },
                 {
@@ -140,7 +140,7 @@
                     "weight": 7
                 },
                 {
-                    "name": "Pediatric Medical Journals",
+                    "name": "Geriatric Care Standards",
                     "weight": 4
                 }
             ]
@@ -245,7 +245,7 @@
                     "weight": 7
                 },
                 {
-                    "name": "Policy Network",
+                    "name": "Policy Writing Tools",
                     "weight": 6
                 },
                 {
@@ -316,7 +316,7 @@
                     "weight": 7
                 },
                 {
-                    "name": "Professional Network",
+                    "name": "Landscape Design Tools",
                     "weight": 6
                 }
             ]
@@ -434,7 +434,7 @@
             ],
             "resources": [
                 {
-                    "name": "Academic Library",
+                    "name": "Senior Community Access",
                     "weight": 4
                 },
                 {
@@ -551,11 +551,11 @@
                     "weight": 5
                 },
                 {
-                    "name": "Tech Conference Pass",
+                    "name": "Tech Industry Network",
                     "weight": 3
                 },
                 {
-                    "name": "Agile Certification",
+                    "name": "Remote Work Survey Data",
                     "weight": 4
                 }
             ]
@@ -611,11 +611,11 @@
             ],
             "resources": [
                 {
-                    "name": "Hospital Infrastructure",
+                    "name": "Medical Facility Access",
                     "weight": 9
                 },
                 {
-                    "name": "Health Data Access",
+                    "name": "Patient Data Management",
                     "weight": 8
                 },
                 {
@@ -678,7 +678,7 @@
                     "weight": 2
                 },
                 {
-                    "name": "Local Volunteer List",
+                    "name": "Community Volunteer List",
                     "weight": 6
                 }
             ]
@@ -796,7 +796,7 @@
                     "weight": 2
                 },
                 {
-                    "name": "Forestry Gear",
+                    "name": "Park Maintenance Guide",
                     "weight": 5
                 }
             ]
@@ -963,7 +963,7 @@
             ],
             "resources": [
                 {
-                    "name": "CAD Software",
+                    "name": "Landscape Design Tools",
                     "weight": 6
                 },
                 {

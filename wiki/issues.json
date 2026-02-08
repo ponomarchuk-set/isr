@@ -30,7 +30,9 @@
         "required_experience_years": 5,
         "required_resources": [
             "Landscape Design Tools",
-            "Public Safety Standards"
+            "Public Safety Standards",
+            "Community Volunteer List",
+            "Park Maintenance Guide"
         ],
         "recommended_expert_id": "U-1012"
     },
@@ -65,8 +67,10 @@
         "required_width": 45,
         "required_experience_years": 8,
         "required_resources": [
-            "Legal Framework Access",
-            "Tech Industry Surveys"
+            "Legal Database Access",
+            "Policy Writing Tools",
+            "Tech Industry Network",
+            "Remote Work Survey Data"
         ],
         "recommended_expert_id": "U-1003"
     },
@@ -100,7 +104,9 @@
         "required_experience_years": 10,
         "required_resources": [
             "Geriatric Care Standards",
-            "Medical Facility Maps"
+            "Medical Facility Access",
+            "Patient Data Management",
+            "Senior Community Access"
         ],
         "recommended_expert_id": "U-1001"
     }
