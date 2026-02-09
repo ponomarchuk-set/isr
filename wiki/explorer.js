@@ -7,6 +7,7 @@ let valuesData = [];
 // --- STATE ---
 let currentIssueIndex = 0;
 let threshold = 0.5;
+let valThreshold = 0.5;
 let radarChart = null;
 let barChart = null;
 let mapCanvas = null;
@@ -40,10 +41,10 @@ const TooltipManager = {
 
 /* --- VALUES CONSTANTS --- */
 const PAIR_TO_CATS = [
-    [0, 7], [1, 5], [3, 4], [3, 7], [1, 6], [0, 2], [6, 5], [0, 7], [0, 7], [1, 2],
+    [0, 7], [5, 1], [3, 4], [3, 7], [1, 6], [2, 0], [6, 5], [0, 7], [0, 7], [1, 2],
     [0, 7], [1, 3], [0, 2], [0, 2], [5, 7], [6, 2], [3, 8], [0, 7], [1, 9], [0, 2],
-    [5, 1], [6, 9], [6, 9], [6, 0], [3, 1], [1, 2], [7, 9], [1, 9], [7, 9], [2, 9],
-    [6, 9], [8, 7], [1, 9], [5, 9], [9, 7], [3, 7]
+    [5, 1], [6, 9], [6, 9], [6, 0], [3, 1], [1, 2], [7, 9], [1, 9], [7, 9], [9, 2],
+    [6, 9], [8, 7], [9, 1], [5, 9], [9, 7], [3, 7]
 ];
 
 const PAIR_NAMES = [
@@ -94,8 +95,14 @@ document.addEventListener('DOMContentLoaded', async () => {
             updateSimulationUI();
         });
 
+        document.getElementById('val-thresholdSlider').addEventListener('input', (e) => {
+            valThreshold = parseFloat(e.target.value) / 100;
+            updateValuesUI();
+        });
+
         // Initial set issue
         setIssue(0);
+        switchIssueValues(0); // Initialize Values Tab state as well
 
     } catch (error) {
         console.error("Initialization Error:", error);
@@ -1128,6 +1135,9 @@ window.switchTab = function (tabId) {
     if (tabId === 'expertise') {
         updateExpertiseUI();
     }
+    if (tabId === 'values') {
+        updateValuesUI();
+    }
 
     // Check if the active tab is inside the dropdown, if so highlight "More"
     // checkActiveTabVisibility(); // Removed for hamburger menu
@@ -1136,9 +1146,12 @@ window.switchTab = function (tabId) {
 // --- RESPONSIVE TABS LOGIC ---
 function initResponsiveTabs() {
     const navContainer = document.querySelector('header .flex.space-x-1');
-    const moreBtnContainer = document.getElementById('nav-more').parentElement;
     const moreBtn = document.getElementById('nav-more');
     const moreMenu = document.getElementById('nav-more-menu');
+
+    if (!moreBtn || !moreMenu) return;
+
+    const moreBtnContainer = moreBtn.parentElement;
 
     // Toggle dropdown
     moreBtn.onclick = (e) => {
@@ -1424,7 +1437,28 @@ function drawContextualShifts(vData, containerId) {
             .domain([-50, 50]); // Shift values usually -50 to 50? Or -100 to 100?
         // Data seems to be small numbers e.g. -20, 10. Let's assume -50 to 50 is safe range.
 
-        const data = vData.contextual_shifts ? vData.contextual_shifts[ctx] : [];
+        // Data access: handle both individual profile (vData.contextual_shifts[ctx]) and aggregated data (vData[ctx] or vData.contextual_shifts[ctx])
+        let data = [];
+        if (vData.contextual_shifts && vData.contextual_shifts[ctx]) {
+            data = vData.contextual_shifts[ctx];
+        } else if (vData[ctx]) {
+            data = vData[ctx];
+        } else if (vData.contextual_shifts === undefined && vData[ctx] === undefined && vData.domains === undefined) {
+            // Maybe vData IS the contextual_shifts object (aggregated case passed as aggData.data.contextual_shifts?? No, we pass aggData.data)
+            // aggData.data = { domains: ..., contextual_shifts: { work: ... }, conflict_resolution: ... }
+            // So vData.contextual_shifts should exist.
+            // Wait, let's re-read calculateAggregatedValues helper.
+            // data: { domains: ..., contextual_shifts: aggContext, ... }
+            // aggContext = { work: [], ... }
+            // So vData.contextual_shifts IS properly verified.
+            // BUT, verify if vData structure is exactly what we expect. initialization might pass empty object?
+        }
+
+        // Re-check logical path:
+        // Case 1: Individual Modal -> vData is full profile values object. Has .contextual_shifts property.
+        // Case 2: Aggregated -> data passed is { domains:[], contextual_shifts:{}, ... }. Has .contextual_shifts property.
+
+        data = vData.contextual_shifts ? vData.contextual_shifts[ctx] : [];
         if (!data || data.length === 0) return;
 
         // Zero line
@@ -1741,3 +1775,226 @@ function drawConflictResolutionContent(vData, container, w, h) {
 
     // Removed Conflict List per user request.
 }
+
+
+// --- VIEW 4: VECTOR OF VALUES ---
+
+function switchIssueValues(index) {
+    currentIssueIndex = index;
+    // Update Issue Buttons
+    [0, 1, 2].forEach(i => {
+        const btn = document.getElementById(`btn-val-${i}`);
+        if (btn) {
+            if (i === index) btn.className = "flex-1 px-3 py-2 rounded text-xs font-bold bg-blue-600 text-white shadow-sm transition-all";
+            else btn.className = "flex-1 px-3 py-2 rounded text-xs font-bold bg-white border border-slate-300 text-slate-600 hover:bg-slate-50 transition-all";
+        }
+    });
+    updateValuesUI();
+}
+
+function updateValuesUI() {
+    const issue = issues[currentIssueIndex];
+
+    // Sync Threshold Display
+    document.getElementById('val-thresholdValue').innerText = valThreshold.toFixed(2);
+    document.getElementById('val-thresholdSlider').value = valThreshold * 100;
+
+    // Calculate Aggregated Data
+    const aggData = calculateAggregatedValues(profiles, issue);
+
+    // 1. Render Member List
+    renderValuesMemberList(aggData.members);
+
+    // 2. Render Visualizations
+    // We reuse existing drawing functions but pass the aggregated data object
+    // The existing functions expect vData structure { domains: [], contextual_shifts: {}, conflict_resolution: [] }
+    // Our calculateAggregatedValues returns exactly that structure in 'data' property.
+
+    if (aggData.count > 0) {
+        drawValuesDomains(aggData.data, 'val-viz-domains');
+        drawContextualShifts(aggData.data, 'val-viz-context');
+        drawConflictResolution(aggData.data, 'val-viz-conflict');
+    } else {
+        // Clear if no members
+        document.getElementById('val-viz-domains').innerHTML = '<div class="h-full flex items-center justify-center text-slate-400 italic">No members selected</div>';
+        document.getElementById('val-viz-context').innerHTML = '';
+        document.getElementById('val-viz-conflict').innerHTML = '<div class="h-full flex items-center justify-center text-slate-400 italic">No members selected</div>';
+    }
+
+    document.getElementById('val-member-count').innerText = `${aggData.count}/${profiles.length}`;
+}
+
+function calculateAggregatedValues(profiles, issue) {
+    let members = [];
+    let totalRelevance = 0;
+
+    // 1. Filter & Collect Members
+    profiles.forEach(p => {
+        const rel = calculateRelevance(p, issue);
+        if (rel.total >= valThreshold) {
+            const vData = valuesData.find(v => v.uid === p.uid);
+            if (vData) {
+                members.push({
+                    profile: p,
+                    relevance: parseFloat(rel.total),
+                    values: vData
+                });
+                totalRelevance += parseFloat(rel.total);
+            }
+        }
+    });
+
+    // 2. Aggregate Domains
+    // domains: [100, 50, null, ...]
+    const aggDomains = [];
+    for (let i = 0; i < 10; i++) {
+        let sum = 0;
+        let weightSum = 0;
+
+        members.forEach(m => {
+            const val = m.values.domains[i];
+            if (val !== null && val !== undefined) {
+                sum += val * m.relevance;
+                weightSum += m.relevance;
+            }
+        });
+
+        if (weightSum > 0) aggDomains.push(Math.round(sum / weightSum));
+        else aggDomains.push(null);
+    }
+
+    // 3. Aggregate Contextual Shifts
+    // contextual_shifts: { work: [], family: [], ... }
+    const aggContext = {};
+    const contexts = ['work', 'family', 'private', 'crisis'];
+
+    contexts.forEach(ctx => {
+        const aggCtxArr = [];
+        for (let i = 0; i < 10; i++) {
+            let sum = 0;
+            let weightSum = 0;
+
+            members.forEach(m => {
+                const shiftArr = m.values.contextual_shifts ? m.values.contextual_shifts[ctx] : [];
+                const val = shiftArr[i];
+                // Check corresponding domain is not null? 
+                // "NULL values on some domain exclude this member from calculation this domain... and their context shifts"
+                const domainVal = m.values.domains[i];
+
+                if (domainVal !== null && val !== undefined) {
+                    sum += val * m.relevance;
+                    weightSum += m.relevance;
+                }
+            });
+
+            if (weightSum > 0) aggCtxArr.push(Math.round(sum / weightSum));
+            else aggCtxArr.push(0);
+        }
+        aggContext[ctx] = aggCtxArr;
+    });
+
+    // 4. Aggregate Conflict Resolution
+    const aggConflict = [];
+    const numConflicts = PAIR_TO_CATS.length; // 36
+
+    for (let i = 0; i < numConflicts; i++) {
+        let sum = 0;
+        let weightSum = 0;
+
+        members.forEach(m => {
+            const val = m.values.conflict_resolution ? m.values.conflict_resolution[i] : 50;
+            sum += val * m.relevance;
+            weightSum += m.relevance;
+        });
+
+        if (weightSum > 0) aggConflict.push(Math.round(sum / weightSum));
+        else aggConflict.push(50);
+    }
+
+    return {
+        count: members.length,
+        members: members.sort((a, b) => b.relevance - a.relevance),
+        data: {
+            domains: aggDomains,
+            contextual_shifts: aggContext,
+            conflict_resolution: aggConflict
+        }
+    };
+}
+
+function renderValuesMemberList(members) {
+    const list = document.getElementById('val-member-list');
+    list.innerHTML = '';
+
+    members.forEach(m => {
+        const row = document.createElement('div');
+        row.className = "p-3 border-b border-slate-100 flex items-center justify-between group hover:bg-slate-50 transition-colors";
+
+        // Left: Info
+        const info = document.createElement('div');
+        info.className = "flex-1 min-w-0 mr-4";
+        info.innerHTML = `
+            <div class="font-bold text-slate-700 truncate">${m.profile.name}</div>
+            <div class="text-xs text-slate-500">Rel: <span class="text-blue-600 font-bold">${m.relevance.toFixed(2)}</span></div>
+        `;
+        row.appendChild(info);
+
+        // Right: Mini Histogram
+        const canvas = document.createElement('canvas');
+        canvas.width = 60;
+        canvas.height = 20;
+        canvas.className = "opacity-70 group-hover:opacity-100 transition-opacity";
+
+        const ctx = canvas.getContext('2d');
+        const w = canvas.width;
+        const h = canvas.height;
+        const barW = w / 10;
+
+        m.values.domains.forEach((d, i) => {
+            if (d !== null) {
+                const barH = (d / 100) * h;
+                ctx.fillStyle = "#10b981";
+                ctx.fillRect(i * barW, h - barH, barW - 1, barH);
+            } else {
+                ctx.fillStyle = "#e2e8f0";
+                ctx.fillRect(i * barW, 0, barW - 1, h);
+            }
+        });
+
+        row.appendChild(canvas);
+        list.appendChild(row);
+    });
+}
+
+
+// --- MOBILE MENU ---
+function initMobileMenu() {
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const navContainer = document.getElementById('nav-container');
+
+    if (hamburgerBtn && navContainer) {
+        hamburgerBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            hamburgerBtn.classList.toggle('active');
+            navContainer.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        navContainer.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                hamburgerBtn.classList.remove('active');
+                navContainer.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navContainer.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+                hamburgerBtn.classList.remove('active');
+                navContainer.classList.remove('active');
+            }
+        });
+    }
+}
+// Initialize mobile menu
+initMobileMenu();
