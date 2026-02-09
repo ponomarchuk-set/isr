@@ -40,10 +40,10 @@ const TooltipManager = {
 
 /* --- VALUES CONSTANTS --- */
 const PAIR_TO_CATS = [
-    [0, 7], [1, 5], [3, 4], [3, 7], [1, 6], [0, 2], [5, 6], [0, 7], [0, 7], [1, 2],
-    [0, 7], [1, 3], [0, 2], [0, 2], [5, 7], [2, 6], [3, 8], [0, 7], [1, 9], [0, 2],
-    [1, 5], [6, 9], [6, 9], [0, 6], [1, 3], [1, 2], [7, 9], [1, 9], [7, 9], [2, 9],
-    [6, 9], [7, 8], [1, 9], [5, 9], [7, 9], [3, 7]
+    [0, 7], [1, 5], [3, 4], [3, 7], [1, 6], [0, 2], [6, 5], [0, 7], [0, 7], [1, 2],
+    [0, 7], [1, 3], [0, 2], [0, 2], [5, 7], [6, 2], [3, 8], [0, 7], [1, 9], [0, 2],
+    [5, 1], [6, 9], [6, 9], [6, 0], [3, 1], [1, 2], [7, 9], [1, 9], [7, 9], [2, 9],
+    [6, 9], [8, 7], [1, 9], [5, 9], [9, 7], [3, 7]
 ];
 
 const PAIR_NAMES = [
@@ -1519,7 +1519,6 @@ function drawConflictResolutionContent(vData, container, w, h) {
     }
 
     // Draw Ties (Curved Lines)
-    // We iterate PAIR_TO_CATS
     vData.conflict_resolution.forEach((val, i) => {
         if (i >= PAIR_TO_CATS.length) return;
         const [c1, c2] = PAIR_TO_CATS[i];
@@ -1532,12 +1531,19 @@ function drawConflictResolutionContent(vData, container, w, h) {
         path.moveTo(p1.x, p1.y);
         path.quadraticCurveTo(0, 0, p2.x, p2.y);
 
-        // Thickness based on value: thinner near 50, thicker near 0/100
-        // val is 0-100. deviation from 50 is 0-50.
+        // Thickness based on value
         const dev = Math.abs(val - 50);
-        const thickness = 0.5 + (dev / 50) * 3; // 1px to 4px
+        const thickness = 0.5 + (dev / 50) * 3;
 
-        const line = svg.append("path")
+        // Group for tie + slider to handle hover cleanly? 
+        // No, slider needs to be on top of ALL ties. 
+        // But we are in a loop. Z-index in SVG depends on order.
+        // We will draw ties first, then BACKTRACK to draw sliders? 
+        // Or just draw them in order. If they overlap, it's fine.
+
+        const gTie = svg.append("g").attr("class", `tie-group-${i}`);
+
+        gTie.append("path")
             .attr("d", path.toString())
             .attr("fill", "none")
             .attr("stroke", "#94a3b8")
@@ -1545,37 +1551,158 @@ function drawConflictResolutionContent(vData, container, w, h) {
             .attr("opacity", 0.4)
             .attr("class", `tie tie-cat-${c1} tie-cat-${c2}`)
             .on("mouseenter", (event) => {
+                // Highlight Tie
                 d3.select(event.currentTarget).attr("stroke", "#6366f1").attr("opacity", 1);
+
+                // Show Slider Text
+                // Center text perfectly
+                svg.select(`#slider-text-${i}`).style("opacity", 1);
+                // Expand Rect from center
+                svg.select(`#slider-rect-${i}`)
+                    .attr("fill", "#6366f1")
+                    .attr("width", 28)
+                    .attr("height", 18)
+                    .attr("x", -14)
+                    .attr("y", -9)
+                    .attr("rx", 4);
+
+                // Tooltip (Conflict Name + Value)
                 TooltipManager.show(`CR.${i + 1}: ${PAIR_NAMES[i]} (${val})`, event.clientX, event.clientY);
+
+                // Show Domain Labels near dots
+                // Calculate offset direction (extension of radius)
+                const labelOffset = 25;
+                [c1, c2].forEach(cIndex => {
+                    const c = catCoords[cIndex];
+                    const lx = (radius + labelOffset) * Math.cos(c.angle);
+                    const ly = (radius + labelOffset) * Math.sin(c.angle);
+
+                    svg.append("text")
+                        .attr("x", lx)
+                        .attr("y", ly)
+                        .attr("class", "temp-domain-label")
+                        .attr("text-anchor", "middle")
+                        .attr("dominant-baseline", "middle")
+                        .attr("font-size", "10px")
+                        .attr("font-weight", "bold")
+                        .attr("fill", "#1e293b")
+                        .attr("paint-order", "stroke")
+                        .attr("stroke", "#fff")
+                        .attr("stroke-width", "3px")
+                        .text(`${cIndex + 1}. ${VALUES_CATEGORIES[cIndex]}`);
+                });
             })
             .on("mousemove", (event) => TooltipManager.move(event.clientX, event.clientY))
             .on("mouseleave", (event) => {
+                // Reset Tie
                 d3.select(event.currentTarget).attr("stroke", "#94a3b8").attr("opacity", 0.4);
+
+                // Hide Slider Text
+                svg.select(`#slider-text-${i}`).style("opacity", 0);
+                // Reset Rect to small grey square
+                svg.select(`#slider-rect-${i}`)
+                    .attr("fill", "#94a3b8")
+                    .attr("width", 6)
+                    .attr("height", 6)
+                    .attr("x", -3)
+                    .attr("y", -3)
+                    .attr("rx", 1);
+
+                // Hide Tooltip
                 TooltipManager.hide();
+
+                // Remove Domain Labels
+                svg.selectAll(".temp-domain-label").remove();
             });
 
-        // Slider (Rectangle)
-        // Position along the curve? Or logical position?
-        // User said: "<50 - to the first pair part, >50 - to the second one."
-        // "Moved along the tie length".
-
-        // Approximate position on quadratic curve
-        // t = val / 100 ? 
-        // If val=0 -> p1. If val=100 -> p2.
+        // Calculate Slider Position
         const t = val / 100;
-        // Quadratic Bezier point: (1-t)^2 P0 + 2(1-t)t P1 + t^2 P2
-        // P0=p1, P1=(0,0), P2=p2
         const bx = (1 - t) * (1 - t) * p1.x + 2 * (1 - t) * t * 0 + t * t * p2.x;
         const by = (1 - t) * (1 - t) * p1.y + 2 * (1 - t) * t * 0 + t * t * p2.y;
 
-        svg.append("rect")
-            .attr("x", bx - 3)
-            .attr("y", by - 3)
+        // Slider Group
+        const gSlider = svg.append("g")
+            .attr("transform", `translate(${bx},${by})`)
+            .attr("pointer-events", "all") // Ensure hover works on slider
+            .on("mouseenter", (e) => {
+                // Determine highlight color based on value location? No, keep uniform indigo.
+                const hlColor = "#6366f1";
+
+                // Highlight Tie
+                svg.select(`.tie-group-${i} path`).attr("stroke", hlColor).attr("opacity", 1);
+
+                // Expand Slider
+                svg.select(`#slider-text-${i}`).style("opacity", 1);
+                svg.select(`#slider-rect-${i}`)
+                    .attr("fill", hlColor)
+                    .attr("width", 28)
+                    .attr("height", 18)
+                    .attr("x", -14)
+                    .attr("y", -9)
+                    .attr("rx", 4);
+
+                TooltipManager.show(`CR.${i + 1}: ${PAIR_NAMES[i]} (${val})`, e.clientX, e.clientY);
+
+                const labelOffset = 25;
+                [c1, c2].forEach(cIndex => {
+                    const c = catCoords[cIndex];
+                    const lx = (radius + labelOffset) * Math.cos(c.angle);
+                    const ly = (radius + labelOffset) * Math.sin(c.angle);
+                    svg.append("text")
+                        .attr("x", lx)
+                        .attr("y", ly)
+                        .attr("class", "temp-domain-label")
+                        .attr("text-anchor", "middle")
+                        .attr("dominant-baseline", "middle")
+                        .attr("font-size", "10px")
+                        .attr("font-weight", "bold")
+                        .attr("fill", "#1e293b")
+                        .attr("paint-order", "stroke")
+                        .attr("stroke", "#fff")
+                        .attr("stroke-width", "3px")
+                        .text(`${cIndex + 1}. ${VALUES_CATEGORIES[cIndex]}`);
+                });
+            })
+            .on("mousemove", (e) => TooltipManager.move(e.clientX, e.clientY))
+            .on("mouseleave", (e) => {
+                svg.select(`.tie-group-${i} path`).attr("stroke", "#94a3b8").attr("opacity", 0.4);
+
+                svg.select(`#slider-text-${i}`).style("opacity", 0);
+                svg.select(`#slider-rect-${i}`)
+                    .attr("fill", "#94a3b8")
+                    .attr("width", 6)
+                    .attr("height", 6)
+                    .attr("x", -3)
+                    .attr("y", -3)
+                    .attr("rx", 1);
+
+                TooltipManager.hide();
+                svg.selectAll(".temp-domain-label").remove();
+            });
+
+        // The Rect (Default: Small Grey Square)
+        gSlider.append("rect")
+            .attr("id", `slider-rect-${i}`)
+            .attr("x", -3)
+            .attr("y", -3)
             .attr("width", 6)
             .attr("height", 6)
-            .attr("fill", "#475569")
-            .attr("rx", 1)
-            .attr("class", "pointer-events-none");
+            .attr("fill", "#94a3b8") // Match tie color
+            .attr("rx", 1);
+
+        // The Text
+        gSlider.append("text")
+            .attr("id", `slider-text-${i}`)
+            .attr("x", 0)
+            .attr("y", 0)
+            // Centering trick: text-anchor middle + dominant-baseline middle (or dy)
+            .attr("dy", "0.35em") // Approximate vertical center for sans-serif
+            .attr("text-anchor", "middle")
+            .attr("fill", "white")
+            .attr("font-size", "11px")
+            .attr("font-weight", "bold")
+            .style("opacity", 0) // Hidden by default
+            .text(val);
     });
 
     // Draw Category Dots
@@ -1612,14 +1739,5 @@ function drawConflictResolutionContent(vData, container, w, h) {
             .attr("fill", "#475569");
     });
 
-    // Populate Conflict List below
-    const list = document.getElementById('conflict-list');
-    list.innerHTML = '';
-    vData.conflict_resolution.forEach((val, i) => {
-        const div = document.createElement('div');
-        div.className = "text-[10px] text-slate-600 truncate hover:text-indigo-600 cursor-help";
-        div.title = PAIR_NAMES[i];
-        div.innerText = `${i + 1}: ${PAIR_NAMES[i].substring(0, 25)}... (${val})`;
-        list.appendChild(div);
-    });
+    // Removed Conflict List per user request.
 }
