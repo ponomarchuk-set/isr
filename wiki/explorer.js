@@ -2,6 +2,7 @@
 // --- DATA ---
 let issues = [];
 let profiles = [];
+let valuesData = [];
 
 // --- STATE ---
 let currentIssueIndex = 0;
@@ -9,21 +10,77 @@ let threshold = 0.5;
 let radarChart = null;
 let barChart = null;
 let mapCanvas = null;
+// --- TOOLTIP MANAGER ---
+const TooltipManager = {
+    el: null,
+    init() {
+        this.el = document.createElement('div');
+        this.el.className = 'fixed z-[9999] px-3 py-2 bg-slate-900 text-white text-xs rounded shadow-lg pointer-events-none transition-opacity opacity-0';
+        document.body.appendChild(this.el);
+    },
+    show(content, x, y) {
+        if (!this.el) this.init();
+        this.el.innerHTML = content;
+        this.el.style.opacity = '1';
+        this.move(x, y);
+    },
+    move(x, y) {
+        if (!this.el) return;
+        const maxW = window.innerWidth - this.el.offsetWidth - 20;
+        const maxH = window.innerHeight - this.el.offsetHeight - 20;
+        const left = Math.min(x + 15, maxW);
+        const top = Math.min(y + 15, maxH);
+        this.el.style.left = `${left}px`;
+        this.el.style.top = `${top}px`;
+    },
+    hide() {
+        if (this.el) this.el.style.opacity = '0';
+    }
+};
+
+/* --- VALUES CONSTANTS --- */
+const PAIR_TO_CATS = [
+    [0, 7], [1, 5], [3, 4], [3, 7], [1, 6], [0, 2], [5, 6], [0, 7], [0, 7], [1, 2],
+    [0, 7], [1, 3], [0, 2], [0, 2], [5, 7], [2, 6], [3, 8], [0, 7], [1, 9], [0, 2],
+    [1, 5], [6, 9], [6, 9], [0, 6], [1, 3], [1, 2], [7, 9], [1, 9], [7, 9], [2, 9],
+    [6, 9], [7, 8], [1, 9], [5, 9], [7, 9], [3, 7]
+];
+
+const PAIR_NAMES = [
+    "Individual Freedom vs. Collective Harmony", "Truth-Telling vs. Kindness", "Proportional Justice vs. Restoration", "Equal Distribution vs. Merit-Based",
+    "Kin/Close vs. Universal Responsibility", "Stability vs. Change", "Tradition vs. Innovation", "Self-Interest vs. Collective Welfare",
+    "Individual Responsibility vs. Systemic Causation", "Self-Sacrifice vs. Self-Preservation", "Competition vs. Cooperation", "In-Group Loyalty vs. Impartial Justice",
+    "Question Authority vs. Accept Authority", "Certainty vs. Possibility", "Principle vs. Pragmatism", "Present vs. Future Security",
+    "Universal Standards vs. Cultural Relativism", "Individual Rights vs. Collective Duty", "Efficiency vs. Human Care", "Freedom vs. Structure",
+    "Inner Truth vs. Social Belonging", "Environmental Sustainability vs. Economic Prosperity", "Cultural Preservation vs. Modernization", "Protective Authority vs. Respecting Autonomy",
+    "Accountability vs. Compassion", "Emotional Openness vs. Self-Protection", "Digital Privacy vs. Convenience", "Human Labor vs. Automation",
+    "Tech Innovation vs. Democratic Control", "Digital Privacy vs. Safety", "Digital Inclusion vs. Environmental Cost", "Spiritual Authority vs. Democratic Governance",
+    "Digital Privacy vs. Social Connection", "Digital vs. Embodied Experience", "Digital Privacy vs. Collective Transparency", "Justice-Based vs. Cooperative Distribution"
+];
+
+const VALUES_CATEGORIES = [
+    "Freedom & Autonomy", "Care & Relationality", "Security & Order", "Justice & Fairness",
+    "Redemption & Restoration", "Authentic Expression", "Stewardship & Protection",
+    "Cooperation & Governance", "Spiritual & Religious", "Digital Rights & Tech"
+];
+
 let currentProfile = null;
 
 // --- INIT ---
 document.addEventListener('DOMContentLoaded', async () => {
     try {
         // Fetch Data
-        const [issuesRes, profilesRes] = await Promise.all([
+        const [issuesRes, profilesRes, valuesRes] = await Promise.all([
             fetch('issues.json'),
-            fetch('profiles.json')
+            fetch('profiles.json'),
+            fetch('values-site.json')
         ]);
 
-        if (!issuesRes.ok || !profilesRes.ok) throw new Error("Failed to load data");
+        if (!issuesRes.ok || !profilesRes.ok || !valuesRes.ok) throw new Error("Failed to load data");
 
         issues = await issuesRes.json();
         profiles = await profilesRes.json();
+        valuesData = await valuesRes.json();
 
         // Initialize UI
         initCharts();
@@ -180,11 +237,50 @@ function renderProfileInspector(user) {
     const xBase = (user.interests.length / 8) * 100;
     const xData = [xBase, xBase * 1.2, xBase * 0.8, xBase, xBase * 0.5, xBase * 1.1];
 
-    radarChart.data.datasets[0].data = dData;
     radarChart.data.datasets[1].data = gData;
     radarChart.data.datasets[2].data = sData;
     radarChart.data.datasets[3].data = xData;
     radarChart.update();
+
+    // Values Logic
+    const vData = valuesData.find(v => v.uid === user.uid);
+    const container = document.getElementById('inspector-values');
+    container.innerHTML = '';
+
+    if (vData && vData.domains) {
+        // Mini Histogram Trigger
+        const w = 200, h = 40;
+        const canvas = document.createElement('canvas');
+        canvas.width = w;
+        canvas.height = h;
+        canvas.className = "cursor-pointer hover:opacity-80 transition-opacity";
+        canvas.onclick = () => openValuesModal(user);
+        container.appendChild(canvas);
+
+        const ctx = canvas.getContext('2d');
+        const barWidth = w / 10;
+        vData.domains.forEach((d, i) => {
+            if (d !== null) {
+                const barH = (d / 100) * h;
+                ctx.fillStyle = "#10b981";
+                ctx.fillRect(i * barWidth, h - barH, barWidth - 2, barH);
+            } else {
+                ctx.fillStyle = "#e2e8f0";
+                ctx.fillRect(i * barWidth, 0, barWidth - 2, h);
+            }
+        });
+    } else {
+        container.innerHTML = '<span class="text-slate-400 text-xs italic">No data</span>';
+    }
+
+    // Remove old button if properly replaced
+    // Check if next sibling is button and remove it? The HTML structure had a button.
+    // I need to update the HTML to remove the hardcoded button or hide it here.
+    // The previous HTML had the button AFTER inspector-values div.
+    // I will hide the button by selecting it via ID or next sibling if I can't change HTML yet.
+    // Actually, I can just not render the button in HTML or hide it via CSS. 
+    // But since I am in JS, I can try to find the button. 
+    // The best way is to update HTML to remove the button, but I'll do it in a separate step.
 }
 
 // --- VIEW 2: SIMULATOR ---
@@ -726,47 +822,6 @@ function drawCompResourceCloud(user, issue) {
 }
 
 
-// --- TOOLTIP MANAGER ---
-const TooltipManager = {
-    el: null,
-    init() {
-        if (this.el) return;
-        this.el = document.createElement('div');
-        this.el.className = "fixed pointer-events-none bg-slate-900 text-white text-xs px-2 py-1 rounded shadow-lg opacity-0 transition-opacity duration-150";
-        this.el.style.zIndex = "9999";
-        document.body.appendChild(this.el);
-    },
-    show(html, x, y) {
-        if (!this.el) this.init();
-        this.el.innerHTML = html;
-        // Offset to avoid cursor covering content
-        const offset = 10;
-
-        // Boundary detection (basic)
-        let left = x + offset;
-        let top = y + offset;
-
-        // If close to right edge, shift left
-        if (left + 150 > window.innerWidth) left = x - 160;
-
-        this.el.style.left = `${left}px`;
-        this.el.style.top = `${top}px`;
-        this.el.style.opacity = '1';
-    },
-    move(x, y) {
-        if (!this.el) return;
-        const offset = 10;
-        let left = x + offset;
-        let top = y + offset;
-        if (left + 150 > window.innerWidth) left = x - 160;
-        this.el.style.left = `${left}px`;
-        this.el.style.top = `${top}px`;
-    },
-    hide() {
-        if (this.el) this.el.style.opacity = '0';
-    }
-};
-
 // --- VIZ ---
 class EducationSphere {
     constructor(containerId) {
@@ -799,6 +854,15 @@ class EducationSphere {
         const feMerge = filter.append("feMerge");
         feMerge.append("feMergeNode").attr("in", "blur");
         feMerge.append("feMergeNode").attr("in", "SourceGraphic");
+
+        // Gradient
+        const gradient = defs.append("radialGradient")
+            .attr("id", "sphereGradient")
+            .attr("cx", "30%")
+            .attr("cy", "30%")
+            .attr("r", "70%");
+        gradient.append("stop").attr("offset", "0%").attr("stop-color", "#fff");
+        gradient.append("stop").attr("offset", "100%").attr("stop-color", "#e2e8f0");
     }
 
     drawAxes() {
@@ -1179,3 +1243,383 @@ function checkActiveTabVisibility() {
 
 // Call init once DOM is ready (or immediately if already ready, but this script is loaded at end of body)
 initResponsiveTabs();
+
+/* --- VALUES & CONFLICT RESOLUTION --- */
+// Constants moved to top of file
+
+
+function openValuesModal(user) {
+    try {
+        const vData = valuesData.find(v => v.uid === user.uid);
+        if (!vData) {
+            alert("No values data found for this user.");
+            return;
+        }
+
+        document.getElementById('val-modal-username').innerText = user.name;
+
+        // Prototype
+        const protoHtml = vData.prototype
+            ? `<div class="mb-4 p-3 bg-indigo-50 border border-indigo-100 rounded-lg">
+                 <span class="text-xs font-bold text-indigo-500 uppercase tracking-wide block mb-1">Prototype</span>
+                 <span class="text-slate-800 font-medium">${vData.prototype}</span>
+               </div>`
+            : '';
+
+        document.getElementById('val-description').innerHTML = protoHtml + (vData.values_description
+            ? `<p class="mb-4">${vData.values_description.replace(/\n\n/g, '</p><p class="mb-4">')}</p>`
+            : '<p class="text-slate-400 italic">No description available.</p>');
+
+        document.getElementById('values-modal').classList.remove('hidden');
+
+        // Wait for render/transition
+        setTimeout(() => {
+            try {
+                drawValuesDomains(vData, 'viz-domains');
+                drawContextualShifts(vData, 'viz-context');
+                drawConflictResolution(vData, 'viz-conflict');
+            } catch (e) {
+                console.error("Drawing Error:", e);
+                alert("Error drawing charts: " + e.message);
+            }
+        }, 100);
+    } catch (e) {
+        console.error("Modal Error:", e);
+        alert("Error opening modal: " + e.message);
+    }
+}
+
+function closeValuesModal() {
+    document.getElementById('values-modal').classList.add('hidden');
+    TooltipManager.hide();
+}
+
+function drawValuesDomains(vData, containerId) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = '';
+    const w = container.offsetWidth;
+    const h = container.offsetHeight;
+
+    // Setup Canvas
+    const svg = d3.select(container).append("svg")
+        .attr("width", w)
+        .attr("height", h);
+
+    const margin = { top: 20, right: 10, bottom: 30, left: 30 };
+    const width = w - margin.left - margin.right;
+    const height = h - margin.top - margin.bottom;
+
+    const g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+
+    // X Scale
+    const x = d3.scaleBand()
+        .range([0, width])
+        .domain(d3.range(10))
+        .padding(0.1);
+
+    // Y Scale
+    const y = d3.scaleLinear()
+        .range([height, 0])
+        .domain([0, 100]);
+
+    // Data preparation
+    const data = vData.domains || [];
+
+    // Bars (Columns)
+    g.selectAll(".bar")
+        .data(data)
+        .enter().append("rect")
+        .attr("class", "bar")
+        .attr("x", (d, i) => x(i))
+        .attr("width", x.bandwidth())
+        .attr("y", d => d === null ? 0 : y(d))
+        .attr("height", d => d === null ? height : height - y(d))
+        .attr("fill", d => d === null ? "#e2e8f0" : "#10b981") // Grey if null, Green if value
+        .attr("data-index", (d, i) => i)
+        .on("mouseenter", (event, d) => {
+            const index = parseInt(d3.select(event.currentTarget).attr("data-index"));
+            const name = VALUES_CATEGORIES[index] || "Unknown";
+            const val = d === null ? "N/A" : d;
+            TooltipManager.show(`${index + 1}. ${name}: ${val}`, event.clientX, event.clientY);
+            d3.select(event.currentTarget).style("opacity", 0.8);
+        })
+        .on("mousemove", (event) => TooltipManager.move(event.clientX, event.clientY))
+        .on("mouseleave", (event) => {
+            TooltipManager.hide();
+            d3.select(event.currentTarget).style("opacity", 1);
+        });
+
+    // Numbers below columns
+    g.selectAll(".label")
+        .data(data)
+        .enter().append("text")
+        .attr("x", (d, i) => x(i) + x.bandwidth() / 2)
+        .attr("y", height + 15)
+        .attr("text-anchor", "middle")
+        .text((d, i) => i + 1)
+        .attr("font-size", "10px")
+        .attr("fill", "#64748b");
+}
+
+function drawContextualShifts(vData, containerId) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = '';
+
+    const contexts = ['work', 'family', 'private', 'crisis'];
+    const colors = { work: 'slate', family: 'slate', private: 'slate', crisis: 'slate' }; // Using slate for container, bars are red/blue
+
+    // We need to match the layout of Domains exactly.
+    // We will create 4 svgs or one big svg? 
+    // To ensure alignment, better to use the same width/margin logic.
+    // We can stacking div blocks.
+
+    const w = container.offsetWidth;
+    const h = 40; // Reduced height per row (was 80, requesting "smaller in height")
+    // User asked for "Contextual Shifts diagrams locate closer each to other remaining the bars height as it is"
+    // Wait, "bars height as it is" implies internal bar height? 
+    // "diagrams locate closer each to other" -> reduce margin/padding of containers.
+    // "bars make twice bigger" -> applied in previous step.
+    // Let's keep internal height but reduce container padding.
+    // Actually, user said "make twice bigger" in previous step, then "smaller in width and in height" in this step.
+    // Contradictory? "make twice bigger (the values could be from -50 to +50)" - this refers to SCALE.
+    // "diagram smaller in width and in height" refers to CONTAINER.
+    // So: Bars fill the height, but height is smaller?
+    // Let's try height=60px per row, tight margins.
+
+    const margin = { top: 2, right: 10, bottom: 2, left: 30 }; // Tighter margins
+    const width = w - margin.left - margin.right;
+    const height = h - margin.top - margin.bottom;
+
+    contexts.forEach(ctx => {
+        const row = document.createElement('div');
+        row.style.width = '100%';
+        row.style.height = `${h}px`;
+        // Remove margin-bottom if any
+        container.appendChild(row);
+
+        const svg = d3.select(row).append("svg")
+            .attr("width", w)
+            .attr("height", h);
+
+        const g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+
+        // Label
+        g.append("text")
+            .attr("x", -5)
+            .attr("y", height / 2)
+            .attr("text-anchor", "end")
+            .attr("alignment-baseline", "middle")
+            .text(ctx.charAt(0).toUpperCase())
+            .attr("font-size", "10px")
+            .attr("font-weight", "bold")
+            .attr("fill", "#64748b");
+
+        const x = d3.scaleBand()
+            .range([0, width])
+            .domain(d3.range(10))
+            .padding(0.1);
+
+        const y = d3.scaleLinear()
+            .range([height, 0])
+            .domain([-50, 50]); // Shift values usually -50 to 50? Or -100 to 100?
+        // Data seems to be small numbers e.g. -20, 10. Let's assume -50 to 50 is safe range.
+
+        const data = vData.contextual_shifts ? vData.contextual_shifts[ctx] : [];
+        if (!data || data.length === 0) return;
+
+        // Zero line
+        g.append("line")
+            .attr("x1", 0)
+            .attr("y1", y(0))
+            .attr("x2", width)
+            .attr("y2", y(0))
+            .attr("stroke", "#e2e8f0")
+            .attr("stroke-width", 1);
+
+        g.selectAll(".bar")
+            .data(data)
+            .enter().append("rect")
+            .attr("x", (d, i) => x(i))
+            .attr("width", x.bandwidth())
+            .attr("y", d => d > 0 ? y(d) : y(0))
+            .attr("height", d => Math.abs(y(d) - y(0)))
+            .attr("fill", d => d > 0 ? "#ef4444" : "#3b82f6") // Red > 0, Blue < 0
+            .on("mouseenter", (event, d) => {
+                const index = parseInt(d3.select(event.currentTarget).attr("data-index"));
+                const name = VALUES_CATEGORIES[index] || "Unknown";
+                // User requested: "1. Freedom & Autonomy in crisis -10"
+                TooltipManager.show(`${index + 1}. ${name} in ${ctx} ${d}`, event.clientX, event.clientY);
+                d3.select(event.currentTarget).style("opacity", 0.8);
+            })
+            .attr("data-index", (d, i) => i) // Bind index
+            .on("mousemove", (event) => TooltipManager.move(event.clientX, event.clientY))
+            .on("mouseleave", (event) => {
+                TooltipManager.hide();
+                d3.select(event.currentTarget).style("opacity", 1);
+            });
+    });
+}
+
+function drawConflictResolution(vData, containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    // Visibility Fix: Use ResizeObserver to ensure drawing happens when container has dimensions
+    const checkAndDraw = () => {
+        const rect = container.getBoundingClientRect();
+        let w = rect.width;
+        let h = rect.height;
+
+        // FORCE FALLBACK if 0 (This is the critical fix for "not visible at all")
+        if (w === 0) w = 500;
+        if (h === 0) h = 500;
+
+        console.log("CR Check (Force):", w, h);
+        container.innerHTML = '';
+        drawConflictResolutionContent(vData, container, w, h);
+        return true;
+    };
+
+    checkAndDraw(); // Just draw it immediately with fallback.
+
+    const resizeObserver = new ResizeObserver(entries => {
+        for (let entry of entries) {
+            if (entry.contentRect.width > 0 && entry.contentRect.height > 0) {
+                console.log("CR Resize Update:", entry.contentRect.width, entry.contentRect.height);
+                container.innerHTML = '';
+                drawConflictResolutionContent(vData, container, entry.contentRect.width, entry.contentRect.height);
+            }
+        }
+    });
+    resizeObserver.observe(container);
+}
+
+function drawConflictResolutionContent(vData, container, w, h) {
+    // Radius needs to be safe
+    const radius = Math.min(w, h) / 2 - 60;
+
+    const svg = d3.select(container).append("svg")
+        .attr("width", w)
+        .attr("height", h)
+        // Ensure overflow is visible if needed, but usually hidden
+        .style("overflow", "visible")
+        .append("g")
+        .attr("transform", `translate(${w / 2},${h / 2})`);
+
+    // Draw Categories (Circle)
+    const angleStep = (Math.PI * 2) / 10;
+    const catCoords = [];
+
+    for (let i = 0; i < 10; i++) {
+        // -90 deg offset to start at top
+        const angle = i * angleStep - Math.PI / 2;
+        const x = radius * Math.cos(angle);
+        const y = radius * Math.sin(angle);
+        catCoords.push({ x, y, angle, id: i });
+    }
+
+    // Draw Ties (Curved Lines)
+    // We iterate PAIR_TO_CATS
+    vData.conflict_resolution.forEach((val, i) => {
+        if (i >= PAIR_TO_CATS.length) return;
+        const [c1, c2] = PAIR_TO_CATS[i];
+
+        const p1 = catCoords[c1];
+        const p2 = catCoords[c2];
+
+        // Beizer curve control point (0,0 center) makes lines curve towards center
+        const path = d3.path();
+        path.moveTo(p1.x, p1.y);
+        path.quadraticCurveTo(0, 0, p2.x, p2.y);
+
+        // Thickness based on value: thinner near 50, thicker near 0/100
+        // val is 0-100. deviation from 50 is 0-50.
+        const dev = Math.abs(val - 50);
+        const thickness = 0.5 + (dev / 50) * 3; // 1px to 4px
+
+        const line = svg.append("path")
+            .attr("d", path.toString())
+            .attr("fill", "none")
+            .attr("stroke", "#94a3b8")
+            .attr("stroke-width", thickness)
+            .attr("opacity", 0.4)
+            .attr("class", `tie tie-cat-${c1} tie-cat-${c2}`)
+            .on("mouseenter", (event) => {
+                d3.select(event.currentTarget).attr("stroke", "#6366f1").attr("opacity", 1);
+                TooltipManager.show(`CR.${i + 1}: ${PAIR_NAMES[i]} (${val})`, event.clientX, event.clientY);
+            })
+            .on("mousemove", (event) => TooltipManager.move(event.clientX, event.clientY))
+            .on("mouseleave", (event) => {
+                d3.select(event.currentTarget).attr("stroke", "#94a3b8").attr("opacity", 0.4);
+                TooltipManager.hide();
+            });
+
+        // Slider (Rectangle)
+        // Position along the curve? Or logical position?
+        // User said: "<50 - to the first pair part, >50 - to the second one."
+        // "Moved along the tie length".
+
+        // Approximate position on quadratic curve
+        // t = val / 100 ? 
+        // If val=0 -> p1. If val=100 -> p2.
+        const t = val / 100;
+        // Quadratic Bezier point: (1-t)^2 P0 + 2(1-t)t P1 + t^2 P2
+        // P0=p1, P1=(0,0), P2=p2
+        const bx = (1 - t) * (1 - t) * p1.x + 2 * (1 - t) * t * 0 + t * t * p2.x;
+        const by = (1 - t) * (1 - t) * p1.y + 2 * (1 - t) * t * 0 + t * t * p2.y;
+
+        svg.append("rect")
+            .attr("x", bx - 3)
+            .attr("y", by - 3)
+            .attr("width", 6)
+            .attr("height", 6)
+            .attr("fill", "#475569")
+            .attr("rx", 1)
+            .attr("class", "pointer-events-none");
+    });
+
+    // Draw Category Dots
+    catCoords.forEach((p, i) => {
+        const g = svg.append("g")
+            .style("cursor", "pointer")
+            .on("mouseenter", (event) => {
+                // Highlight all connected ties
+                svg.selectAll(`.tie-cat-${i}`).attr("stroke", "#6366f1").attr("opacity", 1);
+                TooltipManager.show(`${i + 1}. ${VALUES_CATEGORIES[i]}`, event.clientX, event.clientY);
+            })
+            .on("mousemove", (event) => TooltipManager.move(event.clientX, event.clientY))
+            .on("mouseleave", () => {
+                svg.selectAll(`.tie-cat-${i}`).attr("stroke", "#94a3b8").attr("opacity", 0.4);
+                TooltipManager.hide();
+            });
+
+        g.append("circle")
+            .attr("cx", p.x)
+            .attr("cy", p.y)
+            .attr("r", 12)
+            .attr("fill", "#fff")
+            .attr("stroke", "#cbd5e1")
+            .attr("stroke-width", 2);
+
+        g.append("text")
+            .attr("x", p.x)
+            .attr("y", p.y)
+            .attr("dy", "0.3em")
+            .attr("text-anchor", "middle")
+            .text(i + 1)
+            .attr("font-size", "10px")
+            .attr("font-weight", "bold")
+            .attr("fill", "#475569");
+    });
+
+    // Populate Conflict List below
+    const list = document.getElementById('conflict-list');
+    list.innerHTML = '';
+    vData.conflict_resolution.forEach((val, i) => {
+        const div = document.createElement('div');
+        div.className = "text-[10px] text-slate-600 truncate hover:text-indigo-600 cursor-help";
+        div.title = PAIR_NAMES[i];
+        div.innerText = `${i + 1}: ${PAIR_NAMES[i].substring(0, 25)}... (${val})`;
+        list.appendChild(div);
+    });
+}

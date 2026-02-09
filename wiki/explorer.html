@@ -330,6 +330,14 @@
                                     class="text-xs font-bold text-indigo-600 hover:text-indigo-800 underline">View
                                     Details</button>
                             </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-emerald-700 mb-2 border-b border-emerald-100 pb-1">
+                                    Values (V)</h4>
+                                <div id="inspector-values" class="text-sm text-slate-600 mb-2"></div>
+                                <button onclick="openValuesModal(currentProfile)"
+                                    class="text-xs font-bold text-emerald-600 hover:text-emerald-800 underline">View
+                                    Details</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -741,6 +749,78 @@
                                     <!-- Tags -->
                                 </div>
                             </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-emerald-700 mb-2 border-b border-emerald-100 pb-1">
+                                    Values (V)</h4>
+                                <div id="inspector-values" class="text-sm text-slate-600 mb-2"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VALUES MODAL -->
+    <div id="values-modal" class="fixed inset-0 z-50 hidden" aria-labelledby="modal-title" role="dialog"
+        aria-modal="true">
+        <div class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm transition-opacity" onclick="closeValuesModal()">
+        </div>
+        <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+            <div
+                class="relative transform overflow-hidden rounded-xl bg-white text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-7xl border border-slate-200">
+                <div class="bg-white px-6 py-4 border-b border-slate-100 flex justify-between items-center">
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900" id="val-modal-username">User Profile</h3>
+                        <p class="text-sm text-slate-500">Values & Vectorization</p>
+                    </div>
+                    <button type="button" class="text-slate-400 hover:text-slate-500 transition-colors"
+                        onclick="closeValuesModal()">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="bg-slate-50 p-6 overflow-y-auto max-h-[85vh]">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                        <!-- LEFT: Description (Wider) -->
+                        <div
+                            class="lg:col-span-7 bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
+                            <h4 class="text-sm font-bold text-slate-600 mb-4 uppercase tracking-wider">Values
+                                Description: The Future Society I want to build</h4>
+                            <div id="val-description"
+                                class="flex-1 overflow-y-auto custom-scroll text-sm text-slate-600 leading-relaxed pr-2 max-h-[800px]">
+                                <!-- Content populated by JS -->
+                            </div>
+                        </div>
+
+                        <!-- RIGHT: Visualizations (Narrower) -->
+                        <div class="lg:col-span-5 space-y-6">
+
+                            <!-- 1. Domains & Contextual Shifts Container -->
+                            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                                <h4 class="text-sm font-bold text-slate-600 mb-4 uppercase tracking-wider">Domains &
+                                    Contextual Shifts</h4>
+
+                                <!-- Domains Histogram (Smaller Height) -->
+                                <div id="viz-domains" class="w-full h-[150px] mb-2"></div>
+
+                                <!-- Contextual Shifts (Closer Spacing) -->
+                                <div id="viz-context" class="w-full space-y-1"></div>
+                            </div>
+
+                            <!-- 2. Conflict Resolution -->
+                            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                                <h4 class="text-sm font-bold text-slate-600 mb-4 uppercase tracking-wider">Conflict
+                                    Resolution</h4>
+                                <div id="viz-conflict"
+                                    class="w-full h-[500px] flex items-center justify-center relative">
+                                    <!-- D3 Viz -->
+                                </div>
+                                <div id="conflict-list"
+                                    class="mt-4 grid grid-cols-2 gap-2 max-h-[200px] overflow-y-auto"></div>
+                            </div>
 
                         </div>
                     </div>
@@ -748,7 +828,7 @@
             </div>
         </div>
     </div>
-    <script src="explorer.js"></script>
+    <script src="explorer.js?v=RC8"></script>
     <script src="/script.js"></script>
 </body>
 
