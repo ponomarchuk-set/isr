@@ -302,8 +302,17 @@ function setIssue(index) {
 
     [0, 1, 2].forEach(i => {
         const btn = document.getElementById(`btn-issue-${i}`);
-        if (i === index) btn.className = "flex-1 px-4 py-2 rounded-lg text-sm font-bold bg-blue-600 text-white shadow-sm transition-all";
-        else btn.className = "flex-1 px-4 py-2 rounded-lg text-sm font-bold bg-white border border-slate-300 text-slate-600 hover:bg-slate-50 transition-all";
+        if (!btn) return;
+
+        const badge = btn.querySelector('span');
+
+        if (i === index) {
+            btn.className = "w-full text-left px-4 py-3 rounded-lg text-sm font-bold bg-blue-600 text-white shadow-sm transition-all flex items-center";
+            if (badge) badge.className = "bg-white/20 px-1.5 rounded mr-2 text-xs";
+        } else {
+            btn.className = "w-full text-left px-4 py-3 rounded-lg text-sm font-bold bg-white border border-slate-300 text-slate-600 hover:bg-slate-50 transition-all flex items-center";
+            if (badge) badge.className = "bg-slate-200 px-1.5 rounded mr-2 text-xs";
+        }
     });
 
     document.getElementById('weight-d').innerText = issue.weights.D;
@@ -1935,7 +1944,7 @@ function renderValuesMemberList(members) {
         info.className = "flex-1 min-w-0 mr-4";
         info.innerHTML = `
             <div class="font-bold text-slate-700 truncate">${m.profile.name}</div>
-            <div class="text-xs text-slate-500">Rel: <span class="text-blue-600 font-bold">${m.relevance.toFixed(2)}</span></div>
+            <div class="text-xs text-slate-500">Relevance: <span class="text-blue-600 font-bold">${m.relevance.toFixed(2)}</span></div>
         `;
         row.appendChild(info);
 
