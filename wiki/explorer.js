@@ -3,11 +3,16 @@
 let issues = [];
 let profiles = [];
 let valuesData = [];
+let actionsData = [];
+let actionsVectorData = [];
 
 // --- STATE ---
 let currentIssueIndex = 0;
 let threshold = 0.5;
 let valThreshold = 0.5;
+let contribThreshold = 0.5;
+let currentContribIssueIndex = 0;
+let currentContribMemberUid = null;
 let radarChart = null;
 let barChart = null;
 let mapCanvas = null;
@@ -71,17 +76,21 @@ let currentProfile = null;
 document.addEventListener('DOMContentLoaded', async () => {
     try {
         // Fetch Data
-        const [issuesRes, profilesRes, valuesRes] = await Promise.all([
+        const [issuesRes, profilesRes, valuesRes, actionsRes, actionsVecRes] = await Promise.all([
             fetch('issues.json'),
             fetch('profiles.json'),
-            fetch('values-site.json')
+            fetch('values-site.json'),
+            fetch('actions.json'),
+            fetch('actions-vector.json')
         ]);
 
-        if (!issuesRes.ok || !profilesRes.ok || !valuesRes.ok) throw new Error("Failed to load data");
+        if (!issuesRes.ok || !profilesRes.ok || !valuesRes.ok || !actionsRes.ok || !actionsVecRes.ok) throw new Error("Failed to load data");
 
         issues = await issuesRes.json();
         profiles = await profilesRes.json();
         valuesData = await valuesRes.json();
+        actionsData = await actionsRes.json();
+        actionsVectorData = await actionsVecRes.json();
 
         // Initialize UI
         initCharts();
@@ -103,6 +112,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Initial set issue
         setIssue(0);
         switchIssueValues(0); // Initialize Values Tab state as well
+        switchIssueContrib(0); // Initialize Contribution Tab state
+
+        // Contribution threshold slider
+        document.getElementById('contrib-thresholdSlider')?.addEventListener('input', (e) => {
+            contribThreshold = parseFloat(e.target.value) / 100;
+            updateContribUI();
+        });
 
     } catch (error) {
         console.error("Initialization Error:", error);
@@ -244,6 +260,7 @@ function renderProfileInspector(user) {
     const xBase = (user.interests.length / 8) * 100;
     const xData = [xBase, xBase * 1.2, xBase * 0.8, xBase, xBase * 0.5, xBase * 1.1];
 
+    radarChart.data.datasets[0].data = dData;
     radarChart.data.datasets[1].data = gData;
     radarChart.data.datasets[2].data = sData;
     radarChart.data.datasets[3].data = xData;
@@ -280,14 +297,17 @@ function renderProfileInspector(user) {
         container.innerHTML = '<span class="text-slate-400 text-xs italic">No data</span>';
     }
 
-    // Remove old button if properly replaced
-    // Check if next sibling is button and remove it? The HTML structure had a button.
-    // I need to update the HTML to remove the hardcoded button or hide it here.
-    // The previous HTML had the button AFTER inspector-values div.
-    // I will hide the button by selecting it via ID or next sibling if I can't change HTML yet.
-    // Actually, I can just not render the button in HTML or hide it via CSS. 
-    // But since I am in JS, I can try to find the button. 
-    // The best way is to update HTML to remove the button, but I'll do it in a separate step.
+    // Actions summary
+    const userActions = actionsData.filter(a => a.uid === user.uid);
+    const userActionsVec = actionsVectorData.filter(a => a.uid === user.uid);
+    const totalForce = userActionsVec.reduce((sum, a) => sum + (a.force || 0), 0);
+    const actionsContainer = document.getElementById('inspector-actions');
+    if (actionsContainer) {
+        actionsContainer.innerHTML = `
+            <div class="font-medium text-slate-800">${userActions.length} actions</div>
+            <div class="text-xs text-slate-500">Total Force: <span class="font-bold text-cyan-600">${totalForce.toFixed(1)}</span></div>
+        `;
+    }
 }
 
 // --- VIEW 2: SIMULATOR ---
@@ -1147,6 +1167,9 @@ window.switchTab = function (tabId) {
     if (tabId === 'values') {
         updateValuesUI();
     }
+    if (tabId === 'contribution') {
+        updateContribUI();
+    }
 
     // Check if the active tab is inside the dropdown, if so highlight "More"
     // checkActiveTabVisibility(); // Removed for hamburger menu
@@ -2005,5 +2028,431 @@ function initMobileMenu() {
         });
     }
 }
+// --- CONTRIBUTION TAB ---
+const ISSUE_ID_MAP = ['issue_01', 'issue_02', 'issue_03'];
+const SENTIMENT_COEFFICIENTS = [1.0, 0.4, -0.3, -0.5, -1.0];
+const DOMAIN_LABELS = [
+    'Agency & Freedom', 'Care & Mutual Support', 'Safety & Stability',
+    'Fairness & Justice', 'Restoration & Mercy', 'Authenticity & Expression',
+    'Protection & Stewardship', 'Working Together', 'Transcendence & Meaning',
+    'Digital Rights & Access'
+];
+
+function cosineSimilarity(vecA, vecB) {
+    // Mutual-null-skip: only use indices where both are non-null
+    let dotProduct = 0, magA = 0, magB = 0;
+    let sharedDims = 0;
+    for (let i = 0; i < Math.min(vecA.length, vecB.length); i++) {
+        if (vecA[i] !== null && vecA[i] !== undefined && vecB[i] !== null && vecB[i] !== undefined) {
+            dotProduct += vecA[i] * vecB[i];
+            magA += vecA[i] * vecA[i];
+            magB += vecB[i] * vecB[i];
+            sharedDims++;
+        }
+    }
+    if (sharedDims === 0 || magA === 0 || magB === 0) return null; // no shared dimensions
+    return dotProduct / (Math.sqrt(magA) * Math.sqrt(magB));
+}
+
+function sentimentScalar(marks) {
+    if (!marks || marks.length < 5) return 0;
+    let s = 0;
+    for (let i = 0; i < 5; i++) {
+        s += (marks[i] || 0) * SENTIMENT_COEFFICIENTS[i];
+    }
+    return s;
+}
+
+function switchIssueContrib(index) {
+    currentContribIssueIndex = index;
+    currentContribMemberUid = null;
+    [0, 1, 2].forEach(i => {
+        const btn = document.getElementById(`btn-contrib-${i}`);
+        if (btn) {
+            if (i === index) btn.className = 'flex-1 px-3 py-2 rounded text-xs font-bold bg-blue-600 text-white shadow-sm transition-all';
+            else btn.className = 'flex-1 px-3 py-2 rounded text-xs font-bold bg-white border border-slate-300 text-slate-600 hover:bg-slate-50 transition-all';
+        }
+    });
+    updateContribUI();
+}
+
+function updateContribUI() {
+    const issue = issues[currentContribIssueIndex];
+    const issueIdStr = ISSUE_ID_MAP[currentContribIssueIndex];
+
+    // Sync threshold display
+    document.getElementById('contrib-thresholdValue').innerText = contribThreshold.toFixed(2);
+    document.getElementById('contrib-thresholdSlider').value = contribThreshold * 100;
+
+    // Build member list (same relevance logic as Values tab)
+    const members = [];
+    profiles.forEach(p => {
+        const rel = calculateRelevance(p, issue);
+        if (rel.total >= contribThreshold) {
+            const vData = valuesData.find(v => v.uid === p.uid);
+            if (vData) {
+                members.push({
+                    profile: p,
+                    relevance: parseFloat(rel.total),
+                    values: vData
+                });
+            }
+        }
+    });
+    members.sort((a, b) => b.relevance - a.relevance);
+
+    document.getElementById('contrib-member-count').innerText = `${members.length}/${profiles.length}`;
+
+    // Calculate VoV for this microcommunity (weighted average)
+    // Temporarily swap valThreshold since calculateAggregatedValues uses it internally
+    const savedThreshold = valThreshold;
+    valThreshold = contribThreshold;
+    const vov = calculateAggregatedValues(profiles, issue);
+    valThreshold = savedThreshold;
+
+    // Render member list
+    renderContribMemberList(members, issueIdStr, vov.data);
+
+    // Render actions for selected member (or clear)
+    if (currentContribMemberUid) {
+        const selectedMember = members.find(m => m.profile.uid === currentContribMemberUid);
+        if (selectedMember) {
+            renderContribActions(selectedMember.profile, issueIdStr, vov.data);
+        } else {
+            currentContribMemberUid = null;
+            clearContribActions();
+        }
+    } else {
+        clearContribActions();
+    }
+}
+
+function clearContribActions() {
+    document.getElementById('contrib-username').innerText = '';
+    const badge = document.getElementById('contrib-total-badge');
+    badge.classList.add('hidden');
+    document.getElementById('contrib-actions-list').innerHTML = `
+        <div class="h-full flex items-center justify-center text-slate-400 italic">
+            Select a member to view their actions
+        </div>`;
+}
+
+function selectContribMember(uid) {
+    currentContribMemberUid = uid;
+    updateContribUI();
+}
+
+function renderContribMemberList(members, issueIdStr, vov) {
+    const list = document.getElementById('contrib-member-list');
+    list.innerHTML = '';
+
+    members.forEach(m => {
+        // Compute total contribution for this member for the badge
+        const userActionsVec = actionsVectorData.filter(a => a.uid === m.profile.uid && a.issue_id === issueIdStr);
+        let totalC = 0;
+        userActionsVec.forEach(av => {
+            const A = cosineSimilarity(av.domains || [], vov.domains || []);
+            const S = sentimentScalar(av.marks);
+            const alignment = A !== null ? A : 0;
+            totalC += (alignment + S) * (av.force || 0);
+        });
+
+        const row = document.createElement('div');
+        const isSelected = m.profile.uid === currentContribMemberUid;
+        row.className = `p-3 border-b border-slate-100 flex items-center justify-between group hover:bg-cyan-50 transition-colors cursor-pointer ${
+            isSelected ? 'bg-cyan-50 border-l-4 border-l-cyan-500' : ''
+        }`;
+        row.onclick = () => selectContribMember(m.profile.uid);
+
+        // Color the contribution badge
+        let cColor = 'text-slate-500 bg-slate-100';
+        if (totalC > 0.1) cColor = 'text-emerald-700 bg-emerald-100';
+        else if (totalC < -0.1) cColor = 'text-red-700 bg-red-100';
+
+        const actionsCount = userActionsVec.length;
+
+        row.innerHTML = `
+            <div class="flex-1 min-w-0 mr-3">
+                <div class="font-bold text-slate-700 truncate">${m.profile.name}</div>
+                <div class="text-xs text-slate-500">Rel: <span class="text-blue-600 font-bold">${m.relevance.toFixed(2)}</span> · ${actionsCount} action${actionsCount !== 1 ? 's' : ''}</div>
+            </div>
+            <span class="text-xs font-bold px-2 py-1 rounded-full ${cColor} whitespace-nowrap">${totalC >= 0 ? '+' : ''}${totalC.toFixed(2)}</span>
+        `;
+
+        list.appendChild(row);
+    });
+}
+
+function renderContribActions(user, issueIdStr, vov) {
+    const userActions = actionsData.filter(a => a.uid === user.uid && a.issue_id === issueIdStr);
+    const userActionsVec = actionsVectorData.filter(a => a.uid === user.uid && a.issue_id === issueIdStr);
+
+    // Build vec map
+    const vecMap = {};
+    userActionsVec.forEach(v => { vecMap[v.action_id] = v; });
+
+    document.getElementById('contrib-username').innerText = user.name;
+
+    // Type badges
+    const typeBadge = (type) => {
+        const colors = {
+            'task': 'bg-cyan-100 text-cyan-700',
+            'task_msg': 'bg-teal-100 text-teal-700',
+            'discussion_msg': 'bg-blue-100 text-blue-700',
+            'voting_msg': 'bg-purple-100 text-purple-700'
+        };
+        const label = type.replace(/_/g, ' ');
+        return `<span class="px-2 py-0.5 rounded-full text-xs font-semibold ${colors[type] || 'bg-slate-100 text-slate-600'}">${label}</span>`;
+    };
+
+    let totalContrib = 0;
+    let html = '';
+
+    userActions.forEach((action, idx) => {
+        const vec = vecMap[action.action_id] || {};
+        const force = vec.force || 0;
+        const domains = vec.domains || [];
+        const marks = vec.marks || [];
+
+        const A = cosineSimilarity(domains, vov.domains || []);
+        const S = sentimentScalar(marks);
+        const alignment = A !== null ? A : 0;
+        const contrib = (alignment + S) * force;
+        totalContrib += contrib;
+
+        // Color coding
+        let borderColor = 'border-slate-200'; // grey - no influence
+        let bgColor = 'bg-white';
+        let contribLabel = 'No influence';
+        let contribColor = 'text-slate-500';
+
+        if (A === null && S === 0) {
+            // Truly grey: no shared domains and no sentiment
+            borderColor = 'border-slate-200';
+            bgColor = 'bg-slate-50';
+            contribLabel = 'No influence';
+            contribColor = 'text-slate-400';
+        } else if (contrib > 0.01) {
+            borderColor = 'border-emerald-300';
+            bgColor = 'bg-emerald-50/50';
+            contribLabel = `+${contrib.toFixed(3)}`;
+            contribColor = 'text-emerald-700';
+        } else if (contrib < -0.01) {
+            borderColor = 'border-red-300';
+            bgColor = 'bg-red-50/50';
+            contribLabel = contrib.toFixed(3);
+            contribColor = 'text-red-700';
+        } else {
+            contribLabel = contrib.toFixed(3);
+            contribColor = 'text-slate-500';
+        }
+
+        // Build domain comparison mini-view
+        let domainCompareHtml = '<div class="flex gap-0.5 mt-1">';
+        for (let i = 0; i < 10; i++) {
+            const aVal = domains[i];
+            const vVal = (vov.domains || [])[i];
+            let barColor = '#e2e8f0'; // grey - null
+            if (aVal !== null && aVal !== undefined && vVal !== null && vVal !== undefined) {
+                // Both present - show alignment direction
+                const prod = aVal * vVal;
+                if (prod > 0) barColor = '#10b981'; // same direction = green
+                else if (prod < 0) barColor = '#ef4444'; // opposite = red
+                else barColor = '#94a3b8'; // zero
+            }
+            domainCompareHtml += `<div style="width:8px;height:16px;background:${barColor};border-radius:2px;opacity:0.8" title="D${i+1}: Action=${aVal ?? 'null'} VoV=${vVal ?? 'null'}"></div>`;
+        }
+        domainCompareHtml += '</div>';
+
+        // Sentiment mini-view
+        let sentimentHtml = '';
+        if (marks.length >= 5) {
+            const emojiArr = ['👍','😂','🌊','😡','🤦'];
+            sentimentHtml = '<div class="flex gap-1 items-center">';
+            marks.forEach((m, i) => {
+                if (m > 0) sentimentHtml += `<span class="text-xs" title="${m.toFixed(2)}">${emojiArr[i]}${m > 0.1 ? '<sup class="text-[8px] font-bold">' + m.toFixed(1) + '</sup>' : ''}</span>`;
+            });
+            sentimentHtml += '</div>';
+        }
+
+        html += `
+            <div class="rounded-xl border-2 ${borderColor} ${bgColor} p-4 transition-all">
+                <div class="flex items-start justify-between gap-3 mb-2">
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1 flex-wrap">
+                            ${typeBadge(action.action_type)}
+                            <span class="text-xs font-medium text-slate-500">Force: <span class="font-bold">${force.toFixed(1)}</span></span>
+                        </div>
+                        <p class="text-sm text-slate-700 leading-relaxed">${action.action_description}</p>
+                    </div>
+                    <div class="text-right shrink-0">
+                        <div class="text-lg font-bold ${contribColor}">${contribLabel}</div>
+                        <div class="text-[10px] text-slate-400 mt-0.5">contribution</div>
+                    </div>
+                </div>
+                <div class="flex items-end gap-4 mt-2 pt-2 border-t border-slate-100">
+                    <div>
+                        <div class="text-[10px] text-slate-400 font-semibold mb-0.5">Alignment (A)</div>
+                        <div class="text-xs font-bold ${A !== null ? (A >= 0 ? 'text-emerald-600' : 'text-red-600') : 'text-slate-400'}">${A !== null ? A.toFixed(3) : 'N/A'}</div>
+                    </div>
+                    <div>
+                        <div class="text-[10px] text-slate-400 font-semibold mb-0.5">Sentiment (S)</div>
+                        <div class="text-xs font-bold ${S >= 0 ? 'text-emerald-600' : 'text-red-600'}">${S >= 0 ? '+' : ''}${S.toFixed(3)}</div>
+                    </div>
+                    <div>
+                        <div class="text-[10px] text-slate-400 font-semibold mb-0.5">Domains</div>
+                        ${domainCompareHtml}
+                    </div>
+                    <div>
+                        <div class="text-[10px] text-slate-400 font-semibold mb-0.5">Marks</div>
+                        ${sentimentHtml || '<span class="text-xs text-slate-400">—</span>'}
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+
+    if (userActions.length === 0) {
+        html = `<div class="h-32 flex items-center justify-center text-slate-400 italic">No actions for this issue</div>`;
+    }
+
+    document.getElementById('contrib-actions-list').innerHTML = html;
+
+    // Update total badge
+    const badge = document.getElementById('contrib-total-badge');
+    badge.classList.remove('hidden');
+    let badgeColor = 'bg-slate-100 text-slate-500';
+    if (totalContrib > 0.1) badgeColor = 'bg-emerald-100 text-emerald-700';
+    else if (totalContrib < -0.1) badgeColor = 'bg-red-100 text-red-700';
+    badge.className = `text-sm font-bold px-3 py-1 rounded-full ${badgeColor}`;
+    badge.innerText = `C = ${totalContrib >= 0 ? '+' : ''}${totalContrib.toFixed(3)}`;
+}
+
 // Initialize mobile menu
 initMobileMenu();
+
+// --- ACTIONS MODAL ---
+const SENTIMENT_EMOJIS = ['👍', '😂', '🌊', '😡', '🤦'];
+const SENTIMENT_COLORS = ['#10b981', '#f59e0b', '#3b82f6', '#ef4444', '#8b5cf6'];
+const DOMAIN_COLORS = '#06b6d4'; // cyan-500
+
+function openActionsModal(user) {
+    if (!user) return;
+    document.getElementById('actions-modal-username').innerText = user.name;
+
+    const userActions = actionsData.filter(a => a.uid === user.uid);
+    const userActionsVec = actionsVectorData.filter(a => a.uid === user.uid);
+
+    // Build a map of vector data by action_id
+    const vecMap = {};
+    userActionsVec.forEach(v => { vecMap[v.action_id] = v; });
+
+    const listEl = document.getElementById('actions-modal-list');
+
+    // Action type badge colors
+    const typeBadge = (type) => {
+        const colors = {
+            'task': 'bg-cyan-100 text-cyan-700',
+            'task_msg': 'bg-teal-100 text-teal-700',
+            'discussion_msg': 'bg-blue-100 text-blue-700',
+            'voting_msg': 'bg-purple-100 text-purple-700'
+        };
+        const label = type.replace(/_/g, ' ');
+        return `<span class="px-2 py-0.5 rounded-full text-xs font-semibold ${colors[type] || 'bg-slate-100 text-slate-600'}">${label}</span>`;
+    };
+
+    let html = '';
+    userActions.forEach((action, idx) => {
+        const vec = vecMap[action.action_id] || {};
+        const force = vec.force != null ? vec.force : 0;
+        const domains = vec.domains || [];
+        const marks = vec.marks || [];
+
+        html += `
+            <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-4">
+                <div class="flex items-start justify-between gap-3 mb-3">
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1">
+                            ${typeBadge(action.action_type)}
+                            <span class="text-xs font-bold text-cyan-600">Force: ${force.toFixed(1)}</span>
+                        </div>
+                        <p class="text-sm text-slate-700 leading-relaxed">${action.action_description}</p>
+                    </div>
+                </div>
+                <div class="flex items-end gap-6 mt-2">
+                    <div>
+                        <div class="text-xs text-slate-400 mb-1 font-semibold">Domains</div>
+                        <canvas id="act-domains-${idx}" width="200" height="40" class="rounded"></canvas>
+                    </div>
+                    <div>
+                        <div class="text-xs text-slate-400 mb-1 font-semibold">Sentiments</div>
+                        <canvas id="act-sentiments-${idx}" width="120" height="40" class="rounded"></canvas>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+
+    listEl.innerHTML = html;
+    document.getElementById('actions-modal').classList.remove('hidden');
+
+    // Draw mini charts after DOM is rendered
+    setTimeout(() => {
+        userActions.forEach((action, idx) => {
+            const vec = vecMap[action.action_id] || {};
+            drawMiniDomains(document.getElementById(`act-domains-${idx}`), vec.domains || []);
+            drawMiniSentiments(document.getElementById(`act-sentiments-${idx}`), vec.marks || []);
+        });
+    }, 50);
+}
+
+function closeActionsModal() {
+    document.getElementById('actions-modal').classList.add('hidden');
+    TooltipManager.hide();
+}
+
+function drawMiniDomains(canvas, domains) {
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const w = canvas.width;
+    const h = canvas.height;
+    ctx.clearRect(0, 0, w, h);
+    const barW = w / 10;
+    for (let i = 0; i < 10; i++) {
+        const val = domains[i];
+        if (val !== null && val !== undefined) {
+            const barH = (val / 100) * h;
+            ctx.fillStyle = DOMAIN_COLORS;
+            ctx.fillRect(i * barW + 1, h - barH, barW - 2, barH);
+        } else {
+            ctx.fillStyle = '#e2e8f0';
+            ctx.fillRect(i * barW + 1, 0, barW - 2, h);
+        }
+    }
+}
+
+function drawMiniSentiments(canvas, marks) {
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const w = canvas.width;
+    const h = canvas.height;
+    ctx.clearRect(0, 0, w, h);
+
+    // Find max for scaling
+    const maxVal = Math.max(...marks.map(v => v || 0), 0.01);
+    const barW = w / 5;
+    const chartH = h - 12; // leave room for emoji labels
+
+    for (let i = 0; i < 5; i++) {
+        const val = marks[i] || 0;
+        const barH = (val / maxVal) * chartH;
+        ctx.fillStyle = SENTIMENT_COLORS[i];
+        ctx.fillRect(i * barW + 2, chartH - barH, barW - 4, barH);
+
+        // Draw emoji label below
+        ctx.font = '9px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(SENTIMENT_EMOJIS[i], i * barW + barW / 2, h - 1);
+    }
+}
+

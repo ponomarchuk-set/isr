@@ -338,6 +338,14 @@
                                     class="text-xs font-bold text-emerald-600 hover:text-emerald-800 underline">View
                                     Details</button>
                             </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-cyan-700 mb-2 border-b border-cyan-100 pb-1">
+                                    Actions (A)</h4>
+                                <div id="inspector-actions" class="text-sm text-slate-600 mb-2"></div>
+                                <button onclick="openActionsModal(currentProfile)"
+                                    class="text-xs font-bold text-cyan-600 hover:text-cyan-800 underline">View
+                                    Details</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -714,6 +722,84 @@
                     </div>
                 </div>
             </div>
+        </section>
+
+        <!-- VIEW 5: CONTRIBUTION -->
+        <section id="view-contribution" class="hidden absolute inset-0 p-6 flex flex-col overflow-hidden">
+            <div class="flex-1 grid grid-cols-12 gap-6 min-h-0">
+                <!-- LEFT: Actions List -->
+                <div class="col-span-12 lg:col-span-9 flex flex-col overflow-hidden">
+                    <!-- Header with user name + total contribution -->
+                    <div id="contrib-header" class="mb-4">
+                        <div class="flex items-center gap-4">
+                            <h3 class="text-2xl font-bold text-slate-600 tracking-wider">Contribution</h3>
+                            <div id="contrib-user-info" class="flex items-center gap-3">
+                                <span id="contrib-username" class="text-lg font-bold text-slate-800"></span>
+                                <span id="contrib-total-badge"
+                                    class="text-sm font-bold px-3 py-1 rounded-full bg-slate-100 text-slate-500 hidden"></span>
+                            </div>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-1">Select a member from the list to view their action
+                            contributions to the microcommunity</p>
+                    </div>
+
+                    <!-- Actions cards container -->
+                    <div id="contrib-actions-list" class="flex-1 overflow-y-auto custom-scroll pr-2 space-y-3">
+                        <div class="h-full flex items-center justify-center text-slate-400 italic">
+                            Select a member to view their actions
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT: Controls & Member List -->
+                <div class="col-span-12 lg:col-span-3 flex flex-col space-y-6 min-h-0">
+
+                    <!-- Issue Switcher -->
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                        <div class="text-xs font-bold text-slate-400 uppercase mb-2">Issue Context</div>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <button onclick="switchIssueContrib(0)" id="btn-contrib-0"
+                                class="flex-1 px-3 py-2 rounded text-xs font-bold bg-blue-600 text-white shadow-sm transition-all">1.
+                                Park</button>
+                            <button onclick="switchIssueContrib(1)" id="btn-contrib-1"
+                                class="flex-1 px-3 py-2 rounded text-xs font-bold bg-white border border-slate-300 text-slate-600 hover:bg-slate-50 transition-all">2.
+                                Remote</button>
+                            <button onclick="switchIssueContrib(2)" id="btn-contrib-2"
+                                class="flex-1 px-3 py-2 rounded text-xs font-bold bg-white border border-slate-300 text-slate-600 hover:bg-slate-50 transition-all">3.
+                                Health</button>
+                        </div>
+
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-sm font-bold text-slate-700">Relevance Threshold</span>
+                            <span id="contrib-thresholdValue"
+                                class="text-sm font-mono font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded">0.50</span>
+                        </div>
+                        <input type="range" id="contrib-thresholdSlider" min="0" max="100" value="50"
+                            class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
+                        <p class="text-xs text-slate-400 mt-2">Adjusts membership based on Relevance Score.</p>
+                    </div>
+
+                    <!-- Member List -->
+                    <div
+                        class="bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col flex-1 overflow-hidden">
+                        <div class="p-4 border-b border-slate-100 bg-slate-50 flex justify-between items-center">
+                            <div>
+                                <h4 class="font-bold text-slate-700">Microcommunity</h4>
+                                <p class="text-xs text-slate-500">Select member to inspect</p>
+                            </div>
+                            <span id="contrib-member-count"
+                                class="bg-cyan-100 text-cyan-700 text-xs font-bold px-2 py-1 rounded-full">0/20</span>
+                        </div>
+                        <div id="contrib-member-list" class="flex-1 overflow-y-auto custom-scroll p-0">
+                            <!-- Populated by JS -->
+                        </div>
+                        <div class="p-3 bg-slate-50 text-center border-t border-slate-100 text-xs text-slate-400">
+                            C = (cos(Action, VoV) + S) × Force
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
     </main>
 
@@ -910,6 +996,34 @@
                             </div>
 
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ACTIONS MODAL -->
+    <div id="actions-modal" class="fixed inset-0 z-50 hidden" aria-labelledby="modal-title" role="dialog"
+        aria-modal="true">
+        <div class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm transition-opacity" onclick="closeActionsModal()">
+        </div>
+        <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+            <div
+                class="relative transform overflow-hidden rounded-xl bg-white text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-4xl border border-slate-200">
+                <div class="bg-white px-6 py-4 border-b border-slate-100 flex justify-between items-center">
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900" id="actions-modal-username">User Profile</h3>
+                        <p class="text-sm text-slate-500">Actions & Contribution</p>
+                    </div>
+                    <button type="button" class="text-slate-400 hover:text-slate-500 transition-colors"
+                        onclick="closeActionsModal()">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="bg-slate-50 p-6 overflow-y-auto max-h-[85vh]">
+                    <div id="actions-modal-list" class="space-y-4">
+                        <!-- Populated by JS -->
                     </div>
                 </div>
             </div>
