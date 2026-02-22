@@ -1,0 +1,181 @@
+{
+  "issues": [
+    {
+      "id": "issue_01",
+      "title": "Broken elevator in residential building",
+      "description": "Residents organize to repair a frequently failing elevator that endangers elderly and disabled neighbours.",
+      "microcommunity_size": 45,
+      "cr_weights": {
+        "CR1_IndividualFreedom_vs_CollectiveHarmony": 70,
+        "CR2_Security_vs_CostEfficiency": 85,
+        "CR5_PresentComfort_vs_FutureInvestment": 60,
+        "CR10_Justice_vs_Loyalty": 55
+      },
+      "cs_coefficients": {
+        "work": 0,
+        "family": 0,
+        "private": 60,
+        "crisis": 10
+      }
+    },
+    {
+      "id": "issue_02",
+      "title": "Neighbourhood playground redesign",
+      "description": "Local parents, teenagers, and older residents discuss how to redesign a small park to be safer and more inclusive.",
+      "microcommunity_size": 80,
+      "cr_weights": {
+        "CR1_IndividualFreedom_vs_CollectiveHarmony": 55,
+        "CR2_Security_vs_CostEfficiency": 65,
+        "CR3_Innovation_vs_Tradition": 50,
+        "CR4_ChildrenNeeds_vs_AdultsComfort": 75
+      },
+      "cs_coefficients": {
+        "work": 0,
+        "family": 55,
+        "private": 35,
+        "crisis": 0
+      }
+    },
+    {
+      "id": "issue_03",
+      "title": "School homework load reform",
+      "description": "Parents, teachers, and students debate whether to reduce homework and redesign learning routines.",
+      "microcommunity_size": 120,
+      "cr_weights": {
+        "CR1_IndividualFreedom_vs_CollectiveHarmony": 50,
+        "CR6_Performance_vs_Wellbeing": 80,
+        "CR7_Tradition_vs_PedagogicalInnovation": 70,
+        "CR8_ParentsControl_vs_SchoolAutonomy": 60
+      },
+      "cs_coefficients": {
+        "work": 20,
+        "family": 70,
+        "private": 35,
+        "crisis": 0
+      }
+    },
+    {
+      "id": "issue_04",
+      "title": "Workplace flexible hours policy",
+      "description": "Employees and management negotiate a new flexible working hours and remote work policy.",
+      "microcommunity_size": 60,
+      "cr_weights": {
+        "CR1_IndividualFreedom_vs_CollectiveHarmony": 65,
+        "CR9_Productivity_vs_WorkLifeBalance": 80,
+        "CR11_ManagementControl_vs_EmployeeAutonomy": 75
+      },
+      "cs_coefficients": {
+        "work": 95,
+        "family": 40,
+        "private": 0,
+        "crisis": 0
+      }
+    },
+    {
+      "id": "issue_05",
+      "title": "Local traffic calming measures",
+      "description": "Residents and city officials discuss speed bumps, bike lanes, and parking restrictions on a busy street.",
+      "microcommunity_size": 150,
+      "cr_weights": {
+        "CR1_IndividualFreedom_vs_CollectiveHarmony": 60,
+        "CR2_Security_vs_CostEfficiency": 70,
+        "CR12_CarConvenience_vs_PedestrianSafety": 85,
+        "CR13_LocalBusinessInterests_vs_ResidentsPeace": 55
+      },
+      "cs_coefficients": {
+        "work": 30,
+        "family": 0,
+        "private": 40,
+        "crisis": 20
+      }
+    },
+    {
+      "id": "issue_06",
+      "title": "Community solar panel installation",
+      "description": "A housing cooperative decides whether to invest in rooftop solar and how to share costs and benefits.",
+      "microcommunity_size": 70,
+      "cr_weights": {
+        "CR2_Security_vs_CostEfficiency": 50,
+        "CR5_PresentComfort_vs_FutureInvestment": 80,
+        "CR14_EnvironmentalStewardship_vs_ShortTermSavings": 85,
+        "CR15_IndividualPropertyRights_vs_CommonInfrastructure": 60
+      },
+      "cs_coefficients": {
+        "work": 15,
+        "family": 0,
+        "private": 55,
+        "crisis": 20
+      }
+    },
+    {
+      "id": "issue_07",
+      "title": "Open data for city services",
+      "description": "Civic tech activists and municipal staff debate publishing detailed service performance and budget data.",
+      "microcommunity_size": 110,
+      "cr_weights": {
+        "CR16_Transparency_vs_AdministrativeBurden": 70,
+        "CR17_Privacy_vs_PublicRightToKnow": 65,
+        "CR18_TechnocraticEfficiency_vs_CitizenOversight": 75
+      },
+      "cs_coefficients": {
+        "work": 60,
+        "family": 20,
+        "private": 25,
+        "crisis": 0
+      }
+    },
+    {
+      "id": "issue_08",
+      "title": "Neighbourhood noise control rules",
+      "description": "Residents and bar/club owners negotiate night-time noise limits and enforcement practices.",
+      "microcommunity_size": 90,
+      "cr_weights": {
+        "CR1_IndividualFreedom_vs_CollectiveHarmony": 75,
+        "CR19_NightlifeEconomy_vs_ResidentsRest": 85,
+        "CR20_CulturalVibrancy_vs_QuietOrder": 70
+      },
+      "cs_coefficients": {
+        "work": 0,
+        "family": 15,
+        "private": 65,
+        "crisis": 0
+      }
+    },
+    {
+      "id": "issue_09",
+      "title": "Digital platform moderation rules",
+      "description": "Members of a local online forum set rules about hate speech, misinformation, and moderation powers.",
+      "microcommunity_size": 200,
+      "cr_weights": {
+        "CR1_IndividualFreedom_vs_CollectiveHarmony": 65,
+        "CR21_FreedomOfSpeech_vs_ProtectionFromHarm": 85,
+        "CR22_OpenDebate_vs_MisinformationControl": 75,
+        "CR23_UserAutonomy_vs_ModeratorAuthority": 70
+      },
+      "cs_coefficients": {
+        "work": 0,
+        "family": 0,
+        "private": 80,
+        "crisis": 0
+      }
+    },
+    {
+      "id": "issue_10",
+      "title": "Flood happened",
+      "description": "Community members, emergency services, and local authorities co-work to minimize the flood consequences.",
+      "microcommunity_size": 180,
+      "cr_weights": {
+        "CR1_IndividualFreedom_vs_CollectiveHarmony": 80,
+        "CR2_Security_vs_CostEfficiency": 75,
+        "CR24_NormalLife_vs_PreparednessDisruption": 70,
+        "CR25_LocalAutonomy_vs_CentralCommand": 60
+      },
+      "cs_coefficients": {
+        "work": 0,
+        "family": ,
+        "private": 15,
+        "crisis": 95
+      }
+    }
+  ]
+}

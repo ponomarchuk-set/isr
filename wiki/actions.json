@@ -1,0 +1,2452 @@
+[
+  {
+    "action_id": "A-1001",
+    "uid": "U-1000",
+    "issue_id": "issue_01",
+    "action_type": "task",
+    "action_description": "Researched and compared 3 elevator repair companies, prepared cost-benefit analysis spreadsheet showing 25% savings with new contractor.",
+    "marks": {
+      "good": 12,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 1
+    }
+  },
+  {
+    "action_id": "A-1002",
+    "uid": "U-1000",
+    "issue_id": "issue_01",
+    "action_type": "voting_msg",
+    "action_description": "I vote for Company B. They have modern equipment that will handle our heavy usage better long-term. My analysis shows they save us 15% over 5 years vs Company A.",
+    "marks": {
+      "good": 10,
+      "funny": 0,
+      "flood": 1,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-1003",
+    "uid": "U-1000",
+    "issue_id": "issue_02",
+    "action_type": "task_msg",
+    "action_description": "Uploaded safety standards for playground equipment PDF and marked 3 key requirements that our current design violates. Can we get contractor feedback on these?",
+    "marks": {
+      "good": 8,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-1004",
+    "uid": "U-1000",
+    "issue_id": "issue_02",
+    "action_type": "discussion_msg",
+    "action_description": "As a parent of young kids, the rubberized surfacing is non-negotiable for me. My son fell last year and got a nasty bruise. Happy to fundraise extra for it.",
+    "marks": {
+      "good": 9,
+      "funny": 1,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-1005",
+    "uid": "U-1000",
+    "issue_id": "issue_03",
+    "action_type": "discussion_msg",
+    "action_description": "Tech worker perspective: my kids spend evenings coding with me instead of endless homework. Quality family time + they learn real skills. Less homework = better learning.",
+    "marks": {
+      "good": 7,
+      "funny": 2,
+      "flood": 1,
+      "rude": 0,
+      "foolish": 1
+    }
+  },
+  {
+    "action_id": "A-1006",
+    "uid": "U-1000",
+    "issue_id": "issue_04",
+    "action_type": "voting_msg",
+    "action_description": "Strong support for 4-day week pilot. My productivity actually increases with focused deep work blocks. Data from my company shows 20% output increase with flex hours.",
+    "marks": {
+      "good": 11,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 2
+    }
+  },
+  {
+    "action_id": "A-1007",
+    "uid": "U-1000",
+    "issue_id": "issue_05",
+    "action_type": "task",
+    "action_description": "Built simple interactive map of proposed bike lanes and speed bumps using Google Maps API. Shared link with estimated travel time changes for different routes.",
+    "marks": {
+      "good": 14,
+      "funny": 1,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-1008",
+    "uid": "U-1000",
+    "issue_id": "issue_06",
+    "action_type": "discussion_msg",
+    "action_description": "Created Google Sheet calculator for solar ROI. Input your apartment size and get monthly savings estimate. At our rates, payback in 6 years even with upfront loan.",
+    "marks": {
+      "good": 12,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-1009",
+    "uid": "U-1000",
+    "issue_id": "issue_07",
+    "action_type": "task_msg",
+    "action_description": "Set up prototype dashboard on my cloud server showing anonymized service performance data from city APIs. Link in chat - can we add this as baseline?",
+    "marks": {
+      "good": 13,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 1
+    }
+  },
+  {
+    "action_id": "A-1010",
+    "uid": "U-1000",
+    "issue_id": "issue_10",
+    "action_type": "discussion_msg",
+    "action_description": "As tech lead, I can build a simple evacuation app prototype that integrates weather APIs, resident locations, and safe routes. Happy to contribute 20 hours.",
+    "marks": {
+      "good": 15,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-2001",
+    "uid": "U-1001",
+    "issue_id": "issue_01",
+    "action_type": "discussion_msg",
+    "action_description": "As a retired pediatrician, I strongly recommend prioritizing a modern elevator with emergency medical access features. Falls are the leading cause of injury for seniors.",
+    "marks": {
+      "good": 18,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-2002",
+    "uid": "U-1001",
+    "issue_id": "issue_02",
+    "action_type": "task",
+    "action_description": "Researched and provided international standards for playground safety equipment, highlighting rubberized surfacing requirements to prevent head injuries in children under 10.",
+    "marks": {
+      "good": 22,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-2003",
+    "uid": "U-1001",
+    "issue_id": "issue_02",
+    "action_type": "voting_msg",
+    "action_description": "Vote YES for rubberized surfacing even if it costs 30% more. My grandchildren play here and I won't risk their safety for short-term savings.",
+    "marks": {
+      "good": 20,
+      "funny": 0,
+      "flood": 1,
+      "rude": 0,
+      "foolish": 1
+    }
+  },
+  {
+    "action_id": "A-2004",
+    "uid": "U-1001",
+    "issue_id": "issue_03",
+    "action_type": "discussion_msg",
+    "action_description": "Homework overload contributes to childhood obesity and mental health issues. As a doctor who treated stressed children for 30 years, I support reduction.",
+    "marks": {
+      "good": 19,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-2005",
+    "uid": "U-1001",
+    "issue_id": "issue_04",
+    "action_type": "discussion_msg",
+    "action_description": "At my age, inflexible hours were a major health risk. Flexible schedules reduce stress and doctor visits. Younger workers need this too for family balance.",
+    "marks": {
+      "good": 16,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-2006",
+    "uid": "U-1001",
+    "issue_id": "issue_05",
+    "action_type": "discussion_msg",
+    "action_description": "Speeding cars are a real danger to my grandchildren walking to school. I support all proposed calming measures including bike lanes.",
+    "marks": {
+      "good": 17,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-2007",
+    "uid": "U-1001",
+    "issue_id": "issue_06",
+    "action_type": "task_msg",
+    "action_description": "Art history perspective: solar panels can be architecturally integrated. Found 3 case studies of aesthetically pleasing installations we could reference.",
+    "marks": {
+      "good": 14,
+      "funny": 1,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-2008",
+    "uid": "U-1001",
+    "issue_id": "issue_07",
+    "action_type": "discussion_msg",
+    "action_description": "Open data builds trust. As a senior citizen, I want to see exactly where my tax money goes. Full transparency please.",
+    "marks": {
+      "good": 15,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-2009",
+    "uid": "U-1001",
+    "issue_id": "issue_08",
+    "action_type": "discussion_msg",
+    "action_description": "The noise keeps me up all night and affects my health. We seniors need our rest! Close the bars earlier.",
+    "marks": {
+      "good": 8,
+      "funny": 0,
+      "flood": 0,
+      "rude": 3,
+      "foolish": 2
+    }
+  },
+  {
+    "action_id": "A-2010",
+    "uid": "U-1001",
+    "issue_id": "issue_10",
+    "action_type": "voting_msg",
+    "action_description": "Strong YES to comprehensive evacuation plan. My medical experience tells me preparation saves lives during floods.",
+    "marks": {
+      "good": 21,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-3001",
+    "uid": "U-1002",
+    "issue_id": "issue_02",
+    "action_type": "discussion_msg",
+    "action_description": "Playgrounds should have skate ramps and basketball courts for teens too, not just baby swings. Add some real action areas!",
+    "marks": {
+      "good": 9,
+      "funny": 2,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-3002",
+    "uid": "U-1002",
+    "issue_id": "issue_02",
+    "action_type": "voting_msg",
+    "action_description": "Vote YES for multi-use design with skate area. Kids need places to be active, not just sit in sandboxes.",
+    "marks": {
+      "good": 8,
+      "funny": 1,
+      "flood": 2,
+      "rude": 0,
+      "foolish": 1
+    }
+  },
+  {
+    "action_id": "A-3003",
+    "uid": "U-1002",
+    "issue_id": "issue_03",
+    "action_type": "discussion_msg",
+    "action_description": "Less homework = more gaming and sports time. School should focus on real skills like coding, not busywork.",
+    "marks": {
+      "good": 6,
+      "funny": 1,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 2
+    }
+  },
+  {
+    "action_id": "A-3004",
+    "uid": "U-1002",
+    "issue_id": "issue_05",
+    "action_type": "task",
+    "action_description": "Mapped current bike routes using Strava data and proposed 2km new safe path connecting park to gym. Link: [strava.map].",
+    "marks": {
+      "good": 12,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-3005",
+    "uid": "U-1002",
+    "issue_id": "issue_06",
+    "action_type": "discussion_msg",
+    "action_description": "Solar panels are cool but what about gaming rigs? Need stable power for my setup. Prioritize grid reliability upgrades.",
+    "marks": {
+      "good": 4,
+      "funny": 0,
+      "flood": 3,
+      "rude": 0,
+      "foolish": 2
+    }
+  },
+  {
+    "action_id": "A-3006",
+    "uid": "U-1002",
+    "issue_id": "issue_07",
+    "action_type": "task_msg",
+    "action_description": "Built simple web scraper prototype that pulls city service data into CSV. Can run it weekly on my Raspberry Pi. Need API keys.",
+    "marks": {
+      "good": 11,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-3007",
+    "uid": "U-1002",
+    "issue_id": "issue_08",
+    "action_type": "discussion_msg",
+    "action_description": "Bars should shut down at 10pm sharp. I need sleep to game competitively. Noise is ruining my performance.",
+    "marks": {
+      "good": 3,
+      "funny": 0,
+      "flood": 0,
+      "rude": 4,
+      "foolish": 3
+    }
+  },
+  {
+    "action_id": "A-3008",
+    "uid": "U-1002",
+    "issue_id": "issue_09",
+    "action_type": "voting_msg",
+    "action_description": "Vote NO to strict moderation. Free speech means people can say what they think, even if offensive. Grow thicker skin.",
+    "marks": {
+      "good": 5,
+      "funny": 0,
+      "flood": 1,
+      "rude": 2,
+      "foolish": 4
+    }
+  },
+  {
+    "action_id": "A-3009",
+    "uid": "U-1002",
+    "issue_id": "issue_10",
+    "action_type": "discussion_msg",
+    "action_description": "Can we add drone delivery zones to the flood plan? My gaming PC parts need to get through somehow.",
+    "marks": {
+      "good": 2,
+      "funny": 1,
+      "flood": 5,
+      "rude": 0,
+      "foolish": 3
+    }
+  },
+  {
+    "action_id": "A-4001",
+    "uid": "U-1003",
+    "issue_id": "issue_01",
+    "action_type": "discussion_msg",
+    "action_description": "Checked local building codes - modern elevators require emergency medical access panels. Found 3 relevant regulations we should cite in contractor RFP.",
+    "marks": {
+      "good": 16,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-4002",
+    "uid": "U-1003",
+    "issue_id": "issue_02",
+    "action_type": "task",
+    "action_description": "Drafted policy brief comparing ADA compliance costs vs injury liability risks for playground surfacing. Rubberized surface saves $50K+ in potential lawsuits.",
+    "marks": {
+      "good": 19,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-4003",
+    "uid": "U-1003",
+    "issue_id": "issue_03",
+    "action_type": "voting_msg",
+    "action_description": "Vote YES for reduced homework policy. My research shows 25% drop in childhood anxiety with similar reforms in comparable districts.",
+    "marks": {
+      "good": 17,
+      "funny": 0,
+      "flood": 1,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-4004",
+    "uid": "U-1003",
+    "issue_id": "issue_04",
+    "action_type": "discussion_msg",
+    "action_description": "EU Working Time Directive sets precedent for flexible hours. Similar policies increased female workforce participation 15% in Nordic countries.",
+    "marks": {
+      "good": 15,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 1
+    }
+  },
+  {
+    "action_id": "A-4005",
+    "uid": "U-1003",
+    "issue_id": "issue_05",
+    "action_type": "task_msg",
+    "action_description": "Compiled comparative analysis of Vision Zero cities showing 35% traffic fatality reduction with comprehensive calming measures. Full report attached.",
+    "marks": {
+      "good": 20,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-4006",
+    "uid": "U-1003",
+    "issue_id": "issue_07",
+    "action_type": "discussion_msg",
+    "action_description": "GDPR Article 5 requires data minimization but doesn't preclude aggregated service performance metrics. Legal path exists for open data.",
+    "marks": {
+      "good": 18,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-4007",
+    "uid": "U-1003",
+    "issue_id": "issue_08",
+    "action_type": "discussion_msg",
+    "action_description": "Noise pollution ordinance precedent: residential zones get priority over commercial after 10pm. Simple regulatory fix.",
+    "marks": {
+      "good": 14,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-4008",
+    "uid": "U-1003",
+    "issue_id": "issue_09",
+    "action_type": "voting_msg",
+    "action_description": "Vote YES for clear community standards with appeal process. Unmoderated toxicity drives women away from tech spaces 40% faster per studies.",
+    "marks": {
+      "good": 12,
+      "funny": 0,
+      "flood": 2,
+      "rude": 3,
+      "foolish": 1
+    }
+  },
+  {
+    "action_id": "A-4009",
+    "uid": "U-1003",
+    "issue_id": "issue_10",
+    "action_type": "task",
+    "action_description": "Benchmarked 5 municipal flood plans against FEMA standards. Our draft misses 3 critical family reunification protocols. Revised version attached.",
+    "marks": {
+      "good": 21,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-5001",
+    "uid": "U-1004",
+    "issue_id": "issue_01",
+    "action_type": "discussion_msg",
+    "action_description": "From a business perspective, we should get 3 formal bids and negotiate bulk discounts. My consulting experience shows 20-30% savings possible on maintenance contracts.",
+    "marks": {
+      "good": 17,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-5002",
+    "uid": "U-1004",
+    "issue_id": "issue_02",
+    "action_type": "task",
+    "action_description": "Conducted lifecycle cost analysis for playground materials. Rubberized surfacing has 15-year lifespan vs 8 years for mulch, saving $45K over 20 years including injury liability.",
+    "marks": {
+      "good": 20,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-5003",
+    "uid": "U-1004",
+    "issue_id": "issue_05",
+    "action_type": "voting_msg",
+    "action_description": "Strong YES to comprehensive traffic calming. ROI analysis shows $3.2M property value increase from safer streets outweighs $800K implementation cost.",
+    "marks": {
+      "good": 18,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 1
+    }
+  },
+  {
+    "action_id": "A-5004",
+    "uid": "U-1004",
+    "issue_id": "issue_06",
+    "action_type": "task_msg",
+    "action_description": "Ran full environmental impact assessment using LCA tools. Solar installation reduces CO2 by 85 tons/year and increases property values 8-12% per similar projects.",
+    "marks": {
+      "good": 22,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-5005",
+    "uid": "U-1004",
+    "issue_id": "issue_06",
+    "action_type": "discussion_msg",
+    "action_description": "Structured financing proposal: 40% grants, 30% low-interest green loans, 30% member equity. My firm can connect you to funding sources.",
+    "marks": {
+      "good": 19,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-5006",
+    "uid": "U-1004",
+    "issue_id": "issue_07",
+    "action_type": "discussion_msg",
+    "action_description": "Open data increases civic engagement 27% per World Bank studies. Business case: higher trust = 15% more tax compliance and investment attraction.",
+    "marks": {
+      "good": 16,
+      "funny": 0,
+      "flood": 1,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-5007",
+    "uid": "U-1004",
+    "issue_id": "issue_08",
+    "action_type": "discussion_msg",
+    "action_description": "Noise restrictions kill local business revenue. Simple: soundproof the bars instead of killing nightlife. Pay for it with higher property taxes.",
+    "marks": {
+      "good": 5,
+      "funny": 0,
+      "flood": 0,
+      "rude": 5,
+      "foolish": 3
+    }
+  },
+  {
+    "action_id": "A-5008",
+    "uid": "U-1004",
+    "issue_id": "issue_10",
+    "action_type": "task",
+    "action_description": "Benchmarked flood resilience ROI across 12 cities. $1 invested in preparedness saves $6 in recovery costs. Full cost-benefit analysis attached.",
+    "marks": {
+      "good": 21,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-5009",
+    "uid": "U-1004",
+    "issue_id": "issue_09",
+    "action_type": "discussion_msg",
+    "action_description": "Forum policy should protect business interests first. Moderation scares away paying advertisers. Revenue > feelings.",
+    "marks": {
+      "good": 4,
+      "funny": 0,
+      "flood": 2,
+      "rude": 4,
+      "foolish": 2
+    }
+  },
+  {
+    "action_id": "A-6001",
+    "uid": "U-1005",
+    "issue_id": "issue_01",
+    "action_type": "discussion_msg",
+    "action_description": "As a mother, the elevator safety is critical for getting my young kids to school on time. Can we prioritize child-friendly height controls and emergency stop buttons?",
+    "marks": {
+      "good": 18,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-6002",
+    "uid": "U-1005",
+    "issue_id": "issue_02",
+    "action_type": "task",
+    "action_description": "Organized parent volunteer group to survey kids' preferences for playground equipment. Results: 78% want swings + slides combo, 22% want climbing structures.",
+    "marks": {
+      "good": 21,
+      "funny": 1,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-6003",
+    "uid": "U-1005",
+    "issue_id": "issue_03",
+    "action_type": "voting_msg",
+    "action_description": "Strong YES to reduced homework. As a teacher, I see exhausted children every day. Family time and sleep matter more than extra worksheets.",
+    "marks": {
+      "good": 23,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-6004",
+    "uid": "U-1005",
+    "issue_id": "issue_03",
+    "action_type": "task_msg",
+    "action_description": "Created sample weekly schedule showing how 1hr homework + family reading achieves same learning outcomes as 3hrs solo homework. Template attached.",
+    "marks": {
+      "good": 20,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-6005",
+    "uid": "U-1005",
+    "issue_id": "issue_04",
+    "action_type": "discussion_msg",
+    "action_description": "Flexible hours let me pick up kids from school. Without this, working parents face impossible choices between career and family.",
+    "marks": {
+      "good": 19,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-6006",
+    "uid": "U-1005",
+    "issue_id": "issue_05",
+    "action_type": "discussion_msg",
+    "action_description": "Safe walking routes to school are non-negotiable. My kids walk this route daily. Speed bumps save young lives.",
+    "marks": {
+      "good": 17,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-6007",
+    "uid": "U-1005",
+    "issue_id": "issue_08",
+    "action_type": "discussion_msg",
+    "action_description": "My kids can't sleep with the bar noise. This isn't about 'vibrancy' - it's basic human decency. Close at 9pm.",
+    "marks": {
+      "good": 8,
+      "funny": 0,
+      "flood": 0,
+      "rude": 4,
+      "foolish": 2
+    }
+  },
+  {
+    "action_id": "A-6008",
+    "uid": "U-1005",
+    "issue_id": "issue_10",
+    "action_type": "task_msg",
+    "action_description": "Compiled child-specific flood safety checklist from Red Cross guidelines. Key items: family meeting points, child-sized life vests, emergency contact cards.",
+    "marks": {
+      "good": 22,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-6009",
+    "uid": "U-1005",
+    "issue_id": "issue_09",
+    "action_type": "discussion_msg",
+    "action_description": "Our kids use this forum for homework help. We need strict rules or it becomes a toxic distraction from learning.",
+    "marks": {
+      "good": 14,
+      "funny": 0,
+      "flood": 2,
+      "rude": 1,
+      "foolish": 1
+    }
+  },
+  {
+    "action_id": "A-7001",
+    "uid": "U-1006",
+    "issue_id": "issue_01",
+    "action_type": "discussion_msg",
+    "action_description": "From a sociological perspective, elevator breakdowns create 'structural violence' against the elderly and disabled. This is a textbook case of institutional neglect of vulnerable populations.",
+    "marks": {
+      "good": 15,
+      "funny": 0,
+      "flood": 1,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-7002",
+    "uid": "U-1006",
+    "issue_id": "issue_02",
+    "action_type": "task",
+    "action_description": "Provided sociological analysis of intergenerational playground use patterns from 15 years of community studies. Recommends 'third spaces' design for maximum social cohesion.",
+    "marks": {
+      "good": 18,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 1
+    }
+  },
+  {
+    "action_id": "A-7003",
+    "uid": "U-1006",
+    "issue_id": "issue_03",
+    "action_type": "voting_msg",
+    "action_description": "Vote YES for homework reform. Durkheim's division of labor theory supports skill-based over rote learning for modern societies.",
+    "marks": {
+      "good": 12,
+      "funny": 0,
+      "flood": 2,
+      "rude": 0,
+      "foolish": 2
+    }
+  },
+  {
+    "action_id": "A-7004",
+    "uid": "U-1006",
+    "issue_id": "issue_04",
+    "action_type": "discussion_msg",
+    "action_description": "Flexible hours policy addresses Weber's iron cage of bureaucracy. Rational work organization must serve human needs, not vice versa.",
+    "marks": {
+      "good": 14,
+      "funny": 0,
+      "flood": 1,
+      "rude": 0,
+      "foolish": 1
+    }
+  },
+  {
+    "action_id": "A-7005",
+    "uid": "U-1006",
+    "issue_id": "issue_05",
+    "action_type": "discussion_msg",
+    "action_description": "Traffic calming creates Habermas' ideal speech situation by reducing dominance of car culture. Pedestrians gain communicative equality.",
+    "marks": {
+      "good": 13,
+      "funny": 0,
+      "flood": 2,
+      "rude": 0,
+      "foolish": 3
+    }
+  },
+  {
+    "action_id": "A-7006",
+    "uid": "U-1006",
+    "issue_id": "issue_06",
+    "action_type": "task",
+    "action_description": "Authored white paper 'Commons and Solar Energy: Elinor Ostrom's 8 principles applied to cooperative energy infrastructure'. 12 pages, references included.",
+    "marks": {
+      "good": 20,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-7007",
+    "uid": "U-1006",
+    "issue_id": "issue_07",
+    "action_type": "discussion_msg",
+    "action_description": "Open data realizes Foucault's panopticon inverted - citizens watch the state. Essential for countervailing power structures.",
+    "marks": {
+      "good": 16,
+      "funny": 0,
+      "flood": 1,
+      "rude": 0,
+      "foolish": 1
+    }
+  },
+  {
+    "action_id": "A-7008",
+    "uid": "U-1006",
+    "issue_id": "issue_08",
+    "action_type": "discussion_msg",
+    "action_description": "Bourdieu's cultural capital explains noise tolerance differences. Working class values silence more than bohemian classes. Policy must address class conflict.",
+    "marks": {
+      "good": 11,
+      "funny": 0,
+      "flood": 3,
+      "rude": 1,
+      "foolish": 2
+    }
+  },
+  {
+    "action_id": "A-7009",
+    "uid": "U-1006",
+    "issue_id": "issue_10",
+    "action_type": "task_msg",
+    "action_description": "Applied disaster sociology framework (Drabek) to critique current plan. Added sections on social vulnerability mapping and community resilience indicators.",
+    "marks": {
+      "good": 19,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-8001",
+    "uid": "U-1007",
+    "issue_id": "issue_02",
+    "action_type": "task",
+    "action_description": "Created 3D renderings of proposed playground designs showing how rubberized surfacing + climbing structures look from child perspective. Visuals attached.",
+    "marks": {
+      "good": 20,
+      "funny": 1,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-8002",
+    "uid": "U-1007",
+    "issue_id": "issue_02",
+    "action_type": "discussion_msg",
+    "action_description": "Color palette matters! Blues/greens create calming environment per color psychology studies. Created mood board for playground materials.",
+    "marks": {
+      "good": 18,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-8003",
+    "uid": "U-1007",
+    "issue_id": "issue_06",
+    "action_type": "task_msg",
+    "action_description": "Designed aesthetically integrated solar panel mockups blending with roofline. Modern-minimalist style maintains property value vs ugly industrial look.",
+    "marks": {
+      "good": 19,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-8004",
+    "uid": "U-1007",
+    "issue_id": "issue_07",
+    "action_type": "task",
+    "action_description": "Prototyped citizen dashboard UI with intuitive charts for service performance data. Figma link shared - mobile responsive, accessible design.",
+    "marks": {
+      "good": 22,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-8005",
+    "uid": "U-1007",
+    "issue_id": "issue_09",
+    "action_type": "discussion_msg",
+    "action_description": "Forum needs dark mode and better typography. Current design gives me eye strain. Basic UX principle: don't torture your users visually.",
+    "marks": {
+      "good": 12,
+      "funny": 0,
+      "flood": 0,
+      "rude": 3,
+      "foolish": 1
+    }
+  },
+  {
+    "action_id": "A-8006",
+    "uid": "U-1007",
+    "issue_id": "issue_01",
+    "action_type": "discussion_msg",
+    "action_description": "Elevator button panel should use universal icons not text. My graphic design portfolio has similar accessibility projects.",
+    "marks": {
+      "good": 15,
+      "funny": 0,
+      "flood": 1,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-8007",
+    "uid": "U-1007",
+    "issue_id": "issue_05",
+    "action_type": "task_msg",
+    "action_description": "Created signage mockups for bike lanes and speed bumps using consistent color scheme matching city branding guidelines.",
+    "marks": {
+      "good": 17,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-8008",
+    "uid": "U-1007",
+    "issue_id": "issue_08",
+    "action_type": "discussion_msg",
+    "action_description": "Bar owners: your neon signs are visual pollution. Tasteful lighting only after 10pm. This is a residential neighborhood.",
+    "marks": {
+      "good": 6,
+      "funny": 0,
+      "flood": 0,
+      "rude": 5,
+      "foolish": 2
+    }
+  },
+  {
+    "action_id": "A-8009",
+    "uid": "U-1007",
+    "issue_id": "issue_10",
+    "action_type": "discussion_msg",
+    "action_description": "Flood maps need infographic treatment not walls of text. Happy to design simple visuals that even kids understand.",
+    "marks": {
+      "good": 16,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-9001",
+    "uid": "U-1008",
+    "issue_id": "issue_01",
+    "action_type": "task_msg",
+    "action_description": "Set up JIRA project board for elevator repair with tickets for contractor research, cost analysis, and installation scheduling. Link shared.",
+    "marks": {
+      "good": 19,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-9002",
+    "uid": "U-1008",
+    "issue_id": "issue_04",
+    "action_type": "discussion_msg",
+    "action_description": "As Product Manager, I've run 3 remote-first teams. Flexible hours increase productivity 22% per internal metrics. Data-driven policy recommendation.",
+    "marks": {
+      "good": 20,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-9003",
+    "uid": "U-1008",
+    "issue_id": "issue_04",
+    "action_type": "voting_msg",
+    "action_description": "Vote YES for 4-day week trial. My PM experience across 50+ team members shows happier teams ship 30% faster.",
+    "marks": {
+      "good": 18,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 1
+    }
+  },
+  {
+    "action_id": "A-9004",
+    "uid": "U-1008",
+    "issue_id": "issue_07",
+    "action_type": "task",
+    "action_description": "Designed product requirements document for open data dashboard MVP. Prioritized KPIs: user adoption, data freshness, mobile access. PRD attached.",
+    "marks": {
+      "good": 23,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-9005",
+    "uid": "U-1008",
+    "issue_id": "issue_09",
+    "action_type": "discussion_msg",
+    "action_description": "Forum needs product-led growth strategy. Gamification + onboarding flows convert lurkers 3x better. Happy to run A/B tests.",
+    "marks": {
+      "good": 16,
+      "funny": 0,
+      "flood": 1,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-9006",
+    "uid": "U-1008",
+    "issue_id": "issue_06",
+    "action_type": "task_msg",
+    "action_description": "Created user journey map for solar adoption showing key friction points. Recommends installment calculator as conversion driver.",
+    "marks": {
+      "good": 17,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-9007",
+    "uid": "U-1008",
+    "issue_id": "issue_08",
+    "action_type": "discussion_msg",
+    "action_description": "Bar owners: treat this like a product launch. Your 'nightlife experience' has 2-star reviews from sleep-deprived neighbors. Pivot or perish.",
+    "marks": {
+      "good": 4,
+      "funny": 0,
+      "flood": 0,
+      "rude": 6,
+      "foolish": 3
+    }
+  },
+  {
+    "action_id": "A-9008",
+    "uid": "U-1008",
+    "issue_id": "issue_10",
+    "action_type": "discussion_msg",
+    "action_description": "Flood plan needs SaaS metrics thinking. Define success KPIs: adoption rate, drill completion %, false alarm tolerance. Measure to improve.",
+    "marks": {
+      "good": 14,
+      "funny": 0,
+      "flood": 2,
+      "rude": 0,
+      "foolish": 1
+    }
+  },
+  {
+    "action_id": "A-9009",
+    "uid": "U-1008",
+    "issue_id": "issue_05",
+    "action_type": "task",
+    "action_description": "Built traffic calming decision matrix scoring options by cost, safety impact, business disruption, resident satisfaction. Top 3 recommendations ranked.",
+    "marks": {
+      "good": 21,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-10001",
+    "uid": "U-1009",
+    "issue_id": "issue_01",
+    "action_type": "discussion_msg",
+    "action_description": "Hospital admin experience: elevator failures cause 40% of senior fall injuries. Recommend medical-grade elevator with dual emergency systems.",
+    "marks": {
+      "good": 22,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-10002",
+    "uid": "U-1009",
+    "issue_id": "issue_02",
+    "action_type": "task",
+    "action_description": "Applied hospital patient safety protocols to playground risk assessment. Identified 7 high-priority injury prevention measures for children under 10.",
+    "marks": {
+      "good": 24,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-10003",
+    "uid": "U-1009",
+    "issue_id": "issue_03",
+    "action_type": "discussion_msg",
+    "action_description": "Childhood stress from homework overload leads to 25% higher ER visits per my hospital data. Learning happens through play, not exhaustion.",
+    "marks": {
+      "good": 20,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-10004",
+    "uid": "U-1009",
+    "issue_id": "issue_04",
+    "action_type": "voting_msg",
+    "action_description": "YES to flexible hours. Hospital shift workers prove productivity holds with proper scheduling. Employee health = business continuity.",
+    "marks": {
+      "good": 19,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-10005",
+    "uid": "U-1009",
+    "issue_id": "issue_05",
+    "action_type": "task_msg",
+    "action_description": "Analyzed hospital ambulance response times by traffic patterns. 35% delay on this route due to speeding. Calming measures = lives saved.",
+    "marks": {
+      "good": 23,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-10006",
+    "uid": "U-1009",
+    "issue_id": "issue_10",
+    "action_type": "discussion_msg",
+    "action_description": "Flood plans must include hospital surge capacity protocols. My experience: 72-hour medication supply minimum for chronic patients.",
+    "marks": {
+      "good": 21,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-10007",
+    "uid": "U-1009",
+    "issue_id": "issue_08",
+    "action_type": "discussion_msg",
+    "action_description": "Noise pollution causes hypertension in seniors. Bar owners: your profit isn't worth my neighbors' blood pressure medication bills.",
+    "marks": {
+      "good": 9,
+      "funny": 0,
+      "flood": 0,
+      "rude": 5,
+      "foolish": 2
+    }
+  },
+  {
+    "action_id": "A-10008",
+    "uid": "U-1009",
+    "issue_id": "issue_07",
+    "action_type": "task",
+    "action_description": "Mapped hospital utilization data to service performance metrics. Correlation: poor data transparency = 18% higher emergency readmissions.",
+    "marks": {
+      "good": 22,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-10009",
+    "uid": "U-1009",
+    "issue_id": "issue_09",
+    "action_type": "discussion_msg",
+    "action_description": "Forum toxicity affects patient mental health. As hospital admin, I've seen online harassment lead to 14% higher depression rates.",
+    "marks": {
+      "good": 15,
+      "funny": 0,
+      "flood": 2,
+      "rude": 1,
+      "foolish": 1
+    }
+  },
+  {
+    "action_id": "A-11001",
+    "uid": "U-1010",
+    "issue_id": "issue_01",
+    "action_type": "task",
+    "action_description": "Organized door-to-door survey of 35 residents about elevator usage patterns and safety concerns. 82% report daily issues affecting mobility.",
+    "marks": {
+      "good": 20,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-11002",
+    "uid": "U-1010",
+    "issue_id": "issue_02",
+    "action_type": "discussion_msg",
+    "action_description": "Canvassed neighborhood parents - kids want more swings and slides. Organized community meeting at the hall next Saturday 3pm to finalize playground wish list.",
+    "marks": {
+      "good": 22,
+      "funny": 1,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-11003",
+    "uid": "U-1010",
+    "issue_id": "issue_03",
+    "action_type": "voting_msg",
+    "action_description": "Strong YES to less homework. My boys come home exhausted. Parents united can make this happen for all our kids.",
+    "marks": {
+      "good": 19,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-11004",
+    "uid": "U-1010",
+    "issue_id": "issue_05",
+    "action_type": "task_msg",
+    "action_description": "Mobilized 25 volunteers for street safety petition. Collected 180 signatures in 2 days. Ready to present to city council.",
+    "marks": {
+      "good": 24,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-11005",
+    "uid": "U-1010",
+    "issue_id": "issue_06",
+    "action_type": "discussion_msg",
+    "action_description": "Community hall available for solar info sessions. Can host 3 meetings next month. Let's get everyone informed before vote.",
+    "marks": {
+      "good": 18,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-11006",
+    "uid": "U-1010",
+    "issue_id": "issue_08",
+    "action_type": "discussion_msg",
+    "action_description": "Enough is enough with the bar noise! My kids can't sleep and I can't work. Shut them down at 9pm or people will stop going anyway.",
+    "marks": {
+      "good": 7,
+      "funny": 0,
+      "flood": 0,
+      "rude": 6,
+      "foolish": 2
+    }
+  },
+  {
+    "action_id": "A-11007",
+    "uid": "U-1010",
+    "issue_id": "issue_10",
+    "action_type": "task",
+    "action_description": "Coordinated neighborhood flood drill with 65 participants. Identified 3 major gaps in current plan: no child check-in system, poor signage, communication breakdown.",
+    "marks": {
+      "good": 23,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-11008",
+    "uid": "U-1010",
+    "issue_id": "issue_09",
+    "action_type": "discussion_msg",
+    "action_description": "This forum is turning into a complaint fest. Can we focus on solutions instead of endless whining? Some people just like to hear themselves talk.",
+    "marks": {
+      "good": 5,
+      "funny": 0,
+      "flood": 1,
+      "rude": 5,
+      "foolish": 3
+    }
+  },
+  {
+    "action_id": "A-11009",
+    "uid": "U-1010",
+    "issue_id": "issue_07",
+    "action_type": "task_msg",
+    "action_description": "Recruited 12 volunteers to test open data portal prototype. Gathered feedback on usability and trust factors. Summary report ready.",
+    "marks": {
+      "good": 21,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-12001",
+    "uid": "U-1011",
+    "issue_id": "issue_03",
+    "action_type": "discussion_msg",
+    "action_description": "As a student, homework overload kills motivation. I spend nights on repetitive worksheets instead of actually learning CS basics. I support reducing homework and using project-based learning.",
+    "marks": {
+      "good": 15,
+      "funny": 1,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-12002",
+    "uid": "U-1011",
+    "issue_id": "issue_03",
+    "action_type": "task_msg",
+    "action_description": "Shared a 1-page summary of 5 evidence-based study techniques (spaced repetition, retrieval practice, interleaving) and how they can replace long homework sets. Link to free student resources included.",
+    "marks": {
+      "good": 18,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-12003",
+    "uid": "U-1011",
+    "issue_id": "issue_02",
+    "action_type": "discussion_msg",
+    "action_description": "Could we add a small 'learning corner' in the playground area: simple science signs, art wall, and puzzles? It makes the space fun and educational for kids and teens.",
+    "marks": {
+      "good": 12,
+      "funny": 1,
+      "flood": 1,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-12004",
+    "uid": "U-1011",
+    "issue_id": "issue_07",
+    "action_type": "task",
+    "action_description": "Created a prototype 'Open Data for Beginners' guide (plain language) explaining what the city publishes, how to read charts, and where privacy boundaries are. Ready to format for the website.",
+    "marks": {
+      "good": 17,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-12005",
+    "uid": "U-1011",
+    "issue_id": "issue_09",
+    "action_type": "discussion_msg",
+    "action_description": "Moderation rules should be clear and consistent. If posts are removed, show a reason and allow appeals. Otherwise people feel censored and leave.",
+    "marks": {
+      "good": 13,
+      "funny": 0,
+      "flood": 1,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-12006",
+    "uid": "U-1011",
+    "issue_id": "issue_09",
+    "action_type": "voting_msg",
+    "action_description": "Vote YES for an appeal process + transparent moderation log. It protects free expression while still removing harassment and misinformation.",
+    "marks": {
+      "good": 14,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-12007",
+    "uid": "U-1011",
+    "issue_id": "issue_01",
+    "action_type": "discussion_msg",
+    "action_description": "For the elevator, could we add clearer signage and a QR code to report failures quickly? People won't report issues if it's annoying.",
+    "marks": {
+      "good": 10,
+      "funny": 0,
+      "flood": 1,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-12008",
+    "uid": "U-1011",
+    "issue_id": "issue_08",
+    "action_type": "discussion_msg",
+    "action_description": "This noise discussion is pointless. Just ban music after 8pm everywhere and stop pretending it's complicated.",
+    "marks": {
+      "good": 2,
+      "funny": 0,
+      "flood": 0,
+      "rude": 3,
+      "foolish": 6
+    }
+  },
+  {
+    "action_id": "A-12009",
+    "uid": "U-1011",
+    "issue_id": "issue_10",
+    "action_type": "task_msg",
+    "action_description": "Drafted a simple emergency checklist infographic (what to pack, where to go, who to call) aimed at teenagers and students. Can adapt to print posters.",
+    "marks": {
+      "good": 16,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-13001",
+    "uid": "U-1012",
+    "issue_id": "issue_02",
+    "action_type": "task",
+    "action_description": "Reviewed the playground plan for safety and maintenance. Proposed relocating the slide away from the main path, adding shade trees, and using durable, low-splinter wood for benches. Attached a 1-page maintenance checklist.",
+    "marks": {
+      "good": 17,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-13002",
+    "uid": "U-1012",
+    "issue_id": "issue_02",
+    "action_type": "discussion_msg",
+    "action_description": "As a former park ranger, I suggest including a small nature-education corner (native plants + a simple sign). It keeps kids curious and reduces vandalism because people feel ownership.",
+    "marks": {
+      "good": 14,
+      "funny": 1,
+      "flood": 1,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-13003",
+    "uid": "U-1012",
+    "issue_id": "issue_05",
+    "action_type": "task_msg",
+    "action_description": "Mapped the safest walking loop for seniors and families around the street using existing sidewalks and crossings. Recommended two new crosswalk locations and a speed bump near the park entrance.",
+    "marks": {
+      "good": 19,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-13004",
+    "uid": "U-1012",
+    "issue_id": "issue_06",
+    "action_type": "discussion_msg",
+    "action_description": "Solar is a good idea, but please avoid removing mature trees for panel exposure. Shade trees are community infrastructure too—heat risk is real for seniors and kids.",
+    "marks": {
+      "good": 16,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-13005",
+    "uid": "U-1012",
+    "issue_id": "issue_06",
+    "action_type": "voting_msg",
+    "action_description": "Vote YES for solar if we commit to a 'no mature-tree removal' rule and fund 10 new native trees as part of the project.",
+    "marks": {
+      "good": 15,
+      "funny": 0,
+      "flood": 1,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-13006",
+    "uid": "U-1012",
+    "issue_id": "issue_08",
+    "action_type": "discussion_msg",
+    "action_description": "Night noise drives wildlife away and disrupts sleep. We should enforce quiet hours after 10pm and require outdoor areas to close. If businesses can't respect the neighborhood, they shouldn't operate here.",
+    "marks": {
+      "good": 6,
+      "funny": 0,
+      "flood": 0,
+      "rude": 4,
+      "foolish": 2
+    }
+  },
+  {
+    "action_id": "A-13007",
+    "uid": "U-1012",
+    "issue_id": "issue_10",
+    "action_type": "task",
+    "action_description": "Created a flood-safe route map to the nearest high ground and identified 3 locations for temporary signage. Also listed items for a 72-hour emergency kit with special notes for older adults and children.",
+    "marks": {
+      "good": 18,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-13008",
+    "uid": "U-1012",
+    "issue_id": "issue_10",
+    "action_type": "discussion_msg",
+    "action_description": "We should practice evacuation once per season, not just write plans. Most people panic the first time unless they’ve walked the route before.",
+    "marks": {
+      "good": 13,
+      "funny": 0,
+      "flood": 1,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-14001",
+    "uid": "U-1013",
+    "issue_id": "issue_07",
+    "action_type": "task",
+    "action_description": "Drafted a legal risk memo for the open-data proposal: what can be published as aggregated statistics, what must be anonymized, and what requires explicit consent. Provided a simple 'red/yellow/green' publication checklist.",
+    "marks": {
+      "good": 21,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-14002",
+    "uid": "U-1013",
+    "issue_id": "issue_07",
+    "action_type": "discussion_msg",
+    "action_description": "Transparency is good, but we need a defensible privacy posture: publish performance metrics at department-level, not employee-level, and ensure log retention policies are documented.",
+    "marks": {
+      "good": 17,
+      "funny": 0,
+      "flood": 1,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-14003",
+    "uid": "U-1013",
+    "issue_id": "issue_09",
+    "action_type": "task_msg",
+    "action_description": "Proposed a forum moderation policy structure: definitions (harassment, hate, misinformation), escalation ladder, appeal process, and audit trail. Shared a template that moderators can follow consistently.",
+    "marks": {
+      "good": 19,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-14004",
+    "uid": "U-1013",
+    "issue_id": "issue_09",
+    "action_type": "voting_msg",
+    "action_description": "Vote YES for clear standards + appeal process. Without due process, moderation turns into arbitrary power and exposes the community to liability and reputational risk.",
+    "marks": {
+      "good": 18,
+      "funny": 0,
+      "flood": 1,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-14005",
+    "uid": "U-1013",
+    "issue_id": "issue_08",
+    "action_type": "discussion_msg",
+    "action_description": "Noise rules should be enforceable: define measurable thresholds, quiet hours, and a graduated enforcement approach (warning → fine → license review). Otherwise we get endless arguments with no compliance.",
+    "marks": {
+      "good": 16,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-14006",
+    "uid": "U-1013",
+    "issue_id": "issue_01",
+    "action_type": "task_msg",
+    "action_description": "Reviewed the proposed elevator contractor contract clauses: warranty period, penalties for downtime, service-level response time, and dispute resolution. Suggested adding a 24-hour emergency clause due to resident safety risk.",
+    "marks": {
+      "good": 20,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-14007",
+    "uid": "U-1013",
+    "issue_id": "issue_05",
+    "action_type": "discussion_msg",
+    "action_description": "Traffic policy: if we restrict parking, we need a transition plan for small businesses and residents with disabilities. Rights-based approach means we avoid pushing burdens onto the least flexible people.",
+    "marks": {
+      "good": 14,
+      "funny": 0,
+      "flood": 1,
+      "rude": 0,
+      "foolish": 1
+    }
+  },
+  {
+    "action_id": "A-14008",
+    "uid": "U-1013",
+    "issue_id": "issue_09",
+    "action_type": "discussion_msg",
+    "action_description": "Some of you clearly don't understand basic free speech principles. If you can't handle disagreement, maybe you shouldn't be online at all.",
+    "marks": {
+      "good": 3,
+      "funny": 0,
+      "flood": 0,
+      "rude": 5,
+      "foolish": 6
+    }
+  },
+  {
+    "action_id": "A-15001",
+    "uid": "U-1014",
+    "issue_id": "issue_02",
+    "action_type": "discussion_msg",
+    "action_description": "Playground design note from a PT: please include rubberized surfacing and avoid high fall-risk equipment for toddlers. Also add a small balance-beam area with soft edges for safe motor-skill play.",
+    "marks": {
+      "good": 18,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-15002",
+    "uid": "U-1014",
+    "issue_id": "issue_02",
+    "action_type": "task",
+    "action_description": "Prepared a short safety checklist for playground equipment based on common pediatric injury patterns (falls, finger pinches, head impacts). Shared it with the contractor group.",
+    "marks": {
+      "good": 20,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-15003",
+    "uid": "U-1014",
+    "issue_id": "issue_03",
+    "action_type": "discussion_msg",
+    "action_description": "Less homework helps kids move more. Sedentary time contributes to posture problems and anxiety. I'd support shorter homework and more outdoor activity assignments.",
+    "marks": {
+      "good": 16,
+      "funny": 0,
+      "flood": 1,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-15004",
+    "uid": "U-1014",
+    "issue_id": "issue_05",
+    "action_type": "task_msg",
+    "action_description": "Shared a simple 'safe crossings' proposal: add one zebra crossing near the park and one near the school route, plus signage at driver eye level. Includes a sketch map.",
+    "marks": {
+      "good": 19,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-15005",
+    "uid": "U-1014",
+    "issue_id": "issue_01",
+    "action_type": "discussion_msg",
+    "action_description": "Elevator reliability is a mobility issue. Patients on crutches or with strollers can't use stairs safely. We should prioritize the option with the lowest downtime guarantee, even if it costs more.",
+    "marks": {
+      "good": 15,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-15006",
+    "uid": "U-1014",
+    "issue_id": "issue_10",
+    "action_type": "task",
+    "action_description": "For flood preparedness, created a list of injury-prevention tips (ankle/knee protection, safe lifting, avoiding contaminated water exposure) and a simple stretching routine for evacuees sleeping on floors.",
+    "marks": {
+      "good": 17,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-15007",
+    "uid": "U-1014",
+    "issue_id": "issue_08",
+    "action_type": "discussion_msg",
+    "action_description": "People who defend the bar noise clearly don't care about families. If you want loud music at 2am, go live somewhere else.",
+    "marks": {
+      "good": 4,
+      "funny": 0,
+      "flood": 0,
+      "rude": 6,
+      "foolish": 4
+    }
+  },
+  {
+    "action_id": "A-16001",
+    "uid": "U-1015",
+    "issue_id": "issue_05",
+    "action_type": "task",
+    "action_description": "Prepared two alternative street redesign concepts (Option A: protected bike lane + narrowed car lanes; Option B: shared street with raised intersections). Included rough cost ranges, expected safety impact, and a phased implementation plan.",
+    "marks": {
+      "good": 19,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-16002",
+    "uid": "U-1015",
+    "issue_id": "issue_05",
+    "action_type": "discussion_msg",
+    "action_description": "Traffic calming should be treated as a public-space upgrade, not a punishment for drivers. If we design crossings, lighting, and greenery well, everyone benefits—including businesses.",
+    "marks": {
+      "good": 15,
+      "funny": 0,
+      "flood": 1,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-16003",
+    "uid": "U-1015",
+    "issue_id": "issue_02",
+    "action_type": "task_msg",
+    "action_description": "Shared a playground layout sketch that separates toddler, kids, and teen zones, adds seating with sightlines for caregivers, and integrates shade + water access. Included accessibility notes for strollers and wheelchairs.",
+    "marks": {
+      "good": 18,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-16004",
+    "uid": "U-1015",
+    "issue_id": "issue_06",
+    "action_type": "task",
+    "action_description": "Proposed solar installation concept that avoids glare for neighbors, preserves roof aesthetics, and includes a small green-roof strip for stormwater retention. Provided placement diagram and permitting checklist.",
+    "marks": {
+      "good": 17,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-16005",
+    "uid": "U-1015",
+    "issue_id": "issue_08",
+    "action_type": "discussion_msg",
+    "action_description": "Noise rules work best when paired with design: require outdoor seating buffers, sound-absorbing surfaces, and facade upgrades. A pure 'ban' approach usually backfires and becomes unenforceable.",
+    "marks": {
+      "good": 14,
+      "funny": 0,
+      "flood": 1,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-16006",
+    "uid": "U-1015",
+    "issue_id": "issue_07",
+    "action_type": "discussion_msg",
+    "action_description": "Open data is valuable, but the city should publish it with clear visual narratives and context; otherwise it becomes ammunition for outrage instead of accountability. Propose a 'monthly city performance briefing' page as the default entry point.",
+    "marks": {
+      "good": 13,
+      "funny": 0,
+      "flood": 2,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-16007",
+    "uid": "U-1015",
+    "issue_id": "issue_10",
+    "action_type": "task_msg",
+    "action_description": "Produced an evacuation signage concept set (color-coded arrows, meeting point symbols, distance markers) and a simplified neighborhood flood map designed for printing as A3 posters.",
+    "marks": {
+      "good": 18,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-16008",
+    "uid": "U-1015",
+    "issue_id": "issue_08",
+    "action_type": "discussion_msg",
+    "action_description": "Some of these bar owners act like the neighborhood is their private stage. If they can't behave, revoke their permits and move on.",
+    "marks": {
+      "good": 4,
+      "funny": 0,
+      "flood": 0,
+      "rude": 6,
+      "foolish": 5
+    }
+  },
+  {
+    "action_id": "A-17001",
+    "uid": "U-1016",
+    "issue_id": "issue_01",
+    "action_type": "discussion_msg",
+    "action_description": "Elevator outages hit vulnerable residents hardest (seniors, disabled, parents with strollers). Can we prioritize a repair plan that guarantees accessibility every day, even during maintenance windows?",
+    "marks": {
+      "good": 17,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-17002",
+    "uid": "U-1016",
+    "issue_id": "issue_01",
+    "action_type": "task_msg",
+    "action_description": "Collected 12 short testimonies from residents with mobility constraints and parents with small kids about elevator impact. Shared anonymized quotes to support prioritizing safety and accessibility in contractor choice.",
+    "marks": {
+      "good": 19,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-17003",
+    "uid": "U-1016",
+    "issue_id": "issue_03",
+    "action_type": "discussion_msg",
+    "action_description": "Homework reform should consider families with fewer resources. Not every parent can help with assignments. Reducing homework and improving in-school support is more equitable.",
+    "marks": {
+      "good": 16,
+      "funny": 0,
+      "flood": 1,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-17004",
+    "uid": "U-1016",
+    "issue_id": "issue_03",
+    "action_type": "task",
+    "action_description": "Drafted a simple 'after-school support' proposal: 2 days/week homework club staffed by volunteers + rotating teacher office hour. Included sign-up sheet and safeguarding rules.",
+    "marks": {
+      "good": 20,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-17005",
+    "uid": "U-1016",
+    "issue_id": "issue_05",
+    "action_type": "discussion_msg",
+    "action_description": "Traffic calming should prioritize routes used by children and seniors first. Families without cars are exposed more to unsafe streets, so safety is also a rights issue.",
+    "marks": {
+      "good": 15,
+      "funny": 0,
+      "flood": 1,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-17006",
+    "uid": "U-1016",
+    "issue_id": "issue_08",
+    "action_type": "discussion_msg",
+    "action_description": "Night noise is not just 'annoying'—it affects mental health and family stability. People who keep defending bars over residents should try living with a 4-year-old who wakes up at 2am.",
+    "marks": {
+      "good": 10,
+      "funny": 0,
+      "flood": 0,
+      "rude": 2,
+      "foolish": 1
+    }
+  },
+  {
+    "action_id": "A-17007",
+    "uid": "U-1016",
+    "issue_id": "issue_10",
+    "action_type": "task_msg",
+    "action_description": "Coordinated with local NGO contacts to compile a list of shelters and support services for families during floods (food, diapers, medications). Shared a single-page directory with phone numbers.",
+    "marks": {
+      "good": 21,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-17008",
+    "uid": "U-1016",
+    "issue_id": "issue_09",
+    "action_type": "discussion_msg",
+    "action_description": "Moderation rules should protect marginalized people. If someone is repeatedly abusive, they should be removed quickly—community safety matters more than endless 'debate'.",
+    "marks": {
+      "good": 13,
+      "funny": 0,
+      "flood": 1,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-17009",
+    "uid": "U-1016",
+    "issue_id": "issue_09",
+    "action_type": "discussion_msg",
+    "action_description": "Anyone arguing against basic moderation is basically supporting harassment. Stop pretending it's 'free speech'—it's just cruelty.",
+    "marks": {
+      "good": 3,
+      "funny": 0,
+      "flood": 0,
+      "rude": 4,
+      "foolish": 7
+    }
+  },
+  {
+    "action_id": "A-18001",
+    "uid": "U-1017",
+    "issue_id": "issue_01",
+    "action_type": "discussion_msg",
+    "action_description": "As a retired head nurse, I want to emphasize that elevator downtime is a direct health risk for seniors. Please prioritize the option with the strongest emergency support and lowest downtime guarantee, even if it costs more.",
+    "marks": {
+      "good": 14,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-18002",
+    "uid": "U-1017",
+    "issue_id": "issue_01",
+    "action_type": "task_msg",
+    "action_description": "Wrote a short checklist for elevator safety from a senior-care perspective: emergency button visibility, clear signage, regular inspection log access, and a procedure for helping residents with limited mobility during outages.",
+    "marks": {
+      "good": 16,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-18003",
+    "uid": "U-1017",
+    "issue_id": "issue_02",
+    "action_type": "discussion_msg",
+    "action_description": "For the playground, please include safe seating areas for grandparents supervising children, shade, and easy-to-walk paths. Intergenerational spaces reduce isolation for seniors and help families.",
+    "marks": {
+      "good": 12,
+      "funny": 0,
+      "flood": 1,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-18004",
+    "uid": "U-1017",
+    "issue_id": "issue_05",
+    "action_type": "discussion_msg",
+    "action_description": "Traffic calming near crossings matters for older adults. Shorter crossing distances, better lighting, and slower speeds reduce falls and accidents. Please prioritize crosswalk safety over parking convenience.",
+    "marks": {
+      "good": 13,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-18005",
+    "uid": "U-1017",
+    "issue_id": "issue_08",
+    "action_type": "discussion_msg",
+    "action_description": "The night noise is ruining our sleep and blood pressure. If bar owners can’t control it, they should be fined heavily or shut down. Seniors are not disposable.",
+    "marks": {
+      "good": 6,
+      "funny": 0,
+      "flood": 0,
+      "rude": 4,
+      "foolish": 2
+    }
+  },
+  {
+    "action_id": "A-18006",
+    "uid": "U-1017",
+    "issue_id": "issue_10",
+    "action_type": "task",
+    "action_description": "Prepared a senior-focused flood preparedness note: medication list template, 72-hour medication plan, hydration guidance, and how to prevent hypothermia. Offered to run a short CPR/basic first aid refresher at the community hall.",
+    "marks": {
+      "good": 15,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-18007",
+    "uid": "U-1017",
+    "issue_id": "issue_10",
+    "action_type": "discussion_msg",
+    "action_description": "Evacuation plans must include a registry for seniors who need help moving and a buddy system. Otherwise the plan is just paper and people will be left behind.",
+    "marks": {
+      "good": 11,
+      "funny": 0,
+      "flood": 1,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-18008",
+    "uid": "U-1017",
+    "issue_id": "issue_09",
+    "action_type": "discussion_msg",
+    "action_description": "Online harassment affects mental health, especially for older people who are less used to aggressive communication. We should enforce clear rules and remove repeat offenders quickly.",
+    "marks": {
+      "good": 10,
+      "funny": 0,
+      "flood": 1,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-19001",
+    "uid": "U-1018",
+    "issue_id": "issue_07",
+    "action_type": "task",
+    "action_description": "Built a quick prototype web page that lists city service metrics with filters (district, service type, month). Shared a demo link and asked for feedback on what KPIs matter most.",
+    "marks": {
+      "good": 18,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-19002",
+    "uid": "U-1018",
+    "issue_id": "issue_07",
+    "action_type": "task_msg",
+    "action_description": "Added basic accessibility fixes to the open-data dashboard demo (keyboard navigation, higher contrast, readable table layout). Posted before/after screenshots.",
+    "marks": {
+      "good": 16,
+      "funny": 0,
+      "flood": 1,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-19003",
+    "uid": "U-1018",
+    "issue_id": "issue_09",
+    "action_type": "discussion_msg",
+    "action_description": "For moderation rules: can we keep it simple—clear list of banned content, 3-strike system, and public explanation on removals? People hate confusing rules.",
+    "marks": {
+      "good": 13,
+      "funny": 0,
+      "flood": 1,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-19004",
+    "uid": "U-1018",
+    "issue_id": "issue_05",
+    "action_type": "discussion_msg",
+    "action_description": "Traffic calming is good, but please keep one fast route for getting to the gym. Maybe add bike lanes without killing all parking spots.",
+    "marks": {
+      "good": 9,
+      "funny": 0,
+      "flood": 2,
+      "rude": 0,
+      "foolish": 1
+    }
+  },
+  {
+    "action_id": "A-19005",
+    "uid": "U-1018",
+    "issue_id": "issue_02",
+    "action_type": "discussion_msg",
+    "action_description": "Playground should include a small calisthenics area (pull-up bar, dip bars). Teens need places to exercise too, not just little kid stuff.",
+    "marks": {
+      "good": 12,
+      "funny": 1,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-19006",
+    "uid": "U-1018",
+    "issue_id": "issue_06",
+    "action_type": "task_msg",
+    "action_description": "Made a simple solar ROI calculator webpage (inputs: roof size, loan rate, electricity price). Shared it so residents can estimate payback time.",
+    "marks": {
+      "good": 15,
+      "funny": 0,
+      "flood": 1,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-19007",
+    "uid": "U-1018",
+    "issue_id": "issue_08",
+    "action_type": "discussion_msg",
+    "action_description": "Everyone complaining about noise is overreacting. Just wear earplugs and let people have fun.",
+    "marks": {
+      "good": 2,
+      "funny": 0,
+      "flood": 1,
+      "rude": 4,
+      "foolish": 7
+    }
+  },
+  {
+    "action_id": "A-19008",
+    "uid": "U-1018",
+    "issue_id": "issue_10",
+    "action_type": "discussion_msg",
+    "action_description": "Flood alerts could be pushed via SMS and a simple web page. If someone can share the city's existing alert system API, I can help integrate it into a lightweight site.",
+    "marks": {
+      "good": 12,
+      "funny": 0,
+      "flood": 1,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-20001",
+    "uid": "U-1019",
+    "issue_id": "issue_06",
+    "action_type": "task",
+    "action_description": "Built a cost-benefit model for the community solar proposal with 3 scenarios (conservative/base/aggressive) covering payback period, maintenance reserve, and sensitivity to electricity price changes. Shared a 1-page summary for non-technical residents.",
+    "marks": {
+      "good": 19,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-20002",
+    "uid": "U-1019",
+    "issue_id": "issue_06",
+    "action_type": "voting_msg",
+    "action_description": "Vote YES for solar if we cap monthly payments and create a transparent reserve fund. The base-case payback is strong, but governance safeguards are necessary to avoid cost overruns.",
+    "marks": {
+      "good": 17,
+      "funny": 0,
+      "flood": 1,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-20003",
+    "uid": "U-1019",
+    "issue_id": "issue_07",
+    "action_type": "discussion_msg",
+    "action_description": "Open data should be framed as an efficiency reform: publish high-value indicators first (budget execution, service delays, complaint resolution time), then expand. This reduces administrative burden while increasing accountability.",
+    "marks": {
+      "good": 16,
+      "funny": 0,
+      "flood": 1,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-20004",
+    "uid": "U-1019",
+    "issue_id": "issue_05",
+    "action_type": "task_msg",
+    "action_description": "Prepared an economic impact note on traffic calming: expected safety benefits, small-business risk mitigation options, and a phased rollout plan with measurement checkpoints. Proposed a pilot-first approach to reduce stakeholder conflict.",
+    "marks": {
+      "good": 18,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-20005",
+    "uid": "U-1019",
+    "issue_id": "issue_05",
+    "action_type": "discussion_msg",
+    "action_description": "We should evaluate each measure by net social benefit (injury reduction, time savings, emissions) and not by who shouts loudest. If the data supports it, we implement—even if it’s unpopular with some drivers.",
+    "marks": {
+      "good": 14,
+      "funny": 0,
+      "flood": 1,
+      "rude": 0,
+      "foolish": 1
+    }
+  },
+  {
+    "action_id": "A-20006",
+    "uid": "U-1019",
+    "issue_id": "issue_01",
+    "action_type": "task",
+    "action_description": "Negotiated a draft procurement approach for elevator repair: three bids, clear SLA metrics, penalties for downtime, and an option-value comparison between full replacement vs incremental fixes. Shared a recommended evaluation rubric.",
+    "marks": {
+      "good": 17,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-20007",
+    "uid": "U-1019",
+    "issue_id": "issue_09",
+    "action_type": "discussion_msg",
+    "action_description": "Moderation is a governance problem: define rules, define enforcement, publish transparency metrics, and add an appeal mechanism. That reduces arbitrary power and keeps participation stable over time.",
+    "marks": {
+      "good": 15,
+      "funny": 0,
+      "flood": 1,
+      "rude": 0,
+      "foolish": 0
+    }
+  },
+  {
+    "action_id": "A-20008",
+    "uid": "U-1019",
+    "issue_id": "issue_08",
+    "action_type": "discussion_msg",
+    "action_description": "This noise debate is irrational. People who chose to live near nightlife should stop complaining and accept the market reality.",
+    "marks": {
+      "good": 2,
+      "funny": 0,
+      "flood": 1,
+      "rude": 5,
+      "foolish": 7
+    }
+  },
+  {
+    "action_id": "A-20009",
+    "uid": "U-1019",
+    "issue_id": "issue_10",
+    "action_type": "task_msg",
+    "action_description": "Created a funding and allocation outline for flood preparedness: prioritize early-warning, evacuation support, and vulnerable populations; defined a simple budget split and reporting cadence to keep the plan auditable.",
+    "marks": {
+      "good": 18,
+      "funny": 0,
+      "flood": 0,
+      "rude": 0,
+      "foolish": 0
+    }
+  }
+]
