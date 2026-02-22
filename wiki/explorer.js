@@ -102,6 +102,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             updateSimulationUI();
             updateValuesUI();
             updateContribUI();
+            updateISRCompleteUI();
         });
 
         document.getElementById('val-thresholdSlider').addEventListener('input', (e) => {
@@ -111,6 +112,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             updateExpertiseUI();
             updateValuesUI();
             updateContribUI();
+            updateISRCompleteUI();
         });
 
         // Initial set issue
@@ -1167,6 +1169,9 @@ window.switchTab = function (tabId) {
     }
     if (tabId === 'contribution') {
         updateContribUI();
+    }
+    if (tabId === 'isr-complete') {
+        updateISRCompleteUI();
     }
 
     // Check if the active tab is inside the dropdown, if so highlight "More"
@@ -2444,5 +2449,112 @@ function drawMiniSentiments(canvas, marks) {
         ctx.textAlign = 'center';
         ctx.fillText(SENTIMENT_EMOJIS[i], i * barW + barW / 2, h - 1);
     }
+}
+
+// --- ISR READY-TO-WORK TAB ---
+
+function calculateContributionForUser(profile, issue) {
+    const issueIdStr = ISSUE_ID_MAP[issues.indexOf(issue)];
+    const vov = calculateAggregatedValues(profiles, issue);
+    const userActionsVec = actionsVectorData.filter(a => a.uid === profile.uid);
+    let totalC = 0;
+    userActionsVec.forEach(av => {
+        const A = cosineSimilarity(av.domains || [], vov.data.domains || []);
+        const S = sentimentScalar(av.marks);
+        const alignment = A !== null ? A : 0;
+        totalC += (alignment + S) * (av.force || 0);
+    });
+    return totalC;
+}
+
+function updateISRCompleteUI() {
+    issues.forEach((issue, issueIdx) => {
+        const col = document.getElementById(`isr-col-${issueIdx}`);
+        if (!col) return;
+
+        // 1. Gather microcommunity members (relevance >= threshold)
+        const members = [];
+        profiles.forEach(p => {
+            const rel = calculateRelevance(p, issue);
+            if (rel.total >= threshold) {
+                members.push({
+                    profile: p,
+                    R: parseFloat(rel.total),
+                    E: parseFloat(calculateExpertise(p, issue).total),
+                    C: calculateContributionForUser(p, issue)
+                });
+            }
+        });
+
+        // 2. Compute means for normalization
+        const n = members.length;
+        if (n === 0) {
+            col.innerHTML = `
+                <div class="p-4 border-b border-slate-100 bg-slate-50">
+                    <h4 class="font-bold text-slate-700 text-sm">${issue.title}</h4>
+                    <p class="text-xs text-slate-400 mt-1">No members above threshold</p>
+                </div>`;
+            return;
+        }
+
+        const meanR = members.reduce((s, m) => s + m.R, 0) / n;
+        const meanE = members.reduce((s, m) => s + m.E, 0) / n;
+        const meanC = members.reduce((s, m) => s + m.C, 0) / n;
+
+        // 3. Normalize by mean and calculate ISR
+        const wR = issue.w_relevance || 0.33;
+        const wE = issue.w_expertise || 0.34;
+        const wC = issue.w_contribution || 0.33;
+
+        members.forEach(m => {
+            m.R_norm = meanR !== 0 ? m.R / meanR : 0;
+            m.E_norm = meanE !== 0 ? m.E / meanE : 0;
+            m.C_norm = meanC !== 0 ? m.C / meanC : 0;
+            m.ISR = wR * m.R_norm + wE * m.E_norm + wC * m.C_norm;
+        });
+
+        // Sort by ISR descending
+        members.sort((a, b) => b.ISR - a.ISR);
+
+        // 4. Render column
+        let html = `
+            <div class="p-4 border-b border-slate-100 bg-slate-50">
+                <h4 class="font-bold text-slate-700">${issue.title}</h4>
+                <div class="flex gap-3 mt-2 text-xs">
+                    <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-700 font-bold">w<sub>R</sub> = ${wR}</span>
+                    <span class="px-2 py-0.5 rounded bg-indigo-100 text-indigo-700 font-bold">w<sub>E</sub> = ${wE}</span>
+                    <span class="px-2 py-0.5 rounded bg-cyan-100 text-cyan-700 font-bold">w<sub>C</sub> = ${wC}</span>
+                </div>
+            </div>
+            <div class="flex-1 overflow-y-auto custom-scroll p-0">`;
+
+        members.forEach((m, rank) => {
+            // ISR color
+            let isrColor = 'text-slate-600';
+            if (m.ISR >= 1.5) isrColor = 'text-emerald-700';
+            else if (m.ISR >= 1.0) isrColor = 'text-blue-600';
+            else if (m.ISR < 0.5) isrColor = 'text-red-600';
+
+            html += `
+                <div class="p-3 border-b border-slate-100 hover:bg-slate-50 transition-colors">
+                    <div class="flex items-center justify-between mb-1">
+                        <div class="flex items-center gap-2 min-w-0">
+                            <span class="text-xs font-bold text-slate-400 w-5">${rank + 1}.</span>
+                            <span class="font-bold text-slate-700 text-sm truncate">${m.profile.name}</span>
+                        </div>
+                        <span class="text-sm font-bold ${isrColor} whitespace-nowrap ml-2">${m.ISR.toFixed(2)}</span>
+                    </div>
+                    <div class="flex gap-3 text-xs text-slate-500 ml-7 cursor-default">
+                        <span title="Relevance normalized = ${m.R_norm.toFixed(3)} (raw: ${m.R.toFixed(3)})">R: <b class="text-emerald-600">${m.R_norm.toFixed(2)}</b></span>
+                        <span title="Expertise normalized = ${m.E_norm.toFixed(3)} (raw: ${m.E.toFixed(1)})">E: <b class="text-indigo-600">${m.E_norm.toFixed(2)}</b></span>
+                        <span title="Contribution normalized = ${m.C_norm.toFixed(3)} (raw: ${m.C.toFixed(3)})">C: <b class="text-cyan-600">${m.C_norm.toFixed(2)}</b></span>
+                    </div>
+                </div>`;
+        });
+
+        html += `</div>`;
+
+        col.innerHTML = html;
+    });
 }
 
