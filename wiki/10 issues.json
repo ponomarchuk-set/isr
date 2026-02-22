@@ -172,7 +172,7 @@
       },
       "cs_coefficients": {
         "work": 0,
-        "family": ,
+        "family":0,
         "private": 15,
         "crisis": 95
       }

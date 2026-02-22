@@ -9,8 +9,6 @@ let actionsVectorData = [];
 // --- STATE ---
 let currentIssueIndex = 0;
 let threshold = 0.5;
-let valThreshold = 0.5;
-let contribThreshold = 0.5;
 let currentContribIssueIndex = 0;
 let currentContribMemberUid = null;
 let radarChart = null;
@@ -97,28 +95,28 @@ document.addEventListener('DOMContentLoaded', async () => {
         renderProfileList();
         renderProfileInspector(profiles[0]);
 
-        // Setup Listeners
+        // Setup Listeners — unified threshold across all tabs
         document.getElementById('thresholdSlider').addEventListener('input', (e) => {
             threshold = parseFloat(e.target.value) / 100;
             document.getElementById('thresholdValue').innerText = threshold.toFixed(2);
             updateSimulationUI();
+            updateValuesUI();
+            updateContribUI();
         });
 
         document.getElementById('val-thresholdSlider').addEventListener('input', (e) => {
-            valThreshold = parseFloat(e.target.value) / 100;
+            threshold = parseFloat(e.target.value) / 100;
+            document.getElementById('thresholdValue').innerText = threshold.toFixed(2);
+            updateSimulationUI();
+            updateExpertiseUI();
             updateValuesUI();
+            updateContribUI();
         });
 
         // Initial set issue
         setIssue(0);
         switchIssueValues(0); // Initialize Values Tab state as well
         switchIssueContrib(0); // Initialize Contribution Tab state
-
-        // Contribution threshold slider
-        document.getElementById('contrib-thresholdSlider')?.addEventListener('input', (e) => {
-            contribThreshold = parseFloat(e.target.value) / 100;
-            updateContribUI();
-        });
 
     } catch (error) {
         console.error("Initialization Error:", error);
@@ -1827,9 +1825,9 @@ function switchIssueValues(index) {
 function updateValuesUI() {
     const issue = issues[currentIssueIndex];
 
-    // Sync Threshold Display
-    document.getElementById('val-thresholdValue').innerText = valThreshold.toFixed(2);
-    document.getElementById('val-thresholdSlider').value = valThreshold * 100;
+    // Sync Threshold Display (unified threshold)
+    document.getElementById('val-thresholdValue').innerText = threshold.toFixed(2);
+    document.getElementById('val-thresholdSlider').value = threshold * 100;
 
     // Calculate Aggregated Data
     const aggData = calculateAggregatedValues(profiles, issue);
@@ -1863,7 +1861,7 @@ function calculateAggregatedValues(profiles, issue) {
     // 1. Filter & Collect Members
     profiles.forEach(p => {
         const rel = calculateRelevance(p, issue);
-        if (rel.total >= valThreshold) {
+        if (rel.total >= threshold) {
             const vData = valuesData.find(v => v.uid === p.uid);
             if (vData) {
                 members.push({
@@ -2080,15 +2078,11 @@ function updateContribUI() {
     const issue = issues[currentContribIssueIndex];
     const issueIdStr = ISSUE_ID_MAP[currentContribIssueIndex];
 
-    // Sync threshold display
-    document.getElementById('contrib-thresholdValue').innerText = contribThreshold.toFixed(2);
-    document.getElementById('contrib-thresholdSlider').value = contribThreshold * 100;
-
-    // Build member list (same relevance logic as Values tab)
+    // Build member list (uses unified threshold)
     const members = [];
     profiles.forEach(p => {
         const rel = calculateRelevance(p, issue);
-        if (rel.total >= contribThreshold) {
+        if (rel.total >= threshold) {
             const vData = valuesData.find(v => v.uid === p.uid);
             if (vData) {
                 members.push({
@@ -2104,11 +2098,7 @@ function updateContribUI() {
     document.getElementById('contrib-member-count').innerText = `${members.length}/${profiles.length}`;
 
     // Calculate VoV for this microcommunity (weighted average)
-    // Temporarily swap valThreshold since calculateAggregatedValues uses it internally
-    const savedThreshold = valThreshold;
-    valThreshold = contribThreshold;
     const vov = calculateAggregatedValues(profiles, issue);
-    valThreshold = savedThreshold;
 
     // Render member list
     renderContribMemberList(members, issueIdStr, vov.data);
@@ -2148,7 +2138,7 @@ function renderContribMemberList(members, issueIdStr, vov) {
 
     members.forEach(m => {
         // Compute total contribution for this member for the badge
-        const userActionsVec = actionsVectorData.filter(a => a.uid === m.profile.uid && a.issue_id === issueIdStr);
+        const userActionsVec = actionsVectorData.filter(a => a.uid === m.profile.uid);
         let totalC = 0;
         userActionsVec.forEach(av => {
             const A = cosineSimilarity(av.domains || [], vov.domains || []);
@@ -2184,8 +2174,8 @@ function renderContribMemberList(members, issueIdStr, vov) {
 }
 
 function renderContribActions(user, issueIdStr, vov) {
-    const userActions = actionsData.filter(a => a.uid === user.uid && a.issue_id === issueIdStr);
-    const userActionsVec = actionsVectorData.filter(a => a.uid === user.uid && a.issue_id === issueIdStr);
+    const userActions = actionsData.filter(a => a.uid === user.uid);
+    const userActionsVec = actionsVectorData.filter(a => a.uid === user.uid);
 
     // Build vec map
     const vecMap = {};
