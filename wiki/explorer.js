@@ -1159,7 +1159,7 @@ window.switchTab = function (tabId) {
 
     // Tab Specific Logic
     if (tabId === 'sim') {
-        setTimeout(() => updateSimulationUI(), 50);
+        setTimeout(() => updateSimulationUI(), 200);
     }
     if (tabId === 'expertise') {
         updateExpertiseUI();
@@ -2108,17 +2108,31 @@ function updateContribUI() {
     // Render member list
     renderContribMemberList(members, issueIdStr, vov.data);
 
-    // Render actions for selected member (or clear)
+    // Render actions for selected member (or auto-select first)
     if (currentContribMemberUid) {
         const selectedMember = members.find(m => m.profile.uid === currentContribMemberUid);
         if (selectedMember) {
             renderContribActions(selectedMember.profile, issueIdStr, vov.data);
         } else {
             currentContribMemberUid = null;
-            clearContribActions();
+            // Fall through to auto-select first
+            if (members.length > 0) {
+                currentContribMemberUid = members[0].profile.uid;
+                renderContribMemberList(members, issueIdStr, vov.data);
+                renderContribActions(members[0].profile, issueIdStr, vov.data);
+            } else {
+                clearContribActions();
+            }
         }
     } else {
-        clearContribActions();
+        // Auto-select first member by default
+        if (members.length > 0) {
+            currentContribMemberUid = members[0].profile.uid;
+            renderContribMemberList(members, issueIdStr, vov.data);
+            renderContribActions(members[0].profile, issueIdStr, vov.data);
+        } else {
+            clearContribActions();
+        }
     }
 }
 

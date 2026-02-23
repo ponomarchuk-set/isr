@@ -205,6 +205,288 @@
             height: 100%;
             display: block;
         }
+
+        /* ===== MOBILE RESPONSIVENESS ===== */
+        @media (max-width: 1024px) {
+
+            /* Allow the whole page to scroll on mobile */
+            body.h-screen {
+                height: auto !important;
+                min-height: 100vh;
+                overflow-y: auto !important;
+            }
+
+            main.overflow-hidden {
+                overflow: visible !important;
+                height: auto !important;
+                min-height: 0;
+            }
+
+            main.flex-1 {
+                flex: none !important;
+            }
+
+            /* All view sections: switch from fixed absolute to natural flow */
+            #view-profiles,
+            #view-sim,
+            #view-expertise,
+            #view-values,
+            #view-contribution,
+            #view-isr-complete {
+                position: relative !important;
+                inset: auto !important;
+                height: auto !important;
+                min-height: 0 !important;
+                padding: 12px !important;
+                overflow: visible !important;
+            }
+
+            /* --- VIEW 1: PROFILES --- */
+            #view-profiles:not(.hidden) {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 12px !important;
+            }
+
+            /* Profile list panel */
+            #view-profiles > div:first-child {
+                min-height: 280px;
+                max-height: 350px;
+                flex: none !important;
+            }
+
+            /* Profile inspector panel */
+            #view-profiles > div:last-child {
+                min-height: auto;
+                flex: none !important;
+                height: auto !important;
+            }
+
+            #view-profiles > div:last-child .flex-1 {
+                overflow: visible !important;
+            }
+
+            /* --- VIEW 2: RELEVANCE --- */
+            #view-sim:not(.hidden) {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 12px !important;
+            }
+
+            /* Top controls grid - stack vertically */
+            #view-sim > .grid.grid-cols-12:first-child {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 12px !important;
+                margin-bottom: 0 !important;
+            }
+
+            /* Dashboard content grid - stack vertically */
+            #view-sim > .grid.grid-cols-12:last-child {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 12px !important;
+                flex: none !important;
+                min-height: 0 !important;
+            }
+
+            /* Map container - cap height to prevent empty space */
+            #view-sim > .grid.grid-cols-12:last-child > div:first-child {
+                min-height: 0;
+                max-height: 400px;
+                flex: none !important;
+            }
+
+            /* Map canvas wrapper - explicit height so canvas renders */
+            #view-sim > .grid.grid-cols-12:last-child > div:first-child > div > .relative {
+                height: 280px !important;
+                min-height: 280px !important;
+            }
+
+            /* Microcommunity list in Relevance tab */
+            #view-sim > .grid.grid-cols-12:last-child > div:last-child {
+                min-height: 250px;
+                max-height: 400px;
+                flex: none !important;
+            }
+
+            /* --- VIEW 3: EXPERTISE --- */
+            #view-expertise:not(.hidden) {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 12px !important;
+            }
+
+            #view-expertise > .grid {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 12px !important;
+                flex: none !important;
+                min-height: 0 !important;
+            }
+
+            /* Compare container - allow scrolling and auto height */
+            #compare-container {
+                height: auto !important;
+                min-height: 0 !important;
+            }
+
+            #compare-container #comp-content {
+                overflow-y: auto !important;
+                max-height: 70vh;
+            }
+
+            #compare-container #comp-content.hidden {
+                display: none !important;
+            }
+
+            /* Expertise list panel */
+            #view-expertise > .grid > div:last-child {
+                min-height: 250px;
+                max-height: 400px;
+            }
+
+            /* --- VIEW 4: VALUES --- */
+            #view-values:not(.hidden) {
+                display: block !important;
+            }
+
+            /* Outer grid → block flow */
+            #view-values > div {
+                display: block !important;
+                height: auto !important;
+                min-height: 0 !important;
+                flex: none !important;
+            }
+
+            /* Left visualizations panel - full width block */
+            #view-values > div > div:first-child {
+                display: block !important;
+                overflow: visible !important;
+                padding-right: 0 !important;
+                height: auto !important;
+                flex: none !important;
+                margin-bottom: 12px;
+                width: 100% !important;
+            }
+
+            /* Inner viz grid - single column */
+            #view-values > div > div:first-child > .grid {
+                display: block !important;
+            }
+
+            #view-values > div > div:first-child > .grid > div {
+                margin-bottom: 12px;
+            }
+
+            /* Conflict Resolution box - auto height */
+            #view-values > div > div:first-child > .grid > div:last-child {
+                height: 450px !important;
+            }
+
+            /* Right controls & member list - full width block */
+            #view-values > div > div:last-child {
+                display: block !important;
+                height: auto !important;
+                flex: none !important;
+                width: 100% !important;
+                min-height: 0 !important;
+            }
+
+            #view-values > div > div:last-child > div {
+                margin-bottom: 12px;
+            }
+
+            #view-values > div > div:last-child > div:last-child {
+                min-height: 250px;
+                max-height: 400px;
+                overflow: hidden;
+            }
+
+            #view-values > div > div:last-child > div:last-child > #val-member-list {
+                max-height: 300px;
+                overflow-y: auto;
+            }
+
+            /* --- VIEW 5: CONTRIBUTION --- */
+            #view-contribution:not(.hidden) {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 12px !important;
+            }
+
+            #view-contribution > .grid {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 12px !important;
+                flex: none !important;
+                min-height: 0 !important;
+            }
+
+            /* On mobile: show controls first (order 1), actions second (order 2) */
+            #view-contribution > .grid > .contrib-controls-panel {
+                order: 1 !important;
+                flex: none !important;
+                min-height: 0 !important;
+            }
+
+            #view-contribution > .grid > .contrib-actions-panel {
+                order: 2 !important;
+                flex: none !important;
+                overflow: visible !important;
+            }
+
+            #view-contribution > .grid > .contrib-actions-panel #contrib-actions-list {
+                overflow: visible !important;
+                max-height: none !important;
+            }
+
+            #view-contribution > .grid > .contrib-controls-panel > div:last-child {
+                min-height: 250px;
+                max-height: 400px;
+            }
+
+            /* --- VIEW 6: ISR READY-TO-VOTE --- */
+            #view-isr-complete > .grid {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 12px !important;
+                flex: none !important;
+                min-height: 0 !important;
+            }
+
+            #view-isr-complete > .grid > div {
+                min-height: 300px;
+                max-height: 500px;
+                flex: none !important;
+            }
+
+            /* --- GENERAL MOBILE FIXES --- */
+            /* Reduce chart container heights on mobile */
+            .chart-container {
+                height: 280px !important;
+                max-height: 300px !important;
+            }
+
+            /* Fix grids that use col-span-12 fallback */
+            .col-span-12 {
+                grid-column: span 12 / span 12;
+            }
+
+            /* Ensure internal scrollable lists don't exceed viewport */
+            .custom-scroll {
+                max-height: 350px;
+            }
+
+            /* Reduce header padding */
+            header {
+                padding: 8px 12px !important;
+            }
+
+            #header-title h4 {
+                font-size: 1.25rem !important;
+            }
+        }
     </style>
 </head>
 
@@ -728,7 +1010,7 @@
         <section id="view-contribution" class="hidden absolute inset-0 p-6 flex flex-col overflow-hidden">
             <div class="flex-1 grid grid-cols-12 gap-6 min-h-0">
                 <!-- LEFT: Actions List -->
-                <div class="col-span-12 lg:col-span-9 flex flex-col overflow-hidden">
+                <div class="col-span-12 lg:col-span-9 flex flex-col overflow-hidden contrib-actions-panel">
                     <!-- Header with user name + total contribution -->
                     <div id="contrib-header" class="mb-4">
                         <div class="flex items-center gap-4">
@@ -752,7 +1034,7 @@
                 </div>
 
                 <!-- RIGHT: Controls & Member List -->
-                <div class="col-span-12 lg:col-span-3 flex flex-col space-y-6 min-h-0">
+                <div class="col-span-12 lg:col-span-3 flex flex-col space-y-6 min-h-0 contrib-controls-panel">
 
                     <!-- Issue Switcher -->
                     <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
@@ -811,6 +1093,12 @@
         </section>
 
     </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 text-center py-2 w-full flex-shrink-0">
+        <!-- <p class="text-xs text-slate-400">&copy; 2024-2026 Sergii Ponomarchuk</p> -->
+        <center><font size="-2">&copy; 2024-2026 Sergii Ponomarchuk</font></center>
+    </footer>
 
     <!-- POPUP MODAL -->
     <div id="factor-modal" class="fixed inset-0 z-50 hidden" aria-labelledby="modal-title" role="dialog"
@@ -1040,6 +1328,144 @@
     </div>
     <script src="explorer.js?v=RC10"></script>
     <script src="/script.js"></script>
+
+    <!-- Late-loading mobile fix: saves/restores classes for Values tab -->
+    <style>
+        @media (max-width: 1024px) {
+            .mobile-block {
+                display: block !important;
+                position: relative !important;
+                height: auto !important;
+                min-height: 0 !important;
+                overflow: visible !important;
+                width: 100% !important;
+                flex: none !important;
+                inset: auto !important;
+            }
+            .mobile-block.hidden {
+                display: none !important;
+            }
+            .mobile-block > * {
+                margin-bottom: 12px;
+            }
+            .mobile-conflict-box {
+                height: 450px !important;
+            }
+            .mobile-member-scroll {
+                max-height: 350px !important;
+                overflow-y: auto !important;
+            }
+            footer {
+                width: 100% !important;
+                text-align: center !important;
+                flex-shrink: 0 !important;
+                display: block !important;
+            }
+        }
+    </style>
+    <script>
+    (function() {
+        let mobileApplied = false;
+
+        function mobileize(el) {
+            if (!el.getAttribute('data-orig-class')) {
+                el.setAttribute('data-orig-class', el.className);
+            }
+            const strip = ['absolute','inset-0','flex','flex-col','flex-1',
+                'overflow-hidden','overflow-y-auto','grid','grid-cols-12',
+                'grid-cols-1','xl:grid-cols-2','min-h-0','col-span-12',
+                'lg:col-span-9','lg:col-span-3','pr-2','custom-scroll',
+                'gap-6','space-y-6','h-[600px]'];
+            const keep = el.className.split(/\s+/).filter(c => !strip.includes(c));
+            el.className = keep.join(' ') + ' mobile-block';
+        }
+
+        function restoreEl(el) {
+            const orig = el.getAttribute('data-orig-class');
+            if (orig) {
+                el.className = orig;
+                el.removeAttribute('data-orig-class');
+            }
+            el.style.padding = '';
+        }
+
+        function applyMobile() {
+            const section = document.getElementById('view-values');
+            if (!section) return;
+
+            mobileize(section);
+            section.style.padding = '12px';
+
+            const outerGrid = section.children[0];
+            if (!outerGrid) return;
+            mobileize(outerGrid);
+
+            const leftPanel = outerGrid.children[0];
+            if (leftPanel) {
+                mobileize(leftPanel);
+                if (leftPanel.children.length > 1) {
+                    const innerGrid = leftPanel.children[1];
+                    if (innerGrid) {
+                        mobileize(innerGrid);
+                        Array.from(innerGrid.children).forEach(child => {
+                            if (child.getAttribute('data-orig-class') ?
+                                child.getAttribute('data-orig-class').includes('h-[600px]') :
+                                child.classList.contains('h-[600px]')) {
+                                mobileize(child);
+                                child.classList.add('mobile-conflict-box');
+                            }
+                        });
+                    }
+                }
+            }
+
+            const rightPanel = outerGrid.children[1];
+            if (rightPanel) {
+                mobileize(rightPanel);
+                const ml = rightPanel.querySelector('#val-member-list');
+                if (ml) ml.classList.add('mobile-member-scroll');
+            }
+
+            mobileApplied = true;
+        }
+
+        function restoreDesktop() {
+            if (!mobileApplied) return;
+            const section = document.getElementById('view-values');
+            if (!section) return;
+
+            section.querySelectorAll('[data-orig-class]').forEach(restoreEl);
+            restoreEl(section);
+
+            const ml = section.querySelector('#val-member-list');
+            if (ml) ml.classList.remove('mobile-member-scroll');
+
+            mobileApplied = false;
+        }
+
+        function checkLayout() {
+            const isMobile = window.innerWidth <= 1024;
+            const section = document.getElementById('view-values');
+            if (!section || section.classList.contains('hidden')) {
+                if (!isMobile && mobileApplied) restoreDesktop();
+                return;
+            }
+            if (isMobile && !mobileApplied) applyMobile();
+            else if (!isMobile && mobileApplied) restoreDesktop();
+        }
+
+        window.addEventListener('load', checkLayout);
+        window.addEventListener('resize', checkLayout);
+
+        const origSwitchTab = window.switchTab;
+        window.switchTab = function(tabId) {
+            origSwitchTab(tabId);
+            if (tabId === 'values') {
+                requestAnimationFrame(checkLayout);
+            }
+        };
+    })();
+    </script>
 </body>
 
 </html>
