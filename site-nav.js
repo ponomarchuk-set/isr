@@ -27,17 +27,20 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             // Default Navigation
             navItemsHtml = `
+                <a href="/wiki/">What is ISR</a>
+                <a href="/explorer/">Explorer</a>
+                <a href="/wiki/mvp.html">MVP</a>
+                <a href="/wiki/adaptable_authorization.html">Adaptable Auth</a>
+                <!-- <span class="dropdown-container">
+                    <a href="#" class="nav-dropdown" id="nav-arch">Architecture</a>
+                    <div id="arch-list" class="dropdown-menu"></div>
+                </span>
+                <a href="/prototype/">Prototype</a> -->
                 <span class="dropdown-container">
                     <a href="#" class="nav-dropdown" id="nav-about">About ISR</a>
                     <div id="about-list" class="dropdown-menu"></div>
                 </span>
-                <a href="/explorer/">Explorer</a>
-                <span class="dropdown-container">
-                    <a href="#" class="nav-dropdown" id="nav-arch">Architecture</a>
-                    <div id="arch-list" class="dropdown-menu"></div>
-                </span>
-                <a href="/prototype/">Prototype</a>
-                <a href="#" id="game-btn">Game</a>
+                <!--<a href="#" id="game-btn">Game</a>-->
             `;
         }
 
@@ -75,22 +78,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Default About list items (only execute if we are in default mode or if specific IDs exist)
     const aboutItems = [
-        { name: 'What is ISR', href: '/wiki/' },
-        { name: 'MVP User Guide', href: '/wiki/mvp.html' },
-        { name: 'Adaptable Auth', href: '/wiki/adaptable_authorization.html' },
+        // { name: 'What is ISR', href: '/wiki/' },
+        // { name: 'MVP User Guide', href: '/wiki/mvp.html' },
+        // { name: 'Adaptable Auth', href: '/wiki/adaptable_authorization.html' },
         { name: 'Philosophy', href: '/wiki/ISR-Arendt-article.html' },
-        { name: 'Society2050', href: '/wiki/society2050/' },
-        { name: 'Pitch Deck', href: '/wiki/pitchdeck/' },
+        // { name: 'Society2050', href: '/wiki/society2050/' },
+        // { name: 'Pitch Deck', href: '/wiki/pitchdeck/' },
+        // { name: 'Game', href: '/snake3d/'},
         { name: 'FAQ', href: '/wiki/faq.html' }
     ];
 
     // Default Architecture list items
-    const archItems = [
-        { name: 'Microservices', href: '/architecture/microservices.html' },
-        { name: 'GCP Microservices', href: '/architecture/gcp-ms.html' },
-        { name: 'MS (overview)', href: '/architecture/ms.html' },
-        { name: 'GCP Monolith', href: '/architecture/gpc-mono.html' }
-    ];
+    // const archItems = [
+    //     { name: 'Microservices', href: '/architecture/microservices.html' },
+    //     { name: 'GCP Microservices', href: '/architecture/gcp-ms.html' },
+    //     { name: 'MS (overview)', href: '/architecture/ms.html' },
+    //     { name: 'GCP Monolith', href: '/architecture/gpc-mono.html' }
+    // ];
 
     // Create dropdown function
     function createDropdown(dropdownId, menuId, items) {

@@ -302,7 +302,7 @@ function checkCollisions() {
                 autoRotate = !autoRotate;
                 clearInterval(rotationInterval);
             } else { // game over
-                banner.src = 'matrix.png';
+                banner.src = 'https://raw.githubusercontent.com/ponomarchuk-set/isr/main/snake3d/matrix.png';
                 banner.style.display = 'block';
                 banner.style.zIndex = '9';
                 spacebarLabel.style.zIndex = '10';

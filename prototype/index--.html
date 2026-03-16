@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to ISR</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div style="display: flex; gap: 20px; padding: 20px; flex-direction: column; align-items: center;">
+        <p>Welcome to</p>
+        <img src="../images/logo-t.png" alt="ISR homepage" height="100">
+        <p>Choose your login option:</p>
+        <div style="display: flex; gap: 20px; padding: 20px; justify-content: center;">
+            <div style="border-radius: 12px; padding: 20px; box-sizing: border-box;">
+                <p>Your own account</p>
+                <input type="text" placeholder="Username"><br>
+                <input type="password" placeholder="Password"><br><br>
+                <a href="index-.html"><button>Login</button></a>
+                <button>Register</button>
+            </div>
+            <div style="border-radius: 12px; padding: 20px; box-sizing: border-box;" >
+                <p>Take one of presetted for testing</p>
+                <label for="browser">Choose from list or type:</label>
+                <input list="browsers" id="browser" name="browser" placeholder="Type or select...">
+
+                <datalist id="browsers">
+                <option value="Chrome">
+                <option value="Firefox">
+                <option value="Safari">
+                <option value="Edge">
+                <option value="Opera">
+                </datalist>
+<br><br>
+                <label for="custom-input">Choose from list or type:</label>
+                <div style="position: relative; display: inline-block;">
+                <input type="text" id="custom-input" list="datalist-options" 
+                        placeholder="Type or select..." 
+                        style="padding-right: 30px;">
+                <select id="select-options" style="position: absolute; right: 0; top: 0; height: 100%; opacity: 0; cursor: pointer;"
+                        onchange="document.getElementById('custom-input').value = this.value">
+                    <option value="">Select...</option>
+                    <option value="Apple">Apple</option>
+                    <option value="Banana">Banana</option>
+                    <option value="Cherry">Cherry</option>
+                    <option value="Date">Date</option>
+                </select>
+                </div>
+<br><br>
+
+
+<br><br>
+                <button>Choose</button>
+            </div>
+        </div>
+        <p>Or feel free to chat with Assistant:</p>
+        <button onclick="openChat()">Assistant</button>
+    </div>
+
+
+    <div id="chat-window" class="chat-window">
+        <header>
+            <span>Assistant</span>
+            <button style="float:right;" onclick="closeChat()">X</button>
+        </header>
+        <div class="content">
+            <textarea>
+                1. Tutor<br>
+                2. Value guide<br>
+                Some other help?              
+            </textarea>
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
