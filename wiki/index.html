@@ -68,7 +68,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div id="content-WHAT_IS_ISR" class="content" style="display: none;">
         <h3>Core concept</h3>
         <p>
-          ISR (Index of Social Responsibility) is a context-aware influence score computed for each participant with respect to a specific question or issue. That score (the ISR) is then used to weight that participant's vote or influence in the decision for that issue. ISR is not a permanent power held by the few — it is dynamic, issue-specific and transparent to participants.
+          ISR (Index of Social Responsibility) is a context‑aware influence coefficient for each participant with respect to a specific question or issue, computed as a function of three components: Relevance (how much the issue directly affects the person), Expertise (domain‑specific knowledge and resources - how much the person can directly affects the issue) and Contribution (past actions valued by the microcommunity). That score (the ISR) is then used to weight that participant's vote or influence in the decision for that issue within the corresponding microcommunity formed around this question. ISR is not a permanent power held by the few — it is recomputed per issue, inside each microcommunity, and its components and explanations are transparent to participants rather than stored as a single global “social credit” score.
           <div class="formula">
             $$ISR = f(Relevance, Expertise, Contribution)$$
           </div>
@@ -80,11 +80,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </p>
         <ul>
           <li>lets communities declare their shared values and choose weighting parameters;</li>
-          <li>lets people create profiles (skills, experience, declared values, activity history);</li>
-          <li>forms dynamic microcommunities around concrete issues and proposes relevant participants;</li>
-          <li>calculates ISR scores for the issue and uses those scores in weighted voting;</li>
+          <li>lets people create structured profiles that feed ISR components: demographic and geographic data for Relevance, education and work history for domain-specific Expertise, and declared values plus logged actions for Contribution;</li>
+          <li>forms dynamic microcommunities around concrete issues using a Relevance score (combining demographic, geospatial, semantic and social proximity) and proposes the most affected participants;</li>
+          <li>calculates ISR scores for the issue by combining each participant's Relevance, domain-specific Expertise and community-assessed Contribution, and uses those scores in weighted voting;</li>
           <li>logs decisions, tasks and execution progress; and</li>
-          <li>provides explainability: members can inspect why a score was assigned and which factors mattered most.</li>
+          <li>provides explainability: members can inspect how their ISR was computed — from Relevance, Expertise and Contribution components down to concrete actions — and which factors mattered most.</li>
         </ul>
 
         
@@ -200,19 +200,25 @@ where:
             <p>The system suggests a <b>set of participants</b> whose profiles, past actions, geographic or organizational proximity, and social ties make them <b>relevant to this issue</b>. Using natural language processing and graph analysis, the system analyzes the issue description and matches it against participant profiles and activity history to identify those most relevant to the topic.</p>
             <ol>
               <li><b>Determining the contextual profile of the question q.</b> Extracting key topics, domains and stakeholders from the question description using LLM. Vector representation of the question in semantic space (nesting).</li>
-              <li><b>Calculating</b> the situational <b>Relevance</b> for each user <b>i</b>:<br>
-
+              <li><b>Calculating</b> the situational <b>Relevance</b> for each user <b>i</b>. Relevance shows how strongly a person is related to the issue across four dimensions:<br>
+              <ul>
+                <li><b>demographic (D)</b>: whether their life situation matches the target group (for example, parents of small children for a childcare question);</li>
+                <li><b>geospatial (G)</b>: how close they are in space to where the decision will have effect;</li>
+                <li><b>semantic (S)</b>: how much their long‑term interests and activities match the topic of the issue;</li>
+                <li><b>social (X)</b>: whether they are socially connected to people who are directly affected.</li>
+              </ul>
+<!-- These dimensions are combined into a single Relevance score by a weighted formula tuned to the type of issue.
 \[\begin{align*}
 {R}_i = \cos(\vec{v}_i, \vec{v}_q)
 \end{align*}\]
 
-where \(\vec{v}_i\) is the vector representation of the user profile, \(\vec{v}_q\) is the vector question</li>
-              <li><b>Determining contextual relevance</b> based on:</li>
+where \(\vec{v}_i\) is the vector representation of the user profile, \(\vec{v}_q\) is the vector question --></li>
+              <!-- <li><b>Determining contextual relevance</b> based on:</li>
               <ul>
               <li>Social connections with other question participants</li>
               <li>Geographic and organizational proximity</li>
               <li>Declared interests and values</li>
-              </ul>
+              </ul> -->
               <li><b>Connecting to the microcommunity</b> of users with \(\text{Relevance} > \Theta\) , where \(\Theta\) is the threshold set by the context of the question <b>q</b>.</li>
             </ol>
           </div>
@@ -457,19 +463,30 @@ where \(\vec{v}_i\) is the vector representation of the user profile, \(\vec{v}_
   </a><br>
   <center><b>Key ISR Principle</b></center>
   <p>
-    Unlike traditional "one-person-one-vote" systems, each member's influence coefficient varies based on:<br>
-    ▪ Their contextual connection to the issue <br>
-    ▪ Their proven track record of contribution <br>
-    ▪ Their actual expertise in the issue domain <br><br>
-    AI determine the weight (w<sub>R</sub>, w<sub>E</sub>, w<sub>C</sub>) through the issue context.
+    Unlike traditional "one-person-one-vote" systems, each member's influence coefficient varies based on:
+    <ul>
+      <li>Their contextual connection to the issue</li>
+      <li>Their actual expertise in the issue domain</li>
+      <li>Their proven track record of contribution</li>
+    </ul>
+    AI determine the components weights (w<sub>R</sub>, w<sub>E</sub>, w<sub>C</sub>) through the issue context.
   </p>
 </div>
 
                 <h4>1. Context Relevance (R)</h4>
-                <p>Measures how directly a person is connected to the current issue: declared interests, proximity (geographic or organizational), recent activity on similar topics, social ties to other stakeholders. Practically this is estimated via semantic matching between the issue description and the participant's profile plus graph-based proximity metrics. The calculation method is shown above. </p>
+                <p>Measures how directly a person is connected to the current issue: declared interests, proximity (geographic or organizational), recent activity on similar topics, social ties to other stakeholders. Practically this is estimated via semantic matching between the issue description and the participant's profile plus graph-based proximity metrics. The calculation method is generally described above. </p>
 
                 <h4>2. Expertise (E)</h4>
-                <p>Captures domain knowledge: formal credentials, demonstrated experience, and prior successful work relevant to the topic. Expertise is assessed by matching profile records of participant <b>i</b> against the question <b>q</b> semantic vector:
+                <p>Expertise reflects a person's domain-specific competence and capacity to act in this issue.<br>
+                  It is calculated from three sources:
+                  <ul>
+                    <li><b>education</b> in relevant domains;</li>
+                    <li>practical work <b>experience</b> in related roles;</li>
+                    <li>access to helpful <b>resources</b> or networks.</li>
+                  </ul>
+                  These components are aggregated into a numerical <b>Expertise</b> score per domain rather than into a single “universal intelligence” measure.
+                </p>
+                <!-- <p>Captures domain knowledge: formal credentials, demonstrated experience, and prior successful work relevant to the topic. Expertise is assessed by matching profile records of participant <b>i</b> against the question <b>q</b> semantic vector:
 \[
 \begin{align*}
 {E}_{i,q} = \sum_{credentials} \, \vec{v}_{i, credentials} \cdot \vec{V}_q + \sum_{experience} \, \vec{v}_{i, experience} \cdot \vec{V}_q
@@ -482,11 +499,11 @@ where:
 <li>\(\vec{v}_{i, credentials}, \vec{v}_{i, experience}\) - vector representation of Expertise records</li>
 <li>\(\vec{V}_q\) - vector representation of <b>q</b> question</li></p>
 <p>This ensures that members with relevant knowledge have a proportionate influence on decisions related to their expertise. E.g. two records of 2 years experience should weigh the same as one record of 4 year experience; one college degree should weigh more than two short courses; college degree and two short courses should weigh less the PhD degree.
-</p>
+</p> -->
 
                 <h4>3. Contribution (C)</h4>
-                <p>Reflects the participant's verified <b>history of actions</b> in the community — tasks completed, constructive discussion, verified outcomes, and peer evaluations. Contribution is the system's operational "karma" measure: actions and their impact are recorded and vectorized so the AI can evaluate alignment with the community's declared values.</p>
-                <p>After calculating the situational <b>Relevance</b>, a list of <b>n</b> microcommunity participants appears with the corresponding weights \(R_i\) regarding relevance to the question <b>q</b>. Vector representations of their values \(\vec{V}_i\) (taking into account <b>Relevance</b>) make up the microcommunity value vector, which can also be translated into a form convenient for the participant with explanations from the AI assistant. Therefore, the greater the <b>Relevance</b> of a member, the more the member's values influence <b>the values of the microcommunity</b>.</p>
+                <p>Reflects the participant's verified <b>history of actions</b> in the community — tasks completed, constructive discussion, verified outcomes, peer evaluations, etc. Contribution is the system's operational "karma" measure: actions and their impact are recorded and vectorized so the AI can evaluate alignment with the community's declared values.</p>
+                <p>After calculating the situational <b>Relevance</b>, a list of <b>n</b> microcommunity participants appears with the corresponding weights \(R_i\) regarding relevance to the question <b>q</b>. Vector representations of their values \(\vec{V}_i\) (taking into account <b>Relevance</b>) make up the microcommunity <b>Vector of Values</b>, which can also be translated into a form convenient for the participant with explanations from the AI assistant. Therefore, the greater the <b>Relevance</b> of a member, the more the member's values influence <b>the values of the microcommunity</b>.</p>
                 <p>Microcommunity <b>Vector of Values</b> calculation:
 \[
 \begin{align*}
@@ -498,7 +515,15 @@ where:
 <li>\(R_i\) - <b>Relevance</b> of <b>i</b> member</li>
 <li>\(\vec{V}_i\) - vectorized <b>values</b> of <b>i</b> member</li>
 </p>
-                <p><b>Contribution</b> calculation:
+                <p><b>Contribution</b> is based on a structured record of past actions as seen by the microcommunity. Each action is represented as a vector in the same value space as the community's shared Vector of Values and evaluated along three axes:
+                  <ul>
+                    <li><b>Alignment (A):</b> how well the action matches the community's declared values;</li>
+                    <li><b>Force (F):</b> how strong the action was (type of effort, time invested, complexity and result);</li>
+                    <li><b>Sentiment (S):</b> how other members reacted to it (marked as good, funny, rude, flood, foolish).</li>
+                  </ul>
+                  The contribution of a single action is computed from A, F and S, and a person's overall Contribution in a microcommunity is the aggregate over all their actions.
+                  
+                  <!-- calculation:
 \[
 \begin{align*}
 {C}_i = \sum_{actions} \, \vec{V}_{\mathrm{mv}} \cdot \vec{v}_{i, action}
@@ -508,9 +533,9 @@ where:
 <li>\({C}_i\) - <b>Contribution</b> to the microcommunity of <b>i</b> member</li>
 <li>\({actions}\) - <b>action</b> records of <b>i</b> member</li>
 <li>\(\vec{V}_{\mathrm{mv}}\) - the microcommunity's <b>Vector of Values</b></li>
-<li>\(\vec{v}_{i, action}\) - vectorized <b>actions</b> of <b>i</b> member</li>
+<li>\(\vec{v}_{i, action}\) - vectorized <b>actions</b> of <b>i</b> member</li> -->
 </p>
-                <p>Finally ISR is normalized to unit mean (microcommunity average score is always 1) to psychologically simplify adaptation to the new approach.</p>
+                <p>Finally <b>ISR is calculated</b> out from <b>Relevance, Expertise, Contribution</b> and normalized to unit mean (microcommunity average score is always 1) to psychologically simplify adaptation to the new approach.</p>
               </div>
             </div>
 
@@ -541,7 +566,7 @@ where:
                     <tr><th>Aspect</th><th>Standard majority</th><th>ISR weighted</th></tr>
                   </thead>
                   <tbody>
-                    <tr><td>Who decides</td><td>All members equally</td><td>All participate, influence weighted by ISR</td></tr>
+                    <tr><td>Who decides</td><td>Representatives only or All members equally</td><td>All participate, influence weighted by ISR</td></tr>
                     <tr><td>Expert input</td><td>Optional, often ignored</td><td>System highlights relevant expertise</td></tr>
                     <tr><td>Transparency</td><td>Votes are counted; rationales often absent</td><td>Scores and contributing evidence are explainable</td></tr>
                     <tr><td>Handling complex issues</td><td>High risk of deadlock or uninformed majority</td><td>Relevant voices carry appropriate influence</td></tr>
@@ -592,7 +617,7 @@ where:
 
         <h4>Normalization & weights</h4>
         <p>
-          Each raw component (relevance, expertise, contribution) is normalized into [0,1]. The community or an automated context routine proposes
+          Each raw component (relevance, expertise, contribution) is normalized by mean. The community or an automated context routine proposes
           weights w<sub>R</sub>, w<sub>E</sub>, w<sub>C</sub> (sum = 1) appropriate to the issue. The final ISR is the weighted sum described earlier.
         </p>
 
@@ -672,8 +697,8 @@ where:
     <div class="paragraph">
         <h3>References</h3>
         <ul>
-          <li><a href="https://isr-vote.com/wiki/pitchdeck/index.html">ISR - Pitchdeck (project overview, pitch & product rationale)</a></li>
-          <li><a href="https://isr-vote.com/wiki/ISR-Arendt-article.html">Digital Democracy and the Recovery of Political Action - ISR research article (theoretical framing and figures)</a></li>
+          <!-- <li><a href="https://isr-vote.com/wiki/pitchdeck/index.html">ISR - Pitchdeck (project overview, pitch & product rationale)</a></li>
+          <li><a href="https://isr-vote.com/wiki/ISR-Arendt-article.html">Digital Democracy and the Recovery of Political Action - ISR research article (theoretical framing and figures)</a></li> -->
           <li><a href="https://isr-vote.com/wiki/mvp.html">ISR - MVP design (feature list and product details)</a></li>
           <li><a href="https://isr-vote.com/wiki/adaptable_authorization.html">Adaptable Authorization - access control and privacy model</a></li>
           <li><a href="https://isr-vote.com/wiki/faq.html">ISR - FAQ</a></li>

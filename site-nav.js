@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Create default dropdowns if they exist
     createDropdown('nav-about', 'about-list', aboutItems);
-    createDropdown('nav-arch', 'arch-list', archItems);
+    // createDropdown('nav-arch', 'arch-list', archItems);
 
     // Initialize configured dropdowns
     if (window.siteNavConfig && window.siteNavConfig.items) {
