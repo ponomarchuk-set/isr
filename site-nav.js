@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <a href="/wiki/">What is ISR</a>
                 <a href="/explorer/">Explorer</a>
                 <a href="/wiki/mvp.html">MVP</a>
-                <a href="/wiki/adaptable_authorization.html">Adaptable Auth</a>
+                <a href="/wiki/adaptable_authorization.html">AAuth</a>
                 <!-- <span class="dropdown-container">
                     <a href="#" class="nav-dropdown" id="nav-arch">Architecture</a>
                     <div id="arch-list" class="dropdown-menu"></div>

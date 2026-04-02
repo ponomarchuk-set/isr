@@ -10,7 +10,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     <meta content="text/html; charset=UTF-8" http-equiv="content-type">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index of Social Responsibility: Adaptable Authorization</title>
+    <title>Index of Social Responsibility: AAuth (Adaptable Authorization)</title>
     <link rel="stylesheet" href="/style.css">
     <link rel="icon" type="image/png" href="/images/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/images/logo.svg" />
@@ -29,7 +29,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- <h1>Adaptable Authorization for Index of Social Responsibility (ISR)</h1> -->
     <header>
-        <h1>Adaptable Authorization in ISR system</h1>
+        <h1>AAuth (Adaptable Authorization) in ISR system</h1>
         <p>Dynamic, Context-Aware, Person-to-Person Access Control Based on ISR Metrics</p>
     </header>
     <div class="main_content">
@@ -432,11 +432,11 @@ else:
                 <p style="margin: 15px 0 0 0; font-size: 14px; text-align: left;">
                     Where:<br>
                     • <strong>w₁, w₂, w₃, w₄</strong> = community-defined weights (sum = 1.0)<br>
-                    • <strong>f₁(ISR)</strong> = normalize accessor's ISR to 0-1<br>
+                    • <strong>f₁(ISR)</strong> = normalize accessor's gISR to 0-1<br>
                     • <strong>f₂(sens)</strong> = inverse sensitivity (higher sensitivity = lower score)<br>
                     • <strong>f₃(rel)</strong> = relationship closeness score<br>
                     • <strong>f₄(ctx)</strong> = context appropriateness<br>
-                    • Access is granted if A_score ≥ θ (threshold, typically 0.6-0.7)
+                    • Access is granted if \(A_\text{score}\) ≥ θ (threshold, typically 0.6)
                 </p>
             </div>
 
@@ -534,7 +534,7 @@ else:
                 </tbody>
             </table>
 
-            <h3>4. ISR Adjustment for Access Behavior</h3>
+            <!-- <h3>4. ISR Adjustment for Access Behavior</h3>
             <p>
                 The system logs access behavior and integrates it into ISR calculations:
             </p>
@@ -597,7 +597,7 @@ else:
   "communication_quality": "high",
   "reliability_score": 0.92,
   "activity_log": [...]
-}</code></pre>
+}</code></pre> -->
         </div>
         </div>
 
