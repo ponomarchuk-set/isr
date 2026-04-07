@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // { name: 'What is ISR', href: '/wiki/' },
         // { name: 'MVP User Guide', href: '/wiki/mvp.html' },
         // { name: 'Adaptable Auth', href: '/wiki/adaptable_authorization.html' },
-        { name: 'Philosophy', href: '/wiki/ISR-Arendt-article.html' },
+        { name: 'Philosophy', href: '/wiki/ISR-philosophy.html' },
         // { name: 'Society2050', href: '/wiki/society2050/' },
         // { name: 'Pitch Deck', href: '/wiki/pitchdeck/' },
         // { name: 'Game', href: '/snake3d/'},

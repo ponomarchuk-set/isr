@@ -1,5 +1,6 @@
-<html>
-    <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -8,212 +9,731 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-WJX232KK');</script>
 <!-- End Google Tag Manager -->
 
-
-        <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Index of Social Responsibility: F.A.Q.</title>
+    <title>Index of Social Responsibility: FAQ</title>
     <link rel="stylesheet" href="/style.css">
     <link rel="icon" type="image/png" href="/images/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/images/logo.svg" />
     <link rel="shortcut icon" href="/images/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
     <link rel="manifest" href="/images/site.webmanifest" />
-    </head>
-    <body class="c11 doc-content">
+
+    <style>
+        .faq-intro {
+            font-family: 'Cambria', Georgia, serif;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #444;
+            text-align: justify;
+            margin-bottom: 24px;
+        }
+        .content p {
+            font-family: 'Cambria', Georgia, serif;
+            font-size: 1.02rem;
+            line-height: 1.7;
+        }
+        .content ul li {
+            font-family: 'Cambria', Georgia, serif;
+            font-size: 1.02rem;
+            line-height: 1.6;
+            margin-bottom: 4px;
+        }
+        .term-inline {
+            font-style: italic;
+            color: #2d3956;
+        }
+        .faq-note {
+            background: #f0f0ff;
+            border-left: 3px solid #4f81bd;
+            border-radius: 0 6px 6px 0;
+            padding: 10px 16px;
+            margin: 12px 0;
+            font-size: 0.95rem;
+            color: #333;
+            font-family: 'Cambria', Georgia, serif;
+        }
+        .faq-note strong {
+            color: #2d3956;
+        }
+        .see-also {
+            font-size: 0.9rem;
+            color: #666;
+            font-style: italic;
+            margin-top: 10px;
+            font-family: 'Calibri', Arial, sans-serif;
+        }
+    </style>
+</head>
+<body class="c11 doc-content">
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WJX232KK"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-        <header>
-            <h1>Index of Social Responsibility (ISR)</h1>
-        </header>
-    <div class="container">
-        <!-- FAQ -->
-        <section id="faq">
-            <h2>❓ Frequently Asked Questions</h2>
+    <header>
+        <h1>Frequently Asked Questions</h1>
+        <p>Index of Social Responsibility (ISR)</p>
+    </header>
 
-            <h3>Q: Doesn't ISR just recreate inequality?</h3>
+    <div class="main_content">
+
+        <p class="faq-intro">
+            These questions come from people encountering ISR for the first time — at community
+            meetings, in academic discussions, and in conversations with skeptical friends. They
+            are answered as honestly as possible, including where the answers are incomplete or
+            where the system has known limitations.
+        </p>
+
+        <!-- ABOUT THE IDEA -->
+
+        <div class="paragraph">
+        <div class="paragraph_top" onclick="toggleContent('content-whyexist')">
+            <h2 id="whyexist">► Why does ISR exist? What problem does it solve?</h2>
+        </div>
+        <div id="content-whyexist" class="content" style="display: none;">
             <p>
-                <strong>A:</strong> No. ISR makes inequality <strong>transparent and justified</strong>. Unlike popularity contests or 
-                top-down hierarchies, ISR weights are based on:
-                <ul>
-                    <li>Expertise relevant to the specific issue (not general power)</li>
-                    <li>Proven commitment to community values (not inherited status)</li>
-                    <li>Direct relevance to the decision (not blanket authority)</li>
-                </ul>
-                All members can see how scores are calculated and can build influence through contribution.
+                Most communities — housing cooperatives, NGOs, professional associations, local
+                government bodies — make collective decisions using one of two methods: formal voting
+                (where every voice counts equally regardless of knowledge or stake) or informal
+                hierarchy (where the loudest or most senior person prevails). Neither method is
+                well-designed for the actual complexity of community life.
+            </p>
+            <p>
+                Equal-weight voting fails when a numerical majority has no real stake in a decision
+                that deeply affects a minority. Informal hierarchy fails when expertise is invisible
+                and contribution goes unrecognized. Both methods tend to produce decisions that feel
+                either unfair or unwise — sometimes both.
+            </p>
+            <p>
+                ISR is an attempt to build something better: a framework in which each person's
+                influence on a given decision is proportional to how directly they are affected by it,
+                what relevant knowledge they bring to it, and how their history of actions in the
+                community aligns with its stated values. This is not a radical idea — it is how
+                well-functioning communities already work informally, among people who know each other
+                well. ISR makes it possible at scales where informal knowledge breaks down.
+            </p>
+            <p class="see-also">
+                For the deeper philosophical grounding, see the
+                <a href="/wiki/philosophy.html">Philosophy</a> chapter.
+            </p>
+        </div>
+        </div>
+
+        <!-- WHAT IS AN ISR SCORE -->
+
+        <div class="paragraph">
+        <div class="paragraph_top" onclick="toggleContent('content-score')">
+            <h2 id="score">► What exactly is an ISR score?</h2>
+        </div>
+        <div id="content-score" class="content" style="display: none;">
+            <p>
+                An ISR score is not a single permanent number. It is recalculated for each specific
+                decision from three independently measured components:
+            </p>
+            <ul>
+                <li><strong>Relevance</strong> — how directly affected this person is by the specific
+                    issue at hand. Determined by geographic proximity, domain relationship, and
+                    social-graph connection to the parties involved.</li>
+                <li><strong>Expertise</strong> — what relevant knowledge or verifiable track record
+                    this person brings to the question. Assessed against credentials, professional
+                    history, and demonstrated competence in the domain.</li>
+                <li><strong>Contribution</strong> — how this person's history of actions in the
+                    community aligns with the community's declared values. This is the accumulated
+                    record of what they have actually done, not merely what they have stated they
+                    believe.</li>
+            </ul>
+            <p>
+                The score is issue-specific: the same person may have high influence on a question
+                about building maintenance and low influence on a question about financial governance,
+                depending on their expertise and the nature of their past contributions in each domain.
+                Every component is visible, inspectable, and contestable by the person it concerns.
+            </p>
+        </div>
+        </div>
+
+        <!-- INEQUALITY -->
+
+        <div class="paragraph">
+        <div class="paragraph_top" onclick="toggleContent('content-inequality')">
+            <h2 id="inequality">► Doesn't ISR just recreate inequality — with better branding?</h2>
+        </div>
+        <div id="content-inequality" class="content" style="display: none;">
+            <p>
+                This is one of the most important questions to take seriously, and the answer is not
+                a simple "no."
+            </p>
+            <p>
+                ISR does create differentiated influence — some members will have higher scores on
+                some questions than others. That differentiation is intentional. The argument is that
+                unacknowledged, informal inequality — where the loudest voice or the longest tenure or
+                the strongest social network determines outcomes invisibly — is more damaging than
+                transparent, justified differentiation that everyone can inspect and contest.
+            </p>
+            <p>
+                What ISR is designed to prevent is the reproduction of inherited or status-based
+                inequality. Influence in ISR is earned through:
+            </p>
+            <ul>
+                <li>Expertise that is relevant to the specific question — not general power or seniority</li>
+                <li>Demonstrated commitment to community values — not stated affiliation or background</li>
+                <li>Direct stake in the decision outcome — not blanket authority derived from position</li>
+            </ul>
+            <p>
+                New members begin with a baseline that grows with contribution. Long-term members who
+                disengage lose influence proportionally. The goal is not equal outcomes — it is
+                equitable process: influence that is proportional to genuine stakes and demonstrated
+                commitment.
+            </p>
+            <div class="faq-note">
+                <strong>Important:</strong> ISR cannot guarantee that its algorithms are perfectly
+                free of bias. The system is designed to be inspectable, community-adjustable, and
+                subject to formal appeals. If a community detects systematic unfairness in how scores
+                are calculated, the parameters can be revised by community consensus.
+            </div>
+        </div>
+        </div>
+
+        <!-- SOCIAL CREDIT -->
+
+        <div class="paragraph">
+        <div class="paragraph_top" onclick="toggleContent('content-socialcredit')">
+            <h2 id="socialcredit">► Is this like China's Social Credit System?</h2>
+        </div>
+        <div id="content-socialcredit" class="content" style="display: none;">
+            <p>
+                The comparison is understandable and worth examining carefully, because the surface
+                resemblance — a score that reflects past behavior — conceals a fundamental difference
+                in structure, purpose, and governance.
+            </p>
+            <p>
+                A state social credit system is:
+            </p>
+            <ul>
+                <li>Maintained by a central authority (the state)</li>
+                <li>Based on criteria defined from above, without citizen input</li>
+                <li>Used to control access to basic services — travel, banking, education</li>
+                <li>Not inspectable or contestable by the person it concerns</li>
+                <li>Designed to enforce behavioral compliance with state-determined norms</li>
+            </ul>
+            <p>
+                ISR is different in each of these respects:
+            </p>
+            <ul>
+                <li>There is no central authority — each community controls its own parameters</li>
+                <li>No values or norms are preset from above; all normative inputs come from community
+                    members themselves and can be revised by community consensus</li>
+                <li>ISR does not govern access to basic services; it weights influence in deliberative
+                    processes only</li>
+                <li>Every calculation is fully inspectable and formally contestable</li>
+                <li>The system's purpose is to improve the quality of collective decisions, not to
+                    control individual behavior in everyday life</li>
+            </ul>
+            <p>
+                The philosophical difference is also fundamental. ISR is built on the principle that
+                normative standards — what counts as responsible behavior — must emerge from the
+                community itself, not be imposed on it. The community defines its values; ISR provides
+                a common language in which to express and apply them. A state social credit system
+                is the inverse: values descend from the state, and compliance is enforced.
+            </p>
+        </div>
+        </div>
+
+        <!-- MANIPULATION -->
+
+        <div class="paragraph">
+        <div class="paragraph_top" onclick="toggleContent('content-gaming')">
+            <h2 id="gaming">► What if people just pretend to have values they don't hold?</h2>
+        </div>
+        <div id="content-gaming" class="content" style="display: none;">
+            <p>
+                The question rests on an assumption worth examining: that declared values are primarily
+                a claim about who you already are. In ISR, they are something different — a statement
+                about what kind of community you want to live in, and what kind of future you believe
+                is worth building.
+            </p>
+            <p>
+                This distinction matters. No one is expected to be a perfect embodiment of the values
+                they declare. People hold aspirations that outrun their current behavior — that is not
+                hypocrisy, it is the normal condition of anyone trying to be better than they were.
+                What the values subsystem captures is not "this is exactly who I am" but "this is the
+                direction I am orienting toward, and the standard against which I am willing to be
+                measured." The declaration is a commitment to a future, not a certificate of a present.
+            </p>
+            <p>
+                ISR is not designed to punish people for falling short of their declared values.
+                It is designed to make community life more future-oriented: actions are evaluated
+                in terms of what they contribute to the shared future the community has articulated,
+                not as verdicts on past character. A person who declares a commitment to environmental
+                responsibility and then acts inconsistently with it is not condemned — they are in
+                the same honest position as anyone working against habits and constraints that change
+                slowly. What ISR tracks is the overall direction and pattern, not individual failures.
+            </p>
+            <p>
+                The more pointed version of the concern is strategic misrepresentation: declaring
+                values one has no intention of acting toward in order to gain unearned influence.
+                This is addressed structurally. The Contribution component — which measures what you
+                actually do, not what you say — is weighted alongside declared values. Persistent
+                inconsistency between the two becomes its own signal. And the Aristotelian point
+                applies in both directions: a person who acts consistently with declared values over
+                time, even if the initial motivation was strategic, has in a meaningful sense become
+                someone who holds those values. Practice shapes character, regardless of where it began.
+            </p>
+            <div class="faq-note">
+                <strong>Technical safeguards:</strong> Sudden changes in value declarations trigger
+                system warnings. Coordinated manipulation (mutual endorsement networks, for example)
+                is detectable through anomaly analysis. Expertise claims are cross-checked against
+                verifiable credentials.
+            </div>
+        </div>
+        </div>
+
+        <!-- TRANSPARENCY -->
+
+        <div class="paragraph">
+        <div class="paragraph_top" onclick="toggleContent('content-transparency')">
+            <h2 id="transparency">► What if I disagree with how my score is calculated?</h2>
+        </div>
+        <div id="content-transparency" class="content" style="display: none;">
+            <p>
+                Every component of your ISR score is fully visible to you. You can see exactly which
+                factors contributed to each element — which actions were counted, how they were
+                classified, what weight the community's value framework assigned to them.
+            </p>
+            <p>
+                If you believe a calculation is wrong, you have several options:
+            </p>
+            <ul>
+                <li>Inspect the detailed breakdown and identify the specific component you dispute</li>
+                <li>Provide additional information about your expertise, credentials, or experience
+                    that may not be captured in the current profile</li>
+                <li>Request an AI-assisted explanation of any component you find unclear</li>
+                <li>Formally appeal to the community if you believe the calculation reflects a
+                    systematic error or bias in the parameters</li>
+            </ul>
+            <p>
+                If an appeal reveals a genuine flaw in how the scoring algorithm applies community
+                values, the parameters themselves can be revised by community consensus. The system is
+                designed to be correctable — not just contestable at the individual level, but
+                revisable at the community level.
+            </p>
+        </div>
+        </div>
+
+        <!-- VALUES STRUCTURE -->
+
+        <div class="paragraph">
+        <div class="paragraph_top" onclick="toggleContent('content-values')">
+            <h2 id="values">► Who decided what the ten value domains are? Isn't that imposing values?</h2>
+        </div>
+        <div id="content-values" class="content" style="display: none;">
+            <p>
+                This is a fair and important challenge. The ten-domain structure of the ISR Vector of
+                Values was designed by the system's creators — and any such design carries the
+                assumptions of its moment and context.
+            </p>
+            <p>
+                The distinction to keep in mind is between a <em>representational structure</em> and a
+                <em>normative prescription</em>. The ten domains provide a common notation system —
+                a shared coordinate space in which any community can locate its values. They do not
+                specify what the correct value on any axis is, or how much weight any domain should
+                carry. That is entirely determined by community members themselves.
+            </p>
+            <p>
+                An analogy: a musical staff is a notation system that allows any music to be written
+                down and compared. It does not tell you which music is beautiful. The ISR value
+                structure is similar: it provides a language, not a judgment.
+            </p>
+            <p>
+                That said, any choice of taxonomy carries implicit assumptions. The decision to include
+                "Technological World and Digital Democracy" as one of the ten domains reflects
+                contemporary concerns, and communities operating in different contexts might reasonably
+                weight it very differently. The structural response to this limitation is the community
+                revision mechanism: the domain structure itself can be adjusted by community consensus.
+                The scaffold exists to be inhabited and reshaped, not simply obeyed.
+            </p>
+            <p>
+                It is also worth being explicit about where the sociology of ISR currently stands.
+                The value vectorization and assessment subsystem is version 1.0 — designed to be
+                good enough to begin real-world validation, not to be the final word on how human
+                values should be represented computationally. This is a genuinely open research area.
+                Sustained work in sociology, psychology, and moral philosophy will be necessary to
+                develop it further, and future versions — 2.0, 3.0 — may differ substantially from
+                what is deployed today. ISR treats this not as a limitation to apologize for but as
+                an honest description of what it means to be a new framework at the beginning of
+                its research trajectory.
+            </p>
+        </div>
+        </div>
+
+        <!-- HOW COMMUNITIES SET VALUES -->
+
+        <div class="paragraph">
+        <div class="paragraph_top" onclick="toggleContent('content-setvalues')">
+            <h2 id="setvalues">► How does a community actually define its values in practice?</h2>
+        </div>
+        <div id="content-setvalues" class="content" style="display: none;">
+            <p>
+                The process is member-driven from start to finish. Each community member defines their
+                own values in their personal profile — what they consider important, what they consider
+                a cost, how they would prioritize competing concerns in their shared domain. The AI
+                assistant helps translate intuitive value statements into operational definitions, and
+                helps members understand what the system means by those definitions.
+            </p>
+            <p>
+                The community's collective <span class="term-inline">Matrix of Values</span> emerges
+                from the aggregation of all members' individual inputs. This means the community's
+                normative framework is not voted on once and fixed — it is a living structure that
+                reflects the actual distribution of commitments among its current members, and shifts
+                as members and their values evolve.
+            </p>
+            <p>
+                Values can be adjusted over time, individually and collectively. All members can see
+                how their declared values compare to the community's aggregate profile, and how their
+                actions align with both.
+            </p>
+        </div>
+        </div>
+
+        <!-- SCALE -->
+
+        <div class="paragraph">
+        <div class="paragraph_top" onclick="toggleContent('content-scale')">
+            <h2 id="scale">► Is ISR only useful for large organizations?</h2>
+        </div>
+        <div id="content-scale" class="content" style="display: none;">
+            <p>
+                ISR scales from small communities (10 members) to large networks (100,000+ members),
+                but its value increases significantly above roughly 150 members — the threshold
+                anthropologists call <span class="term-inline">Dunbar's number</span>.
+            </p>
+            <p>
+                Below 150 members, the human brain can track the social reality of the whole community
+                almost unconsciously: who knows what, who has done what, who can be trusted in which
+                context. Informal reputation systems work well at this scale. ISR adds the most value
+                where informal knowledge breaks down — where the community is too large for any member
+                to hold its full social picture, where decisions become opaque, and where informal
+                hierarchies develop that reflect access rather than merit.
+            </p>
+            <p>
+                The most natural early adopters for ISR are housing cooperatives, neighborhood
+                associations, professional guilds, NGOs, academic institutions, and DAOs (Decentralized
+                Autonomous Organizations) — communities large enough to face governance complexity,
+                but small enough to pilot and iterate quickly.
+            </p>
+        </div>
+        </div>
+
+        <!-- PRIVACY -->
+
+        <div class="paragraph">
+        <div class="paragraph_top" onclick="toggleContent('content-privacy')">
+            <h2 id="privacy">► Does ISR track all my actions? What about privacy?</h2>
+        </div>
+        <div id="content-privacy" class="content" style="display: none;">
+            <p>
+                Only actions that affect other community members — what ISR calls
+                <span class="term-inline">social actions</span> — are eligible for evaluation.
+                Private behavior, personal choices that have no community dimension, and actions
+                taken outside community contexts are not within the scope of the system.
+            </p>
+            <p>
+                Access to information about any member's record is tiered through the
+                <span class="term-inline">Adaptable Authorization</span> system: different people have
+                different levels of access depending on their relationship to you, their relevance to
+                the context, and the declared purpose of their access request. A neighbor, a doctor,
+                a professional colleague, and a stranger have different access levels — analogous to
+                how information naturally flows in real communities, but formalized and auditable.
+            </p>
+            <p>
+                The goal is accountability without surveillance. ISR is built on the observation
+                that healthy community dynamics — the kind that make people feel safe being authentic —
+                depend on a degree of mutual transparency. The system is designed to enable that
+                transparency without enabling the abuse of it.
+            </p>
+            <div class="faq-note">
+                <strong>Ongoing research:</strong> Federated learning approaches — which would allow
+                ISR scores to be computed without centralizing raw personal data — are a priority for
+                future development. The privacy architecture of ISR is an active area of work, not
+                a solved problem.
+            </div>
+            <p class="see-also">
+                See also: <a href="/wiki/adaptable_authorization.html">Adaptable Authorization in the ISR System</a>
+            </p>
+        </div>
+        </div>
+
+        <!-- MONEY -->
+
+        <div class="paragraph">
+        <div class="paragraph_top" onclick="toggleContent('content-money')">
+            <h2 id="money">► How does ISR relate to money? Does it replace economic incentives?</h2>
+        </div>
+        <div id="content-money" class="content" style="display: none;">
+            <p>
+                ISR does not replace economic systems — it adds a dimension that monetary systems
+                cannot capture. Money is an extraordinarily powerful coordination mechanism, but it
+                measures everything in a single unit (monetary value) and can be accumulated by means
+                that generate no social value, or that generate social costs that others bear.
+            </p>
+            <p>
+                ISR measures social contribution specifically — the impact of actions on a community's
+                shared wellbeing, as evaluated by the community itself. An action that generates
+                revenue while damaging community health might score high on economic measures and low
+                on ISR. An action that costs time and money but significantly improves community trust
+                might be invisible to economic accounting and central to ISR.
+            </p>
+            <p>
+                The two systems are complementary, not competitive. ISR is not designed to replace
+                the price signal or monetary incentives. It is designed to make visible the dimension
+                of social value that monetary accounting systematically ignores — and to give communities
+                a tool for weighting that dimension in their own decisions.
             </p>
 
-            <h3>Q: What if someone disagrees with how their ISR is calculated?</h3>
+            <h3>ISR and the motivational logic of money</h3>
             <p>
-                <strong>A:</strong> ISR is fully transparent. Members can:
-                <ul>
-                    <li>See exactly which factors contributed to their score</li>
-                    <li>Ask the AI assistant for explanations</li>
-                    <li>Provide additional information about expertise or experience</li>
-                    <li>Appeal to the community if they believe calculations are unfair</li>
-                </ul>
+                The relationship between ISR and money becomes more pointed when you consider what
+                money actually does as a motivational force. Much of its compulsive power derives
+                not from the value of things money can buy, but from survival anxiety — the fear
+                of deprivation, destitution, exclusion from social life. When that floor is removed,
+                the character of motivation changes.
             </p>
-
-            <h3>Q: Can ISR be manipulated?</h3>
             <p>
-                <strong>A:</strong> ISR has built-in safeguards:
-                <ul>
-                    <li>Contribution scores require <strong>consistent, long-term</strong> alignment with values</li>
-                    <li>Sudden changes in behavior or values declarations trigger system warnings</li>
-                    <li>Expertise is cross-checked against verifiable credentials</li>
-                    <li>Community can adjust weighting formula if they detect gaming</li>
-                </ul>
+                Real-world basic income experiments — in Finland, Kenya, and several US cities —
+                offer early evidence of this. A consistent finding is that when material security
+                is guaranteed, people do not stop contributing to their communities; they redirect
+                toward things they find genuinely meaningful. The drive for recognition, social
+                standing, and the sense that one's contribution matters does not disappear — it
+                emerges more clearly once survival anxiety no longer dominates it.
             </p>
-
-            <h3>Q: Is ISR only for large organizations?</h3>
             <p>
-                <strong>A:</strong> No. ISR scales from small communities (10 members) to large networks (100,000+ members). Really helpful it begans from 150+ members (the <a href="https://en.wikipedia.org/wiki/Dunbar%27s_number">Dunbar's number</a>). Where, on the one hand, social dynamics become complex enough to need structured decision-making because of values diversity growing, on the other hand, participants cannot easily behold, keep in mind and take into account all the skills and actions of other participants.
+                This matters for how we understand ISR's long-term role. Money bundles two things
+                that are conceptually distinct: material resource allocation and social standing.
+                It has served as a proxy for social value primarily because no portable,
+                cross-context alternative existed — not because it is actually a good measure of
+                what people contribute to shared life. As technology progressively decouples
+                material security from employment, these two functions may require separate systems.
+                Price signals and monetary incentives remain necessary for allocating scarce
+                material resources. But for the specifically social dimension — distributing
+                influence, recognizing contribution, conferring standing within a community —
+                ISR may serve as a partial alternative to monetary coordination in ways that
+                become more significant as survival anxiety loses its grip.
             </p>
-
-            <h3>Q: How do we set community values?</h3>
             <p>
-                <strong>A:</strong> Matrix of Values is flexible and member-driven. It gathers out of all microcommunity members' inputs:
-                <ul>
-                    <li>Each community member defines its values in Profile in a convinient way</li>
-                    <li>AI assistant helps translate values into operational definitions and, vice-versa, helps to understand what the system means by this definitions</li>
-                    <li>Values can be adjusted over time</li>
-                    <li>All members can see how their actions align with stated values</li>
-                </ul>
+                This is a cautious claim, not a prediction. The transition, if it comes, will
+                be slow and uneven. But the direction is worth taking seriously: ISR is designed
+                for a world in which social standing is earned through demonstrated contribution
+                to shared life rather than accumulated through monetary wealth — and that world
+                may be closer than it currently appears.
             </p>
+        </div>
+        </div>
 
-            <h3>Q: How does ISR prevent social fragmentation and encourage participation?</h3>
+        <!-- AI EVALUATION -->
+
+        <div class="paragraph">
+        <div class="paragraph_top" onclick="toggleContent('content-ai')">
+            <h2 id="ai">► Can AI be trusted to evaluate human behavior fairly?</h2>
+        </div>
+        <div id="content-ai" class="content" style="display: none;">
             <p>
-                <strong>A:</strong> ISR addresses atomization by creating dynamic microcommunities:
-                <ul>
-                    <li>Microcommunities are formed around specific issues (dreams, questions, problems), not static social groups - it insures real actual involvement into the process</li>
-                    <li>Membership changes as problems evolve, keeping engagement fresh</li>
-                    <li>Transparent decision-making builds trust in open communication</li>
-                    <li>Absence of bureaucratic barriers allows instant community formation when needed</li>
-                    <li>Every member has fair influence levers regardless of background</li>
-                </ul>
-                This counters the "internal emigration" tendency by making participation rewarding and meaningful.
+                This is a question ISR takes seriously rather than deflects. The honest answer is: AI
+                evaluation in ISR is not perfectly fair, and it should not be trusted unconditionally.
+                What the system provides is structured, transparent, and correctable evaluation — which
+                is different from uncritical trust.
             </p>
-
-            <h3>Q: What about privacy? Does ISR track all my actions?</h3>
             <p>
-                <strong>A:</strong> ISR respects privacy while ensuring accountability:
-                <ul>
-                    <li>Only actions affecting others are considered "social actions" and can be evaluated</li>
-                    <li>Information access is tiered based on relevance using Adaptable authorization (family, doctor, neighbor have different access levels)</li>
-                    <!-- <li>Proof of Identity mechanisms allow pseudonymity when desired</li> -->
-                    <li>Healthy community dynamics reduce the need for anonymity by creating safe expression spaces</li>
-                </ul>
-                The goal is not surveillance, but creating environments where people feel secure being authentic.
+                Several points are worth holding together:
             </p>
-
-            <h3>Q: How does ISR differ from money-based systems?</h3>
+            <ul>
+                <li>We are already constantly evaluated — by employers, institutions, certifying bodies,
+                    social networks. ISR makes this evaluation more transparent and more contestable,
+                    not more pervasive.</li>
+                <li>The evaluation algorithm is open for inspection and adjustment by the community.
+                    Algorithmic bias is a genuine risk; community-controlled parameter weights,
+                    regular fairness audits, and a transparent appeals process are the structural
+                    mitigations.</li>
+                <li>AI evaluation in ISR does not make final decisions — it provides weighted inputs
+                    to deliberative processes that remain under human control. The system amplifies
+                    human judgment; it does not replace it.</li>
+                <li>Multiple perspectives — community input, AI analysis, individual context — reduce
+                    the risk of systematic bias that any single evaluator would carry.</li>
+            </ul>
             <p>
-                <strong>A:</strong> ISR addresses limitations of monetary systems:
-                <ul>
-                    <li>Money measures everything in monetary terms, but ISR measures social contribution</li>
-                    <li>Money can be acquired without social value creation; ISR requires actual contribution</li>
-                    <li>ISR weights are context-specific while money provides blanket influence</li>
-                    <li>Money creates incentives to accumulate regardless of method; ISR rewards aligned actions</li>
-                </ul>
-                ISR complements economic systems by adding a social contribution dimension to influence.
+                The deeper point is that the alternative to transparent algorithmic evaluation is not
+                no evaluation — it is opaque human evaluation, which has its own well-documented biases.
+                The question is not "AI or human judgment" but "what combination of human and AI
+                judgment, with what transparency and accountability, produces the fairest outcomes?"
             </p>
+        </div>
+        </div>
 
-            <h3>Q: Can't AI make mistakes in evaluating human behavior?</h3>
+        <!-- MINORITY VIEWS -->
+
+        <div class="paragraph">
+        <div class="paragraph_top" onclick="toggleContent('content-minority')">
+            <h2 id="minority">► What prevents the majority from simply dominating minorities?</h2>
+        </div>
+        <div id="content-minority" class="content" style="display: none;">
             <p>
-                <strong>A:</strong> ISR's approach to AI evaluation is designed for fairness:
-                <ul>
-                    <li>We're already constantly evaluated by others, exams, certifications - ISR just makes it transparent</li>
-                    <li>The evaluation algorithm is open for inspection and adjustment by the community</li>
-                    <li>Historical data shows AI often outperforms humans in consistent pattern recognition</li>
-                    <li>Multiple perspectives (community input + AI analysis) reduce individual biases</li>
-                    <li>All evaluations can be discussed, contested, and refined by the community</li>
-                </ul>
-                The system evolves through collective intelligence, not rigid AI imposition.
+                This is a central design concern in ISR, not an afterthought. The majority-dominance
+                problem is exactly what the Microcommunity mechanism is built to address.
             </p>
-
-            <h3>Q: How does ISR handle different types of community members?</h3>
             <p>
-                <strong>A:</strong> ISR's flexible architecture accommodates diverse participation:
-                <ul>
-                    <li><strong>Experts:</strong> Higher weights in their domain areas</li>
-                    <li><strong>Active contributors:</strong> Build influence through consistent participation</li>
-                    <li><strong>New members:</strong> Start with baseline weights that grow with contribution</li>
-                    <li><strong>Occasional participants:</strong> Influence limited to areas they engage with</li>
-                    <li><strong>Special cases:</strong> Parents, retirees, students receive contextual consideration</li>
-                </ul>
-                This mirrors real-world social dynamics where influence is earned, not assumed.
+                In standard voting, a numerical majority can overrule a smaller group even when the
+                majority has little stake in the decision and the minority bears all its consequences.
+                ISR's Microcommunity formation is governed by the
+                <span class="term-inline">All-Affected Principle</span>: only those genuinely affected
+                by an issue are assembled for its resolution, and their influence is weighted by
+                Relevance — how directly they are affected — not merely by number.
             </p>
-
-            <h3>Q: What prevents ISR from becoming another controlling bureaucracy?</h3>
             <p>
-                <strong>A:</strong> ISR's design prevents bureaucratic calcification:
-                <ul>
-                    <li>Algorithm is transparent and community-adjustable (like adjusting radio settings)</li>
-                    <li>No pre-set values - each community defines its own values</li>
-                    <li>Microcommunities dissolve when their purpose is fulfilled</li>
-                    <li>Weight calculations are issue-specific, not permanent status assignments</li>
-                    <li>System adapts as community values and needs evolve</li>
-                </ul>
-                ISR is a tool, not a ruler - the community determines how it's used.
+                Additional protections include:
             </p>
-
-            <!-- <h3>Q: How does ISR work in residential communities like housing cooperatives?</h3>
+            <ul>
+                <li>Domain-specific Expertise weighting gives specialists influence in their areas,
+                    regardless of whether they are numerically in the majority</li>
+                <li>Values declaration ensures that diverse normative perspectives are recognized in
+                    the community's aggregate framework — not homogenized away</li>
+                <li>Transparent algorithms allow any member to identify and formally challenge
+                    systematic bias in how their voice is weighted</li>
+                <li>The goal is constructive engagement with diversity, not enforced consensus</li>
+            </ul>
             <p>
-                <strong>A:</strong> ISR is particularly effective for housing communities:
-                <ul>
-                    <li>Transparent decision-making reduces conflicts over repairs and renovations</li>
-                    <li>Technical decisions weight experts more, aesthetic decisions involve broader input</li>
-                    <li>Payment responsibility calculations consider usage and benefit</li>
-                    <li>Conflict resolution incorporates relationship history and community values</li>
-                    <li>Resource allocation (parking, common spaces) based on demonstrable need and contribution</li>
-                </ul>
-                This addresses common housing cooperative problems like "loudest voice wins" and "equal votes for unequal expertise."
-            </p> -->
-
-            <!-- <h3>Q: What's the minimum viable implementation for testing ISR?</h3>
-            <p>
-                <strong>A:</strong> A basic ISR implementation includes:
-                <ul>
-                    <li>User profiles with demographic and expertise information</li>
-                    <li>Personal values declaration</li>
-                    <li>Discussion forums with AI-relevance filtering</li>
-                    <li>Voting with weighted influence calculation</li>
-                    <li>Task tracking for implementation follow-through</li>
-                    <li>AI assistant for system explanations</li>
-                </ul>
-                This can be hosted on Firebase with 100-200 users to test social dynamics.
-            </p> -->
-
-            <h3>Q: How does ISR ensure representation of minority views?</h3>
-            <p>
-                <strong>A:</strong> ISR protects minority participation through:
-                <ul>
-                    <li>Direct relevance weighting gives niche experts influence in their domains</li>
-                    <li>Microcommunity formation around specific concerns prevents majoritarian domination</li>
-                    <li>Values declaration ensures diverse perspectives are recognized in community ethos</li>
-                    <li>Transparent algorithms allow identification and correction of bias</li>
-                    <li>Historical contribution recognition prevents "tyranny of the majority"</li>
-                </ul>
-                The goal is constructive diversity, not homogenized consensus.
+                No mechanism eliminates the risk of majoritarian distortion entirely. But ISR's
+                structural design makes it significantly harder to achieve than in standard
+                one-person-one-vote systems.
             </p>
+        </div>
+        </div>
 
+        <!-- BUREAUCRACY -->
 
-            <h3>Q: Is this like a social credit system (like in China)?</h3>
+        <div class="paragraph">
+        <div class="paragraph_top" onclick="toggleContent('content-bureaucracy')">
+            <h2 id="bureaucracy">► Won't ISR itself become another controlling bureaucracy?</h2>
+        </div>
+        <div id="content-bureaucracy" class="content" style="display: none;">
             <p>
-                <strong>A:</strong> No. ISR is not a social credit system. It does not maintain a single permanent score for a person. Instead, ISR is recalculated per issue and per microcommunity from transparent components (Relevance, Expertise, Contribution), and participants can inspect and contest how their influence was computed. ISR have no presetted values "from above" (unlike social credit systems) - in all cases they are defined by members only. The goal is to improve the epistemic quality and fairness of collective decisions, not to control behaviour in everyday life.
+                The risk of any governance system calcifying into bureaucracy is real, and ISR is
+                designed with specific structural resistances to it.
             </p>
+            <p>
+                First: Microcommunities dissolve when their purpose is fulfilled. There are no standing
+                committees, no permanent sub-structures with accumulated institutional power. Each
+                decision space assembles, deliberates, and closes.
+            </p>
+            <p>
+                Second: influence weights are issue-specific, not permanent status assignments. A person
+                who had high influence on last year's infrastructure question has no special authority
+                over this year's financial governance question unless their expertise and contribution
+                in that domain justify it.
+            </p>
+            <p>
+                Third: the algorithm is transparent and community-adjustable. The community can inspect
+                and revise any parameter — including structural parameters about how influence is
+                calculated. There is no inaccessible back-end that a professional class controls.
+            </p>
+            <p>
+                Fourth: ISR has no enforcement mechanisms. It is a weighting and deliberation tool,
+                not a governing authority. The community remains the decision-maker; ISR provides
+                better-structured input to that decision.
+            </p>
+            <p>
+                The practical risk is not bureaucracy in the traditional sense — it is algorithm
+                ossification, where parameters set at inception are never revisited. The mitigation
+                is a culture of active community engagement with the system's parameters, not just
+                its outputs.
+            </p>
+        </div>
+        </div>
 
-        </section>
+        <!-- PHILOSOPHY CONNECTION -->
+
+        <div class="paragraph">
+        <div class="paragraph_top" onclick="toggleContent('content-philosophy')">
+            <h2 id="philosophy">► ISR sounds philosophically ambitious. Is there real intellectual grounding behind it?</h2>
+        </div>
+        <div id="content-philosophy" class="content" style="display: none;">
+            <p>
+                ISR draws on several established traditions in democratic theory, political philosophy,
+                and social science — and it is honest about where it departs from them.
+            </p>
+            <p>
+                The core normative framework is grounded in Hannah Arendt's political theory — specifically
+                her concept of the <span class="term-inline">Space of Appearance</span> (the political
+                realm constituted by genuine collective action and speech) and her analysis of how modern
+                institutions erode it. The <span class="term-inline">All-Affected Principle</span> — the
+                idea that legitimate decisions require the participation of everyone who bears their
+                consequences — draws on the political philosophy of Josiah Ober and Mark Warren.
+                The deliberative framework reflects Jürgen Habermas's theory of communicative rationality.
+                The epistemic arguments about expertise aggregation in democratic decisions draw on
+                recent work in augmented democracy, including LLM-assisted deliberation research
+                (Tessler et al., 2024; Gudiño et al., 2024).
+            </p>
+            <p>
+                The ISR approach to responsibility — the rejection of collective excuse, the insistence
+                on individual accountability even within institutional contexts — is grounded in
+                Arendt's analysis of the <span class="term-inline">banality of evil</span> and in
+                existentialist philosophy's foundational claim that we become who we are through what
+                we choose to do.
+            </p>
+            <p>
+                ISR also departs honestly from some of its intellectual predecessors: Arendt herself
+                would likely have been skeptical of any system that administers political space
+                algorithmically. The response to that skepticism is that Arendt was theorizing for
+                communities at human-cognition scale; ISR is an attempt to extend her diagnosis to the
+                post-Dunbar conditions of modern digital society.
+            </p>
+            <p class="see-also">
+                The full intellectual grounding is developed in the
+                <a href="/wiki/philosophy.html">Philosophy</a> chapter and in the
+                <a href="/wiki/ISR-Arendt-article.html">ISR and Arendt: Augmented Democracy</a> article.
+            </p>
+        </div>
+        </div>
+
+        <!-- WHAT STAGE IS IT AT -->
+
+        <div class="paragraph">
+        <div class="paragraph_top" onclick="toggleContent('content-stage')">
+            <h2 id="stage">► What stage is ISR at? Is it ready to use?</h2>
+        </div>
+        <div id="content-stage" class="content" style="display: none;">
+            <p>
+                ISR is in active MVP (minimum viable product) development. The core architecture —
+                the three-component scoring model, the Vector of Values, the Microcommunity formation
+                mechanism, and the Adaptable Authorization system — is designed and documented.
+                Implementation is proceeding on Google Cloud infrastructure with Firebase and
+                Vertex AI.
+            </p>
+            <p>
+                The system is not yet deployed for general use. The current phase is focused on:
+            </p>
+            <ul>
+                <li>Completing the technical MVP</li>
+                <li>Identifying early-adopter communities (DAOs, HOAs, NGOs, cooperatives) for
+                    pilot deployment</li>
+                <li>Validating the scoring model against real community decisions</li>
+                <li>Iterating on the privacy architecture, including federated learning approaches</li>
+            </ul>
+            <p>
+                If you are interested in piloting ISR in your community, or in contributing to the
+                research, the best starting point is to explore the
+                <a href="/wiki/index.html">documentation</a> and reach out through the site.
+            </p>
+        </div>
+        </div>
 
     </div>
 
-        <footer class="site-footer">
-            <div class="doc-content centered">
-                <small>© 2024-2025 Sergii Ponomarchuk</small>
-            </div>
-        </footer>
-  <script src="/site-nav.js"></script>
-  </body>
+    <footer class="site-footer">
+        <div class="doc-content centered">
+            <small>© 2024–2026 Sergii Ponomarchuk</small>
+        </div>
+    </footer>
+
+    <script src="/site-nav.js"></script>
+    <script src="/script.js"></script>
+</body>
 </html>
