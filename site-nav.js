@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 </span>
                 <a href="/prototype/">Prototype</a> -->
                 <span class="dropdown-container">
-                    <a href="#" class="nav-dropdown" id="nav-about">About ISR</a>
+                    <a href="#" class="nav-dropdown" id="nav-about">Foundations</a>
                     <div id="about-list" class="dropdown-menu"></div>
                 </span>
                 <!--<a href="#" id="game-btn">Game</a>-->
