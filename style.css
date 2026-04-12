@@ -154,6 +154,12 @@ p.lefted {
     padding-bottom: 10px;
 }
 
+p.righted {
+    font-family: "Calibri";
+    text-align: right;
+    padding-bottom: 10px;
+}
+
 /* Article-like typography */
 body.paper, .paper { font-family: "Cambria", Georgia, serif }
 .paper h1, .paper h2, .paper h3 {
