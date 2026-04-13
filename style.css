@@ -482,3 +482,201 @@ th, td {
         padding: 15px;
     }
 }
+
+/* ===== WIKI PAGES: SHARED TYPOGRAPHY ===== */
+
+.content p {
+    font-family: 'Cambria', Georgia, serif;
+    font-size: 1.05rem;
+    line-height: 1.75;
+}
+
+.content h3 {
+    font-family: 'Calibri', Arial, sans-serif;
+    margin-top: 20px;
+}
+
+.content ul li {
+    font-family: 'Cambria', Georgia, serif;
+    font-size: 1.02rem;
+    line-height: 1.6;
+    margin-bottom: 4px;
+}
+
+.term-inline {
+    font-style: italic;
+    color: #2d3956;
+}
+
+.see-also {
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+    margin-top: 10px;
+    font-family: 'Calibri', Arial, sans-serif;
+}
+
+/* ===== FAQ PAGE ===== */
+
+.faq-intro {
+    font-family: 'Cambria', Georgia, serif;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #444;
+    text-align: justify;
+    margin-bottom: 24px;
+}
+
+.faq-note {
+    background: #f0f0ff;
+    border-left: 3px solid #4f81bd;
+    border-radius: 0 6px 6px 0;
+    padding: 10px 16px;
+    margin: 12px 0;
+    font-size: 0.95rem;
+    color: #333;
+    font-family: 'Cambria', Georgia, serif;
+}
+
+.faq-note strong {
+    color: #2d3956;
+}
+
+/* ===== PHILOSOPHY PAGE ===== */
+
+.intro-quote {
+    font-family: 'Cambria', Georgia, serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: #4a4a4a;
+    border-left: 4px solid #4f81bd;
+    padding: 12px 20px;
+    margin: 20px 0 28px 0;
+    background: #f7f8fb;
+    border-radius: 0 8px 8px 0;
+    line-height: 1.7;
+}
+
+.intro-quote cite {
+    display: block;
+    font-style: normal;
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 8px;
+}
+
+.intro-text {
+    font-family: 'Cambria', Georgia, serif;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: #111;
+    text-align: justify;
+    margin-bottom: 18px;
+}
+
+.section-note {
+    background: #f0f0ff;
+    border-left: 3px solid #4f81bd;
+    border-radius: 0 6px 6px 0;
+    padding: 10px 16px;
+    margin: 16px 0;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.section-note strong {
+    color: #2d3956;
+}
+
+.pull-quote {
+    font-family: 'Cambria', Georgia, serif;
+    font-style: italic;
+    font-size: 1.08rem;
+    color: #4a0c64;
+    text-align: center;
+    margin: 24px 40px;
+    line-height: 1.6;
+}
+
+/* ===== ARENDT ARTICLE PAGE ===== */
+
+.article-body p {
+    font-family: 'Cambria', Georgia, serif;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    text-align: justify;
+    margin-bottom: 1em;
+}
+
+.article-body h3 {
+    font-family: 'Calibri', Arial, sans-serif;
+    margin-top: 1.6em;
+    margin-bottom: 0.4em;
+    color: #1a2540;
+}
+
+.article-body h2 {
+    margin-top: 2em;
+}
+
+.article-body ul li, .article-body ol li {
+    font-family: 'Cambria', Georgia, serif;
+    font-size: 1.02rem;
+    line-height: 1.7;
+    margin-bottom: 0.4em;
+}
+
+.abstract-box {
+    background: #f7f8fb;
+    border-left: 4px solid #4f81bd;
+    border-radius: 0 8px 8px 0;
+    padding: 16px 22px;
+    margin: 20px 0 28px 0;
+    font-family: 'Cambria', Georgia, serif;
+    font-size: 1rem;
+    line-height: 1.75;
+    color: #222;
+}
+
+.fig-caption {
+    font-family: 'Calibri', Arial, sans-serif;
+    font-size: 0.92rem;
+    color: #555;
+    text-align: center;
+    margin-top: 6px;
+    margin-bottom: 20px;
+}
+
+.critic-box {
+    background: #fff8f0;
+    border-left: 4px solid #c07030;
+    border-radius: 0 8px 8px 0;
+    padding: 12px 18px;
+    margin: 16px 0;
+    font-family: 'Cambria', Georgia, serif;
+    font-size: 0.97rem;
+    line-height: 1.7;
+    color: #333;
+}
+
+.critic-box strong { color: #8b4000; }
+
+blockquote {
+    border-left: 3px solid #aaa;
+    margin: 16px 30px;
+    padding: 6px 16px;
+    font-style: italic;
+    font-family: 'Cambria', Georgia, serif;
+    color: #444;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.refs p {
+    font-family: 'Calibri', Arial, sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 0.5em;
+    padding-left: 2em;
+    text-indent: -2em;
+}
