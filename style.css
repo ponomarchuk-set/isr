@@ -245,6 +245,7 @@ th, td {
     display: flex;
     gap: 1.5rem;
     align-items: center;
+    margin-left: auto;
 }
 
 .site-nav a {
@@ -316,6 +317,35 @@ th, td {
 
 .dropdown-menu a:hover {
     background: #f0f4f8;
+}
+
+/* Language switcher */
+.lang-switch {
+    display: flex;
+    align-items: center;
+    margin-left: 12px;
+    flex-shrink: 0;
+    z-index: 1001;
+}
+
+.lang-btn {
+    background: transparent;
+    border: 1.5px solid var(--accent);
+    border-radius: 16px;
+    padding: 4px 14px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: Inter, system-ui, sans-serif;
+    color: var(--accent);
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease;
+    line-height: 1;
+    letter-spacing: 0.02em;
+}
+
+.lang-btn:hover {
+    background: var(--accent);
+    color: #fff;
 }
 
 /* Hamburger menu button (mobile only) */
@@ -396,6 +426,14 @@ th, td {
     /* Show hamburger button on mobile */
     .hamburger-menu {
         display: block;
+        order: 3;
+    }
+
+    /* Language switcher stays visible in header on mobile */
+    .lang-switch {
+        order: 2;
+        margin-left: auto;
+        margin-right: 12px;
     }
     
     /* Mobile navigation links */
