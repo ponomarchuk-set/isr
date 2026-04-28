@@ -169,11 +169,10 @@ body.paper, .paper { font-family: "Cambria", Georgia, serif }
 
 /* Tables and images */
 table {
-    width: 100%;
     border-collapse: collapse;
-    margin: 15px 0;
+    margin: 15px auto;
+    max-width: 100%;
     overflow-x: auto;
-    display: block;
 }
 
 th, td {

@@ -1,4 +1,4 @@
-<html>
+<html lang="ua">
 <head>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -10,7 +10,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     <meta content="text/html; charset=UTF-8" http-equiv="content-type">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index of Social Responsibility (ISR): System Overview</title>
+    <title>Index of Social Responsibility (ISR): Огляд системи</title>
     <link rel="stylesheet" href="/style.css">
     <link rel="icon" type="image/png" href="/images/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/images/logo.svg" />
@@ -27,89 +27,79 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-    <h1>Index of Social Responsibility (ISR): System Overview</h1>
-    <h3>From core concept to technical architecture — a layered introduction</h3>
+    <h1>Індекс Соціальної Відповідальності (Index of Social Responsibility, ISR): Огляд системи</h1>
+    <h3>Від основної концепції до технічної архітектури — багаторівневий вступ</h3>
 
     <div style="background:#f0f4ff;border-left:4px solid #4f81bd;border-radius:0 8px 8px 0;padding:12px 20px;margin:16px 0 24px 0;font-family:'Cambria',Georgia,serif;font-size:1rem;line-height:1.6;">
-      <strong>New to ISR?</strong> This page is the technical architecture overview — it goes from the core concept down to the mathematical detail.
-      If you want to start with <em>why</em> ISR exists and the thinking behind it, read the
-      <a href="/wiki/ISR-philosophy.html"><strong>Philosophy</strong></a> first.
-      For quick answers to common questions, see the <a href="/wiki/faq.html"><strong>FAQ</strong></a>.
+      <strong>Щойно дізнався про ISR?</strong> TЦя сторінка є оглядом технічної архітектури — вона охоплює все від основної концепції до математичних деталей. Якщо ви хочете почати з того, <em>чому</em> існує ISR та якою є його логіка, спочатку прочитайте розділ <a href="/ua/wiki/ISR-philosophy.html"><strong>«Філософія»</strong></a>. Щоб швидко відповісти на поширені запитання, дивіться розділ <a href="/ua/wiki/faq.html"><strong>«Часті питання»</strong></a>.
     </div>
 
-    <p>The <b>Index of Social Responsibility (ISR)</b> is a practical framework for improving collective decisions in communities where members are formally equal but differ significantly in their knowledge, stake, and history of contribution — for example: housing cooperatives, non-profits, civic DAOs, professional associations, and neighborhood governance bodies.</p>
+    <p><b>Індекс соціальної відповідальності (ISR)</b> — це практична основа для покращення колективних рішень у громадах, члени яких формально рівні, але суттєво відрізняються своїми знаннями та історією взаємодії з гомадою — наприклад: житлові кооперативи, некомерційні організації, децентралізовані організації, професійні асоціації та клуби за інтересами.</p>
 
-    <p>Most such communities rely on one-person-one-vote or informal hierarchy. The first treats every voice as equally relevant regardless of context; the second makes the loudest or most senior voice decisive. ISR offers a third option: influence weighted by <b>Relevance</b> (how directly this issue affects you), <b>Expertise</b> (what relevant knowledge you bring), and <b>Contribution</b> (your verified history of action in the community) — all computed transparently, per issue, and contestable by any member. The philosophical argument for why this is necessary and how it is grounded is developed fully in the <a href="/wiki/ISR-philosophy.html">Philosophy</a> chapter.</p>
+    <p>Більшість таких громад покладаються на голосування за принципом «одна людина — один голос» або на формальну/неформальну ієрархію представництва. Перша розглядає кожен голос як однаково релевантний незалежно від контексту; друга робить вирішальним найгучніший або найвладніший голос. ISR пропонує третій варіант: вплив, зважений за <b>дотичністю (Relevance)</b> (наскільки безпосередньо це питання впливає на вас), <b>експертність (Expertise)</b> (як ви можете впливати на питання релевантними знання та ресурсами), та  <b>вплив (Contribution)</b> (ваша перевірена історія дій у громаді) — все це обчислюється прозоро, для кожного питання та може бути оскаржено будь-яким членом. Філософський аргумент щодо необхідності цього та його обґрунтування повністю розвинений у розділі <a href="/wiki/ISR-philosophy.html">«Філософія»</a>.</p>
 
-    <h3>The Challenge: Why Traditional Voting Falls Short</h3>
-    Community associations face persistent governance challenges that standard one-person-one-vote systems cannot address:
+    <h3>Виклик: чому традиційне голосування не справляється</h3>
+    Об'єднання громад стикаються з постійними проблемами управління, які стандартні системи «одна людина — один голос» не можуть вирішити:
     <ul>
-      <li>Membership Dynamics & Bureaucratic Inertia. As membership changes—people joining, leaving, or becoming inactive—formal governance structures fail to adapt. Decisions end up made by whoever happens to be visible rather than whoever is genuinely invested or capable.</li>
-      <li>Centralization of Power. As communities grow, decision-making authority concentrates among a small leadership group, while ordinary members retain only periodic voting rights. This breeds populism, reduces accountability, and disconnects leaders from actual member needs and values.</li>
-      <li>Expertise Ignored. Simple majority voting discounts expertise and track record, often leading to decisions that squander resources or create poor outcomes.</li>
-      <li>Vocal Minorities Dominate. The loudest or most numerous voices outweigh knowledgeable contributors, disadvantaging careful experts in favor of political operators.</li>
-      <li>Engagement Collapse. Members with real, context-specific experience and a history of concrete contributions feel unheard, so they disengage. Why participate if neither your expertise nor your actual work for the community has any visible impact?</li>
+      <li>Динаміка членства та бюрократична інерція. Не зважаючи на те, що членство змінюється — люди приєднуються, виходять або стають неактивними — формальні структури управління не адаптуються. Рішення зрештою приймаються тим, хто випадково видимий, а не тим, хто справді зацікавлений або здатний.</li>
+      <li>Централізація влади. Зі зростанням громад повноваження щодо прийняття рішень концентруються серед невеликої групи лідерів, тоді як звичайні члени зберігають лише періодичні права голосу. Це породжує популізм, знижує підзвітність та відокремлює лідерів від реальних потреб та цінностей учасників.</li>
+      <li>Ігнорування експертизи. Просте голосування більшістю нехтує експертними знаннями та послужним списком, що часто призводить до рішень, які марнують ресурси або створюють погані результати.</li>
+      <li>Домінують ті, хто більш голосніші. Найгучніші або найчисленніші голоси переважають обізнаних учасників, ставлячи ретельних експертів у невигідне становище на користь популіських діячів.</li>
+      <li>Крах залученості. Учасники з реальним, контекстуально-орієнтованим досвідом та історією конкретного внеску відчувають себе нечутими, тому вони відмовляються від участі. Навіщо робити щось на користь суспільства, якщо ні ваша експертиза, ні ваша фактична робота для громади не мають видимого впливу?</li>
     </ul>
 
-    <h3>What ISR does differently</h3>
-    ISR links contribution, competence, and contextual stake to actual decision influence. Key properties:
+    <h3>Що ISR робить по-іншому</h3>
+    ISR пов'язує внесок, компетентність та контекстуальну зацікавленість з фактичним впливом на рішення. Ключові властивості:
     <ul>
-      <li><b>Accountability and genuine participation.</b> A transparent, bidirectional link between what members contribute — skills, actions, values alignment — and their influence on decisions. Genuine engagement is rewarded; passive presence is not.</li>
-      <li><b>Expertise recognized, contribution rewarded.</b> Members with relevant domain expertise and a constructive track record gain proportionally greater voice on decisions within their competence area. Members with high ambitions but limited relevant knowledge have appropriately moderated influence — decisions benefit from genuine expertise rather than political capital.</li>
-      <li><b>Faster, more legitimate decisions.</b> Weighting voices according to criteria the community itself defines accelerates decision-making and increases legitimacy: the reasoning is transparent and auditable by any member.</li>
-      <li><b>No black boxes.</b> Every member can see exactly why certain participants carried more influence on a given issue — what expertise was recognized, what track record was considered, what values were weighted.</li>
-      <li><b>Distributed decision ownership.</b> Authority stays with the community through issue-specific microcommunities rather than concentrating in a leadership layer. This reduces deadlock while keeping power distributed.</li>
+      <li><b>Підзвітність та справжня участь.</b> Прозорий, двонаправлений зв'язок між тим, що роблять учасники — навички, дії, узгодженість цінностей — та їхнім впливом на рішення. Справжня участь винагороджується; пасивна присутність — ні.</li>
+      <li><b>Експертиза визнається, внесок винагороджується.</b> Учасники з відповідною експертизою в предметній області та конструктивним досвідом отримують пропорційно більший голос щодо рішень у своїй компетенції. Учасники з високими амбіціями, але обмеженими відповідними знаннями мають належним чином поміркований вплив — рішення стають якіснішими від прямого залучення справжньої експертизи, а не від популістичного впливу.</li>
+      <li><b>Швидші, більш легітимні рішення.</b> Зважування голосів відповідно до критеріїв, які визначає сама громада, прискорює прийняття рішень та підвищує легітимність: міркування прозорі та підлягають перевірці будь-яким учасником.</li>
+      <li><b>Без чорних скриньок.</b> Кожен учасник може точно бачити, чому певні учасники мали більший вплив на певне питання — яка експертиза була визнана, який досвід було враховано, як дії відповідали цінностям спільноти.</li>
+      <li><b>Розподілена відповідальність за рішення.</b> Повноваження залишаються за громадою через мікроком'юніті, що займаються конкретними питаннями, а не концентруються на рівні лідерства. Це зменшує кількість блокувань, зберігаючи при цьому розподіл потужності.</li>
     </ul>
 
     <div class="main_content">
     <!-- WHAT ISR IS -->
     <div class="paragraph">
       <div class="paragraph_top" onclick="toggleContent('content-WHAT_IS_ISR')">
-        <h2 id="WHAT_IS_ISR">► What is ISR — core concept and product form</h2></div>
+        <h2 id="WHAT_IS_ISR">► Що таке ISR — основна концепція та форма продукту</h2></div>
       <div id="content-WHAT_IS_ISR" class="content" style="display: none;">
-        <h3>Core concept</h3>
-        <p>
-          ISR (Index of Social Responsibility) is a context‑aware influence coefficient for each participant with respect to a specific question or issue, computed as a function of three components: Relevance (how much the issue directly affects the person), Expertise (domain‑specific knowledge and resources - how much the person can directly affects the issue) and Contribution (past actions valued by the microcommunity). That score (the ISR) is then used to weight that participant's vote or influence in the decision for that issue within the corresponding microcommunity formed around this question. ISR is not a permanent power held by the few — it is recomputed per issue, inside each microcommunity, and its components and explanations are transparent to participants rather than stored as a single global “social credit” score.
+        <h3>Основна концепція</h3>
+        <p>ISR (Індекс соціальної відповідальності) — це контекстно-залежний коефіцієнт впливу для кожного учасника стосовно конкретного питання чи проблеми, який обчислюється як функція трьох компонентів: Relevance (дотичність - наскільки питання безпосередньо впливає на людину), Expertise (експертиза - специфічні для предметної області знання та ресурси — наскільки людина може безпосередньо впливати на проблему) та Contribution (внесок - минулі дії, оцінені мікроспільнотою). Цей бал (ISR-score) потім використовується для зважування голосу (впливу) цього учасника на рішення щодо цього питання у відповідній мікроспільноті, сформованій навколо цього питання. ISR - це не постійна універсальна "мітка" на людині (як «соціальний кредитний рейтинг») — він перераховується для кожного конкретного питання в пливає тільки на це питання. А його компоненти - прозорі та пояснювані для учасників.
           <div class="formula">
             $$ISR = f(Relevance, Expertise, Contribution)$$
           </div>
         </p>
 
-        <h3>Implementation (MVP)</h3>
-        <p>
-          The minimum deployable product is a web application that:
-        </p>
+        <h3>Впровадження (MVP)</h3>
+        <p>Мінімальний продукт, який можна розгортати, — це веб-додаток, який:</p>
         <ul>
-          <li>lets communities declare their shared values and choose weighting parameters;</li>
-          <li>lets people create structured profiles that feed ISR components: demographic and geographic data for Relevance, education and work history for domain-specific Expertise, and declared values plus logged actions for Contribution;</li>
-          <li>forms dynamic microcommunities around concrete issues using a Relevance score (combining demographic, geospatial, semantic and social proximity) and proposes the most affected participants;</li>
-          <li>calculates ISR scores for the issue by combining each participant's Relevance, domain-specific Expertise and community-assessed Contribution, and uses those scores in weighted voting;</li>
-          <li>logs decisions, tasks and execution progress; and</li>
-          <li>provides explainability: members can inspect how their ISR was computed — from Relevance, Expertise and Contribution components down to concrete actions — and which factors mattered most.</li>
+          <li>дозволяє спільнотам декларувати свої спільні цінності та обирати параметри зважування;</li>
+          <li>дозволяє людям заповнювати особисті структуровані профілі, які містять дані, необхідні для розрахунку ISR: демографічні та географічні дані для релевантності, освіту та досвід роботи для предметно-специфічної експертизи, а також заявлені цінності плюс зареєстровані дії для внеску;</li>
+          <li>дозволяє починати обговорення або голосування на суспільно-важливі теми (проблеми, питання, пропозиції);</li>
+          <li>формує динамічні мікроком'юніті навколо конкретних питань, використовуючи оцінку релевантності (що поєднує демографічну, геопросторову, семантичну та соціальну близькість) та пропонує учасників, яких це найбільше стосується;</li>
+          <li>розраховує ISR-бали для учасників мікроком'юніті, що виникло навколо питання, поєднуючи релевантність кожного учасника, предметно-специфічну експертизу та оцінений спільнотою внесок, та використовує ці оцінки для зваженого голосування;</li>
+          <li>реєструє рішення, завдання та прогрес виконання; та</li>
+          <li>забезпечує пояснювальність: учасники можуть перевірити та зрозуміти, як було розраховано їхній ISR (компоненти релевантності, експертизи та внеску) та які фактори мали найбільше значення.</li>
         </ul>
 
         
     <!-- MVP / Product -->
     <div class="paragraph">
       <div class="paragraph_top" onclick="toggleContent('content-MVP')">
-        <h4 id="MVP">► Product (MVP) — main screens and user flow</h4></div>
+        <h4 id="MVP">► Продукт (MVP) — головний екран та рух користувача</h4></div>
       <div id="content-MVP" class="content" style="display: none;">
-        <p>
-          The ISR MVP focuses on workflows that matter for community decisions:
-        </p>
+        <p>ISR MVP складається з наступних частин, які забезпечують робочі процеси прийняття рішень спільноти:</p>
         <ul>
-          <li><strong>Profile:</strong> flexible profile fields, declared values and skills (used in expertise scoring).</li>
-          <li><strong>Values:</strong> each user notes their own values in the most convenient of several possible ways (the system helps in determining and explains the impact and meaning of each item).</li>
-          <li><strong>Chat & Discussion:</strong> threaded debates with light reactions; messages contribute to ISR as evidence of contribution.</li>
-          <li><strong>Voting:</strong> issues with proposed options, deadlines, and ISR-weighted voting results.</li>
-          <li><strong>Tasks:</strong> implementation tracker created after decisions: evidence of completed tasks increases contribution scores.</li>
-          <li><strong>AI assistant:</strong> helps users on every step and explain ISR computations.</li>
+          <li><strong>Profile (профіль):</strong> поля індивідуального профілю користувача, його заявлені цінності та навички (використовуються для оцінювання експертизи).</li>
+          <li><strong>Values (цінності):</strong> кожен користувач зазначає власні цінності найзручнішим з кількох можливих способів (стандартний - текстовий опис майбутнього, в якому йому хотілося б жити і яке він готовий будувати). Система допомагає визначити та пояснити вплив і значення кожного елемента.</li>
+          <li><strong>Chat & Discussion (обговорення):</strong> потокові дебати з можливістю реагування на повідомлення; повідомлення також вносять свій вклад в ISR як доказ внеску.</li>
+          <li><strong>Voting (голосування):</strong> проблеми із запропонованими варіантами, термінами та результатами голосування, зваженими за ISR.</li>
+          <li><strong>Tasks (завдання):</strong> трекер реалізації прийнятих рішень, що створений після голосування: докази виконаних завдань збільшують оцінки внеску для впливу у наступних голосуваннях.</li>
+          <li><strong>AI assistant (ШІ-помічник):</strong> за потребою допомагає користувачам на кожному кроці та пояснює обчислення ISR.</li>
         </ul>
-        <p>
-          This product design emphasizes transparency, guided AI assistance, and clear links between decisions and executed tasks.
-          For a full feature list and product rationale see the ISR MVP page.
-        </p>
-        <a href="/wiki/mvp.html">🚀 <b>ISR-vote</b> (MVP) design: feature list and product details</a>
+        <p>Така конструкція продукту підкреслює прозорість, керовану допомогу ШІ та чіткі зв'язки між рішеннями та виконаними завданнями. Повний список функцій та обґрунтування продукту дивіться на сторінці ISR MVP.</p>
+        <a href="/wiki/mvp.html">🚀 Дизайн <b>ISR-vote</b>: функції, особливості та деталі</a>
       </div>
     </div>
 
@@ -120,252 +110,269 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- HOW IT WORKS - overview -->
     <div class="paragraph">
       <div class="paragraph_top" onclick="toggleContent('content-HOW_IT_WORKS')">
-        <h2 id="HOW_IT_WORKS">► How ISR works & What ISR parts</h2></div>
+        <h2 id="HOW_IT_WORKS">► Як працює та з чого складається ISR</h2></div>
       <div id="content-HOW_IT_WORKS" class="content centered" style="display: none;">
 
         <div class="paragraph sch-block-v">
           <div class="paragraph_top" onclick="toggleContent('content-profile')">
-            <h4 id="profile">► Registering & Profile filling out</h4>
+            <h4 id="profile">► Реєстрація та заповнення профілю</h4>
           </div>
           <div id="content-profile" class="content" style="display: none;">
-            <p>Registering in the system demands <b>Proof of Identyty</b> use to be sure the person identity, for example, with <b>Bank.ID</b>. The crusial point of the system that every single person can have <b>only one account</b> which logs all social actions of the person.</p>
-            <p><b>Profile</b> provide an ability to state all the person major social features:</p>
+            <p>Реєстрація в системі вимагає використання <b>підтвердження особи (Proof of Identyty)</b> uщоб переконатися в ідентичності особи, наприклад, за допомогою <b>Bank.ID</b>. Ключовим моментом системи є те, що кожна людина може мати лише <b>один обліковий запис</b> який реєструє всі її соціальні дії.</p>
+            <p><b>Профіль (Profile)</b> надає можливість вказати всі основні соціальні характеристики особи:</p>
             <ul>
-            <li><b>Demographic and statistical facts.</b> Sex, age, nationality, religion, pets, property obtained - everything is matter.</li>
-            <li><b>Social relations</b> (family, geography, economical, interests etc.). A base for context <b>Relevance</b> evaluation. Acceptance by the other person could be required.</li>
-            <li><b>Credentials.</b> List of verified facts about gained education in certain fields. Part of a member's <b>Expertise</b>.</li>
-            <li><b>Experience.</b> Records of serving, production, researching, performing that prove your <b>Expertise</b> in certain domains. Includes details of where, when, how long and how good the Expertise was applied.</li>
-            <li><b>Action log.</b> Automatically adds all member's social activity both "real" (or "hard", objective) - that has some direct physical results and "virtual" (or "soft", subjective) - communication style, rspectfulness, tollerance. Also it is possible to add some untracked actions through the Profile with AI checking (also may need other people approval). Every record consists of:
+            <li><b>Демографічні та статистичні дані.</b> Стать, вік, національність, релігія, домашні тварини, набуте майно - все має значення.</li>
+            <li><b>Соціальні зв'язки</b> (сімейні, географічні, економічні, інтереси тощо). Основа для оцінки <b>дотичності (Relevance)</b> до суспільних питань. Може знадобитися схвалення іншою особою.</li>
+            <li><b>Посвідчення.</b> Перелік підтверджених фактів про отриману освіту в певних галузях. Частина <b>експертизи (Expertise)</b> учасника.</li>
+            <li><b>Досвід.</b> Записи про службу, виробництво, дослідження, діяльність, що підтверджують вашу <b>експертизу (Expertise)</b> в певних сферах. Включає деталі про те, де, коли, як довго та наскільки добре застосовувалася експертиза.</li>
+            <li><b>Журнал дій.</b> Автоматично додає всю соціальну активність учасника, як «реальну» (або «жорстку», об’єктивну) – таку, що має певні прямі фізичні результати, так і «віртуальну» (або «м’яку», суб’єктивну) – стиль спілкування, шанобливість, толерантність. Також можливо додавати деякі невідстежувані дії через профіль з перевіркою ШІ (також може знадобитися схвалення інших людей). Кожен запис містить:
               <ul>
-                <li>(Optional) Reference to a question in <b>Chat</b> or <b>Voting</b>.</li>
-                <li>Action text <b>description</b>.</li>
-                <li>(Optional) Action <b>results</b> text description.</li>
+                <li>(Необов’язково) Посилання на повідомлення в <b>чаті</b> або <b>голосуванні</b>.</li>
+                <li>Текстовий <b>опис</b> дії.</li>
+                <li>(Необов’язково) Текстовий опис <b>результатів</b> дії.</li>
               </ul>
-            Impacts on <b>Contribution</b>.</li>
-            <li><b>Values statment.</b> Individual values are entered by participants at the stage of filling out the Profile (and could be edited later) in one of the listed ways or in a step-by-step combination:</li>
+            Впливає на <b> внесок (Contribution)</b>.</li>
+            <li><b>Висловлювання цінностей.</b> Ціннісна підсистема ISR потрібна для оцінки дій користувача відносно цінностей мікроком'юніті які складаються з індивідуальних цінностей всіх учасників мікроком'юніті. Індивідуальні цінності вводяться учасниками на етапі заповнення профілю (і можуть бути відредаговані пізніше) одним із перелічених способів або їх комбінацією:</li>
             <ul>
-              <li><b>List</b> of named parameters with the corresponding numerical values of the weight of this parameter</li>
-              <li>Free <b>story</b> about own values</li>
-              <li>AI assistant <b>survey</b> that allows you to identify life values</li>
-              <li>Choosing one of the preset <b>templates</b> that summarize popular views</li>
+              <li>Вільна <b>розповідь</b> про майбутню спільноту, в якому він хотів би жити</li>
+              <li><b>Опитування</b> що допомогає визначити життєві цінності</li>
+              <li>Вибір <b>прототипа</b> - добре відомої особи, чиє відношення до суспільного життя стане основою опису цінностей</li>
             </ul>
             </ul>
 
            <!-- vectorization -->
             <div class="paragraph">
               <div class="paragraph_top" onclick="toggleContent('content-vectorization')">
-                <h5 id="vectorization">► Vectorization of users data and social graph</h5></div>
+                <h5 id="vectorization">► Векторизація даних користувачів та соціального графу</h5></div>
               <div id="content-vectorization" class="content sch-block-g" style="display: none;">
-                <p><b>Social connections</b> data is represented as a <b>graph structure</b> where nodes are users and edges represent relationships (friendship, collaboration, communication frequency, etc.). Graph embedding techniques (e.g., Node2Vec, GraphSAGE) are applied to convert this graph data into vector representations that capture the structural and relational properties of users within the social network.</p>
-                <p>All other Profile data is also converted into vector representation in semantic space using LLM-based embedding models and saved into vector DB. This vector representation is used in calculating <b>Relevance</b>, <b>Expertise</b> and <b>Contribution</b> - all components of the ISR.
+                <p>Дані <b>соціальних зв'язків</b> представлені у вигляді <b>графу</b>, де вузли є користувачами, а ребра представляють стосунки (родині, товариські, співпраця тощо). Для перетворення цих графових даних у векторні представлення, що відображають структурні та реляційні властивості користувачів у соціальній мережі, застосовуються методи векторизації графів (наприклад, Node2Vec, GraphSAGE).</p>
+                <p>Всі інші дані профілю також перетворюються у векторне представлення в семантичному просторі за допомогою методів векторизації на основі LLM та зберігаються у векторній базі даних. Це векторне представлення використовується для розрахунку <b>дотичності (Relevance)</b>, <b>експертності (Expertise)</b> та <b>впливу (Contribution)</b> - всіх компонентів ISR.
 \[
 \begin{align*}
 \vec{v}_f = m \cdot \vec{d}_f
 \end{align*}
 \]
-where:
-<li>\(\vec{v}_f\) - vector representation of user profile fact <b>f</b> (personal data, graph data, education credentials, work experience, actions) </li>
-<li>\(\vec{d}_f\) - user profile fact vector semantic <b>direction</b></li>
-<li>\(m\) - scalar that shows <b>"force"</b> of the recorded fact (distance for graph data, degree for education, years for experience, scale for actions)</li>
+де:
+<li>\(\vec{v}_f\) - векторне представлення факту <b>f</b> профілю користувача (персональні дані, дані соціальних зв'язків, освіта, досвід роботи, залоговані дії) </li>
+<li>\(\vec{d}_f\) - семантичний <b>напрямок</b> вектору факту <b>f</b> профілю користувача</li>
+<li>\(m\) - скаляр, що вказує <b>"силу"</b> записаного факту (відстань для даних графу, ступінь для освіти, роки для досвіду, масштаб для дій)</li>
 </p>
-                <p>The system <b>translates</b> any input form of values into a <b>single vector representation</b>, which is taken into account when compiling the <b>Vector of Values</b> of microcommunities. The participant can change his values, but if this happens often and very sharply, the system will analyze such actions for attempts at manipulation in order to influence specific issues and warn that such actions (inconsistency and opportunism in declaring values) can lead to a decrease in the overall influence of the participant.</p>
-                <p>The system, using an AI assistant, provides participants with the opportunity to translate <b>one form into another</b> (for example, a list of parameters into a narrative text and vice versa), and also <b>explains</b> in what sense the system perceives the concepts used to describe values and what <b>impact</b> individual elements have on social actions and their assessment.</p>
-                <p>So, at the operational level, the values of the participants are an <b>array of vector representations</b> in a specialized database.</p>
+              </div>
+            </div>
+
+           <!-- values -->
+            <div class="paragraph">
+              <div class="paragraph_top" onclick="toggleContent('content-values')">
+                <h5 id="values">► Векторизація цінностей користувачів</h5></div>
+              <div id="content-values" class="content sch-block-g" style="display: none;">
+
+                <p>Щодо цінносте, система <b>перетворює</b> будь-який вхідний опис в <b>єдине векторне представлення</b>, яке враховується під час складання <b>Vector of Values</b> мікроком'юніті. Учасник може змінювати свої цінності, але якщо це трапляється часто та дуже різко, система проаналізує такі дії на предмет спроб маніпуляцій з метою впливу на конкретні питання та попередить, що такі дії (непослідовність та опортунізм у декларуванні цінностей) можуть призвести до зниження загального впливу учасника.</p>
+                <p>Система, використовуючи помічника на основі штучного інтелекту, надає учасникам можливість перевести <b>одну форму в іншу</b> (векторизований масив у наративний текст і навпаки), а також <b>пояснює</b> в якому сенсі система сприймає поняття, що використовуються для опису цінностей, та який <b>вплив</b> окремі елементи мають на соціальні дії та їх оцінку.</p>
+                <p>Отже, на операційному рівні цінності учасників є <b>масивом векторних представлень</b> у спеціалізованій базі даних. Повний набір векторизованих цінностей користувачів становить Матрицю Цінностей (Matrix of Values) ISR.</p>
               </div>
             </div>
 
           </div>
         </div>
-        <p>At a high level ISR operates in a short cycle:</p>
+        <p>Загалом ISR працює в короткому циклі:</p>
         <center><img src="https://raw.githubusercontent.com/ponomarchuk-set/isr/main/images/isr-flow.png" width="100%"></center>
         <div class="paragraph sch-block-w">
           <div class="paragraph_top" onclick="toggleContent('content-issue')">
-            <h4 id="issue">► Issue appears</h4>
+            <h4 id="issue">► З'являється проблема</h4>
           </div>
           <div id="content-issue" class="content" style="display: none;">
-            <p>A concrete <b>problem</b> needed to be solved or <b>question (q)</b> is raised in the system. An issue can be created by <b>any</b> community member. It should include a clear <b>description</b> of the problem, context, and desired outcomes. <b>AI</b> tools may <b>assist</b> in categorizing and tagging the issue for better stakeholder matching.</p>
-            <p>The formation of a <b>microcommunity</b> around the question <b>q</b> is based on methods of analyzing graphs of geographical, gynecological, social, economic, etc. user connectivity. As well as on methods of clustering in network space and semantic analysis using LLM. The <b>scalar value</b> of the question vector indicates the contextual scope and expert complexity of the question, which also affects the number of participants involved in the micro-community.</p>
-            <p>The question <b>q</b> must meet the following requirements:</p>
+            <p>Певна <b>проблема</b> яка має бути вирішення або <b>питання (q)</b> реєструється в системі. Це питання може бути розпочато <b>будь-яким</b> зареєстрованим учасником. Вономає містити ясний <b>опис</b> проблеми, її контекст, та бажаний результат. <b>ШІ-помічник</b> може <b>допомогти</b> з категоризацією та формулюванням проблеми для кращого підбору дотичних осіб.</p>
+            <p>Формування <b>мікроком'юніті</b> навколо цього питання <b>q</b> засновано на методах аналізу графів географічних, гінеологічних, соціальних, економічних та інших зв'язків користувача. А також на методах кластеризації в мережевому просторі та семантичного аналізу з використанням LLM. <b>Скалярне значення</b> вектора питання вказує на контекстуальний обсяг та експертну складність питання, що також впливає на кількість учасників, залучених до мікроспільноти.</p>
+            <p>Питання <b>q</b> має відповідати наступним вимогам:</p>
             <ul>
-            <li><b>Text.</b> A clear specific request for which public consensus is required.</li>
-            <li><b>Context.</b> A multifactorial description of the temporal and spatial (geographical, social, etc.) conditions for which the question text is relevant.</li>
-            <li><b>Solution options.</b> Optional for discussion, mandatory for voting. Must contain options for a specific answer to the question.</li>
+            <li><b>Текст.</b> Чіткий конкретний запит, для якого потрібен громадський консенсус.</li>
+            <li><b>Контекст.</b> Багатофакторний опис часових та просторових (географічних, соціальних тощо) умов, для яких текст питання є релевантним.</li>
+            <li><b>Варіанти рішення.</b> Необов'язкові для обговорення, обов'язкові для голосування. Повинні містити варіанти конкретної відповіді на запитання.</li>
             </ul>
           </div>
         </div>
           ↓
         <div class="paragraph sch-block-w">
           <div class="paragraph_top" onclick="toggleContent('content-relevace')">
-            <h4 id="relevace">► AI identifies relevant stakeholders - who the issue affect at</h4>
+            <h4 id="relevace">► Система визначає відповідних зацікавлених сторін – тих, на кого ця проблема впливає.</h4>
           </div>
           <div id="content-relevace" class="content" style="display: none;">
-            <p>The system suggests a <b>set of participants</b> whose profiles, past actions, geographic or organizational proximity, and social ties make them <b>relevant to this issue</b>. Using natural language processing and graph analysis, the system analyzes the issue description and matches it against participant profiles and activity history to identify those most relevant to the topic.</p>
+            <p>Система пропонує <b>набір учасників</b>, чиї профілі, минулі дії, географічна або організаційна близькість та соціальні зв'язки роблять їх <b>релевантними до цієї проблеми</b>. Використовуючи обробку природної мови (NLP) та аналіз графів, система аналізує опис проблеми та зіставляє його з профілями учасників та історією активності, щоб визначити тих, хто найбільше відповідає темі.</p>
             <ol>
-              <li><b>Determining the contextual profile of the question q.</b> Extracting key topics, domains and stakeholders from the question description using LLM. Vector representation of the question in semantic space (nesting).</li>
-              <li><b>Calculating</b> the situational <b>Relevance</b> for each user <b>i</b>. Relevance shows how strongly a person is related to the issue across four dimensions:<br>
+              <li><b>Визначення контекстуального профілю питання q.</b> Вилучення ключових тем, областей та зацікавлених сторін з опису питання за допомогою LLM. Формування векторного представлення питання в семантичному просторі (nesting).</li>
+              <li><b>Розрахунок</b> ситуаційної <b> дотичності (Relevance)</b> для кожного користувача <b>i</b>. Дотичність показує, наскільки сильно людина пов'язана з проблемою за чотирма вимірами:<br>
               <ul>
-                <li><b>demographic (D)</b>: whether their life situation matches the target group (for example, parents of small children for a childcare question);</li>
-                <li><b>geospatial (G)</b>: how close they are in space to where the decision will have effect;</li>
-                <li><b>semantic (S)</b>: how much their long‑term interests and activities match the topic of the issue;</li>
-                <li><b>social (X)</b>: whether they are socially connected to people who are directly affected.</li>
+                <li><b>дамографічний (D)</b>: чи відповідає її життєва ситуація цільовій групі (наприклад, вік, стать, наявність дітей);</li>
+                <li><b>географічний (G)</b>: наскільки близько вона розташована до місця питання (якщо питання має георафічну складову);</li>
+                <li><b>семантичний (S)</b>: наскільки її інтереси та діяльність відповідають темі проблеми;</li>
+                <li><b>соціальний (X)</b>: чи пов'язана вона соціально з людьми, яких це безпосередньо стосується.</li>
               </ul>
 <!-- These dimensions are combined into a single Relevance score by a weighted formula tuned to the type of issue.
 \[\begin{align*}
 {R}_i = \cos(\vec{v}_i, \vec{v}_q)
 \end{align*}\]
 
-where \(\vec{v}_i\) is the vector representation of the user profile, \(\vec{v}_q\) is the vector question --></li>
-              <!-- <li><b>Determining contextual relevance</b> based on:</li>
+where \(\vec{v}_i\) is the vector representation of the user profile, \(\vec{v}_q\) is the vector question </li>
+              <li><b>Determining contextual relevance</b> based on:</li>
               <ul>
               <li>Social connections with other question participants</li>
               <li>Geographic and organizational proximity</li>
               <li>Declared interests and values</li>
               </ul> -->
-              <li><b>Connecting to the microcommunity</b> of users with \(\text{Relevance} > \Theta\) , where \(\Theta\) is the threshold set by the context of the question <b>q</b>.</li>
+              <li><b>Приєднання до мікроком'юніті</b> користувачів за якщо \(\text{Relevance} > \Theta\) , де \(\Theta\) - це поріг, встановлений контекстом питання <b>q</b>.</li>
             </ol>
           </div>
         </div>
           ↓
         <div class="paragraph sch-block-w">
           <div class="paragraph_top" onclick="toggleContent('content-microcom')">
-            <h4 id="microcom">► Microcommunity forms</h4>
+            <h4 id="microcom">► Формується мікроком'юніті</h4>
           </div>
           <div id="content-microcom" class="content" style="display: none;">
-            <p>
-              That set becomes a temporary microcommunity for deliberation and voting on the issue. The identified stakeholders are invited to join a microcommunity dedicated to addressing the issue. This group will deliberate, propose solutions, and vote on the best course of action.
-            </p>
+            <p>Ця група стає тимчасовим мікроком'юніті для обговорення та голосування з цього питання. Визначеним таким чином зацікавленим особам пропонується приєднатися до мікроком'юніті, яка займається вирішенням цього питання. Ця група обговорюватиме, пропонуватиме рішення та голосуватиме за найкращий курс дій.</p>
             <a href="https://raw.githubusercontent.com/ponomarchuk-set/isr/main/images/a2.svg">
             <img src="https://raw.githubusercontent.com/ponomarchuk-set/isr/main/images/a2.svg" alt="ISR Microcommunity Lifecycle" width="100%">
             </a><br><br>
-            <p><i>Microcommunity Lifecycle: Dynamic Problem-Oriented Formation</i></p>
+            <p><i>Життєвий цикл мікроком'юніті: динамічна проблемно-орієнтована формація</i></p>
             <!-- MICROCOMMUNITIES -->
             <div class="paragraph">
               <div class="paragraph_top" onclick="toggleContent('content-MICROCOMMUNITIES')">
-                <h5 id="MICROCOMMUNITIES">► Microcommunities — temporary groups around concrete problems</h5></div>
+                <h5 id="MICROCOMMUNITIES">► Мікроком'юніті — тимчасові групи навколо конкретних проблем</h5></div>
               <div id="content-MICROCOMMUNITIES" class="content sch-block-g" style="display: none;">
-                <p>
-                  ISR forms short-lived microcommunities automatically. A microcommunity is a set of relevant stakeholders gathered to deliberate and decide on a single concrete issue. It appears when needed and dissolves once the issue is resolved and tasks are closed.
-                </p>
-                <p>
-                  Key advantages:
+                <p>ISR автоматично формує мікроком'юніті. Мікроком'юніті – це сукупність відповідних зацікавлених осіб, зібраних для обговорення та прийняття рішень з одного конкретного питання. Вона з'являється за потреби та розпускається після вирішення питання та завершення завдань.</p>
+                <p>Ключові переваги:</p>
                 <ul>
-                  <li>Focus: decisions are handled by the people most connected to the problem.</li>
-                  <li>Efficiency: fewer irrelevant voices in detailed technical deliberations, while preserving transparency of outcomes.</li>
-                  <li>Legitimacy: membership and weights are computed and explained, not arbitrarily assigned.</li>
+                  <li>Сфокусоване: рішення приймаються людьми, на які найбільш впливає проблема проблема та варіанти її вирішення.</li>
+                  <li>Ефективність: менше нерелевантних голосів в обговореннях, зберігаючи при цьому прозорість результатів.</li>
+                  <li>Легітимність: членство та вагові коефіцієнти обчислюються (за однаковою для всіх логікою) та пояснюються, а не призначаються довільно.</li>
                 </ul>
+                <p>Технічно, Relevance(ймовірність належності користувача до мікроспільноти) розраховується шляхом зіставлення контексту питання з різними типами даних користувача:</p>
+<div class="formula">
+  $$Relevance = f(Demographic, Geographic, Semantic, Social)$$
+</div>
+                <p>І всі, чия Relevance перевищує певний поріг (зазвичай 0.15), автоматично включаються до мікроком'юніті.</p>
 
-        Examples of <b>microcommunity</b> gatherings around <b>specific issues</b>:<br><br>
 
-        <div class="sch-block-c">
-        <center><b>Question:</b> "Should the project adopt a mandatory code review process?"<br>
-            ⬇️ GATHERED ⬇️<br>
-            <b>Microcommunity</b> in an open-source web accessibility project<br>
-            ⬇️ WITH MEMBERS ⬇️
+            <!-- microcommunity example 1 -->
+            <div class="paragraph">
+              <div class="paragraph_top" onclick="toggleContent('content-ex1')">
+                <h5 id="ex1">► Гуртування мікроком'юніті. Приклад 1: Місцева спільнота</h5></div>
+              <div id="content-ex1"  style="display: none;" class="sch-block-c">
+        <center><b>Питання:</b> "Який пріоритет має бути наданий реконструкції дитячого майданчика та прилеглої пішохідної зони в парку Сьюдаделья: більше ігрового обладнання, більше тіні та місць для сидіння чи більше відкритого зеленого простору?"<br>
+            ⬇️ гуртує ⬇️<br>
+            Мікроком'юніті з учасників <b>місцевої спільноти</b><br>
+            ⬇️ до якої входять ⬇️
         </center><br><br>
         <p>
-            <b>Member 1: Olena (Core maintainer) Belonginess: 0.95 (1.46 normalized)
+            <b>Учасник 1: Марта </b> - мати, яка живе поруч із парком. <b>Relevance: 0.95</b>
                 <ul>
-            Personal Values Profile:</b><br>
-            <li>Accessibility Impact: 0.35</li>
-            <li>Code Quality: 0.28</li>
-            <li>Responsiveness: 0.20</li>
-            <li>Community Collaboration: 0.12</li>
-            <li>Documentation: 0.05</li><br>
-            <b>Personal Action Log:</b><br>
-            <li>Fixed critical accessibility bug in keyboard navigation; wrote detailed technical documentation and posted tutorial explaining the fix.</li>
-            <li>Responded within 2 hours to 5 community issues with detailed explanations and guidance; helped 3 newer contributors debug their code.</li>
-            <li>Refactored core module to improve maintainability, added comprehensive unit tests, merged 8 pull requests with constructive feedback.</li>
+            <li><b>Demographic:</b> Висока. Вона є матір'ю маленької дитини, що робить її безпосередньою зацікавленою стороною в дитячому майданчику.</li>
+            <li><b>Geographic:</b> Дуже високий. Вона живе в пішій доступності від парку та часто його використовує.</li>
+            <li><b>Semantic:</b> Високий. Її інтереси тісно пов'язані з проблемою: безпека дітей, комфорт, тінь та громадський простір, зручний для сімей.</li>
+            <li><b>Social:</b> Високий. Вона пов'язана з батьками, шкільними групами та місцевими жителями, які обговорюватимуть та досліджуватимуть реконструкцію.</li>
                 </ul>
         </p>
         <p>
-            <b>Member 2: James (Intermediate contributor) Belonginess: 0.65 (1.00 normalized)
+            <b>Учасник 2: Йозеф  </b> - пенсіонер з обмеженою мобільністю. <b>Relevance: 0.87</b>
                 <ul>
-            Personal Values Profile:</b><br>
-            <li>Accessibility Impact: 0.25</li>
-            <li>Code Quality: 0.30</li>
-            <li>Responsiveness: 0.20</li>
-            <li>Community Collaboration: 0.15</li>
-            <li>Documentation: 0.10</li><br>
-            <b>Personal Action Log:</b><br>
-            <li>Contributed screen reader testing module; code was functional but lacked documentation; took 2 days to merge after feedback.</li>
-            <li>Fixed minor UI bug and responded to follow-up questions within 24 hours.</li>
-            <li>Participated in community discussion about API design; offered suggestions but didn't implement anything.</li>
+            <li><b>Demographic:</b> Висока. Він представляє інтереси користувачів похилого віку та людей, яким потрібні доступні місця для сидіння та спрощення пересування.</li>
+            <li><b>Geographic:</b> Високий. Він живе в тому ж районі та регулярно користується пішохідною зоною.</li>
+            <li><b>Semantic:</b> Середній. Його турбота стосується доступності та комфорту більше, ніж самого дизайну дитячого майданчика.</li>
+            <li><b>Social:</b> Середньо-низький. Він знайомий з місцевою мережою людей похилого віку та сусідів.</li>
                 </ul>
         </p>
         <p>
-            <b>Member 3: Zara (Newer contributor) Belonginess: 0.35 (0.54 normalized)
+            <b>Учасник 3: Лайя  </b> - ландшафтний архітектор. <b>Relevance: 0.42</b>
                 <ul>
-            Personal Values Profile:</b><br>
-            <li>Accessibility Impact: 0.30</li>
-            <li>Code Quality: 0.22</li>
-            <li>Responsiveness: 0.18</li>
-            <li>Community Collaboration: 0.10</li>
-            <li>Documentation: 0.20</li><br>
-            <b>Personal Action Log:</b><br>
-            <li>Submitted first pull request—color contrast checker for WCAG compliance; good accessibility focus but code needs optimization; minimal documentation.</li>
-            <li>Added comprehensive documentation to existing module; updated README with setup instructions.</li>
-            <li>Slow to respond to code review feedback; took 5 days to address reviewer comments.</li>
+            <li><b>Demographic:</b> Низький. Вона не є щоденним користувачем парку таким самим чином.</li>
+            <li><b>Geographic:</b> Дуже низький. Вона живе в сусідньому місті.</li>
+            <li><b>Semantic:</b> Дуже високий. Її інтереси тісно пов'язані з проблемою: безпека дітей, комфорт, тінь та громадський простір для сімей. Крім того, її професійна сфера дуже релевантна до питання.</li>
+            <li><b>Social:</b> Середньо-високий. Вона пов'язана з батьками, шкільними групами та місцевими жителями поблизу, які обговорюватимуть та стикатимуться з редизайном.</li>
                 </ul>
         </p>
         </div>
-        <i>Microcommunity gathering. Example 1</i><br><br>
+        </div>
 
-        <div class="sch-block-c">
-        <center><b>Question:</b> "With $65,000 budget + ~200 volunteer working hours this quarter, should we: Option A—allocate 95% to immediate aid (supplies, transportation, medical) and 5% to operations, OR Option B—allocate 70% to immediate aid and 30% to infrastructure (database system to track beneficiaries, volunteer training program, sponsorship campaign platform, staff coordination tools) to improve future capacity?"<br>
-            ⬇️ GATHERED ⬇️<br>
-            <b>Microcommunity</b> of a grassroots charity fund providing emergency aid (food, medical supplies, shelter) to displaced and war-affected<br>
-            ⬇️ WITH MEMBERS ⬇️
+            <!-- microcommunity example 2 -->
+            <div class="paragraph">
+              <div class="paragraph_top" onclick="toggleContent('content-ex2')">
+                <h5 id="ex2">► Гуртування мікроком'юніті. Приклад 2: Віддалене співробітництво</h5></div>
+              <div id="content-ex2" style="display: none;" class="sch-block-c">
+        <center><b>Питання:</b> "Що має бути наступним пріоритетом розвитку проекту з відкритим кодом OpenSky: покращити перевірку якості даних ADS-B, розширити аналітику історичних даних польотів чи створити простіший API для зовнішніх розробників?"<br>
+            ⬇️ гуртує ⬇️<br>
+            Мікроком'юніті розробників та користувачів <b>проекту OpenSky</b><br>
+            ⬇️ до якої входять ⬇️
         </center><br><br>
         <p>
-            <b>Member 1: Volodymyr (Co-founder, 2.5 years tenure) Belonginess: 0.97 (1.28 normalized)
+            <b>Учасник 1: Ганна </b> - основний розробник та керівник потоку обробки даних. <b>Relevance: 0.99</b>
                 <ul>
-            Personal Values Profile:</b><br>
-            <li>Immediate Beneficiary Relief: 0.42</li>
-            <li>Organizational Efficiency: 0.20</li>
-            <li>Community Trust & Transparency: 0.18</li>
-            <li>Volunteer Sustainability: 0.12</li>
-            <li>Long-term Strategic Growth: 0.08</li>
-            <br>
-            <b>Personal Action Log:</b><br>
-            <li>Personally delivered 15 medical kits to frontline hospital near Kharkiv; documented trip with photos/testimonials; shared impact report with donors.</li>
-            <li>Made decision to buy supplies from bulk supplier without vetting; discovered supplier had overcharged charity by 18% and later provided lower-quality medical gauze.</li>
-            <li>Held town hall with 120+ donors and volunteers; transparent about challenges; announced plan to improve systems; received strong community support.</li>
+            <li><b>Demographic:</b> Дуже високий. Вона є основним розробником та безпосередньо відповідає за напрямок проекту.</li>
+            <li><b>Geographic:</b> Немає. Проект розробляється онлайн, тому географія не важлива.</li>
+            <li><b>Semantic:</b> Дуже високий. Її роль тісно пов'язана з перевіркою даних, аналітикою, дизайном API та технічним пріоритетом.</li>
+            <li><b>Social:</b> Немає. Проект є свого роду роботою, тому соціальні зв'язки не впливають на релевантність.</li>
                 </ul>
         </p>
         <p>
-            <b>Member 2: Kateryna (Operations Manager, 1.5 years tenure) Belonginess: 0.78 (1.03 normalized)
+            <b>Учасник 2: Томас  </b> - учасник розвитку проекту та частий користувач API.<b>Relevance: 0.79</b>
                 <ul>
-            Personal Values Profile:</b><br>
-            <li>Immediate Beneficiary Relief: 0.30</li>
-            <li>Organizational Efficiency: 0.38</li>
-            <li>Community Trust & Transparency: 0.10</li>
-            <li>Volunteer Sustainability: 0.18</li>
-            <li>Long-term Strategic Growth: 0.04</li>
-            <br>
-            <b>Personal Action Log:</b><br>
-            <li>Created volunteer coordination spreadsheet tracking 85+ volunteers and their hours; reduced confusion by 40%; improved supply distribution efficiency.</li>
-            <li>Spent 40 hours developing new inventory management system; system failed on first week of deployment, corrupting shipment data; took 15 hours to recover.</li>
-            <li>Coordinated emergency supply shipment to 8 locations; worked 16-hour shift; all deliveries arrived on time with accurate documentation.</li>
+            <li><b>Demographic:</b> Високий. Він регулярно робить внесок та активно використовує систему, хоча й не є основним учасником.</li>
+            <li><b>Geographic:</b> Немає.</li>
+            <li><b>Semantic:</b> Дуже висока. Він гарно розуміється на інструментах розробки, цікавиться зручністю використання API та робочими процесами використання даних.</li>
+            <li><b>Social:</b> Немає.</li>
                 </ul>
         </p>
         <p>
-            <b>Member 3: Marko (Volunteer Coordinator, 6 months tenure) Belonginess: 0.52 (0.69 normalized)
+            <b>Учасник 3: Ельза </b> - волонтерка з документування навчальних посібників. <b>Relevance: 0.35</b>
                 <ul>
-            Personal Values Profile:</b><br>
-            <li>Immediate Beneficiary Relief: 0.32</li>
-            <li>Organizational Efficiency: 0.10</li>
-            <li>Community Trust & Transparency: 0.18</li>
-            <li>Volunteer Sustainability: 0.35</li>
-            <li>Long-term Strategic Growth: 0.05</li>
-            <br>
-            <b>Personal Action Log:</b><br>
-            <li>Recruited 25 new volunteers; organized training program; created volunteer handbook; turnover decreased from 35% to 15%.</li>
-            <li>Promised volunteers equipment (vests, gloves) that wasn't yet purchased; created confusion and damaged trust when items didn't arrive; one volunteer quit.</li>
-            <li>Organized volunteer appreciation event; elevated morale; recorded testimonials of volunteer impact; prepared material for future fundraising.</li>
+            <li><b>Demographic:</b> Середня. Вона є учасником, але її робота здебільшого пов'язана з документуванням та адаптацією.</li>
+            <li><b>Geographic:</b> Немає.</li>
+            <li><b>Semantic:</b> Середня. Вона є релевантною через досвід учасника, але безпосередньо не пов'язана з архітектурними питаннями.</li>
+            <li><b>Social:</b> Немає.</li>
                 </ul>
         </p>
         </div>
-                <i>Microcommunity gathering. Example 2</i>
+        </div>
+
+            <!-- microcommunity example 3 -->
+            <div class="paragraph">
+              <div class="paragraph_top" onclick="toggleContent('content-ex3')">
+                <h5 id="ex3">► Гуртування мікроком'юніті. Приклад 3: Благодійність</h5></div>
+              <div id="content-ex3" style="display: none;" class="sch-block-c">
+        <center><b>Питання:</b> "Благодійна організація з догляду за людьми похилого віку 'Warm Touch' має обмежену кількість волонтерських годин цього кварталу. Чи варто їй надавати пріоритет більшій кількості домашніх візитів, транспортуванню до лікарів або програмі телефонної підтримки для дотримання режиму прийому ліків?"<br>
+            ⬇️ гуртує ⬇️<br>
+            Мікроком'юніті з волонтерів <b>благодійної організації 'Warm Touch'</b><br>
+            ⬇️ до якої входять ⬇️
+        </center><br><br>
+        <p>
+            <b>Учасник 1: Ірина </b> - медсестра-волонтер, яка координує домашні візити. <b>Relevance: 0.97</b>
+                <ul>
+            <li><b>Demographic:</b> Дуже високий. Вона безпосередньо виконує та координує основну роботу благодійної організації з догляду.</li>
+            <li><b>Geographic:</b> исокий. Вона працює в тому ж місті та на тих самих маршрутах, де надаються послуги.</li>
+            <li><b>Semantic:</b> Дуже високий. Її роль тісно пов'язана з доглядом вдома, транспортною підтримкою та дотриманням режиму прийому ліків.</li>
+            <li><b>Social:</b> Середній. Вона пов'язана з волонтерами, бенефіціарами та медичними контактами, на яких вплине це рішення.</li>
+                </ul>
+        </p>
+        <p>
+            <b>Учасник 2: Petro </b> - водій-волонтер на пенсії. <b>Relevance: 0.63</b>
+                <ul>
+            <li><b>Demographic:</b> Високий. Він є активним волонтером, але його відповідальність вужча, ніж у координаторів догляду.</li>
+            <li><b>Geographic:</b> Дуже високий. Він живе і працює безпосередньо в зоні діяльності організації.</li>
+            <li><b>Semantic:</b> Середньо-низький. Його область інтересів стосується виключно транспорту.</li>
+            <li><b>Social:</b> Середньо-низький. Він має певні зв'язки з волонтерами та постійними бенефіціарами.</li>
+                </ul>
+        </p>
+        <p>
+            <b>Учасник 3: Оксана </b> - координатор з питань сім'ї та волонтерка, яка щотижня телефонує. <b>Relevance: 0.42</b>
+                <ul>
+            <li><b>Demographic:</b> Середній. Вона безпосередньо підтримує деяких літніх бенефіціарів через комунікацію та подальший нагляд.</li>
+            <li><b>Geographic:</b> Середньо-низький. Вона мешкає відносно далеко від зони дій організації.</li>
+            <li><b>Semantic:</b> Високий. Її інтерес до соціології та благодійності тісно пов'язані з питанням.</li>
+            <li><b>Social:</b> Середній. Її тітка та дядько також отримують допомогу від 'Warm Touch'.</li>
+                </ul>
+        </p>
+        </div>
+        </div>
+
               </div>
             </div>
 
@@ -374,121 +381,213 @@ where \(\vec{v}_i\) is the vector representation of the user profile, \(\vec{v}_
           ↓
         <div class="paragraph sch-block-w">
           <div class="paragraph_top" onclick="toggleContent('content-isr-calc')">
-            <h4 id="isr-calc">► ISR scores are computed</h4>
+            <h4 id="isr-calc">► Розраховуться бали ISR</h4>
           </div>
           <div id="content-isr-calc" class="content" style="display: none;">
-            <p>For this specific issue each participant receives a score computed from three components (<b>Relevance, Expertise, Contribution</b>). The <b>ISR</b> score for each participant is calculated based on their <b>situational relevance</b> to the issue, their <b>expertise</b> in the relevant domain, and their historical <b>contributions</b> to the community. These components are weighted according to community-defined parameters.</p>
+            <p>Для цього конкретного питання кожен учасник отримує бал, розрахований з трьох компонентів (<b>Relevance, Expertise, Contribution</b>). Бал <b>ISR</b> для кожного учасника розраховується на основі його <b>ситуативної релевантності</b> до питання, його <b>експертизи</b> у відповідній галузі та історії його <b>внеску</b> в громаду. Ці компоненти також зважуються відповідно до контексту питання.</p>
 
             <!-- COMPONENTS -->
             <div class="paragraph">
               <div class="paragraph_top" onclick="toggleContent('content-COMPONENTS')">
-                <h5 id="COMPONENTS">► ISR components — Relevance, Expertise, Contribution & Matrix of Values</h5></div>
+                <h5 id="COMPONENTS">► Компоненти ISR — Relevance, Expertise, Contribution та Matrix of Values</h5></div>
               <div id="content-COMPONENTS" class="content" style="display: none;">
 
 
-        <p><b>Matrix of Values (Automated Legislature)</b>: It is a kind of legislature system in the ISR framework. Every user fills out its own life (economical, political, cultural, etc.) values. These values don't change because of the new microcommunity belonging - only if the member changes or clarifies his own life values. After gathering microcommunity around some problem, its "Matrix of Values" appears by averaging all its members' individual values concerning the problem. So we got an actual, inclusive, pluralistic basement to understand the microcommunity needs and values which can be used for all further ISR estimations.</p>
-        <p>Each user independently defines their values and all together they constitute</p>
-<!-- <div style="border: 2px solid #999; background-color: #fafafa; border-radius: 12px; padding: 20px; box-sizing: border-box;"> -->
-<center><b>Microcommunity Matrix of Values</b><br>
-  (Gathering of independently defined members values)</center>
-<div style="display: flex; gap: 20px; padding: 10px; justify-content: center;">
-  <div style="border: 2px solid #999; background-color: #f0ffff; border-radius: 12px; padding: 20px; box-sizing: border-box;text-align:left;">
-    <center><b>User 1<br>
-    Belonginess: 0.97</b></center><br>
-    <ul>
-    <li>Immediate Beneficiary Relief: 0.42</li>
-    <li>Organizational Efficiency: 0.20</li>
-    <li>Community Trust & Transparency: 0.18</li>
-    <li>Volunteer Sustainability: 0.12</li>
-    <li>Long-term Strategic Growth: 0.08</li>
-    </ul>
-    <center>⬇️</center>
-  </div>
-  <div style="border: 2px solid #999; background-color: #fff0ff; border-radius: 12px; padding: 20px; box-sizing: border-box;text-align:left;">
-    <center><b>User 2</br>
-    Belonginess: 0.78</b></center><br>
-    <ul>
-    <li>Immediate Beneficiary Relief: 0.30</li>
-    <li>Organizational Efficiency: 0.38</li>
-    <li>Community Trust & Transparency: 0.10</li>
-    <li>Volunteer Sustainability: 0.18</li>
-    <li>Long-term Strategic Growth: 0.04</li>
-    </ul>
-    <center>⬇️</center>
-  </div>
-  <div style="border: 2px solid #999; background-color: #fffff0; border-radius: 12px; padding: 20px; box-sizing: border-box;text-align:left;">
-    <center><b>User 3<br>
-      Belonginess: 0.52</b></center><br>
-    <ul>
-    <li>Immediate Beneficiary Relief: 0.32</li>
-    <li>Organizational Efficiency: 0.10</li>
-    <li>Community Trust & Transparency: 0.18</li>
-    <li>Volunteer Sustainability: 0.35</li>
-    <li>Long-term Strategic Growth: 0.05</li>
-    </ul>
-    <center>⬇️</center>
-  </div>
-</div>
-<center><b>Aggregation</b><br> taking into account the belonginess coefficient<br>⬇️</center><br>
-<div style="border: 2px solid #999; background-color: #fffff0; border-radius: 12px; padding: 20px; box-sizing: border-box; width: fit-content; max-width: 100%; margin: 0 auto;">
-<center><b>Microcommunity Vector of Values</b><br>
-  (For specific issue context)</center>
-  <hr>
-    <ul>    
-    <li>Immediate Beneficiary Relief: 0.356</li>
-    <li>Organizational Efficiency: 0.239</li>
-    <li>Community Trust & Transparency: 0.153</li>
-    <li>Volunteer Sustainability: 0.193</li>
-    <li>Long-term Strategic Growth: 0.059</li>
-    </ul>
-</div>
-<p><br></p>
+        <p><b>Підсистема цінностей:</b> це свого роду законодавча система в рамках ISR. Кожен користувач висловлює свої власні життєві (економічні, політичні, культурні тощо) цінності. Ці цінності не змінюються через нову приналежність до мікроспільноти — лише якщо учасник змінює або уточнює власні життєві цінності. Цінності векторизуються, і повна сукупність цінностей усіх користувачів ISR становить «Матрицю цінностей» (Matrix of Values). Після об'єднання мікроспільноти навколо певної проблеми, її «Вектор цінностей» (Vector of Values) виникає шляхом агрегації індивідуальних цінностей усіх її учасників з Матриці цінностей. Таким чином, ми отримуємо фактичну, інклюзивну, плюралістичну основу для розуміння потреб та цінностей мікроком'юніті, яку можна використовувати для всіх подальших оцінок ISR.</p>
+        <p>Кожен користувач самостійно визначає свої цінності, і всі разом вони складають</p>
+        
+
 <div style="border: 2px solid #999; background-color: #eee; border-radius: 12px; padding: 20px; box-sizing: border-box;">
-<center><b>How Vector of Values Is Used:</b></center>
+<center><b>Вектор цнностей (Vector of Values) використовується для:</b></center>
   <hr>
   <p>
-    <b>1. Baseline Reference:</b> The aggregated values serve as the community's shared baseline for what matters in this issue<br>
-    <b>2. Influence Weighting:</b> When calculating ISR influence scores (Expertise, Contribution, Relevance), 
-    the community's Vector of Values determines Contribution, providing a badrock of actions assessment<br>
-    <b>3. Holistic Assessment:</b> Rather than imposing external criteria, the framework reflects what this specific microcommunity actually values for this specific issue<br>
-    <b>4. Accountability:</b> Members see their collective values reflected in decision-making processes, ensuring decisions align with community priorities<br><br>
-    <b>Key Principle:</b> The Vector ensures pluralism by averaging diverse perspectives rather than erasing them.
+    <b>1. Ціннісна точка відліку:</b> Сукупні цінності слугують спільною базовою лінією мікроком'юніті для визначення того, що важливо в цьому мікроком'юніті<br>
+    <b>2. Зважування впливу:</b> Під час розрахунку балів впливу ISR Вектор цінностей мікроком'юніті впливає на визначення внеску (Contribution), забезпечуючи основу для оцінки дій (Actions)<br>
+    <b>3. Цілісна оцінка:</b> Замість нав'язування зовнішніх критеріїв, фреймворк відображає те, що це конкретне мікроком'юніті насправді цінує<br>
+    <b>4. Підзвітність:</b> Учасники бачать свої колективні цінності, тож розуміють як саме будуть оцінюватися їхні дії<br><br>
+    <b>Ключовий принцип:</b> Вектор цінностей забезпечує плюралізм, узгоджуючи різноманітні точки зору.
 </p>
-</div>
-<!-- </div> -->
+</div>        
+        <!-- VoV calculation example -->
+        <div class="paragraph">
+          <div class="paragraph_top" onclick="toggleContent('content-VoV')">
+            <h5 id="VoV">► Приклад розрахунку Вектору цінностей (Vector of Values)</h5></div>
+          <div id="content-VoV" class="content" style="display: none;">
+<div style="border: 2px solid #999; background-color: #f9f9ff; border-radius: 12px; padding: 20px; box-sizing: border-box;">
 
-        <p>The next three elements make up the ISR as constituent parts</p>
+    <p>
+\[
+\begin{align*}
+\vec{V}_{\mathrm{mv}} = \frac{1}{n} \sum_{i=1}^n \, R_i \cdot \vec{V}_i
+\end{align*}
+\]
+де:
+<li>\(\vec{V}_{\mathrm{mv}}\) - <b>Vector of Values</b> мікроком'юніті</li>
+<li>\(R_i\) - <b>Relevance</b> учасника <b>i</b></li>
+<li>\(\vec{V}_i\) - векторизовані <b>цінності</b> учасника <b>i</b></li>
+</p>
+
+
+  <center><b>Матриця цінностей (Matrix of Values) у спрощеному вигляді</b><br>
+  (5 учасників, 10 доменів, з дотичністю (Relevance) до певного питання)</center>
+  <table style="margin: 0 auto;">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Member 1</th>
+        <th>Member 2</th>
+        <th>Member 3</th>
+        <th>Member 4</th>
+        <th>Member 5</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>Relevance</b></td>
+        <td><b>0.91</b></td>
+        <td><b>0.68</b></td>
+        <td><b>0.43</b></td>
+        <td><b>0.57</b></td>
+        <td><b>0.39</b></td>
+      </tr>
+      <tr>
+        <td>Агентність та свобода</td>
+        <td>82</td>
+        <td>68</td>
+        <td>61</td>
+        <td>75</td>
+        <td>59</td>
+      </tr>
+      <tr>
+        <td>Взаємовідносини та турбота</td>
+        <td>74</td>
+        <td>63</td>
+        <td>81</td>
+        <td>69</td>
+        <td>71</td>
+      </tr>
+      <tr>
+        <td>Безпека та стабільний порядок</td>
+        <td>66</td>
+        <td>79</td>
+        <td>57</td>
+        <td>72</td>
+        <td>63</td>
+      </tr>
+      <tr>
+        <td>Справедливість та чесність</td>
+        <td>88</td>
+        <td>76</td>
+        <td>69</td>
+        <td>83</td>
+        <td>72</td>
+      </tr>
+      <tr>
+        <td>Спокута та відновлення</td>
+        <td>54</td>
+        <td>49</td>
+        <td>67</td>
+        <td>62</td>
+        <td>58</td>
+      </tr>
+      <tr>
+        <td>Автентичність та самовираження</td>
+        <td>70</td>
+        <td>58</td>
+        <td>73</td>
+        <td>64</td>
+        <td>69</td>
+      </tr>
+      <tr>
+        <td>Захист, опіка та дбайливе ставлення</td>
+        <td>81</td>
+        <td>72</td>
+        <td>77</td>
+        <td>79</td>
+        <td>74</td>
+      </tr>
+      <tr>
+        <td>Співпраця та спільне врядування</td>
+        <td>85</td>
+        <td>71</td>
+        <td>74</td>
+        <td>80</td>
+        <td>70</td>
+      </tr>
+      <tr>
+        <td>Духовна та релігійна практика</td>
+        <td>22</td>
+        <td>35</td>
+        <td>41</td>
+        <td>27</td>
+        <td>38</td>
+      </tr>
+      <tr>
+        <td>Цифрові права та технологічна демократія</td>
+        <td>91</td>
+        <td>64</td>
+        <td>59</td>
+        <td>87</td>
+        <td>68</td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+  <center><b>Агрегація Vector of Values</b><br>
+  (Середньозважене за релевантністю значення для 5 вищезазначених учасників)<br></center>
+
+  <div style="border: 2px solid #999; background-color: #fffff0; border-radius: 12px; padding: 16px; box-sizing: border-box; margin: 0 auto;">
+    <center><b>Вектор цінностей (Vector of Values) мікроком'юніті</b></center>
+    <table style="margin: 0 auto;">
+      <tr><td>Агентність та свобода: </td><td>71.43</td></tr>
+      <tr><td>Взаємовідносини та турбота: </td><td>71.15</td></tr>
+      <tr><td>Безпека та стабільний порядок: </td><td>68.42</td></tr>
+      <tr><td>Справедливість та чесність: </td><td>79.47</td></tr>
+      <tr><td>Спокута та відновлення: </td><td>56.79</td></tr>
+      <tr><td>Автентичність та самовираження: </td><td>66.42</td></tr>
+      <tr><td>Захист, опіка та дбайливе ставлення: </td><td>77.07</td></tr>
+      <tr><td>Співпраця та спільне врядування: </td><td>77.30</td></tr>
+      <tr><td>Духовна та релігійна практика: </td><td>30.76</td></tr>
+      <tr><td>Цифрові права та технологічна демократія: </td><td>76.45</td></tr>
+    </table>
+  </div>
+</div>
+</div>
+</div>
+<p><br></p>
+
+        <p>Наступні три елементи складають ISR як складові частини</p>
 
 <div>
   <a href="https://raw.githubusercontent.com/ponomarchuk-set/isr/main/images/a3.svg">
   <img src="https://raw.githubusercontent.com/ponomarchuk-set/isr/main/images/a3.svg" alt="ISR Score Calculation Model" width="100%">
   </a><br>
-  <center><b>Key ISR Principle</b></center>
+  <center><b>Ключові принципи ISR</b></center>
   <p>
-    Unlike traditional "one-person-one-vote" systems, each member's influence coefficient varies based on:
+    На відміну від традиційних систем «одна людина – один голос», коефіцієнт впливу кожного учасника змінюється залежно від:
     <ul>
-      <li>Their contextual connection to the issue</li>
-      <li>Their actual expertise in the issue domain</li>
-      <li>Their proven track record of contribution</li>
+      <li>Їхнього контекстуального зв’язку з проблемою</li>
+      <li>Їхньої фактичної експертизи в предметній області</li>
+      <li>Їхнього перевіреного досвіду внеску</li>
     </ul>
-    AI determine the components weights (w<sub>R</sub>, w<sub>E</sub>, w<sub>C</sub>) through the issue context.
+    Штучний інтелект визначає ваги компонентів (w<sub>R</sub>, w<sub>E</sub>, w<sub>C</sub>) відповідно до контексту проблеми.
   </p>
 </div>
 
-                <h4>1. Context Relevance (R)</h4>
-                <p>Measures how directly a person is connected to the current issue: declared interests, proximity (geographic or organizational), recent activity on similar topics, social ties to other stakeholders. Practically this is estimated via semantic matching between the issue description and the participant's profile plus graph-based proximity metrics. The calculation method is generally described above. </p>
+      <h4>1. Контекстна дотичність (Relevance) (R)</h4>
+      <p>Вимірює, наскільки безпосередньо людина пов’язана з поточною проблемою: задекларовані інтереси, близькість (географічна чи організаційна), нещодавня активність з подібних тем, соціальні зв’язки з іншими зацікавленими сторонами. Практично це оцінюється за допомогою семантичного зіставлення між описом проблеми та профілем учасника, а також графічних показників близькості. Метод розрахунку загалом описано вище.</p>
 
-                <h4>2. Expertise (E)</h4>
-                <p>Expertise reflects a person's domain-specific competence and capacity to act in this issue.<br>
-                  It is calculated from three sources:
-                  <ul>
-                    <li><b>education</b> in relevant domains;</li>
-                    <li>practical work <b>experience</b> in related roles;</li>
-                    <li>access to helpful <b>resources</b> or networks.</li>
-                  </ul>
-                  These components are aggregated into a numerical <b>Expertise</b> score per domain rather than into a single “universal intelligence” measure.
-                </p>
-                <!-- <p>Captures domain knowledge: formal credentials, demonstrated experience, and prior successful work relevant to the topic. Expertise is assessed by matching profile records of participant <b>i</b> against the question <b>q</b> semantic vector:
+      <h4>2. Експертиза (Expertise) (E)</h4>
+      <p>Експертиза відображає компетентність особи в предметній області та її здатність діяти в цій проблемі.<br>
+        Вона розраховується з трьох джерел:
+        <ul>
+          <li><b>освіта</b> в домені, що відповідає питанню;</li>
+          <li>практичний <b>досвід</b> в пов'язаних галузях;</li>
+          <li>доступ до <b>ресурсів</b> або зв'язків.</li>
+        </ul>
+        Ці компоненти об'єднуються в числовий бал <b>Експертизи</b> для кожного конткретного питання, а не універсальний показник «інтелекту».
+      </p>
+      <!-- <p>Captures domain knowledge: formal credentials, demonstrated experience, and prior successful work relevant to the topic. Expertise is assessed by matching profile records of participant <b>i</b> against the question <b>q</b> semantic vector:
 \[
 \begin{align*}
 {E}_{i,q} = \sum_{credentials} \, \vec{v}_{i, credentials} \cdot \vec{V}_q + \sum_{experience} \, \vec{v}_{i, experience} \cdot \vec{V}_q
@@ -503,29 +602,18 @@ where:
 <p>This ensures that members with relevant knowledge have a proportionate influence on decisions related to their expertise. E.g. two records of 2 years experience should weigh the same as one record of 4 year experience; one college degree should weigh more than two short courses; college degree and two short courses should weigh less the PhD degree.
 </p> -->
 
-                <h4>3. Contribution (C)</h4>
-                <p>Reflects the participant's verified <b>history of actions</b> in the community — tasks completed, constructive discussion, verified outcomes, peer evaluations, etc. Contribution is the system's operational "karma" measure: actions and their impact are recorded and vectorized so the AI can evaluate alignment with the community's declared values.</p>
-                <p>After calculating the situational <b>Relevance</b>, a list of <b>n</b> microcommunity participants appears with the corresponding weights \(R_i\) regarding relevance to the question <b>q</b>. Vector representations of their values \(\vec{V}_i\) (taking into account <b>Relevance</b>) make up the microcommunity <b>Vector of Values</b>, which can also be translated into a form convenient for the participant with explanations from the AI assistant. Therefore, the greater the <b>Relevance</b> of a member, the more the member's values influence <b>the values of the microcommunity</b>.</p>
-                <p>Microcommunity <b>Vector of Values</b> calculation:
-\[
-\begin{align*}
-\vec{V}_{\mathrm{mv}} = \frac{1}{n} \sum_{i=1}^n \, R_i \cdot \vec{V}_i
-\end{align*}
-\]
-where:
-<li>\(\vec{V}_{\mathrm{mv}}\) - the microcommunity's <b>Vector of Values</b></li>
-<li>\(R_i\) - <b>Relevance</b> of <b>i</b> member</li>
-<li>\(\vec{V}_i\) - vectorized <b>values</b> of <b>i</b> member</li>
-</p>
-                <p><b>Contribution</b> is based on a structured record of past actions as seen by the microcommunity. Each action is represented as a vector in the same value space as the community's shared Vector of Values and evaluated along three axes:
+                <h4>3. Внесок (Contribution) (C)</h4>
+                <p>Відображає перевірену <b>історію дій</b> учасника в спільноті — виконані завдання, конструктивне обговорення, перевірені результати, оцінки колег тощо. Внесок — це операційний показник «карми» системи: дії та їхній вплив записуються та векторизуються, щоб ШІ міг оцінити їх відповідність заявленим цінностям спільноти.</p>
+                <p>Після розрахунку ситуативної <b>дотичності (Relevance)</b> з'являється список із <b>n</b> учасників мікроспільноти з відповідними вагами \(R_i\) щодо релевантності до питання <b>q</b>. Векторні представлення їхніх цінностей \(\vec{V}_i\) (з урахуванням <b>Relevance</b>) складають <b>Вектор цінностей (Vector of Values)</b> мікроспільноти, який також можна перевести у зручну для учасника форму з поясненнями від асистента ШІ. Тому, чим більша <b>Relevance</b> учасника, тим більше цінності учасника впливають на <b>цінності мікроспільноти</b>.</p>
+                <p><b>Внесок</b> базується на оцінюванні записів минулих дій, як їх бачить мікроком'юніті. Кожна дія представлена ​​як вектор у тому ж просторі цінностей, що й спільний вектор цінностей спільноти, та оцінюється за трьома вимірами:
                   <ul>
-                    <li><b>Alignment (A):</b> how well the action matches the community's declared values;</li>
-                    <li><b>Force (F):</b> how strong the action was (type of effort, time invested, complexity and result);</li>
-                    <li><b>Sentiment (S):</b> how other members reacted to it (marked as good, funny, rude, flood, foolish).</li>
+                    <li><b>Узгодженість (A):</b> наскільки добре дія відповідає заявленим цінностям спільноти;</li>
+                    <li><b>Сила (F):</b> наскільки сильною була дія (тип зусиль, витрачений час, складність та результат);</li>
+                    <li><b>Оцінки учасників (S):</b> як інші учасники відреагували на неї (добре, смішно, грубість, вода, дурня)</li>
                   </ul>
-                  The contribution of a single action is computed from A, F and S, and a person's overall Contribution in a microcommunity is the aggregate over all their actions.
-                  
-                  <!-- calculation:
+                Внесок окремої дії обчислюється з A, F та S, а загальний внесок людини в мікроспільноту є сукупністю всіх її дій.
+                
+                <!-- calculation:
 \[
 \begin{align*}
 {C}_i = \sum_{actions} \, \vec{V}_{\mathrm{mv}} \cdot \vec{v}_{i, action}
@@ -537,7 +625,8 @@ where:
 <li>\(\vec{V}_{\mathrm{mv}}\) - the microcommunity's <b>Vector of Values</b></li>
 <li>\(\vec{v}_{i, action}\) - vectorized <b>actions</b> of <b>i</b> member</li> -->
 </p>
-                <p>Finally <b>ISR is calculated</b> out from <b>Relevance, Expertise, Contribution</b> and normalized to unit mean (microcommunity average score is always 1) to psychologically simplify adaptation to the new approach.</p>
+                <p>Нарешті <b>бал ISR розраховується</b> з <b>Relevance, Expertise, Contribution</b> та нормалізується до середнього значення одиниці (середній бал мікроспільноти завжди дорівнює 1) для психологічного спрощення адаптації до нового підходу.</p>
+                <p>Той, хто має більший бал ISR, має відповідно більший вплив на прийняття рішення.</p>
               </div>
             </div>
 
@@ -547,31 +636,33 @@ where:
           ↓
         <div class="paragraph sch-block-w">
           <div class="paragraph_top" onclick="toggleContent('content-voting')">
-            <h4 id="voting">► Weighted deliberation and voting</h4>
+            <h4 id="voting">► Обговорення та зважене голосування</h4>
           </div>
           <div id="content-voting" class="content" style="display: none;">
-            <p>The ISR scores are used to weight inputs and votes; the community makes a decision. During deliberation, participants' inputs and votes are weighted according to their ISR scores. This ensures that those with greater relevance, expertise, and contribution have a proportionate influence on the final decision.</p>
+            <p>Під час обговорення всі бачать ISR бали інших учасників. Разом з ISR балом Оцінки "добре" піднімають повідомдення вгору, оцінки "грубість", "вода", "дурня" - штовхають повідомлення униз по стрічці повідомлень дискусії. Це впливає на те, що повідомлення нахаб та болтунів не будуть забивати ідеї та висловлювання тих, хто вносить конструктивні пропозиції та щиро бажає вирішити питання.</p>
+          <p>Під час обговорення формуються варіанти вирішення питання або проблеми. А після цього бали ISR використовуються для зважування голосів підчас голосування - так спільнота й приймає рішення.</p>
 
             <div class="paragraph">
               <div class="paragraph_top" onclick="toggleContent('content-comparison')">
-                <h5 id="comparison">► Comparison of Traditional Representative Democracy and ISR Model</h5></div>
+                <h5 id="comparison">► Порівняння традиційної представницької демократії та моделі ISR</h5></div>
               <div id="content-comparison" class="content" style="display: none;">
                 <a href="https://raw.githubusercontent.com/ponomarchuk-set/isr/main/images/a1.svg">
                 <img src="https://raw.githubusercontent.com/ponomarchuk-set/isr/main/images/a1.svg" alt="Representative Democracy vs ISR-model" width="100%">
                 </a><br><br>
 
-                <p>Unlike the traditional model where common folks separated from decision-making, ISR ensure possibility of real direct involvement for every single community member.</p>
+                <p>На відміну від традиційної моделі, де звичайні люди відокремлені від прийняття рішень, ISR забезпечує можливість реальної прямої участі для кожного учасника спільноти.</p>
 
-                <h4>Quick comparison table</h4>
+                <h4>Таблиця швидкого порівняння</h4>
                 <table class="simple-table" summary="Comparison of standard majority voting and ISR weighted approach">
                   <thead>
-                    <tr><th>Aspect</th><th>Standard majority</th><th>ISR weighted</th></tr>
+                    <tr><th>Аспект</th><th>Представники</th><th>Зважений бал ISR</th></tr>
                   </thead>
                   <tbody>
-                    <tr><td>Who decides</td><td>Representatives only or All members equally</td><td>All participate, influence weighted by ISR</td></tr>
-                    <tr><td>Expert input</td><td>Optional, often ignored</td><td>System highlights relevant expertise</td></tr>
-                    <tr><td>Transparency</td><td>Votes are counted; rationales often absent</td><td>Scores and contributing evidence are explainable</td></tr>
-                    <tr><td>Handling complex issues</td><td>High risk of deadlock or uninformed majority</td><td>Relevant voices carry appropriate influence</td></tr>
+                    <tr><td>Чим займається більшість учасників?</td><td>Раз на п'ять років вони обирають представників, а решту часу спостерігають, як хтось інший приймає рішення щодо їхнього життя, і живуть за наслідками цих рішень.</td><td>Вони безпосередньо залучені до ВСІХ питань, що стосуються їхнього життя.</td></tr>
+                    <tr><td>Хто вирішує?</td><td>Тільки представники</td><td>Всі беруть участь, вплив зважений ISR</td></tr>
+                    <tr><td>Експертна участь</td><td>Необов'язковий, часто ігнорується</td><td>Система підкреслює відповідну експертизу</td></tr>
+                    <tr><td>Прозорість</td><td>Мотиви тих, хто приймає рішення не завжди відомі; обґрунтування часто відсутні</td><td>Бали та їх проміжні компоненти можна пояснити</td></tr>
+                    <tr><td>Проблеми</td><td>Бюрократія, популізм, корупція</td><td>Потрібен час та зміни в громадській свідомості для широкого впровадження</td></tr>
                   </tbody>
                 </table>
 
@@ -582,12 +673,10 @@ where:
           ↓
         <div class="paragraph sch-block-w">
           <div class="paragraph_top" onclick="toggleContent('content-implem')">
-            <h4 id="implem">► Implementation & monitoring</h4>
+            <h4 id="implem">► Впровадження та моніторинг</h4>
           </div>
           <div id="content-implem" class="content" style="display: none;">
-            <p>
-              Chosen tasks are tracked and outcomes feed back into contribution records (affecting future ISR). Once a decision is made, the agreed-upon actions are implemented and monitored. The outcomes of these actions are recorded and used to update participants' contribution histories, which will influence their future ISR scores.
-            </p>
+            <p>Після прийняття рішення узгоджені варіанти впроваджуються та контролюються. Проголосоване рішення складається зі спеціалізованих завдань. Вибрані завдання відстежуються, а результати вносяться до обліку внесків (що впливає на майбутній ISR). Результати цих дій записуються та використовуються для оновлення історії внесків учасників, що впливатиме на їхні майбутні бали ISR.</p>
           </div>
         </div>
       </div>
@@ -596,62 +685,39 @@ where:
     <!-- Tech & Formal concerns -->
     <div class="paragraph">
       <div class="paragraph_top" onclick="toggleContent('content-concerns')">
-        <h2 id="concerns">► Tech & Formal concerns</h2></div>
+        <h2 id="concerns">► Технічні та формальні питання</h2></div>
       <div id="content-concerns" class="content" style="display: none;">
 
     <!-- CALCULATION & ALGORITHMS -->
     <div class="paragraph">
       <div class="paragraph_top" onclick="toggleContent('content-CALCULATION')">
-        <h4 id="CALCULATION">► Calculations, data and AI — how ISR scores are computed</h4></div>
+        <h4 id="CALCULATION">► Розрахунки, дані та ШІ — як обчислюються оцінки ISR</h4></div>
       <div id="content-CALCULATION" class="content" style="display: none;">
-        <h4>Data sources</h4>
-        <p>
-          ISR uses community-provided profile entries, recorded activity (discussions, tasks, votes), optionally integrated external sources
-          (when permitted), and the community's declared values matrix. All action records include contextual metadata (timestamps, links to issues, attachments).
+        <h4>Джерела даних</h4>
+        <p>ISR використовує записи профілів, надані спільнотою, записану активність (обговорення, завдання, голосування), необов'язково інтегровані зовнішні джерела (якщо дозволено) та матрицю оголошених цінностей спільноти. Усі записи про дії містять контекстуальні метадані (мітки часу, посилання на проблеми, вкладення).</p>
+
+        <h4>ШІ та ембедінг</h4>
+        <p>Система використовує семантичний ембедінг (LLM embedding) для порівняння текстів проблем з профілями користувачів та минулими діями, обчислення оцінок релевантності та допомоги у вилученні зацікавлених сторін та створенні зрозумілих резюме. Для таких завдань, як якість аргументації або настрої, спеціалізовані модулі LLM аналізують внески для оцінки конструктивної поведінки.</p>
+
+        <h4>Нормалізація та ваги</h4>
+        <p>Кожен попередньо розрахований компонент (релевантність, експертиза, внесок) нормалізується за середнім значенням 1. Аналізуючи контекст питання, система пропонує ваги w<sub>R</sub>, w<sub>E</sub>, w<sub>C</sub> (сума = 1) що відповідають проблемі. Остаточний ISR — це зважена сума раніше розрахованих компонентів.
         </p>
 
-        <h4>AI & embeddings</h4>
-        <p>
-          The system uses semantic embeddings (LLM embeddings) to compare issue texts with user profiles and past actions, compute relevance
-          scores, and assist in extracting stakeholders and generating explainable summaries. For tasks such as argument quality or sentiment,
-          specialized LLM modules analyze contributions to estimate constructive behaviour.
-        </p>
-
-        <h4>Normalization & weights</h4>
-        <p>
-          Each raw component (relevance, expertise, contribution) is normalized by mean. The community or an automated context routine proposes
-          weights w<sub>R</sub>, w<sub>E</sub>, w<sub>C</sub> (sum = 1) appropriate to the issue. The final ISR is the weighted sum described earlier.
-        </p>
-
-        <h4>Audit & explainability</h4>
-        <p>
-          For transparency, the system stores: the component values, a short natural-language explanation of the top contributing factors,
-          and links to the records used. Higher-level permission holders in the microcommunity (per adaptable authorization rules) can view
-          supporting evidence.
-        </p>
+        <h4>Аудит та пояснювальність</h4>
+        <p>Для прозорості система зберігає: значення компонентів, коротке пояснення природною мовою основних факторів, що сприяють цьому, та посилання на використані записи. Власники дозволів вищого рівня в мікроспільноті (відповідно до адаптивних правил авторизації) можуть переглядати підтверджуючі докази.</p>
       </div>
     </div>
 
     <!-- ADAPTABLE AUTHORIZATION -->
     <div class="paragraph">
       <div class="paragraph_top" onclick="toggleContent('content-ADAPTABLE_AUTH')">
-        <h4 id="ADAPTABLE_AUTH">► Adaptable Authorization — privacy-aware, ISR-based access control</h4></div>
+        <h4 id="ADAPTABLE_AUTH">► Адаптивна авторизація (AAuth) — контроль доступу до конфіденційних даних на основі ISR</h4></div>
       <div id="content-ADAPTABLE_AUTH" class="content" style="display: none;">
-        <p>
-          ISR includes an adaptable authorization model: access to personal data is not simply role-based but depends on the requestor's
-          ISR/gISR score, the sensitivity level of the requested resource, the relationship between accessor and subject, and the declared purpose.
-        </p>
-
-        <p>
-          Access is tiered (public results → microcommunity participation → ISR explanations → supporting evidence → activity logs → expertise profiles → social relations → full personal archive). Each tier requires a higher gISR and/or closer relationship in the microcommunity context. Access is logged and logged events feed into behavior signals that may affect future ISR values.
-        </p>
-
-        <p>
-          The adaptable authorization policy balances transparency and privacy while making misuse auditable and socially accountable.
-          For technical details and diagrams see the system's Adaptable Authorization page.
-          <br><br>
+        <p>ISR включає адаптивну модель авторизації - доступ до персональних даних залежить не просто від ролей, як у класичних підходах до авторизації. В оцінці доступу приймає участь декілька факторів: ISR/gISR запитувача, рівень чутливості запитуваного ресурсу, зв'язкок між особою, яка отримує доступ, та власником ресурсу, а також від заявленої мети.</p>
+        <p>Доступ є багаторівневим (публічні результати → участь у мікроспільноті → пояснення ISR → підтверджуючі докази → журнали активності → профілі експертних знань → соціальні зв'язки → повний особистий архів). Кожен рівень вимагає вищого gISR та/або тісніших стосунків у контексті мікроспільноти. Надання доступу реєструється, а підозріли паттерни користувацької поведінки, аналізуються та можуть вплинути на майбутні значення ISR.</p>
+        <p>Політика адаптивної авторизації балансує прозорість та конфіденційність, водночас роблячи неправильне використання перевіреним та соціально відповідальним. Технічні деталі та схеми дивіться на сторінці Адаптивна авторизація (AAuth).<br><br>
           <!-- link to the dedicated page -->
-          <a href="/wiki/adaptable_authorization.html">🔐 Detailed: Adaptable Authorization (ISR)</a>
+          <a href="/wiki/adaptable_authorization.html">🔐 Детальніше: Адаптивна авторизація ISR (AAuth)</a>
         </p>
       </div>
     </div>
@@ -659,21 +725,16 @@ where:
     <!-- PRIVACY & GOVERNANCE -->
     <div class="paragraph">
       <div class="paragraph_top" onclick="toggleContent('content-PRIVACY')">
-        <h4 id="PRIVACY">► Privacy, governance and misuse mitigation</h4></div>
+        <h4 id="PRIVACY">► Конфіденційність, управління та зменшення неправомірного використання</h4></div>
       <div id="content-PRIVACY" class="content" style="display: none;">
-        <p>
-          Important design choices to protect participants:
-        </p>
+        <p>Важливі особливості проекту, що захищають учасників:</p>
         <ul>
-          <li><strong>Layered disclosure:</strong> sensitive information is revealed only to those with appropriate ISR/contextual justification.</li>
-          <li><strong>Audit trails:</strong> every data access attempt is logged and visible to appropriate stewards; misuse lowers ISR over time.</li>
-          <li><strong>Community control:</strong> communities define their values and can tune weights and thresholds (no hidden global algorithm override).</li>
-          <li><strong>Explainability:</strong> every score includes a short natural language explanation and links to the records used.</li>
+          <li><strong>Багаторівневе розкриття:</strong> чутлива інформація розкривається лише тим, хто має відповідне обґрунтування ISR/контексту.</li>
+          <li><strong>Журнали аудиту:</strong> кожна спроба доступу до даних реєструється та видима відповідним особам; неправомірне використання знижує ISR з часом.</li>
+          <li><strong>Контроль спільноти:</strong> спільнота може впливати на глобальне перевизначення алгоритму за умови досягнення консенсусу.</li>
+          <li><strong>Пояснювальність:</strong> кожен бал містить коротке пояснення природною мовою та посилання на використані записи.</li>
         </ul>
-
-        <p>
-          These governance measures are designed to keep the system accountable to the communities that use it and to make trade-offs explicit rather than opaque.
-        </p>
+        <p>Ці заходи управління розроблені для того, щоб система була підзвітною спільнотам, які її використовують, та щоб зробити компроміси явними та максимально прозорими.</p>
       </div>
     </div>
 
@@ -683,28 +744,28 @@ where:
 <br>
     <!-- FAQ -->
     <div class="paragraph">
-      <h3>Common questions</h3>
-      <h4>Q: Is ISR a vote-rigging tool?</h4>
-      <p>A: No. ISR is a contextually weighted influence mechanism meant to reflect relevance, expertise, and contribution. Communities set weights and can inspect every calculation. The goal is to improve deliberation quality and legitimacy — not to predetermine outcomes.</p>
+      <h3>Поширені запитання</h3>
+      <h4>З: Чи є ISR інструментом фальсифікації голосування?</h4>
+      <p>В: Ні. ISR – це контекстуально зважений механізм впливу, призначений для відображення релевантності, експертизи та внеску. Спільноти встановлюють ваги та можуть перевіряти кожен розрахунок. Мета полягає в покращенні якості та легітимності обговорення, а не в попередньому визначенні результатів.</p>
 
-      <h4>Q: Can someone "buy" influence?</h4>
-      <p>A: Influence is derived from recorded behavior, verifiable actions, and declared expertise — not from financial transactions. Any integration with external sources must be authorized by the community and logged transparently.</p>
+      <h4>З: Чи може хтось «купити» вплив?</h4>
+      <p>В: Вплив отримується із зафіксованих дій, які можна перевірити, та заявленої експертизи, а не з фінансових транзакцій. Будь-яка інтеграція із зовнішніми джерелами має бути схвалена спільнотою та прозоро зареєстрована.</p>
 
-      <h4>Q: What is the philosophical basis for ISR — why this approach and not another?</h4>
-      <p>A: ISR is grounded in Hannah Arendt's political theory, the All-Affected Principle from democratic philosophy, and research on epistemic democracy and augmented deliberation. The full argument — including an honest account of what ISR is not and where it has known limitations — is in the <a href="/wiki/ISR-philosophy.html">Philosophy</a> chapter.</p>
+      <h4>З: Яка філософська основа ISR – чому саме цей підхід, а не інший?</h4>
+      <p>В: ISR ґрунтується на політичній теорії Ханни Арендт, Принципі всіх впливів з демократичної філософії та дослідженнях епістемічної демократії та розширеного обговорення. Повна аргументація, включаючи чесний опис того, чим ISR не є та де він має відомі обмеження, міститься в розділі <a href="/ua/wiki/ISR-philosophy.html">«Філософія»</a>.</p>
 
-      <p style="margin-top:16px;"><a href="/wiki/faq.html">💬 Full FAQ — honest answers to all the hard questions, including social credit comparisons, privacy, minority rights, and AI governance</a></p>
+      <p style="margin-top:16px;"><a href="/ua/wiki/faq.html">💬 Повний розділ поширених запитань — чесні відповіді на всі складні питання, включаючи порівняння з "соціальним кредитом", конфіденційність, права меншин та управління з штучним інтелектом</a></p>
     </div>
 
     <!-- References -->
     <div class="paragraph">
-        <h3>Further reading</h3>
+        <h3>Додаткова інформація</h3>
         <ul>
-          <li><a href="/wiki/ISR-philosophy.html"><b>Philosophy</b></a> — why ISR exists: the historical diagnosis, the intellectual grounding, and the civilizational stakes</li>
-          <li><a href="/wiki/ISR-Arendt-article.html"><b>Augmented Democracy</b></a> — research article on ISR and Hannah Arendt's political theory</li>
-          <li><a href="/wiki/faq.html"><b>FAQ</b></a> — detailed answers to common and hard questions</li>
-          <li><a href="/wiki/mvp.html"><b>MVP design</b></a> — full feature list, product rationale, and development roadmap</li>
-          <li><a href="/wiki/adaptable_authorization.html"><b>Adaptable Authorization</b></a> — the access control and privacy model</li>
+          <li><a href="/ua/wiki/ISR-philosophy.html"><b>«Філософія»</b></a> — чому з'явився ISR: історичний діагноз, інтелектуальне обґрунтування та цивілізаційні ставки</li>
+          <li><a href="/ua/wiki/ISR-Arendt-article.html"><b>Доповнена демократія</b></a> — дослідницька стаття про ISR та політичну теорію Ханни Арендт</li>
+          <li><a href="/ua/wiki/faq.html"><b>Поширені запитання</b></a> — детальні відповіді на поширені та складні питання</li>
+          <li><a href="/wiki/mvp.html"><b>Дизайн MVP</b></a> — повний список функцій, обґрунтування продукту та дорожня карта розробки</li>
+          <li><a href="/wiki/adaptable_authorization.html"><b>Адаптивна авторизація (AAuth)</b></a> — модель контролю доступу та конфіденційності</li>
         </ul>
 
       </div>
