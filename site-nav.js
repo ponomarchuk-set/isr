@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
         'aauth':       { en: 'AAuth',        ua: 'AAuth' },
         'foundations':  { en: 'Foundations',  ua: 'Основи' },
         'philosophy':  { en: 'Philosophy',   ua: 'Філософія' },
+        'sociology':  { en: 'Sociology',   ua: 'Соціологія' },
         'article':     { en: 'Article',      ua: 'ISR — Арендт' },
         'faq':         { en: 'FAQ',          ua: 'Питання та відповіді' }
     };
@@ -188,6 +189,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // { name: 'MVP User Guide', href: '/wiki/mvp.html' },
         // { name: 'Adaptable Auth', href: '/wiki/adaptable_authorization.html' },
         { name: t('philosophy', currentLang), href: localiseHref('/wiki/ISR-philosophy.html', currentLang) },
+        { name: t('sociology', currentLang), href: localiseHref('/wiki/ISR-sociology.html', currentLang) },
         { name: t('article', currentLang),    href: localiseHref('/wiki/ISR-Arendt-article.html', currentLang) },
         // { name: 'Society2050', href: '/wiki/society2050/' },
         // { name: 'Pitch Deck', href: '/wiki/pitchdeck/' },
