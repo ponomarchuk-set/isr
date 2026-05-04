@@ -540,6 +540,13 @@ th, td {
     margin-bottom: 4px;
 }
 
+.content ol li {
+    font-family: 'Cambria', Georgia, serif;
+    font-size: 1.02rem;
+    line-height: 1.6;
+    margin-bottom: 4px;
+}
+
 .term-inline {
     font-style: italic;
     color: #2d3956;
