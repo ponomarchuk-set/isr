@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WJX232KK');</script>
+<!-- End Google Tag Manager -->
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISR</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WJX232KK"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    <div class="navbar">
+        <button id="logo" onclick="goHome()"><img src="../images/logo-t.png" alt="ISR homepage" height="30"></button>
+        <button onclick="openChat()"><b>Assistant:</b> 1 urgent voting;<br>Values could be formulated more clearly</button>
+        <!-- <button onclick="scrollToAndExpand('voting')">Voting</button>
+        <button onclick="scrollToAndExpand('tasks')">Tasks</button>
+        <button onclick="scrollToAndExpand('chat')">Chat</button> -->
+        <button id="menu-button">🤵 User name</button>
+    </div>
+
+    <div id="menu" class="menu">
+        <!-- <a href="#" onclick="scrollToAndExpand('voting')">Voting</a>
+        <a href="#" onclick="scrollToAndExpand('tasks')">Tasks</a>
+        <a href="#" onclick="scrollToAndExpand('chat')">Chat</a> -->
+        <a href="#" onclick="scrollToAndExpand('values')">⚖️ Values</a>
+        <a href="#" onclick="scrollToAndExpand('profile')">🤵 Profile</a>
+        <a href="#" onclick="scrollToAndExpand('settings')">🎨 Settings</a>
+        <a href="index.html" onclick="openLogout()">⬅️ Logout</a>
+    </div>
+
+    <div class="main_content">
+        <div class="paragraph">
+            <div class="paragraph_top">
+                <span class="paragraph-name" onclick="toggleContent('content-chat')">💬 Chat</span> 
+                <div class="paragraph_top_search" data-search-toggle>
+                    <span class="search-buttons">
+                        <button>new: 5</button> 
+                        <button>important: 2</button> 
+                        <button>urgent: 0</button>
+                        <button class="search-toggle-btn">🔍</button>
+                    </span>
+                    <span class="search-input" style="display:none;">
+                        <input type="text" placeholder="Find a discussion...">
+                        <button class="search-action-btn">Search</button>
+                    </span>
+                </div>
+            </div>
+            <div id="content-chat" class="content">
+                <div class="chat-actions">
+                    <button>New topic</button>
+                </div>
+                <div class="topic-list">
+                    <button class="topic-item">
+                        <div class="topic-header">
+                            <span class="topic-name">🏠 🔴 Elevator maintenance schedule</span>
+                            <span class="topic-meta">👥 12</span>
+                        </div>
+                        <div class="topic-preview"><b>Iryna V.:</b> I think we should coordinate with the company before Thur...</div>
+                    </button>
+                    <button class="topic-item">
+                        <div class="topic-header">
+                            <span class="topic-name">💃 🟡 Choreography for the spring showcase</span>
+                            <span class="topic-meta">👥 15</span>
+                        </div>
+                        <div class="topic-preview"><b>Audrey T.:</b> I suggest we switch the second act to contemporary — the ...</div>
+                    </button>
+                    <button class="topic-item">
+                        <div class="topic-header">
+                            <span class="topic-name">🎒 School trip safety concerns</span>
+                            <span class="topic-meta">👥 24</span>
+                        </div>
+                        <div class="topic-preview"><b>Sergey B.:</b> Can we get confirmation that all chaperones have first ai...</div>
+                    </button>
+                    <button class="topic-item">
+                        <div class="topic-header">
+                            <span class="topic-name">🏠 Parking lot lighting upgrade</span>
+                            <span class="topic-meta">👥 8</span>
+                        </div>
+                        <div class="topic-preview"><b>Andrii D.:</b> Has anyone checked the quotes from the second vendor?...</div>
+                    </button>
+                    <button class="topic-item">
+                        <div class="topic-header">
+                            <span class="topic-name">💻 🔴 Sprint 14 blockers — API migration</span>
+                            <span class="topic-meta">👥 6</span>
+                        </div>
+                        <div class="topic-preview"><b>Elon M.:</b> The auth service is still returning 401s after the endpoi...</div>
+                    </button>
+                    <button class="topic-item">
+                        <div class="topic-header">
+                            <span class="topic-name">🏛️ 🟡 Public transport route changes — district 7</span>
+                            <span class="topic-meta">👥 43</span>
+                        </div>
+                        <div class="topic-preview"><b>Iryna V.:</b> Removing the 6AM bus would leave the entire east side wi...</div>
+                    </button>
+                    <button class="topic-item">
+                        <div class="topic-header">
+                            <span class="topic-name">🏛️ Budget allocation for park renovation</span>
+                            <span class="topic-meta">👥 31</span>
+                        </div>
+                        <div class="topic-preview"><b>Andrii D.:</b> I'd prioritize the playground area — it hasn't been upda...</div>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="paragraph">
+            <div class="paragraph_top">
+                <span class="paragraph-name" onclick="toggleContent('content-voting')">🤚 Voting</span> 
+                <div class="paragraph_top_search" data-search-toggle>
+                    <span class="search-buttons">
+                        <button>new: 2</button> 
+                        <button>important: 1</button> 
+                        <button>urgent: 1</button>
+                        <button class="search-toggle-btn">🔍</button>
+                    </span>
+                    <span class="search-input" style="display:none;">
+                        <input type="text" placeholder="Find a voting...">
+                        <button class="search-action-btn">Search</button>
+                    </span>
+                </div>
+            </div>
+            <div id="content-voting" class="content">
+                <div class="topic-list">
+                    <button class="topic-item">
+                        <div class="topic-header">
+                            <span class="topic-name">🏠 ⬅️ Fence door renew</span>
+                            <span class="topic-meta">Relevance: <b>0.95</b> · ISR: <b>1.07</b></span>
+                        </div>
+                        <div class="topic-preview">Status: <b>Discussion</b> &nbsp;·&nbsp; Deadline: 26.03.15</div>
+                    </button>
+                    <button class="topic-item">
+                        <div class="topic-header">
+                            <span class="topic-name">🏠 ☠️ Flowers near 3rd entrance</span>
+                            <span class="topic-meta">Relevance: <b>0.32</b> · ISR: <b>2.31</b></span>
+                        </div>
+                        <div class="topic-preview" style="color: #aaa;">Status: <b>Canceled</b> &nbsp;·&nbsp; Deadline: 26.03.05</div>
+                    </button>
+                    <button class="topic-item">
+                        <div class="topic-header">
+                            <span class="topic-name">🏠 🔴 Ladders to 1st entrance</span>
+                            <span class="topic-meta">Relevance: <b>0.65</b> · ISR: <b>0.77</b></span>
+                        </div>
+                        <div class="topic-preview">Status: <b>Voting</b> &nbsp;·&nbsp; Deadline: 26.05.12</div>
+                    </button>
+                    <button class="topic-item">
+                        <div class="topic-header">
+                            <span class="topic-name">💃 🟡 Studio rental contract extension</span>
+                            <span class="topic-meta">Relevance: <b>0.78</b> · ISR: <b>1.42</b></span>
+                        </div>
+                        <div class="topic-preview">Status: <b>Voting</b> &nbsp;·&nbsp; Deadline: 26.07.01</div>
+                    </button>
+                    <button class="topic-item">
+                        <div class="topic-header">
+                            <span class="topic-name">🎒 ⬅️ After-school program funding</span>
+                            <span class="topic-meta">Relevance: <b>0.88</b> · ISR: <b>0.93</b></span>
+                        </div>
+                        <div class="topic-preview">Status: <b>Discussion</b> &nbsp;·&nbsp; Deadline: 26.04.10</div>
+                    </button>
+                    <button class="topic-item">
+                        <div class="topic-header">
+                            <span class="topic-name">💻 🔴 Switch CI/CD to GitHub Actions</span>
+                            <span class="topic-meta">Relevance: <b>0.91</b> · ISR: <b>1.15</b></span>
+                        </div>
+                        <div class="topic-preview">Status: <b>Voting</b> &nbsp;·&nbsp; Deadline: 26.05.20</div>
+                    </button>
+                    <button class="topic-item">
+                        <div class="topic-header">
+                            <span class="topic-name">🏛️ ✅ Bike lane on Central Avenue</span>
+                            <span class="topic-meta">Relevance: <b>0.54</b> · ISR: <b>1.88</b></span>
+                        </div>
+                        <div class="topic-preview">Status: <b>Approved</b> &nbsp;·&nbsp; Deadline: 26.05.01</div>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="paragraph">
+            <div class="paragraph_top">
+                <span class="paragraph-name" onclick="toggleContent('content-tasks')">🛠️ Tasks</span> 
+                <div class="paragraph_top_search" data-search-toggle>
+                    <span class="search-buttons">
+                        <button>new: 0</button> 
+                        <button>important: 2</button> 
+                        <button>urgent: 0</button>
+                        <button class="search-toggle-btn">🔍</button>
+                    </span>
+                    <span class="search-input" style="display:none;">
+                        <input type="text" placeholder="Find a task...">
+                        <button class="search-action-btn">Search</button>
+                    </span>
+                </div>
+            </div>
+            <div id="content-tasks" class="content">
+                <div class="topic-list">
+                    <button class="topic-item">
+                        <div class="topic-header">
+                            <span class="topic-name">🏠 Fence door renew</span>
+                            <span class="topic-meta">3 tasks</span>
+                        </div>
+                        <div class="task-list">
+                            <div class="task-row">✅ Collect contractor quotes &nbsp;·&nbsp; Done 26.02.28</div>
+                            <div class="task-row">🔄 Approve budget at next meeting &nbsp;·&nbsp; In progress · 26.03.18</div>
+                            <div class="task-row">⬜ Install new door &nbsp;·&nbsp; Pending · 26.04.01</div>
+                        </div>
+                    </button>
+                    <button class="topic-item">
+                        <div class="topic-header">
+                            <span class="topic-name">🏠 🔴 Ladders to 1st entrance</span>
+                            <span class="topic-meta">2 tasks</span>
+                        </div>
+                        <div class="task-list">
+                            <div class="task-row">🔄 Safety inspection by certified engineer &nbsp;·&nbsp; In progress · 26.05.15</div>
+                            <div class="task-row">⬜ Order replacement parts &nbsp;·&nbsp; Pending · 26.05.25</div>
+                        </div>
+                    </button>
+                    <button class="topic-item">
+                        <div class="topic-header">
+                            <span class="topic-name">💃 🟡 Studio rental contract extension</span>
+                            <span class="topic-meta">3 tasks</span>
+                        </div>
+                        <div class="task-list">
+                            <div class="task-row">✅ Review current lease terms &nbsp;·&nbsp; Done 26.04.10</div>
+                            <div class="task-row">🔄 Negotiate new rate with landlord &nbsp;·&nbsp; In progress · 26.05.01</div>
+                            <div class="task-row">⬜ Sign updated contract &nbsp;·&nbsp; Pending · 26.07.01</div>
+                        </div>
+                    </button>
+                    <button class="topic-item">
+                        <div class="topic-header">
+                            <span class="topic-name">🎒 After-school program funding</span>
+                            <span class="topic-meta">4 tasks</span>
+                        </div>
+                        <div class="task-list">
+                            <div class="task-row">✅ Draft budget proposal &nbsp;·&nbsp; Done 26.03.20</div>
+                            <div class="task-row">✅ Present to parent committee &nbsp;·&nbsp; Done 26.04.02</div>
+                            <div class="task-row">🔄 Apply for district grant &nbsp;·&nbsp; In progress · 26.04.15</div>
+                            <div class="task-row">⬜ Hire program coordinator &nbsp;·&nbsp; Pending · 26.05.10</div>
+                        </div>
+                    </button>
+                    <button class="topic-item">
+                        <div class="topic-header">
+                            <span class="topic-name">💻 🔴 Switch CI/CD to GitHub Actions</span>
+                            <span class="topic-meta">3 tasks</span>
+                        </div>
+                        <div class="task-list">
+                            <div class="task-row">✅ Audit existing Jenkins pipelines &nbsp;·&nbsp; Done 26.05.05</div>
+                            <div class="task-row">🔄 Write GitHub Actions workflows for main repos &nbsp;·&nbsp; In progress · 26.05.20</div>
+                            <div class="task-row">⬜ Decommission Jenkins server &nbsp;·&nbsp; Pending · 26.06.01</div>
+                        </div>
+                    </button>
+                    <button class="topic-item">
+                        <div class="topic-header">
+                            <span class="topic-name">🏛️ ✅ Bike lane on Central Avenue</span>
+                            <span class="topic-meta">3 tasks</span>
+                        </div>
+                        <div class="task-list">
+                            <div class="task-row">✅ Conduct traffic impact study &nbsp;·&nbsp; Done 26.02.15</div>
+                            <div class="task-row">✅ Approve final route design &nbsp;·&nbsp; Done 26.03.30</div>
+                            <div class="task-row">🔄 Begin road marking and signage &nbsp;·&nbsp; In progress · 26.05.15</div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="paragraph">
+            <div class="paragraph_top">
+                <span class="paragraph-name" onclick="toggleContent('content-values')">⚖️ Values</span>
+            </div>
+            <div id="content-values" class="content">
+                <p>Values description:</p>
+                <div class="values-text-card">
+                <p>I believe in the boundless potential of the human spirit. My vision for the future is a 'shining city on a hill'—green, yes, but green because of innovation, not stagnation. I see a community where people are free to dream, to build, and to solve problems without the heavy hand of bureaucracy.</p>
+                <p>I want a community rooted in faith, family, and freedom, where the government gets out of the way. Freedom is not just a political word; it is the engine of everything good. In the future community, the individual is king (or queen). Whether it's choosing a school for your kids or starting a business, the choice must be yours.</p>
+                <p>I believe true conservation comes from ownership, not restriction. We are stewards of this beautiful planet God gave us. Stewardship means passing on a world that is freer and more prosperous. We protect the vulnerable—the unborn, the elderly—because a society is judged by how it treats its weakest members.</p>
+                <p>I believe in the volunteer spirit. If there is a problem, we fix it together—family, church, neighbors. Sharing should be voluntary, an act of charity, not a mandate.</p>
+                <p>We need laws that are clear and enforced. A community needs a strong moral center. Stability comes from a solid foundation of values—honesty, hard work, patriotism. I believe that a community without faith is like a tree without roots. We need to acknowledge a higher power.</p>
+                <p>We should be proud of who we are and what we believe. Authenticity means living your values and not apologizing for them. When Over-Regulation conflicts with Economic Freedom, I choose Freedom. We will find a way to save the beetle and build the factory. When State Mandates conflict with Individual Liberty, I choose Liberty. When Radical Change attacks Traditional Values, I choose Tradition. New isn't always better. Sometimes the old ways are the best ways.</p>
+                </div>
+
+                <div class="values-chart">
+                    <div class="values-chart-title">Personal Vector of Values (main domains)</div>
+
+                    <!-- Bar chart -->
+                    <div class="bar-chart">
+                        <div class="bar-group">
+                            <div class="bar" style="height: 72%;"></div>
+                            <span class="bar-label">1</span>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar" style="height: 60%;"></div>
+                            <span class="bar-label">2</span>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar" style="height: 68%;"></div>
+                            <span class="bar-label">3</span>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar" style="height: 40%;"></div>
+                            <span class="bar-label">4</span>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar bar-muted" style="height: 90%;"></div>
+                            <span class="bar-label">5</span>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar" style="height: 65%;"></div>
+                            <span class="bar-label">6</span>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar" style="height: 75%;"></div>
+                            <span class="bar-label">7</span>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar" style="height: 58%;"></div>
+                            <span class="bar-label">8</span>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar" style="height: 80%;"></div>
+                            <span class="bar-label">9</span>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar bar-muted" style="height: 90%;"></div>
+                            <span class="bar-label">10</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button>Change</button> <button>Explain</button>
+            </div>
+        </div>
+        <div class="paragraph">
+            <div class="paragraph_top">
+                <span class="paragraph-name" onclick="toggleContent('content-profile')">🤵 Profile</span>
+            </div>
+            <div id="content-profile" class="content">
+                <p>Demografics: <button>Change</button></p>
+                <div class="values-text-card">
+                    <p><ul>
+                        <li>First Name: Ivan</li>
+                        <li>Last Name: Franko</li>
+                        <li>ID: 30405422</li>
+                        <li>Proof ID type: Pass ID</li>
+                        <li>Proof ID: 004455777</li>
+                        <li>Proof ID emitent: 8017</li>
+                        <li>Birth Date: 1985/03/22</li>
+                        <li>Sex: Male</li>
+                    </ul></p>
+                </div>
+                <p>Address: <button>Change</button></p>
+                <div class="values-text-card">
+                    <p><ul>
+                        <li>Country: Ukraine</li>
+                        <li>Region: Kyiv</li>
+                        <li>City: Brovary</li>
+                        <li>Street: Kvitkova</li>
+                        <li>Entrance: 2</li>
+                        <li>Floor: 3</li>
+                        <li>Apartment: 14</li>
+                        <li>Status: owner</li>
+                        <li>Dwell: yes</li>
+                    </ul></p>
+                </div>
+                <p>Social relations: <button>Change</button></p>
+                <div class="values-text-card">
+                    <p><ul>
+                        <li>Status: Merried</li>
+                        <li>Wife: Sofiya Franko (ID: 31787890)</li>
+                        <li>Son: Borys Franko (ID: 43908765)</li>
+                        <li>Son: Oleksiy Franko (ID: 43208775)</li>
+                        <li>Father: Taras Franko (ID: 22908799)</li>
+                        <li>Brother: Nazar Franko (ID: 52923419)</li>
+                    </ul></p>
+                </div>
+                <p>Features: <button>Change</button></p>
+                <div class="values-text-card">
+                    <p><ul>
+                        <li>Pets: dog, cat</li>
+                        <li>Car: Toyota Camry white (AA15544BB)</li>
+                        <li>Bike: Author black 28"</li>
+                    </ul></p>
+                </div>
+                <p>Skills: <button>Change</button></p>
+                <div class="values-text-card">
+                    <p><ul>
+                        <li>Education: Marketing, Kyiv National Economic University, 2010</li>
+                        <li>Education: Cybersecurity, Coursera, 2015</li>
+                        <li>Work experience: Sales manager 7</li>
+                        <li>Work experience: Taxi driver 2</li>
+                        <li>Work experience: Sport instructor (bike sport) 1</li>
+                        <li>Hobby: Hiking</li>
+                        <li>Hobby: Riding bike</li>
+                    </ul></p>
+                </div>
+                <p>Contacts: <button>Change</button></p>
+                <div class="values-text-card">
+                    <p><ul>
+                        <li>Phone: +380505005050</li>
+                        <li>Email: i.franko@gmail.com</li>
+                        <li>linkedin: __________________</li>
+                        <li>Facebook: __________________</li>
+                        <li>Messangers: Telegram, Viber, WhatsApp</li>
+                    </ul></p>
+                </div>
+
+                <button>Explain</button>
+            </div>
+        </div>
+        <div class="paragraph">
+            <div class="paragraph_top">
+                <span class="paragraph-name" onclick="toggleContent('content-settings')">🎨 Settings</span>
+            </div>
+            <div id="content-settings" class="content">
+                <div class="settings-card">
+                    <div class="settings-card-header">
+                        <span class="topic-name">🖥️ Interface</span>
+                    </div>
+                    <div class="settings-card-body">
+                        <label class="setting-option">
+                            <input type="radio" name="interface" checked> Classic (Task tracker)
+                        </label>
+                        <label class="setting-option">
+                            <input type="radio" name="interface"> Bubble style
+                        </label>
+                        <label class="setting-option">
+                            <input type="radio" name="interface"> Voice control
+                        </label>
+                    </div>
+                </div>
+
+                <div class="settings-card">
+                    <div class="settings-card-header">
+                        <span class="topic-name">🎨 Color scheme</span>
+                    </div>
+                    <div class="settings-card-body">
+                        <label class="setting-option">
+                            <input type="radio" name="colorscheme" checked> Soft
+                        </label>
+                        <label class="setting-option">
+                            <input type="radio" name="colorscheme"> Hard
+                        </label>
+                        <label class="setting-option">
+                            <input type="radio" name="colorscheme"> Neutral
+                        </label>
+                    </div>
+                </div>
+
+                <div class="settings-card">
+                    <div class="settings-card-header">
+                        <span class="topic-name">🔔 Push messages</span>
+                    </div>
+                    <div class="settings-card-body">
+                        <label class="setting-toggle">
+                            <span>Enable push notifications</span>
+                            <input type="checkbox" class="toggle-input" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="settings-card">
+                    <div class="settings-card-header">
+                        <span class="topic-name">🌐 Language</span>
+                    </div>
+                    <div class="settings-card-body">
+                        <label class="setting-option">
+                            <input type="radio" name="language" checked> English
+                        </label>
+                        <label class="setting-option">
+                            <input type="radio" name="language"> Українська
+                        </label>
+                    </div>
+                </div>
+
+                <div class="settings-card">
+                    <div class="settings-card-header">
+                        <span class="topic-name">🔒 Privacy</span>
+                    </div>
+                    <div class="settings-card-body">
+                        <label class="setting-toggle">
+                            <span>Show profile to other members</span>
+                            <input type="checkbox" class="toggle-input" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                        <label class="setting-toggle">
+                            <span>Show contact info</span>
+                            <input type="checkbox" class="toggle-input">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="chat-window" class="chat-window">
+        <header>
+            <span>Assistant</span>
+            <button style="float:right;" onclick="closeChat()">X</button>
+        </header>
+        <div class="content">
+            <textarea>
+1. You have 1 voting to be done today
+2. Your description of values ​​does not reflect your views on social processes in two domains. This means that user actions in these domains will be evaluated without taking your opinion into account.
+3. Some other help?
+            </textarea>
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>

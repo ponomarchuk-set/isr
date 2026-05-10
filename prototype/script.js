@@ -30,7 +30,7 @@ function closeChat() {
 }
 
 function openLogin() {
-    alert("Logging in...");
+    window.location.href = "index.html";
 }
 
 
@@ -98,6 +98,53 @@ document.addEventListener('DOMContentLoaded', function() {
   const menuButton = document.getElementById('menu-button');
   const menuPopup = document.getElementById('menu');
 
+  if (!menuButton || !menuPopup) {
+    // index.html: handle preset profile selection
+    const profileInput = document.getElementById('testProfiles');
+    if (profileInput) {
+      const validProfiles = [...document.querySelectorAll('#testProfiless option')].map(o => o.value);
+      profileInput.addEventListener('input', function() {
+        if (validProfiles.includes(this.value)) {
+          sessionStorage.setItem('userName', this.value);
+          window.location.href = 'main.html';
+        }
+      });
+    }
+
+    // Enable Login / Register only when username is not empty
+    const usernameInput = document.getElementById('login-username');
+    const loginBtn  = document.getElementById('login-btn');
+    const registerBtn = document.getElementById('register-btn');
+    if (usernameInput && loginBtn && registerBtn) {
+      usernameInput.addEventListener('input', function() {
+        const hasValue = this.value.trim().length > 0;
+        loginBtn.disabled    = !hasValue;
+        registerBtn.disabled = !hasValue;
+      });
+      // Navigate to main.html when enabled
+      loginBtn.addEventListener('click', function() {
+        if (!this.disabled) {
+          sessionStorage.setItem('userName', usernameInput.value.trim());
+          window.location.href = 'main.html';
+        }
+      });
+      registerBtn.addEventListener('click', function() {
+        if (!this.disabled) {
+          sessionStorage.setItem('userName', usernameInput.value.trim());
+          window.location.href = 'main.html';
+        }
+      });
+    }
+
+    return;
+  }
+
+  // Display stored user name in navbar
+  const storedName = sessionStorage.getItem('userName');
+  if (storedName) {
+    menuButton.textContent = '🤵 ' + storedName;
+  }
+
   // Toggle menu visibility
   menuButton.addEventListener('click', function() {
     menuPopup.style.display = menuPopup.style.display === 'block' ? 'none' : 'block';
@@ -116,5 +163,37 @@ document.addEventListener('DOMContentLoaded', function() {
     if (event.target.classList.contains('menu-option')) {
       menuPopup.style.display = 'none';
     }
+  });
+});
+
+// Search toggle: mode 1 (buttons) ↔ mode 2 (input + search)
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('[data-search-toggle]').forEach(function(container) {
+    var buttons = container.querySelector('.search-buttons');
+    var input   = container.querySelector('.search-input');
+    var toggleBtn = container.querySelector('.search-toggle-btn');
+
+    if (!buttons || !input || !toggleBtn) return;
+
+    // Enter search mode
+    toggleBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      buttons.style.display = 'none';
+      input.style.display   = '';
+      input.querySelector('input').focus();
+    });
+
+    // Prevent clicks on search input / search button from bubbling (avoid toggling the parent paragraph)
+    input.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+
+    // Exit search mode when clicking anywhere outside
+    document.addEventListener('click', function(e) {
+      if (!input.contains(e.target)) {
+        buttons.style.display = '';
+        input.style.display   = 'none';
+      }
+    });
   });
 });
