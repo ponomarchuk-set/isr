@@ -12,7 +12,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ISR</title>
+    <title>ISR MVP prototype</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -22,82 +25,254 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
     <div class="navbar">
-        <button id="logo"><img src="../images/logo-t.png" alt="ISR homepage" height="30"></button>
-        <button id="assistant-btn"><b>Assistant:</b> 1 urgent voting;<br>Values could be formulated more clearly</button>
-        <button id="menu-button">🤵 User name</button>
+        <button id="logo"><img src="../images/isr-logo.png" alt="ISR homepage" height="30"></button>
+        <div class="navbar-brand">Index of Social Responsibility</div>
+        <button id="menu-button">
+            <span class="initials-avatar">EM</span>
+            <span class="menu-user-name">Elon Musk</span>
+        </button>
     </div>
 
     <div id="menu" class="menu">
-        <a href="#" data-section="values">⚖️ Values</a>
-        <a href="#" data-section="profile">🤵 Profile</a>
-        <a href="#" data-section="settings">🎨 Settings</a>
-        <a href="index.html" id="logout-link">⬅️ Logout</a>
+        <a href="#" data-section="values">Values</a>
+        <a href="#" data-section="profile">Profile</a>
+        <a href="#" data-section="settings">Settings</a>
+        <a href="index.html" id="logout-link">Logout</a>
+    </div>
+
+    <div class="summary-strip">
+        <button class="summary-link" data-section="voting">1 urgent vote</button>
+        <span class="summary-separator">·</span>
+        <span>3 active issues</span>
+        <span class="summary-separator">·</span>
+        <button class="summary-link" data-section="tasks">2 tasks in progress</button>
+        <span class="summary-separator">·</span>
+        <button class="summary-link" data-section="chat">2 highly relevant discussions</button>
     </div>
 
     <div class="main_content">
-        <!-- Dashboard Grid -->
-        <div class="dashboard-grid">
-            <div class="dash-card" data-section="chat">
-                <div class="dash-card-title">💬 Chat</div>
+        <div class="dashboard-top-row">
+            <section class="ai-guidance-card">
+                <div class="dashboard-section-label">AI guidance</div>
+                <h2 class="ai-guidance-title">What needs your attention</h2>
+
+                <div class="ai-guidance-list">
+                    <div class="guidance-item">
+                        <div class="guidance-dot guidance-dot-urgent"></div>
+                        <div class="guidance-content">
+                            <div class="guidance-text">
+                                “Ladders to 1st entrance” vote ends today. Your relevance is 0.65.
+                            </div>
+                            <button class="guidance-link" data-section="voting">Review vote</button>
+                        </div>
+                    </div>
+
+                    <div class="guidance-item">
+                        <div class="guidance-dot"></div>
+                        <div class="guidance-content">
+                            <div class="guidance-text">
+                                Your Values description is still too broad in social process domains.
+                            </div>
+                            <button class="guidance-link" data-section="values">Clarify values</button>
+                        </div>
+                    </div>
+
+                    <div class="guidance-item">
+                        <div class="guidance-dot"></div>
+                        <div class="guidance-content">
+                            <div class="guidance-text">
+                                Elevator maintenance discussion matches your building-related involvement.
+                            </div>
+                            <button class="guidance-link" data-section="chat">Open discussion</button>
+                        </div>
+                    </div>
+
+                    <div class="guidance-item">
+                        <div class="guidance-dot"></div>
+                        <div class="guidance-content">
+                            <div class="guidance-text">
+                                One implementation task may need your follow-up before Friday.
+                            </div>
+                            <button class="guidance-link" data-section="tasks">Check task risk</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="governance-readiness-card">
+                <div class="dashboard-section-label">Governance readiness</div>
+                <h2 class="readiness-title">Improve your relevance quality</h2>
+
+                <button class="readiness-block" data-section="profile">
+                    <div class="readiness-head">
+                        <span>Profile</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="readiness-bar">
+                        <div class="readiness-bar-fill" style="width: 80%;"></div>
+                    </div>
+                    <div class="readiness-note">Your profile is mostly complete.</div>
+                </button>
+
+                <button class="readiness-block" data-section="values">
+                    <div class="readiness-head">
+                        <span>Values</span>
+                        <span>73%</span>
+                    </div>
+                    <div class="readiness-bar">
+                        <div class="readiness-bar-fill readiness-bar-fill-warning" style="width: 73%;"></div>
+                    </div>
+                    <div class="readiness-note">106 of 145 core items are defined. Clarify values to state your oppinion on 39 left.</div>
+                </button>
+            </section>
+        </div>
+
+        <div class="dashboard-grid dashboard-grid-primary">
+            <div class="dash-card dash-card-priority" data-section="voting">
+                <div class="dash-card-topline">
+                    <div class="dash-card-title">Voting</div>
+                    <span class="inline-urgent">1 urgent</span>
+                </div>
                 <div class="dash-card-badges">
-                    <span class="dash-badge">new: 5</span>
-                    <span class="dash-badge">important: 2</span>
-                    <span class="dash-badge">urgent: 0</span>
+                    <span class="dash-badge">new 2</span>
+                    <span class="dash-badge">important 1</span>
+                    <span class="dash-badge dash-badge-urgent">urgent 1</span>
                 </div>
+
                 <div class="dash-card-preview">
-                    <div class="topic-name">🏠 🔴 Elevator maintenance schedule</div>
-                    <div class="topic-preview"><b>Iryna V.:</b> I think we should coordinate with the company before Thur...</div>
+                    <div class="topic-line">
+                        <span class="community-tag">Building</span>
+                        <span class="topic-name">Ladders to 1st entrance</span>
+                    </div>
+                    <div class="topic-preview">
+                        Status: <b>Voting</b> · Voted: <b>15/43</b> · Deadline: <span class="deadline-urgent">26.05.12</span>
+                    </div>
                 </div>
+
                 <div class="dash-card-preview">
-                    <div class="topic-name">💃 🟡 Choreography for the spring showcase</div>
-                    <div class="topic-preview"><b>Audrey T.:</b> I suggest we switch the second act to contemporary...</div>
-                </div>
-                <div class="dash-card-preview">
-                    <div class="topic-name">💻 🔴 Sprint 14 blockers — API migration</div>
-                    <div class="topic-preview"><b>Elon M.:</b> The auth service is still returning 401s after the endpoi...</div>
-                </div>
-            </div>
-            <div class="dash-card" data-section="voting">
-                <div class="dash-card-title">🤚 Voting</div>
-                <div class="dash-card-badges">
-                    <span class="dash-badge">new: 2</span>
-                    <span class="dash-badge">important: 1</span>
-                    <span class="dash-badge dash-badge-urgent">urgent: 1</span>
-                </div>
-                <div class="dash-card-preview">
-                    <div class="topic-name">🏠 🔴 Ladders to 1st entrance</div>
-                    <div class="topic-preview">Status: <b>Voting</b> · Voted: <b>15/43</b> · Deadline: 26.05.12</div>
-                </div>
-                <div class="dash-card-preview">
-                    <div class="topic-name">💃 🟡 Studio rental contract extension</div>
+                    <div class="topic-line">
+                        <span class="community-tag community-tag-culture">Culture</span>
+                        <span class="topic-name">Studio rental contract extension</span>
+                    </div>
                     <div class="topic-preview">Status: <b>Voting</b> · Voted: <b>0/71</b> · Deadline: 26.07.01</div>
                 </div>
+
                 <div class="dash-card-preview">
-                    <div class="topic-name">💻 🔴 Switch CI/CD to GitHub Actions</div>
+                    <div class="topic-line">
+                        <span class="community-tag community-tag-dev">Dev</span>
+                        <span class="topic-name">Switch CI/CD to GitHub Actions</span>
+                    </div>
                     <div class="topic-preview">Status: <b>Voting</b> · Voted: <b>7/8</b> · Deadline: 26.05.20</div>
                 </div>
             </div>
-            <div class="dash-card" data-section="tasks">
-                <div class="dash-card-title">🛠️ Tasks</div>
+
+            <div class="dash-card" data-section="chat">
+                <div class="dash-card-topline">
+                    <div class="dash-card-title">Chat</div>
+                </div>
                 <div class="dash-card-badges">
-                    <span class="dash-badge">new: 0</span>
-                    <span class="dash-badge">important: 2</span>
-                    <span class="dash-badge">urgent: 0</span>
+                    <span class="dash-badge">new 5</span>
+                    <span class="dash-badge">important 2</span>
                 </div>
+
                 <div class="dash-card-preview">
-                    <div class="topic-name">🏠 Fence door renew</div>
-                    <div class="topic-preview">3 tasks · ✅1 🔄1 ⬜1</div>
+                    <div class="topic-line">
+                        <span class="community-tag">Building</span>
+                        <span class="topic-name">Elevator maintenance schedule</span>
+                    </div>
+                    <div class="topic-preview"><b>Iryna V.:</b> I think we should coordinate with the company before Thur...</div>
                 </div>
+
                 <div class="dash-card-preview">
-                    <div class="topic-name">🏠 🔴 Ladders to 1st entrance</div>
-                    <div class="topic-preview">2 tasks · 🔄1 ⬜1</div>
+                    <div class="topic-line">
+                        <span class="community-tag community-tag-culture">Culture</span>
+                        <span class="topic-name">Choreography for the spring showcase</span>
+                    </div>
+                    <div class="topic-preview"><b>Audrey T.:</b> I suggest we switch the second act to contemporary...</div>
                 </div>
+
+                <div class="dash-card-footer-link">3 more discussions →</div>
+            </div>
+
+            <div class="dash-card" data-section="tasks">
+                <div class="dash-card-topline">
+                    <div class="dash-card-title">Tasks</div>
+                </div>
+                <div class="dash-card-badges">
+                    <span class="dash-badge">important 2</span>
+                    <span class="dash-badge">in progress 2</span>
+                </div>
+
                 <div class="dash-card-preview">
-                    <div class="topic-name">💻 🔴 Switch CI/CD to GitHub Actions</div>
-                    <div class="topic-preview">3 tasks · ✅1 🔄1 ⬜1</div>
+                    <div class="topic-line">
+                        <span class="community-tag">Building</span>
+                        <span class="topic-name">Fence door renew</span>
+                    </div>
+                    <div class="topic-preview">
+                        3 tasks:
+                        <span class="status-pill status-pill-done">Done 1</span>
+                        <span class="status-pill status-pill-active">Active 1</span>
+                        <span class="status-pill status-pill-pending">Pending 1</span>
+                    </div>
+                </div>
+
+                <div class="dash-card-preview">
+                    <div class="topic-line">
+                        <span class="community-tag">Building</span>
+                        <span class="topic-name">Ladders to 1st entrance</span>
+                    </div>
+                    <div class="topic-preview">
+                        2 tasks:
+                        <span class="status-pill status-pill-active">Active 1</span>
+                        <span class="status-pill status-pill-pending">Pending 1</span>
+                    </div>
+                </div>
+
+                <div class="dash-card-preview">
+                    <div class="topic-line">
+                        <span class="community-tag community-tag-dev">Dev</span>
+                        <span class="topic-name">Switch CI/CD to GitHub Actions</span>
+                    </div>
+                    <div class="topic-preview">
+                        3 tasks:
+                        <span class="status-pill status-pill-done">Done 1</span>
+                        <span class="status-pill status-pill-active">Active 1</span>
+                        <span class="status-pill status-pill-pending">Pending 1</span>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <section class="relevant-context-card">
+            <div class="dashboard-section-label">Relevant context news</div>
+            <h2 class="context-title">Things affecting your active issues</h2>
+
+            <div class="context-list">
+                <div class="context-item">
+                    <div class="topic-line">
+                        <span class="community-tag">Building</span>
+                        <span class="context-item-title">Safety inspection requirement updated</span>
+                    </div>
+                    <div class="topic-preview">Relates to “Ladders to 1st entrance” and may affect implementation timing.</div>
+                </div>
+
+                <div class="context-item">
+                    <div class="topic-line">
+                        <span class="community-tag">Building</span>
+                        <span class="context-item-title">Contractor scheduling window changed</span>
+                    </div>
+                    <div class="topic-preview">Relates to “Elevator maintenance schedule” and may shift the preferred coordination date.</div>
+                </div>
+
+                <div class="context-item">
+                    <div class="topic-line">
+                        <span class="community-tag community-tag-city">City</span>
+                        <span class="context-item-title">District consultation update published</span>
+                    </div>
+                    <div class="topic-preview">Connected to current infrastructure discussions you are following.</div>
+                </div>
+            </div>
+        </section>
     </div>
 
     <!-- Hidden full section containers -->
@@ -180,8 +355,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <div id="section-values" class="section-hidden">
-        <p>Values description:</p>
-        <div class="values-text-card">
+    <p class="values-section-title">Values description:</p>
+
+    <div class="values-editor-card" id="values-editor-card">
+        <div class="values-view-mode" id="values-view-mode">
+        <div class="values-text-card" id="values-text-display">
             <p>I believe in the boundless potential of the human spirit. My vision for the future is a 'shining city on a hill'—green, yes, but green because of innovation, not stagnation.</p>
             <p>I want a community rooted in faith, family, and freedom, where the government gets out of the way. Freedom is not just a political word; it is the engine of everything good.</p>
             <p>I believe true conservation comes from ownership, not restriction. We are stewards of this beautiful planet God gave us.</p>
@@ -189,22 +367,63 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p>We need laws that are clear and enforced. A community needs a strong moral center.</p>
             <p>We should be proud of who we are and what we believe. Authenticity means living your values and not apologizing for them.</p>
         </div>
-        <div class="values-chart">
-            <div class="values-chart-title">Personal Vector of Values (main domains)</div>
-            <div class="bar-chart">
-                <div class="bar-group"><div class="bar" style="height:72%"></div><span class="bar-label">1</span></div>
-                <div class="bar-group"><div class="bar" style="height:60%"></div><span class="bar-label">2</span></div>
-                <div class="bar-group"><div class="bar" style="height:68%"></div><span class="bar-label">3</span></div>
-                <div class="bar-group"><div class="bar" style="height:40%"></div><span class="bar-label">4</span></div>
-                <div class="bar-group"><div class="bar bar-muted" style="height:90%"></div><span class="bar-label">5</span></div>
-                <div class="bar-group"><div class="bar" style="height:65%"></div><span class="bar-label">6</span></div>
-                <div class="bar-group"><div class="bar" style="height:75%"></div><span class="bar-label">7</span></div>
-                <div class="bar-group"><div class="bar" style="height:58%"></div><span class="bar-label">8</span></div>
-                <div class="bar-group"><div class="bar" style="height:80%"></div><span class="bar-label">9</span></div>
-                <div class="bar-group"><div class="bar bar-muted" style="height:90%"></div><span class="bar-label">10</span></div>
-            </div>
+
+        <div class="values-actions">
+            <button type="button" id="values-edit-btn">Edit</button>
+            <button type="button" id="values-explain-btn">Explain with AI</button>
         </div>
-        <button>Change</button> <button>User Guide Values Description</button> <button>Explain</button>
+        </div>
+
+        <div class="values-edit-mode" id="values-edit-mode" hidden>
+        <textarea id="values-textarea" class="values-textarea">
+I believe in the boundless potential of the human spirit. My vision for the future is a 'shining city on a hill'—green, yes, but green because of innovation, not stagnation.
+
+I want a community rooted in faith, family, and freedom, where the government gets out of the way. Freedom is not just a political word; it is the engine of everything good.
+
+I believe true conservation comes from ownership, not restriction. We are stewards of this beautiful planet God gave us.
+
+I believe in the volunteer spirit. If there is a problem, we fix it together—family, church, neighbors.
+
+We need laws that are clear and enforced. A community needs a strong moral center.
+
+We should be proud of who we are and what we believe. Authenticity means living your values and not apologizing for them.
+        </textarea>
+
+        <div class="values-actions">
+            <button type="button" id="values-save-btn">Save</button>
+            <button type="button" id="values-cancel-btn">Cancel</button>
+        </div>
+        </div>
+    </div>
+
+    <div class="values-ai-card" id="values-ai-card">
+        <div class="values-ai-header">
+        <div class="values-chart-title">AI assistant</div>
+        <div class="values-ai-subtitle">Improve weakly grounded values</div>
+        </div>
+
+        <div class="values-ai-messages" id="values-ai-messages">
+        <div class="ai-msg ai-msg-assistant">
+            Your values description looks strong in some domains, but a few values may still be weakly grounded. We can do one of three things: discuss unclear areas, pass a short follow-up survey, or name a person whose worldview may help reflect your values.
+        </div>
+        <div class="ai-msg ai-msg-assistant">
+            For example: “Help me clarify weak values”, “Start new survey”, or “Use Vaclav Havel as a reflection point”.
+        </div>
+        </div>
+
+        <div class="values-ai-input-row">
+        <input
+            type="text"
+            id="values-ai-input"
+            placeholder="Type your message to the AI assistant..."
+        />
+        <button type="button" id="values-ai-send-btn">Send</button>
+        </div>
+    </div>
+
+    <a class="values-guide-link" href="values-guide.html" target="_blank" rel="noopener noreferrer">
+        User Guide Values Description
+    </a>
     </div>
 
     <div id="section-profile" class="section-hidden">
@@ -237,20 +456,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <button class="section-modal-close" id="modal-close-btn">✕</button>
             <div class="section-modal-title" id="section-modal-title"></div>
             <div class="section-modal-body" id="section-modal-body"></div>
-        </div>
-    </div>
-
-    <div id="chat-window" class="chat-window">
-        <header>
-            <span>Assistant</span>
-            <button style="float:right;" id="chat-close-btn">X</button>
-        </header>
-        <div class="content">
-            <textarea>
-1. You have 1 voting to be done today
-2. Your description of values does not reflect your views on social processes in two domains.
-3. Some other help?
-            </textarea>
         </div>
     </div>
 

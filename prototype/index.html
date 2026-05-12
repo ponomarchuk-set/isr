@@ -2,65 +2,59 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to ISR</title>
+    <title>ISR — Login</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- <div style="display: flex; gap: 20px; padding: 20px; flex-direction: column; align-items: center;"> -->
-    <div style="display: flex; flex-direction: column; align-items: center;">
-        <p>Welcome to</p>
-        <img src="../images/logo-t.png" alt="ISR homepage" height="100">
-        <p>Choose your login option:</p>
-        <div style="display: flex; gap: 20px; padding: 20px; justify-content: center;">
-            <!-- <div style="border-radius: 12px; padding: 20px; box-sizing: border-box;"> -->
-            <div style="box-sizing: border-box;">
-                <p>Take your own account</p>
-                <input type="text" id="login-username" placeholder="Username"><br>
-                <input type="password" placeholder="Password"><br><br>
-                <button id="login-btn" disabled>Login</button>
-                <button id="register-btn" disabled>Register</button>
-            </div>
-            <!-- <div style="border-radius: 12px; padding: 20px; box-sizing: border-box;" > -->
-            <div>
-                <p>OR</p>
-            </div>
-            <!-- <div style="border-radius: 12px; padding: 20px; box-sizing: border-box;" > -->
-            <div style="box-sizing: border-box;" >
-                <p>Take one of presetted profiles:</p>
-                <!-- <label for="testProfiles">Choose from list or type:</label> -->
-                <input list="testProfiless" id="testProfiles" name="testProfiles" placeholder="Type or select...">
+    <main class="login-shell">
+        <section class="login-card">
+            <center><img src="../images/isr-logo.png" alt="ISR logo" height="50">
+            <br>
+            <p class="login-subtitle">Welcome! Choose your login option.</p></center>
 
+            <div class="login-section">
+                <label class="login-label" for="login-username">Take your own account</label>
+                <input
+                    id="login-username"
+                    type="text"
+                    placeholder="Enter your name"
+                    autocomplete="name"
+                >
+
+                <div class="login-actions" style="margin-top: 12px;">
+                    <button id="login-btn" type="button" disabled>Login</button>
+                    <button id="register-btn" type="button" disabled>Register</button>
+                </div>
+            </div>
+
+            <div class="login-divider">OR</div>
+
+            <div class="login-section">
+                <label class="login-label" for="testProfiles">Take one of preset profiles</label>
+                <input
+                    list="testProfiless"
+                    id="testProfiles"
+                    type="text"
+                    placeholder="Choose a preset profile"
+                    autocomplete="off"
+                >
                 <datalist id="testProfiless">
-                <option value="Elon Musk">
-                <option value="Sergey Brin">
-                <option value="Iryna Volnytska">
-                <option value="Andrii Dligach">
-                <option value="Audrey Tang">
+                    <option value="Elon Musk"></option>
+                    <option value="Audrey Tang"></option>
+                    <option value="Iryna Volnytska"></option>
+                    <option value="Andrii Dligach"></option>
+                    <option value="Sergey Brin"></option>
                 </datalist>
             </div>
-        </div>
-        <p>Or feel free to chat with Assistant:</p>
-        <button onclick="openChat()">Assistant</button>
-    </div>
-
-
-    <div id="chat-window" class="chat-window">
-        <header>
-            <span>Assistant</span>
-            <button style="float:right;" onclick="closeChat()">X</button>
-        </header>
-        <div class="content">
-            <textarea>
-1. Overview
-2. Tutor
-3. Value guide
-Some other help?
-            </textarea>
-        </div>
-
-    </div>
-
+        </section>
+    </main>
 
     <script src="script.js"></script>
 </body>
