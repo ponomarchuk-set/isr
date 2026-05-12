@@ -8,12 +8,67 @@ function toggleContent(id) {
 }
 
 function scrollToAndExpand(id) {
-    var element = document.getElementById("content-" + id);
-    var menuPopup = document.getElementById("menu");
-    toggleContent("content-" + id);
-    element.scrollIntoView();
-    menuPopup.style.display = 'none';
+    openSectionModal(id);
 }
+
+// Section titles mapping
+var sectionTitles = {
+    chat: '💬 Chat',
+    voting: '🤚 Voting',
+    tasks: '🛠️ Tasks',
+    values: '⚖️ Values',
+    profile: '🤵 Profile',
+    settings: '🎨 Settings'
+};
+
+var currentSectionId = null;
+
+function openSectionModal(sectionId) {
+    var overlay = document.getElementById('section-modal-overlay');
+    var titleEl = document.getElementById('section-modal-title');
+    var bodyEl = document.getElementById('section-modal-body');
+    var source = document.getElementById('section-' + sectionId);
+    var menuPopup = document.getElementById('menu');
+
+    if (!source || !overlay) return;
+
+    // Close menu if open
+    if (menuPopup) menuPopup.style.display = 'none';
+
+    // Move content into modal
+    titleEl.textContent = sectionTitles[sectionId] || sectionId;
+    bodyEl.innerHTML = '';
+    while (source.firstChild) {
+        bodyEl.appendChild(source.firstChild);
+    }
+    currentSectionId = sectionId;
+
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeSectionModal(event) {
+    if (event && event.target !== document.getElementById('section-modal-overlay')) return;
+
+    var overlay = document.getElementById('section-modal-overlay');
+    var bodyEl = document.getElementById('section-modal-body');
+
+    if (currentSectionId) {
+        var source = document.getElementById('section-' + currentSectionId);
+        while (bodyEl.firstChild) {
+            source.appendChild(bodyEl.firstChild);
+        }
+        currentSectionId = null;
+    }
+
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Close modal on Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeSectionModal();
+});
 
 function goHome() {
     window.location.href = '../index.html';
@@ -21,29 +76,35 @@ function goHome() {
 
 function openChat() {
     var chatWindow = document.getElementById("chat-window");
-    chatWindow.style.display = "block";
+    if (chatWindow) chatWindow.style.display = "block";
 }
 
 function closeChat() {
     var chatWindow = document.getElementById("chat-window");
-    chatWindow.style.display = "none";
+    if (chatWindow) chatWindow.style.display = "none";
 }
 
 function openLogin() {
     window.location.href = "index.html";
 }
 
+// Safe sessionStorage helpers (Brave strict mode can block storage)
+function safeGetStorage(key) {
+    try { return sessionStorage.getItem(key); } catch(e) { return null; }
+}
+function safeSetStorage(key, val) {
+    try { sessionStorage.setItem(key, val); } catch(e) {}
+}
 
 // Value points  
-let freeValuePoints = 100;
-const maxPoints = 100;
+var freeValuePoints = 100;
+var maxPoints = 100;
 
 function updateValue(id) {
-    const input = document.getElementById(id);
-    const newValue = parseInt(input.value);
+    var input = document.getElementById(id);
+    var newValue = parseInt(input.value);
     
-    // Calculate the total value excluding the current field
-    const ids = [
+    var ids = [
         'serviceability', 'energy_efficiency', 'repair_quality', 
         'exterior_appearance', 'cleanliness_order', 'landscaping',
         'respect_residents','conflict_resolution','inclusivity',
@@ -52,8 +113,8 @@ function updateValue(id) {
         'active_residents','response_speed','equalization',
         'safety_residents','living_comfort','pet_friendly'
     ];
-    let totalExcludingCurrent = 0;
-    ids.forEach(fieldId => {
+    var totalExcludingCurrent = 0;
+    ids.forEach(function(fieldId) {
         if (fieldId !== id) {
             totalExcludingCurrent += parseInt(document.getElementById(fieldId).value);
         }
@@ -71,7 +132,7 @@ function updateValue(id) {
 }
 
 function updateTotalValue() {
-    const ids = [
+    var ids = [
         'serviceability', 'energy_efficiency', 'repair_quality', 
         'exterior_appearance', 'cleanliness_order', 'landscaping',
         'respect_residents','conflict_resolution','inclusivity',
@@ -81,119 +142,127 @@ function updateTotalValue() {
         'safety_residents','living_comfort','pet_friendly'
     ];
     
-    let total = 0;
-    ids.forEach(id => {
+    var total = 0;
+    ids.forEach(function(id) {
         total += parseInt(document.getElementById(id).value);
     });
     
     freeValuePoints = maxPoints - total;
-    document.getElementById("freeValuePoints").innerText = `Free Value Points: ${freeValuePoints}`;
+    document.getElementById("freeValuePoints").innerText = "Free Value Points: " + freeValuePoints;
     document.getElementById("total-value").innerText = total;
 }
 
+// === Single consolidated init ===
+function initApp() {
+  try {
+    var menuButton = document.getElementById('menu-button');
+    var menuPopup = document.getElementById('menu');
 
+    if (!menuButton || !menuPopup) {
+      // --- index.html page ---
+      var profileInput = document.getElementById('testProfiles');
+      if (profileInput) {
+        var validProfiles = [];
+        document.querySelectorAll('#testProfiless option').forEach(function(o) {
+          validProfiles.push(o.value);
+        });
+        profileInput.addEventListener('input', function() {
+          if (validProfiles.indexOf(this.value) !== -1) {
+            safeSetStorage('userName', this.value);
+            window.location.href = 'main.html';
+          }
+        });
+      }
 
-// popupmenu
-document.addEventListener('DOMContentLoaded', function() {
-  const menuButton = document.getElementById('menu-button');
-  const menuPopup = document.getElementById('menu');
-
-  if (!menuButton || !menuPopup) {
-    // index.html: handle preset profile selection
-    const profileInput = document.getElementById('testProfiles');
-    if (profileInput) {
-      const validProfiles = [...document.querySelectorAll('#testProfiless option')].map(o => o.value);
-      profileInput.addEventListener('input', function() {
-        if (validProfiles.includes(this.value)) {
-          sessionStorage.setItem('userName', this.value);
-          window.location.href = 'main.html';
-        }
-      });
+      var usernameInput = document.getElementById('login-username');
+      var loginBtn  = document.getElementById('login-btn');
+      var registerBtn = document.getElementById('register-btn');
+      if (usernameInput && loginBtn && registerBtn) {
+        usernameInput.addEventListener('input', function() {
+          var hasValue = this.value.trim().length > 0;
+          loginBtn.disabled    = !hasValue;
+          registerBtn.disabled = !hasValue;
+        });
+        loginBtn.addEventListener('click', function() {
+          if (!this.disabled) {
+            safeSetStorage('userName', usernameInput.value.trim());
+            window.location.href = 'main.html';
+          }
+        });
+        registerBtn.addEventListener('click', function() {
+          if (!this.disabled) {
+            safeSetStorage('userName', usernameInput.value.trim());
+            window.location.href = 'main.html';
+          }
+        });
+      }
+      return;
     }
 
-    // Enable Login / Register only when username is not empty
-    const usernameInput = document.getElementById('login-username');
-    const loginBtn  = document.getElementById('login-btn');
-    const registerBtn = document.getElementById('register-btn');
-    if (usernameInput && loginBtn && registerBtn) {
-      usernameInput.addEventListener('input', function() {
-        const hasValue = this.value.trim().length > 0;
-        loginBtn.disabled    = !hasValue;
-        registerBtn.disabled = !hasValue;
-      });
-      // Navigate to main.html when enabled
-      loginBtn.addEventListener('click', function() {
-        if (!this.disabled) {
-          sessionStorage.setItem('userName', usernameInput.value.trim());
-          window.location.href = 'main.html';
-        }
-      });
-      registerBtn.addEventListener('click', function() {
-        if (!this.disabled) {
-          sessionStorage.setItem('userName', usernameInput.value.trim());
-          window.location.href = 'main.html';
-        }
-      });
+    // --- main.html page ---
+
+    // Display stored user name
+    var storedName = safeGetStorage('userName');
+    if (storedName) {
+      menuButton.textContent = '🤵 ' + storedName;
     }
 
-    return;
-  }
-
-  // Display stored user name in navbar
-  const storedName = sessionStorage.getItem('userName');
-  if (storedName) {
-    menuButton.textContent = '🤵 ' + storedName;
-  }
-
-  // Toggle menu visibility
-  menuButton.addEventListener('click', function() {
-    menuPopup.style.display = menuPopup.style.display === 'block' ? 'none' : 'block';
-    menuPopup.style.right = menuButton.style.right;
-  });
-
-  // Hide menu when clicking outside
-  document.addEventListener('click', function(event) {
-    if (!menuButton.contains(event.target) && !menuPopup.contains(event.target)) {
-      menuPopup.style.display = 'none';
-    }
-  });
-
-  // Hide menu when an option is clicked
-  menuPopup.addEventListener('click', function(event) {
-    if (event.target.classList.contains('menu-option')) {
-      menuPopup.style.display = 'none';
-    }
-  });
-});
-
-// Search toggle: mode 1 (buttons) ↔ mode 2 (input + search)
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('[data-search-toggle]').forEach(function(container) {
-    var buttons = container.querySelector('.search-buttons');
-    var input   = container.querySelector('.search-input');
-    var toggleBtn = container.querySelector('.search-toggle-btn');
-
-    if (!buttons || !input || !toggleBtn) return;
-
-    // Enter search mode
-    toggleBtn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      buttons.style.display = 'none';
-      input.style.display   = '';
-      input.querySelector('input').focus();
+    // Toggle menu
+    menuButton.addEventListener('click', function() {
+      menuPopup.style.display = menuPopup.style.display === 'block' ? 'none' : 'block';
     });
 
-    // Prevent clicks on search input / search button from bubbling (avoid toggling the parent paragraph)
-    input.addEventListener('click', function(e) {
-      e.stopPropagation();
-    });
-
-    // Exit search mode when clicking anywhere outside
-    document.addEventListener('click', function(e) {
-      if (!input.contains(e.target)) {
-        buttons.style.display = '';
-        input.style.display   = 'none';
+    // Hide menu on outside click
+    document.addEventListener('click', function(event) {
+      if (!menuButton.contains(event.target) && !menuPopup.contains(event.target)) {
+        menuPopup.style.display = 'none';
       }
     });
-  });
-});
+
+    // Logo
+    var logo = document.getElementById('logo');
+    if (logo) logo.addEventListener('click', goHome);
+
+    // Assistant button
+    var assistantBtn = document.getElementById('assistant-btn');
+    if (assistantBtn) assistantBtn.addEventListener('click', openChat);
+
+    // Chat close button
+    var chatCloseBtn = document.getElementById('chat-close-btn');
+    if (chatCloseBtn) chatCloseBtn.addEventListener('click', closeChat);
+
+    // Dashboard cards and menu links with data-section
+    document.querySelectorAll('[data-section]').forEach(function(el) {
+      el.addEventListener('click', function(e) {
+        e.preventDefault();
+        openSectionModal(this.getAttribute('data-section'));
+      });
+    });
+
+    // Modal overlay — close on background click
+    var overlay = document.getElementById('section-modal-overlay');
+    if (overlay) {
+      overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) closeSectionModal();
+      });
+    }
+
+    // Modal close button
+    var modalCloseBtn = document.getElementById('modal-close-btn');
+    if (modalCloseBtn) {
+      modalCloseBtn.addEventListener('click', function() {
+        closeSectionModal();
+      });
+    }
+
+  } catch(err) {
+    console.error('initApp error:', err);
+  }
+}
+
+// Run init — handles both early and late script loading
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
+}
