@@ -55,9 +55,24 @@ function openSectionModal(sectionId) {
 function closeSectionModal() {
   const overlay = document.getElementById('section-modal-overlay');
   const bodyEl = document.getElementById('section-modal-body');
+  const titleEl = document.getElementById('section-modal-title');
 
   if (!overlay || !bodyEl) return;
 
+  // NEW BEHAVIOR: If a topic detail is open, restore the list view and STOP.
+  if (bodyEl.hasAttribute('data-topic-detail-open') && typeof bodyEl.__restoreView === 'function') {
+    bodyEl.__restoreView();
+    
+    // Restore the modal title (e.g., from the topic back to "Voting" or "Chat")
+    if (titleEl && bodyEl.hasAttribute('data-topic-source-title')) {
+      titleEl.textContent = bodyEl.getAttribute('data-topic-source-title');
+    }
+    
+    // Exit the function early so the modal itself does not close
+    return; 
+  }
+
+  // ORIGINAL BEHAVIOR: If we are already looking at the list, close the modal entirely.
   if (currentSectionId) {
     const source = document.getElementById('section-' + currentSectionId);
     if (source) {
@@ -1074,7 +1089,7 @@ function initTopicDetailViews() {
 
   if (!modalBody) return;
 
-  var topicStore = {
+var topicStore = {
     voting: {
       'vote-1': {
         name: 'Repair sidewalk near school',
@@ -1120,6 +1135,62 @@ function initTopicDetailViews() {
           { label: 'Add playground zone', score: 121 },
           { label: 'Keep minimal intervention', score: 47 }
         ]
+      },
+      'vote-4': {
+        name: 'After-school program funding',
+        description: 'Discussion regarding budget allocation...',
+        counter: '0/340',
+        deadline: '26.04.10',
+        relevance: 88,
+        isrScore: 93,
+        status: 'discussion',
+        statusText: 'Currently under community discussion.',
+        options: []
+      },
+      'vote-5': {
+        name: 'Switch CI/CD to GitHub Actions',
+        description: 'Proposal to migrate our current Jenkins pipelines to GitHub Actions to reduce maintenance overhead.',
+        counter: '15/117',
+        deadline: '26.05.20',
+        relevance: 0.91,
+        isrScore: 1.15,
+        status: 'in_process',
+        statusText: 'Voting is currently active. Migration timeline depends on this vote.',
+        options: [
+          { label: 'Full migration to GitHub Actions', score: null },
+          { label: 'Hybrid approach (keep Jenkins for legacy)', score: null },
+          { label: 'Reject migration', score: null }
+        ]
+      },
+      'vote-6': {
+        name: 'Fence door renew',
+        description: 'Replacing the old rusted fence door at the main courtyard entrance with a secure electronic gate.',
+        counter: '167/188',
+        deadline: '26.03.15',
+        relevance: 0.95,
+        isrScore: 1.07,
+        status: 'approved',
+        statusText: 'Approved: The community chose the heavy-duty metal option.',
+        options: [
+          { label: 'Heavy-duty metal gate', score: 145 },
+          { label: 'Standard iron gate', score: 22 },
+          { label: 'Keep current door', score: 0 }
+        ]
+      },
+      'vote-7': {
+        name: 'Bike lane on Central Avenue',
+        description: 'City district initiative to repurpose the rightmost car lane on Central Ave into a protected bike lane.',
+        counter: '14020/15775',
+        deadline: '26.05.01',
+        relevance: 0.54,
+        isrScore: 1.88,
+        status: 'approved',
+        statusText: 'Approved: The district council has approved the protected lane.',
+        options: [
+          { label: 'Fully protected lane with barriers', score: 9800 },
+          { label: 'Painted shared lane only', score: 4000 },
+          { label: 'Do not add bike lanes', score: 220 }
+        ]
       }
     },
     chat: {
@@ -1132,9 +1203,87 @@ function initTopicDetailViews() {
         isrScore: 63,
         options: ['Keep current order', 'Switch second act to contemporary'],
         messages: [
-          { author: 'Iryna V.', text: 'I think we should coordinate with the company before Thursday.' },
-          { author: 'Audrey T.', text: 'I suggest we switch the second act to contemporary.' },
-          { author: 'Maksym P.', text: 'The current setup is fine if we shorten the first transition.' }
+          { author: 'Iryna V.', text: 'I think we should coordinate with the company before Thursday.', reactions: '5👍 1😁' },
+          { author: 'Audrey T.', text: 'I suggest we switch the second act to contemporary.', reactions: '8👍 2🥴' },
+          { author: 'Maksym P.', text: 'The current setup is fine if we shorten the first transition.', reactions: '3👍' }
+        ]
+      },
+      'chat-2': {
+        name: 'Choreography for the spring showcase',
+        description: 'Discussion regarding the creative direction for the second act of our annual performance.',
+        counter: '15 members',
+        deadline: '26.04.20',
+        relevance: 0.60,
+        isrScore: 0.85,
+        options: ['Keep classical', 'Switch to contemporary', 'Mix both styles'],
+        messages: [
+          { author: 'Audrey T.', text: 'I suggest we switch the second act to contemporary — the dancers have been asking for it.', reactions: '6👍 1😁' },
+          { author: 'Iryna V.', text: 'That sounds great, but do we have enough time to learn a whole new routine?', reactions: '4👍 2🥴' }
+        ]
+      },
+      'chat-3': {
+        name: 'School trip safety concerns',
+        description: 'Parent committee discussion about medical prep for the upcoming 6th-grade hiking trip.',
+        counter: '24 members',
+        deadline: '26.05.05',
+        relevance: 0.88,
+        isrScore: 1.20,
+        options: ['Require first-aid certs', 'Hire medical staff', 'Standard prep'],
+        messages: [
+          { author: 'Sergey B.', text: 'Can we get confirmation that all chaperones have first aid kits?', reactions: '12👍' },
+          { author: 'Andrii D.', text: 'Yes, the school provides three kits, but we should bring extra supplies.', reactions: '15👍 1💊' }
+        ]
+      },
+      'chat-4': {
+        name: 'Parking lot lighting upgrade',
+        description: 'Reviewing vendor quotes for installing LED floodlights in the north parking lot.',
+        counter: '8 members',
+        deadline: '26.06.10',
+        relevance: 0.75,
+        isrScore: 0.90,
+        options: ['Vendor A (Cheaper)', 'Vendor B (Better warranty)'],
+        messages: [
+          { author: 'Andrii D.', text: 'Has anyone checked the quotes from the second vendor?', reactions: '2👍' },
+          { author: 'Elon M.', text: 'I looked at them. Vendor B is 15% more expensive but covers labor in the warranty.', reactions: '4👍' }
+        ]
+      },
+      'chat-5': {
+        name: 'Sprint 14 blockers — API migration',
+        description: 'Dev team thread to unblock the frontend team during the v2 authentication rollout.',
+        counter: '6 members',
+        deadline: '26.05.14',
+        relevance: 0.95,
+        isrScore: 1.10,
+        options: ['Rollback to v1', 'Patch endpoints today', 'Delay sprint review'],
+        messages: [
+          { author: 'Elon M.', text: 'The auth service is still returning 401s after the endpoint change.', reactions: '2😡 1🥴' },
+          { author: 'Audrey T.', text: 'I am pushing a fix to staging right now. Give me 10 minutes.', reactions: '5👍 1😁' }
+        ]
+      },
+      'chat-6': {
+        name: 'Public transport route changes — district 7',
+        description: 'City planning discussion about the proposed removal of the 6 AM early bus route.',
+        counter: '43 members',
+        deadline: '26.08.01',
+        relevance: 0.65,
+        isrScore: 1.45,
+        options: ['Keep 6 AM bus', 'Shift to 6:30 AM', 'Replace with minivans'],
+        messages: [
+          { author: 'Iryna V.', text: 'Removing the 6AM bus would leave the entire east side without early commuter access.', reactions: '28👍 5😡' },
+          { author: 'Sergey B.', text: 'Agreed. We need to petition the transit authority to keep at least one early run.', reactions: '19👍' }
+        ]
+      },
+      'chat-7': {
+        name: 'Budget allocation for park renovation',
+        description: 'Deciding which zones of the district park get prioritized for the Q3 budget.',
+        counter: '31 members',
+        deadline: '26.07.15',
+        relevance: 0.70,
+        isrScore: 1.30,
+        options: ['Playground', 'Dog park fences', 'Walking paths'],
+        messages: [
+          { author: 'Andrii D.', text: "I'd prioritize the playground area — it hasn't been updated in 10 years.", reactions: '14👍 2😁' },
+          { author: 'Audrey T.', text: 'The walking paths are actually a trip hazard right now. Safety first.', reactions: '11👍 1🥴' }
         ]
       }
     },
@@ -1147,15 +1296,95 @@ function initTopicDetailViews() {
         relevance: 82,
         isrScore: 69,
         tasks: [
-          'Confirm volunteers',
-          'Prepare trash bags and gloves',
-          'Coordinate with district utility office',
-          'Assign photo documentation'
+          { text: 'Confirm volunteers', reactions: '3👍' },
+          { text: 'Prepare trash bags and gloves', reactions: '2👍' },
+          { text: 'Coordinate with district utility office', reactions: '4👍 1😁' },
+          'Assign photo documentation' // No reactions (fallback test)
         ],
         comments: [
-          'Need two more volunteers for the north side.',
-          'Utility office can provide bags after 10:00.',
-          'Please confirm if children zone is included.'
+          { text: 'Need two more volunteers for the north side.', reactions: '2🥴' },
+          { text: 'Utility office can provide bags after 10:00.', reactions: '4👍' },
+          'Please confirm if children zone is included.' // No reactions (fallback test)
+        ]
+      },
+      'task-2': {
+        name: 'Ladders to 1st entrance',
+        description: 'Repair and safety inspection of the primary entrance stairs.',
+        counter: '2 tasks',
+        deadline: '26.05.25',
+        relevance: 0.65,
+        isrScore: 0.77,
+        tasks: [
+          { text: '🔄 Safety inspection (26.05.15)', reactions: '8👍' },
+          '⬜ Order replacement parts (26.05.25)' // No reactions
+        ],
+        comments: [
+          { text: 'Inspection is scheduled for this Thursday morning.', reactions: '5👍 1😁' }
+        ]
+      },
+      'task-3': {
+        name: 'Studio rental contract extension',
+        description: 'Processing the paperwork and negotiations for the cultural studio lease.',
+        counter: '3 tasks',
+        deadline: '26.07.01',
+        relevance: 0.48,
+        isrScore: 1.42,
+        tasks: [
+          { text: '✅ Review current lease terms (26.04.10)', reactions: '4👍' },
+          { text: '🔄 Negotiate new rate (26.05.01)', reactions: '2👍 1🥴' },
+          '⬜ Sign updated contract (26.07.01)'
+        ],
+        comments: [
+          { text: 'Landlord agreed to a meeting next week to discuss the rate.', reactions: '6👍' }
+        ]
+      },
+      'task-4': {
+        name: 'After-school program funding',
+        description: 'Securing grants and coordinating staff for the new after-school educational program.',
+        counter: '4 tasks',
+        deadline: '26.05.10',
+        relevance: 0.88,
+        isrScore: 0.93,
+        tasks: [
+          { text: '✅ Draft budget proposal (26.03.20)', reactions: '12👍' },
+          { text: '✅ Present to parent committee (26.04.02)', reactions: '18👍 3😁' },
+          { text: '🔄 Apply for district grant (26.04.15)', reactions: '10👍' },
+          { text: '⬜ Hire program coordinator (26.05.10)', reactions: '1👍' }
+        ],
+        comments: [
+          { text: 'Grant application was submitted yesterday. Waiting for a reply.', reactions: '22👍' }
+        ]
+      },
+      'task-5': {
+        name: 'Switch CI/CD to GitHub Actions',
+        description: 'Technical migration to modernize the build and deployment pipelines.',
+        counter: '3 tasks',
+        deadline: '26.06.01',
+        relevance: 0.91,
+        isrScore: 1.15,
+        tasks: [
+          { text: '✅ Audit existing Jenkins pipelines (26.05.05)', reactions: '3👍' },
+          { text: '🔄 Write GitHub Actions workflows (26.05.20)', reactions: '4👍 1😁' },
+          { text: '⬜ Decommission Jenkins server (26.06.01)', reactions: '5👍 2😁' }
+        ],
+        comments: [
+          { text: 'Workflow tests are passing on the staging branch.', reactions: '6👍' }
+        ]
+      },
+      'task-6': {
+        name: 'Bike lane on Central Avenue',
+        description: 'City district infrastructure project tracking for the new protected bike lane.',
+        counter: '3 tasks',
+        deadline: '26.05.15',
+        relevance: 0.54,
+        isrScore: 1.88,
+        tasks: [
+          { text: '✅ Conduct traffic impact study (26.02.15)', reactions: '45👍' },
+          { text: '✅ Approve final route design (26.03.30)', reactions: '120👍 15😡' },
+          { text: '🔄 Begin road marking and signage (26.05.15)', reactions: '88👍 5😁' }
+        ],
+        comments: [
+          { text: 'Paint crew is booked for next Tuesday, weather permitting.', reactions: '54👍 3🥴' }
         ]
       }
     }
@@ -1279,12 +1508,16 @@ function initTopicDetailViews() {
           '<div class="topic-detail-block-title">Messages</div>' +
           '<div class="topic-message-list">' +
             topic.messages.map(function(msg, index) {
+              // ADDED: Check for existing reactions
+              var existingReactions = msg.reactions ? '<span style="display:inline-flex; gap:6px; padding:2px 8px; margin:0 4px; background:var(--surface-muted); border-radius:12px; font-size:0.85rem; cursor:pointer;">' + msg.reactions + '</span>' : '';
+              
               return '' +
               '<div class="topic-message-card">' +
                 '<div class="topic-message-author">' + msg.author + '</div>' +
                 '<div class="topic-message-text">' + msg.text + '</div>' +
                 '<div class="topic-message-actions">' +
                   '<button type="button" class="topic-inline-btn">Reply</button>' +
+                  existingReactions + // Injected here
                   '<div class="reaction-wrap">' +
                     '<button type="button" class="topic-inline-btn react-toggle-btn" data-reaction-menu="' + index + '">React</button>' +
                     renderReactionMenu() +
@@ -1381,7 +1614,17 @@ function initTopicDetailViews() {
           '<div class="topic-detail-block-title">Tasks</div>' +
           '<div class="task-button-list">' +
             topic.tasks.map(function(task) {
-              return '<button type="button" class="task-chip-btn">' + task + '</button>';
+              var taskText = typeof task === 'string' ? task : task.text;
+              var existingReactions = task.reactions ? '<span style="display:inline-flex; gap:6px; padding:2px 8px; margin:0 4px; background:var(--surface-muted); border-radius:12px; font-size:0.85rem; cursor:pointer;">' + task.reactions + '</span>' : '';
+              
+              return '<div style="display:flex; align-items:center; gap: 8px;">' +
+                       '<button type="button" class="task-chip-btn">' + taskText + '</button>' +
+                       existingReactions + // Injected here
+                       '<div class="reaction-wrap">' +
+                         '<button type="button" class="topic-inline-btn react-toggle-btn">React</button>' +
+                         renderReactionMenu() +
+                       '</div>' +
+                     '</div>';
             }).join('') +
           '</div>' +
         '</div>' +
@@ -1390,7 +1633,20 @@ function initTopicDetailViews() {
           '<div class="topic-detail-block-title">Comments</div>' +
           '<div class="topic-message-list">' +
             topic.comments.map(function(comment) {
-              return '<div class="topic-message-card"><div class="topic-message-text">' + comment + '</div></div>';
+              var commentText = typeof comment === 'string' ? comment : comment.text;
+              var existingReactions = comment.reactions ? '<span style="display:inline-flex; gap:6px; padding:2px 8px; margin:0 4px; background:var(--surface-muted); border-radius:12px; font-size:0.85rem; cursor:pointer;">' + comment.reactions + '</span>' : '';
+
+              return '<div class="topic-message-card">' +
+                       '<div class="topic-message-text">' + commentText + '</div>' +
+                       '<div class="topic-message-actions">' +
+                         '<button type="button" class="topic-inline-btn">Reply</button>' +
+                         existingReactions + // Injected here
+                         '<div class="reaction-wrap">' +
+                           '<button type="button" class="topic-inline-btn react-toggle-btn">React</button>' +
+                           renderReactionMenu() +
+                         '</div>' +
+                       '</div>' +
+                     '</div>';
             }).join('') +
           '</div>' +
         '</div>' +
@@ -1444,6 +1700,8 @@ function initTopicDetailViews() {
       bindTopicListInteractions();
     }
   }
+  
+  modalBody.__restoreView = restoreTopicListView;
 
   function bindReactionMenus() {
     modalBody.querySelectorAll('.react-toggle-btn').forEach(function(btn) {
@@ -1476,10 +1734,14 @@ function initTopicDetailViews() {
     bindReactionMenus();
   }
 
-  function bindTopicListInteractions() {
+function bindTopicListInteractions() {
     var sourceTitle = modalTitle ? modalTitle.textContent : '';
 
     modalBody.querySelectorAll('[data-topic-id][data-topic-type]').forEach(function(el) {
+      // ADDED: Prevent multiple click listeners from stacking on the same element
+      if (el.__eventsBound) return;
+      el.__eventsBound = true;
+
       el.addEventListener('click', function(e) {
         e.preventDefault();
         var kind = this.getAttribute('data-topic-type');
@@ -1490,10 +1752,14 @@ function initTopicDetailViews() {
 
     var newTopicBtn = modalBody.querySelector('#chat-new-topic-btn');
     if (newTopicBtn) {
-      newTopicBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        renderChatCreateView(modalBody.innerHTML, sourceTitle);
-      });
+      // ADDED: Prevent multiple click listeners for the new chat button too
+      if (!newTopicBtn.__eventsBound) {
+        newTopicBtn.__eventsBound = true;
+        newTopicBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          renderChatCreateView(modalBody.innerHTML, sourceTitle);
+        });
+      }
     }
   }
 

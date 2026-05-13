@@ -608,11 +608,23 @@ a:hover {
   cursor: pointer;
 }
 
-.paragraph_top_but,
-.paragraph_top_search {
+.paragraph_top_but {
   display: flex;
   gap: 10px;
   align-items: center;
+}
+
+.paragraph_top_search {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.search-filter-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .topic-list,
@@ -1465,6 +1477,10 @@ a:hover {
   background: #fff;
   box-shadow: var(--shadow-md);
   z-index: 20;
+}
+
+.reaction-menu[hidden] {
+  display: none !important;
 }
 
 .reaction-choice-btn {
