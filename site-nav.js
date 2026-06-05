@@ -16,10 +16,11 @@ document.addEventListener('DOMContentLoaded', function () {
         'explorer':    { en: 'Explorer',     ua: 'Explorer' },
         'mvp':         { en: 'MVP',          ua: 'MVP' },
         'aauth':       { en: 'AAuth',        ua: 'AAuth' },
-        'foundations':  { en: 'Foundations',  ua: 'Основи' },
+        'foundations': { en: 'Foundations',  ua: 'Основи' },
+        'sos':         { en: 'Social OS',    ua: 'Social OS' },
         'philosophy':  { en: 'Philosophy',   ua: 'Філософія' },
-        'sociology':  { en: 'Sociology',   ua: 'Соціологія' },
-        'article':     { en: 'ISR & H.Arendt',      ua: 'ISR та Х.Арендт' },
+        'sociology':   { en: 'Sociology',    ua: 'Соціологія' },
+        'article':     { en: 'ISR & H.Arendt', ua: 'ISR та Х.Арендт' },
         'faq':         { en: 'FAQ',          ua: 'Питання та відповіді' }
     };
 
@@ -189,6 +190,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // { name: 'What is ISR', href: '/wiki/' },
         // { name: 'MVP User Guide', href: '/wiki/mvp.html' },
         // { name: 'Adaptable Auth', href: '/wiki/adaptable_authorization.html' },
+        { name: t('sos', currentLang), href: localiseHref('/wiki/ISR-social-OS.html', currentLang) },
         { name: t('philosophy', currentLang), href: localiseHref('/wiki/ISR-philosophy.html', currentLang) },
         { name: t('sociology', currentLang), href: localiseHref('/wiki/ISR-sociology.html', currentLang) },
         { name: t('article', currentLang),    href: localiseHref('/wiki/ISR-Arendt-article.html', currentLang) },
