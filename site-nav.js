@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
         'wiki/faq.html',
         'wiki/ISR-philosophy.html',
         'wiki/ISR-sociology.html',
+        'wiki/ISR-social-OS.html',
         'wiki/ISR-Arendt-article.html'
     ];
 
@@ -17,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
         'mvp':         { en: 'MVP',          ua: 'MVP' },
         'aauth':       { en: 'AAuth',        ua: 'AAuth' },
         'foundations': { en: 'Foundations',  ua: 'Основи' },
-        'sos':         { en: 'Social OS',    ua: 'Social OS' },
+        'sos':         { en: 'Social OS',    ua: 'Соціальна OS' },
         'philosophy':  { en: 'Philosophy',   ua: 'Філософія' },
         'sociology':   { en: 'Sociology',    ua: 'Соціологія' },
         'article':     { en: 'ISR & H.Arendt', ua: 'ISR та Х.Арендт' },
