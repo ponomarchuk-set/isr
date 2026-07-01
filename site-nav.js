@@ -8,7 +8,8 @@ document.addEventListener('DOMContentLoaded', function () {
         'wiki/ISR-philosophy.html',
         'wiki/ISR-sociology.html',
         'wiki/ISR-social-OS.html',
-        'wiki/ISR-Arendt-article.html'
+        'wiki/ISR-Arendt-article.html',
+        'wiki/ISR-Heidegger-article.html'
     ];
 
     // Navigation label translations  { en: '...', ua: '...' }
@@ -22,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
         'philosophy':  { en: 'Philosophy',   ua: 'Філософія' },
         'sociology':   { en: 'Sociology',    ua: 'Соціологія' },
         'article':     { en: 'ISR & H.Arendt', ua: 'ISR та Х.Арендт' },
+        'article2':     { en: 'ISR & M.Heidegger', ua: 'ISR та М.Гайдеггер' },
         'faq':         { en: 'FAQ',          ua: 'Питання та відповіді' }
     };
 
@@ -195,6 +197,7 @@ document.addEventListener('DOMContentLoaded', function () {
         { name: t('philosophy', currentLang), href: localiseHref('/wiki/ISR-philosophy.html', currentLang) },
         { name: t('sociology', currentLang), href: localiseHref('/wiki/ISR-sociology.html', currentLang) },
         { name: t('article', currentLang),    href: localiseHref('/wiki/ISR-Arendt-article.html', currentLang) },
+        { name: t('article', currentLang),    href: localiseHref('/wiki/ISR-Heidegger-article.html', currentLang) },
         // { name: 'Society2050', href: '/wiki/society2050/' },
         // { name: 'Pitch Deck', href: '/wiki/pitchdeck/' },
         // { name: 'Game', href: '/snake3d/'},
