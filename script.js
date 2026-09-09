@@ -102,6 +102,7 @@ function updateTotalValue() {
 document.addEventListener('DOMContentLoaded', function() {
   const menuButton = document.getElementById('menu-button');
   const menuPopup = document.getElementById('menu');
+    if (!menuButton || !menuPopup) return;
 
   // Toggle menu visibility
   menuButton.addEventListener('click', function() {
@@ -194,6 +195,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Your existing menu code here...
     const menuButton = document.getElementById('menu-button');
     const menuPopup = document.getElementById('menu');
+    if (!menuButton || !menuPopup) return;
 
     // Toggle menu visibility
     menuButton.addEventListener('click', function() {
