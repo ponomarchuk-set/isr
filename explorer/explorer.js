@@ -345,7 +345,7 @@ function setIssue(index) {
 
 function updateSimulationUI() {
     const issue = issues[currentIssueIndex];
-    const memberList = document.getElementById('microcommunity-list');
+    const memberList = document.getElementById('public-list');
     memberList.innerHTML = '';
     let count = 0;
 
@@ -2102,7 +2102,7 @@ function updateContribUI() {
 
     document.getElementById('contrib-member-count').innerText = `${members.length}/${profiles.length}`;
 
-    // Calculate VoV for this microcommunity (weighted average)
+    // Calculate VoV for this PoA (weighted average)
     const vov = calculateAggregatedValues(profiles, issue);
 
     // Render member list
@@ -2486,7 +2486,7 @@ function updateISRCompleteUI() {
         const col = document.getElementById(`isr-col-${issueIdx}`);
         if (!col) return;
 
-        // 1. Gather microcommunity members (relevance >= threshold)
+        // 1. Gather ad-hoc public members (relevance >= threshold)
         const members = [];
         profiles.forEach(p => {
             const rel = calculateRelevance(p, issue);

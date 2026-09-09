@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', function () {
         { name: t('philosophy', currentLang), href: localiseHref('/wiki/ISR-philosophy.html', currentLang) },
         { name: t('sociology', currentLang), href: localiseHref('/wiki/ISR-sociology.html', currentLang) },
         { name: t('article', currentLang),    href: localiseHref('/wiki/ISR-Arendt-article.html', currentLang) },
-        { name: t('article', currentLang),    href: localiseHref('/wiki/ISR-Heidegger-article.html', currentLang) },
+        { name: t('article2', currentLang),    href: localiseHref('/wiki/ISR-Heidegger-article.html', currentLang) },
         // { name: 'Society2050', href: '/wiki/society2050/' },
         // { name: 'Pitch Deck', href: '/wiki/pitchdeck/' },
         // { name: 'Game', href: '/snake3d/'},
