@@ -186,6 +186,53 @@ body.paper, .paper { font-family: "Cambria", Georgia, serif }
     color: #4f81bd;
 }
 
+/* Inline article footnotes */
+.footnote-ref {
+    position: relative;
+    display: inline-block;
+    color: var(--accent);
+    cursor: help;
+    font-size: 0.75em;
+    font-weight: 700;
+    line-height: 1;
+    margin-left: 0.12em;
+    vertical-align: super;
+}
+
+.footnote-popup {
+    position: absolute;
+    bottom: calc(100% + 0.6rem);
+    left: 50%;
+    z-index: 20;
+    width: min(360px, calc(100vw - 30px));
+    padding: 0.7rem 0.8rem;
+    border: 1px solid #d7deea;
+    border-radius: 6px;
+    background: #fff;
+    box-shadow: 0 8px 24px rgba(20, 31, 51, 0.18);
+    color: #222;
+    font-family: "Calibri", sans-serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    line-height: 1.35;
+    opacity: 0;
+    pointer-events: none;
+    text-align: left;
+    transform: translate(-50%, 0.35rem);
+    transition: opacity 120ms ease, transform 120ms ease, visibility 120ms ease;
+    visibility: hidden;
+    white-space: normal;
+}
+
+.footnote-ref:hover .footnote-popup,
+.footnote-ref:focus .footnote-popup,
+.footnote-ref:focus-visible .footnote-popup {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, 0);
+    visibility: visible;
+}
+
 /* Tables and images */
 table {
     border-collapse: collapse;

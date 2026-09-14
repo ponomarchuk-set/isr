@@ -65,7 +65,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li><b>Expertise recognized, contribution rewarded.</b> Members with relevant domain expertise and a constructive track record gain proportionally greater voice on decisions within their competence area. Members with high ambitions but limited relevant knowledge have appropriately moderated influence — decisions benefit from genuine expertise rather than political capital.</li>
       <li><b>Faster, more legitimate decisions.</b> Weighting voices according to criteria the community itself defines accelerates decision-making and increases legitimacy: the reasoning is transparent and auditable by any member.</li>
       <li><b>No black boxes.</b> Every member can see exactly why certain participants carried more influence on a given issue — what expertise was recognized, what track record was considered, what values were weighted.</li>
-      <li><b>Distributed decision ownership.</b> Authority stays with the community through issue-specific microcommunities rather than concentrating in a leadership layer. This reduces deadlock while keeping power distributed.</li>
+      <li><b>Distributed decision ownership.</b> Authority stays with the community through ad-hoc issue-specific publics rather than concentrating in a leadership layer. This reduces deadlock while keeping power distributed.</li>
     </ul>
 
     <div class="main_content">
@@ -76,7 +76,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div id="content-WHAT_IS_ISR" class="content" style="display: none;">
         <h3>Core concept</h3>
         <p>
-          ISR (Index of Social Responsibility) is a context‑aware influence coefficient for each participant with respect to a specific question or issue, computed as a function of three components: Relevance (how much the issue directly affects the person), Expertise (domain‑specific knowledge and resources - how much the person can directly affects the issue) and Contribution (past actions valued by the microcommunity). That score (the ISR) is then used to weight that participant's vote or influence in the decision for that issue within the corresponding microcommunity formed around this question. ISR is not a permanent universal "label" on a person (like a "social credit" rating) - it is calculated for each specific question and can only be applied only to that question. And its components are transparent and explainable to participants.
+          ISR (Index of Social Responsibility) is a context‑aware influence coefficient for each participant with respect to a specific question or issue, computed as a function of three components: Relevance (how much the issue directly affects the person), Expertise (domain‑specific knowledge and resources - how much the person can directly affects the issue) and Contribution (past actions valued by the ad-hoc public). That score (the ISR) is then used to weight that participant's vote or influence in the decision for that issue within the corresponding ad-hoc public formed around this question. ISR is not a permanent universal "label" on a person (like a "social credit" rating) - it is calculated for each specific question and can only be applied only to that question. And its components are transparent and explainable to participants.
           <div class="formula">
             $$ISR = f(Relevance, Expertise, Contribution)$$
           </div>
@@ -90,7 +90,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li>lets communities declare their shared values and choose weighting parameters;</li>
           <li>lets people create structured profiles that feed ISR components: demographic and geographic data for Relevance, education and work history for domain-specific Expertise, and declared values plus logged actions for Contribution;</li>
           <li>lets people start discussions or voting on socially important issues (problems, questions, proposals);</li>
-          <li>forms dynamic microcommunities around concrete issues using a Relevance score (combining demographic, geospatial, semantic and social proximity) and proposes the most affected participants;</li>
+          <li>forms dynamic ad-hoc publics around concrete issues using a Relevance score (combining demographic, geospatial, semantic and social proximity) and proposes the most affected participants;</li>
           <li>calculates ISR scores for the issue by combining each participant's Relevance, domain-specific Expertise and community-assessed Contribution, and uses those scores in weighted voting;</li>
           <li>logs decisions, tasks and execution progress; and</li>
           <li>provides explainability: members can inspect how their ISR was computed (Relevance, Expertise and Contribution components) — and which factors mattered most.</li>
@@ -147,7 +147,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <li>(Optional) Action <b>results</b> text description.</li>
               </ul>
             Impacts on <b>Contribution</b>.</li>
-            <li><b>Values statment.</b> ISR values ​​subsystem is used to evaluate personal actions according to the values ​​of the microcommunity, which are aggregated from the individual values ​​of its members. Individual values are entered by participants at the stage of filling out the Profile (and could be edited later) in one of the listed ways or in a step-by-step combination:</li>
+            <li><b>Values statment.</b> ISR values ​​subsystem is used to evaluate personal actions according to the values ​​of the ad-hoc public, which are aggregated from the individual values ​​of its members. Individual values are entered by participants at the stage of filling out the Profile (and could be edited later) in one of the listed ways or in a step-by-step combination:</li>
             <ul>
               <li>Free <b>story</b> about future society the person wants to live in</li>
               <li>A <b>survey</b> that allows you to identify life values</li>
@@ -181,7 +181,7 @@ where:
                 <h5 id="values">► Vectorization of user values</h5></div>
               <div id="content-values" class="content sch-block-g" style="display: none;">
 
-                <p>Regarding values, the system <b>converts</b> any input description into a <b>single vector representation</b>, which is taken into account when compiling the <b>Vector of Values</b> of microcommunities. The participant can change his values, but if this happens often and very sharply, the system will analyze such actions for attempts at manipulation in order to influence specific issues and warn that such actions (inconsistency and opportunism in declaring values) can lead to a decrease in the overall influence of the participant.</p>
+                <p>Regarding values, the system <b>converts</b> any input description into a <b>single vector representation</b>, which is taken into account when compiling the <b>Vector of Values</b> of ad-hoc publics. The participant can change his values, but if this happens often and very sharply, the system will analyze such actions for attempts at manipulation in order to influence specific issues and warn that such actions (inconsistency and opportunism in declaring values) can lead to a decrease in the overall influence of the participant.</p>
                 <p>The system, using an AI assistant, provides participants with the opportunity to translate <b>one form into another</b> (vectorized array into a narrative text and vice versa), and also <b>explains</b> in what sense the system perceives the concepts used to describe values and what <b>impact</b> individual elements have on social actions and their assessment.</p>
                 <p>So, at the operational level, the values of the participants are an <b>array of vector representations</b> in a specialized database. The complete collection of vectorized user values ​​constitutes the ISR Matrix of Values.</p>
               </div>
@@ -205,7 +205,7 @@ where:
           </div>
           <div id="content-issue" class="content" style="display: none;">
             <p>A concrete <b>problem</b> needed to be solved or <b>question (q)</b> is raised in the system. An issue can be created by <b>any</b> community member. It should include a clear <b>description</b> of the problem, context, and desired outcomes. <b>AI-assistant</b> may <b>help</b> in categorizing and tagging the issue for better stakeholder matching.</p>
-            <p>The formation of a <b>microcommunity</b> around the question <b>q</b> is based on methods of analyzing graphs of geographical, gynecological, social, economic, etc. user connectivity. As well as on methods of clustering in network space and semantic analysis using LLM. The <b>scalar value</b> of the question vector indicates the contextual scope and expert complexity of the question, which also affects the number of participants involved in the micro-community.</p>
+            <p>The formation of a <b>ad-hoc public</b> around the question <b>q</b> is based on methods of analyzing graphs of geographical, gynecological, social, economic, etc. user connectivity. As well as on methods of clustering in network space and semantic analysis using LLM. The <b>scalar value</b> of the question vector indicates the contextual scope and expert complexity of the question, which also affects the number of participants involved in the micro-community.</p>
             <p>The question <b>q</b> must meet the following requirements:</p>
             <ul>
             <li><b>Text.</b> A clear specific request for which public consensus is required.</li>
@@ -242,48 +242,48 @@ where \(\vec{v}_i\) is the vector representation of the user profile, \(\vec{v}_
               <li>Geographic and organizational proximity</li>
               <li>Declared interests and values</li>
               </ul> -->
-              <li><b>Connecting to the microcommunity</b> of users with \(\text{Relevance} > \Theta\) , where \(\Theta\) is the threshold set by the context of the question <b>q</b>.</li>
+              <li><b>Connecting to the ad-hoc public</b> of users with \(\text{Relevance} > \Theta\) , where \(\Theta\) is the threshold set by the context of the question <b>q</b>.</li>
             </ol>
           </div>
         </div>
           ↓
         <div class="paragraph sch-block-w">
-          <div class="paragraph_top" onclick="toggleContent('content-microcom')">
-            <h4 id="microcom">► Microcommunity forms</h4>
+          <div class="paragraph_top" onclick="toggleContent('content-public')">
+            <h4 id="public">► Ad-hoc Public forms</h4>
           </div>
-          <div id="content-microcom" class="content" style="display: none;">
-            <p>That set becomes a temporary microcommunity for deliberation and voting on the issue. The identified stakeholders are invited to join a microcommunity dedicated to addressing the issue. This group will deliberate, propose solutions, and vote on the best course of action.</p>
+          <div id="content-public" class="content" style="display: none;">
+            <p>That set becomes a temporary ad-hoc public for deliberation and voting on the issue. The identified stakeholders are invited to join an ad-hoc public dedicated to addressing the issue. This group will deliberate, propose solutions, and vote on the best course of action.</p>
             <a href="https://raw.githubusercontent.com/ponomarchuk-set/isr/main/images/a2.svg">
-            <img src="https://raw.githubusercontent.com/ponomarchuk-set/isr/main/images/a2.svg" alt="ISR Microcommunity Lifecycle" width="100%">
+            <img src="https://raw.githubusercontent.com/ponomarchuk-set/isr/main/images/a2.svg" alt="ISR Ad-hoc Public Lifecycle" width="100%">
             </a><br><br>
-            <p><i>Microcommunity Lifecycle: Dynamic Problem-Oriented Formation</i></p>
-            <!-- MICROCOMMUNITIES -->
+            <p><i>Ad-hoc Public Lifecycle: Dynamic Problem-Oriented Formation</i></p>
+            <!-- PUBLICS -->
             <div class="paragraph">
-              <div class="paragraph_top" onclick="toggleContent('content-MICROCOMMUNITIES')">
-                <h5 id="MICROCOMMUNITIES">► Microcommunities — temporary groups around concrete problems</h5></div>
-              <div id="content-MICROCOMMUNITIES" class="content sch-block-g" style="display: none;">
-                <p>ISR forms microcommunities automatically. A microcommunity is a set of relevant stakeholders (persons) gathered to deliberate and decide on a single concrete issue. It appears when needed and dissolves once the issue is resolved and tasks are closed.</p>
+              <div class="paragraph_top" onclick="toggleContent('content-PUBLICS')">
+                <h5 id="PUBLICS">► Ad-hoc Publics — temporary groups around concrete problems</h5></div>
+              <div id="content-PUBLICS" class="content sch-block-g" style="display: none;">
+                <p>ISR forms ad-hoc publics automatically. An ad-hoc public is a set of relevant stakeholders (persons) gathered to deliberate and decide on a single concrete issue. It appears when needed and dissolves once the issue is resolved and tasks are closed.</p>
                 <p>Key advantages:</p>
                 <ul>
                   <li>Focus: decisions are handled by the people most connected to the problem.</li>
                   <li>Efficiency: fewer irrelevant voices in deliberations, while preserving transparency of outcomes.</li>
                   <li>Legitimacy: membership and weights are computed (for all members in the same way) and explained, not arbitrarily assigned.</li>
                 </ul>
-                <p>Technically, Relevance (the probability of a user belonging to a microcommunity) is calculated by matching the context of the question with various types of user data:</p>
+                <p>Technically, Relevance (the probability of a user belonging to an ad-hoc public) is calculated by matching the context of the question with various types of user data:</p>
 <div class="formula">
   $$Relevance = f(Demographic, Geographic, Semantic, Social)$$
 </div>
-                <p>And all whose Relevance more than certain threshold (typically 0.15) automatically included to the micricommunity.</p>
+                <p>And all whose Relevance more than certain threshold (typically 0.15) automatically included to the ad-hoc public.</p>
 
 
-            <!-- microcommunity example 1 -->
+            <!-- ad-hoc public example 1 -->
             <div class="paragraph">
               <div class="paragraph_top" onclick="toggleContent('content-ex1')">
-                <h5 id="ex1">► Microcommunity gathering. Example 1: Local Community</h5></div>
+                <h5 id="ex1">► Ad-hoc Public gathering. Example 1: Local Community</h5></div>
               <div id="content-ex1"  style="display: none;" class="sch-block-c">
         <center><b>Question:</b> "How should the reconstruction of the children's area and adjacent pedestrian zone in Parc de la Ciutadella be prioritized: more play equipment, more shade and seating, or more open green space?"<br>
             ⬇️ gathers ⬇️<br>
-            Microcommunity from the <b>local community</b><br>
+            Ad-hoc Public from the <b>local community</b><br>
             ⬇️ with members ⬇️
         </center><br><br>
         <p>
@@ -316,14 +316,14 @@ where \(\vec{v}_i\) is the vector representation of the user profile, \(\vec{v}_
         </div>
         </div>
 
-            <!-- microcommunity example 2 -->
+            <!-- ad-hoc public example 2 -->
             <div class="paragraph">
               <div class="paragraph_top" onclick="toggleContent('content-ex2')">
-                <h5 id="ex2">► Microcommunity gathering. Example 2: Remote Collaboration</h5></div>
+                <h5 id="ex2">► Ad-hoc Public gathering. Example 2: Remote Collaboration</h5></div>
               <div id="content-ex2" style="display: none;" class="sch-block-c">
         <center><b>Question:</b> "For the OpenSky open-source project, what should be the next development priority: improve ADS-B data quality validation, expand historical flight-data analytics, or build a simpler contributor API for external developers?"<br>
             ⬇️ gathers ⬇️<br>
-            Microcommunity of <b>OpenSky project</b> developers and stakeholders<br>
+            Ad-hoc Public of <b>OpenSky project</b> developers and stakeholders<br>
             ⬇️ with members ⬇️
         </center><br><br>
         <p>
@@ -356,14 +356,14 @@ where \(\vec{v}_i\) is the vector representation of the user profile, \(\vec{v}_
         </div>
         </div>
 
-            <!-- microcommunity example 3 -->
+            <!-- ad-hoc public example 3 -->
             <div class="paragraph">
               <div class="paragraph_top" onclick="toggleContent('content-ex3')">
-                <h5 id="ex3">► Microcommunity gathering. Example 3: Charity</h5></div>
+                <h5 id="ex3">► Ad-hoc Public gathering. Example 3: Charity</h5></div>
               <div id="content-ex3" style="display: none;" class="sch-block-c">
         <center><b>Question:</b> "An elderly health-care charity 'Warm Touch' has limited volunteer hours this quarter. Should it prioritize more home visits, transportation to medical appointments, or a medication-adherence phone support program?"<br>
             ⬇️ gathers ⬇️<br>
-            Microcommunity of volunteers of <b>charitable organization 'Warm Touch'</b><br>
+            Ad-hoc Public of volunteers of <b>charitable organization 'Warm Touch'</b><br>
             ⬇️ with members ⬇️
         </center><br><br>
         <p>
@@ -416,15 +416,15 @@ where \(\vec{v}_i\) is the vector representation of the user profile, \(\vec{v}_
               <div id="content-COMPONENTS" class="content" style="display: none;">
 
 
-        <p><b>Values subsystem</b>: It is a kind of legislature system in the ISR framework. Every user states its own life (economical, political, cultural, etc.) values. These values don't change because of the new microcommunity belonging - only if the member changes or clarifies his own life values. The values are vectorized and full values collection of all ISR users constitutes 'Matrix of Values'. After gathering microcommunity around some problem, its "Vector of Values" appears by aggregation all its members' individual values from Matrix of Values. So we got an actual, inclusive, pluralistic basement to understand the microcommunity needs and values which can be used for all further ISR estimations.</p>
+        <p><b>Values subsystem</b>: It is a kind of legislature system in the ISR framework. Every user states its own life (economical, political, cultural, etc.) values. These values don't change because of the new ad-hoc public belonging - only if the member changes or clarifies his own life values. The values are vectorized and full values collection of all ISR users constitutes 'Matrix of Values'. After gathering ad-hoc public around some problem, its "Vector of Values" appears by aggregation all its members' individual values from Matrix of Values. So we got an actual, inclusive, pluralistic basement to understand the ad-hoc public needs and values which can be used for all further ISR estimations.</p>
 
 <div style="border: 2px solid #999; background-color: #eee; border-radius: 12px; padding: 20px; box-sizing: border-box;">
 <center><b>How Vector of Values Is Used:</b></center>
   <hr>
   <p>
-    <b>1. Baseline Reference:</b> The aggregated values serve as the microcommunity's shared baseline for what matters in this microcommunity<br>
+    <b>1. Baseline Reference:</b> The aggregated values serve as the ad-hoc public's shared baseline for what matters in this ad-hoc public<br>
     <b>2. Influence Weighting:</b> When calculating ISR influence scores, the community's Vector of Values determines Contribution, providing a badrock of actions assessment<br>
-    <b>3. Holistic Assessment:</b> Rather than imposing external criteria, the framework reflects what this specific microcommunity actually values<br>
+    <b>3. Holistic Assessment:</b> Rather than imposing external criteria, the framework reflects what this specific ad-hoc public actually values<br>
     <b>4. Accountability:</b> Members see their collective values, so they understand exactly how their actions will be evaluated<br><br>
     <b>Key Principle:</b> The Vector ensures pluralism by reconciling diverse points of view.
 </p>
@@ -443,7 +443,7 @@ where \(\vec{v}_i\) is the vector representation of the user profile, \(\vec{v}_
 \end{align*}
 \]
 where:
-<li>\(\vec{V}_{\mathrm{mv}}\) - the microcommunity's <b>Vector of Values</b></li>
+<li>\(\vec{V}_{\mathrm{mv}}\) - the ad-hoc public's <b>Vector of Values</b></li>
 <li>\(R_i\) - <b>Relevance</b> of <b>i</b> member</li>
 <li>\(\vec{V}_i\) - vectorized <b>values</b> of <b>i</b> member</li>
 </p>
@@ -559,7 +559,7 @@ where:
   (Relevance-weighted average across the 5 members above)<br></center>
 
   <div style="border: 2px solid #999; background-color: #fffff0; border-radius: 12px; padding: 16px; box-sizing: border-box; margin: 0 auto;">
-    <center><b>Microcommunity Vector of Values</b></center>
+    <center><b>Ad-hoc Public's Vector of Values</b></center>
     <table style="margin: 0 auto;">
       <tr><td>Agency & Freedom: </td><td>71.43</td></tr>
       <tr><td>Relationality & Care: </td><td>71.15</td></tr>
@@ -626,14 +626,14 @@ where:
 
                 <h4>3. Contribution (C)</h4>
                 <p>Reflects the participant's verified <b>history of actions</b> in the community — tasks completed, constructive discussion, verified outcomes, peer evaluations, etc. Contribution is the system's operational "karma" measure: actions and their impact are recorded and vectorized so the AI can evaluate alignment with the community's declared values.</p>
-                <p>After calculating the situational <b>Relevance</b>, a list of <b>n</b> microcommunity participants appears with the corresponding weights \(R_i\) regarding relevance to the question <b>q</b>. Vector representations of their values \(\vec{V}_i\) (taking into account <b>Relevance</b>) make up the microcommunity <b>Vector of Values</b>, which can also be translated into a form convenient for the participant with explanations from the AI assistant. Therefore, the greater the <b>Relevance</b> of a member, the more the member's values influence <b>the values of the microcommunity</b>.</p>
-                <p><b>Contribution</b> is based on a structured record of past actions as seen by the microcommunity. Each action is represented as a vector in the same value space as the community's shared Vector of Values and evaluated along three axes:
+                <p>After calculating the situational <b>Relevance</b>, a list of <b>n</b> ad-hoc public participants appears with the corresponding weights \(R_i\) regarding relevance to the question <b>q</b>. Vector representations of their values \(\vec{V}_i\) (taking into account <b>Relevance</b>) make up the ad-hoc public's <b>Vector of Values</b>, which can also be translated into a form convenient for the participant with explanations from the AI assistant. Therefore, the greater the <b>Relevance</b> of a member, the more the member's values influence <b>the values of the ad-hoc public</b>.</p>
+                <p><b>Contribution</b> is based on a structured record of past actions as seen by the public. Each action is represented as a vector in the same value space as the community's shared Vector of Values and evaluated along three axes:
                   <ul>
                     <li><b>Alignment (A):</b> how well the action matches the community's declared values;</li>
                     <li><b>Force (F):</b> how strong the action was (type of effort, time invested, complexity and result);</li>
                     <li><b>Sentiment (S):</b> how other members reacted to it (marked as good, funny, rude, flood, foolish).</li>
                   </ul>
-                The contribution of a single action is computed from A, F and S, and a person's overall Contribution in a microcommunity is the aggregate over all their actions.
+                The contribution of a single action is computed from A, F and S, and a person's overall Contribution in a public is the aggregate over all their actions.
                 
                 <!-- calculation:
 \[
@@ -642,12 +642,12 @@ where:
 \end{align*}
 \]
 where:
-<li>\({C}_i\) - <b>Contribution</b> to the microcommunity of <b>i</b> member</li>
+<li>\({C}_i\) - <b>Contribution</b> to the public of <b>i</b> member</li>
 <li>\({actions}\) - <b>action</b> records of <b>i</b> member</li>
-<li>\(\vec{V}_{\mathrm{mv}}\) - the microcommunity's <b>Vector of Values</b></li>
+<li>\(\vec{V}_{\mathrm{mv}}\) - the public's <b>Vector of Values</b></li>
 <li>\(\vec{v}_{i, action}\) - vectorized <b>actions</b> of <b>i</b> member</li> -->
 </p>
-                <p>Finally <b>ISR is calculated</b> out from <b>Relevance, Expertise, Contribution</b> and normalized to unit mean (microcommunity average score is always 1) to psychologically simplify adaptation to the new approach.</p>
+                <p>Finally <b>ISR is calculated</b> out from <b>Relevance, Expertise, Contribution</b> and normalized to unit mean (ad-hoc public's average score is always 1) to psychologically simplify adaptation to the new approach.</p>
                 <p>Those who have greater ISR-score have a proportionally greater influence on the final decision.</p>
               </div>
             </div>
@@ -725,7 +725,7 @@ where:
         <p>Each raw component (relevance, expertise, contribution) is normalized by mean. The automated context routine proposes weights w<sub>R</sub>, w<sub>E</sub>, w<sub>C</sub> (sum = 1) appropriate to the issue. The final ISR is the weighted sum described earlier.</p>
 
         <h4>Audit & explainability</h4>
-        <p>For transparency, the system stores: the component values, a short natural-language explanation of the top contributing factors, and links to the records used. Higher-level permission holders in the microcommunity (per adaptable authorization rules) can view supporting evidence.</p>
+        <p>For transparency, the system stores: the component values, a short natural-language explanation of the top contributing factors, and links to the records used. Higher-level permission holders in the public (per adaptable authorization rules) can view supporting evidence.</p>
       </div>
     </div>
 
@@ -735,7 +735,7 @@ where:
         <h4 id="ADAPTABLE_AUTH">► Adaptable Authorization (AAuth) — privacy-aware, ISR-based access control</h4></div>
       <div id="content-ADAPTABLE_AUTH" class="content" style="display: none;">
         <p>ISR includes an adaptable authorization model: access to personal data is not simply role-based but depends on the requestor's ISR/gISR score, the sensitivity level of the requested resource, the relationship between accessor and subject, and the declared purpose.</p>
-        <p>Access is tiered (public results → microcommunity participation → ISR explanations → supporting evidence → activity logs → expertise profiles → social relations → full personal archive). Each tier requires a higher gISR and/or closer relationship in the microcommunity context. Granting access is logged, and suspicious user behavior patterns are analyzed and may influence future ISR values.</p>
+        <p>Access is tiered (public results → ad-hoc public participation → ISR explanations → supporting evidence → activity logs → expertise profiles → social relations → full personal archive). Each tier requires a higher gISR and/or closer relationship in the ad-hoc public context. Granting access is logged, and suspicious user behavior patterns are analyzed and may influence future ISR values.</p>
         <p>The adaptable authorization policy balances transparency and privacy while making misuse auditable and socially accountable. For technical details and diagrams see the system's Adaptable Authorization page.
           <br><br>
           <!-- link to the dedicated page -->
