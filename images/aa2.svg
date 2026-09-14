@@ -43,8 +43,8 @@
     <text x="50" y="155" font-size="12" fill="#7c7">0.0 gISR</text>
     <text x="50" y="170" font-size="12" fill="#c77">1 P2P lv</text>
 
-    <text x="150" y="125">Micro-</text>
-    <text x="150" y="140">community</text>
+    <text x="150" y="125">Ad-hoc</text>
+    <text x="150" y="140">Public</text>
     <text x="150" y="155" font-size="12" fill="#7c7">0.2 gISR</text>
     <text x="150" y="170" font-size="12" fill="#c77">2 P2P lv</text>
 
@@ -53,8 +53,8 @@
     <text x="250" y="155" font-size="12" fill="#7c7">0.4 gISR</text>
     <text x="250" y="170" font-size="12" fill="#c77">3 P2P lv</text>
 
-    <text x="350" y="125">Evidence</text>
-    <text x="350" y="140">&amp;</text>
+    <text x="350" y="125">Evidences</text>
+    <text x="350" y="140"></text>
     <text x="350" y="155" font-size="12" fill="#7c7">0.6 gISR</text>
     <text x="350" y="170" font-size="12" fill="#c77">4 P2P lv</text>
 

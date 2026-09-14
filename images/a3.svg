@@ -18,7 +18,7 @@
 <!-- Central Microcommunity circle -->
 <circle cx="400" cy="80" r="70" fill="#e6f2ff" stroke="#0066cc" stroke-width="4"/>
 <text x="400" y="60" font-size="16" font-weight="bold" text-anchor="middle" fill="#0066cc">Issue</text>
-<text x="400" y="80" font-size="14" text-anchor="middle" fill="#666">a Microcommunity</text>
+<text x="400" y="80" font-size="14" text-anchor="middle" fill="#666">an Ad-Hoc Public</text>
 <text x="400" y="100" font-size="14" text-anchor="middle" fill="#666">vote question</text>
 <path d="M 400 170 L 400 110" stroke="#06c" stroke-width="3" marker-end="url(#arrowBlue)" fill="none"/>
 <!-- Central Calculation Box -->

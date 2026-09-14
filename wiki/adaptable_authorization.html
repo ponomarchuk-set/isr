@@ -90,7 +90,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 we need <strong>context-aware access</strong> that adjusts to:
             </p>
             <ul>
-                <li>The specific microcommunity and issue at hand</li>
+                <li>The specific ad-hoc public and issue at hand</li>
                 <li>The accessor's relationship to the data subject</li>
                 <li>The accessor's proven trustworthiness (their ISR/gISR score)</li>
                 <li>The reason for accessing the data (explicit context)</li>
@@ -114,13 +114,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <li><strong>Accessor's ISR/gISR score:</strong> Their proven trustworthiness and social responsibility</li>
                 <li><strong>Data sensitivity level:</strong> How private or critical the requested information is</li>
                 <li><strong>Access context:</strong> Why they're accessing it (decision-making, verification, audit, etc.)</li>
-                <li><strong>Relationship to data subject:</strong> Are they a family member? Microcommunity peer? Stranger?</li>
+                <li><strong>Relationship to data subject:</strong> Are they a family member? Ad-hoc public peer? Stranger?</li>
                 <li><strong>Temporal factors:</strong> Time-bounded access for specific decisions or investigations</li>
             </ol>
 
             <div class="solution-box">
                 <strong>Key Principle:</strong> A person with higher ISR score can access more detailed information 
-                about more people, but their access is still limited to what's needed for their role in the microcommunity.
+                about more people, but their access is still limited to what's needed for their role in the ad-hoc public.
             </div>
 
             <h3>Core Formula</h3>
@@ -217,9 +217,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <li>Decision made and implementation status</li>
             </ul>
 
-            <h3>Layer 2: Microcommunity Participation (gISR ≥ 0.2 and 2 Person-to-Person relevance level)</h3>
+            <h3>Layer 2: Ad-hoc Public Participation (gISR ≥ 0.2 and 2 Person-to-Person relevance level)</h3>
             <p>
-                Once someone is part of a microcommunity for an issue, they can see:
+                Once someone is part of an ad-hoc public for an issue, they can see:
             </p>
             <ul>
                 <li>List of other members involved in this issue</li>
@@ -288,7 +288,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </ul>
 
             <div class="note-box">
-                <strong>Context-Specific Override:</strong> A person with gISR=0.5 investigating fraud in a microcommunity 
+                <strong>Context-Specific Override:</strong> A person with gISR=0.5 investigating fraud in an ad-hoc public 
                 they manage might temporarily get access to Layer 5 data for that investigation only, with logging and 
                 community notification.
             </div>
@@ -320,7 +320,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   "resource_id": "r_voter_profile_bob",
   "resource_type": "user_expertise",
   "context": "decision_making",
-  "microcommunity_id": "mc_building_repairs_2025",
+  "ah-public_id": "ahp_building_repairs_2025",
   "reason": "Evaluating relevant expertise for repair vendor selection"
 }</code></pre>
             </div>
@@ -331,7 +331,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     Retrieves current ISR score of the accessor:
                 </p>
                 <ul>
-                    <li>Issue-specific ISR (if in specific microcommunity)</li>
+                    <li>Issue-specific ISR (if in specific ad-hoc public)</li>
                     <li>General ISR (gISR) for cross-community decisions</li>
                     <li>Role and permissions</li>
                     <li>Recent activity and behavior flags</li>
@@ -356,7 +356,7 @@ sensitivity = 0.95 // Full communication history (critical)</code></pre>
                 </p>
                 <ul>
                     <li>Family member? (higher access)</li>
-                    <li>In same microcommunity? (medium access)</li>
+                    <li>In same ad-hoc public? (medium access)</li>
                     <li>Stranger? (restricted access)</li>
                     <li>Community steward/admin? (conditional elevated access)</li>
                 </ul>
@@ -465,7 +465,7 @@ else:
                         <td>Household/dependent</td>
                     </tr>
                     <tr>
-                        <td>Same microcommunity</td>
+                        <td>Same ad-hoc public</td>
                         <td>0.7</td>
                         <td>Working on same issue</td>
                     </tr>
@@ -507,7 +507,7 @@ else:
                         <td>Up to Layer 4</td>
                     </tr>
                     <tr>
-                        <td>Making decision in microcommunity</td>
+                        <td>Making decision in ad-hoc public</td>
                         <td>0.9</td>
                         <td>Up to Layer 5</td>
                     </tr>
@@ -713,7 +713,7 @@ access_logs/
   │   ├── score: 0.75
   │   ├── reason: string
   │   ├── timestamp: ISOString
-  │   └── context: {microcommunity_id, reason}
+  │   └── context: {ah-public_id, reason}
 
 // Data Sensitivity Registry
 resources/

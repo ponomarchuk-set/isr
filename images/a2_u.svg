@@ -1,0 +1,101 @@
+<svg  viewBox="0 0 960 490" xmlns="http://www.w3.org/2000/svg">
+  <!-- Define arrow marker and default fonts -->
+  <defs>
+    <style>
+      text { font-family: Arial, sans-serif; }
+    </style>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#0066cc"/>
+    </marker>
+  </defs>
+    <!-- Stage 1: Issue Emerges -->
+  <g id="stage1">
+    <rect x="2" y="10" width="158" height="120" fill="#e6f2ff" stroke="#0066cc" stroke-width="3" rx="8"/>
+    <text x="80" y="53" font-size="14" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Виникає</text>
+    <text x="80" y="75" font-size="14" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Питання</text>
+    <text x="80" y="93" font-size="11" text-anchor="middle" fill="#666">(Нова проблема,</text>
+    <text x="80" y="108" font-size="11" text-anchor="middle" fill="#666">виклик)</text>
+  </g>
+    <!-- Arrow 1 -->
+  <path d="M 160 60 L 265 60" stroke="#0066cc" stroke-width="3" marker-end="url(#arrowBlue)"/>
+    <!-- Stage 2: AI Identifies Stakeholders -->
+  <g id="stage2">
+    <rect x="270" y="10" width="160" height="120" fill="#fff4e6" stroke="#ff9900" stroke-width="3" rx="8"/>
+    <text x="350" y="53" font-size="14" font-weight="bold" text-anchor="middle" fill="#1a3a5c">ШІ визначає</text>
+    <text x="350" y="75" font-size="14" font-weight="bold" text-anchor="middle" fill="#1a3a5c">причетних</text>
+    <text x="350" y="93" font-size="11" text-anchor="middle" fill="#666">(Користувачівб що</text>
+    <text x="350" y="108" font-size="11" text-anchor="middle" fill="#666">відповідають контексту)</text>
+  </g>
+    <!-- Arrow 2 -->
+  <path d="M 430 60 L 535 60" stroke="#0066cc" stroke-width="3" marker-end="url(#arrowBlue)"/>
+    <!-- Stage 3: Ad-hoc Public Forms -->
+  <g id="stage3">
+    <rect x="540" y="10" width="160" height="120" fill="#e6ffe6" stroke="#00aa00" stroke-width="3" rx="8"/>
+    <text x="620" y="53" font-size="14" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Формується</text>
+    <text x="620" y="75" font-size="14" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Ситуативна спільнота</text>
+    <text x="620" y="98" font-size="11" text-anchor="middle" fill="#666">(Збираються учасники)</text>
+  </g>
+    <!-- Arrow 3 -->
+  <path d="M 700 60 L 795 60" stroke="#0066cc" stroke-width="3" marker-end="url(#arrowBlue)"/>
+    <!-- Stage 4: Weighted Influence Assigned -->
+  <g id="stage4">
+    <rect x="800" y="10" width="157" height="120" fill="#f0e6ff" stroke="#7700bb" stroke-width="3" rx="8"/>
+    <text x="880" y="45" font-size="13" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Розраховуються</text>
+    <text x="880" y="65" font-size="13" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Ваги Впливу</text>
+    <text x="880" y="85" font-size="13" font-weight="bold" text-anchor="middle" fill="#1a3a5c">(ISR-бали)</text>
+    <text x="880" y="103" font-size="11" text-anchor="middle" fill="#666">(E, C, R бали)</text>
+  </g>
+    <!-- Arrow down from stage 4 -->
+  <path d="M 880 130 L 880 175" stroke="#0066cc" stroke-width="3" marker-end="url(#arrowBlue)"/>
+    <!-- Stage 5: Deliberation & Decision -->
+  <g id="stage5">
+    <rect x="800" y="180" width="157" height="120" fill="#ffe6f0" stroke="#cc0066" stroke-width="3" rx="8"/>
+    <text x="880" y="220" font-size="13" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Обговорення</text>
+    <text x="880" y="240" font-size="13" font-weight="bold" text-anchor="middle" fill="#1a3a5c">&amp; Прийняття</text>
+    <text x="880" y="260" font-size="13" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Рішень</text>
+    <text x="880" y="278" font-size="11" text-anchor="middle" fill="#666">(Зважене голосування)</text>
+  </g>
+    <!-- Arrow left from stage 5 -->
+  <path d="M 800 240 L 575 240" stroke="#0066cc" stroke-width="3" marker-end="url(#arrowBlue)"/>
+    <!-- Stage 6: Implementation -->
+  <g id="stage6">
+    <rect x="410" y="180" width="160" height="120" fill="#f0fff0" stroke="#009900" stroke-width="3" rx="8"/>
+    <text x="490" y="220" font-size="13" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Втілення</text>
+    <text x="490" y="240" font-size="13" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Рішень та</text>
+    <text x="490" y="260" font-size="13" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Моніторинг</text>
+    <text x="490" y="278" font-size="11" text-anchor="middle" fill="#666">(Фаза виконання)</text>
+  </g>
+    <!-- Arrow left from stage 6 -->
+  <path d="M 410 240 L 165 240" stroke="#0066cc" stroke-width="3" marker-end="url(#arrowBlue)"/>
+    <!-- Stage 7: Issue Resolved -->
+  <g id="stage7">
+    <rect x="2" y="180" width="158" height="120" fill="#e6e6e6" stroke="#666" stroke-width="3" rx="8"/>
+    <text x="80" y="225" font-size="13" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Проблема</text>
+    <text x="80" y="245" font-size="13" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Вирішена</text>
+    <text x="80" y="265" font-size="11" text-anchor="middle" fill="#666">(Ціль досягнена)</text>
+  </g>
+    <!-- Arrow down from stage 7 -->
+  <path d="M 80 300 L 80 355" stroke="#0066cc" stroke-width="3" marker-end="url(#arrowBlue)"/>
+    <!-- Stage 8: Automatic Dissolution -->
+  <g id="stage8">
+    <rect x="2" y="360" width="158" height="120" fill="#ffcccc" stroke="#cc0000" stroke-width="3" rx="8"/>
+    <text x="80" y="400" font-size="13" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Автоматичний</text>
+    <text x="80" y="420" font-size="13" font-weight="bold" text-anchor="middle" fill="#1a3a5c">Розпуск</text>
+    <text x="80" y="440" font-size="11" text-anchor="middle" fill="#666">(Ситутивна спільнота</text>
+    <text x="80" y="458" font-size="11" text-anchor="middle" fill="#666">закривається)</text>
+  </g>
+    <!-- Key characteristics box -->
+  <rect x="240" y="335" width="717" height="145" fill="#f5f5f5" stroke="#999" stroke-width="2" rx="8"/>
+    <text x="600" y="360" font-size="14" text-anchor="middle" font-weight="bold" fill="#1a3a5c">Ключові особливості, які вирішують проблеми, що ставила Арендт:</text>
+    <text x="260" y="385" font-size="12" fill="#333">
+    ✓ <tspan font-weight="bold">Часова чутливість:</tspan> Ситуативні спільноти існують лише тоді, коли проблеми потребують уваги (на відміну від постійних
+  </text>
+    <text x="280" y="400" font-size="12" fill="#333"> бюрократичних структур)</text>
+    <text x="260" y="425" font-size="12" fill="#333">
+    ✓ <tspan font-weight="bold">Пряма участь:</tspan> Учасники приймають рішення без представницьких шарів (на відміну від делегованої влади)
+  </text>
+    <text x="260" y="450" font-size="12" fill="#333">
+    ✓ <tspan font-weight="bold">Контекстуальна актуальність:</tspan> Учасники є зацікавленими особами з відповідним, зумовленим контекстом, впливом  
+  </text>
+    <text x="280" y="465" font-size="12" fill="#333">(на відміну від принципу "одна людина - один голос")</text>
+</svg>
