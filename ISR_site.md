@@ -543,9 +543,9 @@ For transparency, the system stores: the component values, a short natural-langu
 
 #### Adaptable Authorization (AAuth) — privacy-aware, ISR-based access control
 
-ISR includes an adaptable authorization model: access to personal data is not simply role-based but depends on the requestor's ISR/gISR score, the sensitivity level of the requested resource, the relationship between accessor and subject, and the declared purpose.
+ISR includes an adaptable authorization model: access to personal data is not simply role-based but depends on the requester’s relation to the data subject, the declared purpose, the sensitivity of the data, and a minimum reliability condition (gISR). The tiers define what is visible automatically, and the data subject can restrict it. Anything beyond that can be requested from the data subject, who decides whether, when, how much and for whom to open it. Each automatic tier requires both a gISR condition and a closer relationship.
 
-Access is tiered (public results → ad-hoc public participation → ISR explanations → supporting evidence → activity logs → expertise profiles → social relations → full personal archive). Each tier requires a higher gISR and/or closer relationship in the ad-hoc public context. Granting access is logged, and suspicious user behavior patterns are analyzed and may influence future ISR values.
+Access is tiered (public results → ad-hoc public participation → ISR explanations → supporting evidence → activity logs → expertise profiles → social relations → full personal archive). Each tier requires a higher gISR and a closer relationship in the ad-hoc public context. Granting access is logged, and suspicious user behavior patterns are analyzed and may influence future ISR values.
 
 The adaptable authorization policy balances transparency and privacy while making misuse auditable and socially accountable. For technical details and diagrams see the system's Adaptable Authorization page.
 
@@ -660,7 +660,7 @@ There are two ways how to log in into the system:
 
 | Component | Purpose |
 | --- | --- |
-| Status Card | Shows your name, avatar, role, general ISR score, percentile rank, and this month's stats. Click to expand and see full profile. |
+| Status Card | Shows your name, avatar, role, your gISR relative to the average (visible only to you), and this month's stats. Click to expand and see full profile. |
 | Urgent Votings Alert | Lists open votings with tight deadlines. Color-coded red if <6 hours, amber if <48 hours. Shows your ISR weight for each decision. |
 | New Discussions Alert | Shows discussions created recently that match your profile/interests. Displays unread message count and ad-hoc public size. |
 | Tasks in Progress | Shows tasks you're assigned to or following, with progress bars (0–100%), assignee, and days remaining. Color indicates on-track (green), at-risk (amber), or delayed (red). |
@@ -702,7 +702,7 @@ You see immediately that the roof vote needs your vote before deadline, the ligh
 
 | Component | Purpose |
 | --- | --- |
-| Profile Card | Photo, name, general ISR score, role badge |
+| Profile Card | Photo, name, role badge |
 | Skills Section | Add/remove skill tags with proficiency levels |
 | Experience Timeline | Display past projects and accomplishments chronologically |
 | Edit Modal | Simple form to add/update profile information |
@@ -1010,7 +1010,7 @@ Your vote carries 1.93 the weight of an average member (who votes with 1.0 weigh
 
 ### Privacy & Security ([Adaptable Authorization (AAuth)](https://isr-vote.com/wiki/adaptable_authorization.html))
 
-- **Multi-Layer Data Access:** What data a members can see about other members depends on their gISR (general ISR) and Person-to-Person graph connections.
+- **Multi-Layer Data Access:** What data a members can see about other members depends on their relation to that member, their purpose and a minimum reliability condition (gISR); the member can restrict automatic access and decides on direct requests.
 - **Access Logging:** Every data request logged and auditable
 - **Data Misuse Detection:** AI flags suspicious access patterns (excessive requests = ISR penalty)
 - **Encryption:** All data encrypted in transit (TLS) and at rest
@@ -1064,7 +1064,7 @@ In a community where members should see each other's contributions transparently
 
 - The specific ad-hoc public and issue at hand
 - The accessor's relationship to the data subject
-- The accessor's proven trustworthiness (their ISR/gISR score)
+- The accessor's record of acting in line with community norms, including respect for others’ data (gISR)
 - The reason for accessing the data (explicit context)
 - Legal and ethical requirements
 
@@ -1075,7 +1075,7 @@ In a community where members should see each other's contributions transparently
 **Adaptable Authorization** is a dynamic access control model where data access permissions adapt
                 in real-time based on:
 
-1. **Accessor's ISR/gISR score:** Their proven trustworthiness and social responsibility
+1. **Accessor's gISR score:** Their proven trustworthiness (record of acting in line with community norms, including respect for others’ data)
 2. **Data sensitivity level:** How private or critical the requested information is
 3. **Access context:** Why they're accessing it (decision-making, verification, audit, etc.)
 4. **Relationship to data subject:** Are they a family member? Ad-hoc public peer? Stranger?
@@ -2460,7 +2460,7 @@ Every action within the ISR system is permanently attributed to the verified per
 
 This architecture does not presuppose a prior culture of civic virtue, nor does it require participants to be naturally altruistic. It simply requires that every action within the system be attributable to an identifiable person, and that each PoA is able to evaluate those actions against its own Matrix of Values.
 
-From the moment such a framework is adopted, the *Contribution* parameter becomes a cumulative record of political standing. It creates a concrete history of accountable actions that immediately and dynamically shapes a person's influence over future shared decisions. While no sufficiently complex system can entirely eliminate the human psychological desire for moral diffusion, ISR's data architecture is explicitly designed to make that evasion structurally visible, mathematically consequential, and practically impossible to hide behind.
+From the moment such a framework is adopted, the *Contribution* parameter becomes a cumulative record of accountable actions that shapes weights in later issues, judged each time against that public’s own values. It creates a concrete history of accountable actions that immediately and dynamically shapes a person's influence over future shared decisions. While no sufficiently complex system can entirely eliminate the human psychological desire for moral diffusion, ISR's data architecture is explicitly designed to make that evasion structurally visible, mathematically consequential, and practically impossible to hide behind.
 
 ### 2. 8 Transparency, Appearance, and the Absence of Anonymity
 
@@ -2804,6 +2804,8 @@ ISR is different in each of these respects:
 - The system's purpose is to improve the quality of collective decisions, not to control individual behavior in everyday life
 
 The philosophical difference is also fundamental. ISR is built on the principle that normative standards — what counts as responsible behavior — must emerge from the community itself, not be imposed on it. The community defines its values; ISR provides a common language in which to express and apply them. A state social credit system is the inverse: values descend from the state, and compliance is enforced.
+
+ISR does define a general ISR (gISR). It differs because it is used in only two places, is never shown to others or exported and comes from values users declare themselves.
 
 ## What if people just pretend to have values they don't hold?
 
