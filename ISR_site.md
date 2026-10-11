@@ -174,7 +174,7 @@ Registering in the system demands **Proof of Identyty** use to be sure the perso
 
 **Profile** provide an ability to state all the person major social features:
 
-- **Demographic and statistical facts.** Sex, age, nationality, religion, pets, property obtained - everything is matter.
+- **Demographic and statistical facts.** Sex, age, nationality, religion, pets, property obtained (such facts are used only to determine who is affected - for example, the owner of a building - never as a weight) - everything is matter.
 - **Social relations** (family, geography, economical, interests etc.). A base for context **Relevance** evaluation. Acceptance by the other person could be required.
 - **Credentials.** List of verified facts about gained education in certain fields. Part of a member's **Expertise**.
 - **Experience.** Records of serving, production, researching, performing that prove your **Expertise** in certain domains. Includes details of where, when, how long and how good the Expertise was applied.
@@ -469,7 +469,7 @@ Expertise reflects a person's domain-specific competence and capacity to act in 
 
 - **education** in relevant domains;
 - practical work **experience** in related roles;
-- access to helpful **resources** or networks.
+- **resources** the member has pledged to resolving this issue (equipment, space, contacts, time). Resources count only when committed to the issue; owning them is not enough. Money is not counted: if an issue needs funding, each solution option states its funding plan and proposed source.
 
         These components are aggregated into a numerical **Expertise** score for the certain question - not a “universal intelligence” measure.
 
@@ -570,7 +570,7 @@ A: No. ISR is a contextually weighted influence mechanism meant to reflect relev
 
 #### Q: Can someone "buy" influence?
 
-A: Influence is derived from recorded behavior, verifiable actions, and declared expertise — not from financial transactions. Any integration with external sources must be authorized by the community and logged transparently.
+A: Influence is derived from recorded behavior, verifiable actions, and declared expertise — not from financial transactions. Any integration with external sources must be authorized by the community and logged transparently. Money cannot be pledged toward influence. Funding needed for an option is part of the option itself (cost and funding source), debated and voted like any other element.
 
 #### Q: What is the philosophical basis for ISR — why this approach and not another?
 
@@ -820,7 +820,7 @@ Also, when a topic is created, after calculating Relevance and determining the m
 
 ### The Voting Process
 
-1. **Topic creator posts options** with deliberated descriptions (cost, timeline, pros/cons)
+1. **Topic creator posts options** with deliberated descriptions (cost, funding source, timeline, pros/cons)
 2. **You vote** - your click carries your calculated weight (ISR-score)
 3. **System tallies weighted votes** - highest weight option wins
 4. **Status changes to "closed"** and implementation begins
@@ -832,7 +832,7 @@ Also, when a topic is created, after calculating Relevance and determining the m
 | Voting Queue | All open votes sorted by relevance to you. Show: deadline, your ISR for this issue, urgency |
 | ISR-score Badge | Your calculated ISR for THIS decision (e.g., "4.2" for roof repair if you're a licensed roofer) |
 | Decision Detail Page | Full topic description, all options with budgets/timelines, related discussion messages |
-| Vote Options Display | Each option as a card: name, description, cost, timeline, creator, attachment preview |
+| Vote Options Display | Each option as a card: name, description, cost, funding source, timeline, creator, attachment preview |
 | Vote Button | Click to cast your weighted vote. Changes to "You Voted" after submission |
 | Why My Weight? Link | Click to see how ISR was calculated (shows R, E, C components) |
 | Results Preview | Live-updating bar chart showing weighted vote distribution |
@@ -955,7 +955,7 @@ Your vote carries 1.93 the weight of an average member (who votes with 1.0 weigh
 
 ├── title & context description
 
-├── options (with budgets, timelines)
+├── options (with budgets, funding sources, timelines)
 
 ├── isr_snapshot (members weights)
 
@@ -1672,7 +1672,7 @@ Implement human-in-the-loop review for high-impact ISR changes.
 - **Adaptable Authorization** is a dynamic, context-aware access control model
                     where access permissions adapt based on accessor's ISR/gISR score and data sensitivity.
 - **Data Hierarchy:** ISR organizes sensitive data in 8 layers, each requiring
-                    different minimum ISR thresholds (0.0 for public results to 0.95 for full data).
+                    different minimum ISR thresholds (0.0 for public results to 1.0 for full data) plus appropriate Person-to-Person (P2P) relevance level.
 - **Privacy-by-Design:** The system balances transparency (needed for fair decisions)
                     with privacy protection (limiting access to those who truly need it).
 - **Algorithmic Basis:** Access decisions use weighted function combining
@@ -2762,7 +2762,7 @@ For the deeper philosophical grounding, see the
 An ISR score is not a single permanent number. It is recalculated for each specific decision from three independently measured components:
 
 - **Relevance** — how directly affected this person is by the specific issue at hand. Determined by demography facts, geographic proximity, domain relationship, and social-graph connection to the parties involved.
-- **Expertise** — what relevant knowledge or verifiable track record this person brings to the question. Assessed against credentials, professional history, and ability to involve relevant resources.
+- **Expertise** — what relevant knowledge or verifiable track record this person brings to the question. Assessed against credentials, professional history, and the resources the person pledges to the issue (money is not counted).
 - **Contribution** — how this person's history of actions in the community aligns with the community's declared values. This is the accumulated record of what they have actually done, not merely what they have stated they believe.
 
 The score is issue-specific: the same person may have high influence on a question about building maintenance and low influence on a question about financial governance, depending on their expertise and the nature of their past contributions in each domain. Every component is visible, inspectable, and contestable by the person it concerns.
