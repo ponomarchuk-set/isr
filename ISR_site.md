@@ -135,7 +135,7 @@ ISR operates inside applicable law. Where law fully settles a question there is 
 
 ### Core concept
 
-ISR (Index of Social Responsibility) is a context‑aware influence coefficient for each participant with respect to a specific question or issue, computed as a function of three components: Relevance (how much the issue directly affects the person), Expertise (domain‑specific knowledge and resources - how much the person can directly affects the issue) and Contribution (past actions valued by the ad-hoc public). That score (the ISR) is then used to weight that participant's vote or influence in the decision for that issue within the corresponding ad-hoc public formed around this question. ISR is not a permanent universal "label" on a person (like a "social credit" rating) - it is calculated for each specific question and can only be applied only to that question. And its components are transparent and explainable to participants.
+ISR (Index of Social Responsibility) is a context‑aware influence coefficient for each participant with respect to a specific question or issue, computed as a function of three components: Relevance (how much the issue directly affects the person), Expertise (domain‑specific knowledge and resources - how much the person can directly affects the issue) and Contribution (past actions valued by the ad-hoc public). That score (the ISR) is then used to weight that participant's vote or influence in the decision for that issue within the corresponding ad-hoc public formed around this question. ISR is not a permanent universal "label" on a person (like a "social credit" rating) - it is calculated for each specific question and can only be applied only to that question. And its components are transparent and explainable to participants. (One limited exception, the general ISR, is described in the Adaptable Authorization section.)
 
             $$ISR = f(Relevance, Expertise, Contribution)$$
 
@@ -644,7 +644,7 @@ There are two ways how to log in into the system:
 
 ### What You See on the Dashboard
 
-- **Your Status Card:** Your photo, name, general ISR score, membership duration, and this month's activity (votes, discussions, tasks).
+- **Your Status Card:** Your photo, name, general ISR score (visible only to you), membership duration, and this month's activity (votes, discussions, tasks).
 - **Action Alerts:** Three priority sections showing urgent votings (sorted by deadline), new discussions you're relevant to, and tasks in progress with their completion status.
 - **Community Activity Feed:** A timeline of recent events (votes concluded, tasks completed, discussions started, new members joined) so you stay aware of what's happening.
 
@@ -1075,7 +1075,7 @@ In a community where members should see each other's contributions transparently
 **Adaptable Authorization** is a dynamic access control model where data access permissions adapt
                 in real-time based on:
 
-1. **Accessor's gISR score:** Their proven trustworthiness (record of acting in line with community norms, including respect for others’ data)
+1. **Accessor's gISR score:** Their record of acting in line with community norms, including respect for others’ data
 2. **Data sensitivity level:** How private or critical the requested information is
 3. **Access context:** Why they're accessing it (decision-making, verification, audit, etc.)
 4. **Relationship to data subject:** Are they a family member? Ad-hoc public peer? Stranger?
@@ -1959,7 +1959,7 @@ An obvious concern: will people simply optimize their behavior to improve their 
 
 Aristotle argued that virtue is formed by habituation — that a person who acts courageously, even initially out of social pressure or self-interest, is undergoing genuine moral formation. The act and the character influence each other. A person who consistently shows up, contributes, and bears accountability — even partly for instrumental reasons — is not merely performing responsibility. They are practicing it, and practice shapes the practitioner. ISR does not require pure motives; it tracks the record of a life in community.
 
-There is also a social-epistemic point worth noting: in a community small enough to function without tech suppost, members know each other's behavior directly. ISR makes explicit and portable what informal reputation already does in well-functioning communities. The "gaming" problem is essentially the same problem as gaming your reputation among people who know you — manageable, because time and context are unforgiving judges.
+There is also a social-epistemic point worth noting: in a community small enough to function without tech suppost, members know each other's behavior directly. ISR makes explicit what informal reputation already does in well-functioning communities. The "gaming" problem is essentially the same problem as gaming your reputation among people who know you — manageable, because time and context are unforgiving judges.
 
 ## V. Competitiveness Transformed
 
@@ -2408,7 +2408,7 @@ This transition toward a post-economic paradigm is complicated by a concurrent i
 
 Concurrently, the anonymity that once made the economic ledger such a powerful, decentralized coordinating tool is irreversibly eroding. Under the current architecture of digital tracking and the continuous logging of personal histories, true anonymity is largely an illusion for the ordinary citizen. While the digital sphere is currently in an extractive phase, the underlying mechanism—the persistent computational accounting of personal history—is becoming a permanent structural reality.
 
-If economic stimuli weaken, and if absolute anonymity is no longer viable, a new structural framework is required to counter human functionalization and secure political agency. The structural requirement for this future is a social ledger: a transparent, community-governed accounting of personal deeds, verifiable actions, and socially valuable contributions. Social responsibility—a track record of accountable engagement with one's community—must emerge as the new primary evaluation of social capital. It serves as the necessary foundational condition to prevent both the bureaucratic evasion of "I was just doing my job" and the technological evasion of "the algorithm decided". To operationalize this social ledger at a mass scale, we must design a specific computational governance framework built entirely around this principle of individual accountability.
+If economic stimuli weaken, and if absolute anonymity is no longer viable, a new structural framework is required to counter human functionalization and secure political agency. The structural requirement for this future is a social ledger: a transparent, community-governed accounting of personal deeds, verifiable actions, and socially valuable contributions. Social responsibility—a track record of accountable engagement with one's community—must emerge as the new primary evaluation of social capital. It serves as the necessary foundational condition to prevent both the bureaucratic evasion of "I was just doing my job" and the technological evasion of "the algorithm decided". To operationalize this social ledger at a mass scale, we must design a specific computational governance framework built entirely around this principle of individual accountability. The ledger is readable in full by its holder; others see only what the holder’s settings and the relation-and-purpose rules allow.
 
 ### 2.5 The ISR Framework: Core Architecture
 
@@ -2482,7 +2482,7 @@ Proposing a pervasive, computationally mediated "social ledger" naturally invite
 
 The danger of an authoritarian social credit system lies not in the fact that it tracks behavior, but in its architectural centralization. Such systems impose a single, top-down, state-defined matrix of values onto the entire population. They are tools of behavioral homogenization, designed to preemptively modulate citizens (in Rouvroy's sense) into compliance with a centralized authority. They eliminate plurality by design.
 
-ISR, by contrast, is radically decentralized and context-dependent. There is no universal "score" imposed by a central authority. The Matrix of Values is generated bottom-up by the specific ad-hoc public involved in a specific issue. An action that is highly valued in one PoA may carry little weight in another, reflecting genuine human plurality. Furthermore, because such publics (PoA) dissolve when a problem is resolved, influence is dynamic and strictly bounded by relevance, preventing the accumulation of permanent, cross-contextual algorithmic power. ISR does not track behavior to enforce state compliance; it tracks contribution to empower horizontal, community-driven political agency.
+ISR, by contrast, is radically decentralized and context-dependent. There is no universal "score" imposed by a central authority. The Matrix of Values is generated bottom-up by the specific ad-hoc public involved in a specific issue. An action that is highly valued in one PoA may carry little weight in another, reflecting genuine human plurality. Furthermore, because such publics (PoA) dissolve when a problem is resolved, influence is dynamic and strictly bounded by relevance, limiting the accumulation of cross-contextual algorithmic power. ISR does not track behavior to enforce state compliance; it tracks contribution to empower horizontal, community-driven political agency. The ledger is readable in full by its holder; others see only what the holder’s settings and the relation-and-purpose rules allow.
 
 ## Part III: The Critical Test - Answering the Objections
 
@@ -2805,7 +2805,7 @@ ISR is different in each of these respects:
 
 The philosophical difference is also fundamental. ISR is built on the principle that normative standards — what counts as responsible behavior — must emerge from the community itself, not be imposed on it. The community defines its values; ISR provides a common language in which to express and apply them. A state social credit system is the inverse: values descend from the state, and compliance is enforced.
 
-ISR does define a general ISR (gISR). It differs because it is used in only two places, is never shown to others or exported and comes from values users declare themselves.
+ISR does define a general ISR (gISR). It differs because it is used in only two places, is never shown to other members or provided to third parties and comes from values users declare themselves.
 
 ## What if people just pretend to have values they don't hold?
 
