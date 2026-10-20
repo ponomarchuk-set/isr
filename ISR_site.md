@@ -244,7 +244,7 @@ The system suggests a **set of participants** whose profiles, past actions, geog
 2. **Calculating** the situational **Relevance** for each user **i**. Relevance shows how strongly a person is related to the issue across four dimensions:
 
   - **demographic (D)**: whether their life situation matches the target group (for example, parents of small children for a childcare question);
-  - **geospatial (G)**: how close they are in space to where the decision will have effect;
+  - **geospatial (G)**: how close they are in space to where the decision will have effect measured from the nearest of their declared places;
   - **semantic (S)**: how much their interests and activities match the topic of the issue;
   - **social (X)**: whether they are socially connected to people who are directly affected.
 
@@ -254,7 +254,7 @@ The system suggests a **set of participants** whose profiles, past actions, geog
 
 #### Ad-hoc Public forms
 
-That set becomes a temporary ad-hoc public for deliberation and voting on the issue. The identified stakeholders are invited to join an ad-hoc public dedicated to addressing the issue. This group will deliberate, propose solutions, and vote on the best course of action.
+That set becomes a temporary ad-hoc public for deliberation and voting on the issue. The identified stakeholders are invited to join an ad-hoc public dedicated to addressing the issue. This group will deliberate, propose solutions, and vote on the best course of action. The issue belongs to its public, not to the person who raised it.
 
 [![ISR Ad-hoc Public Lifecycle](https://raw.githubusercontent.com/ponomarchuk-set/isr/main/images/a2.svg)](https://raw.githubusercontent.com/ponomarchuk-set/isr/main/images/a2.svg)
 
@@ -469,7 +469,7 @@ Expertise reflects a person's domain-specific competence and capacity to act in 
 
 - **education** in relevant domains;
 - practical work **experience** in related roles;
-- **resources** the member has pledged to resolving this issue (equipment, space, contacts, time). Resources count only when committed to the issue; owning them is not enough. Money is not counted: if an issue needs funding, each solution option states its funding plan and proposed source.
+- **resources** the member has pledged to resolving this issue (equipment, space, contacts, time). Resources count only when committed to the issue; owning them is not enough. Money is not counted: if an issue needs funding, each solution option states its funding plan and proposed source. Financial facts, such as taxes paid by a business, give no weight either; a person can state them as an argument in the deliberation.
 
         These components are aggregated into a numerical **Expertise** score for the certain question - not a “universal intelligence” measure.
 
@@ -481,13 +481,14 @@ After calculating the situational **Relevance**, a list of **n** ad-hoc public p
 
 **Contribution** is based on a structured record of past actions as seen by the public. Each action is represented as a vector in the same value space as the community's shared Vector of Values and evaluated along three axes:
 
-- **Alignment (A):** how well the action matches the community's declared values;
+- **Alignment (A):** how well the action matches the community's declared values (from -1, when the action works against them, to +1, when it fully matches them);
 - **Force (F):** how strong the action was (type of effort, time invested, complexity and result);
 - **Sentiment (S):** how other members reacted to it (marked as good, funny, rude, flood, foolish).
 
-                The contribution of a single action is computed from A, F and S, and a person's overall Contribution in a public is the aggregate over all their actions.
+                The contribution of a single action is computed from A, F and S, and a person's overall Contribution in a public is the aggregate over all their actions. Contribution is measured in units of one reference action: one hour of ordinary task work, fully in line with the public’s values and without marks, contributes exactly 1.
+                A person’s record is held in front of the whole community (all registrated users). An ad-hoc public exists for one issue, so a record cannot belong to one public: it is earned through many publics, each of which can value an action in its own way, and each public reads it through its own Vector of Values. How a person votes is not scored. Messages and proposed options are scored as actions, with a smaller force than tasks, by what they do and not by whether their author’s opinion matches the majority’s.
 
-Finally **ISR is calculated** out from **Relevance, Expertise, Contribution** and normalized to unit mean (ad-hoc public's average score is always 1) to psychologically simplify adaptation to the new approach.
+Finally **ISR is calculated** out from **Relevance, Expertise, Contribution** and normalized so that, in a public with an established record, the average member’s weight is about 1 - to psychologically simplify adaptation to the new approach.
 
 Those who have greater ISR-score have a proportionally greater influence on the final decision.
 
@@ -535,7 +536,7 @@ The system uses semantic embeddings (LLM embeddings) to compare issue texts with
 
 #### Normalization & weights
 
-Each raw component (relevance, expertise, contribution) is normalized by mean. The automated context routine proposes weights wR, wE, wC (sum = 1) appropriate to the issue. The final ISR is the weighted sum described earlier.
+Relevance and Expertise are divided by their mean; Contribution, which can be negative, is divided by the public’s typical contribution plus one reference unit. The automated context routine proposes weights wR, wE, wC (sum = 1) appropriate to the issue. The final ISR is the weighted sum described earlier.
 
 #### Audit & explainability
 
@@ -615,10 +616,10 @@ When you join an ISR community, you're not just voting – you're participating 
 This score changes for each decision based on how relevant you are to the specific issue.
                         An expert plumber has more influence on roof repairs, but equal voice on common community issues.
 
-There are two ways how to log in into the system:
+There are two ways to log in to the system:
 
 - Using your own account with username and password.
-- Using presetted accounts for testing purposes - you can choose from the list.
+- Using preset accounts for testing purposes: you can choose from the list.
 
 **The MVP application consists of 8 sections:**
 
@@ -634,7 +635,7 @@ There are two ways how to log in into the system:
 
 **🎯 User Success Tip:**
 
-                    Start ISR exploration with a presetted account - it allows you to quickly get a feel for how the system works.
+                    Start ISR exploration with a preset account - it allows you to quickly get a feel for how the system works.
 
                     Then complete your profile and values – this allows the AI to identify decisions you're most relevant to and show you the most important discussions.
 
@@ -654,13 +655,13 @@ There are two ways how to log in into the system:
 2. System flags votings where you're relevant or deadline is soon (red if < 6 hours, amber if < 48 hours).
 3. New discussions matching your profile/interests are listed so you don't miss them.
 4. For each task you're tracking, you see progress bars and estimated days to deadline.
-5. The activity feed updates in real-time, showing decisions your community is making.
+5. The activity feed updates in real time, showing decisions your community is making.
 
 ### Dashboard UI Components
 
 | Component | Purpose |
 | --- | --- |
-| Status Card | Shows your name, avatar, role, your gISR relative to the average (visible only to you), and this month's stats. Click to expand and see full profile. |
+| Status Card | Shows your name, avatar, role, your gISR (visible only to you), and this month's stats. Click to expand and see full profile. |
 | Urgent Votings Alert | Lists open votings with tight deadlines. Color-coded red if <6 hours, amber if <48 hours. Shows your ISR weight for each decision. |
 | New Discussions Alert | Shows discussions created recently that match your profile/interests. Displays unread message count and ad-hoc public size. |
 | Tasks in Progress | Shows tasks you're assigned to or following, with progress bars (0–100%), assignee, and days remaining. Color indicates on-track (green), at-risk (amber), or delayed (red). |
@@ -685,7 +686,7 @@ You see immediately that the roof vote needs your vote before deadline, the ligh
 - **Act on urgent alerts:** Red votings are sorted by deadline. Clicking takes you directly to the voting page with context.
 - **Monitor task progress:** Tasks with progress bars help you spot delays early. If your task is marked "at-risk", communicate with your team immediately.
 - **Use activity feed to stay informed:** Read what's happening without needing to join every discussion. Click an event to dive deeper.
-- **Return often:** The dashboard updates in real-time. Notifications also push updates (Phase 2).
+- **Return often:** The dashboard updates in real time. Notifications also push updates (Phase 2).
 
 ## 2. Build Your Profile: Show What You Bring
 
@@ -716,26 +717,26 @@ You see immediately that the roof vote needs your vote before deadline, the ligh
 
 ## 3. Define Your Values: What Matters to You
 
-**Ad-hoc public values are the foundation of ISR calculations.** They define what behavior the community rewards and what it penalizes (as an addition to normal general law). The vectorized individual values ​​of all users make up the **Matrix of Values** - a specialized vector database. Each ad-hoc public formed around a raised issue aggregates its own **Vector of Values** - from the values ​​of all members of the ad-hoc public, taken from the **Matrix of Values**.
+**Ad-hoc public values are the foundation of ISR calculations.** They define what behavior the community rewards and what it penalizes (as an addition to normal general law). The vectorized individual values of all users make up the **Matrix of Values** - a specialized vector database. Each ad-hoc public formed around a raised issue aggregates its own **Vector of Values** - from the values of all members of the ad-hoc public, taken from the **Matrix of Values**.
 
 ### The Vector of Values
 
-Each ad-hoc public aggregates a **Vector of Values** – a collective agreement on what's important out from all the public members' values regarding personal Relevance. **Vector of Values** is a pure mathematical representation which is used in Contribution calculations.
+Each ad-hoc public aggregates a **Vector of Values** – a collective agreement on what's important, derived from all the public members' values and weighted by their personal Relevance. **Vector of Values** is a pure mathematical representation which is used in Contribution calculations.
 
 **Basic ways to fill out values are:**
 
 - Write your own text explanation according to the User Guide Values Description.
-- Pass a survay with AI assistant.
-- Name a famous person with well-known attitudes towards aspects of social life (e.g., "Benjamin Lincoln," "Paul McCartney," "Mao Zedong," "Albert Einstein," etc.) as a prototype so that the AI ​​can draft your values ​​statement according to the Guide.
+- Take a survey with the AI assistant.
+- Name a famous person with well-known attitudes towards aspects of social life (e.g., "Abraham Lincoln," "Paul McCartney," "Mao Zedong," "Albert Einstein," etc.) as a prototype so that the AI can draft your values statement according to the Guide.
 - Combine or edit options above.
 
 ### How to Define Values
 
-**Option A: Narative explanation**
+**Option A: Narrative explanation**
 
 1. Open Values section in profile
-2. Click "Narative"
-3. Express your beliefs and life orienteers
+2. Click "Narrative"
+3. Express your beliefs and life orientations
 
 **Option B: AI-Assisted Definition (Recommended for First-Time Setup)**
 
@@ -758,25 +759,25 @@ After you define a value, you can ask the AI:
 
 - *"What do we mean by 'technical competence'?"* – AI clarifies the concept
 - *"Give me examples of this value in action"* – AI provides concrete scenarios
-- *"How does this compare to other the public members?"* – AI shows benchmarks
+- *"How does this compare to other members of the public?"* – AI shows benchmarks
 - *"Explain my current ad-hoc public Vector of Values in a narrative view"* – AI makes a story about your current ad-hoc public values with nearest political examples
 
 ### 🎯 UX Success Tips
 
 - **Make values specific and measurable:** Not "trust", but "transparent financial reporting"
-- **Be honest and aware:** Values should reflect your individual preferences of the future you want to live in - they can't be significantly changed everyday.
-- **Revisit quarterly:** As you and reality around change, update your values.
-- **Do not change your values dramatically:** The system is setted to recognize suspicious activity like when a user changes all their values at once to manipulate ISR.
+- **Be honest and aware:** Values should reflect your individual preferences of the future you want to live in - they can't change significantly every day.
+- **Revisit quarterly:** As you and the reality around you change, update your values.
+- **Do not change your values dramatically:** The system is set to recognize suspicious activity, such as when a user changes all their values at once to manipulate ISR.
 
-## 4. Start or Join Discussions: Public of Appearance Around Issues
+## 4. Start or Join Discussions: Ad-Hoc Publics Around Issues
 
-**The Chat section is where collective problem-solving starts.** When an issue arises, the AI identifies the most relevant members (a "ad-hoc public") and notifies them.
+**The Chat section is where collective problem-solving starts.** When an issue arises, the AI identifies the most relevant members (an "ad-hoc public") and notifies them.
 
 ### How Discussions Work
 
-1. **Someone creates a topic:** "Roof needs repairs – what should we do?" specifying exact place, size of the problem, time to the problem should be solved and other context data
+1. **Someone creates a topic:** "Roof needs repairs – what should we do?" specifying the exact place, the size of the problem, the time by which it should be solved, and other context data
 2. **AI identifies ad-hoc public:** Finds members skilled in construction, interested in maintenance, affected by the issue
-3. **Relevant members are notified:** Get badge with ISR relevance score for this topic
+3. **Relevant members are notified:** They get a badge with their ISR relevance score for this topic
 4. **Discussion unfolds:** Members share expertise, ask questions, propose solutions
 5. **Evidence uploaded:** Photos, quotes, technical documents attached to messages
 
@@ -784,10 +785,10 @@ After you define a value, you can ask the AI:
 
 | Component | Function |
 | --- | --- |
-| Discussion List Feed | Shows active topics sorted by relevance + recency. Badges show: NEW, URGENT, IMPORTANT |
-| Topic Header | Title, creator, date, ad-hoc public member count, thread preview |
+| Discussion List Feed | Shows active topics sorted by recency or relevance. Filter tags show: NEW, IMPORTANT, URGENT. Each topic item displays category icon, status indicator, topic title, deadline, user-specific Relevance (percentage, e.g. 85%), user-specific ISR-score (e.g. 1.28), and latest message snippet with sender name and ID. |
+| Topic Header & Metadata | Title with category emoji, status/urgency symbol, star badge for high relevance (≥ 60%), deadline/ongoing status, member's user-specific Relevance score (%) and ISR-score |
 | Message Thread View | Nested messages with name, timestamp, ISR badge for this topic |
-| Emoji Reactions (contributes to ISR calculation) | 👍 Good, 😁 Funny, 🥴 Flood, 😡 Rude, 💊 Fool |
+| Emoji Reactions (contribute to ISR calculation) | 👍 Good, 😁 Funny, 🥴 Flood, 😡 Rude, 💊 Fool |
 | File Upload Widget | Attach PDFs, images, quotes for evidence |
 | Search & Filter | Filter by: status (open/closed), tags, urgency, your involvement |
 
@@ -795,20 +796,20 @@ After you define a value, you can ask the AI:
 
 When a topic is created, the system calculates relevance according to the Relevance Implementation guide:
 
-- **Profile match:** Keywords in topic match skills in profile (e.g., "middle age" matches a 40 years old person)
+- **Profile match:** Keywords in topic match skills in profile (e.g., "middle age" matches a 40-year-old person)
 - **Geographic proximity:** If relevant (e.g., "Entrance 3" water issue → notify Entrance 3 residents)
 - **Interest alignment:** Member marked this category as interest
 - **Social connections:** Taking into account relatives, friends etc.
 
-**⚠️ Important:** You can ALWAYS find and join any discussion, even if you're not in the AI-selected ad-hoc public. The system recommends but doesn't restrict participation.
+**⚠️ Important:** You can ALWAYS find and join any discussion, even if you're not in the AI-selected ad-hoc public. The system recommends but doesn't restrict participation. Joining is automatic and logged, and nobody filters the requests. Until you join, you see only a limited view of the issue: the title, the category, the fact that a public exists, the number of members and the date the issue was registered.
 
-The system analyze the issue text and context and propose weights for ISR-score components (Relevance, Expertise and Contribution) calculation. The topic starter can approve them or adjust.
+The system analyzes the issue text and context, proposes the issue type from the table of typical issues and derives the weights for the ISR-score components (Relevance, Expertise and Contribution) and the relevance parameters from that type and context. Nobody types a number: if the result looks wrong, the topic starter clarifies the context or picks another type that the assistant lists as consistent with the rules. The topic starter is asked to check public information about local rules and ownership and to attach a source; if none is attached, every member sees a caution that useful context may be missing. If local rules reserve the decision for an authority, the issue becomes a proposal to that authority and the public widens to everyone affected: residents, people who work in the area, owners and staff of organisations and businesses, each counted as a person with the same formula. After publication the ad-hoc public owns the issue: until voting opens, any member can propose a change of the text, the options, the issue type or the context; the assistant checks that it is consistent with the rules, and if the public supports it (current weights, simple majority) the parameters are derived again and relevance and the list of members are updated; members who fall below the threshold stay with their voice and a lower weight. Once voting opens, everything is frozen until the vote closes.
 
 Also, when a topic is created, after calculating Relevance and determining the members of the new ad-hoc public, the system calculates the ISR-score of all members from their Relevance, Expertise and Contribution according to the documentation.
 
 ### 🎯 UX Success Tips
 
-- **Read before posting:** Check if your point has already been made or discussed. Remember, any issue publishing starts an ad-hoc issue public gathering and ISR calculation which is costly and spend society resoures. So false, dubbling, dumb issues could be assessed negatively and decrease your future ISR.
+- **Read before posting:** Check if your point has already been made or discussed. Remember, any issue publishing starts an ad-hoc issue public gathering and ISR calculation which is costly and spends society's resources. So false, duplicate or dumb issues could be assessed negatively and decrease your future ISR.
 - **Use evidence:** Attach photos, quotes, or documents to support your position
 - **Stay on topic:** Emoji reactions showing irrelevance or disrespect will be tracked in your ISR
 - **Ask questions respectfully:** Challenge ideas, not people
@@ -842,12 +843,12 @@ Also, when a topic is created, after calculating Relevance and determining the m
 
 **Your ISR for this decision: 1.93**
 
-- Relevance (R): 1.0 (you are a dweller of the building same as others)
+- Relevance (R): 1.0 (you live in the building, like the others)
 - Expertise (E): 4.0 (you are a licensed roofer - perfect match)
-- Contribution (C): 1.1 (you consistently prioritize quality and safety - little better than in average)
-- Final weight: 0.4×1.0 + 0.3×4.0 + 0.3×1.1 = your ISR of final vote
+- Contribution (C): 1.1 (you consistently prioritize quality and safety - a little better than average)
+- Final weight: 0.4×1.0 + 0.3×4.0 + 0.3×1.1 = your ISR for the final vote
 
-Your vote carries 1.93 the weight of an average member (who votes with 1.0 weight).
+Your vote carries 1.93 times the weight of an average member (who votes with about 1.0 weight).
 
 ### Understanding Your ISR Score: Why It Changes Per Decision
 
@@ -860,7 +861,7 @@ Your vote carries 1.93 the weight of an average member (who votes with 1.0 weigh
 ### 🎯 UX Success Tips
 
 - **Click "Why My Weight?"** to understand your ISR - transparency builds trust
-- **State your opinion only on issues you understand:** Flooding discussion make decision-making harder
+- **State your opinion only on issues you understand:** Flooding a discussion makes decision-making harder
 - **Check the discussion first:** Read expert opinions before voting
 - **Don't wait till deadline:** Vote early - shows you're engaged
 
@@ -873,7 +874,7 @@ Your vote carries 1.93 the weight of an average member (who votes with 1.0 weigh
 1. **Vote concludes** → system automatically creates a task from the winning option
 2. **Task properties:** Deadline, budget, responsible person, sub-tasks (if broken down)
 3. **Status updates:** Progress tracked: "Open" → "In Progress" → "Completed" → "Evaluated"
-4. **Community rates outcome:** After completion, members review the task and assess its matters
+4. **Community rates outcome:** After completion, members review the task and assess its results
 
 ### Task UI Components
 
@@ -904,7 +905,7 @@ Your vote carries 1.93 the weight of an average member (who votes with 1.0 weigh
 | --- | --- | --- |
 | Frontend | React/Vue.js + Responsive Design | User interface, real-time updates |
 | Backend/Database | Firebase (Firestore + Realtime DB) | Data storage, user auth, real-time sync |
-| AI/ML | Google Vertex AI + OpenAI | ISR calculation, ad-hoc public formation, content moderation |
+| AI/ML | Google AI Studio (Gemini API) | ISR calculation, ad-hoc public formation, content moderation |
 | Cloud Functions | Firebase Cloud Functions / Cloud Run | ISR recalculations, notifications, event processing |
 | File Storage | Google Cloud Storage | Profile photos, documents, evidence files |
 | Real-time Messaging | Firebase Realtime DB + WebSockets | Live chat, notifications, feed updates |
@@ -915,15 +916,23 @@ Your vote carries 1.93 the weight of an average member (who votes with 1.0 weigh
 
 ├── profile (skills, experience, interests, features)
 
+├── values (personal values description)
+
+├── action_history (contribution tracking)
+
+├── settings (UI preferences)
+
+└── access_logs (privacy audit trail)
+
 **Vector DB**
 
-├── values (vectorised values representation)
+├── values (vectorized values representation)
 
-├── profile (vectorised profiles representation)
+├── profile (vectorized profiles representation)
 
-├── expertise (vectorised expertise representation)
+├── expertise (vectorized expertise representation)
 
-└── actions (vectorised actions representation)
+└── actions (vectorized actions representation)
 
 **Graph DB**
 
@@ -949,7 +958,7 @@ Your vote carries 1.93 the weight of an average member (who votes with 1.0 weigh
 
 ├── emoji_reactions (user engagement)
 
-└── evidence (links attached documents/files)
+└── evidence (links to attached documents/files)
 
 **Votings**
 
@@ -957,7 +966,7 @@ Your vote carries 1.93 the weight of an average member (who votes with 1.0 weigh
 
 ├── options (with budgets, funding sources, timelines)
 
-├── isr_snapshot (members weights)
+├── isr_snapshot (members' weights)
 
 ├── votes (member_id → option, with weight applied)
 
@@ -983,9 +992,9 @@ Your vote carries 1.93 the weight of an average member (who votes with 1.0 weigh
 
 ### ISR Calculation Pipeline
 
-1. **Trigger:** Rised chat or vote issue
-2. **ISR components weights (wR, wE, wC) evaluation:** AI analize issue and its context to set wieghts for Relevanse, Expertise and Contribution parts
-3. **Data Fetch:** Get users profile, values, issue context, historical performance
+1. **Trigger:** A raised chat or vote issue
+2. **ISR components weights evaluation:** AI evaluates the relevance component weights (w<sub>D</sub>, w<sub>G</sub>, w<sub>S</sub>, w<sub>X</sub>) and the issue aggregation weights (w<sub>R</sub>, w<sub>E</sub>, w<sub>C</sub>) from the issue and its context, using instructions from ISR-AI-Weight-Evaluation-Instructions.md, anchored by 100 benchmark examples.
+3. **Data Fetch:** Get users' profiles, values, issue context, historical performance
 4. **Calculate Relevance (R):**
 5. **Ad-hoc Public Formation:**
 
@@ -994,10 +1003,10 @@ Your vote carries 1.93 the weight of an average member (who votes with 1.0 weigh
 7. **Vector of Values evaluation:**
 
   - Gathering of Ad-hoc Public members values from Matrix of Values
-  - Vector of Values: define from the vector representations of the public members values, taking into account Relevance (R)
+  - Vector of Values: defined from the vector representations of the public members values, taking into account Relevance (R)
 8. **Calculate Contribution (C):**
-9. **Normalization:** Individual ISR components (R, E, C) are normalized to the ad-hoc public average of 1.0
-10. **Apply Formula:** Row ISR = wR×R + wE×E + wC×C
+9. **Normalization:** Individual ISR components (R, E, C) are normalized to the ad-hoc public average of 1.0 (Contribution, which can be zero or negative, is normalized by the public's typical contribution plus one reference unit; in a normal situation the result averages around 1.0)
+10. **Apply Formula:** Row ISR = w<sub>R</sub>×R + w<sub>E</sub>×E + w<sub>C</sub>×C
 11. **Store & Notify:** Save ISR for later use, notify user with ad-hoc public invitation and their personal weight on the issue
 
 ### Performance Optimizations
@@ -1010,7 +1019,7 @@ Your vote carries 1.93 the weight of an average member (who votes with 1.0 weigh
 
 ### Privacy & Security ([Adaptable Authorization (AAuth)](https://isr-vote.com/wiki/adaptable_authorization.html))
 
-- **Multi-Layer Data Access:** What data a members can see about other members depends on their relation to that member, their purpose and a minimum reliability condition (gISR); the member can restrict automatic access and decides on direct requests.
+- **Multi-Layer Data Access:** What data a member can see about other members depends on their relation to that member, their purpose and a minimum reliability condition (gISR); the member can restrict automatic access and decides on direct requests.
 - **Access Logging:** Every data request logged and auditable
 - **Data Misuse Detection:** AI flags suspicious access patterns (excessive requests = ISR penalty)
 - **Encryption:** All data encrypted in transit (TLS) and at rest

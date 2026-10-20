@@ -228,7 +228,7 @@ where:
               <li><b>Calculating</b> the situational <b>Relevance</b> for each user <b>i</b>. Relevance shows how strongly a person is related to the issue across four dimensions:<br>
               <ul>
                 <li><b>demographic (D)</b>: whether their life situation matches the target group (for example, parents of small children for a childcare question);</li>
-                <li><b>geospatial (G)</b>: how close they are in space to where the decision will have effect;</li>
+                <li><b>geospatial (G)</b>: how close they are in space to where the decision will have effect measured from the nearest of their declared places;</li>
                 <li><b>semantic (S)</b>: how much their interests and activities match the topic of the issue;</li>
                 <li><b>social (X)</b>: whether they are socially connected to people who are directly affected.</li>
               </ul>
@@ -254,7 +254,7 @@ where \(\vec{v}_i\) is the vector representation of the user profile, \(\vec{v}_
             <h4 id="public">► Ad-hoc Public forms</h4>
           </div>
           <div id="content-public" class="content" style="display: none;">
-            <p>That set becomes a temporary ad-hoc public for deliberation and voting on the issue. The identified stakeholders are invited to join an ad-hoc public dedicated to addressing the issue. This group will deliberate, propose solutions, and vote on the best course of action.</p>
+            <p>That set becomes a temporary ad-hoc public for deliberation and voting on the issue. The identified stakeholders are invited to join an ad-hoc public dedicated to addressing the issue. This group will deliberate, propose solutions, and vote on the best course of action. The issue belongs to its public, not to the person who raised it.</p>
             <a href="https://raw.githubusercontent.com/ponomarchuk-set/isr/main/images/a2.svg">
             <img src="https://raw.githubusercontent.com/ponomarchuk-set/isr/main/images/a2.svg" alt="ISR Ad-hoc Public Lifecycle" width="100%">
             </a><br><br>
@@ -607,7 +607,7 @@ where:
         <ul>
           <li><b>education</b> in relevant domains;</li>
           <li>practical work <b>experience</b> in related roles;</li>
-          <li><b>resources</b> the member has <i>pledged</i> to resolving this issue (equipment, space, contacts, time). Resources count only when committed to the issue; owning them is not enough. Money is not counted: if an issue needs funding, each solution option states its funding plan and proposed source.</li>
+          <li><b>resources</b> the member has <i>pledged</i> to resolving this issue (equipment, space, contacts, time). Resources count only when committed to the issue; owning them is not enough. Money is not counted: if an issue needs funding, each solution option states its funding plan and proposed source. Financial facts, such as taxes paid by a business, give no weight either; a person can state them as an argument in the deliberation.</li>
         </ul>
         These components are aggregated into a numerical <b>Expertise</b> score for the certain question - not a “universal intelligence” measure.
       </p>
@@ -631,11 +631,12 @@ where:
                 <p>After calculating the situational <b>Relevance</b>, a list of <b>n</b> ad-hoc public participants appears with the corresponding weights \(R_i\) regarding relevance to the question <b>q</b>. Vector representations of their values \(\vec{V}_i\) (taking into account <b>Relevance</b>) make up the ad-hoc public's <b>Vector of Values</b>, which can also be translated into a form convenient for the participant with explanations from the AI assistant. Therefore, the greater the <b>Relevance</b> of a member, the more the member's values influence <b>the values of the ad-hoc public</b>.</p>
                 <p><b>Contribution</b> is based on a structured record of past actions as seen by the public. Each action is represented as a vector in the same value space as the community's shared Vector of Values and evaluated along three axes:
                   <ul>
-                    <li><b>Alignment (A):</b> how well the action matches the community's declared values;</li>
+                    <li><b>Alignment (A):</b> how well the action matches the community's declared values (from -1, when the action works against them, to +1, when it fully matches them);</li>
                     <li><b>Force (F):</b> how strong the action was (type of effort, time invested, complexity and result);</li>
                     <li><b>Sentiment (S):</b> how other members reacted to it (marked as good, funny, rude, flood, foolish).</li>
                   </ul>
-                The contribution of a single action is computed from A, F and S, and a person's overall Contribution in a public is the aggregate over all their actions.
+                The contribution of a single action is computed from A, F and S, and a person's overall Contribution in a public is the aggregate over all their actions. Contribution is measured in units of one reference action: one hour of ordinary task work, fully in line with the public’s values and without marks, contributes exactly 1.</p>
+                <p>A person’s record is held in front of the whole community (all registrated users). An ad-hoc public exists for one issue, so a record cannot belong to one public: it is earned through many publics, each of which can value an action in its own way, and each public reads it through its own Vector of Values. How a person votes is not scored. Messages and proposed options are scored as actions, with a smaller force than tasks, by what they do and not by whether their author’s opinion matches the majority’s.
                 
                 <!-- calculation:
 \[
@@ -649,7 +650,7 @@ where:
 <li>\(\vec{V}_{\mathrm{mv}}\) - the public's <b>Vector of Values</b></li>
 <li>\(\vec{v}_{i, action}\) - vectorized <b>actions</b> of <b>i</b> member</li> -->
 </p>
-                <p>Finally <b>ISR is calculated</b> out from <b>Relevance, Expertise, Contribution</b> and normalized to unit mean (ad-hoc public's average score is always 1) to psychologically simplify adaptation to the new approach.</p>
+                <p>Finally <b>ISR is calculated</b> out from <b>Relevance, Expertise, Contribution</b> and normalized so that, in a public with an established record, the average member’s weight is about 1 - to psychologically simplify adaptation to the new approach.</p>
                 <p>Those who have greater ISR-score have a proportionally greater influence on the final decision.</p>
               </div>
             </div>
@@ -724,7 +725,7 @@ where:
         <p>The system uses semantic embeddings (LLM embeddings) to compare issue texts with user profiles and past actions, compute relevance scores, and assist in extracting stakeholders and generating explainable summaries. For tasks such as argument quality or sentiment, specialized LLM modules analyze contributions to estimate constructive behaviour.</p>
 
         <h4>Normalization & weights</h4>
-        <p>Each raw component (relevance, expertise, contribution) is normalized by mean. The automated context routine proposes weights w<sub>R</sub>, w<sub>E</sub>, w<sub>C</sub> (sum = 1) appropriate to the issue. The final ISR is the weighted sum described earlier.</p>
+        <p>Relevance and Expertise are divided by their mean; Contribution, which can be negative, is divided by the public’s typical contribution plus one reference unit. The automated context routine proposes weights w<sub>R</sub>, w<sub>E</sub>, w<sub>C</sub> (sum = 1) appropriate to the issue. The final ISR is the weighted sum described earlier.</p>
 
         <h4>Audit & explainability</h4>
         <p>For transparency, the system stores: the component values, a short natural-language explanation of the top contributing factors, and links to the records used. Higher-level permission holders in the public (per adaptable authorization rules) can view supporting evidence.</p>
