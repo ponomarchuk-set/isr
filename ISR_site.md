@@ -483,9 +483,9 @@ After calculating the situational **Relevance**, a list of **n** ad-hoc public p
 
 - **Alignment (A):** how well the action matches the community's declared values (from -1, when the action works against them, to +1, when it fully matches them);
 - **Force (F):** how strong the action was (type of effort, time invested, complexity and result);
-- **Sentiment (S):** how other members reacted to it (marked as good, funny, rude, flood, foolish).
+- **Sentiment Marks (M):** how other members reacted to it (marked as good, funny, rude, flood, foolish).
 
-                The contribution of a single action is computed from A, F and S, and a person's overall Contribution in a public is the aggregate over all their actions. Contribution is measured in units of one reference action: one hour of ordinary task work, fully in line with the public’s values and without marks, contributes exactly 1.
+                The contribution of a single action is computed from A, F and M, and a person's overall Contribution in a public is the aggregate over all their actions. Contribution is measured in units of one reference action: one hour of ordinary task work, fully in line with the public’s values and without marks, contributes exactly 1.
                 A person’s record is held in front of the whole community (all registrated users). An ad-hoc public exists for one issue, so a record cannot belong to one public: it is earned through many publics, each of which can value an action in its own way, and each public reads it through its own Vector of Values. How a person votes is not scored. Messages and proposed options are scored as actions, with a smaller force than tasks, by what they do and not by whether their author’s opinion matches the majority’s.
 
 Finally **ISR is calculated** out from **Relevance, Expertise, Contribution** and normalized so that, in a public with an established record, the average member’s weight is about 1 - to psychologically simplify adaptation to the new approach.
@@ -536,7 +536,7 @@ The system uses semantic embeddings (LLM embeddings) to compare issue texts with
 
 #### Normalization & weights
 
-Relevance and Expertise are divided by their mean; Contribution, which can be negative, is divided by the public’s typical contribution plus one reference unit. The automated context routine proposes weights wR, wE, wC (sum = 1) appropriate to the issue. The final ISR is the weighted sum described earlier.
+Relevance and Expertise are divided by their mean; Contribution, which can be negative, is divided by the public’s mean absolute Contribution plus one reference unit. The automated context routine proposes weights wR, wE, wC (sum = 1) appropriate to the issue. The final ISR is the weighted sum described earlier.
 
 #### Audit & explainability
 
@@ -1005,7 +1005,7 @@ Your vote carries 1.93 times the weight of an average member (who votes with abo
   - Gathering of Ad-hoc Public members values from Matrix of Values
   - Vector of Values: defined from the vector representations of the public members values, taking into account Relevance (R)
 8. **Calculate Contribution (C):**
-9. **Normalization:** Individual ISR components (R, E, C) are normalized to the ad-hoc public average of 1.0 (Contribution, which can be zero or negative, is normalized by the public's typical contribution plus one reference unit; in a normal situation the result averages around 1.0)
+9. **Normalization:** Individual ISR components (R, E, C) are normalized to the ad-hoc public average of 1.0 (Contribution, which can be zero or negative, is normalized by the public's mean absolute Contribution plus one reference unit; in a normal situation the result averages around 1.0)
 10. **Apply Formula:** Row ISR = w<sub>R</sub>×R + w<sub>E</sub>×E + w<sub>C</sub>×C
 11. **Store & Notify:** Save ISR for later use, notify user with ad-hoc public invitation and their personal weight on the issue
 
@@ -1084,7 +1084,7 @@ In a community where members should see each other's contributions transparently
 **Adaptable Authorization** is a dynamic access control model where data access permissions adapt
                 in real-time based on:
 
-1. **Accessor's gISR score:** Their record of acting in line with community norms, including respect for others’ data
+1. **Accessor's gISR score:** Their record of acting in line with community norms, including respect for others’ data (computed like a weight in a vote that affects all users equally: Relevance and Expertise equal for everyone, the three weights equal, Contribution read through the values of all registered users taken equally, and the result divided by its mean over all users, so that the average is 1)
 2. **Data sensitivity level:** How private or critical the requested information is
 3. **Access context:** Why they're accessing it (decision-making, verification, audit, etc.)
 4. **Relationship to data subject:** Are they a family member? Ad-hoc public peer? Stranger?

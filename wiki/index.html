@@ -633,9 +633,9 @@ where:
                   <ul>
                     <li><b>Alignment (A):</b> how well the action matches the community's declared values (from -1, when the action works against them, to +1, when it fully matches them);</li>
                     <li><b>Force (F):</b> how strong the action was (type of effort, time invested, complexity and result);</li>
-                    <li><b>Sentiment (S):</b> how other members reacted to it (marked as good, funny, rude, flood, foolish).</li>
+                    <li><b>Sentiment Marks (M):</b> how other members reacted to it (marked as good, funny, rude, flood, foolish).</li>
                   </ul>
-                The contribution of a single action is computed from A, F and S, and a person's overall Contribution in a public is the aggregate over all their actions. Contribution is measured in units of one reference action: one hour of ordinary task work, fully in line with the public’s values and without marks, contributes exactly 1.</p>
+                The contribution of a single action is computed from A, F and M, and a person's overall Contribution in a public is the aggregate over all their actions. Contribution is measured in units of one reference action: one hour of ordinary task work, fully in line with the public’s values and without marks, contributes exactly 1.</p>
                 <p>A person’s record is held in front of the whole community (all registrated users). An ad-hoc public exists for one issue, so a record cannot belong to one public: it is earned through many publics, each of which can value an action in its own way, and each public reads it through its own Vector of Values. How a person votes is not scored. Messages and proposed options are scored as actions, with a smaller force than tasks, by what they do and not by whether their author’s opinion matches the majority’s.
                 
                 <!-- calculation:
@@ -725,7 +725,7 @@ where:
         <p>The system uses semantic embeddings (LLM embeddings) to compare issue texts with user profiles and past actions, compute relevance scores, and assist in extracting stakeholders and generating explainable summaries. For tasks such as argument quality or sentiment, specialized LLM modules analyze contributions to estimate constructive behaviour.</p>
 
         <h4>Normalization & weights</h4>
-        <p>Relevance and Expertise are divided by their mean; Contribution, which can be negative, is divided by the public’s typical contribution plus one reference unit. The automated context routine proposes weights w<sub>R</sub>, w<sub>E</sub>, w<sub>C</sub> (sum = 1) appropriate to the issue. The final ISR is the weighted sum described earlier.</p>
+        <p>Relevance and Expertise are divided by their mean; Contribution, which can be negative, is divided by the public’s mean absolute Contribution plus one reference unit. The automated context routine proposes weights w<sub>R</sub>, w<sub>E</sub>, w<sub>C</sub> (sum = 1) appropriate to the issue. The final ISR is the weighted sum described earlier.</p>
 
         <h4>Audit & explainability</h4>
         <p>For transparency, the system stores: the component values, a short natural-language explanation of the top contributing factors, and links to the records used. Higher-level permission holders in the public (per adaptable authorization rules) can view supporting evidence.</p>
