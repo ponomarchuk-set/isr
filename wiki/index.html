@@ -46,7 +46,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <p>The <b>Index of Social Responsibility (ISR)</b> is a practical framework for improving collective decisions in communities where members are formally equal but differ significantly in their knowledge, stake, and history of contribution — for example: housing cooperatives, non-profits, civic DAOs, professional associations, and neighborhood governance bodies.</p>
 
-    <p>Most such communities rely on one-person-one-vote or formal/informal representative hierarchy. The first treats every voice as equally relevant regardless of context; the second makes the loudest or most senior voice decisive. ISR offers a third option: influence weighted by <b>Relevance</b> (how directly this issue affects you), <b>Expertise</b> (how can you affect the issue with your relevant knowledge or resources), and <b>Contribution</b> (your verified history of action in the community) — all computed transparently, per issue, and contestable by any member. The philosophical argument for why this is necessary and how it is grounded is developed fully in the <a href="/wiki/ISR-philosophy.html">Philosophy</a> chapter.</p>
+    <p>Most such communities rely on one-person-one-vote or formal/informal representative hierarchy. The first treats every voice as equally relevant regardless of context; the second makes the loudest or most senior voice decisive. ISR offers a third option: influence weighted by <b>Relevance</b> (how directly this issue affects you), <b>Expertise</b> (how can you affect the issue with your relevant knowledge and experience), and <b>Contribution</b> (your verified history of action in the community) — all computed transparently, per issue, and contestable by any member. The philosophical argument for why this is necessary and how it is grounded is developed fully in the <a href="/wiki/ISR-philosophy.html">Philosophy</a> chapter.</p>
 
     <p>ISR operates inside applicable law. Where law fully settles a question there is nothing to weigh; where it settles part of a question, ISR addresses only the remainder.</p>
 
@@ -78,7 +78,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div id="content-WHAT_IS_ISR" class="content" style="display: none;">
         <h3>Core concept</h3>
         <p>
-          ISR (Index of Social Responsibility) is a context‑aware influence coefficient for each participant with respect to a specific question or issue, computed as a function of three components: Relevance (how much the issue directly affects the person), Expertise (domain‑specific knowledge and resources - how much the person can directly affects the issue) and Contribution (past actions valued by the ad-hoc public). That score (the ISR) is then used to weight that participant's vote or influence in the decision for that issue within the corresponding ad-hoc public formed around this question. ISR is not a permanent universal "label" on a person (like a "social credit" rating) - it is calculated for each specific question and can only be applied only to that question. And its components are transparent and explainable to participants. (One limited exception, the general ISR, is described in the Adaptable Authorization section.)
+          ISR (Index of Social Responsibility) is a context‑aware influence coefficient for each participant with respect to a specific question or issue, computed as a function of three components: Relevance (how much the issue directly affects the person), Expertise (domain‑specific knowledge and experience - how much the person can directly affects the issue) and Contribution (past actions valued by the ad-hoc public). That score (the ISR) is then used to weight that participant's vote or influence in the decision for that issue within the corresponding ad-hoc public formed around this question. ISR is not a permanent universal "label" on a person (like a "social credit" rating) - it is calculated for each specific question and can only be applied only to that question. And its components are transparent and explainable to participants. (One limited exception, the general ISR, is described in the Adaptable Authorization section.)
           <div class="formula">
             $$ISR = f(Relevance, Expertise, Contribution)$$
           </div>
@@ -212,7 +212,7 @@ where:
             <ul>
             <li><b>Text.</b> A clear specific request for which public consensus is required.</li>
             <li><b>Context.</b> A multifactorial description of the temporal and spatial (geographical, social, etc.) conditions for which the question text is relevant.</li>
-            <li><b>Solution options.</b> Optional for discussion, mandatory for voting. Must contain options for a specific answer to the question.</li>
+            <li><b>Solution options.</b> Optional for discussion, mandatory for voting. Must contain options for a specific answer to the question. Each option has an implementation plan: first the money (cost and funding source), then the resources needed for realization (equipment, space, contacts, time) and who provides them.</li>
             </ul>
           </div>
         </div>
@@ -228,7 +228,7 @@ where:
               <li><b>Calculating</b> the situational <b>Relevance</b> for each user <b>i</b>. Relevance shows how strongly a person is related to the issue across four dimensions:<br>
               <ul>
                 <li><b>demographic (D)</b>: whether their life situation matches the target group (for example, parents of small children for a childcare question);</li>
-                <li><b>geospatial (G)</b>: how close they are in space to where the decision will have effect measured from the nearest of their declared places;</li>
+                <li><b>geospatial (G)</b>: how close they are in space to where the decision will have effect measured from their declared places (home, work or registered property);</li>
                 <li><b>semantic (S)</b>: how much their interests and activities match the topic of the issue;</li>
                 <li><b>social (X)</b>: whether they are socially connected to people who are directly affected.</li>
               </ul>
@@ -599,17 +599,17 @@ where:
 </div>
 
       <h4>1. Context Relevance (R)</h4>
-      <p>Measures how directly a person is connected to the current issue: declared interests, proximity (geographic or organizational), recent activity on similar topics, social ties to other stakeholders. Practically this is estimated via semantic matching between the issue description and the participant's profile plus graph-based proximity metrics. The calculation method is generally described above. </p>
+      <p>Measures how directly a person is connected to the current issue: declared interests, proximity (geographic or organizational, including property registered in the system), recent activity on similar topics, social ties to other stakeholders. Practically this is estimated via semantic matching between the issue description and the participant's profile plus graph-based proximity metrics. The calculation method is generally described above. </p>
 
       <h4>2. Expertise (E)</h4>
       <p>Expertise reflects a person's domain-specific competence and capacity to act in this issue.<br>
-        It is calculated from three sources:
+        It is calculated from two sources:
         <ul>
           <li><b>education</b> in relevant domains;</li>
-          <li>practical work <b>experience</b> in related roles;</li>
-          <li><b>resources</b> the member has <i>pledged</i> to resolving this issue (equipment, space, contacts, time). Resources count only when committed to the issue; owning them is not enough. Money is not counted: if an issue needs funding, each solution option states its funding plan and proposed source. Financial facts, such as taxes paid by a business, give no weight either; a person can state them as an argument in the deliberation.</li>
+          <li>practical work <b>experience</b> in related roles</li>
         </ul>
-        These components are aggregated into a numerical <b>Expertise</b> score for the certain question - not a “universal intelligence” measure.
+        These two components are added, without weights, into a numerical <b>Expertise</b> score for the certain question - not a “universal intelligence” measure.</p>
+        <p><b>Resources</b> are not part of Expertise. What an option needs for realization (equipment, space, contacts, time) is written in its implementation plan, after the money: first the cost and the funding source, then the resources and who provides them. Resources serve the realization of the decision and give no weight in it. Any property registered in the system can influence a decision only through Relevance. Money is not counted either. Financial facts, such as taxes paid by a business, give no weight; a person can state them as an argument in the deliberation.
       </p>
       <!-- <p>Captures domain knowledge: formal credentials, demonstrated experience, and prior successful work relevant to the topic. Expertise is assessed by matching profile records of participant <b>i</b> against the question <b>q</b> semantic vector:
 \[
@@ -775,7 +775,7 @@ where:
       <p>A: No. ISR is a contextually weighted influence mechanism meant to reflect relevance, expertise, and contribution. Communities set weights and can inspect every calculation. The goal is to improve deliberation quality and legitimacy — not to predetermine outcomes.</p>
 
       <h4>Q: Can someone "buy" influence?</h4>
-      <p>A: Influence is derived from recorded behavior, verifiable actions, and declared expertise — not from financial transactions. Any integration with external sources must be authorized by the community and logged transparently. Money cannot be pledged toward influence. Funding needed for an option is part of the option itself (cost and funding source), debated and voted like any other element.</p>
+      <p>A: Influence is derived from recorded behavior, verifiable actions, and declared expertise — not from financial transactions. Any integration with external sources must be authorized by the community and logged transparently. Money and other resources cannot be pledged toward influence. What an option needs (the cost and funding source first, then the resources) is part of the option's implementation plan, debated and voted like any other element.</p>
 
       <h4>Q: What is the philosophical basis for ISR — why this approach and not another?</h4>
       <p>A: ISR is grounded in Hannah Arendt's political theory, the All-Affected Principle from democratic philosophy, and research on epistemic democracy and augmented deliberation. The full argument — including an honest account of what ISR is not and where it has known limitations — is in the <a href="/wiki/ISR-philosophy.html">Philosophy</a> chapter.</p>

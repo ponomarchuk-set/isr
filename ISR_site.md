@@ -107,7 +107,7 @@ Contact & community
 
 The **Index of Social Responsibility (ISR)** is a practical framework for improving collective decisions in communities where members are formally equal but differ significantly in their knowledge, stake, and history of contribution — for example: housing cooperatives, non-profits, civic DAOs, professional associations, and neighborhood governance bodies.
 
-Most such communities rely on one-person-one-vote or formal/informal representative hierarchy. The first treats every voice as equally relevant regardless of context; the second makes the loudest or most senior voice decisive. ISR offers a third option: influence weighted by **Relevance** (how directly this issue affects you), **Expertise** (how can you affect the issue with your relevant knowledge or resources), and **Contribution** (your verified history of action in the community) — all computed transparently, per issue, and contestable by any member. The philosophical argument for why this is necessary and how it is grounded is developed fully in the [Philosophy](https://isr-vote.com/wiki/ISR-philosophy.html) chapter.
+Most such communities rely on one-person-one-vote or formal/informal representative hierarchy. The first treats every voice as equally relevant regardless of context; the second makes the loudest or most senior voice decisive. ISR offers a third option: influence weighted by **Relevance** (how directly this issue affects you), **Expertise** (how can you affect the issue with your relevant knowledge and experience), and **Contribution** (your verified history of action in the community) — all computed transparently, per issue, and contestable by any member. The philosophical argument for why this is necessary and how it is grounded is developed fully in the [Philosophy](https://isr-vote.com/wiki/ISR-philosophy.html) chapter.
 
 ISR operates inside applicable law. Where law fully settles a question there is nothing to weigh; where it settles part of a question, ISR addresses only the remainder.
 
@@ -135,7 +135,7 @@ ISR operates inside applicable law. Where law fully settles a question there is 
 
 ### Core concept
 
-ISR (Index of Social Responsibility) is a context‑aware influence coefficient for each participant with respect to a specific question or issue, computed as a function of three components: Relevance (how much the issue directly affects the person), Expertise (domain‑specific knowledge and resources - how much the person can directly affects the issue) and Contribution (past actions valued by the ad-hoc public). That score (the ISR) is then used to weight that participant's vote or influence in the decision for that issue within the corresponding ad-hoc public formed around this question. ISR is not a permanent universal "label" on a person (like a "social credit" rating) - it is calculated for each specific question and can only be applied only to that question. And its components are transparent and explainable to participants. (One limited exception, the general ISR, is described in the Adaptable Authorization section.)
+ISR (Index of Social Responsibility) is a context‑aware influence coefficient for each participant with respect to a specific question or issue, computed as a function of three components: Relevance (how much the issue directly affects the person), Expertise (domain‑specific knowledge and experience - how much the person can directly affect the issue) and Contribution (past actions valued by the ad-hoc public). That score (the ISR) is then used to weight that participant's vote or influence in the decision for that issue within the corresponding ad-hoc public formed around this question. ISR is not a permanent universal "label" on a person (like a "social credit" rating) - it is calculated for each specific question and can only be applied only to that question. And its components are transparent and explainable to participants. (One limited exception, the general ISR, is described in the Adaptable Authorization section.)
 
             $$ISR = f(Relevance, Expertise, Contribution)$$
 
@@ -232,7 +232,7 @@ The question **q** must meet the following requirements:
 
 - **Text.** A clear specific request for which public consensus is required.
 - **Context.** A multifactorial description of the temporal and spatial (geographical, social, etc.) conditions for which the question text is relevant.
-- **Solution options.** Optional for discussion, mandatory for voting. Must contain options for a specific answer to the question.
+- **Solution options.** Optional for discussion, mandatory for voting. Must contain options for a specific answer to the question. Each option has an implementation plan: first the money (cost and funding source), then the resources needed for realization (equipment, space, contacts, time) and who provides them.
 
           ↓
 
@@ -244,7 +244,7 @@ The system suggests a **set of participants** whose profiles, past actions, geog
 2. **Calculating** the situational **Relevance** for each user **i**. Relevance shows how strongly a person is related to the issue across four dimensions:
 
   - **demographic (D)**: whether their life situation matches the target group (for example, parents of small children for a childcare question);
-  - **geospatial (G)**: how close they are in space to where the decision will have effect measured from the nearest of their declared places;
+  - **geospatial (G)**: how close they are in space to where the decision will have effect measured from the nearest of their declared places (home, work or registered property);
   - **semantic (S)**: how much their interests and activities match the topic of the issue;
   - **social (X)**: whether they are socially connected to people who are directly affected.
 
@@ -459,19 +459,20 @@ Unlike traditional "one-person-one-vote" systems, each member's influence coeffi
 
 #### 1. Context Relevance (R)
 
-Measures how directly a person is connected to the current issue: declared interests, proximity (geographic or organizational), recent activity on similar topics, social ties to other stakeholders. Practically this is estimated via semantic matching between the issue description and the participant's profile plus graph-based proximity metrics. The calculation method is generally described above.
+Measures how directly a person is connected to the current issue: declared interests, proximity (geographic or organizational, including property registered in the system), recent activity on similar topics, social ties to other stakeholders. Practically this is estimated via semantic matching between the issue description and the participant's profile plus graph-based proximity metrics. The calculation method is generally described above.
 
 #### 2. Expertise (E)
 
 Expertise reflects a person's domain-specific competence and capacity to act in this issue.
 
-        It is calculated from three sources:
+        It is calculated from two sources:
 
 - **education** in relevant domains;
 - practical work **experience** in related roles;
-- **resources** the member has pledged to resolving this issue (equipment, space, contacts, time). Resources count only when committed to the issue; owning them is not enough. Money is not counted: if an issue needs funding, each solution option states its funding plan and proposed source. Financial facts, such as taxes paid by a business, give no weight either; a person can state them as an argument in the deliberation.
 
-        These components are aggregated into a numerical **Expertise** score for the certain question - not a “universal intelligence” measure.
+        These two components are added, without weights, into a numerical **Expertise** score for the certain question - not a “universal intelligence” measure.
+
+Resources are not part of Expertise. What an option needs for realization (equipment, space, contacts, time) is written in its implementation plan, after the money: first the cost and the funding source, then the resources and who provides them. Resources serve the realization of the decision and give no weight in it. Any property registered in the system can influence a decision only through Relevance. Money is not counted either. Financial facts, such as taxes paid by a business, give no weight; a person can state them as an argument in the deliberation.
 
 #### 3. Contribution (C)
 
@@ -571,7 +572,7 @@ A: No. ISR is a contextually weighted influence mechanism meant to reflect relev
 
 #### Q: Can someone "buy" influence?
 
-A: Influence is derived from recorded behavior, verifiable actions, and declared expertise — not from financial transactions. Any integration with external sources must be authorized by the community and logged transparently. Money cannot be pledged toward influence. Funding needed for an option is part of the option itself (cost and funding source), debated and voted like any other element.
+A: Influence is derived from recorded behavior, verifiable actions, and declared expertise — not from financial transactions. Any integration with external sources must be authorized by the community and logged transparently. Money and other resources cannot be pledged toward influence. What an option needs (the cost and funding source first, then the resources) is part of the option's implementation plan, debated and voted like any other element.
 
 #### Q: What is the philosophical basis for ISR — why this approach and not another?
 
@@ -821,7 +822,7 @@ Also, when a topic is created, after calculating Relevance and determining the m
 
 ### The Voting Process
 
-1. **Topic creator posts options** with deliberated descriptions (cost, funding source, timeline, pros/cons)
+1. **Topic creator posts options** with deliberated descriptions (cost, funding source, resources, timeline, pros/cons)
 2. **You vote** - your click carries your calculated weight (ISR-score)
 3. **System tallies weighted votes** - highest weight option wins
 4. **Status changes to "closed"** and implementation begins
@@ -833,7 +834,7 @@ Also, when a topic is created, after calculating Relevance and determining the m
 | Voting Queue | All open votes sorted by relevance to you. Show: deadline, your ISR for this issue, urgency |
 | ISR-score Badge | Your calculated ISR for THIS decision (e.g., "4.2" for roof repair if you're a licensed roofer) |
 | Decision Detail Page | Full topic description, all options with budgets/timelines, related discussion messages |
-| Vote Options Display | Each option as a card: name, description, cost, funding source, timeline, creator, attachment preview |
+| Vote Options Display | Each option as a card: name, description, cost, funding source, resources, timeline, creator, attachment preview |
 | Vote Button | Click to cast your weighted vote. Changes to "You Voted" after submission |
 | Why My Weight? Link | Click to see how ISR was calculated (shows R, E, C components) |
 | Results Preview | Live-updating bar chart showing weighted vote distribution |
@@ -964,7 +965,7 @@ Your vote carries 1.93 times the weight of an average member (who votes with abo
 
 ├── title & context description
 
-├── options (with budgets, funding sources, timelines)
+├── options (with budgets, funding sources, resources, timelines)
 
 ├── isr_snapshot (members' weights)
 
@@ -1773,7 +1774,7 @@ Continueing the OS analogy, ISR manage the system's resources in a more detailed
 
 A central concept in ISR is the **Public of Appearance**. Instead of assuming that one fixed group (e.g. by territory) should decide everything no matter who really care about the issue, ISR proposes that social coordination happens through **temporary, issue-centered clusters** of people who really care the issue.
 
-This matters because real-world collective problems rarely belong to one cleanly bounded group. They are usually encountered by overlapping sets of participants: directly affected people, people with domain expertise, people responsible for implementation, and people whose knowledge or resources make them significant to the outcome.
+This matters because real-world collective problems rarely belong to one cleanly bounded group. They are usually encountered by overlapping sets of participants: directly affected people, people with domain expertise, people responsible for implementation, and people whose property is involved in the outcome.
 
 The ad-hoc public captures this fluid reality more accurately than a fixed constituency. It allows coordination to form around an issue, change as the issue evolves, and adapt as new evidence or participants become relevant.
 
@@ -2169,7 +2170,7 @@ ISR ad-hoc publics offer a different approach. They are:
 - **Open by design** — participation is universal, while influence is context-sensitive,
 - **Pluralistic** — individuals can participate in multiple ad-hoc publics simultaneously, each with distinct compositions and priorities.
 
-Within a pablic, the weight of each member’s voice (ISR-Score) is determined by three components: Relevance (how much the issue affects them), Expertise (their relevant knowledge and resources - how they can affect the issue), and Contribution (how well their past actions aligne with the public’s emerging values).
+Within a pablic, the weight of each member’s voice (ISR-Score) is determined by three components: Relevance (how much the issue affects them), Expertise (their relevant knowledge and experience - how they can affect the issue), and Contribution (how well their past actions aligne with the public’s emerging values).
 
 Importantly, values do not function as the initial unifying force. Individuals come together primarily in response to a shared problem or situation. The Vector of Values of an ad-hoc public emerges from the aggregation of members’ individual value descriptions. It is subsequently used to evaluate alignment and inform the Contribution component of the ISR-Score.
 
@@ -2770,8 +2771,8 @@ For the deeper philosophical grounding, see the
 
 An ISR score is not a single permanent number. It is recalculated for each specific decision from three independently measured components:
 
-- **Relevance** — how directly affected this person is by the specific issue at hand. Determined by demography facts, geographic proximity, domain relationship, and social-graph connection to the parties involved.
-- **Expertise** — what relevant knowledge or verifiable track record this person brings to the question. Assessed against credentials, professional history, and the resources the person pledges to the issue (money is not counted).
+- **Relevance** — how directly affected this person is by the specific issue at hand. Determined by demography facts, geographic proximity (including registered property), domain relationship, and social-graph connection to the parties involved.
+- **Expertise** — what relevant knowledge or verifiable track record this person brings to the question. Assessed against credentials and professional history (money and other resources are not counted).
 - **Contribution** — how this person's history of actions in the community aligns with the community's declared values. This is the accumulated record of what they have actually done, not merely what they have stated they believe.
 
 The score is issue-specific: the same person may have high influence on a question about building maintenance and low influence on a question about financial governance, depending on their expertise and the nature of their past contributions in each domain. Every component is visible, inspectable, and contestable by the person it concerns.
