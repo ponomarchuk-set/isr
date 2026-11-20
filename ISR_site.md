@@ -143,7 +143,7 @@ ISR (Index of Social Responsibility) is a context‑aware influence coefficient 
 
 The minimum deployable product is a web application that:
 
-- lets communities declare their shared values and choose weighting parameters;
+- lets members declare their own values; the system derives the weighting parameters from the published table of typical issues;
 - lets people create structured profiles that feed ISR components: demographic and geographic data for Relevance, education and work history for domain-specific Expertise, and declared values plus logged actions for Contribution;
 - lets people start discussions or voting on socially important issues (problems, questions, proposals);
 - forms dynamic ad-hoc publics around concrete issues using a Relevance score (combining demographic, geospatial, semantic and social proximity) and proposes the most affected participants;
@@ -395,17 +395,16 @@ For this specific issue each participant receives a score computed from three co
 
 ##### Vector of Values calculation example
 
-\[
-\begin{align*}
-\vec{V}_{\mathrm{mv}} = \frac{1}{n} \sum_{i=1}^n \, R_i \cdot \vec{V}_i
-\end{align*}
-\]
+$$\begin{align*}
+\vec{V}_{\mathrm{mv}} = \frac{\sum_{i=1}^n \, R_i \cdot \vec{V}_i}{\sum_{i=1}^n \, R_i}
+\end{align*}$$
+
 where:
-- \(\vec{V}_{\mathrm{mv}}\) - the ad-hoc public's **Vector of Values**
+- $\vec{V}_{\mathrm{mv}}$- the ad-hoc public's **Vector of Values**
 
-- \(R_i\) - **Relevance** of **i** member
+- $R_i$ - **Relevance** of **i** member
 
-- \(\vec{V}_i\) - vectorized **values** of **i** member
+- $\vec{V}_i$ - vectorized **values** of **i** member
 
 **Matrix of Values in simplified view**
 
@@ -455,7 +454,7 @@ Unlike traditional "one-person-one-vote" systems, each member's influence coeffi
 - Their actual expertise in the issue domain
 - Their proven track record of contribution
 
-    AI determine the components weights (wR, wE, wC) through the issue context.
+    The assistant derives the component weights (wR, wE, wC) from the issue type and context, inside the ranges of the published table of typical issues; nobody types a number.
 
 #### 1. Context Relevance (R)
 
@@ -537,7 +536,7 @@ The system uses semantic embeddings (LLM embeddings) to compare issue texts with
 
 #### Normalization & weights
 
-Relevance and Expertise are divided by their mean; Contribution, which can be negative, is divided by the public’s mean absolute Contribution plus one reference unit. The automated context routine proposes weights wR, wE, wC (sum = 1) appropriate to the issue. The final ISR is the weighted sum described earlier.
+Relevance and Expertise are divided by their mean; Contribution, which can be negative, is divided by the public’s mean absolute Contribution plus one reference unit. The assistant derives the weights wR, wE, wC (sum = 1) from the published table of typical issues for the issue's type and context. The final ISR is the weighted sum described earlier.
 
 #### Audit & explainability
 
@@ -568,7 +567,7 @@ These governance measures are designed to keep the system accountable to the com
 
 #### Q: Is ISR a vote-rigging tool?
 
-A: No. ISR is a contextually weighted influence mechanism meant to reflect relevance, expertise, and contribution. Communities set weights and can inspect every calculation. The goal is to improve deliberation quality and legitimacy — not to predetermine outcomes.
+A: No. ISR is a contextually weighted influence mechanism meant to reflect relevance, expertise, and contribution. The weights are derived per issue from the published table of typical issues; nobody types a number. The goal is to improve deliberation quality and legitimacy — not to predetermine outcomes.
 
 #### Q: Can someone "buy" influence?
 
@@ -1499,9 +1498,9 @@ Individuals have rights to:
 
 - **Access:** See all their data stored in system
 - **Correction:** Update inaccurate information
-- **Deletion:** Request data removal (with community approval)
+- **Deletion:** Erasure only where the law requires, logged with the legal basis
 - **Portability:** Export their data in standard format
-- **Appeal:** Challenge ISR calculations or access denials
+- **Appeal:** dispute issue about a recorded action (correction entry); algorithm problems go through the protocol-level rule-change procedure
 
 ### Legal Compliance
 
@@ -1556,7 +1555,7 @@ Implement machine learning anomaly detection to identify coordinated manipulatio
 
 - Components are transparent and community-defined (not black-box AI)
 - Regular fairness audits comparing ISR across demographic groups
-- Appeals process where individuals can challenge scores
+- Dispute issue about a recorded action (correction entry); algorithm-level problems go through the protocol-level rule-change procedure
 
 For Future Consideration
 
@@ -1621,13 +1620,11 @@ Implement MVP in small controlled community first (50-100 members).
 **Challenge:** What if someone disagrees with how they're being scored?
                 How do they appeal?
 
-**Current Thinking:** Need robust appeals process, but specifics TBD.
+**Current design:** a member who thinks an action was misread raises an ordinary issue about it (Action protocol 7.5); the connected public can add a correction entry; nothing is deleted.
 
 For Future Consideration
 
-Design independent ombudsman or arbitration process.
-                    Allow community vote on disputed ISR calculations.
-                    Implement temporary score holds during investigation.
+An independent ombudsman or arbitration process is not part of the current design; it is a possible later addition.
 
 ### 8. Accountability for AI/LLM in Scoring
 
@@ -1931,7 +1928,7 @@ This is what ISR proposes as a practical third voice — one that satisfies Kali
 - **Collectively mutable:** the community define its vector values itself by consensus. The current structure should be understood as version 1.0, so it could evolve if a more grounded variant appears. ISR is a genuinely new framework, and sustained research in sociology, psychology, and philosophy will be necessary to validate and improve it. Future versions may look substantially different as that research matures.
 - **Non-prescriptive:** the structure provides a common notation system — like a musical staff — but does not specify which notes are correct. No "right" values are preloaded.
 
-**On the ten domains:** Any representational structure carries the assumptions of its designers. The ten domains of the ISR value vector reflect contemporary social concerns and were designed to cover the broadest possible range of human social interaction. The community revision mechanism is the structural answer to this limitation: the scaffold exists to be inhabited and reshaped, not obeyed.
+**On the ten domains:** Any representational structure carries the assumptions of its designers. The ten domains of the ISR value vector reflect contemporary social concerns and were designed to cover the broadest possible range of human social interaction. The protocol-level rule-change procedure is the structural answer to this limitation: the scaffold exists to be inhabited and reshaped, not obeyed.
 
 ### Publics of Appearance and the All-Affected Principle
 
@@ -2037,7 +2034,7 @@ The deeper difference is purposive: ISR is not designed to control behavior in e
 
 ISR does not propose that AI or algorithms should govern communities. The AI components of the system — issue classification, credential evaluation, value alignment scoring — function as infrastructure that makes human deliberation more fairly weighted and more informed. Every score is explainable, every component is auditable, every parameter is community-adjustable. The Explorer tool exists specifically to make the scoring logic transparent to ordinary members.
 
-An important caveat: this does not mean the system is neutral. Any computational representation of social reality carries the assumptions of its designers. ISR acknowledges this openly and responds to it structurally: the community revision mechanism, the transparent algorithm, the appeals process. Perfect neutrality is not available; accountable and revisable representation is.
+An important caveat: this does not mean the system is neutral. Any computational representation of social reality carries the assumptions of its designers. ISR acknowledges this openly and responds to it structurally: the protocol-level rule-change procedure, the transparent algorithm, the dispute path for a recorded action. Perfect neutrality is not available; accountable and revisable representation is.
 
 ### Not a replacement for law
 
@@ -2208,9 +2205,9 @@ ISR innovates in three key ways:
 2. **Explicit conflict acknowledgment and resolution weighting:** Real communities inevitably face trade-offs. ISR requires members to name and weight key conflicts (e.g., freedom vs. structure, justice vs. restoration, individual responsibility vs. systemic factors, privacy vs. safety). This makes value hierarchies legible rather than hidden, enabling more honest deliberation.
 3. **Vector-based action assessment:** Qualitative narratives are transformed into quantitative vectors for systematic comparison with observed actions. This creates a feedback loop that makes alignment (or misalignment) visible without reducing humans to simplistic categories.
 
-### Detailed Structure of the 233-Dimensional Vector
+### Detailed Structure of the 231-Dimensional Vector
 
-The ISR Values Taxonomy (v1.0) produces a rich, structurized 233-dimensional vector (core values + conflict resolution + contextual shifts + metadata). It is deliberately balanced for the purpose of action assessment in community settings rather than exhaustive psychological profiling.
+The ISR Values Taxonomy (v1.0) produces a rich, structurized 231-dimensional vector (core values + conflict resolution + contextual shifts + metadata). It is deliberately balanced for the purpose of action assessment in community settings rather than exhaustive psychological profiling.
 
 - **10 Domain-level scores** (0–100) - groups of core values in areas:
 
@@ -2229,7 +2226,7 @@ The ISR Values Taxonomy (v1.0) produces a rich, structurized 233-dimensional vec
 - **145 Fine-grained items** (organized by domain, scored 0–100): These break domains into specific, actionable facets and clusters. For example, under Agency & Freedom there are items on bodily/medical autonomy, anti-coercion measures, and self-determination spaces. Under Stewardship there are detailed items on child protection, environmental commitment, and intergenerational duty. The distribution (6–27 items per domain) ensures sufficient depth in complex areas like Digital Rights & Tech (27 items) and Stewardship (21 items), while keeping lighter-touch domains (e.g., Redemption with 6 items) focused. This balance allows the taxonomy to reflect the nuanced reality of community actions without unnecessary redundancy.
 - **36 Conflict Resolution (CR) weights** (0–100): These explicitly model practical trade-offs (e.g., CR.1: Individual Freedom vs. Collective Harmony; CR.3: Proportional Justice vs. Restoration; CR.30: Digital Privacy vs. Safety). They capture how a community prefers to resolve tensions when values compete, turning potential paralysis into informed prioritization.
 - **Contextual Shifts** (40 dimensions, -50 to +50 across 4 contexts × 10 domains): Values are not applied uniformly. The system accounts for how priorities may shift in work-like, family-like, private, or crisis settings, adding situational realism.
-- **Metadata** (20 dimensions): Grounding level and confidence scores per domain track how explicitly and unambiguously each area was addressed in the member’s narrative. This prevents over-interpretation of weak signals.
+- **Metadata** (22 dimensions): Grounding level and confidence scores per domain track how explicitly and unambiguously each area was addressed in the member’s narrative. Plus overall grounding and confidence. This prevents over-interpretation of weak signals.
 
 The overall structure is grouped yet computationally tractable: domains provide summary signals, items add resolution for nuanced actions, CR weights handle inherent tensions, and contextual shifts add realism. Null handling is philosophically and sociologically sound — “mutual silence ≠ disagreement”: if an action does not engage a domain, or if a community has no strong stance there, that dimension is simply skipped in alignment calculations rather than penalized. This respects the bounded, issue-specific nature of real community life.
 
@@ -2256,7 +2253,7 @@ In contrast, the ISR Values-Actions subsystem is designed for voluntary, bottom-
 | Primary Purpose | Strengthening state-led social order and compliance | Enabling communities to align actions with their self-defined future vision |
 | --- | --- | --- |
 | Ownership & Governance | Centralized or government-directed; often opaque | Decentralized, community-owned; transparent vectors |
-| Value Basis | Broad trustworthiness defined by authorities/law | High-dimensional (233-dim) vectors derived from members’ concrete descriptions of desired community life |
+| Value Basis | Broad trustworthiness defined by authorities/law | High-dimensional (231-dim) vectors derived from members’ concrete descriptions of desired community life |
 | Conflict Handling | Implicit prioritization of official norms | Explicit modeling of 36 conflict-resolution weights (e.g., freedom vs. safety, justice vs. restoration) |
 | Scope of Assessment | Often broad, cross-domain sanctions ("once untrustworthy, restricted everywhere") | Issue- and context-specific; respects "mutual silence ≠ disagreement" |
 | Consequences | Primarily rewards/punishments with material restrictions | Contribution scoring for influence and accountability within the ad-hoc public; no external penalties |
@@ -2438,7 +2435,7 @@ The ISR framework is designed around a single organizing principle: influence on
 
 **Public of Appearance** formation follows the *All-Affected Principle:* those whose interests are materially at stake in a decision have a legitimate claim to participate in it.20Robert E. Goodin, "Enfranchising All Affected Interests, and Its Alternatives," Philosophy & Public Affairs 35, no. 1 (2007): 50. Membership is not elected, not delegated, and not permanent. It is determined by the nature of the problem and dissolves when the problem is resolved. This preserves the Arendtian understanding of political action as oriented toward specific, concrete situations rather than abstract administration, and it mirrors the structural logic of Arendt's admired council system - direct participation, issue-specific assembly, non-delegable presence - without the historical exclusions that characterized actual councils.
 
-Crucially, identifying "affectedness" at scale introduces the risk of algorithmic enclosure if mediated solely by an AI. Therefore, in the ISR design, while artificial intelligence maps the context to propose relevant stakeholders, the community itself must deliberate and verify membership, ensuring that the AI acts as an infrastructure of discovery rather than an arbitrator of political standing.
+Crucially, identifying "affectedness" at scale introduces the risk of algorithmic enclosure if mediated solely by an AI. Therefore, in the ISR design, the AI-assistant derives the public from published rules, anyone can join on request and propose changes to the text, options, type and context. The community itself can deliberate and verify membership ensuring that the AI acts as an infrastructure of discovery rather than an arbitrator of political standing.
 
 [![ISR Microcommunity Lifecycle](https://raw.githubusercontent.com/ponomarchuk-set/isr/main/images/a2.svg)](https://raw.githubusercontent.com/ponomarchuk-set/isr/main/images/a2.svg)
 
@@ -2460,7 +2457,7 @@ A central design feature of ISR is that no values are preset from above. Each me
 
 This design addresses a fundamental objection to computational governance: that any algorithmic system encodes the values of its designers and imposes them on its users under the guise of neutrality. ISR's response is structural rather than merely procedural: the representational scaffold (the set of dimensions across which values are declared) is a tool provided by the system, but the values themselves - and the relative weights assigned to each dimension - are entirely community-determined. The scaffold provides a common notation; the community composes the score. Individual values do not change merely because someone enters a new PoA; they change only when the member revises them. This preserves genuine plurality: the community's shared framework is the aggregate of genuinely distinct individual positions, not a homogenized consensus.
 
-The current representational scaffold is structured computationally as a 233-dimension vector. Taxonomically, this vector is developed from Shalom Schwartz’s Theory of Basic Human Values, translating his established cross-cultural sociological framework into measurable computational dimensions, alongside grounding parameters and context-shift markers.22Shalom H. Schwartz, "An Overview of the Schwartz Theory of Basic Values," Online Readings in Psychology and Culture 2, no. 1 (2012): 4. While this represents version 1.0 of an open research problem, the underlying principle is straightforward: the system calculates a contextual baseline without erasing the underlying plurality of individual moral declarations. Sustained work in sociology, moral philosophy, and computational social science will be necessary to develop this vectorization further. Future versions may differ as that research matures.
+The current representational scaffold is structured computationally as a 231-dimension vector. Taxonomically, this vector follows the approach of Shalom Schwartz’s Theory of Basic Human Values, applied to the future a community wants; the ten domains are the designers’ own.22Shalom H. Schwartz, "An Overview of the Schwartz Theory of Basic Values," Online Readings in Psychology and Culture 2, no. 1 (2012): 4. While this represents version 1.0 of an open research problem, the underlying principle is straightforward: the system calculates a contextual baseline without erasing the underlying plurality of individual moral declarations. Sustained work in sociology, moral philosophy, and computational social science will be necessary to develop this vectorization further. Future versions may differ as that research matures.
 
 ### 2.7 Accountability Against Functionalization
 
@@ -2484,7 +2481,7 @@ To overcome the Dunbar constraint and compute this transparency at scale, comput
 
 In the ISR framework, AI functions strictly as epistemic infrastructure, not as normative authority. Its role is restricted to navigating complexity: it analyzes the social graph, calculates Relevance coefficients based on proximity, and maps the context to propose the boundaries of a PoA. It answers the question of who is structurally affected by a given issue, overcoming the cognitive limits that previously mandated rigid representation.
 
-Crucially, the AI does not determine the Matrix of Values, nor does it evaluate the moral weight of an action. It does not prescribe the "ought." The normative judgment remains entirely in the hands of the human participants, who declare their own values and deliberately evaluate the contributions of their peers. The AI acts as the computational scaffolding that allows the Space of Appearance to form dynamically across a mass population, but the actual political action—the deliberation, the judgment, and the assumption of responsibility—remains exclusively human.
+Crucially, the AI does not determine the Matrix of Values. It maps each action into the value space under published rules; the public corrects that reading through its marks and, if needed, a dispute issue. It does not prescribe the "ought." The normative judgment remains entirely in the hands of the human participants, who declare their own values and deliberately evaluate the contributions of their peers. The AI acts as the computational scaffolding that allows the Space of Appearance to form dynamically across a mass population, but the actual political action—the deliberation, the judgment, and the assumption of responsibility—remains exclusively human.
 
 ### 2. 10 The Distinction from Authoritarian Social Credit
 
@@ -2849,9 +2846,8 @@ If you believe a calculation is wrong, you have several options:
 - Inspect the detailed breakdown and identify the specific component you dispute
 - Provide additional information about your expertise, credentials, or contribution that may not be captured in the current profile
 - Request an AI-assisted explanation of any component you find unclear
-- Formally appeal to the community if you believe the calculation reflects a systematic error or bias in the parameters
 
-If an appeal reveals a genuine flaw in how the scoring algorithm applies community values, the parameters themselves can be revised by community consensus. The system is designed to be correctable — not just contestable at the individual level, but revisable at the community level.
+If you think a recorded action was misread, raise an ordinary issue about it: the connected public votes, the options always include "no change", and a chosen option adds a correction entry; nothing is deleted. If you think the problem lies in the design, raise a protocol-level dispute: the rules (table of typical issues, written rules, formula) change by a decision in which all users take part (procedure still under design).
 
 ## Who decided what the ten value domains are? Isn't that imposing values?
 
@@ -2861,7 +2857,7 @@ The distinction to keep in mind is between a *representational structure* and a 
 
 An analogy: a musical staff is a notation system that allows any music to be written down and performed. It does not tell you which music is beautiful. The ISR value structure is similar: it provides a language, not a judgment.
 
-That said, any choice of taxonomy carries implicit assumptions. The decision to include "Technological World and Digital Democracy" as one of the ten domains reflects contemporary concerns, and communities operating in different contexts might reasonably weight it very differently. The structural response to this limitation is the community revision mechanism: the domain structure itself can be adjusted by community consensus. The scaffold exists to be inhabited and reshaped, not simply obeyed.
+That said, any choice of taxonomy carries implicit assumptions. The decision to include "Technological World and Digital Democracy" as one of the ten domains reflects contemporary concerns, and communities operating in different contexts might reasonably weight it very differently. The structural response to this limitation is the community revision mechanism: the domain structure itself can be changed by a protocol-level decision in which all users take part (procedure still under design). The scaffold exists to be inhabited and reshaped, not simply obeyed.
 
 It is also worth being explicit about where the sociology of ISR currently stands. The value vectorization and assessment subsystem is version 1.0 — designed to be good enough to begin real-world validation, not to be the final word on how human values should be represented computationally. This is a genuinely open research area. Sustained work in sociology, psychology, and moral philosophy will be necessary to develop it further, and future versions may differ substantially from what is deployed today. ISR treats this not as a limitation to apologize for but as an honest description of what it means to be a new framework at the beginning of its research trajectory.
 
@@ -2913,12 +2909,12 @@ This is a cautious claim, not a prediction. The transition, if it comes, will be
 
 ## Can AI be trusted to evaluate human behavior fairly?
 
-This is a question ISR takes seriously rather than deflects. ISR uses AI quite limitedly, in narrow, specific, verifiable tasks. The rest of the calculations are done with relatively simpler and completely transparent mathematical tools. This eliminates the main "scary" of AI - the black box effect and makes the path to obtaining results clear and explanatory. So in ISR, no one sets the task for AI of deciding what is fair and what is not. The system provides a structured, transparent and corrective assessment, which is different from uncritical trust. And everyone can check the path of its formation step by step.
+This is a question ISR takes seriously rather than deflects. ISR uses AI quite limitedly, in narrow, specific, verifiable tasks: classifying an issue under published rules, turning texts into vectors, estimating similarity (relevance, expertise) and mapping actions into the value space. The rest of the calculations are done with relatively simpler and completely transparent mathematical tools. This eliminates the main "scary" of AI - the black box effect and makes the path to obtaining results clear and explanatory. So in ISR, no one sets the task for AI of deciding what is fair and what is not. The system provides a structured, transparent and corrective assessment based on community input, which is different from uncritical trust. And everyone can check the path of its formation step by step.
 
 Several points are worth holding together:
 
 - We are already constantly evaluated — by employers, institutions, certifying bodies, social networks. ISR simply makes this evaluation more transparent, universal, and independent of the whims of individual agents.
-- The evaluation algorithm is open for inspection and adjustment by the community. Algorithmic bias is a real risk, as no algorithm can capture all potential human complexity and unpredictability. However, algorithms are already statistically better at such tasks than human experts, so for the vast majority of cases this is a good option. And for complex cases, there is an appeals process and review by a human panel.
+- The evaluation algorithm is open for inspection and adjustment by the community. Algorithmic bias is a real risk, as no algorithm can capture all potential human complexity and unpredictability. However, algorithms are already statistically better at such tasks than human experts, so for the vast majority of cases this is a good option. And for complex cases a member can raise a dispute issue (correction entry).
 - AI evaluation in ISR does not make final decisions — it provides weighted inputs to deliberative processes that remain under human control. The system amplifies human judgment; it does not replace it.
 - Multiple perspectives — community input, AI analysis, individual context — reduce the risk of systematic bias that any single evaluator would carry.
 

@@ -89,7 +89,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           The minimum deployable product is a web application that:
         </p>
         <ul>
-          <li>lets communities declare their shared values and choose weighting parameters;</li>
+          <li>lets members declare their own values; the system derives the weighting parameters from the published table of typical issues;</li>
           <li>lets people create structured profiles that feed ISR components: demographic and geographic data for Relevance, education and work history for domain-specific Expertise, and declared values plus logged actions for Contribution;</li>
           <li>lets people start discussions or voting on socially important issues (problems, questions, proposals);</li>
           <li>forms dynamic ad-hoc publics around concrete issues using a Relevance score (combining demographic, geospatial, semantic and social proximity) and proposes the most affected participants;</li>
@@ -441,7 +441,7 @@ where \(\vec{v}_i\) is the vector representation of the user profile, \(\vec{v}_
     <p>
 \[
 \begin{align*}
-\vec{V}_{\mathrm{mv}} = \frac{1}{n} \sum_{i=1}^n \, R_i \cdot \vec{V}_i
+\vec{V}_{\mathrm{mv}} = \frac{\sum_{i=1}^n \, R_i \cdot \vec{V}_i}{\sum_{i=1}^n \, R_i}
 \end{align*}
 \]
 where:
@@ -594,7 +594,7 @@ where:
       <li>Their actual expertise in the issue domain</li>
       <li>Their proven track record of contribution</li>
     </ul>
-    AI determine the components weights (w<sub>R</sub>, w<sub>E</sub>, w<sub>C</sub>) through the issue context.
+    The assistant derives the component weights (wR, wE, wC) from the issue type and context, inside the ranges of the published table of typical issues; nobody types a number.
   </p>
 </div>
 
@@ -725,7 +725,7 @@ where:
         <p>The system uses semantic embeddings (LLM embeddings) to compare issue texts with user profiles and past actions, compute relevance scores, and assist in extracting stakeholders and generating explainable summaries. For tasks such as argument quality or sentiment, specialized LLM modules analyze contributions to estimate constructive behaviour.</p>
 
         <h4>Normalization & weights</h4>
-        <p>Relevance and Expertise are divided by their mean; Contribution, which can be negative, is divided by the public’s mean absolute Contribution plus one reference unit. The automated context routine proposes weights w<sub>R</sub>, w<sub>E</sub>, w<sub>C</sub> (sum = 1) appropriate to the issue. The final ISR is the weighted sum described earlier.</p>
+        <p>Relevance and Expertise are divided by their mean; Contribution, which can be negative, is divided by the public’s mean absolute Contribution plus one reference unit. The assistant derives the weights w<sub>R</sub>, w<sub>E</sub>, w<sub>C</sub> (sum = 1) from the published table of typical issues for the issue's type and context. The final ISR is the weighted sum described earlier.</p>
 
         <h4>Audit & explainability</h4>
         <p>For transparency, the system stores: the component values, a short natural-language explanation of the top contributing factors, and links to the records used. Higher-level permission holders in the public (per adaptable authorization rules) can view supporting evidence.</p>
@@ -772,7 +772,7 @@ where:
     <div class="paragraph">
       <h3>Common questions</h3>
       <h4>Q: Is ISR a vote-rigging tool?</h4>
-      <p>A: No. ISR is a contextually weighted influence mechanism meant to reflect relevance, expertise, and contribution. Communities set weights and can inspect every calculation. The goal is to improve deliberation quality and legitimacy — not to predetermine outcomes.</p>
+      <p>A: No. ISR is a contextually weighted influence mechanism meant to reflect relevance, expertise, and contribution. The weights are derived per issue from the published table of typical issues; nobody types a number. The goal is to improve deliberation quality and legitimacy — not to predetermine outcomes.</p>
 
       <h4>Q: Can someone "buy" influence?</h4>
       <p>A: Influence is derived from recorded behavior, verifiable actions, and declared expertise — not from financial transactions. Any integration with external sources must be authorized by the community and logged transparently. Money and other resources cannot be pledged toward influence. What an option needs (the cost and funding source first, then the resources) is part of the option's implementation plan, debated and voted like any other element.</p>
